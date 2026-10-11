@@ -3412,34 +3412,6 @@
           "when": true,
           "effects": [],
           "origin": "authored"
-        },
-        {
-          "id": "i/streets_back",
-          "target": "i/hub",
-          "when": true,
-          "effects": [
-            {
-              "state": "event.visited.streets",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.city_visits",
-              "op": "increment",
-              "value": 1,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            }
-          ],
-          "origin": "authored"
         }
       ]
     },
@@ -3654,44 +3626,6 @@
           "target": "i/support_again",
           "when": true,
           "effects": [
-            {
-              "state": "event.support_seen",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            }
-          ],
-          "origin": "authored"
-        },
-        {
-          "id": "i/support_back",
-          "target": "i/hub",
-          "when": true,
-          "effects": [
-            {
-              "state": "event.visited.support",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.city_visits",
-              "op": "increment",
-              "value": 1,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
             {
               "state": "event.support_seen",
               "op": "set",
@@ -4264,24 +4198,6 @@
       "id": "i/threshold",
       "choices": [
         {
-          "id": "i/threshold_yes",
-          "target": "i/threshold_yes",
-          "when": true,
-          "effects": [
-            {
-              "state": "event.threshold_open",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            }
-          ],
-          "origin": "authored"
-        },
-        {
           "id": "i/threshold_no",
           "target": "i/threshold_no",
           "when": {
@@ -4310,9 +4226,20 @@
       "choices": [
         {
           "id": "i/threshold_reconsider",
-          "target": "i/threshold",
+          "target": "i/threshold_yes",
           "when": true,
-          "effects": [],
+          "effects": [
+            {
+              "state": "event.threshold_open",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 자동 연결되는 결심의 결과. 독자의 선택이나 새 무기·능력 획득이 아니다."
+              }
+            }
+          ],
           "origin": "authored"
         }
       ]
@@ -5208,6 +5135,48 @@
     }
   ],
   "auto_rules": [
+    {
+      "node": "i/threshold",
+      "when": true,
+      "choice": "i/threshold_no",
+      "reason": ""
+    },
+    {
+      "node": "i/threshold_no",
+      "when": true,
+      "choice": "i/threshold_reconsider",
+      "reason": ""
+    },
+    {
+      "node": "i/threshold_yes",
+      "when": true,
+      "choice": "i/threshold_outside",
+      "reason": ""
+    },
+    {
+      "node": "i/streets",
+      "when": true,
+      "choice": "i/streets_repeat_hint",
+      "reason": ""
+    },
+    {
+      "node": "i/street_second",
+      "when": true,
+      "choice": "i/street_second_back",
+      "reason": ""
+    },
+    {
+      "node": "i/support",
+      "when": true,
+      "choice": "i/support_again",
+      "reason": ""
+    },
+    {
+      "node": "i/support_again",
+      "when": true,
+      "choice": "i/support_repeat_back",
+      "reason": ""
+    },
     {
       "node": "i/hub",
       "when": {

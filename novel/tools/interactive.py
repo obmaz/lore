@@ -253,6 +253,12 @@ class Session:
         sections = [*packet['history'],{'node_id':packet['node_id'],'before':packet['state'],'visible_block_ids':[b['id'] for b in packet['visible_blocks']]}]
         packet['main_story'] = check_main_story_route(self.story, self.overlay['main_story'], sections)
         for section in sections:
+            rules = [r for r in self.overlay['auto_rules']
+                     if r['node']==section['node_id'] and matches(r['when'],section['before'])]
+            if len(rules)>1:
+                raise ValueError('ambiguous automatic transition')
+            if rules and 'choice_id' in section and section['choice_id']!=rules[0]['choice']:
+                raise ValueError('required automatic transition bypassed')
             for rule in self.overlay['conditional_required']:
                 if rule['node']==section['node_id'] and matches(rule['when'],section['before']) and rule['block'] not in section['visible_block_ids']:
                     raise ValueError('required branch dialogue hidden')

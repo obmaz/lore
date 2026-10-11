@@ -44,7 +44,6 @@ class InteractiveTests(unittest.TestCase):
         packet = self.session.replay(route)
         if packet['node_id']=='i/hub': route,packet = self.walk(['i/depart_now'],route)
         if packet['node_id']=='lore_menace/preparation': route,packet = self.walk(['lore_menace/leave_castle'],route)
-        if packet['node_id']=='i/threshold': route,packet = self.walk(['i/threshold_yes','i/threshold_outside'],route)
         if packet['node_id']=='lore_menace/castle_exit':
             route,packet = self.walk(['lore_menace/accept_skeleton' if skeleton else 'lore_menace/decline_skeleton'],route)
         route,packet = self.walk(['lore_menace/set_out'],route)
@@ -100,16 +99,17 @@ class InteractiveTests(unittest.TestCase):
         self.finish(route)
 
     def test_04_every_pair_of_region_orders_and_three_visit_auto(self):
-        simple = {'armory':['i/armory_finish','i/armory_back'],'streets':['i/streets_back'],
-                  'grave':['i/grave_back'],'support':['i/support_back'],'mine_lore':['i/mine_lore_back']}
+        simple = {'armory':['i/armory_finish','i/armory_back'],'streets':[],
+                  'grave':['i/grave_back'],'support':[],'mine_lore':['i/mine_lore_back']}
         for regions in itertools.permutations(simple,2):
             route,packet = self.town([c for r in regions for c in ['i/visit_'+r,*simple[r]]])
             self.assertEqual(packet['state']['event.city_visits'],2)
             self.assertEqual(packet['node_id'],'i/hub')
-        route,packet = self.town(['i/visit_armory','i/armory_finish','i/armory_back','i/visit_streets','i/streets_back','i/visit_mine_lore','i/mine_lore_back'])
+        route,packet = self.town(['i/visit_armory','i/armory_finish','i/armory_back','i/visit_streets','i/visit_mine_lore','i/mine_lore_back'])
         self.assertEqual(packet['state']['event.city_visits'],3)
-        self.assertEqual(packet['node_id'],'i/threshold')
-        self.assertEqual(route[-1],'i/depart_now')
+        self.assertEqual(packet['node_id'],'lore_menace/castle_exit')
+        self.assertIn('i/depart_now',route)
+        self.assertEqual(route[-1],'i/threshold_outside')
         self.finish(route)
 
     def test_05_same_region_cannot_repeat(self):
@@ -134,7 +134,7 @@ class InteractiveTests(unittest.TestCase):
         self.finish(route)
 
     def test_08_repeated_conditional_city_lines(self):
-        route,_ = self.town(['i/visit_streets','i/streets_repeat_hint','i/street_second_back','i/visit_support','i/support_again','i/support_repeat_back'])
+        route,_ = self.town(['i/visit_streets','i/visit_support'])
         self.finish(route)
 
     def test_09_prison_refusal_no_free_recruit(self):
@@ -172,7 +172,7 @@ class InteractiveTests(unittest.TestCase):
         self.assertNotIn('skeleton',packet['character_profiles'])
 
     def test_13_replace_slot_confirmed_never_two_optional_companions(self):
-        route,_ = self.town(['i/visit_prison','i/prison_service','i/service_inside','i/accept_joe','i/joe_quiet_exit','i/joe_quiet_back','i/depart_now','i/threshold_yes','i/threshold_outside'])
+        route,_ = self.town(['i/visit_prison','i/prison_service','i/service_inside','i/accept_joe','i/joe_quiet_exit','i/joe_quiet_back','i/depart_now'])
         packet = self.session.replay(route)
         self.assertNotIn('lore_menace/accept_skeleton',packet['available_choices'])
         route,packet = self.walk(['i/skeleton_replace','i/replace_confirm','lore_menace/accept_skeleton'],route)
@@ -180,10 +180,10 @@ class InteractiveTests(unittest.TestCase):
         self.assertEqual(packet['state']['event.slot6'],'skeleton')
         self.finish(route)
 
-    def test_14_skeleton_conversation_once_and_threshold_refusal(self):
-        route,packet = self.walk([*INTRO,'lore_menace/leave_castle','i/threshold_no','i/threshold_reconsider'])
-        self.assertNotIn('i/threshold_no',packet['available_choices'])
-        route,packet = self.walk(['i/threshold_yes','i/threshold_outside','i/skeleton_ask','i/conversation_back'],route)
+    def test_14_skeleton_conversation_once_after_continuous_departure(self):
+        route,packet = self.walk([*INTRO,'lore_menace/leave_castle'])
+        self.assertEqual(packet['node_id'],'lore_menace/castle_exit')
+        route,packet = self.walk(['i/skeleton_ask','i/conversation_back'],route)
         self.assertNotIn('i/skeleton_ask',packet['available_choices'])
         self.assertFalse(any(b['provenance']['origin']=='source_exact' for b in packet['visible_blocks']))
         self.finish(route)
@@ -285,18 +285,18 @@ class InteractiveTests(unittest.TestCase):
         self.witnessed.clear()
         town_routes=[
             ['i/visit_armory','i/armory_finish','i/armory_back'],
-            ['i/visit_streets','i/streets_repeat_hint','i/street_second_back'],
+            ['i/visit_streets'],
             ['i/visit_mine_lore','i/mine_lore_back','i/visit_tavern','i/late_veteran','i/late_veteran_back'],
             ['i/visit_tavern','i/tavern_back'],
             ['i/visit_grave','i/grave_chest','i/grave_chest_back'],
-            ['i/visit_support','i/support_again','i/support_repeat_back'],
+            ['i/visit_support'],
             ['i/visit_mine_lore','i/mine_lore_back'],
             ['i/visit_prison','i/prison_request','i/decline_joe','i/joe_declined_back'],
             ['i/visit_prison','i/prison_request','i/accept_joe','i/joe_guard_exit','i/guard_escape','i/guard_try_again','i/guard_repeat_win','i/guard_victory_back']]
         for choices in town_routes:
             route,_=self.town(choices)
             self.finish(route)
-        route,_=self.walk([*INTRO,'lore_menace/leave_castle','i/threshold_no','i/threshold_reconsider'])
+        route,_=self.walk([*INTRO,'lore_menace/leave_castle'])
         self.finish(route)
         for treasure in [[c for i in range(1,7) for c in ['i/gold_'+str(i),'i/gold_back_'+str(i)]]+['i/treasure_finish'],
                          ['i/shield_find','i/shield_protagonist','i/shield_back'],['i/shield_find','i/shield_cancel','i/shield_cancel_back']]:
@@ -343,6 +343,46 @@ class InteractiveTests(unittest.TestCase):
             for block in self.nodes[key]['blocks']:
                 if block['provenance']['origin']=='authored':
                     self.assertIn('추가',block['provenance']['note'])
+
+
+    def test_29_threshold_is_continuous_prose_not_a_return_loop(self):
+        route,packet = self.walk([*INTRO,'lore_menace/leave_castle'])
+        self.assertEqual(packet['node_id'],'lore_menace/castle_exit')
+        self.assertEqual(route[-3:],['i/threshold_no','i/threshold_reconsider','i/threshold_outside'])
+        scenes=[h['node_id'] for h in packet['history']]
+        self.assertEqual(scenes.count('i/threshold'),1)
+        self.assertEqual(scenes.count('i/threshold_no'),1)
+        self.assertEqual(scenes.count('i/threshold_yes'),1)
+        visible={b for h in packet['history'] for b in h['visible_block_ids']}
+        self.assertTrue({'i/threshold_question','i/threshold_no_words','i/threshold_reconsider_prose',
+                         'i/threshold_yes_words','i/threshold_open_words'}<=visible)
+        self.assertTrue(packet['state']['event.threshold_open'])
+        self.assertEqual(packet['state']['event.city_visits'],0)
+        self.assertEqual(packet['state']['event.gold'],0)
+        self.assertNotIn('i/threshold_yes',{c['id'] for n in self.nodes.values() for c in n['choices']})
+        self.finish(route,skeleton=False)
+
+    def test_30_repeat_information_and_greetings_do_not_need_choices(self):
+        for region,blocks in [('streets',{'i/menace_monsters'}),
+                              ('support',{'i/support_first','i/support_farewell_prose','i/support_repeat'})]:
+            route,packet=self.town(['i/visit_'+region])
+            self.assertEqual(packet['node_id'],'i/hub')
+            self.assertEqual(packet['state']['event.city_visits'],1)
+            self.assertTrue(packet['state']['event.visited.'+region])
+            self.assertEqual(packet['state']['event.gold'],0)
+            visible={b for h in packet['history'] for b in h['visible_block_ids']}
+            self.assertTrue(blocks<=visible)
+            self.assertNotIn('i/visit_'+region,packet['available_choices'])
+            self.assertEqual(packet['state']['companions.optional_recruits'],[])
+        self.assertEqual(len(self.nodes['i/streets']['choices']),1)
+        self.assertEqual(len(self.nodes['i/support']['choices']),1)
+
+    def test_31_saved_routes_cannot_bypass_an_automatic_narrative(self):
+        route,_=self.town(['i/visit_tavern'])
+        index=route.index('i/tavern_menu')
+        forged=[*route[:index],'i/tavern_personal','i/hear_tavern_people']
+        with self.assertRaisesRegex(ValueError,'automatic transition bypassed'):
+            self.session.replay(forged)
 
 
 if __name__=='__main__':unittest.main()

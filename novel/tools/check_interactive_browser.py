@@ -12,30 +12,32 @@ INTRO=['prologue/enter_courtyard','prologue/visit_lord','prologue/hear_lord_intr
 ENDING=['lore_menace/walk_deeper','lore_menace/confirm_center','lore_menace/return_to_lore',
         'lore_menace/report_success','lore_menace/acknowledge_reward','lore_menace/hear_next_task','lore_menace/leave_audience']
 CASES={
+    'continuous_dialogue':[*INTRO,'i/explore','i/visit_streets','i/visit_support','i/depart_now',
+        'lore_menace/decline_skeleton','lore_menace/set_out','lore_menace/enter_menace',*ENDING],
     'early_veteran':['prologue/enter_courtyard','prologue/visit_tavern','prologue/remember_veteran',
-        'prologue/visit_lord',*INTRO[2:],'lore_menace/leave_castle','i/threshold_yes','i/threshold_outside',
+        'prologue/visit_lord',*INTRO[2:],'lore_menace/leave_castle',
         'lore_menace/decline_skeleton','lore_menace/set_out','lore_menace/enter_menace',*ENDING],
     'tavern_menu':[*INTRO,'i/explore','i/visit_tavern','i/tavern_back','i/depart_now',
-        'i/threshold_yes','i/threshold_outside','lore_menace/decline_skeleton','lore_menace/set_out',
+        'lore_menace/decline_skeleton','lore_menace/set_out',
         'lore_menace/enter_menace',*ENDING],
     'tavern_personal':[*INTRO,'i/explore','i/visit_mine_lore','i/mine_lore_back','i/visit_tavern',
-        'i/late_veteran','i/late_veteran_back','i/depart_now','i/threshold_yes','i/threshold_outside',
+        'i/late_veteran','i/late_veteran_back','i/depart_now',
         'lore_menace/decline_skeleton','lore_menace/set_out','lore_menace/enter_menace',*ENDING],
-    'skip':[*INTRO,'lore_menace/leave_castle','i/threshold_yes','i/threshold_outside',
+    'skip':[*INTRO,'lore_menace/leave_castle',
         'lore_menace/decline_skeleton','lore_menace/set_out','lore_menace/enter_menace',*ENDING],
-    'three_visits':[*INTRO,'i/armory_first','i/armory_finish','i/armory_back','i/visit_streets','i/streets_repeat_hint',
-        'i/street_second_back','i/visit_grave','i/grave_chest','i/grave_chest_back','i/threshold_yes','i/threshold_outside',
+    'three_visits':[*INTRO,'i/armory_first','i/armory_finish','i/armory_back','i/visit_streets',
+        'i/visit_grave','i/grave_chest','i/grave_chest_back',
         'i/skeleton_ask','i/conversation_back','lore_menace/accept_skeleton','lore_menace/set_out','i/choose_role',
         'i/use_party_hunter','i/role_back_party_hunter','i/use_party_magician','i/role_enter_party_magician',
         'lore_menace/walk_deeper','lore_menace/confirm_center','i/cave_treasure','i/gold_2','i/gold_back_2',
         'i/shield_find','i/shield_protagonist','i/shield_back',*ENDING[2:]],
     'joe_stays':[*INTRO,'i/explore','i/visit_prison','i/prison_service','i/service_inside','i/accept_joe',
         'i/joe_quiet_exit','i/joe_quiet_back','i/visit_armory','i/armory_finish_joe','i/armory_back','i/depart_now',
-        'i/threshold_yes','i/threshold_outside','lore_menace/decline_skeleton','lore_menace/set_out',
+        'lore_menace/decline_skeleton','lore_menace/set_out',
         'lore_menace/enter_menace',*ENDING],
     'joe_flees':[*INTRO,'i/explore','i/visit_prison','i/prison_request','i/accept_joe','i/joe_guard_exit',
         'i/guard_escape','i/guard_try_again','i/guard_repeat_win','i/guard_victory_back','i/depart_now',
-        'i/threshold_no','i/threshold_reconsider','i/threshold_yes','i/threshold_outside','lore_menace/accept_skeleton',
+        'lore_menace/accept_skeleton',
         'lore_menace/set_out','lore_menace/enter_menace',*ENDING]
 }
 
@@ -112,6 +114,21 @@ def check():
                     page.locator('button[data-choice="'+step+'"]').click()
                     assert_reading_position(page,first_new_section)
                     route,packet=session.choose(route,step)
+                    if step in ('lore_menace/leave_castle','i/depart_now') or (
+                            packet['state']['event.city_visits']==3 and packet['node_id']=='lore_menace/castle_exit'):
+                        assert packet['node_id']=='lore_menace/castle_exit'
+                        for block_id in ['i/threshold_question','i/threshold_no_words','i/threshold_reconsider_prose',
+                                         'i/threshold_yes_words','i/threshold_open_words']:
+                            assert page.locator('p[data-block-id="'+block_id+'"]').count()==1
+                        for obsolete in ['i/threshold_no','i/threshold_reconsider','i/threshold_yes','i/threshold_outside']:
+                            assert page.locator('button[data-choice="'+obsolete+'"]').count()==0
+                    if step in ('i/visit_streets','i/visit_support'):
+                        assert packet['node_id']=='i/hub'
+                        assert page.locator('button[data-choice="'+step+'"]').count()==0
+                    for automatic_label in ['잠깐 더 생각하겠다고 답한다','망설임 뒤의 결심이 이어진다',
+                                            '바깥 출구로 향한다','돌아서는 길에 한 번 더 인사한다',
+                                            '길을 떠나기 전 같은 사람에게 동굴 이야기를 다시 묻는다']:
+                        assert page.locator('.selected').filter(has_text=automatic_label).count()==0
                     if step=='prologue/visit_tavern':
                         assert page.locator('button[data-choice="i/late_veteran_back"]').count()==0
                         assert page.locator('#choices button').count()==1

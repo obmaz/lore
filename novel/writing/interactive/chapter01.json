@@ -1,6 +1,6 @@
 {
   "id": "interactive_chapter01",
-  "revision": 3,
+  "revision": 4,
   "quests": [
     "prologue.json",
     "lore_menace.json"
@@ -14,7 +14,7 @@
   "metadata": {
     "addition": true,
     "kind": "new_setting",
-    "note": "사용자가 지정한 네 시작 동료와 직업별 장비, 지역 방문 순서·3곳 제한·영입 접근법·역할별 후속 장면을 첫 챕터에만 추가한 집필 초고. 원작 게임 변경이 아니다."
+    "note": "사용자가 지정한 네 시작 동료와 직업별 장비, 지역 방문 순서·3곳 제한·영입 접근법·역할별 후속 장면을 첫 챕터에만 추가한 집필 초고. 문턱의 거절·재고·결심과 거리의 추가 설명·격려의 재인사는 선택 메뉴가 아닌 연속 서사로 각색한다. 원문 응답은 서로 다른 대화 시점에 보존하고 결심을 독자의 선택인 척 표시하지 않는다. 원작 게임 변경이 아니다."
   },
   "party": [
     "party_woodcutter",
@@ -2945,7 +2945,7 @@
           "when": true,
           "text": [
             {
-              "text": "누구도 지금까지 들은 말을 한 가지 결론으로 묶지 않았다. 사람은 가까운 일을 큰일처럼 말하기도 하고, 큰일을 남의 일처럼 말하기도 했다. 일행은 그 사이를 지나 다시 넓은 길로 나왔다."
+              "text": "누구도 지금까지 들은 말을 한 가지 결론으로 묶지 않았다. 사람은 가까운 일을 큰일처럼 말하기도 하고, 큰일을 남의 일처럼 말하기도 했다. 넓은 길로 나서려는데, 동굴 이야기를 꺼냈던 사람이 한마디를 보탰다. 일행이 실제로 그곳을 향할 줄은 이제야 알아챈 듯했다."
             }
           ],
           "literal_ids": [],
@@ -2967,49 +2967,6 @@
           "when": true,
           "target": "i/street_second",
           "effects": [],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
-        {
-          "id": "i/streets_back",
-          "label": [
-            {
-              "text": "다른 곳을 살피거나 출발한다"
-            }
-          ],
-          "when": true,
-          "target": "i/hub",
-          "effects": [
-            {
-              "state": "event.visited.streets",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.city_visits",
-              "op": "increment",
-              "value": 1,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            }
-          ],
           "branch_kind": "navigation",
           "consequence": [
             {
@@ -5016,59 +4973,6 @@
             "source_refs": [],
             "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
           }
-        },
-        {
-          "id": "i/support_back",
-          "label": [
-            {
-              "text": "다른 곳을 살피거나 출발한다"
-            }
-          ],
-          "when": true,
-          "target": "i/hub",
-          "effects": [
-            {
-              "state": "event.visited.support",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.city_visits",
-              "op": "increment",
-              "value": 1,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.support_seen",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            }
-          ],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
         }
       ],
       "handoff": null,
@@ -5094,6 +4998,15 @@
         "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
       },
       "blocks": [
+        {
+          "id": "i/support_farewell_prose",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [{"text": "일행은 더 붙잡혀 있을 수 없어 인사를 하고 돌아섰다. 몇 걸음 뒤에서 같은 목소리가 다시 들렸다. 이번에는 긴 이야기가 아니었다. 걸음을 붙들지 않으면서도 등에 남을 만큼 또렷한 말이었다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 원작 재인사 응답을 떠나는 길의 배웅으로 각색한다. 재인사 선택·두 번째 지역 방문·새 보상은 만들지 않는다."}
+        },
         {
           "id": "i/support_repeat",
           "kind": "source_quote",
@@ -7038,7 +6951,7 @@
           "when": true,
           "text": [
             {
-              "text": "문 저편에도 길이 이어져 있었다. 일행은 처음 성에 들어올 때와는 다른 표정으로 그 길을 보았다. 대답을 하기 전에 숨을 한 번 들이마실 시간은 있었다."
+              "text": "문 저편에도 길이 이어져 있었다. 안에서 볼 때에는 별것 없던 문인데, 가까이 서니 바깥의 빛이 낯설었다. 동굴까지 가겠다는 말은 이미 했다. 그렇다고 겁이 사라지는 것은 아니었다. 질문을 듣고도 대답이 바로 나오지 않았다. 발끝은 앞으로 향해 있었지만 몸은 아직 안쪽에 남고 싶었다. 준비가 되었느냐는 뜻으로 들린 그 말에, 그는 고개를 조금 저었다."
             }
           ],
           "literal_ids": [],
@@ -7050,39 +6963,6 @@
         }
       ],
       "choices": [
-        {
-          "id": "i/threshold_yes",
-          "label": [
-            {
-              "text": "도전하겠다고 답한다"
-            }
-          ],
-          "when": true,
-          "target": "i/threshold_yes",
-          "effects": [
-            {
-              "state": "event.threshold_open",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            }
-          ],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
         {
           "id": "i/threshold_no",
           "label": [
@@ -7133,7 +7013,7 @@
       "id": "i/threshold_no",
       "title": [
         {
-          "text": "아직 한 걸음 앞"
+          "text": "문 앞에서 고른 말"
         }
       ],
       "kind": "scene",
@@ -7171,6 +7051,22 @@
             ],
             "note": "독립 스냅샷의 해당 조건·대사. 증언은 확정 진상이 아니다."
           }
+        },
+        {
+          "id": "i/threshold_reconsider_prose",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {"ref": {"catalog": "characters", "id": "protagonist", "particle": "은/는"}},
+            {"text": " 문에서 물러나지는 않았다. 다시 생각하라는 말이 등을 떠미는 대신 잠깐 멈춰 세웠다. 그는 곁에 선 사람들을 보았다. 나설 길을 정할 때부터 함께 있었던 얼굴들이었다. 누구도 두려워하지 않는 척하라고 요구하지 않았다. 돌아오겠다고 한 말도, 중심부까지 가 달라는 부탁도 그대로 남아 있었다. 겁이 없어질 때까지 기다린다면 이 문을 넘는 날은 오지 않을 것 같았다. 그는 숨을 천천히 내쉬었다. 잠시 뒤 같은 뜻의 물음이 다시 건네졌을 때에는, 두려움과 함께 가겠다는 대답을 골랐다."}
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 원작의 거절과 수락을 같은 질문에 동시에 답한 것으로 합치지 않고, 망설인 뒤 다시 묻고 결심하는 서로 다른 시점의 대화로 각색한다. 반복 메뉴·문 앞으로 되돌아가는 분기는 만들지 않는다."
+          }
         }
       ],
       "choices": [
@@ -7178,12 +7074,23 @@
           "id": "i/threshold_reconsider",
           "label": [
             {
-              "text": "생각을 정리한 뒤 문 앞으로 돌아간다"
+              "text": "망설임 뒤의 결심이 이어진다"
             }
           ],
           "when": true,
-          "target": "i/threshold",
-          "effects": [],
+          "target": "i/threshold_yes",
+          "effects": [
+            {
+              "state": "event.threshold_open",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 자동 연결되는 결심의 결과. 독자의 선택이나 새 무기·능력 획득이 아니다."
+              }
+            }
+          ],
           "branch_kind": "navigation",
           "consequence": [
             {
@@ -10608,6 +10515,13 @@
     }
   ],
   "auto_rules": [
+    {"node": "i/threshold", "when": true, "choice": "i/threshold_no", "reason": ""},
+    {"node": "i/threshold_no", "when": true, "choice": "i/threshold_reconsider", "reason": ""},
+    {"node": "i/threshold_yes", "when": true, "choice": "i/threshold_outside", "reason": ""},
+    {"node": "i/streets", "when": true, "choice": "i/streets_repeat_hint", "reason": ""},
+    {"node": "i/street_second", "when": true, "choice": "i/street_second_back", "reason": ""},
+    {"node": "i/support", "when": true, "choice": "i/support_again", "reason": ""},
+    {"node": "i/support_again", "when": true, "choice": "i/support_repeat_back", "reason": ""},
     {
       "node": "i/hub",
       "when": {
@@ -10759,6 +10673,10 @@
     ]
   },
   "branch_guide": [
+    {
+      "title": "선택이 아닌 연속 서사",
+      "description": "문턱의 망설임·거절·다시 묻고 결심하는 대화·출구 이동은 한 독서 구간으로 자동 연결한다. 원작 응답은 서로 다른 대화 시점에 보존한 창작 각색이며 독자의 거절/수락 선택이 아니다. 거리의 추가 동굴 설명과 돌아서는 길의 격려도 버튼 없이 이어진다. 원문을 읽기 위한 재질문·재인사·확인·돌아가기 메뉴를 만들지 않는다. 지역 방문, 동료 영입, 접근법, 직업별 행동, 실제 보물 획득처럼 경험이나 후속 상태가 달라지는 선택은 유지한다."
+    },
     {
       "title": "큰 줄기와 적용 범위",
       "description": "성주 설명→첫 부탁→출발→동굴 입구→중심 확인→귀환→성공 보고→다음 부탁 경계는 동일하다. 기존 6소편 긴 원고는 참조해 재사용한다. 2챕터 본문은 변경하지 않는다."

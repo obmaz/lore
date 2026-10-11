@@ -1,10 +1,10 @@
 {
   "version": 1,
   "source_sha256": {
-    "writing/interactive/chapter01.json": "00d56bbd2b5dedce47efd1dc859d6a841d6a15871b6b6346f8a2539e768229d0",
+    "writing/interactive/chapter01.json": "ea83303b5b3e86689fed436f5cde6175955f60a9517acb3cceb8e45a9ac380e6",
     "writing/interactive/reader.js": "9749c3408f599baa61fe899a8b023efc80f33ba1ecf8c79621d5fc857a0976c7",
     "writing/interactive/overlay.schema.json": "77f9d32b48639f3fdd962763a529e6f49252bf1cf2ef30dd6c8e6bdcfeb923ea",
-    "tools/interactive.py": "977b559646b3ffde21e632c81cfd65169f4bbec210c77996a54774a446f509c5",
+    "tools/interactive.py": "2371f2acee3a79558be64a58675818b48ecdf09dce687f11ccbe977f6e0ac127",
     "writing/storyboard/series.json": "ef7efd9026b4def686f2c092ea14282c291b8b18b9e9ca2178dc2ea53b326a60",
     "writing/storyboard/chapters.json": "040200be306ced4149b7a28ad9574c08ff862a190ceffee412cc0aa5f19e0738",
     "writing/chapters.schema.json": "8e548560e5a3a59cce72b56175bb2e7d608d610022727540592e6646fa0a45c5",
@@ -53,8 +53,8 @@
     "menace-05-declined.html": "b9d3a99398b0bf44ea3d8c26ac7c6953da52c53998c947119d2e59841d6afd46",
     "menace-06.html": "4b28b96fd62538fd1c2b62355b532366a0d2484b0222d0fd189491b5615290a9",
     "menace-06-declined.html": "6e1498cb9fa268587a706c8618e06538096db6c221dc4f86727934eedb7d52ae",
-    "chapter01-interactive.html": "e97bed6682a74a2f744c6089165a4c1a5a34fba6908731dcea3b1bb0a946a0a9",
-    "chapter01-branches.html": "78332833d73a4235656e2cde0c73b3c573fb2bbcad788b06688678f6571b2432",
-    "chapter01-coverage.json": "381f0b191358a8c453537bb7c79beb5671ed157ed895cc34541abbe085e3ef14"
+    "chapter01-interactive.html": "511a13dca747d796ccfc3d33e6a0a31ca5a58d157de1c3c80b5d7a98ae8e8da4",
+    "chapter01-branches.html": "1a96e2a7a78a8ad6ceea0014cbaa0bde95e94378ad658a98b2d47f55bfae8b6a",
+    "chapter01-coverage.json": "bd915eb4c241825995aa1d5c9e7a36e35a1f85b221bcff98e484a7633447ba7d"
   }
 }
