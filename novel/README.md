@@ -6,7 +6,23 @@
 
 작업 위치는 저장소 루트의 `novel/`이며 `main` 브랜치에서 관리한다.
 이 문서의 명령과 상대 경로는 모두 이 폴더를 기준으로 한다. 다른 루트
-프로젝트와 자동 수입·동기화 관계가 없으며, 게임 Pages 배포에 포함되지 않는다.
+프로젝트와 자동 수입·동기화 관계가 없다. 같은 GitHub Pages의 `/novel/` 경로에는
+독립된 독자용 읽기 HTML만 게시하며 게임 소스나 빌드에 의존하지 않는다.
+
+## 웹에서 바로 읽기
+
+https://obmaz.github.io/lore/novel/
+
+다운로드 없이 브라우저에서 첫 챕터를 읽고 선택할 수 있다. 뒤로 가기·처음부터·
+경로 저장/불러오기·인쇄/PDF 저장은 오프라인 읽기본과 같다. 저장은 사용자가
+파일로 다운로드할 때만 이루어지며 계정이나 서버 저장 기능은 없다.
+
+루트 Pages 워크플로는 `writing/previews/chapter01-interactive.html`의 입력·출력
+해시를 검사한 뒤 `/novel/index.html`로 복사한다. 원고를 수정한 경우 읽기본을
+재생성하고 함께 `main`에 푸시한다. 배포 자체에는 Python 표준 라이브러리만 사용하며
+Flutter 빌드나 소설 재생성을 실행하지 않는다. 인물 마스터·작가용 설정·원문 JSON·
+작가용 HTML/PDF는 배포하지 않는다. 첫 챕터의 미선택 분기는 HTML 소스에 포함되므로
+이를 비밀 보안 저장소로 보지는 않는다.
 
 ```text
 novel/
@@ -24,7 +40,8 @@ novel/
 ## 먼저 읽을 자료
 
 - [첫 챕터 선택하며 읽기](writing/previews/chapter01-interactive.html): 네 시작 동료·직업 무기,
-  선택 탐방·영입 접근법·직업별 후속 장면을 적용한 새 판본. 다운로드 후 브라우저로 연다.
+  선택 탐방·영입 접근법·직업별 후속 장면을 적용한 새 판본.
+  [웹에서 바로 읽거나](https://obmaz.github.io/lore/novel/) 다운로드 후 브라우저로 연다.
   [분기 안내](writing/interactive/README.md), [작가용 분기 읽기본](writing/previews/chapter01-branches.html),
   [원문 반영표](writing/previews/chapter01-coverage.json).
 - [첫 퀘스트 이어 읽기](writing/previews/first-journey.html): 도입부부터 1-1~1-6까지 이어지는 기본 경로 초고.

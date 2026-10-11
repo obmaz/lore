@@ -12,7 +12,7 @@
 | --- | --- | --- | --- |
 | `original/` | 원작 동작을 재현하는 이식판 | Flutter / Dart | [원본 README](original/README.md) |
 | `remake/` | 모바일 UI·그래픽·전투·대화의 현대화판 | Flutter / Dart | [리메이크 README](remake/README.md) |
-| `novel/` | 원문 스냅샷에 기반한 집필·참조 자료 | Python | [소설 README](novel/README.md) |
+| `novel/` | 원문 스냅샷에 기반한 집필·참조 자료와 선택형 소설 | Python / HTML·JavaScript | [소설 README](novel/README.md) |
 
 세 폴더는 서로의 코드·자산·자료를 읽거나 실행하지 않습니다. 필요한 자료와
 검증 도구는 각 프로젝트 내부에 있으며, 폴더 하나만 복사해서 사용할 수 있습니다.
@@ -33,12 +33,14 @@ flutter run -d chrome
 리메이크는 모바일 터치 조작을 기준으로 하며, 게임 영역의 세로:가로 비율을
 4:3부터 19.5:9까지 유지하면서 기기 화면에 맞춥니다.
 소설 자료는 `novel/` 안에서 Python으로 검증하며 Flutter가 필요하지 않습니다.
+선택형 소설은 아래 웹 주소에서 다운로드 없이 브라우저로 읽고 선택할 수 있습니다.
 각 프로젝트의 상세 실행·검증 명령은 해당 README를 참고하세요.
 
 ## 웹 주소와 배포
 
 - 원본: https://obmaz.github.io/lore/original/
 - 리메이크: https://obmaz.github.io/lore/remake/
+- 선택형 소설: https://obmaz.github.io/lore/novel/
 
 게임을 수정한 뒤 해당 프로젝트 안에서 웹 빌드를 갱신합니다.
 
@@ -52,9 +54,21 @@ python3 tool/build_web_release.py
 SDK 경로가 필요한 경우 `--flutter /경로/flutter/bin/flutter`을 지정합니다.
 
 변경된 소스와 `docs/` 결과물을 `main`에 커밋·푸시하면
-[Pages 워크플로](.github/workflows/deploy-pages.yml)가 각각을 `/original/`,
-`/remake/`에 배치합니다. 워크플로는 커밋된 결과물을 게시하며 Flutter 빌드를
-실행하지 않습니다. `novel/`은 이 게임 배포에 포함하지 않습니다.
+[Pages 워크플로](.github/workflows/deploy-pages.yml)가 게임 결과물을 `/original/`,
+`/remake/`에, 독립된 소설 읽기본을 `/novel/`에 배치합니다. 워크플로는 커밋된
+결과물을 게시하며 Flutter 빌드나 소설 재생성을 실행하지 않습니다.
+
+소설 원고를 수정했다면 `novel/`에서 다음을 실행한 뒤 원고·읽기본을 함께 푸시합니다.
+
+```bash
+python3 tools/writing.py validate
+python3 tools/writing.py export
+python3 tools/writing.py export --check
+```
+
+`novel/writing/previews/chapter01-interactive.html`만 `/novel/index.html`로 게시합니다.
+오래되거나 수동 수정된 읽기본은 입력·출력 해시 검사에서 배포를 중단합니다.
+작가용 인물/관계 마스터·전편 설정·원문 JSON·PDF는 웹 배포 자료에 포함하지 않습니다.
 GitHub Settings → Pages의 Source는 `GitHub Actions`입니다.
 
 ## 원본 출처

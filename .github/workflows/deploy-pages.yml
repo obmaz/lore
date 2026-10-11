@@ -1,4 +1,4 @@
-name: Deploy original and remake
+name: Deploy original, remake and novel
 
 on:
   push:
@@ -24,13 +24,31 @@ jobs:
       - name: Check out main
         uses: actions/checkout@v4
 
-      - name: Assemble both site paths
+      - name: Assemble independent site paths
         run: |
-          mkdir -p site/original site/remake
+          mkdir -p site/original site/remake site/novel
           cp -a original/docs/. site/original/
           cp -a remake/docs/. site/remake/
           sed -i 's#<base href="/lore/">#<base href="/lore/original/">#' site/original/index.html
           sed -i 's#<base href="/lore/">#<base href="/lore/remake/">#' site/remake/index.html
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import shutil
+          from pathlib import Path
+
+          root = Path('novel').resolve()
+          manifest = json.loads((root / 'writing/previews/manifest.json').read_text(encoding='utf-8'))
+          for relative, expected in manifest['source_sha256'].items():
+              source = (root / relative).resolve()
+              if not source.is_relative_to(root) or hashlib.sha256(source.read_bytes()).hexdigest() != expected:
+                  raise SystemExit(f'Novel reading export is stale: {relative}. Run tools/writing.py export in novel/.')
+          reader = root / 'writing/previews/chapter01-interactive.html'
+          if hashlib.sha256(reader.read_bytes()).hexdigest() != manifest['artifacts'][reader.name]:
+              raise SystemExit('Novel reader differs from its generated manifest.')
+          # Publish only the self-contained reader, never author cards or source JSON.
+          shutil.copyfile(reader, 'site/novel/index.html')
+          PY
           touch site/.nojekyll
 
       - name: Configure Pages
