@@ -16,7 +16,6 @@ import '../theme/mobile_theme.dart';
 import '../models/party_member.dart';
 import '../services/audio_manager.dart';
 import '../services/save_manager.dart';
-import '../widgets/monster_bestiary_dialog.dart';
 import '../widgets/lore_guide_dialog.dart';
 import '../widgets/lore_creation_animation.dart';
 import '../widgets/mobile_content_dialog.dart';
@@ -1045,17 +1044,6 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                         color: MobileTheme.mint,
                       ),
                     ),
-                    IconButton(
-                      tooltip: 'Enemy data',
-                      onPressed: () => showDialog<void>(
-                        context: context,
-                        builder: (_) => const MonsterBestiaryDialog(),
-                      ),
-                      icon: const Icon(
-                        Icons.menu_book_outlined,
-                        color: MobileTheme.muted,
-                      ),
-                    ),
                   ],
                 ),
               ],
@@ -1229,28 +1217,6 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 style: RetroTheme.dosFont.copyWith(
                   fontSize: 12,
                   color: RetroTheme.lightRed,
-                ),
-              ),
-            ),
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                side: const BorderSide(color: RetroTheme.yellow),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 12,
-                ),
-              ),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (ctx) => const MonsterBestiaryDialog(),
-                );
-              },
-              child: Text(
-                'Enemy data',
-                style: RetroTheme.dosFont.copyWith(
-                  fontSize: 12,
-                  color: RetroTheme.yellow,
                 ),
               ),
             ),
