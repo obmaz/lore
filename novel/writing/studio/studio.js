@@ -8,7 +8,7 @@
   let routeIndex=0,lastHash='';
   const descriptions = {
     overview:'현재까지 작성된 원고와 구성, 설정을 한곳에서 확인합니다. 상세 본문과 구성 초안은 구분합니다.',
-    reading:'최신 첫 장 선택형 초고, 기존 소편, 기본 경로, 원작 연결 판본을 같은 화면에서 읽습니다.',
+    reading:'첫 장 선택형 초고와 전편 곁가지 선택판, 기존 소편·기본 경로·원작 연결 판본을 구별해 읽습니다.',
     outline:'15장의 큰 이야기와 88개 소단락. 제목은 중앙 JSON을 참조하고 본문 완성 여부는 따로 표시합니다.',
     graph:'같은 장의 갈림·합류를 그림으로 보고, 조건·결과 탭에서 선택 뒤 이야기와 후속 반응을 확인합니다.',
     order:'실제 선택 경로에서 뽑은 편집 순서입니다. 정사·출판 승인·페이지 확정이 아닌 예시입니다.',
@@ -94,7 +94,7 @@
     const content=$('view-content');
     if (view==='overview') {
       const cards=[['reading','현재 소설 읽기','첫 장의 최신 선택형 초고와 기존 소편·경로 판본을 읽습니다.'],['outline','큰 흐름부터 살펴보기','15장 큰 이야기와 소단락 주요 내용을 나란히 확인합니다.'],['graph','갈림과 합류 확인','장별 실행 그래프와 두 봉인의 순서, 후속 반응을 살펴봅니다.'],['settings','집필 설정 찾기','인물·직업·성향·관계·장비·마법과 추가 설정의 근거를 검색합니다.']];
-      content.innerHTML=`<div class="stats"><div class="stat"><strong>${data.chapters.length}</strong><span>큰 장 · 구성 초안</span></div><div class="stat"><strong>${data.report.subsections}</strong><span>소단락 · 주요 내용 초안</span></div><div class="stat"><strong>${data.report.runtime_paths_checked}</strong><span>전편 구조 검사 경로</span></div><div class="stat"><strong>${data.settings.filter(r=>r.category==='characters').length}</strong><span>인물 카드 · 작가용</span></div></div><div class="grid">${cards.map(([v,t,n])=>`<article class="card"><h3>${t}</h3><p>${n}</p><button type="button" class="button" data-view="${v}">열기 →</button></article>`).join('')}</div><h2 style="margin-top:28px">현재 집필 단계</h2><article class="card"><ol class="stage-list"><li>전편 큰 구성·큰 이야기·소단락 주요 내용: <span class="badge">초안</span></li><li>15장 원문 연결 판본: <span class="badge">원문 보존 · 조건별 자료 포함</span></li><li>전편 소단락 분기: <span class="badge">6결정 · 14선택지 · 구조 검사 완료</span></li><li>첫 장 선택형 본문과 기존 소편: <span class="badge">미승인 초고 · 판본별 구분</span></li><li>나머지 장의 상세 산문·최종 출판 경로·페이지: <span class="badge added">미완성 · 미정</span></li></ol></article><h3>자료를 수정할 때</h3><p class="notice">이 제작실은 읽기 전용입니다. 원본 JSON에서 수정한 뒤 <code>python3 tools/writing.py export</code>로 다시 생성합니다. 화면의 탐색과 독자 경로 선택은 Git 파일을 수정하지 않습니다.</p>`;
+      content.innerHTML=`<div class="stats"><div class="stat"><strong>${data.chapters.length}</strong><span>큰 장 · 구성 초안</span></div><div class="stat"><strong>${data.report.subsections}</strong><span>소단락 · 주요 내용 초안</span></div><div class="stat"><strong>${data.report.runtime_paths_checked}</strong><span>본줄기 투영·대표 검사 경로</span></div><div class="stat"><strong>${data.settings.filter(r=>r.category==='characters').length}</strong><span>인물 카드 · 작가용</span></div></div><div class="grid">${cards.map(([v,t,n])=>`<article class="card"><h3>${t}</h3><p>${n}</p><button type="button" class="button" data-view="${v}">열기 →</button>${v==='reading'?'<button type="button" class="button" data-view="reading" data-document="side-adventures.html">전편 곁가지 선택판 →</button>':''}</article>`).join('')}</div><h2 style="margin-top:28px">현재 집필 단계</h2><article class="card"><ol class="stage-list"><li>전편 큰 구성·큰 이야기·소단락 주요 내용: <span class="badge">초안</span></li><li>15장 원문 연결 판본: <span class="badge">원문 보존 · 조건별 자료 포함</span></li><li>전편 소단락 분기: <span class="badge">${data.report.decisions}결정 · ${data.report.options}선택지 · 곁가지 15개 포함</span></li><li>첫 장 선택형 본문과 기존 소편: <span class="badge">미승인 초고 · 판본별 구분</span></li><li>나머지 장의 상세 산문·최종 출판 경로·페이지: <span class="badge added">미완성 · 미정</span></li></ol></article><h3>자료를 수정할 때</h3><p class="notice">이 제작실은 읽기 전용입니다. 원본 JSON에서 수정한 뒤 <code>python3 tools/writing.py export</code>로 다시 생성합니다. 화면의 탐색과 독자 경로 선택은 Git 파일을 수정하지 않습니다.</p>`;
     } else if (view==='reading') {
       const chosen=state.document;
       const groups=[['interactive','최신 선택형 본문'],['prose','기존 소편 · 기본 경로'],['source','원작 원문 연결 판본'],['structure','작가용 구성 자료']];
@@ -168,7 +168,7 @@
     const button=event.target.closest('button'); if (!button || button.disabled) return;
     if (button.id==='open-studio') {
       state.open=true; $('author-gate').hidden=true; $('workspace').hidden=false;nav.querySelectorAll('button').forEach(b=>{b.disabled=false;});restoreRoute();go(state.view,true,'replace');
-    } else if (button.dataset.view) go(button.dataset.view);
+    } else if (button.dataset.view) {if(button.dataset.document)state.document=button.dataset.document;if(button.dataset.graphPanel)state.graphPanel=button.dataset.graphPanel;go(button.dataset.view);}
     else if (button.dataset.chapter) {state.chapter=button.dataset.chapter;state.graphOverview=false;go(state.view);}
     else if (button.dataset.step) {state.chapter=data.chapters[chapter().number-1+Number(button.dataset.step)].id;state.graphOverview=false;go(state.view);}
     else if (button.dataset.source) {state.source=button.dataset.source;state.pointer=button.dataset.pointer||'';go('sources');}

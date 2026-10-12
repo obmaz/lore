@@ -38,7 +38,8 @@ def chapter_branch_details(publication, chapter_id):
     reactions = [(i,r) for i,r in enumerate(session.plan['reactions']) if belongs(r['unit_id'])]
     body = '<p class="notice">이 장의 '+str(len(decisions))+'개 결정 · '+str(sum(len(d['options']) for d in decisions))+'개 선택 · '+str(len(reactions))+'개 후속 반응. 집필 추가 · 주요 내용 초안이며 원작의 확정 사실이나 승인된 장편 본문이 아닙니다.</p>'
     for d in decisions:
-        body += '<details class="unit branch-rule"><summary>'+display(publication.plan['decision_titles'][d['id']])+' <small>'+heading(d['unit_id'])+'</small></summary><div class="unit-body"><p>'+display(d['prompt'])+'</p>'
+        side = d['id'].startswith('side_')
+        body += '<details class="unit branch-rule"><summary>'+display(publication.plan['decision_titles'][d['id']])+(' <span class="badge added">선택 곁가지 · 창작 초고</span>' if side else '')+' <small>'+heading(d['unit_id'])+'</small></summary><div class="unit-body"><p>'+display(d['prompt'])+'</p>'
         for o in d['options']:
             body += '<section class="branch-option"><h4>'+display(o['label'])+'</h4><p>'+display(o['body'])+'</p>'
             body += raw({k:o[k] for k in ('id','when','participants','effects','origin','metadata')})+'</section>'
@@ -46,7 +47,11 @@ def chapter_branch_details(publication, chapter_id):
         orders = [o for o in session.plan['parallel_orders'] if o['decision_id']==d['id']]
         if orders:
             body += '<p>탐색 순서만 달라집니다. 두 목표를 모두 마친 뒤 합류합니다.</p>'+raw(orders,'병렬 목표 순서 JSON')
-        body += source(publication.decision_paths[d['id']])+'</div></details>'
+        body += source(publication.decision_paths[d['id']])
+        if side:
+            index=next(i for i,s in enumerate(session.stories) if 'side_'+s['id']==d['id'])
+            body += '<div class="source-note"><button type="button" class="button small" data-source="writing/side-stories/series.json" data-pointer="/stories/'+str(index)+'">곁가지 집필 원본 JSON</button></div>'
+        body += '</div></details>'
     if not decisions:
         body += '<p class="muted">이 장에는 구현된 선택이 없습니다. 필수 본줄기를 따라 진행합니다.</p>'
     if reactions:
@@ -119,7 +124,7 @@ def verify_previews():
     return docs
 
 
-def build(docs=None, publication=None, plan=None):
+def build(docs=None, publication=None, plan=None, side_publication=None):
     plan = plan or read(PLAN)
     validate_plan(plan)
     docs = docs if docs is not None else verify_previews()
@@ -128,6 +133,9 @@ def build(docs=None, publication=None, plan=None):
     required = {'chapter01-interactive.html', 'source-connected.html', 'branch-system.html', 'first-journey.html'}
     if not required <= set(docs): raise ValueError('studio missing required reading documents')
     publication = publication or PublicationFlow()
+    core_publication = publication
+    from side_stories import SidePublicationFlow, PLAN as SIDE_PLAN, OUTPUT as SIDE_OUTPUT
+    publication = side_publication or SidePublicationFlow(base=core_publication.session)
     session = publication.session
     validate_names(session.data)
     esc = html.escape
@@ -143,6 +151,8 @@ def build(docs=None, publication=None, plan=None):
         story_html += ''.join('<h3>'+label+'</h3><p>'+display(story['story'][key])+'</p>' for key,label in stage_labels.items())
         story_html += '<h3>변화와 다음 장</h3><p>'+display(story['emotional_change'])+'</p><p>'+display(story['handoff']['reason'])+'</p>'
         story_html += '<details><summary>연속성 주의</summary><ul>'+''.join('<li>'+display(v)+'</li>' for v in story['continuity_limits'])+'</ul></details>'
+        side=next(s for s in session.stories if s['chapter_id']==cid)
+        story_html += '<p class="notice">선택 곁가지 · 창작 초고: '+display(side['title'])+'<br>참여/거절 후 같은 본줄기에 합류하며 후속 반응만 달라집니다. <button type="button" class="button small" data-view="graph" data-graph-panel="rules">분기 내용 보기</button></p>'
         units = []
         for child in tree['children']:
             key = child['unit_id']; unit = session.units[key]
@@ -164,6 +174,7 @@ def build(docs=None, publication=None, plan=None):
     documents = []
     reading_labels = {
         'chapter01-interactive.html':'첫 장 · 최신 선택형 초고',
+        'side-adventures.html':'전편 15장 · 곁가지 모험 선택 시범',
         'source-connected.html':'전편 15장 · 원작 원문 연결 판본',
         'first-journey.html':'도입부터 첫 임무 끝까지 · 동행 수락',
         'first-journey-declined.html':'도입부터 첫 임무 끝까지 · 동행 거절',
@@ -178,6 +189,7 @@ def build(docs=None, publication=None, plan=None):
         group = 'prose' if name.startswith(('menace-', 'prologue', 'first-journey')) else 'structure'
         note = '보존 기본 경로 · 초고' if group=='prose' else '작가용 구성 · 상세 본문과 구별'
         if name=='chapter01-interactive.html': group, note = 'interactive', '최신 첫 장 선택형 초고 · 전편 분기와 별도'
+        elif name=='side-adventures.html': group, note = 'interactive', '15장 곁가지 선택판 · 본줄기 기본 경로의 주요 내용 + 창작 모험 초고'
         elif name=='source-connected.html': group, note = 'source', '15장 원문 연결 판본 · 조건부 원문·기술 부록 포함'
         label = reading_labels.get(name,title+(' · 동행 거절 경로' if '-declined' in name else ' · 주점 방문 경로' if '-tavern' in name else ''))
         documents.append({'id':name,'title':title,'label':label,'group':group,'note':note,'source_ref':'writing/previews/'+name,'html':body})
@@ -228,20 +240,23 @@ def build(docs=None, publication=None, plan=None):
         settings.append({'id':'checkpoints/'+key,'category':'checkpoints','title':key,'original':'편집용 공개 정책', 'html':body,
                          'source_ref':{'file':'characters/registry.json','pointer':'/disclosure_checkpoints/'+key},'search':key+' '+re.sub('<[^>]+>',' ',html.unescape(body))})
     source_paths = ['writing/project.json','writing/reading.json','writing/storyboard/series.json',publication.cp,
-                    'writing/storyboard/chapter-stories.json',publication.up,publication.bp,publication.pp,
+                    'writing/storyboard/chapter-stories.json',publication.up,publication.bp,publication.pp,core_publication.bp,core_publication.pp,
                     'writing/storyboard/source-connected.plan.json','writing/interactive/chapter01.json',
                     'characters/registry.json','reference/names.json','reference/terms.json','continuity/canon.json',
                     *[f'reference/{key}.json' for key in session.references], PLAN.relative_to(ROOT).as_posix(),
                     *[p.relative_to(ROOT).as_posix() for p in sorted((ROOT/'writing/episodes').glob('*.json'))],
                     *[p.relative_to(ROOT).as_posix() for p in sorted((ROOT/'writing/quests').glob('*.json'))]]
     sources = {path:read(package_path(path)) for path in source_paths}
-    sources['writing/publication/generated/flow.graph.json'] = publication.graph
-    sources['writing/publication/generated/linear-editions.json'] = publication.editions
-    sources['writing/publication/generated/coverage.json'] = publication.report
+    sources['writing/publication/generated/flow.graph.json'] = core_publication.graph
+    sources['writing/publication/generated/linear-editions.json'] = core_publication.editions
+    sources['writing/publication/generated/coverage.json'] = core_publication.report
+    sources[SIDE_PLAN.relative_to(ROOT).as_posix()] = publication.session.proposal
+    for name in ('runtime.plan.json','flow.plan.json','flow.graph.json','linear-editions.json','coverage.json'):
+        sources[(SIDE_OUTPUT/name).relative_to(ROOT).as_posix()] = read(SIDE_OUTPUT/name)
     source_index = [{'file':path, 'role':'생성물 · 직접 편집 금지' if '/generated/' in path else 'JSON 원본 · 파일에서 수정'} for path in sources]
     data = {'version':1,'status':'draft','visibility':'author_only','source_policy':plan['source_policy'],
             'origin':'authored','metadata':plan['metadata'],'plan':plan,'report':publication.report,
-            'chapters':chapters,'documents':documents,'settings':settings,'editions':publication.editions['editions'],
+            'chapters':chapters,'documents':documents,'settings':settings,'editions':[*core_publication.editions['editions'],*publication.editions['editions']],
             'overview_svg':publication.svg(publication.graph['overview']), 'sources':sources,'source_index':source_index,
             'rules':[(ROOT/'AGENTS.md').read_text(encoding='utf-8'),(ROOT/'writing/AGENTS.md').read_text(encoding='utf-8'),(ROOT/'characters/AGENTS.md').read_text(encoding='utf-8')]}
     return data
@@ -254,8 +269,8 @@ def document(data):
     return TEMPLATE.read_text(encoding='utf-8').replace('@@TITLE@@',html.escape(data['plan']['title'])).replace('@@PAYLOAD@@',payload).replace('@@SCRIPT@@',SCRIPT.read_text(encoding='utf-8'))
 
 
-def export(check=False, output=None, docs=None, publication=None):
-    data = build(docs,publication)
+def export(check=False, output=None, docs=None, publication=None, side_publication=None):
+    data = build(docs,publication,side_publication=side_publication)
     output = Path(output or OUTPUT)
     artifacts = {'index.html':document(data)}
     paths = [PLAN,SCHEMA,TEMPLATE,SCRIPT,Path(__file__),ROOT/'tools/export_reference.py',ROOT/'tools/publication_flow.py',

@@ -51,6 +51,40 @@ def check(screenshots=None):
             page.wait_for_function('document.getElementById("document-select")?.value === "chapter01-interactive.html"')
             page.go_forward()
             page.wait_for_function('document.getElementById("document-select")?.value === "menace-01.html"')
+            page.locator('#document-select').select_option('side-adventures.html')
+            frame.locator('#side-choices button').first.wait_for()
+            side_data = json.loads(frame.locator('#side-data').text_content())
+            assert len(side_data['stories']) == 15
+            assert frame.locator('#side-next').is_hidden()
+            # Revealing a hidden navigation button cannot bypass the private choice gate.
+            frame.locator('#side-next').evaluate('(e)=>{e.hidden=false;e.click()}')
+            assert frame.locator('#side-progress').inner_text().startswith('1 / 15')
+            modes = {}
+            for index, story in enumerate(side_data['stories']):
+                mode = 'take' if index % 2 == 0 else 'skip'
+                assert frame.locator('#side-choices button').count() == 2
+                assert frame.locator('#side-progress').inner_text().startswith(str(index+1)+' / 15')
+                frame.locator(f'[data-side-choice="{mode}"]').click()
+                modes[story['id']] = mode
+                scene = frame.locator(f'[data-side-story="{story["id"]}"]')
+                assert story['participate' if mode == 'take' else 'skip'][:40] in scene.inner_text()
+                assert frame.locator('#side-choices button').count() == 0
+                assert frame.locator('.core-outcome').count() > 0
+                for remembered in side_data['stories']:
+                    if remembered['reaction_unit'].startswith(story['chapter_id']+'/') and remembered['id'] in modes:
+                        memory = frame.locator(f'[data-side-memory="{remembered["id"]}"]')
+                        assert memory.get_attribute('data-mode') == modes[remembered['id']]
+                        text = remembered['on_participate' if modes[remembered['id']] == 'take' else 'on_skip']
+                        assert text[:40] in memory.inner_text()
+                if index < 14: frame.locator('#side-next').click()
+            assert frame.locator('#side-complete').is_visible()
+            assert frame.locator('#side-next').is_hidden()
+            frame.locator('#side-prev').click()
+            assert frame.locator('#side-choices button').count() == 0
+            frame.locator('#side-restart').click()
+            assert frame.locator('#side-progress').inner_text() == '1 / 15장 · 곁가지 0개 선택'
+            assert frame.locator('[data-side-memory]').count() == 0
+            assert frame.locator('#side-choices button').count() == 2
             view('outline')
             page.locator('#chapter-select').select_option('chapter09')
             assert page.locator('.unit').count()==7
@@ -69,11 +103,11 @@ def check(screenshots=None):
             page.locator('#return-chapter-graph').click()
             page.locator('[data-graph-panel="rules"]').click()
             assert page.locator('#chapter-select').input_value()=='chapter09'
-            assert page.locator('#branch-details .branch-rule').count()==1
+            assert page.locator('#branch-details .branch-rule').count()==2
             assert page.locator('#chapter-diagram').count()==0
             page.locator('.branch-rule>summary').first.click()
             assert '두 봉인을 모두 풀어야 한다' in page.locator('#branch-details').inner_text()
-            assert page.locator('.branch-option').count()==2
+            assert page.locator('.branch-option').count()==4
             assert '두 목표를 모두 마친 뒤 합류' in page.locator('#branch-details').inner_text()
             page.locator('.branch-rule [data-source]').first.click()
             assert '/decisions/' in page.locator('#source-location').inner_text()
@@ -86,10 +120,10 @@ def check(screenshots=None):
             page.go_forward()
             page.locator('#branch-details').wait_for()
             page.locator('#chapter-select').select_option('chapter01')
-            assert page.locator('#branch-details .branch-rule').count()==2
+            assert page.locator('#branch-details .branch-rule').count()==3
             page.locator('#chapter-select').select_option('chapter02')
-            assert page.locator('#branch-details .branch-rule').count()==0
-            assert '이 장에는 구현된 선택이 없습니다' in page.locator('#branch-details').inner_text()
+            assert page.locator('#branch-details .branch-rule').count()==1
+            assert '무너진 제빵소의 마지막 자루' in page.locator('#branch-details').inner_text()
             page.locator('[data-graph-panel="diagram"]').click()
             assert page.locator('#chapter-select').input_value()=='chapter02'
             view('order')
@@ -180,7 +214,7 @@ def check(screenshots=None):
             assert legacy.locator('#chapter-select').input_value()=='chapter09'
             assert '#/graph?' in legacy.url
             legacy.close()
-            report.append({'width':width,'views':7,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'source_json_download':True,'browser_back_forward':True,'graph_questions':True,'unified_branch_details':True,'legacy_branch_bookmark':True,'compact_type':True,'dense_basic_height':basic_height,'evidence_keyboard_toggle':True})
+            report.append({'width':width,'views':7,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'side_chapters_checked':15,'side_memory_checked':True,'side_next_gate':True,'source_json_download':True,'browser_back_forward':True,'graph_questions':True,'unified_branch_details':True,'legacy_branch_bookmark':True,'compact_type':True,'dense_basic_height':basic_height,'evidence_keyboard_toggle':True})
             page.close()
         browser.close()
     return report

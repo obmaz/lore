@@ -22,7 +22,7 @@ def classify(path):
     if path.startswith('tools/'):return 'tool'
     if path.startswith('tests/'):return 'test'
     if path in ('requirements.txt','.gitignore','writing/studio/publication.json'):return 'configuration'
-    if path.startswith(('writing/interactive/','writing/studio/')) and path.endswith(('.js','.html')):return 'ui_source'
+    if path.startswith(('writing/interactive/','writing/studio/','writing/side-stories/')) and path.endswith(('.js','.html')):return 'ui_source'
     if path.endswith('.json') and path.startswith(('reference/','characters/','continuity/','writing/')):return 'editable_authoring_input'
     return 'unclassified'
 
@@ -34,7 +34,7 @@ def audit():
     def add(path,kind,owner):
         row={'kind':kind,'file':owner}
         if path in consumers and row not in consumers[path]:consumers[path].append(row)
-    for name in ('materials/manifest.json','reference/generated_manifest.json','exports/manifest.json','writing/previews/manifest.json','writing/publication/generated/manifest.json','writing/studio/generated/manifest.json'):
+    for name in ('materials/manifest.json','reference/generated_manifest.json','exports/manifest.json','writing/previews/manifest.json','writing/publication/generated/manifest.json','writing/side-stories/generated/manifest.json','writing/studio/generated/manifest.json'):
         document=read(ROOT/name)
         for path in document.get('source_sha256',{}):add(path,'input_hash_guard',name)
         base=ROOT if name=='reference/generated_manifest.json' else (ROOT/name).parent

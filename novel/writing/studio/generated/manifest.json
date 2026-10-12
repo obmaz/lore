@@ -5,14 +5,14 @@
     "writing/studio/studio.plan.json": "e2ac982213d2dd820ef18c15a1e011c6f8898bde661ba824f10f95da2bfbd1ba",
     "writing/studio/studio.schema.json": "b670be722d1f9d11689edd448887187ff68f6a6f3ad5680f2b9f14f7e66bc93c",
     "writing/studio/shell.html": "7dba155b5a914ba4f1d02396ea2d96676a41407f23b5fa484c8fd71803912f59",
-    "writing/studio/studio.js": "402a33b9b63c703eecf010c22a31545bdd507811cfc6bf62b75ee17f1dece531",
-    "tools/studio.py": "67da1011cacbf772e446014bfa03736d20f957b83f253901806015ab024097b8",
+    "writing/studio/studio.js": "d5b1889ab7fa4d662cd784d51b58553e44393457bd3bacbe49c7c861edb14413",
+    "tools/studio.py": "12683cc87cd97c429b57e8fa662a718227e6236b24c008ed69dc31c6f5303e50",
     "tools/export_reference.py": "2fb37a42477fafd4e277edb2e77d7500cb9f2138b8d0e7641d32f7983b3699c0",
-    "tools/publication_flow.py": "5e0920c35cd854fd4a9060a26a5975792ba8d06112c8657d03d905b49c487667",
+    "tools/publication_flow.py": "3c9375b0ba272097cb10cad709076e5af7345568b5808c10d080908455dd80ab",
     "AGENTS.md": "bc94225d460037d2913be1be46216d3f429e89a628e4858281edeb2df8edc711",
     "writing/AGENTS.md": "96c0889f26bfd0cb66a7f12c577322b66e7ab977116ec206d48b3d28817a8e29",
     "characters/AGENTS.md": "a2dea8ef50f25d6cc7287c76e5a991af193e8efbe8cf8b48edd432e43e9a1145",
-    "writing/previews/manifest.json": "7cba5a08fcda43707c3cfda1b59d6d9457491284ba34b3a0f729cc365d51c1f9",
+    "writing/previews/manifest.json": "694686e503643f5223618a8723f8afa2cd701bf9980bb805ccc26c9f050179fa",
     "writing/previews/branch-system.html": "f1ea31a3839a07dee60e4e86c39125b6076affb06a5c24d302639b7004026217",
     "writing/previews/chapter-stories.html": "5d89cbeaad5a2ceec2a2093dec848d926718bc32a1d585f46817e28f5ee6910a",
     "writing/previews/chapter-subsections.html": "1613e0c3b754f3e048b9b29982734883cbc0446aa2184e26dfbe9f30865dc920",
@@ -38,6 +38,7 @@
     "writing/previews/prologue-tavern.html": "79ee3ad2dbef402788db1f283b4a363d00ae0ff8cbccfec7f3527f7f58b1c324",
     "writing/previews/prologue.html": "0758cdd4bb984fcb232680e2818de7768aeff1719abe02bf4182758578845d50",
     "writing/previews/publication-flow.html": "d9c6ccc0b901362dd566159a73fe680a6bb87855cccea7c1b952187e45a7198c",
+    "writing/previews/side-adventures.html": "823b01ff761f54f7466a718ac8eae4aca34eeb55b28344e843f7db7410738013",
     "writing/previews/source-connected.html": "ac5d8f0d6dc2c3000c62e583057b535289aacce9964c6a4ccc16e0612f467b83",
     "writing/previews/storyboard.html": "3aae7b8915afee045a77553c2112f88d7ebf5bf19f94c14c7386567b37f47ba8",
     "writing/project.json": "254e3a952b738b619fd6506b3bb93f7a9b8bde855b6544b60beba94166e9eb44",
@@ -46,6 +47,8 @@
     "writing/storyboard/chapters.json": "a9429277e0fa9237fbf960ac63668b1df8dfb761ad5d7a86bdb9b05981230634",
     "writing/storyboard/chapter-stories.json": "273266d07321ae11751413148fde64ad1cf21b004a038612a207af0ca8d54f39",
     "writing/storyboard/chapter-subsections.json": "6c52711ebbabe18d1a3213bff9cf731c45051c55da7aa8783907e05abb73bcb5",
+    "writing/side-stories/generated/runtime.plan.json": "2d28e78d1208791bc9856db040c9436baf2a55f083967c824a5ec05d08190bca",
+    "writing/side-stories/generated/flow.plan.json": "a968e8076df11ef1a0baafe8e5f9e08f3759883d08a9dde201785b4ae19dd4d9",
     "writing/branches/series.json": "5101667f8e54bd59f477ab04bc2a75924d71aeafdfa4728556c9c5b25daf164d",
     "writing/publication/flow.plan.json": "aa4f571d4be3dbfd3e6509920cf558170f86aedfc0d33c976aaf62f9b8acce3d",
     "writing/storyboard/source-connected.plan.json": "ef82625eb4ea43bf13ad591cdf56ee76a7a868ad980aee0695ed14c4edeca5fa",
@@ -64,9 +67,13 @@
     "writing/quests/prologue.json": "ee4394f7eb10879fe98ae6fc3aaf8e9ba37692bf207c95719015387a48467a5d",
     "writing/publication/generated/flow.graph.json": "7b6e404517b401214524f83311e3911b9504dbc0be98d78af40ce4694edc12fe",
     "writing/publication/generated/linear-editions.json": "3320eb8cca6fb6f5891cac73e6e5d1cadb143eabb7cbe08e96bc72615c9bd373",
-    "writing/publication/generated/coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746"
+    "writing/publication/generated/coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746",
+    "writing/side-stories/series.json": "bf49ceb3ed86781eb38541c3be811efa08a01d98c752028a0010b16996153f70",
+    "writing/side-stories/generated/flow.graph.json": "3c80f6da61b7baf924b9712b67b645711d8182c24b5cf4e01195ebcdd7250296",
+    "writing/side-stories/generated/linear-editions.json": "cdc9cb0e2021ff3f4ef2c949011ef5d57e090546790215caf83f175e80c5941b",
+    "writing/side-stories/generated/coverage.json": "f7ef4278e6f369286eb7fb322cd3e4899fdd62dab7da7c7ca82e8c4bc97c1872"
   },
   "artifacts": {
-    "index.html": "d1116875ecfb59a4e42e6f6278cfe5eb1f38527a84cf123286252ca966bb3724"
+    "index.html": "ba63613db3d1e0365fa662e6e029d968c302e8f53630a49d077f46e41c4b8d4f"
   }
 }

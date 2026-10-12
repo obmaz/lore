@@ -397,6 +397,10 @@ def export_documents(output,check=False):
     publication = PublicationFlow(session=branch_session)
     flow_export(check=check, flow=publication)
     docs['publication-flow.html'] = publication.document()
+    from side_stories import SidePublicationFlow, export as side_export, OUTPUT as SIDE_OUTPUT, PLAN as SIDE_PLAN, SCHEMA as SIDE_SCHEMA, READER as SIDE_READER
+    side_publication = SidePublicationFlow(base=branch_session)
+    side_export(check=check,flow=side_publication)
+    docs['side-adventures.html'] = (SIDE_OUTPUT/'side-adventures.html').read_text(encoding='utf-8')
     from source_story import PLAN as SOURCE_PLAN, SCHEMA as SOURCE_SCHEMA, OUTPUT as SOURCE_OUTPUT, export as source_export, story_document as source_document
     source_export(check=check)
     docs['source-connected.html'] = source_document(read(SOURCE_OUTPUT/'manuscript.json'))
@@ -448,6 +452,8 @@ def export_documents(output,check=False):
                *(FLOW_OUTPUT/name for name in ('flow.graph.json','linear-editions.json','flow.md','flow.html','coverage.json'))]
     from studio import PLAN as STUDIO_PLAN, SCHEMA as STUDIO_SCHEMA, TEMPLATE as STUDIO_TEMPLATE, SCRIPT as STUDIO_SCRIPT, export as studio_export
     inputs += [STUDIO_PLAN,STUDIO_SCHEMA,STUDIO_TEMPLATE,STUDIO_SCRIPT,ROOT/'tools/studio.py']
+    inputs += [SIDE_PLAN,SIDE_SCHEMA,SIDE_READER,ROOT/'tools/side_stories.py',SIDE_OUTPUT/'manifest.json',
+               *[SIDE_OUTPUT/name for name in ('runtime.plan.json','flow.plan.json','flow.graph.json','linear-editions.json','coverage.json','flow.md','flow.html','side-adventures.html')]]
     manifest = {'version':1,'source_sha256':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
                 'artifacts':{name:hashlib.sha256(value.encode()).hexdigest() for name,value in docs.items()}}
     if check:
@@ -461,7 +467,7 @@ def export_documents(output,check=False):
         for name,body in docs.items():
             (output/name).write_text(body,encoding='utf-8')
         (output/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    studio = studio_export(check=check,docs=docs,publication=publication)
+    studio = studio_export(check=check,docs=docs,publication=publication,side_publication=side_publication)
     return {'output':str(output),'artifacts':list(docs),'storyboard_units':len(board['units']),'studio':studio,'checked':check}
 
 
@@ -500,6 +506,8 @@ def main():
         result['branch_system'] = BranchSession().validate_paths()
         from publication_flow import PublicationFlow
         result['publication_flow'] = PublicationFlow().report
+        from side_stories import SideStorySession
+        result['side_stories'] = SideStorySession().validate_paths()
         from studio import validate_plan
         result['studio'] = validate_plan()
         from source_story import OUTPUT as SOURCE_OUTPUT, validate_story as validate_source_story

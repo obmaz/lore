@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lore.local/novel/writing/side-stories.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "revision",
+    "status",
+    "visibility",
+    "origin",
+    "metadata",
+    "policy",
+    "stories"
+  ],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "const": "draft"
+    },
+    "visibility": {
+      "const": "author_only"
+    },
+    "origin": {
+      "const": "authored"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "addition",
+        "kind",
+        "note",
+        "knowledge_policy"
+      ],
+      "properties": {
+        "addition": {
+          "const": true
+        },
+        "kind": {
+          "const": "new_setting"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "knowledge_policy": {
+          "const": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "policy": {
+      "const": "one_optional_local_adventure_per_chapter_no_main_state_writes"
+    },
+    "stories": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "chapter_id",
+          "status",
+          "anchor_unit",
+          "reaction_unit",
+          "origin",
+          "metadata",
+          "title",
+          "prompt",
+          "participate_label",
+          "participate",
+          "skip_label",
+          "skip",
+          "on_participate",
+          "on_skip"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]+$"
+          },
+          "chapter_id": {
+            "type": "string",
+            "pattern": "^chapter(0[1-9]|1[0-5])$"
+          },
+          "status": {
+            "const": "proposed"
+          },
+          "anchor_unit": {
+            "type": "string",
+            "pattern": "^chapter[0-9]{2}/p[0-9]{2}$"
+          },
+          "reaction_unit": {
+            "type": "string",
+            "pattern": "^chapter[0-9]{2}/p[0-9]{2}$"
+          },
+          "origin": {
+            "const": "authored"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "addition",
+              "kind",
+              "note",
+              "knowledge_policy"
+            ],
+            "properties": {
+              "addition": {
+                "const": true
+              },
+              "kind": {
+                "const": "new_setting"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1
+              },
+              "knowledge_policy": {
+                "const": "author_reference_not_character_knowledge"
+              }
+            }
+          },
+          "title": {
+            "$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"
+          },
+          "prompt": {
+            "$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"
+          },
+          "participate_label": {
+            "$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"
+          },
+          "participate": {
+            "$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"
+          },
+          "skip_label": {
+            "$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"
+          },
+          "skip": {
+            "$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"
+          },
+          "on_participate": {
+            "$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"
+          },
+          "on_skip": {
+            "$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"
+          }
+        }
+      }
+    }
+  }
+}

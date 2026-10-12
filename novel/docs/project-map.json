@@ -16,16 +16,16 @@
     "agent_policy": 3,
     "compiled_reference": 5,
     "configuration": 2,
-    "editable_authoring_input": 22,
+    "editable_authoring_input": 23,
     "generated_inventory": 1,
-    "generated_reading": 45,
+    "generated_reading": 55,
     "immutable_source_snapshot": 25,
-    "schema": 16,
+    "schema": 17,
     "shared_template": 10,
-    "test": 20,
-    "tool": 24,
-    "ui_source": 3,
-    "usage_documentation": 12,
+    "test": 21,
+    "tool": 25,
+    "ui_source": 4,
+    "usage_documentation": 13,
     "verification_example": 2
   },
   "cleanup": {
@@ -83,6 +83,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -244,6 +248,10 @@
           "file": "writing/previews/manifest.json"
         },
         {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
           "kind": "static_mention_not_runtime_proof",
           "file": "authoring/README.md"
         },
@@ -266,6 +274,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -298,6 +310,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories.schema.json"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -357,6 +373,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -429,6 +449,10 @@
         },
         {
           "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
         },
         {
@@ -482,6 +506,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -726,6 +754,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/source_story.py"
         },
         {
@@ -735,6 +767,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -857,6 +893,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/source_story.py"
         },
         {
@@ -878,6 +918,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -979,6 +1023,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/source_story.py"
         },
         {
@@ -988,6 +1036,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -1435,6 +1487,10 @@
         },
         {
           "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
         },
         {
@@ -1509,6 +1565,10 @@
         },
         {
           "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
         },
         {
@@ -1556,6 +1616,10 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
         },
         {
           "kind": "input_hash_guard",
@@ -1611,6 +1675,10 @@
       "file": "reference/metadata.schema.json",
       "role": "schema",
       "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "characters/character.schema.json"
@@ -1680,6 +1748,10 @@
         },
         {
           "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
         },
         {
@@ -1737,6 +1809,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -1802,6 +1878,10 @@
         },
         {
           "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
         },
         {
@@ -1811,6 +1891,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -2020,6 +2104,17 @@
       "automatic_deletion": false
     },
     {
+      "file": "tests/test_side_stories.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tests/test_source_story.py",
       "role": "test",
       "consumers": [
@@ -2106,6 +2201,10 @@
           "file": "writing/publication/generated/manifest.json"
         },
         {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
           "kind": "static_mention_not_runtime_proof",
           "file": "README.md"
         },
@@ -2124,6 +2223,14 @@
         {
           "kind": "python_import",
           "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -2595,6 +2702,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_side_stories.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_source_story.py"
         },
         {
@@ -2675,6 +2786,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tools/source_story.py"
         },
         {
@@ -2737,6 +2852,10 @@
         },
         {
           "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
         },
         {
@@ -2746,6 +2865,14 @@
         {
           "kind": "python_import",
           "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -2907,6 +3034,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tools/source_story.py"
         },
         {
@@ -2964,6 +3095,49 @@
       "automatic_deletion": false
     },
     {
+      "file": "tools/side_stories.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_side_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/side_stories.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tools/source_story.py",
       "role": "tool",
       "consumers": [
@@ -3013,6 +3187,10 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -3088,6 +3266,14 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
         },
         {
@@ -3147,6 +3333,10 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
         },
         {
           "kind": "python_import",
@@ -3211,6 +3401,10 @@
         {
           "kind": "python_import",
           "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -3355,6 +3549,14 @@
           "file": "tools/publication_flow.py"
         },
         {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/side_stories.py"
+        },
+        {
           "kind": "python_import",
           "file": "tools/source_story.py"
         },
@@ -3381,6 +3583,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -3440,6 +3646,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -3484,8 +3694,16 @@
           "file": "writing/previews/manifest.json"
         },
         {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -3543,6 +3761,10 @@
         },
         {
           "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
         },
         {
@@ -3552,6 +3774,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -3576,6 +3802,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -3794,7 +4024,15 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -4173,6 +4411,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/source_story.py"
         },
         {
@@ -4182,6 +4424,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -4504,6 +4750,53 @@
       "automatic_deletion": false
     },
     {
+      "file": "writing/previews/side-adventures.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "writing/previews/source-connected.html",
       "role": "generated_reading",
       "consumers": [
@@ -4589,8 +4882,16 @@
           "file": "writing/publication/generated/manifest.json"
         },
         {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -4648,11 +4949,27 @@
         },
         {
           "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
         },
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -4665,6 +4982,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -4699,6 +5020,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/source_story.py"
         },
         {
@@ -4720,6 +5045,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -4746,6 +5075,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/studio.py"
         },
         {
@@ -4759,6 +5092,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -4785,6 +5122,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
         },
         {
@@ -4794,6 +5135,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -4820,6 +5165,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
         },
         {
@@ -4829,6 +5178,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -4855,6 +5208,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/studio.py"
         },
         {
@@ -4868,6 +5225,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -4930,6 +5291,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/source_story.py"
         },
         {
@@ -4939,6 +5304,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -5127,6 +5496,609 @@
       "automatic_deletion": false
     },
     {
+      "file": "writing/side-stories.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/generated/coverage.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/generated/flow.graph.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/generated/flow.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/generated/flow.md",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/generated/flow.plan.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/generated/linear-editions.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/generated/manifest.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/materials.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/generated/runtime.plan.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/generated/side-adventures.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/reader.js",
+      "role": "ui_source",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/side-stories/series.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapters.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "writing/source-connected.schema.json",
       "role": "schema",
       "consumers": [
@@ -5163,6 +6135,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/source_story.py"
         },
         {
@@ -5184,6 +6160,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -5310,11 +6290,19 @@
         },
         {
           "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
         },
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5349,11 +6337,19 @@
         },
         {
           "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
         },
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5416,6 +6412,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/studio.py"
         },
         {
@@ -5437,6 +6437,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -5596,6 +6600,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/source_story.py"
         },
         {
@@ -5605,6 +6613,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
         }
       ],
       "automatic_deletion": false
@@ -5723,6 +6735,10 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/side-stories/generated/manifest.json"
         },
         {
           "kind": "static_mention_not_runtime_proof",

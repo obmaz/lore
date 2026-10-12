@@ -12,18 +12,20 @@ import jsonschema
 from studio import build, document, export, package_path, validate_plan, verify_previews, readable_claims, PLAN, OUTPUT
 from materials import ROOT, read
 from publication_flow import PublicationFlow
+from side_stories import SidePublicationFlow
 
 
 class StudioTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.flow = PublicationFlow()
-        cls.data = build(publication=cls.flow)
+        cls.side_flow = SidePublicationFlow(base=cls.flow.session)
+        cls.data = build(publication=cls.flow,side_publication=cls.side_flow)
 
     def test_01_every_preview_is_available_without_opening_another_file(self):
         expected = {name for name in read(ROOT/'writing/previews/manifest.json')['artifacts'] if name.endswith('.html')}
         self.assertEqual({d['id'] for d in self.data['documents']},expected)
-        self.assertEqual(len(expected),27)
+        self.assertEqual(len(expected),28)
         for row in self.data['documents']:
             self.assertEqual(row['html'],(ROOT/row['source_ref']).read_text(encoding='utf-8'))
 
@@ -34,9 +36,9 @@ class StudioTests(unittest.TestCase):
         for c in chapters:
             self.assertIn('<svg',c['svg'])
             for u in c['units']:
-                self.assertEqual(u['title'],self.flow.session.display(self.flow.resolve(u['heading_ref'])))
+                self.assertEqual(u['title'],self.side_flow.session.display(self.side_flow.resolve(u['heading_ref'])))
                 self.assertIn(u['source_ref']['file'],self.data['sources'])
-        self.assertEqual(self.data['editions'],self.flow.editions['editions'])
+        self.assertEqual(self.data['editions'],[*self.flow.editions['editions'],*self.side_flow.editions['editions']])
 
     def test_03_settings_include_master_relationships_and_original_addition_markers(self):
         counts = {c:sum(r['category']==c for r in self.data['settings']) for c in ('characters','relationships','equipment','abilities','bestiary')}
@@ -103,7 +105,7 @@ class StudioTests(unittest.TestCase):
         self.assertEqual(set(hero['sections']),{'핵심 설정','원작 정보','관계 · 공개'})
         self.assertIn('fact-evidence',hero['sections']['핵심 설정'])
         self.assertIn('창작 추가',hero['sections']['핵심 설정'])
-        first=self.data['chapters'][0]['decisions']
+        first=[d for d in self.data['chapters'][0]['decisions'] if not d['id'].startswith('side_')]
         self.assertEqual([d['id'] for d in first],['prepare','company'])
         self.assertEqual(first[0]['prompt'],self.flow.session.display(self.flow.session.plan['decisions'][0]['prompt']))
 
@@ -111,7 +113,7 @@ class StudioTests(unittest.TestCase):
         self.assertNotIn('branches',[r['id'] for r in self.data['plan']['navigation']])
         for c in self.data['chapters']:
             details=c['branch_html']
-            decisions=[d for d in self.flow.session.plan['decisions'] if d['unit_id'].split('/')[0]==c['id']]
+            decisions=[d for d in self.side_flow.session.plan['decisions'] if d['unit_id'].split('/')[0]==c['id']]
             self.assertEqual(details.count('class="unit branch-rule"'),len(decisions))
             self.assertEqual(details.count('class="branch-option"'),sum(len(d['options']) for d in decisions))
             self.assertIn('공통 분기 규칙',details)
@@ -120,7 +122,7 @@ class StudioTests(unittest.TestCase):
                 for o in d['options']:
                     self.assertIn(html.escape(self.flow.session.display(o['body'])),details)
                     self.assertIn(html.escape(self.flow.session.display(o['label'])),c['svg'])
-            for r in self.flow.session.plan['reactions']:
+            for r in self.side_flow.session.plan['reactions']:
                 if r['unit_id'].split('/')[0]==c['id']:
                     self.assertIn(html.escape(self.flow.session.display(r['text'])),details)
         runtime=(ROOT/'writing/studio/studio.js').read_text(encoding='utf-8')

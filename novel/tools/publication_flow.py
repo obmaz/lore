@@ -32,8 +32,8 @@ class PublicationFlow:
         self.chapters = copy.deepcopy(chapters or read(CHAPTERS))
         if [c['id'] for c in self.chapters['chapters']] != [c['chapter_id'] for c in self.session.outline['chapters']]:
             raise ValueError('publication chapters differ from subsection contract')
-        self.cp, self.up, self.bp, self.pp = [p.relative_to(ROOT).as_posix() for p in (CHAPTERS, SUBSECTIONS, BRANCHES, PLAN)]
-        self.docs = {self.cp: self.chapters, self.up: self.session.outline, self.bp: self.session.plan, self.pp: self.plan}
+        self.cp, self.up, self.bp, self.pp = [p.relative_to(ROOT).as_posix() for p in (CHAPTERS, SUBSECTIONS, getattr(self.session,'publication_branch_path',BRANCHES), getattr(self.session,'publication_flow_path',PLAN))]
+        self.docs = {self.cp: self.chapters, self.up: getattr(self.session,'source_outline',self.session.outline), self.bp: self.session.plan, self.pp: self.plan}
         schemas = [read(SCHEMA), read(COMMON), read(ROOT/'authoring/story.schema.json')]
         registry = Registry().with_resources((s['$id'], Resource.from_contents(s)) for s in schemas)
         registry = registry.with_resource('https://lore.local/novel/authoring/story.schema.json', Resource.from_contents(schemas[-1]))
@@ -268,7 +268,8 @@ class PublicationFlow:
         expected = set(self.session.units)
         if {u['unit_id'] for c in self.tree for u in c['children']} != expected: raise ValueError('tree omitted a main subsection')
         pairs = {(e['from'],e['to']) for e in self.edges}
-        stack, count, used = [[]], 0, set()
+        composed = hasattr(self.session,'validation_routes')
+        stack, count, used = list(self.session.validation_routes) if composed else [[]], 0, set()
         influence = {}
         def state_keys(value):
             if isinstance(value, dict):
@@ -278,6 +279,7 @@ class PublicationFlow:
         while stack:
             route = stack.pop(); p = self.session.replay(route)
             if p['status'] != 'complete':
+                if composed: raise ValueError('composed flow witness did not complete')
                 stack.extend([*route,o['id']] for o in p['available_options']); continue
             count += 1
             if count+len(stack)>self.session.plan['limits']['max_paths']: raise ValueError('flow path-check limit exceeded')

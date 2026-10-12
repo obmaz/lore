@@ -26,6 +26,10 @@
 사용자 요청으로 공개 게시된 읽기 전용·전편 스포일러 화면이며 로그인은 없습니다.
 [사용·갱신 안내](writing/studio/README.md)를 참고합니다.
 
+[15장 곁가지 선택 시범](https://obmaz.github.io/lore/novel/studio/#/reading?document=side-adventures.html)은
+각 장의 참여·지나침과 후속 반응을 확인하는 창작 초고입니다. 본줄기는 기존 기본 경로의 주요 내용으로
+유지하며, 원문 전체·완성 장편 판본과 구분합니다. [원본 JSON·연결·검사 범위](writing/side-stories/README.md).
+
 독자용 첫 챕터: [웹에서 선택하며 읽기](https://obmaz.github.io/lore/novel/)
 또는 [오프라인 HTML](writing/previews/chapter01-interactive.html)을 내려받아 브라우저로 엽니다.
 경로는 다운로드 파일로 저장/불러오며 계정·서버 저장 기능은 없습니다.

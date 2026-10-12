@@ -1,0 +1,498 @@
+{
+  "version": 1,
+  "revision": 1,
+  "status": "draft",
+  "visibility": "author_only",
+  "source_policy": "references_not_another_story_source",
+  "direction": "TB",
+  "origin": "authored",
+  "metadata": {
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 기존 장·소단락·분기를 출판 준비용 트리·그래프로 표시하는 편집 구조. 새 이야기나 분기를 확정하거나 본문·페이지를 승인하지 않는다.",
+    "knowledge_policy": "author_reference_not_character_knowledge"
+  },
+  "labels": {
+    "merge": [
+      {
+        "text": "선택 결과 합류"
+      }
+    ],
+    "result": [
+      {
+        "text": "필수 결과"
+      }
+    ],
+    "reaction_merge": [
+      {
+        "text": "조건부 문단 합류"
+      }
+    ],
+    "parallel_merge": [
+      {
+        "text": "두 탐색 모두 완료"
+      }
+    ],
+    "available": [
+      {
+        "text": "조건을 만족할 때"
+      }
+    ],
+    "not_applies": [
+      {
+        "text": "반응 조건 없음"
+      }
+    ]
+  },
+  "decision_titles": {
+    "prepare": [
+      {
+        "text": "출발 준비"
+      }
+    ],
+    "company": [
+      {
+        "text": "성문에서의 동행"
+      }
+    ],
+    "aid": [
+      {
+        "text": "부상자 지원 역할"
+      }
+    ],
+    "spica_company": [
+      {
+        "text": "가르침 뒤의 동행"
+      }
+    ],
+    "seal_order": [
+      {
+        "text": "두 봉인의 순서"
+      }
+    ],
+    "shelter_prepare": [
+      {
+        "text": "결전 전 준비"
+      }
+    ],
+    "side_well_bucket": [
+      {
+        "text": "성벽 아래의 두레박"
+      }
+    ],
+    "side_flour_sack": [
+      {
+        "text": "무너진 제빵소의 마지막 자루"
+      }
+    ],
+    "side_ruin_cart": [
+      {
+        "text": "폐허에서 온 손수레"
+      }
+    ],
+    "side_blind_chamber": [
+      {
+        "text": "막다른 굴의 작은 빛"
+      }
+    ],
+    "side_ledge_rope": [
+      {
+        "text": "날개 그늘 아래의 밧줄"
+      }
+    ],
+    "side_caught_sail": [
+      {
+        "text": "물살에 걸린 작은 돛"
+      }
+    ],
+    "side_small_bell": [
+      {
+        "text": "미로에 놓인 작은 종"
+      }
+    ],
+    "side_dying_fire": [
+      {
+        "text": "늪 가장자리의 꺼지는 불"
+      }
+    ],
+    "side_return_knots": [
+      {
+        "text": "돌아오는 길의 젖은 매듭"
+      }
+    ],
+    "side_ash_barrel": [
+      {
+        "text": "재 아래 남은 물통"
+      }
+    ],
+    "side_cell_voice": [
+      {
+        "text": "계단 곁에 갇힌 목소리"
+      }
+    ],
+    "side_leaking_channel": [
+      {
+        "text": "벽 사이로 새는 하루치 물"
+      }
+    ],
+    "side_fallen_store": [
+      {
+        "text": "벽 뒤에 남겨진 짐"
+      }
+    ],
+    "side_hot_frame": [
+      {
+        "text": "용암 곁의 식지 않은 쇠"
+      }
+    ],
+    "side_last_step": [
+      {
+        "text": "끝난 싸움 뒤의 한 걸음"
+      }
+    ]
+  },
+  "reaction_titles": {
+    "armory_weapon": [
+      {
+        "text": "새 무장 확인"
+      }
+    ],
+    "skeleton_memory": [
+      {
+        "text": "성문 대화의 기억"
+      }
+    ],
+    "aid_cook_memory": [
+      {
+        "text": "식량을 나눈 기억"
+      }
+    ],
+    "aid_magician_memory": [
+      {
+        "text": "탈출을 도운 기억"
+      }
+    ],
+    "spica_present": [
+      {
+        "text": "실제 동행자의 반응"
+      }
+    ],
+    "food_preparation": [
+      {
+        "text": "식량 준비의 후속"
+      }
+    ],
+    "equipment_preparation": [
+      {
+        "text": "장비 점검의 후속"
+      }
+    ],
+    "side_well_bucket_take": [
+      {
+        "text": "성벽 아래의 두레박"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_well_bucket_skip": [
+      {
+        "text": "성벽 아래의 두레박"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_flour_sack_take": [
+      {
+        "text": "무너진 제빵소의 마지막 자루"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_flour_sack_skip": [
+      {
+        "text": "무너진 제빵소의 마지막 자루"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_ruin_cart_take": [
+      {
+        "text": "폐허에서 온 손수레"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_ruin_cart_skip": [
+      {
+        "text": "폐허에서 온 손수레"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_blind_chamber_take": [
+      {
+        "text": "막다른 굴의 작은 빛"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_blind_chamber_skip": [
+      {
+        "text": "막다른 굴의 작은 빛"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_ledge_rope_take": [
+      {
+        "text": "날개 그늘 아래의 밧줄"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_ledge_rope_skip": [
+      {
+        "text": "날개 그늘 아래의 밧줄"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_caught_sail_take": [
+      {
+        "text": "물살에 걸린 작은 돛"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_caught_sail_skip": [
+      {
+        "text": "물살에 걸린 작은 돛"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_small_bell_take": [
+      {
+        "text": "미로에 놓인 작은 종"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_small_bell_skip": [
+      {
+        "text": "미로에 놓인 작은 종"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_dying_fire_take": [
+      {
+        "text": "늪 가장자리의 꺼지는 불"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_dying_fire_skip": [
+      {
+        "text": "늪 가장자리의 꺼지는 불"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_return_knots_take": [
+      {
+        "text": "돌아오는 길의 젖은 매듭"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_return_knots_skip": [
+      {
+        "text": "돌아오는 길의 젖은 매듭"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_ash_barrel_take": [
+      {
+        "text": "재 아래 남은 물통"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_ash_barrel_skip": [
+      {
+        "text": "재 아래 남은 물통"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_cell_voice_take": [
+      {
+        "text": "계단 곁에 갇힌 목소리"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_cell_voice_skip": [
+      {
+        "text": "계단 곁에 갇힌 목소리"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_leaking_channel_take": [
+      {
+        "text": "벽 사이로 새는 하루치 물"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_leaking_channel_skip": [
+      {
+        "text": "벽 사이로 새는 하루치 물"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_fallen_store_take": [
+      {
+        "text": "벽 뒤에 남겨진 짐"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_fallen_store_skip": [
+      {
+        "text": "벽 뒤에 남겨진 짐"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_hot_frame_take": [
+      {
+        "text": "용암 곁의 식지 않은 쇠"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_hot_frame_skip": [
+      {
+        "text": "용암 곁의 식지 않은 쇠"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_last_step_take": [
+      {
+        "text": "끝난 싸움 뒤의 한 걸음"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_last_step_skip": [
+      {
+        "text": "끝난 싸움 뒤의 한 걸음"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ]
+  },
+  "linear_editions": [
+    {
+      "id": "paper-draft-sides-take",
+      "status": "proposed",
+      "manual_route": [
+        "side_well_bucket/take",
+        "prepare/armory",
+        "company/talk_join",
+        "side_flour_sack/take",
+        "side_ruin_cart/take",
+        "aid/cook",
+        "side_blind_chamber/take",
+        "side_ledge_rope/take",
+        "side_caught_sail/take",
+        "side_small_bell/take",
+        "side_dying_fire/take",
+        "seal_order/evil_first",
+        "side_return_knots/take",
+        "side_ash_barrel/take",
+        "side_cell_voice/take",
+        "side_leaking_channel/take",
+        "shelter_prepare/food",
+        "side_fallen_store/take",
+        "side_hot_frame/take",
+        "side_last_step/take"
+      ],
+      "note": "종이책 편집 순서의 예시 경로다. 정사·최종 출판 경로·페이지·장편 본문을 승인한 것이 아니다. 곁가지 참여를 포함한 별도 편집 예시."
+    },
+    {
+      "id": "paper-draft-sides-skip",
+      "status": "proposed",
+      "manual_route": [
+        "side_well_bucket/skip",
+        "prepare/armory",
+        "company/talk_join",
+        "side_flour_sack/skip",
+        "side_ruin_cart/skip",
+        "aid/cook",
+        "side_blind_chamber/skip",
+        "side_ledge_rope/skip",
+        "side_caught_sail/skip",
+        "side_small_bell/skip",
+        "side_dying_fire/skip",
+        "seal_order/evil_first",
+        "side_return_knots/skip",
+        "side_ash_barrel/skip",
+        "side_cell_voice/skip",
+        "side_leaking_channel/skip",
+        "shelter_prepare/food",
+        "side_fallen_store/skip",
+        "side_hot_frame/skip",
+        "side_last_step/skip"
+      ],
+      "note": "종이책 편집 순서의 예시 경로다. 정사·최종 출판 경로·페이지·장편 본문을 승인한 것이 아니다. 곁가지 거절를 포함한 별도 편집 예시."
+    }
+  ],
+  "notes": [
+    "작가용 전편 스포일러다. 독자 웹에 통째로 게시하지 않는다.",
+    "트리는 장·소단락·분기의 소속이다. 트리 배열을 실제 실행 순서로 혼동하지 않는다.",
+    "그래프 실선은 읽기·선택·합류이며 점선은 조건부 반응 또는 이후 상태 영향이다. 모든 선택을 한 번에 읽는 뜻이 아니다.",
+    "두 봉인은 순서별 문맥 복제 노드로 그린다. 두 순서를 공유 노드에 양방향으로 연결해 순환처럼 보이게 하지 않는다.",
+    "일부 분기 후보는 미구현 표시만 한다. 기존 첫 챕터 웹의 별도 실행 그래프를 전편 그래프로 자동 승격하지 않는다.",
+    "선형 출판 순서표는 실제 선택 ID 경로를 재생해 만든다. 표제·조건·본문은 원래 JSON 참조로 이어지고 아직 페이지 번호는 없다.",
+    "JSON은 구조와 참조, Markdown은 목차 트리·Mermaid 흐름도, HTML/SVG는 외부 라이브러리 없이 보는 도식이다.",
+    "소제목·인물·무기 이름은 원래 자료에서 참조하고 표시명 변경 뒤 재생성한다. 생성물을 직접 편집하지 않는다.",
+    "15개 곁가지는 창작 초고다. 전체 조합을 열거하지 않았으며, 원작 해석·산문 의미·출판 승인은 자동 증명하지 않는다."
+  ]
+}

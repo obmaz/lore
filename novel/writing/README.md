@@ -15,6 +15,10 @@
   사용자 요청으로 별도 주소에 공개된 작가용 전편 스포일러·읽기 전용 화면입니다.
   기존 독자 읽기본에는 포함하지 않습니다. [사용·갱신 안내](studio/README.md).
 
+- [전편 15장 곁가지 · 선택하며 읽기](https://obmaz.github.io/lore/novel/studio/#/reading?document=side-adventures.html):
+  각 장 하나의 창작 모험과 참여·지나침에 따른 후속 반응. 본줄기는 기존 기본 경로의 주요 내용입니다.
+  [집필 원본과 검사 범위](side-stories/README.md). 제작실 결합 그래프는 21개 결정·44개 선택지입니다.
+
 - [소제목 트리·장별 흐름도](previews/publication-flow.html): 장·소단락·선택·합류·후속 반응을
   연결한 오프라인 SVG 도식. [Markdown 트리·Mermaid](publication/generated/flow.md),
   [구조 JSON](publication/generated/flow.graph.json), [종이책 경로 예시](publication/generated/linear-editions.json).
@@ -81,6 +85,7 @@ HTML은 편집 대상이 아니라 JSON에서 생성한 스냅샷이다.
 | 큰 이야기·감정선·다음 장의 이유 | `storyboard/chapter-stories.json` | `chapter-stories.schema.json` |
 | 소단락 주요 내용·필수 결과·분기 후보 | `storyboard/chapter-subsections.json` | `chapter-subsections.schema.json` |
 | 소단락의 실제 선택·효과·합류 | `branches/series.json` | [분기 시스템](branches/README.md) |
+| 장별 곁가지 모험·선택·후속 문단 | `side-stories/series.json` | [곁가지 안내](side-stories/README.md), 결합 생성물은 읽기 전용 |
 | 출판용 소제목 트리·그래프·경로 예시 | `publication/flow.plan.json` | [출판 구성](publication/README.md), `publication/generated/` |
 | 원작 연결 배열·전후 산문 | `storyboard/source-connected.plan.json` | `source-connected/`, `previews/source-connected.html` |
 | 기본 원고와 장면 계약 | `quests/*.json`, `quests/*.continuity.json` | [연속성](../continuity/README.md) |

@@ -1,0 +1,54 @@
+# 장별 곁가지 모험
+
+집필 원본은 [series.json](series.json), 형식은 [스키마](../side-stories.schema.json)입니다.
+15장에 하나씩 참여·지나침 선택과 후속 반응을 둡니다. 모두 `origin: authored`,
+`metadata.addition: true`, `status: proposed`인 창작 초고입니다. 설정·집필 규칙은
+[상위 AGENTS.md](../AGENTS.md)를 따르며 이 문서는 파일 역할과 사용법만 안내합니다.
+
+[제작실에서 선택하며 읽기](https://obmaz.github.io/lore/novel/studio/#/reading?document=side-adventures.html).
+기존 `paper-draft` 본줄기를 고정하고 새 곁가지 15개만 선택하는 작가용 시범입니다.
+본줄기는 소단락 주요 내용이며 완성 장편 본문이나 원문 대사 전체 판본이 아닙니다.
+원문 전체는 기존 원작 연결 판본에 보존하고, 공개 `/novel/` 첫 장 독자판은 그대로 둡니다.
+
+## 연결과 기억
+
+`anchor_unit`의 주요 내용을 읽은 뒤 선택하고, 그 소단락의 필수 결과를 거쳐
+원래 다음 소단락으로 합류합니다. `reaction_unit`은 이후 경험을 돌아보는 문단입니다.
+9장은 두 봉인 완료 뒤, 15장은 원작 적의 마지막 작별과 떠남 뒤에만 곁가지를 둡니다.
+
+각 선택은 자기 `side.<id>` 불리언 하나만 변경합니다. 본줄기 동료·장비·능력·지식·
+열쇠·봉인·이동 조건·진상·필수 사건은 변경할 수 없습니다. 후속 문단은 선행 소단락 방문과
+자기 기억만 확인합니다. 거절한 사람이 보지 않은 해결 결과를 알았다고 쓰지 않습니다.
+무명 조우 인물은 해당 국소 이야기의 역할이며 새로운 동료가 아닙니다.
+인물·무기 이름은 기존 참조 ID로 쓰고, 장비가 달라지는 본줄기 개편 시 무기 사용 산문을 재검토합니다.
+
+## 파일 역할
+
+- `series.json`: 제목·질문·두 선택 본문·두 후속 문단·창작 메타의 유일한 편집 입력.
+- `reader.js`: 오프라인 선택 시범의 화면 동작. 다음 장은 현재 선택 뒤에 열립니다.
+- `generated/runtime.plan.json`, `flow.plan.json`: 기존 분기 정의와 새 곁가지를 결합한 읽기 전용 실행 입력.
+- `generated/flow.graph.json`, `flow.md`, `flow.html`: 21개 결정·44개 선택지의 결합 그래프.
+- `generated/linear-editions.json`: 기본 본줄기에서 전부 참여/전부 지나침인 두 출판 배열 예시.
+- `generated/coverage.json`: 검사의 범위와 미승인 상태. `manifest.json`은 입력·출력 무결성 기록.
+- `generated/side-adventures.html`: 제작실에 포함되는 선택형 시범. 생성 파일은 직접 편집하지 않습니다.
+
+원래 `branches/series.json`, 큰 구성·소단락 JSON, 원문은 수정하지 않고 컴파일합니다.
+원래 출판용 핵심 판본도 유지하며 제작실에서 결합 그래프와 세 가지 배열 예시를 함께 봅니다.
+
+## 검증과 갱신
+
+`novel/`에서 실행합니다. 게임 수정·실행·빌드는 없습니다.
+
+```sh
+python3 tools/side_stories.py validate
+python3 tools/side_stories.py replay --side-mode take
+python3 tools/side_stories.py replay --side-mode skip
+python3 tools/writing.py export
+python3 tools/writing.py export --check
+python3 tools/side_stories.py export --check
+```
+
+원래 96개 핵심 경로 각각에 전부 참여·전부 지나침을 대조하고 혼합 경로 하나를 추가해
+193개 대표 경로에서 본줄기 문단·88개 단위·44개 필수 사건·핵심 상태가 같은지 확인합니다.
+이론상 전체 조합은 3,145,728개지만 전부 열거한 검사가 아닙니다. 자기 기억만 쓰는 컴파일 제약과
+본줄기 투영 검사를 함께 사용합니다. 산문 의미·원작 해석·실제 독서·출판 승인을 자동 증명하지 않습니다.
