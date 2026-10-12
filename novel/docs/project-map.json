@@ -5944,6 +5944,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/side_stories.py"
         },
         {

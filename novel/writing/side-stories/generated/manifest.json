@@ -11,7 +11,7 @@
     "writing/storyboard/chapters.json": "a9429277e0fa9237fbf960ac63668b1df8dfb761ad5d7a86bdb9b05981230634",
     "tools/side_stories.py": "5210ffb9873ba71827a010566870143504242e98731eb3c76b02d41084544261",
     "tools/branch_system.py": "220e080488bc68009e8e88cc3d602bf6c6f2a03f735a01b1a1141ac8320bf46c",
-    "tools/publication_flow.py": "3c9375b0ba272097cb10cad709076e5af7345568b5808c10d080908455dd80ab",
+    "tools/publication_flow.py": "31902f339526f46ebe1f24d0c037815157fe3eeb0c92464888f15a2fdeef7a42",
     "tools/text_refs.py": "5298ed7528cc6fcfb723c6a26f792fc527fbe3fdd7c223066c1a4107529c5479",
     "tools/story_continuity.py": "7cca2c56f1df8dc977612b51fd6fb0630cc8e0ae09489d6a736df5e8c6089599",
     "writing/branches.schema.json": "32aeb35eb31cfba3c13bbea33388ea264a4c98a52da5ae8255a92e4bfc09866d",
@@ -32,8 +32,8 @@
     "flow.graph.json": "3c80f6da61b7baf924b9712b67b645711d8182c24b5cf4e01195ebcdd7250296",
     "linear-editions.json": "cdc9cb0e2021ff3f4ef2c949011ef5d57e090546790215caf83f175e80c5941b",
     "coverage.json": "f7ef4278e6f369286eb7fb322cd3e4899fdd62dab7da7c7ca82e8c4bc97c1872",
-    "flow.md": "cc03f9a742a039604abe3ffce97a981c5c6913376141323e031c878be0133813",
-    "flow.html": "497cfaee587588d0cbb6a5f91191e902dda279cc32d076b8a9a787f469296816",
+    "flow.md": "410cd39f008b8b46912a6d5df2de90a56bfe88b66e473dfd83b68fd45a01a7c7",
+    "flow.html": "aeb517b0498ad382c24abf10d0d52befea9abd6c94631772aa3efb22ff957a2c",
     "side-adventures.html": "823b01ff761f54f7466a718ac8eae4aca34eeb55b28344e843f7db7410738013"
   }
 }

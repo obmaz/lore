@@ -149,5 +149,17 @@ class StudioTests(unittest.TestCase):
         self.assertNotIn('<script>',rendered)
         self.assertIn('&lt;script&gt;',rendered)
 
+    def test_13_graph_detail_body_and_rules_come_from_exact_original_references(self):
+        details=self.data['graph_details']
+        for node in self.side_flow.nodes:
+            if node['kind'] not in ('option','reaction'):continue
+            row=details[node['id']]
+            self.assertEqual(row['source_ref'],node['content_ref'])
+            self.assertEqual(row['body'],self.side_flow.session.display(self.side_flow.resolve(node['content_ref'])))
+            rule=self.side_flow.resolve(node['guard_ref'])
+            self.assertEqual(row['rules']['when'],rule['when'])
+        self.assertEqual(details['option/side_return_knots/take']['rules']['origin'],'authored')
+        self.assertTrue(details['option/side_return_knots/take']['rules']['metadata']['addition'])
+
 
 if __name__=='__main__': unittest.main()

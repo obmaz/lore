@@ -1,7 +1,9 @@
 """A reference-bound tree/DAG and actual route, not a second story source."""
 import copy
+import re
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import jsonschema
@@ -131,3 +133,44 @@ class PublicationFlowTests(unittest.TestCase):
         self.assertIn('질문',svg)
         self.assertIn('부족한 준비',svg)
         self.assertIn('무기고에서 필요한 무장을',svg)
+
+    def test_12_result_excerpts_are_bounded_reference_text_not_authored_summaries(self):
+        for node in self.flow.nodes:
+            if node['kind'] not in ('option','reaction'):continue
+            text=' '.join(self.flow.session.display(self.flow.resolve(node['content_ref'])).split())
+            excerpt=text if len(text)<=110 else text[:50]+' … '+text[-55:]
+            self.assertLessEqual(len(excerpt),110)
+            self.assertIn(excerpt,self.flow.caption(node))
+        self.assertIn('stepAfter',self.flow.markdown())
+
+    def test_13_all_dotted_svg_routes_are_orthogonal_and_avoid_box_interiors(self):
+        ns={'s':'http://www.w3.org/2000/svg'}
+        checked=0
+        for chart in self.flow.charts:
+            svg=ET.fromstring(self.flow.svg(chart['node_ids']))
+            width,height=map(float,(svg.attrib['width'],svg.attrib['height']))
+            boxes=[]
+            for group in svg.findall('s:g',ns):
+                if group.attrib.get('class')=='flow-node':
+                    r=group.find('s:rect',ns)
+                    boxes.append(tuple(float(r.attrib[k]) for k in ('x','y','width','height')))
+            for group in svg.findall('s:g',ns):
+                if group.attrib.get('class')!='flow-edge':continue
+                path=group.find('s:path',ns)
+                if 'stroke-dasharray' not in path.attrib:continue
+                checked+=1;d=path.attrib['d'];self.assertNotRegex(d,r'[CLQ]')
+                points=[];x=y=0
+                for command,value in re.findall(r'([MVH])([^MVH]+)',d):
+                    values=list(map(float,value.split()))
+                    if command=='M':x,y=values
+                    elif command=='V':y=values[0]
+                    else:x=values[0]
+                    points.append((x,y))
+                    self.assertTrue(0<=x<=width and 0<=y<=height,(chart['id'],d))
+                for (x,y),(xx,yy) in zip(points,points[1:]):
+                    self.assertTrue(x==xx or y==yy)
+                    for bx,by,bw,bh in boxes:
+                        vertical=x==xx and bx<x<bx+bw and max(min(y,yy),by)<min(max(y,yy),by+bh)
+                        horizontal=y==yy and by<y<by+bh and max(min(x,xx),bx)<min(max(x,xx),bx+bw)
+                        self.assertFalse(vertical or horizontal,(chart['id'],group.attrib,d,(bx,by,bw,bh)))
+        self.assertGreater(checked,10)

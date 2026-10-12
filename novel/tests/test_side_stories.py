@@ -115,3 +115,20 @@ class SideStoryTests(unittest.TestCase):
         self.assertNotIn('fetch(', document)
         self.assertNotIn('localStorage', document)
         self.assertIn('창작', document)
+
+    def test_10_cross_chapter_result_reference_is_visible_without_changing_read_nodes(self):
+        chart=next(c for c in self.flow.charts if c['id']=='chapter09')
+        original=list(chart['node_ids'])
+        keys=self.flow.svg_keys(original)
+        self.assertIn('reaction/side_return_knots_take',keys)
+        self.assertIn('reaction/side_return_knots_skip',keys)
+        self.assertNotIn('reaction/side_return_knots_take',original)
+        svg=self.flow.svg(original)
+        self.assertIn('다른 장 참고 · 10-1',svg)
+        self.assertIn('후속 반응 발췌',svg)
+        self.assertEqual(chart['node_ids'],original)
+        self.assertIn('data-link="L',svg)
+        # Repeat the geometry assertions on all 15 composed charts, including
+        # external references; do not register another copy of that test class.
+        import test_publication_flow
+        test_publication_flow.PublicationFlowTests.test_13_all_dotted_svg_routes_are_orthogonal_and_avoid_box_interiors(self)

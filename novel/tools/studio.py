@@ -254,10 +254,19 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
     for name in ('runtime.plan.json','flow.plan.json','flow.graph.json','linear-editions.json','coverage.json'):
         sources[(SIDE_OUTPUT/name).relative_to(ROOT).as_posix()] = read(SIDE_OUTPUT/name)
     source_index = [{'file':path, 'role':'생성물 · 직접 편집 금지' if '/generated/' in path else 'JSON 원본 · 파일에서 수정'} for path in sources]
+    graph_details={}
+    for node in publication.nodes:
+        if node['kind'] not in ('option','reaction'):continue
+        rule=publication.resolve(node['guard_ref'])
+        graph_details[node['id']]={'label':session.display(node['label_rich_text']),
+            'chapter_id':node['chapter_id'],'kind':node['kind'],'location':publication.unit_numbers[node['unit_id']],
+            'body':session.display(publication.resolve(node['content_ref'])),
+            'source_ref':node['content_ref'],
+            'rules':{k:rule[k] for k in ('when','participants','requires_units','effects','origin','metadata') if k in rule}}
     data = {'version':1,'status':'draft','visibility':'author_only','source_policy':plan['source_policy'],
             'origin':'authored','metadata':plan['metadata'],'plan':plan,'report':publication.report,
             'chapters':chapters,'documents':documents,'settings':settings,'editions':[*core_publication.editions['editions'],*publication.editions['editions']],
-            'overview_svg':publication.svg(publication.graph['overview']), 'sources':sources,'source_index':source_index,
+            'overview_svg':publication.svg(publication.graph['overview']), 'sources':sources,'source_index':source_index,'graph_details':graph_details,
             'rules':[(ROOT/'AGENTS.md').read_text(encoding='utf-8'),(ROOT/'writing/AGENTS.md').read_text(encoding='utf-8'),(ROOT/'characters/AGENTS.md').read_text(encoding='utf-8')]}
     return data
 

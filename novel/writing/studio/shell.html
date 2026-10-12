@@ -52,6 +52,16 @@ select,input[type=search]{min-width:0;min-height:34px;border:1px solid var(--lin
 .source-note{font-size:11px;display:flex;gap:7px;flex-wrap:wrap;align-items:center;color:var(--muted);padding-top:10px;margin:18px 0 0;border-top:1px solid var(--line)}.source-note>span{overflow-wrap:anywhere}
 .diagram{max-height:70vh;overflow:auto;max-width:100%;padding:10px;background:white;border:1px solid var(--line);border-radius:7px}
 .diagram svg{display:block;font-family:inherit}.diagram svg text{font-size:13px}
+.diagram .flow-edge text{font-size:9px}.flow-edge path{vector-effect:non-scaling-stroke}
+.flow-node[role="button"]{cursor:pointer}.flow-node[role="button"]:focus{outline:none}.flow-node[role="button"]:focus>rect{stroke:#365f99;stroke-width:3}
+.flow-node[data-external="true"]>rect{stroke:#85629b}
+.has-graph-selection .flow-edge[data-edge-kind="influence"]{opacity:.2}
+.has-graph-selection .flow-edge.is-related{opacity:1}.flow-edge.is-related>path{stroke:#763595;stroke-width:3}
+.flow-node.is-related>rect{stroke:#763595;stroke-width:2}.flow-node.is-selected>rect{stroke:#365f99;stroke-width:3}
+.graph-selection{padding:8px 10px;margin:6px 0;border:1px solid var(--line);border-radius:6px;background:white}
+.graph-selection-head{display:flex;gap:8px;align-items:center;justify-content:space-between}.graph-selection p{margin:6px 0}.graph-selection pre{max-height:180px;overflow:auto;font-size:12px}
+.graph-selection-body{max-height:240px;overflow:auto;padding:4px 0}.graph-selection summary{cursor:pointer}
+.graph-related{display:flex;flex-wrap:wrap;gap:5px;margin:5px 0}.graph-related button{white-space:normal;text-align:left}
 .branch-rule>summary small,.branch-reaction>summary small{display:block;font-weight:400;margin-top:2px}
 .branch-option{border-top:1px solid var(--line);padding:4px 0 12px}.merge-note{background:var(--soft);border-radius:5px;padding:9px 12px}
 .rule-json{margin:8px 0}.rule-json>summary{font-size:12px;font-weight:400;padding:6px 0;color:var(--muted)}

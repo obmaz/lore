@@ -94,6 +94,42 @@ def check(screenshots=None):
             assert '질문' in page.locator('#chapter-diagram svg').text_content()
             assert '두 봉인을 모두 풀어야 한다' in page.locator('#chapter-diagram svg').text_content()
             assert '늪 속 장치가 있는 동굴부터 찾는다' in page.locator('#chapter-diagram svg').text_content()
+            assert '선택 뒤 발췌' in page.locator('#chapter-diagram svg').text_content()
+            assert '후속 반응 발췌' in page.locator('#chapter-diagram svg').text_content()
+            assert '다른 장 참고 · 10-1' in page.locator('#chapter-diagram svg').text_content()
+            dotted=page.locator('#chapter-diagram .flow-edge path[stroke-dasharray]')
+            assert dotted.count()>0
+            assert all('C' not in d and 'H' in d and 'V' in d for d in dotted.evaluate_all('(es)=>es.map(e=>e.getAttribute("d"))'))
+            node=page.locator('#chapter-diagram [data-flow-node="option/side_return_knots/take"]')
+            node.focus()
+            scroll=page.locator('#chapter-diagram').evaluate('(e)=>[e.scrollTop,e.scrollLeft]')
+            route=page.url
+            page.keyboard.press('Enter')
+            assert node.get_attribute('aria-pressed')=='true'
+            assert page.locator('#chapter-diagram .flow-edge.is-related').count()==1
+            assert page.locator('#chapter-diagram [data-flow-node="reaction/side_return_knots_take"]').evaluate('(e)=>e.classList.contains("is-related")')
+            assert page.url==route
+            assert page.locator('#chapter-diagram').evaluate('(e)=>[e.scrollTop,e.scrollLeft]')==scroll
+            target=page.locator('#graph-selection [data-flow-focus="reaction/side_return_knots_take"]')
+            assert '10-1' in target.inner_text()
+            target.click()
+            assert page.locator('#chapter-diagram [data-flow-node="reaction/side_return_knots_take"]').get_attribute('aria-pressed')=='true'
+            assert page.url==route
+            page.locator('#graph-selection [data-flow-focus="option/side_return_knots/take"]').click()
+            assert node.get_attribute('aria-pressed')=='true'
+            page.locator('#graph-selection>details>summary').click()
+            assert page.locator('#graph-selection .graph-selection-body').inner_text().strip()
+            page.locator('#graph-selection [data-source]').click()
+            assert 'runtime.plan.json' in page.locator('#source-location').inner_text()
+            page.go_back()
+            page.locator('#chapter-diagram').wait_for()
+            assert page.locator('#graph-selection').is_hidden()
+            node=page.locator('#chapter-diagram [data-flow-node="option/side_return_knots/take"]')
+            node.focus();page.keyboard.press(' ')
+            assert node.get_attribute('aria-pressed')=='true'
+            page.keyboard.press('Escape')
+            assert node.get_attribute('aria-pressed')=='false'
+            assert page.locator('#graph-selection').is_hidden()
             assert page.locator('.branch-questions').count()==0
             assert page.get_by_role('heading',name='이 장의 질문과 선택',exact=True).count()==0
             if screenshots:
@@ -214,7 +250,7 @@ def check(screenshots=None):
             assert legacy.locator('#chapter-select').input_value()=='chapter09'
             assert '#/graph?' in legacy.url
             legacy.close()
-            report.append({'width':width,'views':7,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'side_chapters_checked':15,'side_memory_checked':True,'side_next_gate':True,'source_json_download':True,'browser_back_forward':True,'graph_questions':True,'unified_branch_details':True,'legacy_branch_bookmark':True,'compact_type':True,'dense_basic_height':basic_height,'evidence_keyboard_toggle':True})
+            report.append({'width':width,'views':7,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'side_chapters_checked':15,'side_memory_checked':True,'side_next_gate':True,'source_json_download':True,'browser_back_forward':True,'graph_questions':True,'graph_result_excerpts':True,'orthogonal_dotted_edges':True,'cross_chapter_reference':True,'graph_link_focus':True,'unified_branch_details':True,'legacy_branch_bookmark':True,'compact_type':True,'dense_basic_height':basic_height,'evidence_keyboard_toggle':True})
             page.close()
         browser.close()
     return report

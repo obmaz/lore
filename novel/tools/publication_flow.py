@@ -313,12 +313,26 @@ class PublicationFlow:
     def caption(self, node):
         caption=node['prefix']+self.session.display(node['label_rich_text'])
         if node.get('question_ref'):caption+='\n질문 · '+self.session.display(self.resolve(node['question_ref']))
+        if node['kind'] in ('option','reaction'):
+            text=' '.join(self.session.display(self.resolve(node['content_ref'])).split())
+            # An explicitly marked excerpt, not a newly authored result summary.
+            excerpt=text if len(text)<=110 else text[:50]+' … '+text[-55:]
+            caption+='\n'+('선택 뒤 발췌 · ' if node['kind']=='option' else '후속 반응 발췌 · ')+excerpt
         return caption
+
+    def svg_keys(self, keys):
+        """Adjacent cross-chapter influence endpoints are references, not read steps."""
+        chosen=set(keys)
+        if any(n['id'] in chosen and n['kind']=='unit' for n in self.nodes):
+            for edge in self.edges:
+                if edge['kind']=='influence' and ((edge['from'] in set(keys)) != (edge['to'] in set(keys))):
+                    chosen.update((edge['from'],edge['to']))
+        return [*keys,*(n['id'] for n in self.nodes if n['id'] in chosen and n['id'] not in keys)]
 
     def mermaid(self, keys):
         chosen = set(keys); nodes = {n['id']:n for n in self.nodes}
         safe = lambda key:'n'+hashlib.sha256(key.encode()).hexdigest()[:16]
-        lines = ['flowchart TB']
+        lines = ['%%{init: {"flowchart": {"curve": "stepAfter"}}}%%','flowchart TB']
         for key in keys:
             n = nodes[key]; label = html.escape(self.caption(n), quote=True).replace('\n',' ')
             shape = '{"'+label+'"}' if n['kind']=='decision' else '["'+label+'"]'
@@ -361,39 +375,84 @@ class PublicationFlow:
         return '\n'.join(lines)
 
     def svg(self, keys):
+        original=set(keys); keys=self.svg_keys(keys)
         chosen = set(keys); nodes = {n['id']:n for n in self.nodes if n['id'] in chosen}
         edges = [e for e in self.edges if e['from'] in chosen and e['to'] in chosen]
-        indegree = Counter(e['to'] for e in edges); depth = {key:0 for key in keys}; pending = [key for key in keys if not indegree[key]]
+        # Causal memory links must not determine the chapter's reading layout.
+        layout_edges=[e for e in edges if e['from'] in original and e['to'] in original
+                      and (e['kind']!='influence' or not any(n['kind']=='unit' for n in nodes.values()))]
+        indegree = Counter(e['to'] for e in layout_edges); depth = {key:0 for key in original}; pending = [key for key in keys if key in original and not indegree[key]]
         while pending:
             key = pending.pop(0)
-            for e in edges:
+            for e in layout_edges:
                 if e['from'] != key: continue
                 depth[e['to']] = max(depth[e['to']],depth[key]+1); indegree[e['to']] -= 1
                 if indegree[e['to']] == 0: pending.append(e['to'])
         levels = {}
-        for key in keys: levels.setdefault(depth[key],[]).append(key)
-        text_rows={key:[row for line in self.caption(nodes[key]).splitlines() for row in (textwrap.wrap(line,17) or [''])] for key in keys}
+        for key in keys:
+            if key in original: levels.setdefault(depth[key],[]).append(key)
+        external=[key for key in keys if key not in original]
+        incoming=[key for key in external if nodes[key]['kind']=='option']
+        outgoing=[key for key in external if key not in incoming]
+        if incoming: levels[-1]=incoming
+        if outgoing: levels[max(depth.values())+1]=outgoing
+        def caption(key):
+            node=nodes[key]
+            prefix=('다른 장 참고 · '+self.unit_numbers[node['unit_id']]+'\n') if key in external else ''
+            return prefix+self.caption(node)
+        text_rows={key:[row for line in caption(key).splitlines() for row in (textwrap.wrap(line,17) or [''])] for key in keys}
         box_heights={key:max(80,28+len(text_rows[key])*19) for key in keys}
         width = max(480,max(len(row) for row in levels.values())*312)
-        top={};cursor=20
+        top={};cursor=20; row_bottom={}
         for level,row in sorted(levels.items()):
-            top[level]=cursor;cursor+=max(box_heights[key] for key in row)+48
+            top[level]=cursor;bottom=cursor+max(box_heights[key] for key in row)
+            row_bottom.update({key:bottom for key in row});cursor=bottom+48
         height=cursor
         positions = {key:(width/2+(j-(len(row)-1)/2)*312,top[level]) for level,row in levels.items() for j,key in enumerate(row)}
         esc = html.escape
         marker = 'arrow-'+hashlib.sha256('|'.join(keys).encode()).hexdigest()[:12]
+        # Greedy interval tracks reuse a rail when its vertical span is free.
+        # All long dotted connectors run outside every box, in row gutters.
+        routes={};rails=[]
+        for index,e in sorted(enumerate(edges),key=lambda item:(row_bottom[item[1]['from']],positions[item[1]['to']][1],item[0])):
+            if not (e['kind'].startswith('reaction') or e['kind']=='influence'):continue
+            x,y=positions[e['from']];xx,yy=positions[e['to']]
+            a,b=row_bottom[e['from']]+12,yy-12
+            short=e['kind']!='influence' and x!=xx and b>=a and b-a<=24
+            if short:
+                routes[index]=f'M{x} {y+box_heights[e["from"]]} V{(a+b)/2} H{xx} V{yy}'
+                continue
+            interval=(min(a,b),max(a,b))
+            lane=next((i for i,end in enumerate(rails) if end<interval[0]),len(rails))
+            if lane==len(rails):rails.append(interval[1])
+            else:rails[lane]=interval[1]
+            rail=max(px+140 for px,_ in positions.values())+36+lane*26
+            routes[index]=f'M{x} {y+box_heights[e["from"]]} V{a} H{rail} V{b} H{xx} V{yy}'
+        width=max(width,max(px+140 for px,_ in positions.values())+72+max(0,len(rails)-1)*26) if rails else width
+        link_ids={id(e):f'L{i:02}' for i,e in enumerate((e for e in self.edges if e['kind']=='influence'),1)}
         out = [f'<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="소제목과 분기 흐름도" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
-               f'<defs><marker id="{marker}" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#607269"/></marker></defs>']
-        for e in edges:
+               f'<defs><marker id="{marker}" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#607269"/></marker><marker id="{marker}-memory" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#85629b"/></marker></defs>']
+        for index,e in enumerate(edges):
             x,y = positions[e['from']]; xx,yy = positions[e['to']]
             dashed = ' stroke-dasharray="5 4"' if e['kind'].startswith('reaction') or e['kind']=='influence' else ''
             bottom=y+box_heights[e['from']]
-            out.append(f'<path d="M{x} {bottom} C{x} {bottom+24} {xx} {yy-24} {xx} {yy}" fill="none" stroke="#607269"{dashed} marker-end="url(#{marker})"/>')
+            path=routes.get(index,f'M{x} {bottom} C{x} {bottom+24} {xx} {yy-24} {xx} {yy}')
+            color='#85629b' if dashed else '#607269'
+            arrow=marker+'-memory' if dashed else marker
+            link=link_ids.get(id(e),'')
+            title=link+' · '+self.caption(nodes[e['from']])+' → '+self.caption(nodes[e['to']])
+            out.append(f'<g class="flow-edge" data-edge-kind="{e["kind"]}" data-from="{esc(e["from"],quote=True)}" data-to="{esc(e["to"],quote=True)}" data-link="{link}"><title>{esc(title)}</title><path d="{path}" fill="none" stroke="{color}" stroke-width="1.5"{dashed} marker-end="url(#{arrow})"/>')
+            if link:
+                rail=float(path.split(' H')[1].split()[0])
+                for tag_y in (row_bottom[e['from']]+12,yy-12):
+                    out.append(f'<rect x="{rail-11}" y="{tag_y-13}" width="22" height="13" rx="3" fill="#fff"/><text x="{rail}" y="{tag_y-3}" text-anchor="middle" font-size="9" fill="#78558e">{link}</text>')
+            out.append('</g>')
         colors = {'decision':'#ffebbb','option':'#e5f0fd','merge':'#e0ebdf','parallel_merge':'#e0ebdf','reaction':'#eee6f4','reaction_merge':'#eee6f4','outcome':'#f2f1e9'}
         for key in keys:
-            n = nodes[key]; x,y = positions[key]; caption = self.caption(n)
+            n = nodes[key]; x,y = positions[key]; label = caption(key)
             fill = colors.get(n['kind'],'#fff')
-            out.append(f'<g><title>{esc(caption)}</title><rect x="{x-140}" y="{y}" width="280" height="{box_heights[key]}" rx="8" fill="{fill}" stroke="#607269"/>')
+            tooltip=label+('\n\n'+self.session.display(self.resolve(n['content_ref'])) if n.get('content_ref') else '')
+            out.append(f'<g class="flow-node" data-flow-node="{esc(key,quote=True)}" data-node-kind="{n["kind"]}" data-external="{str(key in external).lower()}" aria-label="{esc(label,quote=True)}"><title>{esc(tooltip)}</title><rect x="{x-140}" y="{y}" width="280" height="{box_heights[key]}" rx="8" fill="{fill}" stroke="#607269"'+(' stroke-dasharray="3 3"' if key in external else '')+'/>')
             out.append(f'<text x="{x}" y="{y+25}" text-anchor="middle" fill="#25372e" font-size="15">')
             out.extend(f'<tspan x="{x}" dy="{0 if j==0 else 19}">{esc(line)}</tspan>' for j,line in enumerate(text_rows[key]))
             out.append('</text></g>')
