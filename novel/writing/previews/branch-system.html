@@ -1,0 +1,339 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>소단락 분기 시스템 · 구조와 선택 결과</title>
+<style>body{max-width:850px;margin:auto;padding:28px 20px;background:#f6f3eb;color:#25372e;font:17px/1.95 "Noto Sans CJK KR","Malgun Gothic",sans-serif;overflow-wrap:anywhere}h1{font-size:34px}h2{margin-top:48px;border-bottom:1px solid #b9c8bd}h3{font-size:18px}small,.note{font-size:13px;color:#627367}.notice{background:#e5ecdf;padding:15px}.quote{border-left:3px solid #66886e;padding:8px 18px;background:white}.metadata{font-size:12px;color:#617265}a{color:#27634c}button{font:inherit;padding:6px 12px}li{margin:5px 0}section{break-inside:auto}@page{size:A4;margin:18mm}@media print{body{padding:0;background:white;font-size:11px}button{display:none}h1{font-size:24px}h2,h3{break-after:avoid}p{orphans:3;widows:3}}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}</style>
+<h1>소단락 분기 시스템 · 구조와 선택 결과</h1><p class="notice">작가 전용 · 전편 스포일러 · JSON 분기 구조는 실행 가능하지만 본문은 주요 내용 초안입니다. 기존 독자용 첫 장은 교체하지 않았습니다.</p><p>88소단락 · 6결정 · 14선택 경로 · 검사한 완주 경로 96개.</p><section><h2>prepare · chapter01/p05</h2><p>성문을 나서기 전, 부족한 준비를 어디에서 마칠지 정한다.</p><h3>무기고에서 필요한 무장을 마련한다</h3><p>일행은 무기고에서 떠날 준비를 한다. 네 동료의 직업 무기는 그대로 두고, 서진은 미지정이던 자신의 무장으로 단도를 받는다. 장비를 마련한 뒤 일행은 동료 제안이 기다리는 성문으로 향한다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;prepare/armory&quot;,
+  &quot;when&quot;: true,
+  &quot;participants&quot;: [],
+  &quot;effects&quot;: [
+    {
+      &quot;state&quot;: &quot;experience.armory&quot;,
+      &quot;op&quot;: &quot;set&quot;,
+      &quot;value&quot;: true,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    },
+    {
+      &quot;state&quot;: &quot;inventory&quot;,
+      &quot;op&quot;: &quot;add&quot;,
+      &quot;value&quot;: &quot;weapon_1&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    },
+    {
+      &quot;state&quot;: &quot;equipment.protagonist&quot;,
+      &quot;op&quot;: &quot;set&quot;,
+      &quot;value&quot;: &quot;weapon_1&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    }
+  ]
+}</pre></details><h3>지금 가진 장비를 점검하고 성문으로 간다</h3><p>일행은 함께 가져온 도구와 짐을 점검하고 곧바로 성문으로 간다. 무기고에서 새 장비를 받은 경험은 없지만 동료들의 기존 무기는 남아 있다. 출발을 앞둔 일행은 성문에서 들려오는 동행 제안을 듣는다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;prepare/self&quot;,
+  &quot;when&quot;: true,
+  &quot;participants&quot;: [],
+  &quot;effects&quot;: []
+}</pre></details><p class="metadata">필수 합류: chapter01/p06</p></section><section><h2>company · chapter01/p05</h2><p>문 앞의 동행 제안을 어떤 만남으로 이어 갈지 정한다.</p><h3>제안자를 동료로 받아 함께 떠난다</h3><p>스켈레톤은 함께 가겠다는 제안을 하고 일행의 답을 기다린다. 일행은 그를 새로운 동료로 받아들여 성문을 나선다. 이제 동굴로 향하는 발걸음에는 이 만남을 함께 겪은 동행자가 하나 더 있다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;company/join&quot;,
+  &quot;when&quot;: {
+    &quot;state&quot;: &quot;party.optional&quot;,
+    &quot;op&quot;: &quot;eq&quot;,
+    &quot;value&quot;: &quot;&quot;
+  },
+  &quot;participants&quot;: [],
+  &quot;effects&quot;: [
+    {
+      &quot;state&quot;: &quot;party.members&quot;,
+      &quot;op&quot;: &quot;add&quot;,
+      &quot;value&quot;: &quot;skeleton&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    },
+    {
+      &quot;state&quot;: &quot;party.optional&quot;,
+      &quot;op&quot;: &quot;set&quot;,
+      &quot;value&quot;: &quot;skeleton&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    },
+    {
+      &quot;state&quot;: &quot;experience.recruits&quot;,
+      &quot;op&quot;: &quot;add&quot;,
+      &quot;value&quot;: &quot;skeleton&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    }
+  ]
+}</pre></details><h3>함께 갈 사정을 듣고 동행을 받아들인다</h3><p>일행은 먼저 제안자가 왜 함께 가려는지 묻고 이야기를 나눈다. 스켈레톤은 자신을 소개하고 여행에 보탬이 되겠다는 뜻을 전한다. 일행은 그 대화를 기억한 채 그를 받아들여 함께 출발한다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;company/talk_join&quot;,
+  &quot;when&quot;: {
+    &quot;state&quot;: &quot;party.optional&quot;,
+    &quot;op&quot;: &quot;eq&quot;,
+    &quot;value&quot;: &quot;&quot;
+  },
+  &quot;participants&quot;: [],
+  &quot;effects&quot;: [
+    {
+      &quot;state&quot;: &quot;experience.skeleton_conversation&quot;,
+      &quot;op&quot;: &quot;set&quot;,
+      &quot;value&quot;: true,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    },
+    {
+      &quot;state&quot;: &quot;party.members&quot;,
+      &quot;op&quot;: &quot;add&quot;,
+      &quot;value&quot;: &quot;skeleton&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    },
+    {
+      &quot;state&quot;: &quot;party.optional&quot;,
+      &quot;op&quot;: &quot;set&quot;,
+      &quot;value&quot;: &quot;skeleton&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    },
+    {
+      &quot;state&quot;: &quot;experience.recruits&quot;,
+      &quot;op&quot;: &quot;add&quot;,
+      &quot;value&quot;: &quot;skeleton&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    }
+  ]
+}</pre></details><h3>동행 제안을 받지 않고 지금 일행과 떠난다</h3><p>일행은 제안을 받아들이지 않고 현재의 동료들과 길을 나선다. 제안자는 성문에 남고, 앞으로의 탐사는 함께 출발한 사람들의 경험으로 이어진다. 동행하지 않은 인물이 동굴의 대화를 함께 들은 것으로 기록되지 않는다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;company/leave&quot;,
+  &quot;when&quot;: true,
+  &quot;participants&quot;: [],
+  &quot;effects&quot;: []
+}</pre></details><p class="metadata">필수 합류: chapter01/p06</p></section><section><h2>aid · chapter03/p04</h2><p>치료를 도우며 탈출할 수 있는 준비를 어떻게 맡을지 정한다.</p><h3>식량과 짐의 준비를 동료에게 맡긴다</h3><p>일행이 부상자를 돌보는 동안 요리사는 주방 칼을 사용해 식량 짐을 나누고 가져가기 편하게 정리한다. 상처를 돌보는 일과 탈출 준비가 이어지고, 용사는 축복을 남긴 뒤 자기 길로 떠난다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;aid/cook&quot;,
+  &quot;when&quot;: true,
+  &quot;participants&quot;: [
+    {
+      &quot;character_id&quot;: &quot;party_cook&quot;,
+      &quot;equipment_id&quot;: &quot;story_knife&quot;
+    }
+  ],
+  &quot;effects&quot;: [
+    {
+      &quot;state&quot;: &quot;experience.rigel_aid&quot;,
+      &quot;op&quot;: &quot;set&quot;,
+      &quot;value&quot;: &quot;cook&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    }
+  ]
+}</pre></details><h3>발을 디딜 길의 확인을 동료에게 맡긴다</h3><p>일행이 부상자를 돌보는 동안 마술사는 마술 지팡이를 짚어 주변의 발 디딜 곳을 확인한다. 새로운 주문을 얻는 대신 탈출을 준비하는 행동에 도구를 쓴다. 도움을 받은 용사는 축복을 남기고 일행과 작별한다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;aid/magician&quot;,
+  &quot;when&quot;: true,
+  &quot;participants&quot;: [
+    {
+      &quot;character_id&quot;: &quot;party_magician&quot;,
+      &quot;equipment_id&quot;: &quot;story_wand&quot;
+    }
+  ],
+  &quot;effects&quot;: [
+    {
+      &quot;state&quot;: &quot;experience.rigel_aid&quot;,
+      &quot;op&quot;: &quot;set&quot;,
+      &quot;value&quot;: &quot;magician&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    }
+  ]
+}</pre></details><h3>일행이 함께 치료와 탈출 준비를 나눈다</h3><p>일행은 부상자의 곁과 필요한 식량의 준비를 함께 맡는다. 도움은 한 사람의 새 능력이 아니라 함께 수행한 행동으로 남는다. 용사는 무기에 축복을 내리고 떠나며, 일행은 아직 남아 있는 봉인 탐색으로 돌아간다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;aid/together&quot;,
+  &quot;when&quot;: true,
+  &quot;participants&quot;: [],
+  &quot;effects&quot;: [
+    {
+      &quot;state&quot;: &quot;experience.rigel_aid&quot;,
+      &quot;op&quot;: &quot;set&quot;,
+      &quot;value&quot;: &quot;together&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    }
+  ]
+}</pre></details><p class="metadata">필수 합류: chapter03/p05</p></section><section><h2>spica_company · chapter07/p03</h2><p>가르침을 들은 뒤의 동행을 정한다.</p><h3>새 동료와 함께 남은 동굴을 탐색한다</h3><p>가르침의 만남을 마친 일행은 스피카의 동행 제안을 받아들인다. 비어 있던 동료 자리에 그녀가 합류하면서 남은 동굴을 같이 지나게 된다. 설명을 들은 경험과 실제 동행이 이 경로에서 함께 남는다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;spica_company/join&quot;,
+  &quot;when&quot;: {
+    &quot;all&quot;: [
+      {
+        &quot;state&quot;: &quot;party.optional&quot;,
+        &quot;op&quot;: &quot;eq&quot;,
+        &quot;value&quot;: &quot;&quot;
+      },
+      {
+        &quot;state&quot;: &quot;knowledge.spica&quot;,
+        &quot;op&quot;: &quot;eq&quot;,
+        &quot;value&quot;: true
+      }
+    ]
+  },
+  &quot;participants&quot;: [],
+  &quot;effects&quot;: [
+    {
+      &quot;state&quot;: &quot;party.members&quot;,
+      &quot;op&quot;: &quot;add&quot;,
+      &quot;value&quot;: &quot;spica&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    },
+    {
+      &quot;state&quot;: &quot;party.optional&quot;,
+      &quot;op&quot;: &quot;set&quot;,
+      &quot;value&quot;: &quot;spica&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    },
+    {
+      &quot;state&quot;: &quot;experience.recruits&quot;,
+      &quot;op&quot;: &quot;add&quot;,
+      &quot;value&quot;: &quot;spica&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    }
+  ]
+}</pre></details><h3>가르침을 기억하고 현재 동료들과 길을 잇는다</h3><p>일행은 가르침을 들은 뒤 현재 함께 온 동료들과 탐색을 이어 간다. 스피카는 이 경로의 동굴 대결을 함께한 동료가 되지는 않는다. 일행은 들은 경고를 기억하고 남은 의뢰를 수행하러 간다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;spica_company/continue&quot;,
+  &quot;when&quot;: true,
+  &quot;participants&quot;: [],
+  &quot;effects&quot;: []
+}</pre></details><p class="metadata">필수 합류: chapter07/p04</p></section><section><h2>seal_order · chapter09/p01</h2><p>두 봉인을 모두 풀어야 한다. 먼저 들어갈 동굴을 정한다.</p><h3>늪 속 장치가 있는 동굴부터 찾는다</h3><p>일행은 먼저 이블 갓의 레버와 봉인을 찾기로 한다. 이 탐색을 마쳐도 다른 동굴의 결과를 얻은 것은 아니다. 그다음 머디의 시험과 봉인도 찾아야 한다. 먼저 고른 동굴로 향하며 두 탐색이 모두 남아 있음을 기억한다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;seal_order/evil_first&quot;,
+  &quot;when&quot;: true,
+  &quot;participants&quot;: [],
+  &quot;effects&quot;: []
+}</pre></details><h3>문답의 시험이 있는 동굴부터 찾는다</h3><p>일행은 먼저 머디의 시험과 봉인을 찾기로 한다. 이 탐색을 마쳐도 다른 동굴의 결과를 얻은 것은 아니다. 그다음 이블 갓의 장치와 봉인도 찾아야 한다. 먼저 고른 동굴로 향하며 두 탐색이 모두 남아 있음을 기억한다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;seal_order/muddy_first&quot;,
+  &quot;when&quot;: true,
+  &quot;participants&quot;: [],
+  &quot;effects&quot;: []
+}</pre></details><p class="metadata">필수 합류: chapter09/p07</p></section><section><h2>shelter_prepare · chapter12/p04</h2><p>피난처에서 받은 도움을 어떤 준비로 이어 갈지 정한다.</p><h3>식량 짐을 나누며 마지막 길을 준비한다</h3><p>요리사는 주방 칼을 사용해 식량 짐을 나누고 이동 중 꺼낼 것을 정리한다. 일행은 주민의 도움을 다음 길의 준비로 바꾼다. 새 보상 수량을 임의로 더하지 않고 마련한 짐을 가지고 지상으로 돌아간다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;shelter_prepare/food&quot;,
+  &quot;when&quot;: true,
+  &quot;participants&quot;: [
+    {
+      &quot;character_id&quot;: &quot;party_cook&quot;,
+      &quot;equipment_id&quot;: &quot;story_knife&quot;
+    }
+  ],
+  &quot;effects&quot;: [
+    {
+      &quot;state&quot;: &quot;experience.shelter_preparation&quot;,
+      &quot;op&quot;: &quot;set&quot;,
+      &quot;value&quot;: &quot;food&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    }
+  ]
+}</pre></details><h3>장비와 짐의 고정을 확인하며 마지막 길을 준비한다</h3><p>나무꾼은 벌목 도끼의 자루와 묶어 둔 짐을 살핀다. 일행은 새로운 위력을 얻는 대신 다음 요새를 지나기 위한 장비 상태를 확인한다. 피난처를 떠날 준비가 끝나자 받은 도움을 가지고 지상으로 돌아간다.</p><details><summary>JSON 조건·상태 변화</summary><pre>{
+  &quot;id&quot;: &quot;shelter_prepare/equipment&quot;,
+  &quot;when&quot;: true,
+  &quot;participants&quot;: [
+    {
+      &quot;character_id&quot;: &quot;party_woodcutter&quot;,
+      &quot;equipment_id&quot;: &quot;story_axe&quot;
+    }
+  ],
+  &quot;effects&quot;: [
+    {
+      &quot;state&quot;: &quot;experience.shelter_preparation&quot;,
+      &quot;op&quot;: &quot;set&quot;,
+      &quot;value&quot;: &quot;equipment&quot;,
+      &quot;origin&quot;: &quot;authored&quot;,
+      &quot;metadata&quot;: {
+        &quot;addition&quot;: true,
+        &quot;kind&quot;: &quot;new_setting&quot;,
+        &quot;note&quot;: &quot;추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.&quot;,
+        &quot;knowledge_policy&quot;: &quot;author_reference_not_character_knowledge&quot;
+      }
+    }
+  ]
+}</pre></details><p class="metadata">필수 합류: chapter12/p05</p></section><h2>선택 이후 반응</h2><p>chapter01/p06 · 성문을 나선 서진은 무기고에서 받은 단도를 확인한다. 출발 직전의 준비가 이제 동굴을 향하는 실제 짐과 무장으로 남아 있다.</p><p>chapter01/p06 · 스켈레톤은 성문에서 나눈 이야기를 이어 가며 일행과 걷는다. 함께 가겠다는 짧은 제안보다 더 긴 만남을 나눈 기억이 이번 길에 남는다.</p><p>chapter03/p06 · 귀환하는 길에 요리사는 용사에게 나누어 준 식량을 떠올린다. 봉인을 찾았다는 보고에는 지하에 남은 사람을 도운 경험도 함께 이어진다.</p><p>chapter03/p06 · 마술사는 부상자가 나아갈 발 디딜 곳을 함께 확인했던 일을 떠올린다. 탐사에서 얻은 결과는 봉인의 발견과 그 안에 남은 사람을 도운 경험으로 나뉘어 남는다.</p><p>chapter07/p04 · 함께 들어온 스피카는 방금 전해 준 경고를 일행과 다시 짚는다. 그녀가 실제로 동행한 이 경로에서는 가르침의 만남과 남은 동굴의 탐색을 함께 겪는다.</p><p>chapter13/p01 · 요리사는 피난처에서 나누어 둔 식량 짐이 흐트러지지 않았는지 확인한다. 주민에게 받은 도움은 이제 다음 요새 앞에서 다시 챙기는 준비로 이어진다.</p><p>chapter13/p01 · 나무꾼은 피난처에서 점검한 벌목 도끼의 자루와 짐의 묶음을 다시 확인한다. 떠나기 전의 준비가 이번 요새 입구에서 맡을 역할로 이어진다.</p><h2>아직 미구현인 후보</h2><p>chapter01/p04, chapter02/p02, chapter02/p04, chapter04/p02, chapter04/p03, chapter04/p06, chapter05/p03, chapter06/p02, chapter06/p04, chapter06/p05, chapter07/p04, chapter08/p04, chapter08/p05, chapter09/p02, chapter09/p04, chapter10/p02, chapter11/p02, chapter12/p02, chapter13/p01, chapter13/p03, chapter14/p01, chapter14/p02, chapter14/p05, chapter14/p06, chapter15/p02</p><h2>지킬 조건</h2><ul><li>작가용 구조 실행이다. 88개 주요 내용 초안은 실제 원문 대사 전체와 장편 본문을 대신하지 않는다. 원문 연결 판본의 2,483개 문구는 보존한다.</li><li>기존 첫 장 선택소설은 계속 별도 실행된다. 이 분기 규격은 동일한 조건·효과 연산을 공유하지만 상태 인계와 원문 반영표를 검증하기 전 자동 연결하지 않는다.</li><li>모든 필수 소단락의 공통 내용을 읽고 선택한 경로의 body를 붙인 뒤 다음 본줄기로 합류한다. 실제 읽음의 증명이 아니라 구조상 표시·진행 보장이다.</li><li>선택이 하나만 가능한 상태에서는 자동 처리하며 독자의 결정으로 표시하지 않는다. 저장은 수동 선택 ID와 입력 지문만 받으며 상태·소지품·진도는 재생으로 복원한다.</li><li>영입 경험과 현재 동행은 별개다. 선택 동료는 한 자리이며 현재 동행+장비가 맞는 경우에만 역할 옵션과 후속 반응이 열린다.</li><li>열쇠·봉인·계급·필수 정보는 본줄기의 해당 사건만 기록한다. 분기 효과로 미래의 필수 결과나 진상을 미리 지급하지 않는다.</li><li>두 봉인 탐색은 JSON의 병렬 블록 순서만 바꾸며 두 결과를 모두 읽고 수행한다. 한쪽 완료로 다음 장을 열지 않는다.</li><li>효과는 한 선택 단위로 원자적으로 적용하고 자료형·사전 ID·장비 소유·동행 자리 불변식을 확인한다. 같은 소단락이나 보상을 재실행하지 않는다.</li><li>처음의 미지정 주인공 무장은 미상 상태다. 준비 분기에서 기본 장비를 받는 것은 창작 표시한 편집 선택이며 기존 게임/첫 장 원고의 초기 무장을 변경하지 않는다.</li></ul></html>

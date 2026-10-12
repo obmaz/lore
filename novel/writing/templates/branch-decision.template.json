@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "purpose": "copy_decision_into_series_not_a_standalone_runtime",
+  "decision": {
+    "id": "prepare",
+    "unit_id": "chapter01/p05",
+    "prompt": [
+      {
+        "text": "성문을 나서기 전, 부족한 준비를 어디에서 마칠지 정한다."
+      }
+    ],
+    "options": [
+      {
+        "id": "prepare/armory",
+        "label": [
+          {
+            "text": "무기고에서 필요한 무장을 마련한다"
+          }
+        ],
+        "body": [
+          {
+            "text": "일행은 무기고에서 떠날 준비를 한다. 네 동료의 직업 무기는 그대로 두고, "
+          },
+          {
+            "ref": {
+              "catalog": "characters",
+              "id": "protagonist",
+              "particle": "은/는"
+            }
+          },
+          {
+            "text": " 미지정이던 자신의 무장으로 "
+          },
+          {
+            "ref": {
+              "catalog": "equipment",
+              "id": "weapon_1",
+              "particle": "을/를"
+            }
+          },
+          {
+            "text": " 받는다. 장비를 마련한 뒤 일행은 동료 제안이 기다리는 성문으로 향한다."
+          }
+        ],
+        "when": true,
+        "participants": [],
+        "effects": [
+          {
+            "state": "experience.armory",
+            "op": "set",
+            "value": true,
+            "origin": "authored",
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          },
+          {
+            "state": "inventory",
+            "op": "add",
+            "value": "weapon_1",
+            "origin": "authored",
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          },
+          {
+            "state": "equipment.protagonist",
+            "op": "set",
+            "value": "weapon_1",
+            "origin": "authored",
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "origin": "authored",
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      {
+        "id": "prepare/self",
+        "label": [
+          {
+            "text": "지금 가진 장비를 점검하고 성문으로 간다"
+          }
+        ],
+        "body": [
+          {
+            "text": "일행은 함께 가져온 도구와 짐을 점검하고 곧바로 성문으로 간다. 무기고에서 새 장비를 받은 경험은 없지만 동료들의 기존 무기는 남아 있다. 출발을 앞둔 일행은 성문에서 들려오는 동행 제안을 듣는다."
+          }
+        ],
+        "when": true,
+        "participants": [],
+        "effects": [],
+        "origin": "authored",
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    ],
+    "source_section_refs": [
+      "01-city",
+      "01-depart"
+    ],
+    "rejoin_before": "chapter01/p06",
+    "phase": "after_main_content",
+    "origin": "authored",
+    "metadata": {
+      "addition": true,
+      "kind": "new_setting",
+      "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+      "knowledge_policy": "author_reference_not_character_knowledge"
+    }
+  }
+}

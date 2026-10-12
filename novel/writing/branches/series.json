@@ -1,0 +1,2307 @@
+{
+  "version": 1,
+  "revision": 1,
+  "status": "draft",
+  "visibility": "author_only",
+  "subsection_plan": "storyboard/chapter-subsections.json",
+  "subsection_revision": 1,
+  "workflow": {
+    "execution": "implemented",
+    "prose": "outline",
+    "dialogue_coverage": "partial",
+    "public_reader": "unchanged"
+  },
+  "origin": "authored",
+  "metadata": {
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 소단락용 공용 분기 시스템의 초안. 원작 조건을 참고한 영입과 편집 순서, 준비·역할·후속 반응을 구조화했다. 주인공에게 무기고 기본 무기를 지급하는 준비 경로는 새 집필 설정이다. 기존 선택형 첫 장의 상태·저장 파일과 자동 호환되지 않는다.",
+    "knowledge_policy": "author_reference_not_character_knowledge"
+  },
+  "state_definitions": {
+    "party.members": {
+      "type": "string_set",
+      "initial": [
+        "protagonist",
+        "party_woodcutter",
+        "party_hunter",
+        "party_cook",
+        "party_magician"
+      ],
+      "authority": "branch",
+      "description": [
+        {
+          "text": "현재 동행 인물의 ID. 영입 경험과 분리한다."
+        }
+      ],
+      "reference_catalog": "characters",
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 6,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "party.optional": {
+      "type": "string",
+      "initial": "",
+      "authority": "branch",
+      "description": [
+        {
+          "text": "여섯 번째 동료 자리의 현재 인물 ID."
+        }
+      ],
+      "reference_catalog": "characters",
+      "values": [
+        "",
+        "skeleton",
+        "spica"
+      ],
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "inventory": {
+      "type": "string_set",
+      "initial": [
+        "story_axe",
+        "story_bow",
+        "story_knife",
+        "story_wand"
+      ],
+      "authority": "branch",
+      "description": [
+        {
+          "text": "실제 획득한 장비 ID의 집합. 사전 등록은 획득이 아니다."
+        }
+      ],
+      "reference_catalog": "equipment",
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "party.rank": {
+      "type": "string",
+      "initial": "",
+      "authority": "main",
+      "description": [
+        {
+          "text": "마지막 도움 뒤 현재 일행의 계급 변화. 인물의 고정 직업·생사와 별개다."
+        }
+      ],
+      "reference_catalog": "terms",
+      "values": [
+        "",
+        "semi_god"
+      ],
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "experience.armory": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "branch",
+      "description": [
+        {
+          "text": "무기고를 이용한 준비 경험."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "experience.skeleton_conversation": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "branch",
+      "description": [
+        {
+          "text": "동행 전 제안자와 대화를 더 나눈 경험."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "experience.recruits": {
+      "type": "string_set",
+      "initial": [],
+      "authority": "branch",
+      "description": [
+        {
+          "text": "실제로 영입했던 인물의 기록. 현재 동행을 뜻하지 않는다."
+        }
+      ],
+      "reference_catalog": "characters",
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "experience.rigel_aid": {
+      "type": "string",
+      "initial": "",
+      "authority": "branch",
+      "description": [
+        {
+          "text": "부상자 지원에서 실제 택한 역할."
+        }
+      ],
+      "reference_catalog": null,
+      "values": [
+        "",
+        "cook",
+        "magician",
+        "together"
+      ],
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "experience.shelter_preparation": {
+      "type": "string",
+      "initial": "",
+      "authority": "branch",
+      "description": [
+        {
+          "text": "피난처에서 택한 결전 준비 방식."
+        }
+      ],
+      "reference_catalog": null,
+      "values": [
+        "",
+        "food",
+        "equipment"
+      ],
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "equipment.protagonist": {
+      "type": "string",
+      "initial": "",
+      "authority": "branch",
+      "description": [
+        {
+          "text": "현재 동행자의 실제 장착 장비 ID. 빈 값은 미지정이다."
+        }
+      ],
+      "reference_catalog": "equipment",
+      "values": null,
+      "holder": "protagonist",
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "equipment.party_woodcutter": {
+      "type": "string",
+      "initial": "story_axe",
+      "authority": "branch",
+      "description": [
+        {
+          "text": "현재 동행자의 실제 장착 장비 ID. 빈 값은 미지정이다."
+        }
+      ],
+      "reference_catalog": "equipment",
+      "values": null,
+      "holder": "party_woodcutter",
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "equipment.party_hunter": {
+      "type": "string",
+      "initial": "story_bow",
+      "authority": "branch",
+      "description": [
+        {
+          "text": "현재 동행자의 실제 장착 장비 ID. 빈 값은 미지정이다."
+        }
+      ],
+      "reference_catalog": "equipment",
+      "values": null,
+      "holder": "party_hunter",
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "equipment.party_cook": {
+      "type": "string",
+      "initial": "story_knife",
+      "authority": "branch",
+      "description": [
+        {
+          "text": "현재 동행자의 실제 장착 장비 ID. 빈 값은 미지정이다."
+        }
+      ],
+      "reference_catalog": "equipment",
+      "values": null,
+      "holder": "party_cook",
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "equipment.party_magician": {
+      "type": "string",
+      "initial": "story_wand",
+      "authority": "branch",
+      "description": [
+        {
+          "text": "현재 동행자의 실제 장착 장비 ID. 빈 값은 미지정이다."
+        }
+      ],
+      "reference_catalog": "equipment",
+      "values": null,
+      "holder": "party_magician",
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "keys.water": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "main",
+      "description": [
+        {
+          "text": "해당 보고 뒤 실제로 얻은 통행 열쇠."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "keys.swamp": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "main",
+      "description": [
+        {
+          "text": "해당 보고 뒤 실제로 얻은 통행 열쇠."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "seals.evil_god": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "main",
+      "description": [
+        {
+          "text": "해당 동굴의 봉인을 실제로 해제한 결과."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "seals.muddy": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "main",
+      "description": [
+        {
+          "text": "해당 동굴의 봉인을 실제로 해제한 결과."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "knowledge.antares": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "main",
+      "description": [
+        {
+          "text": "해당 소단락에서 설명·기록·증언을 접한 경험. 내용의 객관적 진실을 보증하지 않는다."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "knowledge.spica": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "main",
+      "description": [
+        {
+          "text": "해당 소단락에서 설명·기록·증언을 접한 경험. 내용의 객관적 진실을 보증하지 않는다."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "knowledge.prophecy": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "main",
+      "description": [
+        {
+          "text": "해당 소단락에서 설명·기록·증언을 접한 경험. 내용의 객관적 진실을 보증하지 않는다."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "knowledge.dimension": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "main",
+      "description": [
+        {
+          "text": "해당 소단락에서 설명·기록·증언을 접한 경험. 내용의 객관적 진실을 보증하지 않는다."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "knowledge.impostor": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "main",
+      "description": [
+        {
+          "text": "해당 소단락에서 설명·기록·증언을 접한 경험. 내용의 객관적 진실을 보증하지 않는다."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "quest.finished": {
+      "type": "boolean",
+      "initial": false,
+      "authority": "main",
+      "description": [
+        {
+          "text": "성공 주 진행의 마지막 마무리 완료."
+        }
+      ],
+      "reference_catalog": null,
+      "values": null,
+      "holder": null,
+      "minimum": 0,
+      "maximum": 100,
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  },
+  "party_contract": {
+    "members_state": "party.members",
+    "optional_state": "party.optional",
+    "inventory_state": "inventory",
+    "core_members": [
+      "protagonist",
+      "party_woodcutter",
+      "party_hunter",
+      "party_cook",
+      "party_magician"
+    ],
+    "optional_candidates": [
+      "skeleton",
+      "spica"
+    ],
+    "equipment_states": {
+      "protagonist": "equipment.protagonist",
+      "party_woodcutter": "equipment.party_woodcutter",
+      "party_hunter": "equipment.party_hunter",
+      "party_cook": "equipment.party_cook",
+      "party_magician": "equipment.party_magician"
+    }
+  },
+  "unit_rules": {
+    "chapter01/p05": {
+      "entry_when": true,
+      "effects": [],
+      "content_override": [
+        {
+          "text": "일행은 맡은 탐사를 위해 출발 준비를 시작한다. 무기고의 도움을 받을지 지금 장비로 떠날지 정한 뒤, 성문에서 들려오는 동행 제안을 만날 것이다. 준비와 동행은 달라질 수 있지만 중심부 탐사와 귀환 보고라는 약속은 유지된다."
+        }
+      ],
+      "source_section_refs": [
+        "01-city",
+        "01-depart"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter03/p04": {
+      "entry_when": true,
+      "effects": [],
+      "content_override": [
+        {
+          "text": "일행은 혼자 탈출할 수 없다는 용사의 설명을 듣고 상처를 돌보며 떠날 준비를 돕기로 한다. 치료와 함께 탈출할 식량과 발 디딜 길을 마련해야 한다. 누구에게 어느 준비를 맡길지 정한 뒤, 용사를 떠나보내고 남은 탐색을 이어 갈 것이다."
+        }
+      ],
+      "source_section_refs": [
+        "03-rigel"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락용 공용 분기 시스템의 초안. 원작 조건을 참고한 영입과 편집 순서, 준비·역할·후속 반응을 구조화했다. 주인공에게 무기고 기본 무기를 지급하는 준비 경로는 새 집필 설정이다. 기존 선택형 첫 장의 상태·저장 파일과 자동 호환되지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter04/p04": {
+      "entry_when": true,
+      "effects": [
+        {
+          "state": "keys.water",
+          "op": "set",
+          "value": true,
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "content_override": null,
+      "source_section_refs": [
+        "04-key"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter05/p04": {
+      "entry_when": {
+        "state": "keys.water",
+        "op": "eq",
+        "value": true
+      },
+      "effects": [],
+      "content_override": null,
+      "source_section_refs": [
+        "05-passage"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter06/p04": {
+      "entry_when": true,
+      "effects": [
+        {
+          "state": "knowledge.antares",
+          "op": "set",
+          "value": true,
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "content_override": null,
+      "source_section_refs": [
+        "06-antares"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter07/p03": {
+      "entry_when": true,
+      "effects": [
+        {
+          "state": "knowledge.spica",
+          "op": "set",
+          "value": true,
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "content_override": null,
+      "source_section_refs": [
+        "07-learning"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter07/p05": {
+      "entry_when": true,
+      "effects": [
+        {
+          "state": "keys.swamp",
+          "op": "set",
+          "value": true,
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "content_override": null,
+      "source_section_refs": [
+        "07-return"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter08/p01": {
+      "entry_when": {
+        "state": "keys.swamp",
+        "op": "eq",
+        "value": true
+      },
+      "effects": [],
+      "content_override": null,
+      "source_section_refs": [
+        "08-gate"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter08/p03": {
+      "entry_when": true,
+      "effects": [
+        {
+          "state": "knowledge.prophecy",
+          "op": "set",
+          "value": true,
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "content_override": null,
+      "source_section_refs": [
+        "08-prophecy"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter08/p05": {
+      "entry_when": true,
+      "effects": [
+        {
+          "state": "knowledge.dimension",
+          "op": "set",
+          "value": true,
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "content_override": null,
+      "source_section_refs": [
+        "08-draconian"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter09/p03": {
+      "entry_when": true,
+      "effects": [
+        {
+          "state": "seals.evil_god",
+          "op": "set",
+          "value": true,
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "content_override": null,
+      "source_section_refs": [
+        "09-evilgod"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter09/p06": {
+      "entry_when": true,
+      "effects": [
+        {
+          "state": "seals.muddy",
+          "op": "set",
+          "value": true,
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "content_override": [
+        {
+          "text": "일행은 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "astral_mud"
+          }
+        },
+        {
+          "text": "와의 대결을 통과한 뒤 이 동굴의 봉인을 푼다. 상대의 증언을 들은 것만으로는 완료되지 않던 목표를 실제 해제로 마친 것이다. 다른 동굴의 탐색이 앞이었든 뒤에 남아 있든, 이곳의 결과는 별도로 갖추어진다."
+        }
+      ],
+      "source_section_refs": [
+        "09-muddy"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "title_override": [
+        {
+          "text": "시험 끝의 봉인을 해제하다"
+        }
+      ]
+    },
+    "chapter09/p07": {
+      "entry_when": {
+        "all": [
+          {
+            "state": "seals.evil_god",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "state": "seals.muddy",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "effects": [],
+      "content_override": null,
+      "source_section_refs": [
+        "09-evilgod",
+        "09-muddy"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter10/p01": {
+      "entry_when": {
+        "all": [
+          {
+            "state": "seals.evil_god",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "state": "seals.muddy",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "effects": [],
+      "content_override": null,
+      "source_section_refs": [
+        "10-lava"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter13/p04": {
+      "entry_when": true,
+      "effects": [
+        {
+          "state": "knowledge.impostor",
+          "op": "set",
+          "value": true,
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "content_override": null,
+      "source_section_refs": [
+        "13-illusion"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter14/p04": {
+      "entry_when": true,
+      "effects": [
+        {
+          "state": "party.rank",
+          "op": "set",
+          "value": "semi_god",
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "content_override": null,
+      "source_section_refs": [
+        "14-panzer"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter15/p01": {
+      "entry_when": {
+        "state": "party.rank",
+        "op": "eq",
+        "value": "semi_god"
+      },
+      "effects": [],
+      "content_override": null,
+      "source_section_refs": [
+        "15-final"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "chapter15/p05": {
+      "entry_when": true,
+      "effects": [
+        {
+          "state": "quest.finished",
+          "op": "set",
+          "value": true,
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "content_override": null,
+      "source_section_refs": [
+        "15-ending"
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  },
+  "decisions": [
+    {
+      "id": "prepare",
+      "unit_id": "chapter01/p05",
+      "prompt": [
+        {
+          "text": "성문을 나서기 전, 부족한 준비를 어디에서 마칠지 정한다."
+        }
+      ],
+      "options": [
+        {
+          "id": "prepare/armory",
+          "label": [
+            {
+              "text": "무기고에서 필요한 무장을 마련한다"
+            }
+          ],
+          "body": [
+            {
+              "text": "일행은 무기고에서 떠날 준비를 한다. 네 동료의 직업 무기는 그대로 두고, "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 미지정이던 자신의 무장으로 "
+            },
+            {
+              "ref": {
+                "catalog": "equipment",
+                "id": "weapon_1",
+                "particle": "을/를"
+              }
+            },
+            {
+              "text": " 받는다. 장비를 마련한 뒤 일행은 동료 제안이 기다리는 성문으로 향한다."
+            }
+          ],
+          "when": true,
+          "participants": [],
+          "effects": [
+            {
+              "state": "experience.armory",
+              "op": "set",
+              "value": true,
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            },
+            {
+              "state": "inventory",
+              "op": "add",
+              "value": "weapon_1",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            },
+            {
+              "state": "equipment.protagonist",
+              "op": "set",
+              "value": "weapon_1",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            }
+          ],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "prepare/self",
+          "label": [
+            {
+              "text": "지금 가진 장비를 점검하고 성문으로 간다"
+            }
+          ],
+          "body": [
+            {
+              "text": "일행은 함께 가져온 도구와 짐을 점검하고 곧바로 성문으로 간다. 무기고에서 새 장비를 받은 경험은 없지만 동료들의 기존 무기는 남아 있다. 출발을 앞둔 일행은 성문에서 들려오는 동행 제안을 듣는다."
+            }
+          ],
+          "when": true,
+          "participants": [],
+          "effects": [],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "source_section_refs": [
+        "01-city",
+        "01-depart"
+      ],
+      "rejoin_before": "chapter01/p06",
+      "phase": "after_main_content",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "company",
+      "unit_id": "chapter01/p05",
+      "prompt": [
+        {
+          "text": "문 앞의 동행 제안을 어떤 만남으로 이어 갈지 정한다."
+        }
+      ],
+      "options": [
+        {
+          "id": "company/join",
+          "label": [
+            {
+              "text": "제안자를 동료로 받아 함께 떠난다"
+            }
+          ],
+          "body": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "skeleton",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 함께 가겠다는 제안을 하고 일행의 답을 기다린다. 일행은 그를 새로운 동료로 받아들여 성문을 나선다. 이제 동굴로 향하는 발걸음에는 이 만남을 함께 겪은 동행자가 하나 더 있다."
+            }
+          ],
+          "when": {
+            "state": "party.optional",
+            "op": "eq",
+            "value": ""
+          },
+          "participants": [],
+          "effects": [
+            {
+              "state": "party.members",
+              "op": "add",
+              "value": "skeleton",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            },
+            {
+              "state": "party.optional",
+              "op": "set",
+              "value": "skeleton",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            },
+            {
+              "state": "experience.recruits",
+              "op": "add",
+              "value": "skeleton",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            }
+          ],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "company/talk_join",
+          "label": [
+            {
+              "text": "함께 갈 사정을 듣고 동행을 받아들인다"
+            }
+          ],
+          "body": [
+            {
+              "text": "일행은 먼저 제안자가 왜 함께 가려는지 묻고 이야기를 나눈다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "skeleton",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 자신을 소개하고 여행에 보탬이 되겠다는 뜻을 전한다. 일행은 그 대화를 기억한 채 그를 받아들여 함께 출발한다."
+            }
+          ],
+          "when": {
+            "state": "party.optional",
+            "op": "eq",
+            "value": ""
+          },
+          "participants": [],
+          "effects": [
+            {
+              "state": "experience.skeleton_conversation",
+              "op": "set",
+              "value": true,
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            },
+            {
+              "state": "party.members",
+              "op": "add",
+              "value": "skeleton",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            },
+            {
+              "state": "party.optional",
+              "op": "set",
+              "value": "skeleton",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            },
+            {
+              "state": "experience.recruits",
+              "op": "add",
+              "value": "skeleton",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            }
+          ],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "company/leave",
+          "label": [
+            {
+              "text": "동행 제안을 받지 않고 지금 일행과 떠난다"
+            }
+          ],
+          "body": [
+            {
+              "text": "일행은 제안을 받아들이지 않고 현재의 동료들과 길을 나선다. 제안자는 성문에 남고, 앞으로의 탐사는 함께 출발한 사람들의 경험으로 이어진다. 동행하지 않은 인물이 동굴의 대화를 함께 들은 것으로 기록되지 않는다."
+            }
+          ],
+          "when": true,
+          "participants": [],
+          "effects": [],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "source_section_refs": [
+        "01-depart"
+      ],
+      "rejoin_before": "chapter01/p06",
+      "phase": "after_main_content",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "aid",
+      "unit_id": "chapter03/p04",
+      "prompt": [
+        {
+          "text": "치료를 도우며 탈출할 수 있는 준비를 어떻게 맡을지 정한다."
+        }
+      ],
+      "options": [
+        {
+          "id": "aid/cook",
+          "label": [
+            {
+              "text": "식량과 짐의 준비를 동료에게 맡긴다"
+            }
+          ],
+          "body": [
+            {
+              "text": "일행이 부상자를 돌보는 동안 "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "party_cook",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " "
+            },
+            {
+              "ref": {
+                "catalog": "equipment",
+                "id": "story_knife",
+                "particle": "을/를"
+              }
+            },
+            {
+              "text": " 사용해 식량 짐을 나누고 가져가기 편하게 정리한다. 상처를 돌보는 일과 탈출 준비가 이어지고, 용사는 축복을 남긴 뒤 자기 길로 떠난다."
+            }
+          ],
+          "when": true,
+          "participants": [
+            {
+              "character_id": "party_cook",
+              "equipment_id": "story_knife"
+            }
+          ],
+          "effects": [
+            {
+              "state": "experience.rigel_aid",
+              "op": "set",
+              "value": "cook",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            }
+          ],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "aid/magician",
+          "label": [
+            {
+              "text": "발을 디딜 길의 확인을 동료에게 맡긴다"
+            }
+          ],
+          "body": [
+            {
+              "text": "일행이 부상자를 돌보는 동안 "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "party_magician",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " "
+            },
+            {
+              "ref": {
+                "catalog": "equipment",
+                "id": "story_wand",
+                "particle": "을/를"
+              }
+            },
+            {
+              "text": " 짚어 주변의 발 디딜 곳을 확인한다. 새로운 주문을 얻는 대신 탈출을 준비하는 행동에 도구를 쓴다. 도움을 받은 용사는 축복을 남기고 일행과 작별한다."
+            }
+          ],
+          "when": true,
+          "participants": [
+            {
+              "character_id": "party_magician",
+              "equipment_id": "story_wand"
+            }
+          ],
+          "effects": [
+            {
+              "state": "experience.rigel_aid",
+              "op": "set",
+              "value": "magician",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            }
+          ],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "aid/together",
+          "label": [
+            {
+              "text": "일행이 함께 치료와 탈출 준비를 나눈다"
+            }
+          ],
+          "body": [
+            {
+              "text": "일행은 부상자의 곁과 필요한 식량의 준비를 함께 맡는다. 도움은 한 사람의 새 능력이 아니라 함께 수행한 행동으로 남는다. 용사는 무기에 축복을 내리고 떠나며, 일행은 아직 남아 있는 봉인 탐색으로 돌아간다."
+            }
+          ],
+          "when": true,
+          "participants": [],
+          "effects": [
+            {
+              "state": "experience.rigel_aid",
+              "op": "set",
+              "value": "together",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            }
+          ],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "source_section_refs": [
+        "03-rigel"
+      ],
+      "rejoin_before": "chapter03/p05",
+      "phase": "after_main_content",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "spica_company",
+      "unit_id": "chapter07/p03",
+      "prompt": [
+        {
+          "text": "가르침을 들은 뒤의 동행을 정한다."
+        }
+      ],
+      "options": [
+        {
+          "id": "spica_company/join",
+          "label": [
+            {
+              "text": "새 동료와 함께 남은 동굴을 탐색한다"
+            }
+          ],
+          "body": [
+            {
+              "text": "가르침의 만남을 마친 일행은 "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "spica"
+              }
+            },
+            {
+              "text": "의 동행 제안을 받아들인다. 비어 있던 동료 자리에 그녀가 합류하면서 남은 동굴을 같이 지나게 된다. 설명을 들은 경험과 실제 동행이 이 경로에서 함께 남는다."
+            }
+          ],
+          "when": {
+            "all": [
+              {
+                "state": "party.optional",
+                "op": "eq",
+                "value": ""
+              },
+              {
+                "state": "knowledge.spica",
+                "op": "eq",
+                "value": true
+              }
+            ]
+          },
+          "participants": [],
+          "effects": [
+            {
+              "state": "party.members",
+              "op": "add",
+              "value": "spica",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            },
+            {
+              "state": "party.optional",
+              "op": "set",
+              "value": "spica",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            },
+            {
+              "state": "experience.recruits",
+              "op": "add",
+              "value": "spica",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            }
+          ],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "spica_company/continue",
+          "label": [
+            {
+              "text": "가르침을 기억하고 현재 동료들과 길을 잇는다"
+            }
+          ],
+          "body": [
+            {
+              "text": "일행은 가르침을 들은 뒤 현재 함께 온 동료들과 탐색을 이어 간다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "spica",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 이 경로의 동굴 대결을 함께한 동료가 되지는 않는다. 일행은 들은 경고를 기억하고 남은 의뢰를 수행하러 간다."
+            }
+          ],
+          "when": true,
+          "participants": [],
+          "effects": [],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "source_section_refs": [
+        "07-learning",
+        "07-choices"
+      ],
+      "rejoin_before": "chapter07/p04",
+      "phase": "after_main_content",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "seal_order",
+      "unit_id": "chapter09/p01",
+      "prompt": [
+        {
+          "text": "두 봉인을 모두 풀어야 한다. 먼저 들어갈 동굴을 정한다."
+        }
+      ],
+      "options": [
+        {
+          "id": "seal_order/evil_first",
+          "label": [
+            {
+              "text": "늪 속 장치가 있는 동굴부터 찾는다"
+            }
+          ],
+          "body": [
+            {
+              "text": "일행은 먼저 "
+            },
+            {
+              "ref": {
+                "catalog": "terms",
+                "id": "evil_god"
+              }
+            },
+            {
+              "text": "의 레버와 봉인을 찾기로 한다. 이 탐색을 마쳐도 다른 동굴의 결과를 얻은 것은 아니다. 그다음 "
+            },
+            {
+              "ref": {
+                "catalog": "terms",
+                "id": "muddy"
+              }
+            },
+            {
+              "text": "의 시험과 봉인도 찾아야 한다. 먼저 고른 동굴로 향하며 두 탐색이 모두 남아 있음을 기억한다."
+            }
+          ],
+          "when": true,
+          "participants": [],
+          "effects": [],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "seal_order/muddy_first",
+          "label": [
+            {
+              "text": "문답의 시험이 있는 동굴부터 찾는다"
+            }
+          ],
+          "body": [
+            {
+              "text": "일행은 먼저 "
+            },
+            {
+              "ref": {
+                "catalog": "terms",
+                "id": "muddy"
+              }
+            },
+            {
+              "text": "의 시험과 봉인을 찾기로 한다. 이 탐색을 마쳐도 다른 동굴의 결과를 얻은 것은 아니다. 그다음 "
+            },
+            {
+              "ref": {
+                "catalog": "terms",
+                "id": "evil_god"
+              }
+            },
+            {
+              "text": "의 장치와 봉인도 찾아야 한다. 먼저 고른 동굴로 향하며 두 탐색이 모두 남아 있음을 기억한다."
+            }
+          ],
+          "when": true,
+          "participants": [],
+          "effects": [],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "source_section_refs": [
+        "09-evilgod",
+        "09-muddy"
+      ],
+      "rejoin_before": "chapter09/p07",
+      "phase": "after_main_content",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "shelter_prepare",
+      "unit_id": "chapter12/p04",
+      "prompt": [
+        {
+          "text": "피난처에서 받은 도움을 어떤 준비로 이어 갈지 정한다."
+        }
+      ],
+      "options": [
+        {
+          "id": "shelter_prepare/food",
+          "label": [
+            {
+              "text": "식량 짐을 나누며 마지막 길을 준비한다"
+            }
+          ],
+          "body": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "party_cook",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " "
+            },
+            {
+              "ref": {
+                "catalog": "equipment",
+                "id": "story_knife",
+                "particle": "을/를"
+              }
+            },
+            {
+              "text": " 사용해 식량 짐을 나누고 이동 중 꺼낼 것을 정리한다. 일행은 주민의 도움을 다음 길의 준비로 바꾼다. 새 보상 수량을 임의로 더하지 않고 마련한 짐을 가지고 지상으로 돌아간다."
+            }
+          ],
+          "when": true,
+          "participants": [
+            {
+              "character_id": "party_cook",
+              "equipment_id": "story_knife"
+            }
+          ],
+          "effects": [
+            {
+              "state": "experience.shelter_preparation",
+              "op": "set",
+              "value": "food",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            }
+          ],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "shelter_prepare/equipment",
+          "label": [
+            {
+              "text": "장비와 짐의 고정을 확인하며 마지막 길을 준비한다"
+            }
+          ],
+          "body": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "party_woodcutter",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " "
+            },
+            {
+              "ref": {
+                "catalog": "equipment",
+                "id": "story_axe"
+              }
+            },
+            {
+              "text": "의 자루와 묶어 둔 짐을 살핀다. 일행은 새로운 위력을 얻는 대신 다음 요새를 지나기 위한 장비 상태를 확인한다. 피난처를 떠날 준비가 끝나자 받은 도움을 가지고 지상으로 돌아간다."
+            }
+          ],
+          "when": true,
+          "participants": [
+            {
+              "character_id": "party_woodcutter",
+              "equipment_id": "story_axe"
+            }
+          ],
+          "effects": [
+            {
+              "state": "experience.shelter_preparation",
+              "op": "set",
+              "value": "equipment",
+              "origin": "authored",
+              "metadata": {
+                "addition": true,
+                "kind": "new_setting",
+                "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+                "knowledge_policy": "author_reference_not_character_knowledge"
+              }
+            }
+          ],
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "source_section_refs": [
+        "12-shelter"
+      ],
+      "rejoin_before": "chapter12/p05",
+      "phase": "after_main_content",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  ],
+  "reactions": [
+    {
+      "id": "armory_weapon",
+      "unit_id": "chapter01/p06",
+      "when": {
+        "all": [
+          {
+            "state": "experience.armory",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "state": "equipment.protagonist",
+            "op": "eq",
+            "value": "weapon_1"
+          }
+        ]
+      },
+      "requires_units": [
+        "chapter01/p05"
+      ],
+      "text": [
+        {
+          "text": "성문을 나선 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "protagonist",
+            "particle": "은/는"
+          }
+        },
+        {
+          "text": " 무기고에서 받은 "
+        },
+        {
+          "ref": {
+            "catalog": "equipment",
+            "id": "weapon_1",
+            "particle": "을/를"
+          }
+        },
+        {
+          "text": " 확인한다. 출발 직전의 준비가 이제 동굴을 향하는 실제 짐과 무장으로 남아 있다."
+        }
+      ],
+      "participants": [
+        {
+          "character_id": "protagonist",
+          "equipment_id": "weapon_1"
+        }
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "skeleton_memory",
+      "unit_id": "chapter01/p06",
+      "when": {
+        "state": "experience.skeleton_conversation",
+        "op": "eq",
+        "value": true
+      },
+      "requires_units": [
+        "chapter01/p05"
+      ],
+      "text": [
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "skeleton",
+            "particle": "은/는"
+          }
+        },
+        {
+          "text": " 성문에서 나눈 이야기를 이어 가며 일행과 걷는다. 함께 가겠다는 짧은 제안보다 더 긴 만남을 나눈 기억이 이번 길에 남는다."
+        }
+      ],
+      "participants": [
+        {
+          "character_id": "skeleton",
+          "equipment_id": null
+        }
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "aid_cook_memory",
+      "unit_id": "chapter03/p06",
+      "when": {
+        "state": "experience.rigel_aid",
+        "op": "eq",
+        "value": "cook"
+      },
+      "requires_units": [
+        "chapter03/p04"
+      ],
+      "text": [
+        {
+          "text": "귀환하는 길에 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "party_cook",
+            "particle": "은/는"
+          }
+        },
+        {
+          "text": " 용사에게 나누어 준 식량을 떠올린다. 봉인을 찾았다는 보고에는 지하에 남은 사람을 도운 경험도 함께 이어진다."
+        }
+      ],
+      "participants": [
+        {
+          "character_id": "party_cook",
+          "equipment_id": "story_knife"
+        }
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "aid_magician_memory",
+      "unit_id": "chapter03/p06",
+      "when": {
+        "state": "experience.rigel_aid",
+        "op": "eq",
+        "value": "magician"
+      },
+      "requires_units": [
+        "chapter03/p04"
+      ],
+      "text": [
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "party_magician",
+            "particle": "은/는"
+          }
+        },
+        {
+          "text": " 부상자가 나아갈 발 디딜 곳을 함께 확인했던 일을 떠올린다. 탐사에서 얻은 결과는 봉인의 발견과 그 안에 남은 사람을 도운 경험으로 나뉘어 남는다."
+        }
+      ],
+      "participants": [
+        {
+          "character_id": "party_magician",
+          "equipment_id": "story_wand"
+        }
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "spica_present",
+      "unit_id": "chapter07/p04",
+      "when": {
+        "state": "party.optional",
+        "op": "eq",
+        "value": "spica"
+      },
+      "requires_units": [
+        "chapter07/p03"
+      ],
+      "text": [
+        {
+          "text": "함께 들어온 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "spica",
+            "particle": "은/는"
+          }
+        },
+        {
+          "text": " 방금 전해 준 경고를 일행과 다시 짚는다. 그녀가 실제로 동행한 이 경로에서는 가르침의 만남과 남은 동굴의 탐색을 함께 겪는다."
+        }
+      ],
+      "participants": [
+        {
+          "character_id": "spica",
+          "equipment_id": null
+        }
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "food_preparation",
+      "unit_id": "chapter13/p01",
+      "when": {
+        "state": "experience.shelter_preparation",
+        "op": "eq",
+        "value": "food"
+      },
+      "requires_units": [
+        "chapter12/p04"
+      ],
+      "text": [
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "party_cook",
+            "particle": "은/는"
+          }
+        },
+        {
+          "text": " 피난처에서 나누어 둔 식량 짐이 흐트러지지 않았는지 확인한다. 주민에게 받은 도움은 이제 다음 요새 앞에서 다시 챙기는 준비로 이어진다."
+        }
+      ],
+      "participants": [
+        {
+          "character_id": "party_cook",
+          "equipment_id": "story_knife"
+        }
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "equipment_preparation",
+      "unit_id": "chapter13/p01",
+      "when": {
+        "state": "experience.shelter_preparation",
+        "op": "eq",
+        "value": "equipment"
+      },
+      "requires_units": [
+        "chapter12/p04"
+      ],
+      "text": [
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "party_woodcutter",
+            "particle": "은/는"
+          }
+        },
+        {
+          "text": " 피난처에서 점검한 "
+        },
+        {
+          "ref": {
+            "catalog": "equipment",
+            "id": "story_axe"
+          }
+        },
+        {
+          "text": "의 자루와 짐의 묶음을 다시 확인한다. 떠나기 전의 준비가 이번 요새 입구에서 맡을 역할로 이어진다."
+        }
+      ],
+      "participants": [
+        {
+          "character_id": "party_woodcutter",
+          "equipment_id": "story_axe"
+        }
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락 기반 분기 실행과 상태 추적의 집필 규칙. 게임 규칙·원작 확정 사실·승인 본문이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  ],
+  "parallel_orders": [
+    {
+      "group_id": "chapter09/seals",
+      "decision_id": "seal_order",
+      "orders": {
+        "seal_order/evil_first": [
+          0,
+          1
+        ],
+        "seal_order/muddy_first": [
+          1,
+          0
+        ]
+      }
+    }
+  ],
+  "limits": {
+    "max_manual_choices": 32,
+    "max_paths": 256
+  },
+  "notes": [
+    "작가용 구조 실행이다. 88개 주요 내용 초안은 실제 원문 대사 전체와 장편 본문을 대신하지 않는다. 원문 연결 판본의 2,483개 문구는 보존한다.",
+    "기존 첫 장 선택소설은 계속 별도 실행된다. 이 분기 규격은 동일한 조건·효과 연산을 공유하지만 상태 인계와 원문 반영표를 검증하기 전 자동 연결하지 않는다.",
+    "모든 필수 소단락의 공통 내용을 읽고 선택한 경로의 body를 붙인 뒤 다음 본줄기로 합류한다. 실제 읽음의 증명이 아니라 구조상 표시·진행 보장이다.",
+    "선택이 하나만 가능한 상태에서는 자동 처리하며 독자의 결정으로 표시하지 않는다. 저장은 수동 선택 ID와 입력 지문만 받으며 상태·소지품·진도는 재생으로 복원한다.",
+    "영입 경험과 현재 동행은 별개다. 선택 동료는 한 자리이며 현재 동행+장비가 맞는 경우에만 역할 옵션과 후속 반응이 열린다.",
+    "열쇠·봉인·계급·필수 정보는 본줄기의 해당 사건만 기록한다. 분기 효과로 미래의 필수 결과나 진상을 미리 지급하지 않는다.",
+    "두 봉인 탐색은 JSON의 병렬 블록 순서만 바꾸며 두 결과를 모두 읽고 수행한다. 한쪽 완료로 다음 장을 열지 않는다.",
+    "효과는 한 선택 단위로 원자적으로 적용하고 자료형·사전 ID·장비 소유·동행 자리 불변식을 확인한다. 같은 소단락이나 보상을 재실행하지 않는다.",
+    "처음의 미지정 주인공 무장은 미상 상태다. 준비 분기에서 기본 장비를 받는 것은 창작 표시한 편집 선택이며 기존 게임/첫 장 원고의 초기 무장을 변경하지 않는다."
+  ]
+}

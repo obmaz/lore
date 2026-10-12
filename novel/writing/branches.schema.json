@@ -1,0 +1,582 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lore.local/novel/writing/branches.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "revision",
+    "status",
+    "visibility",
+    "subsection_plan",
+    "subsection_revision",
+    "workflow",
+    "origin",
+    "metadata",
+    "state_definitions",
+    "party_contract",
+    "unit_rules",
+    "decisions",
+    "reactions",
+    "parallel_orders",
+    "limits",
+    "notes"
+  ],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "const": "draft"
+    },
+    "visibility": {
+      "const": "author_only"
+    },
+    "subsection_plan": {
+      "const": "storyboard/chapter-subsections.json"
+    },
+    "subsection_revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution",
+        "prose",
+        "dialogue_coverage",
+        "public_reader"
+      ],
+      "properties": {
+        "execution": {
+          "const": "implemented"
+        },
+        "prose": {
+          "const": "outline"
+        },
+        "dialogue_coverage": {
+          "const": "partial"
+        },
+        "public_reader": {
+          "const": "unchanged"
+        }
+      }
+    },
+    "origin": {
+      "const": "authored"
+    },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    },
+    "state_definitions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "initial",
+          "authority",
+          "description",
+          "reference_catalog",
+          "values",
+          "holder",
+          "minimum",
+          "maximum",
+          "origin",
+          "metadata"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "boolean",
+              "integer",
+              "string",
+              "string_set"
+            ]
+          },
+          "initial": {},
+          "authority": {
+            "enum": [
+              "main",
+              "branch",
+              "initial"
+            ]
+          },
+          "description": {
+            "$ref": "#/$defs/text"
+          },
+          "reference_catalog": {
+            "enum": [
+              null,
+              "characters",
+              "equipment",
+              "terms",
+              "abilities",
+              "bestiary"
+            ]
+          },
+          "values": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "holder": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "minimum": {
+            "type": "integer"
+          },
+          "maximum": {
+            "type": "integer"
+          },
+          "origin": {
+            "const": "authored"
+          },
+          "metadata": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      }
+    },
+    "party_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "members_state",
+        "optional_state",
+        "inventory_state",
+        "core_members",
+        "optional_candidates",
+        "equipment_states"
+      ],
+      "properties": {
+        "members_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "optional_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inventory_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "core_members": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "optional_candidates": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "equipment_states": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "unit_rules": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "entry_when",
+          "effects",
+          "content_override",
+          "source_section_refs",
+          "origin",
+          "metadata"
+        ],
+        "properties": {
+          "title_override": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/text"}]},
+          "entry_when": {
+            "$ref": "../authoring/story.schema.json#/$defs/predicate"
+          },
+          "effects": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "state",
+                "op",
+                "value",
+                "origin",
+                "metadata"
+              ],
+              "properties": {
+                "state": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "op": {
+                  "enum": [
+                    "set",
+                    "add",
+                    "remove",
+                    "increment"
+                  ]
+                },
+                "value": {},
+                "origin": {
+                  "const": "authored"
+                },
+                "metadata": {
+                  "$ref": "#/$defs/metadata"
+                }
+              }
+            }
+          },
+          "content_override": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/$defs/text"
+              }
+            ]
+          },
+          "source_section_refs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "origin": {
+            "const": "authored"
+          },
+          "metadata": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "unit_id",
+          "prompt",
+          "options",
+          "source_section_refs",
+          "rejoin_before",
+          "phase",
+          "origin",
+          "metadata"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unit_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prompt": {
+            "$ref": "#/$defs/text"
+          },
+          "options": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "label",
+                "body",
+                "when",
+                "participants",
+                "effects",
+                "origin",
+                "metadata"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "label": {
+                  "$ref": "#/$defs/text"
+                },
+                "body": {
+                  "$ref": "#/$defs/text"
+                },
+                "when": {
+                  "$ref": "../authoring/story.schema.json#/$defs/predicate"
+                },
+                "participants": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "character_id",
+                      "equipment_id"
+                    ],
+                    "properties": {
+                      "character_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "equipment_id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "effects": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "state",
+                      "op",
+                      "value",
+                      "origin",
+                      "metadata"
+                    ],
+                    "properties": {
+                      "state": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "op": {
+                        "enum": [
+                          "set",
+                          "add",
+                          "remove",
+                          "increment"
+                        ]
+                      },
+                      "value": {},
+                      "origin": {
+                        "const": "authored"
+                      },
+                      "metadata": {
+                        "$ref": "#/$defs/metadata"
+                      }
+                    }
+                  }
+                },
+                "origin": {
+                  "const": "authored"
+                },
+                "metadata": {
+                  "$ref": "#/$defs/metadata"
+                }
+              }
+            }
+          },
+          "source_section_refs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "rejoin_before": {
+            "type": "string",
+            "minLength": 1
+          },
+          "phase": {
+            "const": "after_main_content"
+          },
+          "origin": {
+            "const": "authored"
+          },
+          "metadata": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      }
+    },
+    "reactions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "unit_id",
+          "when",
+          "requires_units",
+          "text",
+          "participants",
+          "origin",
+          "metadata"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unit_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "when": {
+            "$ref": "../authoring/story.schema.json#/$defs/predicate"
+          },
+          "requires_units": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "text": {
+            "$ref": "#/$defs/text"
+          },
+          "participants": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "character_id",
+                "equipment_id"
+              ],
+              "properties": {
+                "character_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "equipment_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "origin": {
+            "const": "authored"
+          },
+          "metadata": {
+            "$ref": "#/$defs/metadata"
+          }
+        }
+      }
+    },
+    "parallel_orders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "group_id",
+          "decision_id",
+          "orders"
+        ],
+        "properties": {
+          "group_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decision_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "orders": {
+            "type": "object",
+            "minProperties": 2,
+            "additionalProperties": {
+              "type": "array",
+              "minItems": 2,
+              "uniqueItems": true,
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_manual_choices",
+        "max_paths"
+      ],
+      "properties": {
+        "max_manual_choices": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 128
+        },
+        "max_paths": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$defs": {
+    "text": {
+      "$ref": "../authoring/story.schema.json#/$defs/richText"
+    },
+    "metadata": {
+      "$ref": "../reference/metadata.schema.json#/$defs/metadata"
+    }
+  }
+}

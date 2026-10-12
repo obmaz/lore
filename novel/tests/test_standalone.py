@@ -72,6 +72,14 @@ class IndependentNovelTest(unittest.TestCase):
         self.assertIn('refusing overwrite',result.stderr)
         self.assertEqual(before,(self.standalone/'writing/quests/lastditch_pyramid.json').read_bytes())
 
+    def test_subsection_branches_execute_without_original_or_remake(self):
+        report = json.loads(self.run_tool('branch_system', 'validate'))
+        self.assertEqual((report['main_units'], report['complete_paths']), (88, 96))
+        packet = json.loads(self.run_tool('branch_system', 'replay', '--summary', '--route',
+                                          'prepare/self', 'company/leave', 'aid/together'))
+        self.assertEqual(packet['decision_id'], 'spica_company')
+        self.assertNotIn('skeleton', packet['state']['party.members'])
+
     def test_all_original_text_is_reconstructable_from_snapshot(self):
         catalog, manifest = load_materials()
         self.assertEqual(manifest["counts"], {"source_files": 14, "literal_occurrences": 2483})

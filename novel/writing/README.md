@@ -8,10 +8,17 @@
 
 ## 바로 읽기
 
+- [소단락 분기 시스템](previews/branch-system.html): 실행 가능한 JSON의 조건·선택 뒤 내용·
+  상태 변화·후속 반응·필수 합류. [정의 JSON](branches/series.json),
+  [실행 검사 결과](previews/branch-system-report.json), [공용 결정 양식](templates/branch-decision.template.json).
+  현재 6개 결정·14개 선택지·96개 완주 경로를 구현했다. 주요 내용은 초안이며
+  원문 대사 전체의 새 런타임 반영이나 독자 웹 적용이 끝난 것은 아니다.
+
 - [15장 소단락 주요 내용](previews/chapter-subsections.html): **88개 이야기 단위**의
   시작 상황·주요 사건·필수 결과와 다음 연결. 분기 여지는 29곳만 후보로 표시했다.
   [집필 JSON](storyboard/chapter-subsections.json), [공용 양식](templates/chapter-subsections.template.json).
-  실제 선택지·실행 경로·상세 본문은 아직 아니며, 기존 첫 챕터 읽기 화면은 유지한다.
+  이 파일은 원본 구성이며 실제 분기 정의는 별도 시스템에 있다. 상세 본문은 미완성이며
+  기존 첫 챕터 읽기 화면은 유지한다.
 
 - [원작 전체 스크립트 · 15장 연결 초고](previews/source-connected.html): 원작을 우선해
   장면 앞뒤의 산문과 모든 원문을 연결한 작가용 판본. 장별 목차로 이동할 수 있다.
@@ -70,6 +77,9 @@ writing/
 ├── storyboard/chapter-subsections.json  88개 소단락·주요 이야기·분기 여지
 ├── chapter-subsections.schema.json  소단락의 필수 결과·인계·분기 보류 형식
 ├── templates/chapter-subsections.template.json  공용 소단락 양식
+├── branches/series.json            실제 조건·선택·상태 변화·후속 반응·병렬 순서
+├── branches.schema.json            공용 분기 실행 형식
+├── templates/branch-decision.template.json  공용 결정 예시
 ├── storyboard/source-connected.plan.json  원작 우선 장면 배열·전후 연결 산문
 ├── source-connected.schema.json    원작 연결 입력의 형식
 ├── source-connected/               원문 포함 연결 JSON·반영표·생성 무결성 기록

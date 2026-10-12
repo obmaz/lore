@@ -127,7 +127,7 @@ def subsection_document(plan=None, chapters=None, profiles=None, references=None
     data, raw = indexes(profiles, references), literals()
     display = lambda value: html.escape(render(value, data, raw, profiles, author=True))
     central = {c['id']: c for c in chapters['chapters']}
-    body = '<p class="notice">작가 전용 · 전편 스포일러 · 소단락 주요 내용 초안. 실제 선택지·분기 실행·상세 본문은 아직 없습니다.</p>'
+    body = '<p class="notice">작가 전용 · 전편 스포일러 · 소단락 주요 내용 초안. 이 문서는 원본 구성이며 일부 분기의 실행 정의는 <a href="branch-system.html">별도 JSON 분기 시스템</a>에 있습니다. 상세 본문은 아직 미완성입니다.</p>'
     body += f'<p>{report["chapters"]}장 · {report["subsections"]}소단락 · 분기 후보 {report["branch_candidates"]}곳. 필수 메인 결과를 유지하고 다음 소단락 전에 합류합니다.</p>'
     body += '<nav><ul>'+''.join('<li><a href="#'+html.escape(c['chapter_id'])+'">제'+str(central[c['chapter_id']]['number'])+'장 · '+display(central[c['chapter_id']]['title'])+'</a></li>' for c in plan['chapters'])+'</ul></nav>'
     for chapter in plan['chapters']:

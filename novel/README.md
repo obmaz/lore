@@ -39,6 +39,12 @@ novel/
 
 ## 먼저 읽을 자료
 
+- [소단락 분기 정의 JSON](writing/branches/series.json): 88개 소단락의 공통 실행과
+  실제 6개 결정·14개 선택지. 조건·동행/장비·변화·선택 뒤 내용·후속 반응·합류를 구조화했다.
+  [작가용 구조 읽기본](writing/previews/branch-system.html),
+  [96개 완주 경로 검사](writing/previews/branch-system-report.json).
+  본문은 주요 내용 초안이고 남은 후보 25곳은 미구현이다. 독자 웹의 기존 첫 챕터는 유지한다.
+
 - [원작 전체 스크립트 연결 판본](writing/previews/source-connected.html): 15장 본줄기,
   선택 성전·공통 시설에 원문과 새 연결 산문을 함께 넣은 **작가용 원작 우선 초고**.
   [실제 원문이 들어 있는 JSON](writing/source-connected/manuscript.json),
