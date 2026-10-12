@@ -1,78 +1,32 @@
 # LORE
 
-1993년 DOS RPG **또 다른 지식의 성전**을 바탕으로 한 세 개의 독립 프로젝트입니다.
-모든 작업은 `main` 브랜치에서 폴더별로 관리합니다.
+서로 독립된 세 프로젝트를 `main` 브랜치에서 관리합니다.
 
-별도 언급이 없는 게임 개선은 `remake/`에만 적용합니다. `original/`은
-원작 그래픽을 고정 사용하며 앱 설정·그래픽 스킨 전환을 제공하지 않습니다.
+| 프로젝트 | 목적 | 시작 문서 |
+| --- | --- | --- |
+| `original/` | 원작 동작과 그래픽을 재현하는 Flutter 이식판 | [README](original/README.md) |
+| `remake/` | 모바일 화면·조작·전투·대화를 현대화하는 Flutter 게임 | [README](remake/README.md) |
+| `novel/` | 자체 원문 스냅샷을 사용하는 소설 집필 패키지 | [README](novel/README.md) |
 
-## 프로젝트 구조
+## 독립성 원칙
 
-| 프로젝트 | 용도 | 실행 환경 | 안내 |
-| --- | --- | --- | --- |
-| `original/` | 원작 동작을 재현하는 이식판 | Flutter / Dart | [원본 README](original/README.md) |
-| `remake/` | 모바일 UI·그래픽·전투·대화의 현대화판 | Flutter / Dart | [리메이크 README](remake/README.md) |
-| `novel/` | 원문 스냅샷에 기반한 집필·참조 자료와 선택형 소설 | Python / HTML·JavaScript | [소설 README](novel/README.md) |
+각 프로젝트는 자신의 코드·자산·자료·도구·의존성만 사용합니다. 다른 프로젝트의
+파일을 읽거나 가져오는 실행 경로, 공용 모듈, 자동 수입·동기화를 만들지 않습니다.
+각 폴더만 복사한 환경에서도 해당 README에 따라 필요한 SDK·패키지를 설치해 사용합니다.
+비슷한 자료가 있어도 각 프로젝트의 보유 자료이며 함께 갱신할 대상으로 취급하지 않습니다.
 
-세 폴더는 서로의 코드·자산·자료를 읽거나 실행하지 않습니다. 필요한 자료와
-검증 도구는 각 프로젝트 내부에 있으며, 폴더 하나만 복사해서 사용할 수 있습니다.
-프로젝트 사이의 자동 동기화나 공용 런타임은 없습니다. 외부 SDK와 패키지는
-각 프로젝트의 의존성 파일에 따라 설치합니다.
+작업 전 해당 프로젝트의 `AGENTS.md`를 읽습니다. 별도 지정이 없는 게임 변경은
+`remake/`에만 적용합니다. 실행·검증·자료 재생성은 각 프로젝트 내부에서 수행합니다.
 
-## 실행과 작업 위치
+## 웹 게시 경로
 
-게임은 선택한 프로젝트 폴더에서 실행합니다. 아래 명령의 `remake`를
-`original`로 바꾸면 원본 이식판을 실행할 수 있습니다.
+| 프로젝트 | 주소 |
+| --- | --- |
+| 원본 이식판 | [original](https://obmaz.github.io/lore/original/) |
+| 모바일 리메이크 | [remake](https://obmaz.github.io/lore/remake/) |
+| 선택형 소설 | [novel](https://obmaz.github.io/lore/novel/) |
 
-```bash
-cd remake
-flutter pub get
-flutter run -d chrome
-```
-
-리메이크는 모바일 터치 조작을 기준으로 하며, 게임 영역의 세로:가로 비율을
-4:3부터 19.5:9까지 유지하면서 기기 화면에 맞춥니다.
-소설 자료는 `novel/` 안에서 Python으로 검증하며 Flutter가 필요하지 않습니다.
-선택형 소설은 아래 웹 주소에서 다운로드 없이 브라우저로 읽고 선택할 수 있습니다.
-각 프로젝트의 상세 실행·검증 명령은 해당 README를 참고하세요.
-
-## 웹 주소와 배포
-
-- 원본: https://obmaz.github.io/lore/original/
-- 리메이크: https://obmaz.github.io/lore/remake/
-- 선택형 소설: https://obmaz.github.io/lore/novel/
-
-게임을 수정한 뒤 해당 프로젝트 안에서 웹 빌드를 갱신합니다.
-
-```bash
-cd remake
-python3 tool/build_web_release.py
-```
-
-빌드 도구는 WASM과 JavaScript 대체 버전을 만들고 무결성을 검사한 뒤
-프로젝트 내부 `docs/`에 복사합니다. 원본은 `original/`에서 같은 명령을 사용합니다.
-SDK 경로가 필요한 경우 `--flutter /경로/flutter/bin/flutter`을 지정합니다.
-
-변경된 소스와 `docs/` 결과물을 `main`에 커밋·푸시하면
-[Pages 워크플로](.github/workflows/deploy-pages.yml)가 게임 결과물을 `/original/`,
-`/remake/`에, 독립된 소설 읽기본을 `/novel/`에 배치합니다. 워크플로는 커밋된
-결과물을 게시하며 Flutter 빌드나 소설 재생성을 실행하지 않습니다.
-
-소설 원고를 수정했다면 `novel/`에서 다음을 실행한 뒤 원고·읽기본을 함께 푸시합니다.
-
-```bash
-python3 tools/writing.py validate
-python3 tools/writing.py export
-python3 tools/writing.py export --check
-```
-
-`novel/writing/previews/chapter01-interactive.html`만 `/novel/index.html`로 게시합니다.
-오래되거나 수동 수정된 읽기본은 입력·출력 해시 검사에서 배포를 중단합니다.
-작가용 인물/관계 마스터·전편 설정·원문 JSON·PDF는 웹 배포 자료에 포함하지 않습니다.
-GitHub Settings → Pages의 Source는 `GitHub Actions`입니다.
-
-## 원본 출처
-
-[smgal/LoreTrilogy_1993](https://github.com/smgal/LoreTrilogy_1993)의
-Pascal 소스와 DOS 실행 자료를 기준으로 작업합니다. 각 프로젝트의 검증 범위와
-알려진 차이는 내부 문서에 기록합니다.
+[Pages 워크플로](.github/workflows/deploy-pages.yml)는 커밋된 결과물을 각각의 URL에
+게시하는 저장소 운영 설정입니다. 프로젝트의 빌드·자료 재생성을 수행하지 않습니다.
+게임은 각자의 `docs/` 빌드를, 소설은 자체 해시 검사를 통과한
+`writing/previews/chapter01-interactive.html`만 게시합니다. 갱신 방법은 각 README에 있습니다.

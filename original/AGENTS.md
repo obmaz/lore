@@ -1,14 +1,11 @@
 # LORE port direction
 
-- At the start of a fresh GPT/Codex work environment, run
-  `bash tool/setup_cloud.sh` to set the default Git author name to `obmaz` and
-  email to `zambobmaz@gmail.com`. Preserve unrelated environment settings.
-- Follow the sole plan, `docs/porting/direct_port_strategy.md`. The active goal
-  is a source-faithful LORE port with modern map rendering, UI, input and audio.
-  New game rules are direct Dart ports of the original Pascal procedures.
-- The user’s final goal is faithful parity first, gameplay modernization second.
-  Keep current presentation/input adapters; defer gameplay/numeric-range changes
-  to a separately reviewed modernization stage after parity verification.
+- This project is self-contained. Do not read, import, synchronize or depend
+  on files in another project. Work on main and preserve unrelated user changes.
+- Development boundaries and completion gates: `docs/porting/direct_port_strategy.md`.
+- Validation commands: `docs/README.md`.
+- Preserve source-faithful game behavior and fixed original graphics.
+  Gameplay and numeric-range modernization require separate review.
 - Keep Pascal control flow, early exits, expression types, array bounds/indices,
   byte values, random-call order and map mutation order. Port complete procedures
   or closed source branches, including choice/battle continuations.

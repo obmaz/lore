@@ -93,41 +93,19 @@
 `prophecy_testimony`로 보존했다. 이 전편 정보가 카드에 있다고 도입부터 주인공이
 알고 있는 설정으로 쓰지 않는다.
 
-## 스포일러 공개와 복선
+## 필터된 카드 사용
 
-이 문서와 원본 JSON은 작가 전용이다. **원본 카드를 집필 프롬프트나 독자 화면에
-그대로 전달하지 않는다.** 상세 작업 규칙은 [AGENTS.md](AGENTS.md)에 있다.
+작가 전용 마스터를 집필 프롬프트나 독자 화면에 그대로 전달하지 않습니다.
+공개 체크포인트·중립 이름·허용 복선·필드 공개와 누출 검사 기준은 [AGENTS.md](AGENTS.md)에만 둡니다.
+관계 수정은 [relationships.analysis.json](relationships.analysis.json)에서 근거와 공개 정책을 함께 편집합니다.
 
-관계에는 `id`, `target`, `relation_type`, `truth_type`, `claimant`, `branch_condition`과
-`disclosure`가 있다. 직접 사건·증언·문서 설명·추론·창작을 구분하며, 증언의
-`confirmed`는 그렇게 말한 사실을 확인했다는 뜻이지 세계의 진상을 확정한 것이 아니다.
-조건부 영입·이탈·공격은 고정 관계에서 현재 상태로 자동 반영하지 않는다.
+명령은 `novel/`에서 실행합니다.
 
-`disclosure.spoiler`는 `minor/major`, `after_events`는 공개 체크포인트 목록이다.
-체크포인트 ID와 시점은 편집자가 추가한 정책이며 원작의 게임 이벤트 ID가 아니다.
-퀘스트/장 번호가 커졌다는 이유로 자동 공개하지 않고 경로 사건의 `reveals`를 사용한다.
-다른 분기로 건너뛴 사건은 공개하지 않는다. 한 퀘스트 안에서도 전투 전 소개와
-정체 공개, 최종 결전 소개와 결말은 다른 체크포인트다.
-
-`foreshadowing`에는 허용 시점과 검토된 복선 claim만 둔다. 공개 전에는 진상,
-관계 대상/유형/ID, 공개 예정 시점을 출력하지 않고 허용된 복선만 전달한다.
-복선은 새 집필 해석이므로 추가 메타데이터와 `proposed` 상태를 유지한다.
-
-```bash
-python3 tools/characters.py --view writer --character lord_ahn --events castle_arrival
-python3 tools/story_continuity.py --route enter_courtyard visit_lord
+```sh
+python -X utf8 tools/characters.py --view writer --character lord_ahn --events castle_arrival
+python -X utf8 tools/story_continuity.py --route enter_courtyard visit_lord
 ```
 
-첫 명령의 이벤트 목록은 작가가 지정한 미리보기 조건이다. 독자 공개를 인증하는
-기능이 아니다. 둘째 명령은 실제 선택 경로에서 발생한 사건의 공개만 계산한다.
-`characters.py --view writer`는 대상 인물 지정이 필수여서 미래 명단을 일괄 출력하지 않는다.
-정체를 암시하는 내부 ID/제목은 공개용 핸들/이름으로 가린다.
-
-필터된 카드의 `source_facts`는 `disclosure.fact_after`에 지정된 필드만 공개한다.
-미지정/새 필드는 계속 숨기며, 생애·성향·장비 묶음은 `after_events` 뒤에 열린다.
-비어 있는 공개 목록은 기본 비공개다. 공개 전 빠진 필드는 원작 미상이 아니라
-아직 공개되지 않은 정보일 수 있다. 원문 발췌·별칭·작가 비고는 항상 제외한다.
-상세 원문은 해당 장면의 원고/원문 대응으로 읽고 전편 발췌를 몰아서 프롬프트에 넣지 않는다.
-
-이것은 데이터 투영/집필 검증이지 원본 파일의 접근 제어나 산문 의미 검증이 아니다.
-원본 JSON을 직접 공유하면 진상도 공개된다. 복선의 강도와 최종 산문은 별도 검토한다.
+첫 명령의 이벤트는 작가 지정 미리보기이며 독자 공개를 인증하지 않습니다.
+두 번째 명령은 실제 선택 경로의 공개·지식을 계산합니다. 공개 정보와 인물의 지식·현재 동행은 별개입니다.
+필터는 접근 제어가 아니므로 원본 파일을 공유하면 전편 정보도 공유됩니다.

@@ -5,7 +5,7 @@
 생성한 감사 문서와 JSON 장부는 `docs/audits/`, 원본 재생 fixture는
 `test/fixtures/`에 저장한다. 검증 로그는 `build/logs/`에 둔다.
 
-저장소 루트에서 Python 도구 테스트 전체를 실행한다. `tool`을 발견 시작점으로
+이 프로젝트 루트에서 Python 도구 테스트 전체를 실행한다. `tool`을 발견 시작점으로
 사용하면 실행 도구를 가져오는 기존 import와 하위 테스트 발견이 함께 동작한다.
 
 ```sh

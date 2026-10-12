@@ -1,153 +1,91 @@
-# LORE 인터랙티브 소설 집필 자료
+# LORE 소설 집필 패키지
 
-이 폴더만 복사해서 사용할 수 있는 집필 패키지다. 대사·선택지·분기·진행 자료와
-검증 도구를 모두 포함한다. Python과 `requirements.txt`의 패키지만 필요하다.
-원래 게임 저장소, Pascal 파일, Flutter 소스, 게임 자산을 읽지 않는다.
+원문 스냅샷·인물/설정 사전·집필 원고·분기/연속성 검증 도구를 포함합니다.
+이 폴더만 복사해 Python과 `requirements.txt`의 패키지로 사용할 수 있습니다.
+다른 프로젝트의 코드·자산·자료를 읽거나 가져오는 경로와 자동 동기화를 만들지 않습니다.
+작업은 `main`에서 관리하며 모든 명령과 상대 경로는 `novel/` 기준입니다.
 
-작업 위치는 저장소 루트의 `novel/`이며 `main` 브랜치에서 관리한다.
-이 문서의 명령과 상대 경로는 모두 이 폴더를 기준으로 한다. 다른 루트
-프로젝트와 자동 수입·동기화 관계가 없다. 같은 GitHub Pages의 `/novel/` 경로에는
-독립된 독자용 읽기 HTML만 게시하며 게임 소스나 빌드에 의존하지 않는다.
+## 읽기
 
-## 웹에서 바로 읽기
+독자용 첫 챕터: [웹에서 선택하며 읽기](https://obmaz.github.io/lore/novel/)
+또는 [오프라인 HTML](writing/previews/chapter01-interactive.html)을 내려받아 브라우저로 엽니다.
+경로는 다운로드 파일로 저장/불러오며 계정·서버 저장 기능은 없습니다.
 
-https://obmaz.github.io/lore/novel/
+작가용 큰 구성·원작 연결 초고·소단락·분기·기본 경로와 소편 읽기본은
+[집필 안내](writing/README.md#바로-읽기)에 모았습니다. 전편 구성과 인물 마스터는
+스포일러를 포함합니다. 독자용 정보에는 경로별 공개 필터를 사용합니다.
 
-다운로드 없이 브라우저에서 첫 챕터를 읽고 선택할 수 있다. 뒤로 가기·처음부터·
-경로 저장/불러오기는 오프라인 읽기본과 같다. 인쇄/PDF 저장 버튼은 제공하지 않는다. 저장은 사용자가
-파일로 다운로드할 때만 이루어지며 계정이나 서버 저장 기능은 없다.
+## 자료 위치
 
-루트 Pages 워크플로는 `writing/previews/chapter01-interactive.html`의 입력·출력
-해시를 검사한 뒤 `/novel/index.html`로 복사한다. 원고를 수정한 경우 읽기본을
-재생성하고 함께 `main`에 푸시한다. 배포 자체에는 Python 표준 라이브러리만 사용하며
-Flutter 빌드나 소설 재생성을 실행하지 않는다. 인물 마스터·작가용 설정·원문 JSON·
-작가용 HTML/PDF는 배포하지 않는다. 첫 챕터의 미선택 분기는 HTML 소스에 포함되므로
-이를 비밀 보안 저장소로 보지는 않는다.
+| 위치 | 역할 | 안내 |
+| --- | --- | --- |
+| `materials/` | 대사·조건·선택·진행·적 레코드의 고정 원문 JSON | [manifest](materials/manifest.json) |
+| `characters/` | 작가 전용 인물 카드·관계와 공개 정책 | [인물 안내](characters/README.md) |
+| `reference/` | 이름·장비·마법·적·용어와 분석 입력 | [참조 사전](reference/README.md) |
+| `authoring/` | 공용 원고 스키마·보존한 구조 예시 | [원고 형식](authoring/README.md) |
+| `writing/` | 큰 구성·소단락·분기·장면·본문·생성 읽기본 | [집필 안내](writing/README.md) |
+| `continuity/` | 공통 사실·인물별 지식·장면 계약·승인 | [연속성 안내](continuity/README.md) |
+| `exports/` | 작가용/필터된 참고 HTML·PDF 스냅샷 | [내보내기](exports/README.md) |
+| `tools/`, `tests/` | 독립 조회·생성·검증 도구와 테스트 | [작업 지침](AGENTS.md) |
 
-```text
-novel/
-├── materials/        원문·선택지·조건·진행 자료의 고정 JSON 스냅샷
-├── characters/       인물별 이름·원작 정보·성향·말투·관계
-├── reference/        무기·방어구·마법·적 사전과 수동 분석 입력
-├── authoring/        공용 집필 스키마와 보존한 구조 예시
-├── writing/          새 스토리보드·공용 템플릿·퀘스트 본문·읽기본
-├── continuity/      공유 설정과 연속성 스키마
-├── exports/         조회용 오프라인 HTML·작가용 PDF 스냅샷
-├── tools/           원문·인물·집필·경로 검증 도구
-└── tests/           독립 실행과 분기·연속성 검사
+`LORETALK.PAS` 같은 이름·줄 번호는 내부 JSON의 원문 출처 표식입니다.
+해당 외부 파일을 열거나 코드를 실행하지 않습니다. 고정 스냅샷의 반복·빈 문자열·
+기술 문자열도 보존하며, 모두 대사이거나 한 경로에서 경험한 사건이라는 뜻은 아닙니다.
+
+## 설치와 검증
+
+```sh
+python -m pip install -r requirements.txt
+python -X utf8 tools/materials.py
+python -X utf8 tools/characters.py
+python -X utf8 tools/reference.py
+python -X utf8 tools/validate_story_authoring.py
+python -X utf8 tools/writing.py validate
+python -X utf8 tools/branch_system.py validate
+python -X utf8 tools/source_story.py validate
+python -X utf8 tools/source_story.py export --check
+python -X utf8 tools/writing.py export --check
+python -X utf8 tools/export_reference.py --check
 ```
 
-## 먼저 읽을 자료
+전체 테스트는 모듈 경로를 설정해 실행합니다.
 
-- [소단락 분기 정의 JSON](writing/branches/series.json): 88개 소단락의 공통 실행과
-  실제 6개 결정·14개 선택지. 조건·동행/장비·변화·선택 뒤 내용·후속 반응·합류를 구조화했다.
-  [작가용 구조 읽기본](writing/previews/branch-system.html),
-  [96개 완주 경로 검사](writing/previews/branch-system-report.json).
-  본문은 주요 내용 초안이고 남은 후보 25곳은 미구현이다. 독자 웹의 기존 첫 챕터는 유지한다.
-
-- [원작 전체 스크립트 연결 판본](writing/previews/source-connected.html): 15장 본줄기,
-  선택 성전·공통 시설에 원문과 새 연결 산문을 함께 넣은 **작가용 원작 우선 초고**.
-  [실제 원문이 들어 있는 JSON](writing/source-connected/manuscript.json),
-  [누락 검사 결과](writing/source-connected/coverage.json),
-  [편집 배열·연결 산문 입력](writing/storyboard/source-connected.plan.json).
-  14개 보존 파일의 문구 발생 2,483개·출력 사건 1,674개·스크립트 장면 307개를 대조한다.
-  반복·빈 문구·배타 응답·무작위 시험·메타 서사도 남긴다. 기술 문자열과 공통 UI는
-  부록으로 구분하며, 모두 한 번의 플레이에서 경험한 단일 정사라고 주장하지 않는다.
-
-- [15장 큰 이야기 초고](writing/storyboard/chapter-stories.json): 시작·갈등·전환·마무리와
-  사건 결과·배움·열쇠·다음 행동의 이유를 연결한 작가용 메인 줄거리.
-  [읽기본](writing/previews/chapter-stories.html), [공용 양식](writing/templates/chapter-stories.template.json).
-  현재는 선택·장식 없이 논리적 인과를 쓰는 단계다. 원문 근거는 장별 `source_section_refs`로
-  연결하고, 예언서의 조건과 마지막 도움 뒤 실제 계급 변화를 이어 썼다. 새 연결은 창작 표시이며,
-  전편 스포일러가 있어 독자용 웹에 게시하지 않는다. 기존 첫 챕터는 그대로 유지한다.
-
-- [15장 소단락 주요 내용](writing/storyboard/chapter-subsections.json): 88개 소단락의
-  시작·주요 이야기·필수 결과와 후속 연결. [읽기본](writing/previews/chapter-subsections.html),
-  [공용 양식](writing/templates/chapter-subsections.template.json).
-  의미 있는 분기 여지는 29곳에만 후보로 표시했고 실제 선택지는 아직 없다.
-  원문과 필수 메인 사건을 참조하며, 두 봉인은 서로 독립이지만 모두 완료해야 한다.
-  작가 전용 전편 구성으로 독자 웹의 기존 첫 챕터를 교체하지 않는다.
-
-- [전편 15장 큰 구성](writing/storyboard/chapters.json): 미리 정한 챕터 제목·필수 메인 사건·
-  원문 묶음·장면 참조. [작가용 읽기본](writing/previews/chapters.html)은 전편 스포일러를 포함한다.
-  기존 18개 자료 묶음은 보존하며 도입/첫 의뢰와 두 병렬 봉인을 각각 한 장으로 묶고,
-  선택 성전 이야기는 별도로 관리한다. 2~15장은 큰 줄거리가 있는 초안이며 상세 본문은 아직 없다.
-
-- [첫 챕터 선택하며 읽기](writing/previews/chapter01-interactive.html): 네 시작 동료·직업 무기,
-  선택 탐방·영입 접근법·직업별 후속 장면을 적용한 새 판본.
-  [웹에서 바로 읽거나](https://obmaz.github.io/lore/novel/) 다운로드 후 브라우저로 연다.
-  [분기 안내](writing/interactive/README.md), [작가용 분기 읽기본](writing/previews/chapter01-branches.html),
-  [원문 반영표](writing/previews/chapter01-coverage.json).
-- [첫 퀘스트 이어 읽기](writing/previews/first-journey.html): 도입부부터 1-1~1-6까지 이어지는 기본 경로 초고.
-  여섯 소편은 모두 긴 본문이며, 각 소편을 따로 집필·검증·푸시했다.
-  [동행 거절 경로](writing/previews/first-journey-declined.html)와
-  [소편별 읽기 목록](writing/README.md#바로-읽기), [여섯 소편의 작업 목록](writing/episodes/lore_menace.json).
-- [writing/README.md](writing/README.md): 전편 보드·도입부 시범 원고·공용 템플릿과 이름 참조.
-- [exports/README.md](exports/README.md): JSON 대신 참고용 HTML/PDF로 읽는 방법. 작가용 전체 설정과 공개 범위 미리보기를 분리한다.
-- [materials/quests.json](materials/quests.json): 18개 집필 단위와 공통 부록의 목록·연결.
-- [materials/quests/lore_menace.json](materials/quests/lore_menace.json): 첫 의뢰의 실제 원문·조건.
-- [characters/registry.json](characters/registry.json): 인물 카드 53개(원작 참조 49 + 새 시작 동료 4)와 관계 48개 링크의 작가 전용 마스터.
-- [characters/README.md](characters/README.md): 인물 이름·성향·관계를 작성하는 방법.
-- [characters/relationships.analysis.json](characters/relationships.analysis.json): 관계 원문 근거·공개 시점·허용 복선의 편집 입력.
-- [reference/README.md](reference/README.md): 장비 24종(원작 20 + 집필용 무기 4)·마법 45종·적 템플릿 75종과 창작 표시 규칙.
-- [AGENTS.md](AGENTS.md): 원작에 없는 설정의 추가 메타데이터를 강제하는 작업 지침.
-- [authoring/README.md](authoring/README.md): 선택·본문·조건·원문 대응 규칙.
-- [continuity/README.md](continuity/README.md): 이전 장면과의 일관성·설정 변경 추적.
-
-원문 묶음은 14개 파일의 문자열 발생 2,483개를 보존한다. 같은 대사의 반복과
-빈 문자열·UI·코드용 문자열도 포함하며 모두 등장인물의 대사라는 뜻은 아니다.
-`materials/scripts.json`에는 원문 텍스트, 출력 문구, 변수 자리, 분기 구조와 안정된
-발생 ID가 있다. 퀘스트 자료에는 실제 대사와 사건 근거가 함께 들어 있다.
-
-`LORETALK.PAS` 같은 이름과 줄 번호는 JSON 안에 보관된 원문을 가리키는 출처 표식이다.
-그 이름의 외부 파일을 열지 않는다. 원문 코드도 JSON 안의 보존 자료이고 실행하지 않는다.
-기존 `authoring/drafts/`의 프롤로그는 구조 예시다. 새 `writing/`에는 전편 보드와
-첫 의뢰 직전까지의 시범 본문이 있고, 보류 대사·접근 조건과 새 창작을 표시한다.
-이어서 첫 탐사·귀환 보고·다음 지역 의뢰와 작별까지의 1장 기본 경로 초고를 작성했다.
-기존 기본 판본에서는 무기고·수감소·선택 발견을 보류했다. 새 첫 챕터 선택형 판본은
-그 대사와 경로를 별도 오버레이로 반영한다. 공유 상점·훈련·회복·무작위 전투 UI 및
-후속 퀘스트 전체를 완성했다는 뜻은 아니다. 도입부 선택과 첫 출구의 동행
-수락/거절을 조합한 네 가지 읽기본은 `writing/README.md`에서 볼 수 있다.
-
-## 독립 실행
-
-복사한 `novel/` 폴더에서 다음을 실행한다. 게임 빌드는 필요 없다.
-
-```bash
-python3 -m pip install -r requirements.txt
-python3 tools/materials.py
-python3 tools/characters.py
-python3 tools/reference.py
-python3 tools/validate_story_authoring.py
-python3 tools/writing.py validate
-python3 tools/source_story.py validate
-python3 tools/source_story.py export --check
-python3 tools/writing.py export --check
-python3 tools/story_continuity.py --route enter_courtyard visit_prison accept_joe visit_lord
-python3 tools/export_reference.py --check
-PYTHONPATH=tools python3 -m unittest discover -s tests
+```powershell
+# Windows PowerShell
+$env:PYTHONPATH = 'tools'
+$env:PYTHONUTF8 = '1'
+python -X utf8 -m unittest discover -s tests
 ```
 
-경로 자료에는 그 장면에 실제 등장하는 **공개 필터된** 인물 카드와 관련 장비·마법·적 참조도 포함한다. Joe를 영입하지 않은
-성주 접견에서는 Joe 카드가 등장 인물로 전달되지 않는다. 인물의 `writing` 제안은
-승인 상태를 유지하여 원작의 확정 설정과 섞이지 않도록 한다.
-원본 인물 JSON을 집필 프롬프트에 통째로 넣지 않는다. 관계/정체의 공개 전에는
-진상을 숨기고 허용된 복선만 전달한다. 공개 사건과 지식 습득, 현재 영입 상태도 구분한다.
+```sh
+# POSIX shell
+PYTHONUTF8=1 PYTHONPATH=tools python3 -m unittest discover -s tests
+```
 
-## 원문 자료와 원고의 수정
+검증은 구조·근거·원문 보존·경로 계약을 검사하며 산문의 의미·문체를 자동 승인하지 않습니다.
+`PYTHONUTF8=1`은 테스트가 실행하는 하위 Python 프로세스에도 UTF-8을 적용합니다.
+상위 명령의 `-X utf8`만 사용하면 하위 프로세스는 Windows 기본 인코딩을 사용할 수 있습니다.
 
-`materials/manifest.json`은 모든 원문 자료 파일의 SHA-256과 발생 개수를 기록한다.
-검증은 먼저 스냅샷 무결성을 확인한다. 집필 원고는 편집하되 인물·장비·마법 사전은
-`reference/analysis.json`을 수정하고 `python3 tools/build_reference.py`로 재생성한다.
-출력의 수동 편집이 발견되면 생성 도구가 덮어쓰기를 거부한다.
-원문 스냅샷은 매 집필마다 다시 생성하지 않는다. 인물 수정 시 그 인물과 인물 목록의
-`revision`을 올리면 의존 장면이 재검토 대상으로 표시된다.
+원문·생성물의 해시는 파일 바이트 기준입니다. Windows에서 Git의 `core.autocrlf=true`로
+체크아웃하면 CRLF 변환 때문에 `material snapshot changed`가 발생할 수 있습니다.
+이 경우 원본 Git 바이트와 작업 파일의 줄바꿈을 먼저 비교합니다. 검사만 통과시키려고
+스냅샷 해시를 바꾸거나 생성물을 덮어쓰지 않습니다. 바이트가 유지되는 LF 환경에서 검증합니다.
 
-원문은 이 패키지 내부의 고정 스냅샷으로 관리하며 게임 프로젝트의 자료를
-자동으로 읽거나 갱신하지 않는다. 스냅샷을 변경할 때는 내부 근거와 매니페스트를
-함께 검토하고, 내용과 해시가 달라지면 기존 원고의 승인 상태를 다시 검토한다.
+## 수정과 게시
 
-원작 적 데이터 `FOEDATA.DAT`도 `materials/enemy_templates.json`으로 보존했다.
-바이너리 근거는 줄 번호가 아니라 `record_index`로 표시하며, 75개 원본 레코드와
-해시를 JSON만으로 재구성할 수 있다. 보스의 이름·능력 변경은 보존된 스크립트 근거를
-함께 본다. 기본 템플릿 수치를 모든 장면의 고정 능력으로 쓰지 않는다.
+수정 대상은 [집필 안내](writing/README.md#수정-위치)에서 확인합니다.
+보존 원문은 매 집필마다 재생성하지 않습니다. 원문 스냅샷을 바꾸려면 내부 근거·
+매니페스트·승인 영향을 함께 검토합니다. 생성 파일의 수동 수정을 강제로 덮어쓰지 않습니다.
+
+원고를 바꾼 뒤 다음 명령으로 독자용 읽기본을 갱신합니다.
+
+```sh
+python -X utf8 tools/writing.py validate
+python -X utf8 tools/writing.py export
+python -X utf8 tools/writing.py export --check
+```
+
+원고·읽기본을 함께 `main`에 푸시하면 저장소 Pages가 읽기본의 입력·출력 해시를 검사해
+`writing/previews/chapter01-interactive.html`만 `/novel/index.html`에 게시합니다.
+게시 과정은 원고를 재생성하지 않습니다. 인물 마스터·전편 설정·원문 JSON·작가용 HTML/PDF는
+독자 사이트에 포함하지 않습니다. 미선택 첫 챕터 분기는 HTML 소스에 있으므로 보안 저장소로 취급하지 않습니다.

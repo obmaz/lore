@@ -1,128 +1,61 @@
 # LORE Original · 원본 이식판
 
-1993년 DOS 게임 **또 다른 지식의 성전**의 동작을 Flutter / Dart로 재현하는
-독립 프로젝트입니다. 원본 Pascal 소스와 DOS 실행 자료를 자체 폴더에 포함합니다.
-작업 위치는 `original/`이며 `main` 브랜치에서 관리합니다. 이 문서의 명령과
-상대 경로는 모두 이 프로젝트 폴더를 기준으로 합니다.
+1993년 DOS RPG **또 다른 지식의 성전**의 게임 동작을 Flutter / Dart로 재현합니다.
+자체 Pascal 소스·DOS 자료·자산·검증 도구를 포함한 독립 프로젝트입니다.
+다른 프로젝트의 파일을 읽거나 함께 갱신하지 않습니다.
 
-웹 실행: https://obmaz.github.io/lore/original/
+웹 실행: [원본 이식판](https://obmaz.github.io/lore/original/)
 
-다른 루트 프로젝트의 코드·자산·자료를 참조하지 않습니다. 폴더 하나만 복사한
-환경에서도 Flutter SDK와 패키지를 설치해 실행·검증할 수 있습니다.
+## 화면과 조작
 
-## 모바일 화면
+터치 조작을 사용하는 모바일 세로 화면을 기준으로 합니다. 원작 그래픽을 고정 사용하며
+앱 설정·그래픽 스킨 전환은 제공하지 않습니다. 지도 PNG를 읽지 못하면 FNT 렌더링으로 돌아갑니다.
+전체화면·게임 메뉴·오디오와 기존 터치/키보드 입력을 사용합니다.
 
-제품의 지원 대상은 터치 조작을 사용하는 모바일 세로 화면입니다. 데스크톱과
-가로 화면은 지원 대상에 포함하지 않습니다. 저장소의 웹·데스크톱 실행 설정은
-개발·검증용으로 남아 있으며, 제품의 지원 플랫폼을 뜻하지 않습니다.
-
-원본 이식판의 기존 화면과 터치·키보드 입력 어댑터를 유지합니다.
-생성형 UI와 스킨을 사용하는 현대화 작업은 독립된 `remake/`에서 진행합니다.
-
-## 이식 방향과 문서
-
-**원본과 동일한 게임 동작을 먼저 구현한 뒤 현대화**하는 것을 목표로 합니다. 원본의 분기·비트·배열 계산과 실행 순서를 보존하며, 맵 표현·UI·입력·음악은 현재 환경에 맞게 구현합니다.
-
-### 이식할 때의 기준
-
-- **원본 소스와 실제 실행을 기준으로 삼습니다.** Pascal의 절차를 Dart로 직접 옮기며, 조건 분기·조기 종료·절차 간 호출을 보존합니다. 설명이나 기존 이식 코드만으로 동작을 추정하지 않고 원본 DOS 실행 결과와 대조합니다.
-- **계산의 경계까지 재현합니다.** 바이트 값, 16비트·32비트 정수, 부호, 중간 계산과 대입 시의 값 범위를 구분합니다. 일반적인 수치에서 결과가 같아도 경계에서 달라지면 수정 대상으로 봅니다. 이는 원본의 계산을 재현하는 것으로, 앱 저장 파일을 DOS 바이너리 형식으로 바꾼다는 뜻은 아닙니다.
-- **결과뿐 아니라 진행 순서도 보존합니다.** 난수 호출, 지도 변경, 상태 갱신, 대사·선택지와 키 입력 대기, 전투 이후의 재개 순서를 맞춥니다. 지도 좌표와 배열의 빈 슬롯, 원본 상태 바이트도 유지합니다.
-- **게임 규칙과 화면 구현을 구분합니다.** 원본 대사·선택지·색상과 게임 의미를 기준으로 하면서 지도 렌더링, 모바일 배치, 터치·키보드 입력, 오디오 재생과 파일 접근은 현대 플랫폼에 맞게 구현합니다. 밸런스 조정이나 수치 범위 확대는 원본 동등성 검증 이후의 별도 작업으로 둡니다.
-- **이식한 로직의 실행 경로를 하나로 유지합니다.** 실행용 JSON 이벤트 규칙과 이전 로직의 대체 실행을 제거하고, 직접 이식한 절차가 해당 이벤트를 담당하게 합니다. JSON은 자원과 앱 저장 데이터의 표현에 사용할 수 있습니다.
-- **확인한 범위와 남은 차이를 기록합니다.** 원본에서 추출한 자료, 동작 재현 테스트, DOS 실행 대조와 웹 검증을 함께 사용합니다. 테스트 통과만으로 전체 이식 완료를 선언하지 않으며, 확인되지 않은 컴파일러 동작과 의도적인 플랫폼 차이는 문서에 남깁니다.
-
-### 관련 문서
-
-- [직접 이식 전략](docs/porting/direct_port_strategy.md): 작업 순서와 최종 완료 기준
-- [게임 명세서](docs/game_specs.md): 원본과의 대조 내용 및 알려진 편차
-- [원본 계약 기준선](docs/audits/contract_ledger.md): 이식 범위와 남은 검증 항목
-- 원본 분석: [실행 모델](docs/source/execution_model.md) · [절차 추적](docs/source/procedure_traces.md) · [상태 수명주기](docs/source/state_lifecycle.md)
-- [개발 이력](COMMIT_HISTORY.txt): 저장소 재생성 전의 작업 날짜와 커밋 메시지
-
-## 폴더 안내
-
-| 위치 | 내용 |
-| --- | --- |
-| [lib/](lib/) | Flutter 게임 구현 |
-| [assets/](assets/) | 실행에 사용하는 게임 자료 |
-| [docs/](docs/README.md) | 이식 전략·원본 분석·감사·검증 문서 |
-| [repo_source/](repo_source/) | 원본 Pascal 소스와 DOS 실행 자료 |
-| [test/](test/) | Flutter 테스트와 원본 동작 재현 자료 |
-| [tool/](tool/README.md) | 분석·추출 도구와 Python 테스트 |
-| build/ | 로컬 빌드 생성물과 검증 로그 |
-| 플랫폼 폴더 | Android·iOS·웹·데스크톱 실행 설정 |
-
-원본에서 추출한 지도·폰트·대사·전투 데이터는 assets 폴더에 포함되어 있습니다. 게임 실행과 Flutter 테스트에는 별도의 DOS 런타임이 필요하지 않습니다.
-
-## 현재 구현의 모바일 화면 높이
-
-터치 기반 모바일 브라우저에서는 진입 시점의 `window.innerHeight`를 앱 최상위 컨테이너 높이로 고정합니다(App Height Lock). 주소창이 숨거나 나타나거나 화면 키보드가 열려 높이만 바뀌어도 게임 레이아웃을 다시 배치하지 않습니다. 화면 회전이나 창 너비 변경 시 높이를 갱신합니다.
-
-웹에서는 메뉴·상태·초감각이 있는 명령 줄의 맨 오른쪽 **전체화면 전환** 아이콘으로 브라우저 전체화면에 진입하거나 종료할 수 있습니다. 전환할 때 앱의 고정 높이도 새 화면 크기에 맞춥니다. 브라우저의 사용자 입력 정책 때문에 버튼을 직접 눌러야 하며, 미지원 브라우저에서는 홈 화면에 추가해 실행하는 방법을 안내합니다. 이 버튼은 화면 표시만 바꾸고 게임 턴이나 원작 메뉴 선택을 진행시키지 않습니다.
-
-## 원작 그래픽 고정
-
-앱 설정과 그래픽 스킨 전환은 제공하지 않습니다. 원작에서 추출한
-`assets/images/manifest.json`과 PNG 5종을 사용하며, 원본의 마스크 합성은
-FNT 디코더로 유지합니다. PNG를 읽지 못하면 FNT 렌더링으로 돌아갑니다.
-전체화면·게임 메뉴·오디오 조작은 기존대로 사용할 수 있습니다.
+모바일 웹은 진입 시 높이를 고정하고 회전·너비 변경·전체화면 전환 때 갱신합니다.
+전체화면 버튼은 명령 줄 오른쪽에 있으며 게임 턴을 소비하지 않습니다.
+웹·데스크톱 실행 설정은 개발·검증용이고 제품의 데스크톱·가로 화면 지원을 뜻하지 않습니다.
 
 ## 실행
 
-Flutter SDK가 설치된 환경에서 다음 명령으로 웹 버전을 실행합니다.
+이 문서의 모든 상대 경로와 명령은 `original/` 폴더 기준입니다. Flutter SDK를 설치한 뒤 실행합니다.
 
 ```sh
 flutter pub get
 flutter run -d chrome
 ```
 
-모바일 기기는 `flutter devices`로 확인한 뒤 `flutter run -d <기기>`로 실행합니다.
-위 Chrome 명령은 개발용이며, 제품 UI는 모바일 세로 뷰포트에서 확인합니다.
+기기는 `flutter devices`로 확인한 뒤 `flutter run -d <기기>`로 실행합니다.
+Chrome 개발 화면에서도 모바일 터치 배치를 확인합니다. 게임 실행에 Python이나 DOS 런타임은 필요하지 않습니다.
 
-## 검증
+## 구조와 개발
 
-```sh
-flutter analyze
-flutter test
-flutter build web --release
-python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS --coverage
-python3 tool/audit_messages.py
-python3 tool/audit_source_memory.py --check
-python3 tool/source_map25_guardian.py --check
-python3 tool/source_map26_final.py --check
-python3 tool/source_map23_keep3.py --check
-python3 tool/build_port_contract_ledger.py --check
-```
+| 위치 | 내용 |
+| --- | --- |
+| `lib/`, `assets/` | 게임 코드·실행 자료 |
+| [docs/](docs/README.md) | 개발 기준·원작 규칙·실행 분석·검증 근거 |
+| [repo_source/](repo_source/README.md) | 자체 보존 원본 소스·DOS 실행 자료 |
+| [story_material/](story_material/README.md) | 선택적으로 생성하는 원문 추출 자료 |
+| `test/`, [tool/](tool/README.md) | Flutter 재생 검사·분석/추출 도구 |
+| 플랫폼 폴더 | Android·iOS·웹·데스크톱 개발 설정 |
 
-Windows에서 Python 도구의 이전 UTF-8 자료를 읽을 때는 `python -X utf8`을
-사용합니다. 도구 회귀 검사는 `python -X utf8 -m unittest discover -s tool`로 실행합니다.
+작업 제약은 [AGENTS.md](AGENTS.md), 목표·완료 기준은
+[개발 기준](docs/porting/direct_port_strategy.md), 검증 명령은 [문서 안내](docs/README.md)를 따릅니다.
 
-숫자 호환성은 `dart run tool/verify_source_memory.dart`로 확인합니다. 웹의
-JavaScript 연산도 확인하려면 아래처럼 같은 검증기를 컴파일해 실행합니다.
+## 웹 빌드와 게시
 
 ```sh
-dart compile js -O2 tool/verify_source_memory.dart -o build/source-memory-verification.js
-node build/source-memory-verification.js
+python -X utf8 tool/build_web_release.py
 ```
 
-## 정적 웹 페이지 배포
+도구가 WASM과 JavaScript 대체 버전을 빌드하고 로더의 WASM 해시를 검사해
+문서를 보존하며 이 프로젝트의 `docs/`를 갱신합니다. SDK 경로는
+`--flutter /경로/flutter/bin/flutter`로 지정합니다.
+소스와 결과물을 `main`에 커밋·푸시하면 저장소 Pages가 `/lore/original/`에 게시합니다.
+게시 단계는 커밋된 결과물을 복사하며 Flutter 빌드를 실행하지 않습니다.
+독립 호스팅 시 base path를 맞추고 `.wasm`을 `application/wasm`으로 제공합니다.
 
-로컬에서 WASM과 JavaScript 대체 버전을 함께 빌드한 뒤 GitHub Pages에 게시합니다.
+## 출처
 
-```sh
-python3 tool/build_web_release.py
-```
-
-빌드 도구는 로더에 기록된 모든 WASM 해시를 실제 파일과 대조한 뒤 기존 문서를 보존하며 `docs/`를 갱신합니다. 이전 빌드의 해시가 남아 있으면 한 번 재빌드하여 검사합니다. SDK 경로를 지정하려면 `--flutter /경로/flutter/bin/flutter`을 사용합니다.
-
-소스와 이 프로젝트의 `docs/` 결과물을 `main`에 커밋·푸시하면 GitHub Actions가
-`/lore/original/`에 게시합니다. 저장소의 Pages Source는 `GitHub Actions`입니다.
-배포 단계에서 base path를 `/lore/original/`로 조정하며, 각 프로젝트의
-커밋된 빌드 결과물을 게시합니다. Actions 자체에서는 Flutter 빌드를 실행하지 않습니다.
-
-정적 서버는 `.wasm` 파일을 `application/wasm` 형식으로 제공해야 합니다. WASM GC를 지원하지 않는 브라우저에는 같은 빌드의 `main.dart.js`가 사용됩니다.
-
-## 원본 출처
-
-이 프로젝트는 [smgal/LoreTrilogy_1993](https://github.com/smgal/LoreTrilogy_1993)의 원본 소스를 참고하여 AI를 활용해 포팅하고 있습니다.
+보존 자료의 출처는 [smgal/LoreTrilogy_1993](https://github.com/smgal/LoreTrilogy_1993)입니다.
+원본과의 차이·미검증 범위는 이 프로젝트의 검증 근거에서 관리합니다.

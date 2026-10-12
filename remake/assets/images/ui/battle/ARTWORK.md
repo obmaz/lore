@@ -1,6 +1,6 @@
 # Mobile party and equipment art
 
-Generated on 2026-10-09 for the `new_ui` mobile presentation. These PNGs only
+Generated on 2026-10-09 for the mobile presentation. These PNGs only
 illustrate existing characters and equipment; they do not define game records.
 
 `characters.png` is a transparent, uniform 4 × 3 atlas. Reading order:
