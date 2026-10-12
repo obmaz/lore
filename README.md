@@ -25,8 +25,11 @@
 | 원본 이식판 | [original](https://obmaz.github.io/lore/original/) |
 | 모바일 리메이크 | [remake](https://obmaz.github.io/lore/remake/) |
 | 선택형 소설 | [novel](https://obmaz.github.io/lore/novel/) |
+| 소설 제작실 · 공개 작가용 | [studio](https://obmaz.github.io/lore/novel/studio/) |
 
 [Pages 워크플로](.github/workflows/deploy-pages.yml)는 커밋된 결과물을 각각의 URL에
 게시하는 저장소 운영 설정입니다. 프로젝트의 빌드·자료 재생성을 수행하지 않습니다.
-게임은 각자의 `docs/` 빌드를, 소설은 자체 해시 검사를 통과한
-`writing/previews/chapter01-interactive.html`만 게시합니다. 갱신 방법은 각 README에 있습니다.
+게임은 각자의 `docs/` 빌드를, 소설은 자체 해시 검사를 통과한 독자 읽기본과
+별도 제작실 HTML을 게시합니다. 제작실은 사용자가 공개를 허용한 **전편 스포일러 포함
+작가용 화면**이며 로그인·접근 제어가 없습니다. 기존 독자 `/novel/` 화면에는 제작실 자료를
+추가하지 않습니다. 갱신 방법은 각 README에 있습니다.

@@ -46,8 +46,22 @@ jobs:
           reader = root / 'writing/previews/chapter01-interactive.html'
           if hashlib.sha256(reader.read_bytes()).hexdigest() != manifest['artifacts'][reader.name]:
               raise SystemExit('Novel reader differs from its generated manifest.')
-          # Publish only the self-contained reader, never author cards or source JSON.
+          # The reader remains separate from the explicitly public author workspace.
+          policy = json.loads((root / 'writing/studio/publication.json').read_text(encoding='utf-8'))
+          if policy.get('audience') != 'public' or policy.get('status') != 'user_requested' or policy.get('studio_path') != '/novel/studio/':
+              raise SystemExit('Novel studio public publication is not explicitly configured.')
+          studio_manifest = json.loads((root / 'writing/studio/generated/manifest.json').read_text(encoding='utf-8'))
+          for relative, expected in studio_manifest['source_sha256'].items():
+              source = (root / relative).resolve()
+              if not source.is_relative_to(root) or hashlib.sha256(source.read_bytes()).hexdigest() != expected:
+                  raise SystemExit(f'Novel studio export is stale: {relative}. Run tools/writing.py export in novel/.')
+          studio = root / 'writing/studio/generated/index.html'
+          if hashlib.sha256(studio.read_bytes()).hexdigest() != studio_manifest['artifacts'].get('index.html'):
+              raise SystemExit('Novel studio differs from its generated manifest.')
+          # Publish two validated HTML files only, not a directory of raw JSON/PDF.
           shutil.copyfile(reader, 'site/novel/index.html')
+          Path('site/novel/studio').mkdir(parents=True, exist_ok=True)
+          shutil.copyfile(studio, 'site/novel/studio/index.html')
           PY
           touch site/.nojekyll
 

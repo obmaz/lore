@@ -24,6 +24,9 @@ class PagesDeploymentTest(unittest.TestCase):
         self.novel = self.checkout / "novel"
         manifest = json.loads((ROOT / "novel/writing/previews/manifest.json").read_text())
         files = [*manifest["source_sha256"], "writing/previews/manifest.json", "writing/previews/chapter01-interactive.html"]
+        studio_manifest = json.loads((ROOT / 'novel/writing/studio/generated/manifest.json').read_text())
+        files += [*studio_manifest['source_sha256'], 'writing/studio/generated/manifest.json',
+                  'writing/studio/generated/index.html', 'writing/studio/publication.json']
         for relative in files:
             target = self.novel / relative
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -39,13 +42,17 @@ class PagesDeploymentTest(unittest.TestCase):
         return subprocess.run(["bash", "-e", "-o", "pipefail", "-c", self.script],
                               cwd=self.checkout, capture_output=True, text=True)
 
-    def test_only_reader_is_published_and_game_outputs_are_preserved(self):
+    def test_reader_and_public_studio_are_separate_and_game_outputs_are_preserved(self):
         result = self.assemble()
         self.assertEqual(result.returncode, 0, result.stderr)
         site = self.checkout / "site"
-        self.assertEqual(sorted(p.name for p in (site / "novel").iterdir()), ["index.html"])
+        self.assertEqual(sorted(p.name for p in (site / "novel").iterdir()), ["index.html", "studio"])
         self.assertEqual((site / "novel/index.html").read_bytes(),
                          (self.novel / "writing/previews/chapter01-interactive.html").read_bytes())
+        self.assertEqual(sorted(p.name for p in (site / 'novel/studio').iterdir()),['index.html'])
+        self.assertEqual((site / 'novel/studio/index.html').read_bytes(),
+                         (self.novel / 'writing/studio/generated/index.html').read_bytes())
+        self.assertNotIn('studio-data',(site / 'novel/index.html').read_text())
         self.assertTrue((site / ".nojekyll").is_file())
         for game in ("original", "remake"):
             self.assertEqual((site / game / "prebuilt.bin").read_bytes(), game.encode())
@@ -75,6 +82,38 @@ class PagesDeploymentTest(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Novel reading export is stale", result.stderr)
         self.assertFalse((self.checkout / "site/novel/index.html").exists())
+
+    def test_modified_studio_is_not_published(self):
+        (self.novel / 'writing/studio/generated/index.html').write_text('changed output')
+        result=self.assemble()
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('studio differs',result.stderr)
+        self.assertFalse((self.checkout / 'site/novel/studio/index.html').exists())
+
+    def test_stale_studio_source_stops_publication(self):
+        (self.novel / 'writing/previews/menace-01.html').write_text('changed preview')
+        result=self.assemble()
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('studio export is stale',result.stderr)
+        self.assertFalse((self.checkout / 'site/novel/studio/index.html').exists())
+
+    def test_studio_requires_explicit_public_policy(self):
+        policy=self.novel / 'writing/studio/publication.json'
+        value=json.loads(policy.read_text());value['audience']='private'
+        policy.write_text(json.dumps(value))
+        result=self.assemble()
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('not explicitly configured',result.stderr)
+
+    def test_studio_manifest_cannot_read_outside_novel(self):
+        path=self.novel / 'writing/studio/generated/manifest.json'
+        value=json.loads(path.read_text())
+        value['source_sha256']['../outside.txt']=hashlib.sha256(b'not public').hexdigest()
+        path.write_text(json.dumps(value))
+        result=self.assemble()
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('studio export is stale',result.stderr)
+        self.assertFalse((self.checkout / 'site/novel/studio/index.html').exists())
 
 
 if __name__ == "__main__":
