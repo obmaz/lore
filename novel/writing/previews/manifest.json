@@ -32,7 +32,7 @@
     "reference/terms.json": "a26cfd9104992f78b5afaa0a4ec08cea6722ab16643ad50ac414a471832db646",
     "continuity/canon.json": "02392cb0559da1ed83b8deda9f33642e926d94bf9b46b54143dad227e73d5705",
     "writing/project.json": "254e3a952b738b619fd6506b3bb93f7a9b8bde855b6544b60beba94166e9eb44",
-    "tools/writing.py": "e2fb13a8f82ef3c707f4eda35ab8c97f2135e9cf6d89724aab12511456756fc1",
+    "tools/writing.py": "b2905b7ad15f5b56b75e399251b8229a96be3b55810792cf2c21436891e260c9",
     "tools/text_refs.py": "5298ed7528cc6fcfb723c6a26f792fc527fbe3fdd7c223066c1a4107529c5479",
     "tools/story_continuity.py": "e79b34b98a0726ef9d741a5bc1d47fdb6a1fb7cf9a1a013e01150d71af53c528",
     "tools/disclosure.py": "562d46cd711305fd4c0419485015fe22a0bb1eda8a515518e75ffe9c25a4711f",
@@ -57,7 +57,12 @@
     "writing/publication/generated/linear-editions.json": "cefa031c564c97e13dcbe36e8044a6047470df63f1b2e2a55959ef9334e67dd4",
     "writing/publication/generated/flow.md": "c8b7ab37d999affd4372c41f2f12a2c488fb44f17ac512fd72733dd3f561ea14",
     "writing/publication/generated/flow.html": "1e70a928e0612603755cdf7533a728a1559cc0a58fb715cbdb26d3f8a795d707",
-    "writing/publication/generated/coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746"
+    "writing/publication/generated/coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746",
+    "writing/studio/studio.plan.json": "f80cd5e7cab1d8f18c2d7047c07f86235572f1d050372cb3c703d0920f67417d",
+    "writing/studio/studio.schema.json": "40c5c040fa1e1b71489f1f953c346329c751a1b9cdfb29d287cc35426254b050",
+    "writing/studio/shell.html": "60ec36b14159d50c866177e0f9b0d5dd6287729bd13fede50bef663208c16a31",
+    "writing/studio/studio.js": "3d08099ebbc0c56e033f06a8d9273c22bc526126aab62ac63ad0672724c9df2e",
+    "tools/studio.py": "2597d13ee0a11622b1f5b269b305a47bfa01bfcbf03948a9f59723fd113dd7fd"
   },
   "artifacts": {
     "storyboard.html": "3aae7b8915afee045a77553c2112f88d7ebf5bf19f94c14c7386567b37f47ba8",

@@ -7,6 +7,12 @@
 
 ## 읽기
 
+작가용 [소설 제작실 · 웹에서 열기](https://obmaz.github.io/lore/novel/studio/): 현재 원고·목차·장별
+그래프·분기·출판 순서·인물/무기/마법 설정을 한곳에서 조회합니다.
+[오프라인 HTML](writing/studio/generated/index.html) 하나로도 사용할 수 있습니다.
+사용자 요청으로 공개 게시된 읽기 전용·전편 스포일러 화면이며 로그인은 없습니다.
+[사용·갱신 안내](writing/studio/README.md)를 참고합니다.
+
 독자용 첫 챕터: [웹에서 선택하며 읽기](https://obmaz.github.io/lore/novel/)
 또는 [오프라인 HTML](writing/previews/chapter01-interactive.html)을 내려받아 브라우저로 엽니다.
 경로는 다운로드 파일로 저장/불러오며 계정·서버 저장 기능은 없습니다.
@@ -90,6 +96,8 @@ python -X utf8 tools/writing.py export --check
 ```
 
 원고·읽기본을 함께 `main`에 푸시하면 저장소 Pages가 읽기본의 입력·출력 해시를 검사해
-`writing/previews/chapter01-interactive.html`만 `/novel/index.html`에 게시합니다.
-게시 과정은 원고를 재생성하지 않습니다. 인물 마스터·전편 설정·원문 JSON·작가용 HTML/PDF는
-독자 사이트에 포함하지 않습니다. 미선택 첫 챕터 분기는 HTML 소스에 있으므로 보안 저장소로 취급하지 않습니다.
+독자용 `writing/previews/chapter01-interactive.html`을 `/novel/index.html`에,
+공개 허용된 `writing/studio/generated/index.html`을 별도 `/novel/studio/index.html`에 게시합니다.
+게시 과정은 원고를 재생성하지 않습니다. 인물 마스터·전편 설정은 독자 읽기본에 넣지 않으며
+제작실의 HTML에는 포함됩니다. 원문 JSON·PDF 파일을 별도로 게시하지는 않습니다.
+제작실의 공개 설정은 `writing/studio/publication.json`입니다. 두 화면 모두 보안 저장소가 아닙니다.

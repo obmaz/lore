@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "status": "user_requested",
+  "audience": "public",
+  "authentication": "none",
+  "content_visibility": "author_reference_with_full_spoilers",
+  "reader_path": "/novel/",
+  "studio_path": "/novel/studio/",
+  "url": "https://obmaz.github.io/lore/novel/studio/",
+  "origin": "authored",
+  "metadata": {
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 사용자가 제작실의 웹 접속을 요청하고 공개 게시를 허용했다. 전편 작가용 자료를 별도 /novel/studio/에 게시하며 기존 독자 /novel/ 화면과 구분한다.",
+    "knowledge_policy": "author_reference_not_character_knowledge"
+  },
+  "notice": "공개 작가용 제작실이다. 로그인·접근 제어가 없고 HTML 안의 원고·설정·JSON·후반 정체가 모두 공개된다. 확인 버튼은 스포일러 경고일 뿐이다."
+}

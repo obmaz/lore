@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "revision", "status", "visibility", "source_policy", "origin", "metadata", "title", "navigation", "default_document", "notes"],
+  "properties": {
+    "version": {"const": 1},
+    "revision": {"type": "integer", "minimum": 1},
+    "status": {"const": "draft"},
+    "visibility": {"const": "author_only"},
+    "source_policy": {"const": "references_not_another_story_source"},
+    "origin": {"const": "authored"},
+    "metadata": {"type": "object", "required": ["addition", "kind", "note", "knowledge_policy"], "additionalProperties": false, "properties": {
+      "addition": {"const": true}, "kind": {"const": "new_setting"}, "note": {"type": "string", "minLength": 1}, "knowledge_policy": {"const": "author_reference_not_character_knowledge"}
+    }},
+    "title": {"type": "string", "minLength": 1},
+    "navigation": {"type": "array", "minItems": 8, "maxItems": 8, "items": {
+      "type": "object", "additionalProperties": false, "required": ["id", "label"], "properties": {
+        "id": {"enum": ["overview", "reading", "outline", "graph", "branches", "order", "settings", "sources"]}, "label": {"type": "string", "minLength": 1}
+      }
+    }},
+    "default_document": {"type": "string", "pattern": "^[a-z0-9-]+\\.html$"},
+    "notes": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  }
+}

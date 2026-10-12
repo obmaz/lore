@@ -446,6 +446,8 @@ def export_documents(output,check=False):
     inputs += sorted((WRITING/'episodes').glob('*.json'))
     inputs += [FLOW_PLAN,FLOW_SCHEMA,FLOW_TEMPLATE,ROOT/'tools/publication_flow.py',FLOW_OUTPUT/'manifest.json',
                *(FLOW_OUTPUT/name for name in ('flow.graph.json','linear-editions.json','flow.md','flow.html','coverage.json'))]
+    from studio import PLAN as STUDIO_PLAN, SCHEMA as STUDIO_SCHEMA, TEMPLATE as STUDIO_TEMPLATE, SCRIPT as STUDIO_SCRIPT, export as studio_export
+    inputs += [STUDIO_PLAN,STUDIO_SCHEMA,STUDIO_TEMPLATE,STUDIO_SCRIPT,ROOT/'tools/studio.py']
     manifest = {'version':1,'source_sha256':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
                 'artifacts':{name:hashlib.sha256(value.encode()).hexdigest() for name,value in docs.items()}}
     if check:
@@ -459,7 +461,8 @@ def export_documents(output,check=False):
         for name,body in docs.items():
             (output/name).write_text(body,encoding='utf-8')
         (output/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    return {'output':str(output),'artifacts':list(docs),'storyboard_units':len(board['units']),'checked':check}
+    studio = studio_export(check=check,docs=docs,publication=publication)
+    return {'output':str(output),'artifacts':list(docs),'storyboard_units':len(board['units']),'studio':studio,'checked':check}
 
 
 def main():
@@ -497,6 +500,8 @@ def main():
         result['branch_system'] = BranchSession().validate_paths()
         from publication_flow import PublicationFlow
         result['publication_flow'] = PublicationFlow().report
+        from studio import validate_plan
+        result['studio'] = validate_plan()
         from source_story import OUTPUT as SOURCE_OUTPUT, validate_story as validate_source_story
         result['source_connected'] = validate_source_story(read(SOURCE_OUTPUT/'manuscript.json'))
         for path in sorted((WRITING/'quests').glob('*.json')):

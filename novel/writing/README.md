@@ -6,6 +6,12 @@
 
 ## 바로 읽기
 
+- [소설 제작실 · 웹에서 열기](https://obmaz.github.io/lore/novel/studio/): 원고 읽기, 목차·장별 구성/그래프,
+  분기 구조, 출판 순서, 인물·세계 설정 검색과 원본 JSON을 같은 화면에서 조회합니다.
+  [HTML 하나](studio/generated/index.html)로 오프라인에서도 사용할 수 있습니다.
+  사용자 요청으로 별도 주소에 공개된 작가용 전편 스포일러·읽기 전용 화면입니다.
+  기존 독자 읽기본에는 포함하지 않습니다. [사용·갱신 안내](studio/README.md).
+
 - [소제목 트리·장별 흐름도](previews/publication-flow.html): 장·소단락·선택·합류·후속 반응을
   연결한 오프라인 SVG 도식. [Markdown 트리·Mermaid](publication/generated/flow.md),
   [구조 JSON](publication/generated/flow.graph.json), [종이책 경로 예시](publication/generated/linear-editions.json).
@@ -79,6 +85,7 @@ HTML은 편집 대상이 아니라 JSON에서 생성한 스냅샷이다.
 | 첫 챕터 선택형 보충 원고 | `interactive/chapter01.json` | [독자 분기 안내](interactive/README.md) |
 | 표시명·설정·관계 | 상위 `reference/`·`characters/`의 편집 입력 | [참조 사전](../reference/README.md) |
 | 읽기 배열 | `reading.json` | `previews/`는 생성물이며 직접 집필하지 않음 |
+| 통합 제작 화면의 메뉴·안내 | `studio/studio.plan.json` | [제작실](studio/README.md), `studio/generated/` |
 
 새 파일은 `templates/`의 해당 공용 양식을 사용합니다. `authoring/drafts/`는 보존한 구조 예시입니다.
 원문·설정·제목·본문을 다른 JSON에 복사하지 않고 안정된 ID로 참조합니다.

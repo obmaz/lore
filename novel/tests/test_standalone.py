@@ -63,6 +63,10 @@ class IndependentNovelTest(unittest.TestCase):
         self.assertTrue(json.loads(self.run_tool('writing','export','--check'))['checked'])
 
     def test_new_quest_uses_shared_template_without_overwrite(self):
+        # The shared checkout must return to its committed input set before
+        # later freshness tests; only delete this test's temporary new draft.
+        for name in ('lastditch_pyramid.json','lastditch_pyramid.continuity.json'):
+            self.addCleanup((self.standalone/'writing/quests'/name).unlink,missing_ok=True)
         result = json.loads(self.run_tool('writing','new-quest','--quest-id','lastditch_pyramid'))
         self.assertEqual(len(result['created']),2)
         self.assertIn('lastditch_pyramid_draft_v1',(self.standalone/'writing/quests/lastditch_pyramid.json').read_text())
@@ -84,6 +88,11 @@ class IndependentNovelTest(unittest.TestCase):
         report = json.loads(self.run_tool('publication_flow','export','--check'))
         self.assertEqual((report['chapters'],report['subsections'],report['runtime_paths_checked']),(15,88,96))
         self.assertFalse(report['publication_approved'])
+
+    def test_studio_bundle_is_independent_and_fresh(self):
+        report=json.loads(self.run_tool('studio','export','--check'))
+        self.assertEqual((report['documents'],report['chapters']),(27,15))
+        self.assertEqual(report['visibility'],'author_only')
 
     def test_all_original_text_is_reconstructable_from_snapshot(self):
         catalog, manifest = load_materials()
