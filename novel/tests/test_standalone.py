@@ -80,6 +80,11 @@ class IndependentNovelTest(unittest.TestCase):
         self.assertEqual(packet['decision_id'], 'spica_company')
         self.assertNotIn('skeleton', packet['state']['party.members'])
 
+    def test_publication_flow_is_independent_and_matches_generated_files(self):
+        report = json.loads(self.run_tool('publication_flow','export','--check'))
+        self.assertEqual((report['chapters'],report['subsections'],report['runtime_paths_checked']),(15,88,96))
+        self.assertFalse(report['publication_approved'])
+
     def test_all_original_text_is_reconstructable_from_snapshot(self):
         catalog, manifest = load_materials()
         self.assertEqual(manifest["counts"], {"source_files": 14, "literal_occurrences": 2483})

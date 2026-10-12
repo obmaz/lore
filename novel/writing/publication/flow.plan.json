@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "revision": 1,
+  "status": "draft",
+  "visibility": "author_only",
+  "source_policy": "references_not_another_story_source",
+  "direction": "TB",
+  "origin": "authored",
+  "metadata": {
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 기존 장·소단락·분기를 출판 준비용 트리·그래프로 표시하는 편집 구조. 새 이야기나 분기를 확정하거나 본문·페이지를 승인하지 않는다.",
+    "knowledge_policy": "author_reference_not_character_knowledge"
+  },
+  "labels": {
+    "merge": [
+      {
+        "text": "선택 결과 합류"
+      }
+    ],
+    "result": [
+      {
+        "text": "필수 결과"
+      }
+    ],
+    "reaction_merge": [
+      {
+        "text": "조건부 문단 합류"
+      }
+    ],
+    "parallel_merge": [
+      {
+        "text": "두 탐색 모두 완료"
+      }
+    ],
+    "available": [
+      {
+        "text": "조건을 만족할 때"
+      }
+    ],
+    "not_applies": [
+      {
+        "text": "반응 조건 없음"
+      }
+    ]
+  },
+  "decision_titles": {
+    "prepare": [
+      {
+        "text": "출발 준비"
+      }
+    ],
+    "company": [
+      {
+        "text": "성문에서의 동행"
+      }
+    ],
+    "aid": [
+      {
+        "text": "부상자 지원 역할"
+      }
+    ],
+    "spica_company": [
+      {
+        "text": "가르침 뒤의 동행"
+      }
+    ],
+    "seal_order": [
+      {
+        "text": "두 봉인의 순서"
+      }
+    ],
+    "shelter_prepare": [
+      {
+        "text": "결전 전 준비"
+      }
+    ]
+  },
+  "reaction_titles": {
+    "armory_weapon": [
+      {
+        "text": "새 무장 확인"
+      }
+    ],
+    "skeleton_memory": [
+      {
+        "text": "성문 대화의 기억"
+      }
+    ],
+    "aid_cook_memory": [
+      {
+        "text": "식량을 나눈 기억"
+      }
+    ],
+    "aid_magician_memory": [
+      {
+        "text": "탈출을 도운 기억"
+      }
+    ],
+    "spica_present": [
+      {
+        "text": "실제 동행자의 반응"
+      }
+    ],
+    "food_preparation": [
+      {
+        "text": "식량 준비의 후속"
+      }
+    ],
+    "equipment_preparation": [
+      {
+        "text": "장비 점검의 후속"
+      }
+    ]
+  },
+  "linear_editions": [
+    {
+      "id": "paper-draft",
+      "status": "proposed",
+      "manual_route": [
+        "prepare/armory",
+        "company/talk_join",
+        "aid/cook",
+        "seal_order/evil_first",
+        "shelter_prepare/food"
+      ],
+      "note": "종이책 편집 순서의 예시 경로다. 정사·최종 출판 경로·페이지·장편 본문을 승인한 것이 아니다."
+    }
+  ],
+  "notes": [
+    "작가용 전편 스포일러다. 독자 웹에 통째로 게시하지 않는다.",
+    "트리는 장·소단락·분기의 소속이다. 트리 배열을 실제 실행 순서로 혼동하지 않는다.",
+    "그래프 실선은 읽기·선택·합류이며 점선은 조건부 반응 또는 이후 상태 영향이다. 모든 선택을 한 번에 읽는 뜻이 아니다.",
+    "두 봉인은 순서별 문맥 복제 노드로 그린다. 두 순서를 공유 노드에 양방향으로 연결해 순환처럼 보이게 하지 않는다.",
+    "일부 분기 후보는 미구현 표시만 한다. 기존 첫 챕터 웹의 별도 실행 그래프를 전편 그래프로 자동 승격하지 않는다.",
+    "선형 출판 순서표는 실제 선택 ID 경로를 재생해 만든다. 표제·조건·본문은 원래 JSON 참조로 이어지고 아직 페이지 번호는 없다.",
+    "JSON은 구조와 참조, Markdown은 목차 트리·Mermaid 흐름도, HTML/SVG는 외부 라이브러리 없이 보는 도식이다.",
+    "소제목·인물·무기 이름은 원래 자료에서 참조하고 표시명 변경 뒤 재생성한다. 생성물을 직접 편집하지 않는다."
+  ]
+}

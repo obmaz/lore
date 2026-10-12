@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lore.local/novel/writing/publication.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "revision",
+    "status",
+    "visibility",
+    "source_policy",
+    "direction",
+    "origin",
+    "metadata",
+    "labels",
+    "decision_titles",
+    "reaction_titles",
+    "linear_editions",
+    "notes"
+  ],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "const": "draft"
+    },
+    "visibility": {
+      "const": "author_only"
+    },
+    "source_policy": {
+      "const": "references_not_another_story_source"
+    },
+    "direction": {
+      "const": "TB"
+    },
+    "origin": {
+      "const": "authored"
+    },
+    "metadata": {
+      "$ref": "../reference/metadata.schema.json#/$defs/metadata"
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "merge",
+        "result",
+        "reaction_merge",
+        "parallel_merge",
+        "available",
+        "not_applies"
+      ],
+      "properties": {
+        "merge": {
+          "$ref": "../authoring/story.schema.json#/$defs/richText"
+        },
+        "result": {
+          "$ref": "../authoring/story.schema.json#/$defs/richText"
+        },
+        "reaction_merge": {
+          "$ref": "../authoring/story.schema.json#/$defs/richText"
+        },
+        "parallel_merge": {
+          "$ref": "../authoring/story.schema.json#/$defs/richText"
+        },
+        "available": {
+          "$ref": "../authoring/story.schema.json#/$defs/richText"
+        },
+        "not_applies": {
+          "$ref": "../authoring/story.schema.json#/$defs/richText"
+        }
+      }
+    },
+    "decision_titles": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "../authoring/story.schema.json#/$defs/richText"
+      }
+    },
+    "reaction_titles": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "../authoring/story.schema.json#/$defs/richText"
+      }
+    },
+    "linear_editions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "status",
+          "manual_route",
+          "note"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "status": {
+            "const": "proposed"
+          },
+          "manual_route": {
+            "type": "array",
+            "maxItems": 128,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

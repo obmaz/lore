@@ -393,6 +393,10 @@ def export_documents(output,check=False):
     branch_session = BranchSession()
     docs['branch-system.html'] = branch_document(branch_session)
     docs['branch-system-report.json'] = json.dumps(branch_session.validate_paths(), ensure_ascii=False, indent=2)+'\n'
+    from publication_flow import PLAN as FLOW_PLAN, SCHEMA as FLOW_SCHEMA, TEMPLATE as FLOW_TEMPLATE, OUTPUT as FLOW_OUTPUT, PublicationFlow, export as flow_export
+    publication = PublicationFlow(session=branch_session)
+    flow_export(check=check, flow=publication)
+    docs['publication-flow.html'] = publication.document()
     from source_story import PLAN as SOURCE_PLAN, SCHEMA as SOURCE_SCHEMA, OUTPUT as SOURCE_OUTPUT, export as source_export, story_document as source_document
     source_export(check=check)
     docs['source-connected.html'] = source_document(read(SOURCE_OUTPUT/'manuscript.json'))
@@ -440,6 +444,8 @@ def export_documents(output,check=False):
             path = WRITING/'quests'/name
             inputs += [path,path.with_name(path.stem+'.continuity.json')]
     inputs += sorted((WRITING/'episodes').glob('*.json'))
+    inputs += [FLOW_PLAN,FLOW_SCHEMA,FLOW_TEMPLATE,ROOT/'tools/publication_flow.py',FLOW_OUTPUT/'manifest.json',
+               *(FLOW_OUTPUT/name for name in ('flow.graph.json','linear-editions.json','flow.md','flow.html','coverage.json'))]
     manifest = {'version':1,'source_sha256':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
                 'artifacts':{name:hashlib.sha256(value.encode()).hexdigest() for name,value in docs.items()}}
     if check:
@@ -489,6 +495,8 @@ def main():
         result['chapter_subsections_template'] = validate_subsections(read(SUBSECTION_TEMPLATE))
         from branch_system import BranchSession
         result['branch_system'] = BranchSession().validate_paths()
+        from publication_flow import PublicationFlow
+        result['publication_flow'] = PublicationFlow().report
         from source_story import OUTPUT as SOURCE_OUTPUT, validate_story as validate_source_story
         result['source_connected'] = validate_source_story(read(SOURCE_OUTPUT/'manuscript.json'))
         for path in sorted((WRITING/'quests').glob('*.json')):

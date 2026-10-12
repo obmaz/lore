@@ -15,6 +15,10 @@
 [집필 안내](writing/README.md#바로-읽기)에 모았습니다. 전편 구성과 인물 마스터는
 스포일러를 포함합니다. 독자용 정보에는 경로별 공개 필터를 사용합니다.
 
+[출판용 소제목 트리·흐름도](writing/previews/publication-flow.html)는 JSON과 Markdown으로도
+제공합니다. [구조·경로·갱신 안내](writing/publication/README.md)를 참고합니다. 작가용 전편
+자료이며 최종 본문·출판 경로·페이지는 아직 미정입니다.
+
 ## 자료 위치
 
 | 위치 | 역할 | 안내 |

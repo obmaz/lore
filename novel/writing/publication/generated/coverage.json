@@ -1,0 +1,13 @@
+{
+  "chapters": 15,
+  "subsections": 88,
+  "decisions": 6,
+  "options": 14,
+  "runtime_paths_checked": 96,
+  "nodes": 242,
+  "edges": 262,
+  "influence_links": 7,
+  "acyclic": true,
+  "publication_approved": false,
+  "visibility": "author_only"
+}

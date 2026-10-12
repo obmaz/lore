@@ -6,6 +6,12 @@
 
 ## 바로 읽기
 
+- [소제목 트리·장별 흐름도](previews/publication-flow.html): 장·소단락·선택·합류·후속 반응을
+  연결한 오프라인 SVG 도식. [Markdown 트리·Mermaid](publication/generated/flow.md),
+  [구조 JSON](publication/generated/flow.graph.json), [종이책 경로 예시](publication/generated/linear-editions.json).
+  전편 스포일러를 포함한 출판 준비 자료이며, 상세 본문·최종 경로·페이지 승인은 아닙니다.
+  [설정과 갱신 방법](publication/README.md).
+
 - [소단락 분기 시스템](previews/branch-system.html): 실행 가능한 JSON의 조건·선택 뒤 내용·
   상태 변화·후속 반응·필수 합류. [정의 JSON](branches/series.json),
   [실행 검사 결과](previews/branch-system-report.json), [공용 결정 양식](templates/branch-decision.template.json).
@@ -66,6 +72,7 @@ HTML은 편집 대상이 아니라 JSON에서 생성한 스냅샷이다.
 | 큰 이야기·감정선·다음 장의 이유 | `storyboard/chapter-stories.json` | `chapter-stories.schema.json` |
 | 소단락 주요 내용·필수 결과·분기 후보 | `storyboard/chapter-subsections.json` | `chapter-subsections.schema.json` |
 | 소단락의 실제 선택·효과·합류 | `branches/series.json` | [분기 시스템](branches/README.md) |
+| 출판용 소제목 트리·그래프·경로 예시 | `publication/flow.plan.json` | [출판 구성](publication/README.md), `publication/generated/` |
 | 원작 연결 배열·전후 산문 | `storyboard/source-connected.plan.json` | `source-connected/`, `previews/source-connected.html` |
 | 기본 원고와 장면 계약 | `quests/*.json`, `quests/*.continuity.json` | [연속성](../continuity/README.md) |
 | 소편의 장면 목록·종료 지점 | `episodes/*.json` | 실제 본문은 복제하지 않고 `node_ids`로 참조 |
