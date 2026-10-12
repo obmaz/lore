@@ -1,4 +1,5 @@
 import copy
+import html
 import json
 import re
 import tempfile
@@ -73,7 +74,7 @@ class StudioTests(unittest.TestCase):
         self.assertNotIn('allow-same-origin',output)
         self.assertNotIn('window.print(',output)
         self.assertIn('공개 /novel',output)
-        self.assertEqual(validate_plan()['views'],8)
+        self.assertEqual(validate_plan()['views'],7)
 
     def test_07_export_matches_and_preserves_manually_changed_output(self):
         with tempfile.TemporaryDirectory(prefix='lore-studio-') as temp:
@@ -105,6 +106,27 @@ class StudioTests(unittest.TestCase):
         first=self.data['chapters'][0]['decisions']
         self.assertEqual([d['id'] for d in first],['prepare','company'])
         self.assertEqual(first[0]['prompt'],self.flow.session.display(self.flow.session.plan['decisions'][0]['prompt']))
+
+    def test_11_unified_view_keeps_all_chapter_filtered_branch_details(self):
+        self.assertNotIn('branches',[r['id'] for r in self.data['plan']['navigation']])
+        for c in self.data['chapters']:
+            details=c['branch_html']
+            decisions=[d for d in self.flow.session.plan['decisions'] if d['unit_id'].split('/')[0]==c['id']]
+            self.assertEqual(details.count('class="unit branch-rule"'),len(decisions))
+            self.assertEqual(details.count('class="branch-option"'),sum(len(d['options']) for d in decisions))
+            self.assertIn('공통 분기 규칙',details)
+            for d in decisions:
+                self.assertIn(html.escape(self.flow.session.display(d['prompt'])),details)
+                for o in d['options']:
+                    self.assertIn(html.escape(self.flow.session.display(o['body'])),details)
+                    self.assertIn(html.escape(self.flow.session.display(o['label'])),c['svg'])
+            for r in self.flow.session.plan['reactions']:
+                if r['unit_id'].split('/')[0]==c['id']:
+                    self.assertIn(html.escape(self.flow.session.display(r['text'])),details)
+        runtime=(ROOT/'writing/studio/studio.js').read_text(encoding='utf-8')
+        self.assertNotIn('branch-questions',runtime)
+        self.assertNotIn('이 장의 질문과 선택',runtime)
+        self.assertIn("view==='branches'?'graph'",runtime)
 
 
 if __name__=='__main__': unittest.main()

@@ -3,15 +3,14 @@
   const data = JSON.parse(document.getElementById('studio-data').textContent);
   const $ = id => document.getElementById(id);
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const defaults = {open:false, view:'overview', chapter:data.chapters[0].id, document:data.plan.default_document, category:'characters', query:'', item:'', tab:'', source:'writing/project.json', pointer:'', edition:data.editions[0].id, graphOverview:false, graphZoom:'1', orderFull:false};
+  const defaults = {open:false, view:'overview', chapter:data.chapters[0].id, document:data.plan.default_document, category:'characters', query:'', item:'', tab:'', source:'writing/project.json', pointer:'', edition:data.editions[0].id, graphPanel:'diagram', graphOverview:false, graphZoom:'1', orderFull:false};
   const state = {...defaults};
   let routeIndex=0,lastHash='';
   const descriptions = {
     overview:'현재까지 작성된 원고와 구성, 설정을 한곳에서 확인합니다. 상세 본문과 구성 초안은 구분합니다.',
     reading:'최신 첫 장 선택형 초고, 기존 소편, 기본 경로, 원작 연결 판본을 같은 화면에서 읽습니다.',
     outline:'15장의 큰 이야기와 88개 소단락. 제목은 중앙 JSON을 참조하고 본문 완성 여부는 따로 표시합니다.',
-    graph:'본줄기 → 선택별 이야기 → 합류 → 필수 결과. 넓은 그림은 좌우로 움직여 볼 수 있습니다.',
-    branches:'현재 구현된 6개 결정·14개 선택지와 합류·조건·상태 변화. 기존 첫 장 독자 판본과는 별도 구조입니다.',
+    graph:'같은 장의 갈림·합류를 그림으로 보고, 조건·결과 탭에서 선택 뒤 이야기와 후속 반응을 확인합니다.',
     order:'실제 선택 경로에서 뽑은 편집 순서입니다. 정사·출판 승인·페이지 확정이 아닌 예시입니다.',
     settings:'인물, 관계, 무기, 마법과 공개 시점. 원작·증언·추론·창작 추가의 표시를 함께 확인합니다.',
     sources:'조회 중인 내용의 실제 JSON과 작업 규칙입니다. 수정·저장은 원본 파일에서 하고 화면은 재생성합니다.'
@@ -42,7 +41,7 @@
   }
   function routeHash() {
     const params=new URLSearchParams();
-    for(const key of ['chapter','document','category','query','item','tab','source','pointer','edition','graphZoom']) {
+    for(const key of ['chapter','document','category','query','item','tab','source','pointer','edition','graphPanel','graphZoom']) {
       if(state[key]!==defaults[key] && state[key]!=='') params.set(key,state[key]);
     }
     if(state.graphOverview)params.set('graphOverview','1');
@@ -61,7 +60,9 @@
   function restoreRoute() {
     const [view,query='']=location.hash.replace(/^#\/?/,'').split('?');
     const params=new URLSearchParams(query);
-    Object.assign(state,defaults,{open:true,view:descriptions[view]?view:'overview'});
+    Object.assign(state,defaults,{open:true,view:view==='branches'?'graph':descriptions[view]?view:'overview'});
+    if(['diagram','rules'].includes(params.get('graphPanel')))state.graphPanel=params.get('graphPanel');
+    if(view==='branches')state.graphPanel='rules';
     if(data.chapters.some(c=>c.id===params.get('chapter')))state.chapter=params.get('chapter');
     if(data.documents.some(d=>d.id===params.get('document')))state.document=params.get('document');
     if(categoryNames[params.get('category')])state.category=params.get('category');
@@ -94,16 +95,18 @@
     if (view==='overview') {
       const cards=[['reading','현재 소설 읽기','첫 장의 최신 선택형 초고와 기존 소편·경로 판본을 읽습니다.'],['outline','큰 흐름부터 살펴보기','15장 큰 이야기와 소단락 주요 내용을 나란히 확인합니다.'],['graph','갈림과 합류 확인','장별 실행 그래프와 두 봉인의 순서, 후속 반응을 살펴봅니다.'],['settings','집필 설정 찾기','인물·직업·성향·관계·장비·마법과 추가 설정의 근거를 검색합니다.']];
       content.innerHTML=`<div class="stats"><div class="stat"><strong>${data.chapters.length}</strong><span>큰 장 · 구성 초안</span></div><div class="stat"><strong>${data.report.subsections}</strong><span>소단락 · 주요 내용 초안</span></div><div class="stat"><strong>${data.report.runtime_paths_checked}</strong><span>전편 구조 검사 경로</span></div><div class="stat"><strong>${data.settings.filter(r=>r.category==='characters').length}</strong><span>인물 카드 · 작가용</span></div></div><div class="grid">${cards.map(([v,t,n])=>`<article class="card"><h3>${t}</h3><p>${n}</p><button type="button" class="button" data-view="${v}">열기 →</button></article>`).join('')}</div><h2 style="margin-top:28px">현재 집필 단계</h2><article class="card"><ol class="stage-list"><li>전편 큰 구성·큰 이야기·소단락 주요 내용: <span class="badge">초안</span></li><li>15장 원문 연결 판본: <span class="badge">원문 보존 · 조건별 자료 포함</span></li><li>전편 소단락 분기: <span class="badge">6결정 · 14선택지 · 구조 검사 완료</span></li><li>첫 장 선택형 본문과 기존 소편: <span class="badge">미승인 초고 · 판본별 구분</span></li><li>나머지 장의 상세 산문·최종 출판 경로·페이지: <span class="badge added">미완성 · 미정</span></li></ol></article><h3>자료를 수정할 때</h3><p class="notice">이 제작실은 읽기 전용입니다. 원본 JSON에서 수정한 뒤 <code>python3 tools/writing.py export</code>로 다시 생성합니다. 화면의 탐색과 독자 경로 선택은 Git 파일을 수정하지 않습니다.</p>`;
-    } else if (view==='reading' || view==='branches') {
-      const chosen=view==='branches'?'branch-system.html':state.document;
+    } else if (view==='reading') {
+      const chosen=state.document;
       const groups=[['interactive','최신 선택형 본문'],['prose','기존 소편 · 기본 경로'],['source','원작 원문 연결 판본'],['structure','작가용 구성 자료']];
       const options=groups.map(([g,t])=>`<optgroup label="${t}">${data.documents.filter(d=>d.group===g).map(d=>`<option value="${esc(d.id)}" ${d.id===chosen?'selected':''}>${esc(d.label)}</option>`).join('')}</optgroup>`).join('');
-      content.innerHTML=(view==='reading'?`<div class="toolbar"><label for="document-select">읽을 판본</label><select id="document-select">${options}</select><button type="button" class="button" id="restart-document">현재 판본 처음부터</button></div>`:'')+`<p class="notice" id="document-note"></p><iframe class="reader-frame" id="document-frame" title="${view==='branches'?'분기 구조와 조건':'소설 읽기'}" sandbox="allow-scripts allow-downloads"></iframe>`;
+      content.innerHTML=`<div class="toolbar"><label for="document-select">읽을 판본</label><select id="document-select">${options}</select><button type="button" class="button" id="restart-document">현재 판본 처음부터</button></div><p class="notice" id="document-note"></p><iframe class="reader-frame" id="document-frame" title="소설 읽기" sandbox="allow-scripts allow-downloads"></iframe>`;
       openDocument(chosen);
     } else if (view==='outline') {
       content.innerHTML=chapterToolbar()+`<div class="split"><aside class="chapter-tree" aria-label="전체 장 목차">${data.chapters.map(c=>`<button type="button" data-chapter="${c.id}" aria-current="${c.id===state.chapter}">제${c.number}장 · ${esc(c.title)}<br><small>${c.units.length}소단락 · ${c.implementation==='runtime_bound'?'첫 장 독자 판본 별도':'상세 본문 미집필'}</small></button>`).join('')}</aside><section class="card"><span class="badge">큰 이야기 초고 · 상세 본문 아님</span><h2 style="margin-top:14px">제${chapter().number}장 · ${esc(chapter().title)}</h2>${chapter().story_html}${sourceButton({file:'writing/storyboard/chapter-stories.json',pointer:'/chapters/'+(chapter().number-1)})}</section></div><h2 style="margin-top:28px">소단락의 주요 내용</h2>${chapter().units.map(u=>`<details class="unit" id="${esc(u.unit_id.replace('/','-'))}"><summary>${esc(u.number+' · '+u.title)} ${u.decision_ids.length?'<span class="badge">구현 분기</span>':u.candidate_deferred?'<span class="badge added">분기 후보 · 미구현</span>':''}</summary><div class="unit-body">${u.html}${sourceButton(u.source_ref)}</div></details>`).join('')}`;
     } else if (view==='graph') {
-      content.innerHTML=chapterToolbar()+`<div class="toolbar"><button type="button" class="button" data-view="outline">같은 장의 주요 내용</button><button type="button" class="button" id="${state.graphOverview?'return-chapter-graph':'open-overview-graph'}">${state.graphOverview?'장별 그래프로 돌아가기':'전체 장 연결도'}</button><label for="graph-zoom">그림 크기</label><select id="graph-zoom">${['0.75','1','1.25','1.5'].map(z=>`<option value="${z}" ${z===state.graphZoom?'selected':''}>${Number(z)*100}%</option>`).join('')}</select></div><p class="view-hint">그림 안에서 상하·좌우로 이동할 수 있습니다. 질문과 선택은 아래에도 글로 표시됩니다.</p><div class="diagram" id="chapter-diagram">${state.graphOverview?data.overview_svg:chapter().svg}</div><section class="branch-questions"><h2>이 장의 질문과 선택</h2>${chapter().decisions.length?chapter().decisions.map(d=>`<article class="question-card"><span class="badge">${esc(d.title)}</span><h3>${esc(d.prompt)}</h3><ol>${d.options.map(o=>`<li>${esc(o.label)}</li>`).join('')}</ol>${sourceButton(d.source_ref)}</article>`).join(''):'<p class="muted">이 장에는 구현된 선택이 없습니다. 본줄기로 이어집니다.</p>'}</section><details class="unit"><summary>그래프를 읽는 방법</summary><div class="unit-body">실선은 읽기·선택·합류, 점선은 조건부 반응과 관찰된 후속 영향입니다. 선택지는 조건이 맞을 때만 열리며 전부 한 경로에서 읽지 않습니다. 9장의 두 탐색은 순서만 달라지고 둘 다 필수입니다.</div></details>`;
+      const panels=`<nav class="view-tabs" aria-label="분기 · 그래프 보기"><button type="button" class="button" data-graph-panel="diagram" aria-pressed="${state.graphPanel==='diagram'}">장별 그래프</button><button type="button" class="button" data-graph-panel="rules" aria-pressed="${state.graphPanel==='rules'}">조건 · 결과</button></nav>`;
+      const diagram=`<div class="toolbar graph-tools"><button type="button" class="button" data-view="outline">같은 장의 주요 내용</button><button type="button" class="button" id="${state.graphOverview?'return-chapter-graph':'open-overview-graph'}">${state.graphOverview?'장별 그래프로 돌아가기':'전체 장 연결도'}</button><label for="graph-zoom">그림 크기</label><select id="graph-zoom">${['0.75','1','1.25','1.5'].map(z=>`<option value="${z}" ${z===state.graphZoom?'selected':''}>${Number(z)*100}%</option>`).join('')}</select></div><p class="view-hint">질문과 선택은 그래프의 분기 노드에 표시됩니다. 그림 안에서 상하·좌우로 이동할 수 있습니다.</p><div class="diagram" id="chapter-diagram">${state.graphOverview?data.overview_svg:chapter().svg}</div><details class="unit"><summary>그래프를 읽는 방법</summary><div class="unit-body">실선은 읽기·선택·합류, 점선은 조건부 반응과 관찰된 후속 영향입니다. 선택지는 조건이 맞을 때만 열리며 전부 한 경로에서 읽지 않습니다. 9장의 두 탐색은 순서만 달라지고 둘 다 필수입니다.</div></details>`;
+      content.innerHTML=chapterToolbar()+panels+(state.graphPanel==='diagram'?diagram:`<section id="branch-details" aria-label="이 장의 분기 조건과 결과">${chapter().branch_html}</section>`);
       applyGraphZoom();
     } else if (view==='order') {
       const edition=data.editions.find(e=>e.id===state.edition);
@@ -172,6 +175,7 @@
     else if (button.id==='restart-document') openDocument(state.document);
     else if (button.id==='open-overview-graph') {state.graphOverview=true;go('graph');}
     else if (button.id==='return-chapter-graph') {state.graphOverview=false;go('graph');}
+    else if (button.dataset.graphPanel) {state.graphPanel=button.dataset.graphPanel;go('graph');}
     else if (button.dataset.setting) {state.item=button.dataset.setting;state.tab='';go('settings');}
     else if (button.dataset.settingTab) {state.tab=button.dataset.settingTab;renderSetting();recordRoute();}
     else if (button.id==='setting-list-back') {state.item='';state.tab='';go('settings');}

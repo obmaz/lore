@@ -5661,6 +5661,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/studio.py"
         }
       ],

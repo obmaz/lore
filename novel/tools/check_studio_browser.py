@@ -12,7 +12,7 @@ def check(screenshots=None):
     report=[]
     with sync_playwright() as playwright:
         browser=playwright.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
-        for width,height in [(390,844),(1280,900)]:
+        for width,height in [(390,844),(820,900),(1280,900)]:
             page=browser.new_page(viewport={'width':width,'height':height})
             errors,requests=[],[]
             page.on('pageerror',lambda error:errors.append(str(error)))
@@ -20,11 +20,16 @@ def check(screenshots=None):
             page.set_content(path.read_text(encoding='utf-8'))
             page.evaluate('document.fonts.ready')
             assert page.locator('#workspace').is_hidden()
-            assert page.locator('#navigation button').count()==8
-            assert page.locator('#navigation button:disabled').count()==8
+            assert page.locator('#navigation button').count()==7
+            assert page.locator('#navigation button:disabled').count()==7
+            assert page.locator('#navigation [data-view="branches"]').count()==0
             page.get_by_role('button',name='작가용 제작실 열기',exact=True).click()
             assert page.locator('#workspace').is_visible()
             assert page.locator('.stat').count()==4
+            assert page.locator('#view-title').evaluate('(e)=>parseFloat(getComputedStyle(e).fontSize)')<=24
+            assert page.locator('#navigation button').first.evaluate('(e)=>parseFloat(getComputedStyle(e).fontSize)')<=13
+            if width==390:
+                assert page.locator('#navigation button').first.bounding_box()['height']>=44
             if screenshots:
                 screenshots.mkdir(parents=True,exist_ok=True)
                 page.screenshot(path=str(screenshots/f'studio-home-{width}.png'))
@@ -53,15 +58,40 @@ def check(screenshots=None):
             assert page.locator('#chapter-select').input_value()=='chapter09'
             assert page.locator('#chapter-diagram svg').count()==1
             assert '질문' in page.locator('#chapter-diagram svg').text_content()
-            assert '두 봉인을 모두 풀어야 한다' in page.locator('.branch-questions').inner_text()
+            assert '두 봉인을 모두 풀어야 한다' in page.locator('#chapter-diagram svg').text_content()
+            assert '늪 속 장치가 있는 동굴부터 찾는다' in page.locator('#chapter-diagram svg').text_content()
+            assert page.locator('.branch-questions').count()==0
+            assert page.get_by_role('heading',name='이 장의 질문과 선택',exact=True).count()==0
             if screenshots:
                 page.screenshot(path=str(screenshots/f'studio-graph-{width}.png'))
             page.locator('#open-overview-graph').click()
             assert page.locator('#return-chapter-graph').is_visible()
             page.locator('#return-chapter-graph').click()
-            view('branches')
-            page.frame_locator('#document-frame').locator('h1').wait_for()
-            assert '선택' in page.frame_locator('#document-frame').locator('body').inner_text()
+            page.locator('[data-graph-panel="rules"]').click()
+            assert page.locator('#chapter-select').input_value()=='chapter09'
+            assert page.locator('#branch-details .branch-rule').count()==1
+            assert page.locator('#chapter-diagram').count()==0
+            page.locator('.branch-rule>summary').first.click()
+            assert '두 봉인을 모두 풀어야 한다' in page.locator('#branch-details').inner_text()
+            assert page.locator('.branch-option').count()==2
+            assert '두 목표를 모두 마친 뒤 합류' in page.locator('#branch-details').inner_text()
+            page.locator('.branch-rule [data-source]').first.click()
+            assert '/decisions/' in page.locator('#source-location').inner_text()
+            page.go_back()
+            page.locator('[data-graph-panel="rules"][aria-pressed="true"]').wait_for()
+            assert page.locator('#chapter-select').input_value()=='chapter09'
+            if screenshots:page.screenshot(path=str(screenshots/f'studio-branch-details-{width}.png'))
+            page.go_back()
+            page.locator('#chapter-diagram').wait_for()
+            page.go_forward()
+            page.locator('#branch-details').wait_for()
+            page.locator('#chapter-select').select_option('chapter01')
+            assert page.locator('#branch-details .branch-rule').count()==2
+            page.locator('#chapter-select').select_option('chapter02')
+            assert page.locator('#branch-details .branch-rule').count()==0
+            assert '이 장에는 구현된 선택이 없습니다' in page.locator('#branch-details').inner_text()
+            page.locator('[data-graph-panel="diagram"]').click()
+            assert page.locator('#chapter-select').input_value()=='chapter02'
             view('order')
             assert page.locator('[data-row-kind="main"]:visible').count()==88
             assert page.locator('[data-row-kind="choice"]:visible').count()==0
@@ -78,6 +108,8 @@ def check(screenshots=None):
             assert page.locator('.setting-list-item').count()>=1
             page.locator('[data-setting="characters/protagonist"]').click()
             assert page.locator('.setting-detail-head h2').inner_text()=='서진'
+            assert page.locator('.setting-detail-head h2').evaluate('(e)=>parseFloat(getComputedStyle(e).fontSize)')<=22
+            assert page.locator('.fact-value').first.evaluate('(e)=>parseFloat(getComputedStyle(e).fontSize)')==14
             assert page.get_by_text('창작 추가',exact=True).count()>0
             page.locator('[data-setting-tab="원작 정보"]').click()
             page.go_back()
@@ -117,7 +149,15 @@ def check(screenshots=None):
             assert deep.locator('.setting-detail-head h2').inner_text()=='사냥 활'
             assert deep.locator('#setting-category').input_value()=='equipment'
             deep.close()
-            report.append({'width':width,'views':8,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'source_json_download':True,'browser_back_forward':True,'graph_questions':True})
+            legacy=browser.new_page(viewport={'width':width,'height':height})
+            legacy.set_content(path.read_text(encoding='utf-8'))
+            legacy.evaluate('location.hash="#/branches?chapter=chapter09"')
+            legacy.locator('#open-studio').click()
+            assert legacy.locator('[data-graph-panel="rules"][aria-pressed="true"]').is_visible()
+            assert legacy.locator('#chapter-select').input_value()=='chapter09'
+            assert '#/graph?' in legacy.url
+            legacy.close()
+            report.append({'width':width,'views':7,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'source_json_download':True,'browser_back_forward':True,'graph_questions':True,'unified_branch_details':True,'legacy_branch_bookmark':True,'compact_type':True})
             page.close()
         browser.close()
     return report

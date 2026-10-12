@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "status": "draft",
   "visibility": "author_only",
   "source_policy": "references_not_another_story_source",
@@ -16,8 +16,7 @@
     {"id": "overview", "label": "작업 현황"},
     {"id": "reading", "label": "소설 읽기"},
     {"id": "outline", "label": "목차 · 장별 구성"},
-    {"id": "graph", "label": "장별 그래프"},
-    {"id": "branches", "label": "분기 구조"},
+    {"id": "graph", "label": "분기 · 그래프"},
     {"id": "order", "label": "출판 편집 순서"},
     {"id": "settings", "label": "인물 · 세계 설정"},
     {"id": "sources", "label": "원본 JSON · 작업 규칙"}

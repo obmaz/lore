@@ -14,9 +14,9 @@
       "addition": {"const": true}, "kind": {"const": "new_setting"}, "note": {"type": "string", "minLength": 1}, "knowledge_policy": {"const": "author_reference_not_character_knowledge"}
     }},
     "title": {"type": "string", "minLength": 1},
-    "navigation": {"type": "array", "minItems": 8, "maxItems": 8, "items": {
+    "navigation": {"type": "array", "minItems": 7, "maxItems": 7, "items": {
       "type": "object", "additionalProperties": false, "required": ["id", "label"], "properties": {
-        "id": {"enum": ["overview", "reading", "outline", "graph", "branches", "order", "settings", "sources"]}, "label": {"type": "string", "minLength": 1}
+        "id": {"enum": ["overview", "reading", "outline", "graph", "order", "settings", "sources"]}, "label": {"type": "string", "minLength": 1}
       }
     }},
     "default_document": {"type": "string", "pattern": "^[a-z0-9-]+\\.html$"},

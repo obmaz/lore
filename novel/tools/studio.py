@@ -19,7 +19,53 @@ TEMPLATE = ROOT/'writing/studio/shell.html'
 SCRIPT = ROOT/'writing/studio/studio.js'
 OUTPUT = ROOT/'writing/studio/generated'
 PREVIEWS = ROOT/'writing/previews'
-VIEWS = ('overview', 'reading', 'outline', 'graph', 'branches', 'order', 'settings', 'sources')
+VIEWS = ('overview', 'reading', 'outline', 'graph', 'order', 'settings', 'sources')
+
+
+def chapter_branch_details(publication, chapter_id):
+    """Read-only, chapter-filtered details from the same plan as the graph."""
+    session = publication.session
+    esc = html.escape
+    display = lambda value: esc(session.display(value))
+    belongs = lambda key: key.split('/')[0] == chapter_id
+    def heading(key):
+        return esc(publication.unit_numbers[key]+' · '+session.display(publication.resolve(publication.heading(key))))
+    def source(pointer):
+        return '<div class="source-note"><button type="button" class="button small" data-source="'+esc(publication.bp)+'" data-pointer="'+esc(pointer)+'">원본 JSON 보기</button></div>'
+    def raw(value, label='조건·상태 변화 · 추가 메타데이터'):
+        return '<details class="rule-json"><summary>'+label+'</summary><pre>'+esc(json.dumps(value,ensure_ascii=False,indent=2))+'</pre></details>'
+    decisions = [d for d in session.plan['decisions'] if belongs(d['unit_id'])]
+    reactions = [(i,r) for i,r in enumerate(session.plan['reactions']) if belongs(r['unit_id'])]
+    body = '<p class="notice">이 장의 '+str(len(decisions))+'개 결정 · '+str(sum(len(d['options']) for d in decisions))+'개 선택 · '+str(len(reactions))+'개 후속 반응. 집필 추가 · 주요 내용 초안이며 원작의 확정 사실이나 승인된 장편 본문이 아닙니다.</p>'
+    for d in decisions:
+        body += '<details class="unit branch-rule"><summary>'+display(publication.plan['decision_titles'][d['id']])+' <small>'+heading(d['unit_id'])+'</small></summary><div class="unit-body"><p>'+display(d['prompt'])+'</p>'
+        for o in d['options']:
+            body += '<section class="branch-option"><h4>'+display(o['label'])+'</h4><p>'+display(o['body'])+'</p>'
+            body += raw({k:o[k] for k in ('id','when','participants','effects','origin','metadata')})+'</section>'
+        body += '<p class="merge-note">필수 합류: '+heading(d['rejoin_before'])+'</p>'
+        orders = [o for o in session.plan['parallel_orders'] if o['decision_id']==d['id']]
+        if orders:
+            body += '<p>탐색 순서만 달라집니다. 두 목표를 모두 마친 뒤 합류합니다.</p>'+raw(orders,'병렬 목표 순서 JSON')
+        body += source(publication.decision_paths[d['id']])+'</div></details>'
+    if not decisions:
+        body += '<p class="muted">이 장에는 구현된 선택이 없습니다. 필수 본줄기를 따라 진행합니다.</p>'
+    if reactions:
+        body += '<h2>조건부 후속 반응</h2>'
+        for i,r in reactions:
+            body += '<details class="unit branch-reaction"><summary>'+heading(r['unit_id'])+' <small>'+esc(r['id'])+'</small></summary><div class="unit-body"><p>'+display(r['text'])+'</p>'
+            body += raw({k:r[k] for k in ('when','participants','requires_units','origin','metadata')})+source('/reactions/'+str(i))+'</div></details>'
+    rules = [(key,r) for key,r in session.plan['unit_rules'].items() if belongs(key)]
+    if rules:
+        body += '<details class="unit"><summary>본줄기 진입 조건 · 필수 상태 변화</summary><div class="unit-body">'
+        for key,r in rules:
+            body += '<h4>'+heading(key)+'</h4>'+raw(r)+source('/unit_rules/'+key.replace('~','~0').replace('/','~1'))
+        body += '</div></details>'
+    deferred = [u for u in session.units.values() if belongs(u['id']) and u['branch']['mode']=='candidate' and not any(d['unit_id']==u['id'] for d in decisions)]
+    if deferred:
+        body += '<details class="unit"><summary>분기 후보 · 아직 미구현</summary><div class="unit-body"><ul>'+''.join('<li>'+heading(u['id'])+'</li>' for u in deferred)+'</ul></div></details>'
+    body += '<details class="unit"><summary>공통 분기 규칙 · 동행 · 장비 · 상태 정의</summary><div class="unit-body"><ul>'+''.join('<li>'+esc(note)+'</li>' for note in session.plan['notes'])+'</ul>'
+    body += raw({k:session.plan[k] for k in ('party_contract','state_definitions')},'공통 계약과 초기 상태 JSON')+source('/party_contract')+'</div></details>'
+    return body
 
 
 def readable_claims(claims):
@@ -104,6 +150,7 @@ def build(docs=None, publication=None, plan=None):
                                        'source_ref':{'file':publication.bp,'pointer':publication.decision_paths[d['id']]},
                                        'options':[{'id':o['id'],'label':session.display(o['label'])} for o in d['options']]}
                                       for d in session.plan['decisions'] if d['unit_id'].split('/')[0]==cid],
+                         'branch_html':chapter_branch_details(publication,cid),
                          'svg':publication.svg(chart['node_ids']), 'source_ref':tree['heading_ref']})
     documents = []
     reading_labels = {

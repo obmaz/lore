@@ -58,11 +58,11 @@
     "writing/publication/generated/flow.md": "ca86cd788dab2cd6ad374b233474526e444f0610660b4c60823425906b880fe9",
     "writing/publication/generated/flow.html": "d9c6ccc0b901362dd566159a73fe680a6bb87855cccea7c1b952187e45a7198c",
     "writing/publication/generated/coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746",
-    "writing/studio/studio.plan.json": "f80cd5e7cab1d8f18c2d7047c07f86235572f1d050372cb3c703d0920f67417d",
-    "writing/studio/studio.schema.json": "40c5c040fa1e1b71489f1f953c346329c751a1b9cdfb29d287cc35426254b050",
-    "writing/studio/shell.html": "a69d1d2db073663dfc36d6a8b0aef506f52cfc54ebd711c5007dc24577cd2d8b",
-    "writing/studio/studio.js": "e933b5cc5b665857abd38adc41f99d34ca688abc6c2435c6e40ca66340313147",
-    "tools/studio.py": "b3de8c0d5010ff07de07d713b9f6d993da734296ebaadf0556c9f74d71de2380"
+    "writing/studio/studio.plan.json": "e2ac982213d2dd820ef18c15a1e011c6f8898bde661ba824f10f95da2bfbd1ba",
+    "writing/studio/studio.schema.json": "b670be722d1f9d11689edd448887187ff68f6a6f3ad5680f2b9f14f7e66bc93c",
+    "writing/studio/shell.html": "ac128fef6b513fda745e110f9f0478b84c18a4494600b22d50a1f6dc153edeac",
+    "writing/studio/studio.js": "fe6050abdeb97adcf40bfb6dc601c2bb9199cdc7ef1f8f50e6521c5729273da8",
+    "tools/studio.py": "87dc76823329c7c30ca8a5d45c37b14142d7092723c8a51d41ae88c30defe3ab"
   },
   "artifacts": {
     "storyboard.html": "3aae7b8915afee045a77553c2112f88d7ebf5bf19f94c14c7386567b37f47ba8",
