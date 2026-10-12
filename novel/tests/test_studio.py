@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 import jsonschema
 
-from studio import build, document, export, package_path, validate_plan, verify_previews, PLAN, OUTPUT
+from studio import build, document, export, package_path, validate_plan, verify_previews, readable_claims, PLAN, OUTPUT
 from materials import ROOT, read
 from publication_flow import PublicationFlow
 
@@ -127,6 +127,25 @@ class StudioTests(unittest.TestCase):
         self.assertNotIn('branch-questions',runtime)
         self.assertNotIn('이 장의 질문과 선택',runtime)
         self.assertIn("view==='branches'?'graph'",runtime)
+
+    def test_12_dense_claims_keep_values_and_provenance_without_empty_cards(self):
+        profile=self.flow.session.profiles['characters']['mad_joe']
+        claims=[profile['korean_name'],*profile['biography'].values()]
+        output=readable_claims(claims)
+        self.assertEqual(output.count('data-field='),len(claims))
+        for c in claims:
+            self.assertIn('data-field="'+c['field']+'"',output)
+            self.assertIn(html.escape(c['metadata']['note']),output)
+        unknown=readable_claims([profile['biography']['age']])
+        self.assertIn('<div class="fact-status"></div>',unknown)
+        self.assertIn('분류: 미상 · 검토 상태: 미상',unknown)
+        long_claim=copy.deepcopy(profile['biography']['age'])
+        long_claim['value']={'note':'</details><script>alert(1)</script>'}
+        long_claim['metadata']['note']='</details><script>alert(2)</script>'
+        rendered=readable_claims([long_claim])
+        self.assertIn('fact-card fact-long',rendered)
+        self.assertNotIn('<script>',rendered)
+        self.assertIn('&lt;script&gt;',rendered)
 
 
 if __name__=='__main__': unittest.main()

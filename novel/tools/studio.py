@@ -73,10 +73,19 @@ def readable_claims(claims):
     for claim in claims:
         meta=claim['metadata'];kind=meta['kind'] if meta['addition'] else claim.get('origin','unknown')
         label=LABELS.get(claim['field'],claim['field'])
-        rows.append('<article class="fact-card"><h4>'+html.escape(label)+'</h4><div class="fact-value">'+value_html(claim.get('value'))+'</div>'
-                    '<div class="fact-status"><span class="badge'+(' added' if meta['addition'] else '')+'">'+html.escape(LABELS.get(kind,kind))+'</span> '
-                    +html.escape(LABELS.get(claim.get('status','confirmed'),claim.get('status','confirmed')))+'</div>'
-                    '<details class="fact-evidence"><summary>근거와 편집 메모</summary><p>'+evidence_html(claim.get('evidence',[]))+'</p><p>'+html.escape(meta['note'])+'</p></details></article>')
+        value=claim.get('value');kind_label=LABELS.get(kind,kind)
+        status_label=LABELS.get(claim.get('status','confirmed'),claim.get('status','confirmed'))
+        narrative_fields={'appearance','temperament','voice','goal','story_role','recruitment','conditions','effect','reference_usage','prophecy_testimony','mechanical_scope'}
+        long_value=isinstance(value,(dict,list)) or isinstance(value,str) and (len(value)>24 or '\n' in value or claim['field'] in narrative_fields)
+        # Unknown/null is already visible as the value. Keep its full provenance
+        # in the disclosure instead of repeating "미상" three times in the row.
+        badges='' if kind=='unknown' and value is None else '<span class="badge'+(' added' if meta['addition'] else '')+'">'+html.escape(kind_label)+'</span>'
+        if badges and status_label!=kind_label:
+            badges+='<span class="claim-status">'+html.escape(status_label)+'</span>'
+        rows.append('<article class="fact-card'+(' fact-long' if long_value else '')+'" data-field="'+html.escape(claim['field'])+'"><h4>'+html.escape(label)+'</h4><div class="fact-value">'+value_html(value)+'</div>'
+                    '<div class="fact-status">'+badges+'</div>'
+                    '<details class="fact-evidence"><summary aria-label="'+html.escape(label)+' · 근거와 편집 메모" title="근거와 편집 메모">근거</summary><div class="fact-evidence-body">'
+                    '<p>분류: '+html.escape(kind_label)+' · 검토 상태: '+html.escape(status_label)+'</p><p>'+evidence_html(claim.get('evidence',[]))+'</p><p>'+html.escape(meta['note'])+'</p></div></details></article>')
     return '<div class="fact-grid">'+''.join(rows)+'</div>' if rows else '<p class="empty">등록된 정보가 없습니다. 미상을 추정해서 채우지 않습니다.</p>'
 
 

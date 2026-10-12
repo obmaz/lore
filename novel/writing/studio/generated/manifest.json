@@ -4,15 +4,15 @@
   "source_sha256": {
     "writing/studio/studio.plan.json": "e2ac982213d2dd820ef18c15a1e011c6f8898bde661ba824f10f95da2bfbd1ba",
     "writing/studio/studio.schema.json": "b670be722d1f9d11689edd448887187ff68f6a6f3ad5680f2b9f14f7e66bc93c",
-    "writing/studio/shell.html": "ac128fef6b513fda745e110f9f0478b84c18a4494600b22d50a1f6dc153edeac",
-    "writing/studio/studio.js": "fe6050abdeb97adcf40bfb6dc601c2bb9199cdc7ef1f8f50e6521c5729273da8",
-    "tools/studio.py": "87dc76823329c7c30ca8a5d45c37b14142d7092723c8a51d41ae88c30defe3ab",
+    "writing/studio/shell.html": "7dba155b5a914ba4f1d02396ea2d96676a41407f23b5fa484c8fd71803912f59",
+    "writing/studio/studio.js": "402a33b9b63c703eecf010c22a31545bdd507811cfc6bf62b75ee17f1dece531",
+    "tools/studio.py": "67da1011cacbf772e446014bfa03736d20f957b83f253901806015ab024097b8",
     "tools/export_reference.py": "2fb37a42477fafd4e277edb2e77d7500cb9f2138b8d0e7641d32f7983b3699c0",
     "tools/publication_flow.py": "5e0920c35cd854fd4a9060a26a5975792ba8d06112c8657d03d905b49c487667",
     "AGENTS.md": "bc94225d460037d2913be1be46216d3f429e89a628e4858281edeb2df8edc711",
     "writing/AGENTS.md": "96c0889f26bfd0cb66a7f12c577322b66e7ab977116ec206d48b3d28817a8e29",
     "characters/AGENTS.md": "a2dea8ef50f25d6cc7287c76e5a991af193e8efbe8cf8b48edd432e43e9a1145",
-    "writing/previews/manifest.json": "af5bcff17896bba79adcfdc2c3e3ec943e53c781c58f3b520ba69982858a362e",
+    "writing/previews/manifest.json": "7cba5a08fcda43707c3cfda1b59d6d9457491284ba34b3a0f729cc365d51c1f9",
     "writing/previews/branch-system.html": "f1ea31a3839a07dee60e4e86c39125b6076affb06a5c24d302639b7004026217",
     "writing/previews/chapter-stories.html": "5d89cbeaad5a2ceec2a2093dec848d926718bc32a1d585f46817e28f5ee6910a",
     "writing/previews/chapter-subsections.html": "1613e0c3b754f3e048b9b29982734883cbc0446aa2184e26dfbe9f30865dc920",
@@ -67,6 +67,6 @@
     "writing/publication/generated/coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746"
   },
   "artifacts": {
-    "index.html": "1d7b0668d4dff9c2890238e3f5752e2d6555dea50303998d4767d19d3d7b8ea8"
+    "index.html": "d1116875ecfb59a4e42e6f6278cfe5eb1f38527a84cf123286252ca966bb3724"
   }
 }

@@ -116,6 +116,29 @@ def check(screenshots=None):
             page.locator('[data-setting-tab="핵심 설정"][aria-pressed="true"]').wait_for()
             if screenshots:page.screenshot(path=str(screenshots/f'studio-character-{width}.png'))
             page.locator('#setting-list-back').click()
+            page.locator('#setting-search').fill('매드 조')
+            page.locator('[data-setting="characters/mad_joe"]').click()
+            basic=page.locator('.fact-grid').first
+            assert basic.locator('.fact-card').count()==7
+            basic_height=round(basic.bounding_box()['height'],1)
+            assert basic_height<=360,('short facts waste vertical space',width,basic_height)
+            assert all(h<=60 for h in basic.locator('.fact-card').evaluate_all('(es)=>es.map(e=>e.getBoundingClientRect().height)'))
+            assert page.locator('.setting-detail-head').bounding_box()['height']<=90
+            assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'),'dense settings overflow'
+            assert basic.locator('[data-field="age"] .fact-status').inner_text()==''
+            evidence=basic.locator('[data-field="age"] .fact-evidence')
+            evidence.locator('summary').focus()
+            page.keyboard.press('Enter')
+            assert evidence.locator('.fact-evidence-body').is_visible()
+            assert '검토 상태: 미상' in evidence.inner_text()
+            assert '근거 없음' in evidence.inner_text()
+            evidence.locator('summary').click()
+            assert not evidence.locator('.fact-evidence-body').is_visible()
+            if screenshots:page.screenshot(path=str(screenshots/f'studio-dense-settings-{width}.png'))
+            page.locator('[data-setting-tab="관계 · 공개"]').click()
+            assert '공개 정책' in page.locator('.setting-content').inner_text()
+            page.locator('[data-setting-tab="핵심 설정"]').click()
+            page.locator('#setting-list-back').click()
             page.locator('#setting-search').fill('no-such-setting-123')
             assert page.locator('.empty').is_visible()
             page.locator('#setting-search').fill('')
@@ -157,7 +180,7 @@ def check(screenshots=None):
             assert legacy.locator('#chapter-select').input_value()=='chapter09'
             assert '#/graph?' in legacy.url
             legacy.close()
-            report.append({'width':width,'views':7,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'source_json_download':True,'browser_back_forward':True,'graph_questions':True,'unified_branch_details':True,'legacy_branch_bookmark':True,'compact_type':True})
+            report.append({'width':width,'views':7,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'source_json_download':True,'browser_back_forward':True,'graph_questions':True,'unified_branch_details':True,'legacy_branch_bookmark':True,'compact_type':True,'dense_basic_height':basic_height,'evidence_keyboard_toggle':True})
             page.close()
         browser.close()
     return report
