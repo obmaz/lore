@@ -1,5 +1,8 @@
 # 집필 참조 사전
 
+이 문서는 **사전의 파일·필드·편집 입력·생성 방법**입니다. 원작 보존과 추가 표시의 준수 규칙은
+[프로젝트 AGENTS](../AGENTS.md), 관계 공개 규칙은 [인물 AGENTS](../characters/AGENTS.md)에 둡니다.
+
 게임 파일 없이 `novel/` 내부 JSON만으로 조회·검증·재생성한다.
 
 - [equipment.json](equipment.json): 무기 10종(맨손 포함), 방패 5종, 갑옷 5종.

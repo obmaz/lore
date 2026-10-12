@@ -17,6 +17,8 @@
 원래 장 제목은 `../storyboard/chapters.json`, 소단락은 `chapter-subsections.json`,
 실제 선택·조건·효과는 `../branches/series.json`에서 수정합니다. 여기에서 별도로
 제목·본문·분기를 복사해 집필하거나 두 개의 이야기 원본을 유지하지 않습니다.
+결정 노드의 `question_ref`는 해당 결정의 실제 `prompt`를 가리킵니다. 그림과 Markdown에는
+질문/진행 지시와 각 선택의 `label`을 함께 표시하며 새 대사를 지어내지 않습니다.
 
 생성 JSON의 노드 ID는 안정된 소단락·결정·선택 ID에서 만듭니다. `label_ref`, `content_ref`,
 `guard_ref`, `effects_ref`는 파일과 JSON Pointer로 원래 항목을 가리킵니다.

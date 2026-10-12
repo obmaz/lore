@@ -227,7 +227,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("paths", nargs="*", type=Path)
     args = parser.parse_args()
-    paths = args.paths or sorted(path for path in (ROOT / "authoring/drafts").glob("*.json")
+    paths = args.paths or sorted(path for path in (ROOT / "authoring/examples").glob("*.json")
                                 if not path.name.endswith(".continuity.json"))
     if not args.paths:
         paths += sorted(path for path in (ROOT/'writing/quests').glob('*.json') if not path.name.endswith('.continuity.json'))

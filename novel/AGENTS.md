@@ -1,11 +1,16 @@
 # 소설 집필과 참조 자료 작업 지침
 
+이 파일은 `novel/` 전체의 **준수 규칙**만 정의한다. 폴더 역할·사용법·검증 명령은
+[README.md](README.md)의 책임이다. 본문 제약은 [writing/AGENTS.md](writing/AGENTS.md),
+인물·관계 공개 제약은 [characters/AGENTS.md](characters/AGENTS.md)가 추가한다.
+하위 README는 필드·편집 위치·명령을 설명하며 상위 규칙을 재정의하지 않는다.
+
 - 이 프로젝트의 자료·도구·의존성만 사용한다. 다른 프로젝트의 파일을 읽거나
   가져오거나 자동으로 동기화하지 않는다. 작업 위치는 `novel/`이고 브랜치는 `main`이다.
 - 집필 자료 변경은 이 저장소의 `origin/main`에 푸시한다. 커밋에는 해당 작업의
   `novel/` 변경만 포함하고, 다른 작업의 변경이나 보류한 stash를 함께 반영하지 않는다.
 - 새 스토리보드·본문은 `writing/` 아래에서 공용 템플릿을 이용해 작성한다.
-  `authoring/drafts/`의 기존 예시는 보존한다. 이름·장비·마법·지명은 본문에 복사하지
+  `authoring/examples/`의 검증 예시는 보존한다. 이름·장비·마법·지명은 본문에 복사하지
   않고 `ref`의 분류와 안정된 ID로 연결한다. 집필 이름은 `reference/names.json`에서
   변경하고 생성된 카드/읽기본을 갱신한다. 보존 원문은 치환하지 않는다.
 - `novel/`는 독립 집필 패키지다. 검증·집필 도구는 내부 JSON만 읽는다. 원작 데이터의
@@ -43,7 +48,7 @@
   재검토한다. 승인 해시가 달라진 원고를 승인된 것으로 취급하지 않는다.
 - 자동 생성 자료는 수동 편집을 묵시적으로 덮어쓰지 않는다. 분석 근거·집필 해석은
   `reference/analysis.json`에서 관리하고, 생성 도구는 기준 해시가 다르면 멈춘다.
-- 변경 후 `python3 tools/characters.py`, `python3 tools/reference.py`,
-  `python3 tools/validate_story_authoring.py`, `python3 tools/writing.py validate`와
-  `PYTHONPATH=tools python3 -m unittest discover -s tests`
-  를 `novel/` 안에서 실행한다. 게임 빌드는 필요 없다.
+- 파일 정리 시 실제 참조·생성 입력·보관/검증 용도를 확인하고 자료 역할 지도를 갱신한다.
+  현재 본문에 안 나온다는 이유로 원문·검증 예시·공용 양식을 삭제하지 않는다.
+- 변경 후 [README의 검증 절차](README.md#설치와-검증)를 `novel/` 안에서 수행한다.
+  게임 빌드는 필요 없다. 웹 게시 요청의 저장소 운영 설정은 원고와 분리해서 커밋한다.

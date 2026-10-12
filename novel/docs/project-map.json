@@ -1,0 +1,5898 @@
+{
+  "version": 1,
+  "origin": "authored",
+  "metadata": {
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 관리용 파일 역할과 관찰된 소비자 지도. 정적 언급·해시 확인만으로 모든 런타임 접근이나 삭제 가능성을 증명하지 않는다.",
+    "knowledge_policy": "author_reference_not_character_knowledge"
+  },
+  "source_policy": {
+    "external_game_required": false,
+    "full_original_text": "materials/scripts.json#/source_units/*/original_source",
+    "source_file_fields": "internal_origin_keys"
+  },
+  "counts": {
+    "agent_policy": 3,
+    "compiled_reference": 5,
+    "configuration": 2,
+    "editable_authoring_input": 22,
+    "generated_inventory": 1,
+    "generated_reading": 45,
+    "immutable_source_snapshot": 25,
+    "schema": 16,
+    "shared_template": 10,
+    "test": 20,
+    "tool": 24,
+    "ui_source": 3,
+    "usage_documentation": 12,
+    "verification_example": 2
+  },
+  "cleanup": {
+    "preserved_examples": "authoring/examples/",
+    "old_example_location": "authoring/drafts/",
+    "deleted_original_materials": []
+  },
+  "unclassified": [],
+  "review_required": [],
+  "files": [
+    {
+      "file": "AGENTS.md",
+      "role": "agent_policy",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "authoring/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "authoring/examples/prologue.continuity.json",
+      "role": "verification_example",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "exports/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_characters.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_disclosure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_story_continuity.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "authoring/examples/prologue.json",
+      "role": "verification_example",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "exports/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_story_authoring.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/story_continuity.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/overlay.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "authoring/story.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/continuity.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/validate_story_authoring.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapter-stories.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapter-subsections.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapters.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/source-connected.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/storyboard.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "characters/AGENTS.md",
+      "role": "agent_policy",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "characters/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "characters/character.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/characters.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "characters/registry.json",
+      "role": "compiled_reference",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "reference/generated_manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "exports/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/story.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/continuity.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/characters.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "characters/relationships.analysis.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/disclosure.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "continuity/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "continuity/canon.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "exports/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/story_continuity.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "continuity/continuity.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/story_continuity.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "docs/project-map.json",
+      "role": "generated_inventory",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "inventory_output",
+          "file": "tools/project_audit.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "exports/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "exports/manifest.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/materials.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "exports/reference-author.pdf",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "exports/reference-safe.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_reference_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "exports/reference.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_reference_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/coverage.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/enemy_templates.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/characters.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/materials.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/reference.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/manifest.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "exports/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/materials.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/progression.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "exports/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_standalone.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/disclosure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/materials.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/storyboard.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/another_lore.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/dungeon_of_evil.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/evil_concentration.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/evil_god_seal.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/gaia_evil_seal.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/gaia_quake.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/imperium_minor.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/last_shelter.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/lastditch_pyramid.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_standalone.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/lore_menace.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_episodes.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/overlay.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/muddy_seal.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/necromancer_finale.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/prologue.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_story_authoring.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/story_continuity.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/overlay.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/shared_system_and_text.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/swamp_arrival.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/swamp_keep_lava_gate.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/water_lockup.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/water_notice.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/quests/wivern_passage.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "materials/scripts.json",
+      "role": "immutable_source_snapshot",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "materials/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/story.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_chapter_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_story_authoring.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/materials.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/abilities.json",
+      "role": "compiled_reference",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "reference/generated_manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "exports/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/analysis.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/disclosure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/bestiary.json",
+      "role": "compiled_reference",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "reference/generated_manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "exports/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_chapter_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/catalog.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/reference.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/equipment.json",
+      "role": "compiled_reference",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "reference/generated_manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "exports/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/generated_manifest.json",
+      "role": "compiled_reference",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/metadata.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/character.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/catalog.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/names.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/terms.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapter-stories.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapter-subsections.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapters.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/source-connected.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/storyboard.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/names.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_chapter_plan.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_chapter_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_chapter_subsections.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/text_refs.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/names.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/text_refs.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/terms.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/text_refs.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "reference/terms.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/text_refs.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "requirements.txt",
+      "role": "configuration",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_branch_system.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_chapter_plan.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_chapter_stories.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_chapter_subsections.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_characters.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_disclosure.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_episodes.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_first_chapter.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_interactive.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_main_story.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_project_structure.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_publication_flow.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_reference.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_reference_export.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_source_story.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_standalone.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_story_authoring.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_story_continuity.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_studio.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_writing.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/branch_system.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/branch_system.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/build_reference.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/text_refs.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/build_reference.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/chapter_stories.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/chapter_subsections.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/characters.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_plan.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_characters.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_disclosure.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/chapter_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/check_interactive_browser.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/story_continuity.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/validate_story_authoring.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/characters.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/check_interactive_browser.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/check_interactive_browser.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/check_reference_browser.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/check_reference_browser.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/check_studio_browser.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/studio/README.md"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/check_studio_browser.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/check_writing_browser.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/check_writing_browser.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/disclosure.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_disclosure.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/characters.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/story_continuity.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/text_refs.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/export_reference.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "exports/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/export_reference.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/interactive.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_plan.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_main_story.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/check_interactive_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/interactive.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/materials.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_plan.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_characters.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_episodes.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_main_story.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_source_story.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_standalone.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/chapter_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/characters.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/check_interactive_browser.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/check_reference_browser.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/check_writing_browser.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/disclosure.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/reading.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/story_continuity.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/text_refs.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/validate_story_authoring.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/materials.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/project_audit.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/project_audit.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/publication_flow.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_publication_flow.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/publication_flow.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/reading.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_episodes.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/reference.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_plan.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/chapter_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/characters.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/check_interactive_browser.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/disclosure.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/story_continuity.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/text_refs.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/text_refs.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/validate_story_authoring.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/reference.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/reference.template.html",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "exports/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/source_story.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/source_story.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/story_continuity.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_characters.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_disclosure.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_episodes.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_story_continuity.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/reading.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/story_continuity.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/studio.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/studio/README.md"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/studio.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/text_refs.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_plan.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_source_story.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/chapter_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/check_interactive_browser.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/story_continuity.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/validate_story_authoring.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/validate_story_authoring.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_story_authoring.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/story_continuity.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/validate_story_authoring.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/writing.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_plan.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_episodes.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_standalone.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/chapter_stories.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/studio/README.md"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/AGENTS.md",
+      "role": "agent_policy",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/branches.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/branches/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/branches/series.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapters.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/chapter-stories.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/chapter-subsections.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/chapters.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/episodes/lore_menace.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_episodes.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/overlay.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/interactive/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/interactive/chapter01.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/interactive/episodes.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/interactive/overlay.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/interactive/reader.js",
+      "role": "ui_source",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/branch-system-report.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/branch-system.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/chapter-stories.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/chapter-subsections.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/chapter01-branches.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/chapter01-coverage.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/chapter01-interactive.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_chapter_plan.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_interactive_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/chapters.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/first-journey-declined.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/first-journey-tavern-declined.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/first-journey-tavern.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/first-journey.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/manifest.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/materials.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-01-tavern.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-01.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-02-declined.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-02.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-03-declined.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-03.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-04-declined.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-04.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-05-declined.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-05.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-06-declined.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/menace-06.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/prologue-tavern.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/prologue.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/publication-flow.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/source-connected.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/previews/storyboard.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/project.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/publication.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/publication/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/publication/flow.plan.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/publication/generated/coverage.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/publication/generated/flow.graph.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/publication/generated/flow.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/publication/generated/flow.md",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/publication/generated/linear-editions.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/publication/generated/manifest.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/materials.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/quests/lore_menace.continuity.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_first_chapter.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/quests/lore_menace.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_episodes.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/overlay.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/quests/prologue.continuity.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_characters.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_disclosure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_story_continuity.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/quests/prologue.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_story_authoring.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/story_continuity.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/overlay.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/reading.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/source-connected.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/source-connected/coverage.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/source-connected/generated-manifest.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/source-connected/manuscript.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/storyboard.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/storyboard/chapter-stories.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_chapter_subsections.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapter-subsections.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/source-connected.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/storyboard/chapter-subsections.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/storyboard/chapters.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapter-stories.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapter-subsections.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/source-connected.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/storyboard/series.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapters.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/storyboard/source-connected.plan.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/studio/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/studio/generated/index.html",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/studio/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/studio/generated/manifest.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/materials.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/studio/publication.json",
+      "role": "configuration",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/studio/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/studio/shell.html",
+      "role": "ui_source",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/studio/studio.js",
+      "role": "ui_source",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/studio/studio.plan.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/studio/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/studio/studio.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/templates/branch-decision.template.json",
+      "role": "shared_template",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/templates/chapter-stories.template.json",
+      "role": "shared_template",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/templates/chapter-subsections.template.json",
+      "role": "shared_template",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/chapter_subsections.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/templates/chapters.template.json",
+      "role": "shared_template",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_chapter_plan.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/templates/continuity.template.json",
+      "role": "shared_template",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/templates/episode.template.json",
+      "role": "shared_template",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_episodes.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/templates/main-story.template.json",
+      "role": "shared_template",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_main_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/templates/publication-flow.template.json",
+      "role": "shared_template",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/publication/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/templates/quest.template.json",
+      "role": "shared_template",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_episodes.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/templates/storyboard.template.json",
+      "role": "shared_template",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    }
+  ]
+}

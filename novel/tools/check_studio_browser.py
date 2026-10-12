@@ -42,12 +42,18 @@ def check(screenshots=None):
             page.locator('#document-select').select_option('menace-01.html')
             frame.locator('h2').first.wait_for()
             assert '돌아오겠다는 말' in frame.locator('body').inner_text()
+            page.go_back()
+            page.wait_for_function('document.getElementById("document-select")?.value === "chapter01-interactive.html"')
+            page.go_forward()
+            page.wait_for_function('document.getElementById("document-select")?.value === "menace-01.html"')
             view('outline')
             page.locator('#chapter-select').select_option('chapter09')
             assert page.locator('.unit').count()==7
             view('graph')
             assert page.locator('#chapter-select').input_value()=='chapter09'
             assert page.locator('#chapter-diagram svg').count()==1
+            assert '질문' in page.locator('#chapter-diagram svg').text_content()
+            assert '두 봉인을 모두 풀어야 한다' in page.locator('.branch-questions').inner_text()
             if screenshots:
                 page.screenshot(path=str(screenshots/f'studio-graph-{width}.png'))
             page.locator('#open-overview-graph').click()
@@ -67,20 +73,33 @@ def check(screenshots=None):
             page.locator('#source-whole').click()
             assert page.locator('#source-content').inner_text().strip().startswith('{')
             view('settings')
-            assert page.locator('.setting').count()==53
+            assert page.locator('.setting-list-item').count()==53
             page.locator('#setting-search').fill('서진')
-            assert page.locator('.setting').count()>=1
-            page.locator('.setting>summary').filter(has_text='서진').first.click()
+            assert page.locator('.setting-list-item').count()>=1
+            page.locator('[data-setting="characters/protagonist"]').click()
+            assert page.locator('.setting-detail-head h2').inner_text()=='서진'
             assert page.get_by_text('창작 추가',exact=True).count()>0
+            page.locator('[data-setting-tab="원작 정보"]').click()
+            page.go_back()
+            page.locator('[data-setting-tab="핵심 설정"][aria-pressed="true"]').wait_for()
+            if screenshots:page.screenshot(path=str(screenshots/f'studio-character-{width}.png'))
+            page.locator('#setting-list-back').click()
             page.locator('#setting-search').fill('no-such-setting-123')
             assert page.locator('.empty').is_visible()
             page.locator('#setting-search').fill('')
             page.locator('#setting-category').select_option('equipment')
-            assert page.locator('.setting').count()==24
+            assert page.locator('.setting-list-item').count()==24
             page.locator('#setting-search').fill('사냥 활')
-            assert page.locator('.setting').count()==1
-            page.locator('.setting>summary').first.click()
-            page.locator('.setting [data-source]').first.click()
+            assert page.locator('.setting-list-item').count()==1
+            page.locator('.setting-list-item').first.click()
+            page.locator('.setting-detail [data-source]').first.click()
+            assert 'reference/equipment.json' in page.locator('#source-location').inner_text()
+            page.go_back()
+            page.locator('.setting-detail-head h2').wait_for()
+            assert page.locator('.setting-detail-head h2').inner_text()=='사냥 활'
+            assert page.locator('#setting-search').input_value()=='사냥 활'
+            page.go_forward()
+            page.locator('#source-content').wait_for()
             assert 'reference/equipment.json' in page.locator('#source-location').inner_text()
             view('sources')
             page.locator('#source-select').select_option('reference/names.json')
@@ -91,7 +110,14 @@ def check(screenshots=None):
             assert not errors,errors
             assert not requests,requests
             assert page.get_by_role('button',name='인쇄 / PDF 저장').count()==0
-            report.append({'width':width,'views':8,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'source_json_download':True})
+            deep=browser.new_page(viewport={'width':width,'height':height})
+            deep.set_content(path.read_text(encoding='utf-8'))
+            deep.evaluate('location.hash="#/settings?category=equipment&item=equipment%2Fstory_bow"')
+            deep.locator('#open-studio').click()
+            assert deep.locator('.setting-detail-head h2').inner_text()=='사냥 활'
+            assert deep.locator('#setting-category').input_value()=='equipment'
+            deep.close()
+            report.append({'width':width,'views':8,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'source_json_download':True,'browser_back_forward':True,'graph_questions':True})
             page.close()
         browser.close()
     return report

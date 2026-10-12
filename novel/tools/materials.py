@@ -1,4 +1,5 @@
 """Read the self-contained research snapshot; never access the original game."""
+import argparse
 import hashlib
 import json
 from functools import lru_cache
@@ -47,6 +48,39 @@ def validate_evidence(evidence, catalog=None):
             raise ValueError("invalid packaged evidence range")
 
 
+def source_document(file, start_line=None, end_line=None):
+    catalog, _ = load_materials()
+    index = next((i for i,u in enumerate(catalog['source_units']) if u['file']==file),None)
+    if index is None: raise ValueError(f'unknown internal source file: {file}')
+    unit = catalog['source_units'][index]
+    lines = unit['original_source'].splitlines(keepends=True)
+    first, last = 1 if start_line is None else start_line, end_line if end_line is not None else len(lines)
+    if not 1 <= first <= last <= len(lines): raise ValueError('source line range is out of bounds')
+    return {'file':file,'source_ref':{'file':'materials/scripts.json','pointer':f'/source_units/{index}/original_source'},
+            'line_start':first,'line_end':last,'original_source':''.join(lines[first-1:last]),
+            'original_file_sha256':unit['sha256'],'external_file_required':False}
+
+
+def quest_document(quest_id):
+    load_materials()
+    index = read(ROOT/'materials/quests.json')
+    quest = next((q for q in index['quests'] if q['id']==quest_id),None)
+    if quest is None: raise ValueError(f'unknown internal quest: {quest_id}')
+    path = (ROOT/'materials'/quest['file']).resolve()
+    if not path.is_relative_to((ROOT/'materials').resolve()): raise ValueError('quest path escapes package')
+    return {'source_ref':{'file':path.relative_to(ROOT).as_posix(),'pointer':''},
+            'external_file_required':False,'quest':read(path)}
+
+
 if __name__ == "__main__":
-    _, manifest = load_materials()
-    print(json.dumps(manifest["counts"], ensure_ascii=False))
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('action',nargs='?',choices=['summary','source','quest'],default='summary')
+    parser.add_argument('--file')
+    parser.add_argument('--start-line',type=int)
+    parser.add_argument('--end-line',type=int)
+    parser.add_argument('--quest-id')
+    args=parser.parse_args()
+    if args.action=='source': result=source_document(args.file,args.start_line,args.end_line)
+    elif args.action=='quest': result=quest_document(args.quest_id)
+    else: result=load_materials()[1]['counts']
+    print(json.dumps(result,ensure_ascii=False,indent=2))

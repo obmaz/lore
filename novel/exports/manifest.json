@@ -21,8 +21,8 @@
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe",
     "materials/quests.json": "5a5a6878327e875420dce823059f2b944fb1f3e504468bde726b30481a24070b",
     "materials/manifest.json": "4e1f6565214b95b26d5089f24a8e40aa55f1d06d7697fac9783e671570f6131f",
-    "authoring/drafts/prologue.json": "1a81d4a60bc2746ec2db5b0a8644272e57e22bef00aa63d79949fadeb54444fa",
-    "authoring/drafts/prologue.continuity.json": "1cda3cfc8c475457911e9f3de9e0e04fd7eb73c81f3c6524499c11c5b0779810",
+    "authoring/examples/prologue.json": "1a81d4a60bc2746ec2db5b0a8644272e57e22bef00aa63d79949fadeb54444fa",
+    "authoring/examples/prologue.continuity.json": "1cda3cfc8c475457911e9f3de9e0e04fd7eb73c81f3c6524499c11c5b0779810",
     "continuity/canon.json": "02392cb0559da1ed83b8deda9f33642e926d94bf9b46b54143dad227e73d5705",
     "tools/export_reference.py": "2fb37a42477fafd4e277edb2e77d7500cb9f2138b8d0e7641d32f7983b3699c0",
     "tools/reference.template.html": "009d0d5ab0b3c39ef1b30d68045fc81372f97125796bc8c490b489becc1cb82b"
@@ -31,5 +31,5 @@
     "source_files": 14,
     "literal_occurrences": 2483
   },
-  "pdf_sha256": "fcd04db616baea485109daa19d803a73dbd26aa0ea84e35267d6306ef7db4463"
+  "pdf_sha256": "067daa383d7f96d87775691d036a28ce2a73fd53d3f9ea98415e1bcb31acd0ac"
 }

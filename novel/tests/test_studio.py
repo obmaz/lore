@@ -97,5 +97,14 @@ class StudioTests(unittest.TestCase):
         self.assertNotIn('studio-data',reader)
         self.assertNotIn('studio/generated',reader)
 
+    def test_10_readable_sections_keep_metadata_and_actual_graph_questions(self):
+        hero=next(row for row in self.data['settings'] if row['id']=='characters/protagonist')
+        self.assertEqual(set(hero['sections']),{'핵심 설정','원작 정보','관계 · 공개'})
+        self.assertIn('fact-evidence',hero['sections']['핵심 설정'])
+        self.assertIn('창작 추가',hero['sections']['핵심 설정'])
+        first=self.data['chapters'][0]['decisions']
+        self.assertEqual([d['id'] for d in first],['prepare','company'])
+        self.assertEqual(first[0]['prompt'],self.flow.session.display(self.flow.session.plan['decisions'][0]['prompt']))
+
 
 if __name__=='__main__': unittest.main()

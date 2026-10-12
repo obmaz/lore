@@ -119,3 +119,15 @@ class PublicationFlowTests(unittest.TestCase):
         self.assertLess(keys.index('chapter09/p04'),keys.index('chapter09/p02'))
         self.assertFalse(f.editions['editions'][0]['publication_approved'])
         self.assertEqual(len(f.tree),15)
+
+    def test_11_decision_nodes_show_actual_prompt_reference_and_all_option_labels(self):
+        nodes=[n for n in self.flow.nodes if n['kind']=='decision']
+        self.assertEqual(len(nodes),6)
+        for n in nodes:
+            prompt=self.flow.session.display(self.flow.resolve(n['question_ref']))
+            self.assertIn(prompt,self.flow.caption(n))
+            self.assertIn(prompt,self.flow.markdown())
+        svg=self.flow.svg(self.flow.charts[0]['node_ids'])
+        self.assertIn('질문',svg)
+        self.assertIn('부족한 준비',svg)
+        self.assertIn('무기고에서 필요한 무장을',svg)

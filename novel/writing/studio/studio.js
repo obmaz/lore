@@ -3,7 +3,9 @@
   const data = JSON.parse(document.getElementById('studio-data').textContent);
   const $ = id => document.getElementById(id);
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const state = {open:false, view:'overview', chapter:data.chapters[0].id, document:data.plan.default_document, category:'characters', query:'', source:'writing/project.json', pointer:'', edition:data.editions[0].id};
+  const defaults = {open:false, view:'overview', chapter:data.chapters[0].id, document:data.plan.default_document, category:'characters', query:'', item:'', tab:'', source:'writing/project.json', pointer:'', edition:data.editions[0].id, graphOverview:false, graphZoom:'1', orderFull:false};
+  const state = {...defaults};
+  let routeIndex=0,lastHash='';
   const descriptions = {
     overview:'현재까지 작성된 원고와 구성, 설정을 한곳에서 확인합니다. 상세 본문과 구성 초안은 구분합니다.',
     reading:'최신 첫 장 선택형 초고, 기존 소편, 기본 경로, 원작 연결 판본을 같은 화면에서 읽습니다.',
@@ -38,10 +40,54 @@
     for (const c of data.chapters) { const u=c.units.find(u=>u.unit_id===key); if (u) return `${u.number} · ${u.title}`; }
     return key;
   }
-  function go(view,focus=true) {
+  function routeHash() {
+    const params=new URLSearchParams();
+    for(const key of ['chapter','document','category','query','item','tab','source','pointer','edition','graphZoom']) {
+      if(state[key]!==defaults[key] && state[key]!=='') params.set(key,state[key]);
+    }
+    if(state.graphOverview)params.set('graphOverview','1');
+    if(state.orderFull)params.set('orderFull','1');
+    return '#/'+state.view+(params.size?'?'+params.toString():'');
+  }
+  function recordRoute(mode='push') {
+    const hash=routeHash();
+    if(mode==='none'){lastHash=location.hash;const back=$('studio-back');if(back)back.disabled=routeIndex===0;return;}
+    if(mode==='push' && location.hash===hash)return;
+    if(mode==='push')routeIndex+=1;
+    history[mode==='replace'?'replaceState':'pushState']({studioIndex:routeIndex},'',hash);
+    lastHash=location.hash;
+    const back=$('studio-back');if(back)back.disabled=routeIndex===0;
+  }
+  function restoreRoute() {
+    const [view,query='']=location.hash.replace(/^#\/?/,'').split('?');
+    const params=new URLSearchParams(query);
+    Object.assign(state,defaults,{open:true,view:descriptions[view]?view:'overview'});
+    if(data.chapters.some(c=>c.id===params.get('chapter')))state.chapter=params.get('chapter');
+    if(data.documents.some(d=>d.id===params.get('document')))state.document=params.get('document');
+    if(categoryNames[params.get('category')])state.category=params.get('category');
+    state.query=(params.get('query')||'').slice(0,120);
+    if(data.settings.some(r=>r.id===params.get('item')&&r.category===state.category))state.item=params.get('item');
+    state.tab=(params.get('tab')||'').slice(0,60);
+    if(Object.prototype.hasOwnProperty.call(data.sources,params.get('source')))state.source=params.get('source');
+    state.pointer=params.get('pointer')||'';
+    try{sourceValue(state.source,state.pointer);}catch{state.pointer='';}
+    if(data.editions.some(e=>e.id===params.get('edition')))state.edition=params.get('edition');
+    state.graphOverview=params.get('graphOverview')==='1';state.orderFull=params.get('orderFull')==='1';
+    if(['0.75','1','1.25','1.5'].includes(params.get('graphZoom')))state.graphZoom=params.get('graphZoom');
+    routeIndex=Number.isInteger(history.state?.studioIndex)?history.state.studioIndex:0;
+  }
+  function onHistory() {
+    if(!state.open||location.hash===lastHash)return;
+    restoreRoute();go(state.view,true,'none');
+  }
+  window.addEventListener('popstate',onHistory);
+  window.addEventListener('hashchange',onHistory);
+  function go(view,focus=true,historyMode='push') {
     if (!state.open || !descriptions[view]) return;
     state.view=view;
+    if(view!=='settings')document.querySelector('.main').classList.remove('settings-detail-open');
     nav.querySelectorAll('button').forEach(b=>{if(b.dataset.view===view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+    if(innerWidth<=620){const active=nav.querySelector('[aria-current="page"]');nav.scrollTo({left:nav.scrollLeft+active.getBoundingClientRect().left-nav.getBoundingClientRect().left-8,behavior:'instant'});}
     $('view-title').textContent=data.plan.navigation.find(r=>r.id===view).label;
     $('view-description').textContent=descriptions[view];
     const content=$('view-content');
@@ -57,17 +103,20 @@
     } else if (view==='outline') {
       content.innerHTML=chapterToolbar()+`<div class="split"><aside class="chapter-tree" aria-label="전체 장 목차">${data.chapters.map(c=>`<button type="button" data-chapter="${c.id}" aria-current="${c.id===state.chapter}">제${c.number}장 · ${esc(c.title)}<br><small>${c.units.length}소단락 · ${c.implementation==='runtime_bound'?'첫 장 독자 판본 별도':'상세 본문 미집필'}</small></button>`).join('')}</aside><section class="card"><span class="badge">큰 이야기 초고 · 상세 본문 아님</span><h2 style="margin-top:14px">제${chapter().number}장 · ${esc(chapter().title)}</h2>${chapter().story_html}${sourceButton({file:'writing/storyboard/chapter-stories.json',pointer:'/chapters/'+(chapter().number-1)})}</section></div><h2 style="margin-top:28px">소단락의 주요 내용</h2>${chapter().units.map(u=>`<details class="unit" id="${esc(u.unit_id.replace('/','-'))}"><summary>${esc(u.number+' · '+u.title)} ${u.decision_ids.length?'<span class="badge">구현 분기</span>':u.candidate_deferred?'<span class="badge added">분기 후보 · 미구현</span>':''}</summary><div class="unit-body">${u.html}${sourceButton(u.source_ref)}</div></details>`).join('')}`;
     } else if (view==='graph') {
-      content.innerHTML=chapterToolbar()+`<div class="toolbar"><button type="button" class="button" data-view="outline">같은 장의 주요 내용</button><button type="button" class="button" id="open-overview-graph">전체 장 연결도</button></div><p class="notice">실선은 읽기·선택·합류, 점선은 조건부 반응 또는 관찰된 후속 영향입니다. 모든 선택지를 한 경로에서 읽는 뜻은 아닙니다. 9장은 두 탐색을 어느 순서에서든 모두 마친 뒤 합류합니다.</p><div class="diagram" id="chapter-diagram">${chapter().svg}</div>${sourceButton({file:'writing/publication/generated/flow.graph.json',pointer:''})}`;
+      content.innerHTML=chapterToolbar()+`<div class="toolbar"><button type="button" class="button" data-view="outline">같은 장의 주요 내용</button><button type="button" class="button" id="${state.graphOverview?'return-chapter-graph':'open-overview-graph'}">${state.graphOverview?'장별 그래프로 돌아가기':'전체 장 연결도'}</button><label for="graph-zoom">그림 크기</label><select id="graph-zoom">${['0.75','1','1.25','1.5'].map(z=>`<option value="${z}" ${z===state.graphZoom?'selected':''}>${Number(z)*100}%</option>`).join('')}</select></div><p class="view-hint">그림 안에서 상하·좌우로 이동할 수 있습니다. 질문과 선택은 아래에도 글로 표시됩니다.</p><div class="diagram" id="chapter-diagram">${state.graphOverview?data.overview_svg:chapter().svg}</div><section class="branch-questions"><h2>이 장의 질문과 선택</h2>${chapter().decisions.length?chapter().decisions.map(d=>`<article class="question-card"><span class="badge">${esc(d.title)}</span><h3>${esc(d.prompt)}</h3><ol>${d.options.map(o=>`<li>${esc(o.label)}</li>`).join('')}</ol>${sourceButton(d.source_ref)}</article>`).join(''):'<p class="muted">이 장에는 구현된 선택이 없습니다. 본줄기로 이어집니다.</p>'}</section><details class="unit"><summary>그래프를 읽는 방법</summary><div class="unit-body">실선은 읽기·선택·합류, 점선은 조건부 반응과 관찰된 후속 영향입니다. 선택지는 조건이 맞을 때만 열리며 전부 한 경로에서 읽지 않습니다. 9장의 두 탐색은 순서만 달라지고 둘 다 필수입니다.</div></details>`;
+      applyGraphZoom();
     } else if (view==='order') {
       const edition=data.editions.find(e=>e.id===state.edition);
       content.innerHTML=`<div class="toolbar"><label for="edition-select">편집 경로</label><select id="edition-select">${data.editions.map(e=>`<option value="${esc(e.id)}" ${e.id===state.edition?'selected':''}>${esc(e.id)}</option>`).join('')}</select></div><div class="edition-head"><strong>제안 경로 · 페이지 미정 · 미승인</strong><p>${esc(edition.note)}</p><small>${esc(edition.manual_route.join(' → '))}</small></div><div class="toolbar"><label for="order-detail"><input id="order-detail" type="checkbox"> 선택·조건부 반응·필수 결과까지 펼쳐 보기</label></div><div class="scroll-table"><table><thead><tr><th>순서</th><th>소제목</th><th>문단 역할</th><th>페이지</th><th>본문 참조</th></tr></thead><tbody>${edition.rows.map(r=>`<tr data-row-kind="${r.kind}" ${r.kind==='main'?'':'hidden'}><td>${r.position}</td><td>${esc(headingForUnit(r.unit_id))}</td><td>${esc(kindNames[r.kind])}${r.choice_or_reaction_id?'<br><small>'+esc(r.choice_or_reaction_id)+'</small>':''}</td><td>미정</td><td><button class="button small" data-source="${esc(r.content_ref.file)}" data-pointer="${esc(r.content_ref.pointer)}">문단 JSON</button></td></tr>`).join('')}</tbody></table></div>${sourceButton({file:'writing/publication/flow.plan.json',pointer:'/linear_editions'})}`;
+      $('order-detail').checked=state.orderFull;content.querySelectorAll('[data-row-kind]').forEach(r=>r.hidden=!state.orderFull&&r.dataset.rowKind!=='main');
     } else if (view==='settings') {
-      content.innerHTML=`<p class="notice">전편 인물·정체·관계가 표시됩니다. 나이 등 미상 값은 추정하지 않습니다. 카드의 공개 시점과 복선은 독자 공개 정책이며, 등장인물이 이미 아는 사실이 아닙니다.</p><div class="toolbar"><label for="setting-category">설정 종류</label><select id="setting-category">${Object.entries(categoryNames).map(([k,v])=>`<option value="${k}" ${k===state.category?'selected':''}>${v}</option>`).join('')}</select><input type="search" id="setting-search" aria-label="설정 검색" placeholder="이름·직업·성향·ID·내용 검색" value="${esc(state.query)}"></div><p class="source-result" id="setting-count" aria-live="polite"></p><div class="setting-list" id="setting-results"></div>`;
+      content.innerHTML=`<div class="toolbar setting-toolbar"><label for="setting-category">설정 종류</label><select id="setting-category">${Object.entries(categoryNames).map(([k,v])=>`<option value="${k}" ${k===state.category?'selected':''}>${v}</option>`).join('')}</select><input type="search" id="setting-search" aria-label="설정 검색" placeholder="이름 · 직업 · 성향 · ID 검색" value="${esc(state.query)}"><button type="button" class="button" id="clear-search">검색 지우기</button></div><p class="source-result" id="setting-count" aria-live="polite"></p><div class="settings-layout" id="settings-layout"><div class="setting-list" id="setting-results"></div><article class="setting-detail" id="setting-detail"></article></div><p class="view-hint">전편 작가용 정보입니다. 나이의 미상, 원작·증언·추론·창작 추가와 공개 시점을 구분합니다.</p>`;
       filterSettings();
     } else if (view==='sources') {
       content.innerHTML=`<p class="notice">이 화면은 파일을 저장하지 않습니다. 내려받은 JSON도 저장소에 자동 반영되지 않습니다. 원본 경로에서 수정·검증·재생성한 뒤 커밋해야 합니다.</p><div class="toolbar"><label for="source-select">원본 · 생성 구조</label><select id="source-select">${data.source_index.map(s=>`<option value="${esc(s.file)}" ${s.file===state.source?'selected':''}>${esc(s.file)} · ${esc(s.role)}</option>`).join('')}</select><button type="button" class="button" id="source-whole">파일 전체 보기</button><button type="button" class="button" id="download-json">현재 JSON 내려받기</button></div><p class="source-result" id="source-location"></p><pre class="json-pane" id="source-content"></pre><h3>집필·공개·참조 규칙</h3><details class="unit"><summary>작업 지침 펼치기</summary><div class="unit-body">${data.rules.map(r=>`<pre class="rules">${esc(r)}</pre>`).join('')}</div></details>`;
       updateSource();
     }
+    recordRoute(historyMode);
     if (focus) {
       $('view-title').focus({preventScroll:true});
       const gap=innerWidth<=620?document.querySelector('.sidebar').offsetHeight+16:16;
@@ -78,14 +127,27 @@
     const doc=data.documents.find(d=>d.id===id);
     if (!doc) return;
     $('document-note').textContent=doc.note+' · '+doc.source_ref+' · 원고를 수정하지 않는 조회 화면';
-    $('document-frame').srcdoc=doc.html;
+    const old=$('document-frame'),fresh=old.cloneNode(false);
+    fresh.removeAttribute('srcdoc');fresh.srcdoc=doc.html;
+    old.replaceWith(fresh);
   }
+  function applyGraphZoom(){const svg=$('chapter-diagram')?.querySelector('svg');if(svg){const box=svg.viewBox.baseVal;svg.style.width=box.width*Number(state.graphZoom)+'px';svg.style.height=box.height*Number(state.graphZoom)+'px';}}
   function filterSettings() {
     const query=state.query.trim().toLocaleLowerCase();
     const rows=data.settings.filter(r=>r.category===state.category && (!query||r.search.toLocaleLowerCase().includes(query)));
     $('setting-count').textContent=`${categoryNames[state.category]} · ${rows.length}개 표시`;
-    $('setting-results').innerHTML=rows.map(r=>`<details class="setting"><summary>${esc(r.title)} <small>${esc(r.original)}</small></summary><div class="setting-content">${r.html}${sourceButton(r.source_ref)}</div></details>`).join('')||'<p class="empty">검색 결과가 없습니다. 다른 이름·ID·설정 종류로 찾아보세요.</p>';
-    $('setting-results').querySelectorAll('.entry').forEach(e=>{e.open=true;});
+    $('setting-results').innerHTML=rows.map(r=>`<button type="button" class="setting-list-item" data-setting="${esc(r.id)}" aria-current="${r.id===state.item}"><strong>${esc(r.title)}</strong><span>${esc(r.original||r.id.split('/').pop())}</span></button>`).join('')||'<p class="empty">검색 결과가 없습니다. 다른 이름·ID·설정 종류로 찾아보세요.</p>';
+    renderSetting();
+  }
+  function renderSetting() {
+    const item=data.settings.find(r=>r.id===state.item&&r.category===state.category);
+    $('settings-layout').classList.toggle('has-selection',!!item);
+    document.querySelector('.main').classList.toggle('settings-detail-open',!!item);
+    if(!item){$('setting-detail').innerHTML='<div class="detail-empty"><h2>목록에서 하나를 선택하세요</h2><p>기본 설정, 원작 근거, 관계·공개 정책을 나누어 읽을 수 있습니다.</p></div>';return;}
+    const sections=item.sections||{'설정':item.html};const tabs=Object.keys(sections);
+    if(!tabs.includes(state.tab))state.tab=tabs[0];
+    $('setting-detail').innerHTML=`<button type="button" class="button small" id="setting-list-back">← 목록으로</button><header class="setting-detail-head"><p class="eyebrow">${esc(categoryNames[item.category])}</p><h2>${esc(item.title)}</h2><p>${esc(item.original||'원어 이름 미상')} <span class="entry-id">${esc(item.id.split('/').pop())}</span></p></header><nav class="detail-tabs" aria-label="설정 상세">${tabs.map(t=>`<button type="button" class="button" data-setting-tab="${esc(t)}" aria-pressed="${t===state.tab}">${esc(t)}</button>`).join('')}</nav><div class="setting-content">${sections[state.tab]}</div>${sourceButton(item.source_ref)}`;
+    $('setting-detail').querySelectorAll('.entry').forEach(e=>e.open=true);
   }
   function updateSource() {
     $('source-location').textContent=state.source+(state.pointer?' #'+state.pointer:' · 파일 전체');
@@ -102,25 +164,31 @@
   document.addEventListener('click', event => {
     const button=event.target.closest('button'); if (!button || button.disabled) return;
     if (button.id==='open-studio') {
-      state.open=true; $('author-gate').hidden=true; $('workspace').hidden=false;nav.querySelectorAll('button').forEach(b=>{b.disabled=false;});go('overview');
+      state.open=true; $('author-gate').hidden=true; $('workspace').hidden=false;nav.querySelectorAll('button').forEach(b=>{b.disabled=false;});restoreRoute();go(state.view,true,'replace');
     } else if (button.dataset.view) go(button.dataset.view);
-    else if (button.dataset.chapter) {state.chapter=button.dataset.chapter;go(state.view);}
-    else if (button.dataset.step) {state.chapter=data.chapters[chapter().number-1+Number(button.dataset.step)].id;go(state.view);}
+    else if (button.dataset.chapter) {state.chapter=button.dataset.chapter;state.graphOverview=false;go(state.view);}
+    else if (button.dataset.step) {state.chapter=data.chapters[chapter().number-1+Number(button.dataset.step)].id;state.graphOverview=false;go(state.view);}
     else if (button.dataset.source) {state.source=button.dataset.source;state.pointer=button.dataset.pointer||'';go('sources');}
     else if (button.id==='restart-document') openDocument(state.document);
-    else if (button.id==='open-overview-graph') { $('chapter-diagram').innerHTML=data.overview_svg;button.textContent='장별 그래프로 돌아가기';button.id='return-chapter-graph'; }
-    else if (button.id==='return-chapter-graph') go('graph');
-    else if (button.id==='source-whole') {state.pointer='';updateSource();}
+    else if (button.id==='open-overview-graph') {state.graphOverview=true;go('graph');}
+    else if (button.id==='return-chapter-graph') {state.graphOverview=false;go('graph');}
+    else if (button.dataset.setting) {state.item=button.dataset.setting;state.tab='';go('settings');}
+    else if (button.dataset.settingTab) {state.tab=button.dataset.settingTab;renderSetting();recordRoute();}
+    else if (button.id==='setting-list-back') {state.item='';state.tab='';go('settings');}
+    else if (button.id==='clear-search') {state.query='';state.item='';state.tab='';$('setting-search').value='';filterSettings();recordRoute('replace');}
+    else if (button.id==='studio-back') history.back();
+    else if (button.id==='source-whole') {state.pointer='';updateSource();recordRoute();}
     else if (button.id==='download-json') download();
   });
   document.addEventListener('change', event => {
     const input=event.target;
-    if(input.id==='chapter-select') {state.chapter=input.value;go(state.view);}
-    else if(input.id==='document-select') {state.document=input.value;openDocument(state.document);}
+    if(input.id==='chapter-select') {state.chapter=input.value;state.graphOverview=false;go(state.view);}
+    else if(input.id==='document-select') {state.document=input.value;openDocument(state.document);recordRoute();}
     else if(input.id==='edition-select') {state.edition=input.value;go('order');}
-    else if(input.id==='setting-category') {state.category=input.value;filterSettings();}
-    else if(input.id==='source-select') {state.source=input.value;state.pointer='';updateSource();}
-    else if(input.id==='order-detail') document.querySelectorAll('[data-row-kind]').forEach(r=>{r.hidden=!input.checked && r.dataset.rowKind!=='main';});
+    else if(input.id==='setting-category') {state.category=input.value;state.item='';state.tab='';state.query='';go('settings',false);}
+    else if(input.id==='source-select') {state.source=input.value;state.pointer='';updateSource();recordRoute();}
+    else if(input.id==='graph-zoom') {state.graphZoom=input.value;applyGraphZoom();recordRoute('replace');}
+    else if(input.id==='order-detail') {state.orderFull=input.checked;document.querySelectorAll('[data-row-kind]').forEach(r=>{r.hidden=!input.checked && r.dataset.rowKind!=='main';});recordRoute('replace');}
   });
-  document.addEventListener('input', event => {if(event.target.id==='setting-search') {state.query=event.target.value;filterSettings();}});
+  document.addEventListener('input', event => {if(event.target.id==='setting-search') {state.query=event.target.value;state.item='';state.tab='';filterSettings();recordRoute('replace');}});
 })();

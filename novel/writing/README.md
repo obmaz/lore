@@ -1,5 +1,8 @@
 # 집필 구성과 원고
 
+이 문서는 **현재 원고·구성의 위치, 판본, 수정 파일과 생성 명령**을 안내합니다.
+에이전트 준수 규칙은 [AGENTS.md](AGENTS.md)에만 두고, 설정의 형식은 상위 사전 문서에 둡니다.
+
 큰 구성 → 큰 이야기 검토 → 소단락 주요 내용 → 의미 있는 분기 → 장면·소편 → 한 소편 본문 순으로 진행합니다.
 설정은 상위 사전을 참조하고, 이야기 구성과 새 본문은 이 폴더에서 관리합니다.
 구체 작업 제약은 [AGENTS.md](AGENTS.md), 원고 형식은 [공용 스키마 안내](../authoring/README.md)를 따릅니다.
@@ -87,7 +90,8 @@ HTML은 편집 대상이 아니라 JSON에서 생성한 스냅샷이다.
 | 읽기 배열 | `reading.json` | `previews/`는 생성물이며 직접 집필하지 않음 |
 | 통합 제작 화면의 메뉴·안내 | `studio/studio.plan.json` | [제작실](studio/README.md), `studio/generated/` |
 
-새 파일은 `templates/`의 해당 공용 양식을 사용합니다. `authoring/drafts/`는 보존한 구조 예시입니다.
+새 파일은 `templates/`의 해당 공용 양식을 사용합니다. `authoring/examples/`는 검증용 구조 예시이며
+현재 초고는 `writing/quests/`에만 있습니다.
 원문·설정·제목·본문을 다른 JSON에 복사하지 않고 안정된 ID로 참조합니다.
 
 ## 구성 단계의 경계

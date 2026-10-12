@@ -122,7 +122,7 @@ class PublicationFlow:
         for d in self.session.decisions.get(key, []):
             if d['id'] == skip_decision: continue
             dn = self.node('decision/'+d['id'], 'decision', chapter, self.ref(self.pp, '/decision_titles/'+d['id']), '', key, context,
-                           definition_ref=self.ref(self.bp, self.decision_paths[d['id']]), mode='choice_or_single_option_auto')
+                           definition_ref=self.ref(self.bp, self.decision_paths[d['id']]), question_ref=self.ref(self.bp,self.decision_paths[d['id']]+'/prompt'), mode='choice_or_single_option_auto')
             self.edge(tail, dn)
             join = self.node('merge/'+d['id'], 'merge', chapter, self.ref(self.pp, '/labels/merge'), '', key, context,
                              declared_rejoin_ref=self.ref(self.bp, self.decision_paths[d['id']]+'/rejoin_before'))
@@ -146,7 +146,7 @@ class PublicationFlow:
         start = self.node(self.uid(key), 'unit', cid, self.heading(key), self.unit_numbers[key]+' · ', key,
                           content_ref=self.ref(self.up, self.unit_paths[key]+'/main_content'), candidate_status='bound')
         dn = self.node('decision/'+d['id'], 'decision', cid, self.ref(self.pp, '/decision_titles/'+d['id']), '', key,
-                       definition_ref=self.ref(self.bp, self.decision_paths[d['id']]), mode='choice_or_single_option_auto')
+                       definition_ref=self.ref(self.bp, self.decision_paths[d['id']]), question_ref=self.ref(self.bp,self.decision_paths[d['id']]+'/prompt'), mode='choice_or_single_option_auto')
         self.edge(start, dn)
         join = self.node('merge/'+d['id'], 'parallel_merge', cid, self.ref(self.pp, '/labels/parallel_merge'), '', key,
                          declared_rejoin_ref=self.ref(self.bp, self.decision_paths[d['id']]+'/rejoin_before'), all_blocks_required=True)
@@ -309,7 +309,9 @@ class PublicationFlow:
                 'influence_links':len(influence), 'acyclic':True, 'publication_approved':False, 'visibility':'author_only'}
 
     def caption(self, node):
-        return node['prefix']+self.session.display(node['label_rich_text'])
+        caption=node['prefix']+self.session.display(node['label_rich_text'])
+        if node.get('question_ref'):caption+='\n질문 · '+self.session.display(self.resolve(node['question_ref']))
+        return caption
 
     def mermaid(self, keys):
         chosen = set(keys); nodes = {n['id']:n for n in self.nodes}
@@ -336,6 +338,8 @@ class PublicationFlow:
                 lines.append('  ├─ '+u['number']+' · '+self.session.display(self.resolve(u['heading_ref']))+(' [분기 후보·미구현]' if u['candidate_deferred'] else ''))
                 for did in u['decision_ids']:
                     lines.append('  │   ├─ 결정: '+self.session.display(self.plan['decision_titles'][did]))
+                    decision=next(d for d in self.session.plan['decisions'] if d['id']==did)
+                    lines.append('  │   │   질문: '+self.session.display(decision['prompt']))
                     for option in next(d for d in self.session.plan['decisions'] if d['id']==did)['options']:
                         lines.append('  │   │   ├─ '+self.session.display(option['label']))
                     lines.append('  │   │   └─ '+('두 탐색 모두 수행한 뒤 합류' if did in self.session.orders else '다음 본줄기 전 합류'))
@@ -366,9 +370,14 @@ class PublicationFlow:
                 if indegree[e['to']] == 0: pending.append(e['to'])
         levels = {}
         for key in keys: levels.setdefault(depth[key],[]).append(key)
-        width = max(480,max(len(row) for row in levels.values())*240)
-        height = (max(levels)+1)*120+30
-        positions = {key:(width/2+(j-(len(row)-1)/2)*240,20+level*120) for level,row in levels.items() for j,key in enumerate(row)}
+        text_rows={key:[row for line in self.caption(nodes[key]).splitlines() for row in (textwrap.wrap(line,17) or [''])] for key in keys}
+        box_heights={key:max(80,28+len(text_rows[key])*19) for key in keys}
+        width = max(480,max(len(row) for row in levels.values())*312)
+        top={};cursor=20
+        for level,row in sorted(levels.items()):
+            top[level]=cursor;cursor+=max(box_heights[key] for key in row)+48
+        height=cursor
+        positions = {key:(width/2+(j-(len(row)-1)/2)*312,top[level]) for level,row in levels.items() for j,key in enumerate(row)}
         esc = html.escape
         marker = 'arrow-'+hashlib.sha256('|'.join(keys).encode()).hexdigest()[:12]
         out = [f'<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="소제목과 분기 흐름도" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
@@ -376,15 +385,15 @@ class PublicationFlow:
         for e in edges:
             x,y = positions[e['from']]; xx,yy = positions[e['to']]
             dashed = ' stroke-dasharray="5 4"' if e['kind'].startswith('reaction') or e['kind']=='influence' else ''
-            out.append(f'<path d="M{x} {y+76} C{x} {y+97} {xx} {yy-20} {xx} {yy}" fill="none" stroke="#607269"{dashed} marker-end="url(#{marker})"/>')
+            bottom=y+box_heights[e['from']]
+            out.append(f'<path d="M{x} {bottom} C{x} {bottom+24} {xx} {yy-24} {xx} {yy}" fill="none" stroke="#607269"{dashed} marker-end="url(#{marker})"/>')
         colors = {'decision':'#ffebbb','option':'#e5f0fd','merge':'#e0ebdf','parallel_merge':'#e0ebdf','reaction':'#eee6f4','reaction_merge':'#eee6f4','outcome':'#f2f1e9'}
         for key in keys:
             n = nodes[key]; x,y = positions[key]; caption = self.caption(n)
             fill = colors.get(n['kind'],'#fff')
-            out.append(f'<g><title>{esc(caption)}</title><rect x="{x-108}" y="{y}" width="216" height="76" rx="8" fill="{fill}" stroke="#607269"/>')
-            rows = textwrap.wrap(caption,16)[:4]
-            out.append(f'<text x="{x}" y="{y+24}" text-anchor="middle" fill="#25372e" font-size="13">')
-            out.extend(f'<tspan x="{x}" dy="{0 if j==0 else 15}">{esc(line)}</tspan>' for j,line in enumerate(rows))
+            out.append(f'<g><title>{esc(caption)}</title><rect x="{x-140}" y="{y}" width="280" height="{box_heights[key]}" rx="8" fill="{fill}" stroke="#607269"/>')
+            out.append(f'<text x="{x}" y="{y+25}" text-anchor="middle" fill="#25372e" font-size="15">')
+            out.extend(f'<tspan x="{x}" dy="{0 if j==0 else 19}">{esc(line)}</tspan>' for j,line in enumerate(text_rows[key]))
             out.append('</text></g>')
         return ''.join(out)+'</svg>'
 

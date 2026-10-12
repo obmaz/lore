@@ -18,7 +18,7 @@ from text_refs import load_terms
 
 CONTINUITY_SCHEMA = ROOT / "continuity/continuity.schema.json"
 CANON = ROOT / "continuity/canon.json"
-DEFAULT = ROOT / "authoring/drafts/prologue.json"
+DEFAULT = ROOT / "authoring/examples/prologue.json"
 
 
 def read(path):

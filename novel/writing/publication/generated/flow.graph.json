@@ -1752,6 +1752,10 @@
         "file": "writing/branches/series.json",
         "pointer": "/decisions/0"
       },
+      "question_ref": {
+        "file": "writing/branches/series.json",
+        "pointer": "/decisions/0/prompt"
+      },
       "mode": "choice_or_single_option_auto"
     },
     {
@@ -1884,6 +1888,10 @@
       "definition_ref": {
         "file": "writing/branches/series.json",
         "pointer": "/decisions/1"
+      },
+      "question_ref": {
+        "file": "writing/branches/series.json",
+        "pointer": "/decisions/1/prompt"
       },
       "mode": "choice_or_single_option_auto"
     },
@@ -3046,6 +3054,10 @@
       "definition_ref": {
         "file": "writing/branches/series.json",
         "pointer": "/decisions/2"
+      },
+      "question_ref": {
+        "file": "writing/branches/series.json",
+        "pointer": "/decisions/2/prompt"
       },
       "mode": "choice_or_single_option_auto"
     },
@@ -4843,6 +4855,10 @@
         "file": "writing/branches/series.json",
         "pointer": "/decisions/3"
       },
+      "question_ref": {
+        "file": "writing/branches/series.json",
+        "pointer": "/decisions/3/prompt"
+      },
       "mode": "choice_or_single_option_auto"
     },
     {
@@ -5733,6 +5749,10 @@
       "definition_ref": {
         "file": "writing/branches/series.json",
         "pointer": "/decisions/4"
+      },
+      "question_ref": {
+        "file": "writing/branches/series.json",
+        "pointer": "/decisions/4/prompt"
       },
       "mode": "choice_or_single_option_auto"
     },
@@ -7516,6 +7536,10 @@
       "definition_ref": {
         "file": "writing/branches/series.json",
         "pointer": "/decisions/5"
+      },
+      "question_ref": {
+        "file": "writing/branches/series.json",
+        "pointer": "/decisions/5/prompt"
       },
       "mode": "choice_or_single_option_auto"
     },

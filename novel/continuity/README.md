@@ -1,7 +1,10 @@
 # 연속성 관리와 생성형 집필
 
+이 문서는 **사실·지식·장면 계약의 형식과 조회 방법**입니다. 준수 규칙은
+[프로젝트 AGENTS](../AGENTS.md)와 [집필 AGENTS](../writing/AGENTS.md)에만 둡니다.
+
 공유 설정은 [canon.json](canon.json), 퀘스트별 장면 계약과 사건 후보는
-[프롤로그 연속성 자료](../authoring/drafts/prologue.continuity.json)에 보관한다.
+[프롤로그 연속성 예시](../authoring/examples/prologue.continuity.json)에 예시를 보관한다.
 위 프롤로그는 보존한 구조 예시다. 새 본문과 계약은 `writing/quests/`에 있고,
 `writing/reading.json`의 경로로 도입부와 첫 탐사를 이어 읽는다.
 선택 경로마다 다음 장면의 집필 자료를 계산한다.

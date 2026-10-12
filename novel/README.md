@@ -5,6 +5,19 @@
 다른 프로젝트의 코드·자산·자료를 읽거나 가져오는 경로와 자동 동기화를 만들지 않습니다.
 작업은 `main`에서 관리하며 모든 명령과 상대 경로는 `novel/` 기준입니다.
 
+## 문서와 자료의 역할
+
+`AGENTS.md`는 작업자가 지킬 규칙, `README.md`는 사용법·파일·명령 안내입니다.
+`writing/AGENTS.md`는 집필 제약, `characters/AGENTS.md`는 공개·복선 제약만 추가합니다.
+상위 규칙을 하위 README에 복사하거나 다른 규칙으로 재정의하지 않습니다.
+
+일상 편집은 이름(`reference/names.json`), 인물 해석(`reference/analysis.json`),
+관계(`characters/relationships.analysis.json`), 구성(`writing/storyboard/`),
+본문·계약(`writing/quests/`), 분기(`writing/branches/`, 첫 장은 `writing/interactive/`)에서 합니다.
+`materials/`는 원문 보관소, `authoring/examples/`는 검증 예시, 생성 HTML·PDF·그래프는
+읽기용 출력입니다. 셋 모두 현재 집필 원고가 아닙니다.
+[전체 파일 역할·소비자 지도](docs/project-map.json)는 `tools/project_audit.py export`로 갱신합니다.
+
 ## 읽기
 
 작가용 [소설 제작실 · 웹에서 열기](https://obmaz.github.io/lore/novel/studio/): 현재 원고·목차·장별
@@ -29,10 +42,10 @@
 
 | 위치 | 역할 | 안내 |
 | --- | --- | --- |
-| `materials/` | 대사·조건·선택·진행·적 레코드의 고정 원문 JSON | [manifest](materials/manifest.json) |
+| `materials/` | 대사·조건·선택·진행·적 레코드의 고정 원문 JSON | [원문 보관소](materials/README.md) |
 | `characters/` | 작가 전용 인물 카드·관계와 공개 정책 | [인물 안내](characters/README.md) |
 | `reference/` | 이름·장비·마법·적·용어와 분석 입력 | [참조 사전](reference/README.md) |
-| `authoring/` | 공용 원고 스키마·보존한 구조 예시 | [원고 형식](authoring/README.md) |
+| `authoring/` | 공용 원고 스키마·`examples/` 검증 예시 | [원고 형식](authoring/README.md) |
 | `writing/` | 큰 구성·소단락·분기·장면·본문·생성 읽기본 | [집필 안내](writing/README.md) |
 | `continuity/` | 공통 사실·인물별 지식·장면 계약·승인 | [연속성 안내](continuity/README.md) |
 | `exports/` | 작가용/필터된 참고 HTML·PDF 스냅샷 | [내보내기](exports/README.md) |
@@ -56,6 +69,7 @@ python -X utf8 tools/source_story.py validate
 python -X utf8 tools/source_story.py export --check
 python -X utf8 tools/writing.py export --check
 python -X utf8 tools/export_reference.py --check
+python -X utf8 tools/project_audit.py export --check
 ```
 
 전체 테스트는 모듈 경로를 설정해 실행합니다.

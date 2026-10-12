@@ -10,7 +10,7 @@ import jsonschema
 
 from materials import ROOT, read
 from publication_flow import PublicationFlow
-from export_reference import character_html, claim_table, relation_html, title_of
+from export_reference import character_html, claim_table, relation_html, title_of, value_html, LABELS, evidence_html
 from text_refs import validate_names
 
 PLAN = ROOT/'writing/studio/studio.plan.json'
@@ -20,6 +20,18 @@ SCRIPT = ROOT/'writing/studio/studio.js'
 OUTPUT = ROOT/'writing/studio/generated'
 PREVIEWS = ROOT/'writing/previews'
 VIEWS = ('overview', 'reading', 'outline', 'graph', 'branches', 'order', 'settings', 'sources')
+
+
+def readable_claims(claims):
+    rows=[]
+    for claim in claims:
+        meta=claim['metadata'];kind=meta['kind'] if meta['addition'] else claim.get('origin','unknown')
+        label=LABELS.get(claim['field'],claim['field'])
+        rows.append('<article class="fact-card"><h4>'+html.escape(label)+'</h4><div class="fact-value">'+value_html(claim.get('value'))+'</div>'
+                    '<div class="fact-status"><span class="badge'+(' added' if meta['addition'] else '')+'">'+html.escape(LABELS.get(kind,kind))+'</span> '
+                    +html.escape(LABELS.get(claim.get('status','confirmed'),claim.get('status','confirmed')))+'</div>'
+                    '<details class="fact-evidence"><summary>근거와 편집 메모</summary><p>'+evidence_html(claim.get('evidence',[]))+'</p><p>'+html.escape(meta['note'])+'</p></details></article>')
+    return '<div class="fact-grid">'+''.join(rows)+'</div>' if rows else '<p class="empty">등록된 정보가 없습니다. 미상을 추정해서 채우지 않습니다.</p>'
 
 
 def validate_plan(plan=None):
@@ -88,6 +100,10 @@ def build(docs=None, publication=None, plan=None):
                           'source_ref':{'file':publication.up,'pointer':publication.unit_paths[key]}})
         chapters.append({'id':cid, 'number':tree['number'], 'title':session.display(publication.resolve(tree['heading_ref'])),
                          'implementation':central['implementation'], 'story_html':story_html, 'units':units,
+                         'decisions':[{'id':d['id'],'title':session.display(publication.plan['decision_titles'][d['id']]),'prompt':session.display(d['prompt']),
+                                       'source_ref':{'file':publication.bp,'pointer':publication.decision_paths[d['id']]},
+                                       'options':[{'id':o['id'],'label':session.display(o['label'])} for o in d['options']]}
+                                      for d in session.plan['decisions'] if d['unit_id'].split('/')[0]==cid],
                          'svg':publication.svg(chart['node_ids']), 'source_ref':tree['heading_ref']})
     documents = []
     reading_labels = {
@@ -117,6 +133,14 @@ def build(docs=None, publication=None, plan=None):
         title = profile['display_name'] if '(사칭자)' in profile['display_name'] else names[key]
         settings.append({'id':'characters/'+key, 'category':'characters', 'title':title,
                          'original':profile['canonical_name']['value'] or '', 'html':body,
+                         'sections':{'핵심 설정':readable_claims([*([profile['writing_name']] if 'writing_name' in profile else []),profile['korean_name'],*profile['biography'].values()])
+                                     +''.join('<h3>'+heading+'</h3>'+readable_claims(profile['writing'][field]) for field,heading in [('traits','성향'),('speech','말투'),('goals','목표')])
+                                     +'<h3>장비·기술 참조</h3>'+value_html(profile['resource_refs']),
+                                     '원작 정보':readable_claims(profile['source_facts']),
+                                     '관계 · 공개':''.join(relation_html(r,names,checkpoints) for r in profile['relationships'])
+                                      +'<h3>공개 정책</h3>'+value_html({'독자에게 보이는 이름':profile['disclosure']['public_display_name'],'공개용 ID':profile['disclosure']['public_id'],'정보가 열리는 사건':profile['disclosure']['after_events']})
+                                      +'<details class="fact-evidence"><summary>필드별 상세 공개 조건 · 원본 정책</summary>'+value_html(profile['disclosure'])+'</details>'
+                                      +'<h3>집필 경계</h3>'+value_html(profile['writing']['boundaries'])+'<p>'+html.escape(profile['writing']['notes'])+'</p>'},
                          'source_ref':{'file':'characters/registry.json','pointer':'/characters/'+key},
                          'search':names[key]+' '+key+' '+re.sub('<[^>]+>',' ',html.unescape(body))})
     for category, document in session.references.items():
@@ -125,6 +149,7 @@ def build(docs=None, publication=None, plan=None):
             body = claim_table([*([item['writing_name']] if 'writing_name' in item else []),item['original_name'],item['korean_name'],*item['claims']])
             settings.append({'id':category+'/'+key, 'category':category, 'title':title,
                              'original':item['original_name']['value'], 'html':body,
+                             'sections':{'설정':readable_claims([*([item['writing_name']] if 'writing_name' in item else []),item['original_name'],item['korean_name'],*item['claims']])},
                              'source_ref':{'file':f'reference/{category}.json','pointer':'/items/'+key},
                              'search':title+' '+key+' '+re.sub('<[^>]+>',' ',html.unescape(body))})
     for key, profile in session.profiles['characters'].items():

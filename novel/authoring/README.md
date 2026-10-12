@@ -1,5 +1,8 @@
 # 인터랙티브 스토리 집필 형식 v2
 
+이 문서는 **본문 JSON의 형식 설명**입니다. 작업 준수 규칙은 [프로젝트 AGENTS](../AGENTS.md),
+현재 집필 대상과 읽기 화면은 [집필 README](../writing/README.md)를 따릅니다.
+
 연속성 관리 형식·경로별 생성 자료는 [../continuity/README.md](../continuity/README.md)를
 참고한다. 확정 설정, 인물별 지식, 사건 기록과 장면 계약을 본문에 함께 연결한다.
 
@@ -7,7 +10,7 @@
 바꾸지 않는다. 원작 사실, 각색, 새 창작을 구분하면서 선택·분기·합류를 작성한다.
 
 - 형식: [story.schema.json](story.schema.json), JSON Schema 2020-12.
-- 구조 예시: [drafts/prologue.json](drafts/prologue.json).
+- 구조 예시: [examples/prologue.json](examples/prologue.json). 현재 집필 원고가 아닌 검증 예시입니다.
 - 새 원고·공용 템플릿: [../writing/README.md](../writing/README.md).
 - 원문 보관소: [../materials/scripts.json](../materials/scripts.json).
 - 인물 카드: [../characters/registry.json](../characters/registry.json).
@@ -24,7 +27,7 @@
 | 집필 장면 | `nodes`, `blocks`, `choices` | 읽는 본문, 선택지, 다음 장면, 분기·합류 |
 | 이야기의 기억 | `state_definitions`, `when`, `effects` | 지식·동료·관계·사건·퀘스트 상태 |
 
-추출 JSON은 보존 원문 자료이고, `authoring/drafts/`는 기존 구조 예시다.
+추출 JSON은 보존 원문 자료이고, `authoring/examples/`는 보존한 구조·검증 예시다.
 새 원고는 `writing/quests/`에 집필하며 원문 추출 도구는 이를 덮어쓰지 않는다.
 퀘스트마다 별도 JSON을 쓰고,
 원작의 한 지도가 아니라 하나의 집필 단위를 파일 경계로 삼는다.
