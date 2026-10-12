@@ -174,3 +174,36 @@ class PublicationFlowTests(unittest.TestCase):
                         horizontal=y==yy and by<y<by+bh and max(min(x,xx),bx)<min(max(x,xx),bx+bw)
                         self.assertFalse(vertical or horizontal,(chart['id'],group.attrib,d,(bx,by,bw,bh)))
         self.assertGreater(checked,10)
+
+    def test_14_timeline_covers_all_main_choice_and_reaction_nodes_at_real_stages(self):
+        timeline=self.flow.graph['timeline'];nodes={n['id']:n for n in self.flow.nodes}
+        units=set();choices=set();reactions=set()
+        for chapter in timeline['chapters']:
+            for row in chapter['rows']:
+                if row['kind']=='main':
+                    units.add(row['unit_id']);self.assertEqual(nodes[row['node_id']]['kind'],'unit')
+                for card in row.get('cards',[]):
+                    node=nodes[card['node_id']]
+                    self.assertEqual(node['unit_id'],row['unit_id'])
+                    (choices if row['kind']=='decision' else reactions).add(node['id'])
+                    for step in card.get('parallel_sequence',[]):
+                        units.add(step['unit_id']);self.assertIn(step['outcome_node_id'],nodes)
+                        if step['main_node_id']:self.assertIn(step['main_node_id'],nodes)
+        self.assertEqual(units,set(self.flow.session.units))
+        self.assertEqual(choices,{'option/'+o for o in self.flow.option_paths})
+        self.assertEqual(reactions,{'reaction/'+r for r in self.flow.reaction_paths})
+        self.assertEqual(len(timeline['links']),self.flow.report['influence_links'])
+        for g in timeline['groups'].values():
+            self.flow.resolve(g['title_ref'])
+            if g['prompt_ref']:self.flow.resolve(g['prompt_ref'])
+            for o in g['options']:self.assertIn(o['node_id'],nodes);self.flow.resolve(o['label_ref'])
+
+    def test_15_timeline_parallel_alternatives_retain_the_actual_two_block_orders(self):
+        chapter=next(c for c in self.flow.graph['timeline']['chapters'] if c['chapter_id']=='chapter09')
+        row=next(r for r in chapter['rows'] if r.get('group_id')=='seal_order')
+        self.assertEqual(row['timing'],'both_parallel_blocks_required_in_selected_order')
+        binding=self.flow.session.orders['seal_order'];group=self.flow.session.groups[binding['group_id']]
+        for card in row['cards']:
+            oid=card['node_id'][len('option/'):]
+            expected=[group['entry'],*(key for i in binding['orders'][oid] for key in group['blocks'][i])]
+            self.assertEqual([s['unit_id'] for s in card['parallel_sequence']],expected)

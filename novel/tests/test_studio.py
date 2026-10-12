@@ -161,5 +161,15 @@ class StudioTests(unittest.TestCase):
         self.assertEqual(details['option/side_return_knots/take']['rules']['origin'],'authored')
         self.assertTrue(details['option/side_return_knots/take']['rules']['metadata']['addition'])
 
+    def test_14_timeline_groups_and_all_card_bodies_are_reference_bound(self):
+        self.assertEqual(len(self.data['timeline']['chapters']),15)
+        for gid,group in self.data['timeline']['groups'].items():
+            self.assertEqual(group['title'],self.side_flow.session.display(self.side_flow.resolve(group['title_ref'])))
+            for option in group['options']:
+                self.assertEqual(option['label'],self.side_flow.session.display(self.side_flow.resolve(option['label_ref'])))
+        for node in self.side_flow.nodes:
+            if node['kind'] in ('unit','outcome'):
+                self.assertEqual(self.data['graph_details'][node['id']]['body'],self.side_flow.session.display(self.side_flow.resolve(node['content_ref'])))
+
 
 if __name__=='__main__': unittest.main()

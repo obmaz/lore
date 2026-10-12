@@ -60,6 +60,68 @@ class PublicationFlow:
         self.graph = self._build()
         self.editions = self._editions()
         self.report = self.validate()
+        self.graph['timeline'] = self.timeline()
+
+    def timeline(self):
+        """Reference-bound editorial comparison, never a simulated reader route."""
+        options={o['id']:(d,i) for d in self.session.plan['decisions'] for i,o in enumerate(d['options'])}
+        links=[{'id':f'L{i:02}','from':e['from'],'to':e['to'],'guard_ref':e['guard_ref']}
+               for i,e in enumerate((e for e in self.edges if e['kind']=='influence'),1)]
+        groups={d['id']:{'id':d['id'],'anchor_unit':d['unit_id'],
+            'title_ref':self.ref(self.pp,'/decision_titles/'+d['id']),
+            'prompt_ref':self.ref(self.bp,self.decision_paths[d['id']]+'/prompt'),
+            'options':[{'id':o['id'],'node_id':'option/'+o['id'],'letter':chr(65+i),
+                        'label_ref':self.ref(self.bp,self.option_paths[o['id']]+'/label')} for i,o in enumerate(d['options'])]}
+            for d in self.session.plan['decisions']}
+        chapters=[]
+        for chapter in self.session.outline['chapters']:
+            rows=[];cid=chapter['chapter_id']
+            entries={g['entry']:g for g in chapter['parallel_groups']}
+            inside={key for g in entries.values() for block in g['blocks'] for key in block}
+            def add(kind,key,**fields):
+                rows.append({'id':cid+'/time/'+str(len(rows)+1),'kind':kind,'unit_id':key,**fields})
+            for unit in chapter['units']:
+                key=unit['id']
+                if key in inside:continue
+                add('main',key,node_id=self.uid(key))
+                previous_group=None
+                for reaction in self.session.plan['reactions']:
+                    if reaction['unit_id']!=key:continue
+                    rid='reaction/'+reaction['id']
+                    source_ids=list(dict.fromkeys(link['from'][len('option/'):] for link in links if link['to']==rid))
+                    parents={options[oid][0]['id'] for oid in source_ids}
+                    gid=next(iter(parents)) if len(parents)==1 else 'condition/'+reaction['id']
+                    if gid not in groups:
+                        groups[gid]={'id':gid,'anchor_unit':key,
+                            'title_ref':self.ref(self.pp,'/reaction_titles/'+reaction['id']),'prompt_ref':None,'options':[]}
+                    ordered=[o['id'] for o in groups[gid]['options'] if o['id'] in source_ids]
+                    slot=next((i for i,o in enumerate(groups[gid]['options']) if o['id']==ordered[0]),None) if len(ordered)==1 else None
+                    card={'node_id':rid,'source_options':ordered,'slot':slot,
+                          'guard_ref':self.ref(self.bp,self.reaction_paths[reaction['id']])}
+                    if previous_group==gid:rows[-1]['cards'].append(card)
+                    else:add('reaction',key,group_id=gid,cards=[card])
+                    previous_group=gid
+                for decision in self.session.decisions.get(key,[]):
+                    cards=[]
+                    for i,option in enumerate(decision['options']):
+                        card={'node_id':'option/'+option['id'],'source_options':[option['id']],'slot':i,'parallel_sequence':[]}
+                        if key in entries and decision['id'] in self.session.orders:
+                            group=entries[key];binding=self.session.orders[decision['id']]
+                            card['parallel_sequence'].append({'unit_id':key,'main_node_id':None,'outcome_node_id':self.uid(key,option['id'],'outcome'),'reaction_node_ids':[]})
+                            for block in binding['orders'][option['id']]:
+                                for child in group['blocks'][block]:
+                                    card['parallel_sequence'].append({'unit_id':child,'main_node_id':self.uid(child,option['id']),
+                                        'outcome_node_id':self.uid(child,option['id'],'outcome'),
+                                        'reaction_node_ids':['reaction/'+r['id']+'@'+option['id'] for r in self.session.plan['reactions'] if r['unit_id']==child]})
+                        cards.append(card)
+                    add('decision',key,group_id=decision['id'],cards=cards,
+                        timing='both_parallel_blocks_required_in_selected_order' if key in entries else 'alternative_paragraphs_same_stage')
+                if key not in entries:add('outcome',key,node_id=self.uid(key,kind='outcome'))
+            chapters.append({'chapter_id':cid,'rows':rows})
+        return {'version':1,'status':'read_only_projection','origin':'authored','metadata':self.plan['metadata'],
+            'sequence_policy':'editorial_unit_order; parallel alternatives retain both required blocks',
+            'condition_policy':'exact guards remain authoritative; shared-state witness links are not sufficient conditions',
+            'groups':groups,'links':links,'chapters':chapters}
 
     def ref(self, file, pointer):
         return {'file': file, 'pointer': pointer}

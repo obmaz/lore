@@ -5096,6 +5096,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/side-stories/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/studio/README.md"
         }
       ],
       "automatic_deletion": false
@@ -5659,6 +5663,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/side-stories/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/studio/README.md"
         }
       ],
       "automatic_deletion": false

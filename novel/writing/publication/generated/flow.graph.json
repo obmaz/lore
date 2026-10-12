@@ -11440,5 +11440,1719 @@
     "writing/branches/series.json",
     "writing/publication/flow.plan.json"
   ],
-  "sequence_policy": "conditional_DAG_not_all_choices_on_one_route"
+  "sequence_policy": "conditional_DAG_not_all_choices_on_one_route",
+  "timeline": {
+    "version": 1,
+    "status": "read_only_projection",
+    "origin": "authored",
+    "metadata": {
+      "addition": true,
+      "kind": "new_setting",
+      "note": "추가: 기존 장·소단락·분기를 출판 준비용 트리·그래프로 표시하는 편집 구조. 새 이야기나 분기를 확정하거나 본문·페이지를 승인하지 않는다.",
+      "knowledge_policy": "author_reference_not_character_knowledge"
+    },
+    "sequence_policy": "editorial_unit_order; parallel alternatives retain both required blocks",
+    "condition_policy": "exact guards remain authoritative; shared-state witness links are not sufficient conditions",
+    "groups": {
+      "prepare": {
+        "id": "prepare",
+        "anchor_unit": "chapter01/p05",
+        "title_ref": {
+          "file": "writing/publication/flow.plan.json",
+          "pointer": "/decision_titles/prepare"
+        },
+        "prompt_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/decisions/0/prompt"
+        },
+        "options": [
+          {
+            "id": "prepare/armory",
+            "node_id": "option/prepare/armory",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/0/options/0/label"
+            }
+          },
+          {
+            "id": "prepare/self",
+            "node_id": "option/prepare/self",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/0/options/1/label"
+            }
+          }
+        ]
+      },
+      "company": {
+        "id": "company",
+        "anchor_unit": "chapter01/p05",
+        "title_ref": {
+          "file": "writing/publication/flow.plan.json",
+          "pointer": "/decision_titles/company"
+        },
+        "prompt_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/decisions/1/prompt"
+        },
+        "options": [
+          {
+            "id": "company/join",
+            "node_id": "option/company/join",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/1/options/0/label"
+            }
+          },
+          {
+            "id": "company/talk_join",
+            "node_id": "option/company/talk_join",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/1/options/1/label"
+            }
+          },
+          {
+            "id": "company/leave",
+            "node_id": "option/company/leave",
+            "letter": "C",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/1/options/2/label"
+            }
+          }
+        ]
+      },
+      "aid": {
+        "id": "aid",
+        "anchor_unit": "chapter03/p04",
+        "title_ref": {
+          "file": "writing/publication/flow.plan.json",
+          "pointer": "/decision_titles/aid"
+        },
+        "prompt_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/decisions/2/prompt"
+        },
+        "options": [
+          {
+            "id": "aid/cook",
+            "node_id": "option/aid/cook",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/2/options/0/label"
+            }
+          },
+          {
+            "id": "aid/magician",
+            "node_id": "option/aid/magician",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/2/options/1/label"
+            }
+          },
+          {
+            "id": "aid/together",
+            "node_id": "option/aid/together",
+            "letter": "C",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/2/options/2/label"
+            }
+          }
+        ]
+      },
+      "spica_company": {
+        "id": "spica_company",
+        "anchor_unit": "chapter07/p03",
+        "title_ref": {
+          "file": "writing/publication/flow.plan.json",
+          "pointer": "/decision_titles/spica_company"
+        },
+        "prompt_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/decisions/3/prompt"
+        },
+        "options": [
+          {
+            "id": "spica_company/join",
+            "node_id": "option/spica_company/join",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/3/options/0/label"
+            }
+          },
+          {
+            "id": "spica_company/continue",
+            "node_id": "option/spica_company/continue",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/3/options/1/label"
+            }
+          }
+        ]
+      },
+      "seal_order": {
+        "id": "seal_order",
+        "anchor_unit": "chapter09/p01",
+        "title_ref": {
+          "file": "writing/publication/flow.plan.json",
+          "pointer": "/decision_titles/seal_order"
+        },
+        "prompt_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/decisions/4/prompt"
+        },
+        "options": [
+          {
+            "id": "seal_order/evil_first",
+            "node_id": "option/seal_order/evil_first",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/4/options/0/label"
+            }
+          },
+          {
+            "id": "seal_order/muddy_first",
+            "node_id": "option/seal_order/muddy_first",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/4/options/1/label"
+            }
+          }
+        ]
+      },
+      "shelter_prepare": {
+        "id": "shelter_prepare",
+        "anchor_unit": "chapter12/p04",
+        "title_ref": {
+          "file": "writing/publication/flow.plan.json",
+          "pointer": "/decision_titles/shelter_prepare"
+        },
+        "prompt_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/decisions/5/prompt"
+        },
+        "options": [
+          {
+            "id": "shelter_prepare/food",
+            "node_id": "option/shelter_prepare/food",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/5/options/0/label"
+            }
+          },
+          {
+            "id": "shelter_prepare/equipment",
+            "node_id": "option/shelter_prepare/equipment",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/branches/series.json",
+              "pointer": "/decisions/5/options/1/label"
+            }
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "id": "L01",
+        "from": "option/shelter_prepare/equipment",
+        "to": "reaction/equipment_preparation",
+        "guard_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/reactions/6"
+        }
+      },
+      {
+        "id": "L02",
+        "from": "option/shelter_prepare/food",
+        "to": "reaction/food_preparation",
+        "guard_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/reactions/5"
+        }
+      },
+      {
+        "id": "L03",
+        "from": "option/spica_company/join",
+        "to": "reaction/spica_present",
+        "guard_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/reactions/4"
+        }
+      },
+      {
+        "id": "L04",
+        "from": "option/aid/magician",
+        "to": "reaction/aid_magician_memory",
+        "guard_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/reactions/3"
+        }
+      },
+      {
+        "id": "L05",
+        "from": "option/aid/cook",
+        "to": "reaction/aid_cook_memory",
+        "guard_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/reactions/2"
+        }
+      },
+      {
+        "id": "L06",
+        "from": "option/company/talk_join",
+        "to": "reaction/skeleton_memory",
+        "guard_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/reactions/1"
+        }
+      },
+      {
+        "id": "L07",
+        "from": "option/prepare/armory",
+        "to": "reaction/armory_weapon",
+        "guard_ref": {
+          "file": "writing/branches/series.json",
+          "pointer": "/reactions/0"
+        }
+      }
+    ],
+    "chapters": [
+      {
+        "chapter_id": "chapter01",
+        "rows": [
+          {
+            "id": "chapter01/time/1",
+            "kind": "main",
+            "unit_id": "chapter01/p01",
+            "node_id": "unit/chapter01/p01"
+          },
+          {
+            "id": "chapter01/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter01/p01",
+            "node_id": "outcome/chapter01/p01"
+          },
+          {
+            "id": "chapter01/time/3",
+            "kind": "main",
+            "unit_id": "chapter01/p02",
+            "node_id": "unit/chapter01/p02"
+          },
+          {
+            "id": "chapter01/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter01/p02",
+            "node_id": "outcome/chapter01/p02"
+          },
+          {
+            "id": "chapter01/time/5",
+            "kind": "main",
+            "unit_id": "chapter01/p03",
+            "node_id": "unit/chapter01/p03"
+          },
+          {
+            "id": "chapter01/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter01/p03",
+            "node_id": "outcome/chapter01/p03"
+          },
+          {
+            "id": "chapter01/time/7",
+            "kind": "main",
+            "unit_id": "chapter01/p04",
+            "node_id": "unit/chapter01/p04"
+          },
+          {
+            "id": "chapter01/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter01/p04",
+            "node_id": "outcome/chapter01/p04"
+          },
+          {
+            "id": "chapter01/time/9",
+            "kind": "main",
+            "unit_id": "chapter01/p05",
+            "node_id": "unit/chapter01/p05"
+          },
+          {
+            "id": "chapter01/time/10",
+            "kind": "decision",
+            "unit_id": "chapter01/p05",
+            "group_id": "prepare",
+            "cards": [
+              {
+                "node_id": "option/prepare/armory",
+                "source_options": [
+                  "prepare/armory"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/prepare/self",
+                "source_options": [
+                  "prepare/self"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter01/time/11",
+            "kind": "decision",
+            "unit_id": "chapter01/p05",
+            "group_id": "company",
+            "cards": [
+              {
+                "node_id": "option/company/join",
+                "source_options": [
+                  "company/join"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/company/talk_join",
+                "source_options": [
+                  "company/talk_join"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/company/leave",
+                "source_options": [
+                  "company/leave"
+                ],
+                "slot": 2,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter01/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter01/p05",
+            "node_id": "outcome/chapter01/p05"
+          },
+          {
+            "id": "chapter01/time/13",
+            "kind": "main",
+            "unit_id": "chapter01/p06",
+            "node_id": "unit/chapter01/p06"
+          },
+          {
+            "id": "chapter01/time/14",
+            "kind": "reaction",
+            "unit_id": "chapter01/p06",
+            "group_id": "prepare",
+            "cards": [
+              {
+                "node_id": "reaction/armory_weapon",
+                "source_options": [
+                  "prepare/armory"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/branches/series.json",
+                  "pointer": "/reactions/0"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter01/time/15",
+            "kind": "reaction",
+            "unit_id": "chapter01/p06",
+            "group_id": "company",
+            "cards": [
+              {
+                "node_id": "reaction/skeleton_memory",
+                "source_options": [
+                  "company/talk_join"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/branches/series.json",
+                  "pointer": "/reactions/1"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter01/time/16",
+            "kind": "outcome",
+            "unit_id": "chapter01/p06",
+            "node_id": "outcome/chapter01/p06"
+          },
+          {
+            "id": "chapter01/time/17",
+            "kind": "main",
+            "unit_id": "chapter01/p07",
+            "node_id": "unit/chapter01/p07"
+          },
+          {
+            "id": "chapter01/time/18",
+            "kind": "outcome",
+            "unit_id": "chapter01/p07",
+            "node_id": "outcome/chapter01/p07"
+          },
+          {
+            "id": "chapter01/time/19",
+            "kind": "main",
+            "unit_id": "chapter01/p08",
+            "node_id": "unit/chapter01/p08"
+          },
+          {
+            "id": "chapter01/time/20",
+            "kind": "outcome",
+            "unit_id": "chapter01/p08",
+            "node_id": "outcome/chapter01/p08"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter02",
+        "rows": [
+          {
+            "id": "chapter02/time/1",
+            "kind": "main",
+            "unit_id": "chapter02/p01",
+            "node_id": "unit/chapter02/p01"
+          },
+          {
+            "id": "chapter02/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter02/p01",
+            "node_id": "outcome/chapter02/p01"
+          },
+          {
+            "id": "chapter02/time/3",
+            "kind": "main",
+            "unit_id": "chapter02/p02",
+            "node_id": "unit/chapter02/p02"
+          },
+          {
+            "id": "chapter02/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter02/p02",
+            "node_id": "outcome/chapter02/p02"
+          },
+          {
+            "id": "chapter02/time/5",
+            "kind": "main",
+            "unit_id": "chapter02/p03",
+            "node_id": "unit/chapter02/p03"
+          },
+          {
+            "id": "chapter02/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter02/p03",
+            "node_id": "outcome/chapter02/p03"
+          },
+          {
+            "id": "chapter02/time/7",
+            "kind": "main",
+            "unit_id": "chapter02/p04",
+            "node_id": "unit/chapter02/p04"
+          },
+          {
+            "id": "chapter02/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter02/p04",
+            "node_id": "outcome/chapter02/p04"
+          },
+          {
+            "id": "chapter02/time/9",
+            "kind": "main",
+            "unit_id": "chapter02/p05",
+            "node_id": "unit/chapter02/p05"
+          },
+          {
+            "id": "chapter02/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter02/p05",
+            "node_id": "outcome/chapter02/p05"
+          },
+          {
+            "id": "chapter02/time/11",
+            "kind": "main",
+            "unit_id": "chapter02/p06",
+            "node_id": "unit/chapter02/p06"
+          },
+          {
+            "id": "chapter02/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter02/p06",
+            "node_id": "outcome/chapter02/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter03",
+        "rows": [
+          {
+            "id": "chapter03/time/1",
+            "kind": "main",
+            "unit_id": "chapter03/p01",
+            "node_id": "unit/chapter03/p01"
+          },
+          {
+            "id": "chapter03/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter03/p01",
+            "node_id": "outcome/chapter03/p01"
+          },
+          {
+            "id": "chapter03/time/3",
+            "kind": "main",
+            "unit_id": "chapter03/p02",
+            "node_id": "unit/chapter03/p02"
+          },
+          {
+            "id": "chapter03/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter03/p02",
+            "node_id": "outcome/chapter03/p02"
+          },
+          {
+            "id": "chapter03/time/5",
+            "kind": "main",
+            "unit_id": "chapter03/p03",
+            "node_id": "unit/chapter03/p03"
+          },
+          {
+            "id": "chapter03/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter03/p03",
+            "node_id": "outcome/chapter03/p03"
+          },
+          {
+            "id": "chapter03/time/7",
+            "kind": "main",
+            "unit_id": "chapter03/p04",
+            "node_id": "unit/chapter03/p04"
+          },
+          {
+            "id": "chapter03/time/8",
+            "kind": "decision",
+            "unit_id": "chapter03/p04",
+            "group_id": "aid",
+            "cards": [
+              {
+                "node_id": "option/aid/cook",
+                "source_options": [
+                  "aid/cook"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/aid/magician",
+                "source_options": [
+                  "aid/magician"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/aid/together",
+                "source_options": [
+                  "aid/together"
+                ],
+                "slot": 2,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter03/time/9",
+            "kind": "outcome",
+            "unit_id": "chapter03/p04",
+            "node_id": "outcome/chapter03/p04"
+          },
+          {
+            "id": "chapter03/time/10",
+            "kind": "main",
+            "unit_id": "chapter03/p05",
+            "node_id": "unit/chapter03/p05"
+          },
+          {
+            "id": "chapter03/time/11",
+            "kind": "outcome",
+            "unit_id": "chapter03/p05",
+            "node_id": "outcome/chapter03/p05"
+          },
+          {
+            "id": "chapter03/time/12",
+            "kind": "main",
+            "unit_id": "chapter03/p06",
+            "node_id": "unit/chapter03/p06"
+          },
+          {
+            "id": "chapter03/time/13",
+            "kind": "reaction",
+            "unit_id": "chapter03/p06",
+            "group_id": "aid",
+            "cards": [
+              {
+                "node_id": "reaction/aid_cook_memory",
+                "source_options": [
+                  "aid/cook"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/branches/series.json",
+                  "pointer": "/reactions/2"
+                }
+              },
+              {
+                "node_id": "reaction/aid_magician_memory",
+                "source_options": [
+                  "aid/magician"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/branches/series.json",
+                  "pointer": "/reactions/3"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter03/time/14",
+            "kind": "outcome",
+            "unit_id": "chapter03/p06",
+            "node_id": "outcome/chapter03/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter04",
+        "rows": [
+          {
+            "id": "chapter04/time/1",
+            "kind": "main",
+            "unit_id": "chapter04/p01",
+            "node_id": "unit/chapter04/p01"
+          },
+          {
+            "id": "chapter04/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter04/p01",
+            "node_id": "outcome/chapter04/p01"
+          },
+          {
+            "id": "chapter04/time/3",
+            "kind": "main",
+            "unit_id": "chapter04/p02",
+            "node_id": "unit/chapter04/p02"
+          },
+          {
+            "id": "chapter04/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter04/p02",
+            "node_id": "outcome/chapter04/p02"
+          },
+          {
+            "id": "chapter04/time/5",
+            "kind": "main",
+            "unit_id": "chapter04/p03",
+            "node_id": "unit/chapter04/p03"
+          },
+          {
+            "id": "chapter04/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter04/p03",
+            "node_id": "outcome/chapter04/p03"
+          },
+          {
+            "id": "chapter04/time/7",
+            "kind": "main",
+            "unit_id": "chapter04/p04",
+            "node_id": "unit/chapter04/p04"
+          },
+          {
+            "id": "chapter04/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter04/p04",
+            "node_id": "outcome/chapter04/p04"
+          },
+          {
+            "id": "chapter04/time/9",
+            "kind": "main",
+            "unit_id": "chapter04/p05",
+            "node_id": "unit/chapter04/p05"
+          },
+          {
+            "id": "chapter04/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter04/p05",
+            "node_id": "outcome/chapter04/p05"
+          },
+          {
+            "id": "chapter04/time/11",
+            "kind": "main",
+            "unit_id": "chapter04/p06",
+            "node_id": "unit/chapter04/p06"
+          },
+          {
+            "id": "chapter04/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter04/p06",
+            "node_id": "outcome/chapter04/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter05",
+        "rows": [
+          {
+            "id": "chapter05/time/1",
+            "kind": "main",
+            "unit_id": "chapter05/p01",
+            "node_id": "unit/chapter05/p01"
+          },
+          {
+            "id": "chapter05/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter05/p01",
+            "node_id": "outcome/chapter05/p01"
+          },
+          {
+            "id": "chapter05/time/3",
+            "kind": "main",
+            "unit_id": "chapter05/p02",
+            "node_id": "unit/chapter05/p02"
+          },
+          {
+            "id": "chapter05/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter05/p02",
+            "node_id": "outcome/chapter05/p02"
+          },
+          {
+            "id": "chapter05/time/5",
+            "kind": "main",
+            "unit_id": "chapter05/p03",
+            "node_id": "unit/chapter05/p03"
+          },
+          {
+            "id": "chapter05/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter05/p03",
+            "node_id": "outcome/chapter05/p03"
+          },
+          {
+            "id": "chapter05/time/7",
+            "kind": "main",
+            "unit_id": "chapter05/p04",
+            "node_id": "unit/chapter05/p04"
+          },
+          {
+            "id": "chapter05/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter05/p04",
+            "node_id": "outcome/chapter05/p04"
+          },
+          {
+            "id": "chapter05/time/9",
+            "kind": "main",
+            "unit_id": "chapter05/p05",
+            "node_id": "unit/chapter05/p05"
+          },
+          {
+            "id": "chapter05/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter05/p05",
+            "node_id": "outcome/chapter05/p05"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter06",
+        "rows": [
+          {
+            "id": "chapter06/time/1",
+            "kind": "main",
+            "unit_id": "chapter06/p01",
+            "node_id": "unit/chapter06/p01"
+          },
+          {
+            "id": "chapter06/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter06/p01",
+            "node_id": "outcome/chapter06/p01"
+          },
+          {
+            "id": "chapter06/time/3",
+            "kind": "main",
+            "unit_id": "chapter06/p02",
+            "node_id": "unit/chapter06/p02"
+          },
+          {
+            "id": "chapter06/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter06/p02",
+            "node_id": "outcome/chapter06/p02"
+          },
+          {
+            "id": "chapter06/time/5",
+            "kind": "main",
+            "unit_id": "chapter06/p03",
+            "node_id": "unit/chapter06/p03"
+          },
+          {
+            "id": "chapter06/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter06/p03",
+            "node_id": "outcome/chapter06/p03"
+          },
+          {
+            "id": "chapter06/time/7",
+            "kind": "main",
+            "unit_id": "chapter06/p04",
+            "node_id": "unit/chapter06/p04"
+          },
+          {
+            "id": "chapter06/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter06/p04",
+            "node_id": "outcome/chapter06/p04"
+          },
+          {
+            "id": "chapter06/time/9",
+            "kind": "main",
+            "unit_id": "chapter06/p05",
+            "node_id": "unit/chapter06/p05"
+          },
+          {
+            "id": "chapter06/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter06/p05",
+            "node_id": "outcome/chapter06/p05"
+          },
+          {
+            "id": "chapter06/time/11",
+            "kind": "main",
+            "unit_id": "chapter06/p06",
+            "node_id": "unit/chapter06/p06"
+          },
+          {
+            "id": "chapter06/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter06/p06",
+            "node_id": "outcome/chapter06/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter07",
+        "rows": [
+          {
+            "id": "chapter07/time/1",
+            "kind": "main",
+            "unit_id": "chapter07/p01",
+            "node_id": "unit/chapter07/p01"
+          },
+          {
+            "id": "chapter07/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter07/p01",
+            "node_id": "outcome/chapter07/p01"
+          },
+          {
+            "id": "chapter07/time/3",
+            "kind": "main",
+            "unit_id": "chapter07/p02",
+            "node_id": "unit/chapter07/p02"
+          },
+          {
+            "id": "chapter07/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter07/p02",
+            "node_id": "outcome/chapter07/p02"
+          },
+          {
+            "id": "chapter07/time/5",
+            "kind": "main",
+            "unit_id": "chapter07/p03",
+            "node_id": "unit/chapter07/p03"
+          },
+          {
+            "id": "chapter07/time/6",
+            "kind": "decision",
+            "unit_id": "chapter07/p03",
+            "group_id": "spica_company",
+            "cards": [
+              {
+                "node_id": "option/spica_company/join",
+                "source_options": [
+                  "spica_company/join"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/spica_company/continue",
+                "source_options": [
+                  "spica_company/continue"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter07/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter07/p03",
+            "node_id": "outcome/chapter07/p03"
+          },
+          {
+            "id": "chapter07/time/8",
+            "kind": "main",
+            "unit_id": "chapter07/p04",
+            "node_id": "unit/chapter07/p04"
+          },
+          {
+            "id": "chapter07/time/9",
+            "kind": "reaction",
+            "unit_id": "chapter07/p04",
+            "group_id": "spica_company",
+            "cards": [
+              {
+                "node_id": "reaction/spica_present",
+                "source_options": [
+                  "spica_company/join"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/branches/series.json",
+                  "pointer": "/reactions/4"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter07/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter07/p04",
+            "node_id": "outcome/chapter07/p04"
+          },
+          {
+            "id": "chapter07/time/11",
+            "kind": "main",
+            "unit_id": "chapter07/p05",
+            "node_id": "unit/chapter07/p05"
+          },
+          {
+            "id": "chapter07/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter07/p05",
+            "node_id": "outcome/chapter07/p05"
+          },
+          {
+            "id": "chapter07/time/13",
+            "kind": "main",
+            "unit_id": "chapter07/p06",
+            "node_id": "unit/chapter07/p06"
+          },
+          {
+            "id": "chapter07/time/14",
+            "kind": "outcome",
+            "unit_id": "chapter07/p06",
+            "node_id": "outcome/chapter07/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter08",
+        "rows": [
+          {
+            "id": "chapter08/time/1",
+            "kind": "main",
+            "unit_id": "chapter08/p01",
+            "node_id": "unit/chapter08/p01"
+          },
+          {
+            "id": "chapter08/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter08/p01",
+            "node_id": "outcome/chapter08/p01"
+          },
+          {
+            "id": "chapter08/time/3",
+            "kind": "main",
+            "unit_id": "chapter08/p02",
+            "node_id": "unit/chapter08/p02"
+          },
+          {
+            "id": "chapter08/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter08/p02",
+            "node_id": "outcome/chapter08/p02"
+          },
+          {
+            "id": "chapter08/time/5",
+            "kind": "main",
+            "unit_id": "chapter08/p03",
+            "node_id": "unit/chapter08/p03"
+          },
+          {
+            "id": "chapter08/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter08/p03",
+            "node_id": "outcome/chapter08/p03"
+          },
+          {
+            "id": "chapter08/time/7",
+            "kind": "main",
+            "unit_id": "chapter08/p04",
+            "node_id": "unit/chapter08/p04"
+          },
+          {
+            "id": "chapter08/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter08/p04",
+            "node_id": "outcome/chapter08/p04"
+          },
+          {
+            "id": "chapter08/time/9",
+            "kind": "main",
+            "unit_id": "chapter08/p05",
+            "node_id": "unit/chapter08/p05"
+          },
+          {
+            "id": "chapter08/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter08/p05",
+            "node_id": "outcome/chapter08/p05"
+          },
+          {
+            "id": "chapter08/time/11",
+            "kind": "main",
+            "unit_id": "chapter08/p06",
+            "node_id": "unit/chapter08/p06"
+          },
+          {
+            "id": "chapter08/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter08/p06",
+            "node_id": "outcome/chapter08/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter09",
+        "rows": [
+          {
+            "id": "chapter09/time/1",
+            "kind": "main",
+            "unit_id": "chapter09/p01",
+            "node_id": "unit/chapter09/p01"
+          },
+          {
+            "id": "chapter09/time/2",
+            "kind": "decision",
+            "unit_id": "chapter09/p01",
+            "group_id": "seal_order",
+            "cards": [
+              {
+                "node_id": "option/seal_order/evil_first",
+                "source_options": [
+                  "seal_order/evil_first"
+                ],
+                "slot": 0,
+                "parallel_sequence": [
+                  {
+                    "unit_id": "chapter09/p01",
+                    "main_node_id": null,
+                    "outcome_node_id": "outcome/chapter09/p01@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p02",
+                    "main_node_id": "unit/chapter09/p02@seal_order/evil_first",
+                    "outcome_node_id": "outcome/chapter09/p02@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p03",
+                    "main_node_id": "unit/chapter09/p03@seal_order/evil_first",
+                    "outcome_node_id": "outcome/chapter09/p03@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p04",
+                    "main_node_id": "unit/chapter09/p04@seal_order/evil_first",
+                    "outcome_node_id": "outcome/chapter09/p04@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p05",
+                    "main_node_id": "unit/chapter09/p05@seal_order/evil_first",
+                    "outcome_node_id": "outcome/chapter09/p05@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p06",
+                    "main_node_id": "unit/chapter09/p06@seal_order/evil_first",
+                    "outcome_node_id": "outcome/chapter09/p06@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  }
+                ]
+              },
+              {
+                "node_id": "option/seal_order/muddy_first",
+                "source_options": [
+                  "seal_order/muddy_first"
+                ],
+                "slot": 1,
+                "parallel_sequence": [
+                  {
+                    "unit_id": "chapter09/p01",
+                    "main_node_id": null,
+                    "outcome_node_id": "outcome/chapter09/p01@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p04",
+                    "main_node_id": "unit/chapter09/p04@seal_order/muddy_first",
+                    "outcome_node_id": "outcome/chapter09/p04@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p05",
+                    "main_node_id": "unit/chapter09/p05@seal_order/muddy_first",
+                    "outcome_node_id": "outcome/chapter09/p05@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p06",
+                    "main_node_id": "unit/chapter09/p06@seal_order/muddy_first",
+                    "outcome_node_id": "outcome/chapter09/p06@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p02",
+                    "main_node_id": "unit/chapter09/p02@seal_order/muddy_first",
+                    "outcome_node_id": "outcome/chapter09/p02@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p03",
+                    "main_node_id": "unit/chapter09/p03@seal_order/muddy_first",
+                    "outcome_node_id": "outcome/chapter09/p03@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  }
+                ]
+              }
+            ],
+            "timing": "both_parallel_blocks_required_in_selected_order"
+          },
+          {
+            "id": "chapter09/time/3",
+            "kind": "main",
+            "unit_id": "chapter09/p07",
+            "node_id": "unit/chapter09/p07"
+          },
+          {
+            "id": "chapter09/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter09/p07",
+            "node_id": "outcome/chapter09/p07"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter10",
+        "rows": [
+          {
+            "id": "chapter10/time/1",
+            "kind": "main",
+            "unit_id": "chapter10/p01",
+            "node_id": "unit/chapter10/p01"
+          },
+          {
+            "id": "chapter10/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter10/p01",
+            "node_id": "outcome/chapter10/p01"
+          },
+          {
+            "id": "chapter10/time/3",
+            "kind": "main",
+            "unit_id": "chapter10/p02",
+            "node_id": "unit/chapter10/p02"
+          },
+          {
+            "id": "chapter10/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter10/p02",
+            "node_id": "outcome/chapter10/p02"
+          },
+          {
+            "id": "chapter10/time/5",
+            "kind": "main",
+            "unit_id": "chapter10/p03",
+            "node_id": "unit/chapter10/p03"
+          },
+          {
+            "id": "chapter10/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter10/p03",
+            "node_id": "outcome/chapter10/p03"
+          },
+          {
+            "id": "chapter10/time/7",
+            "kind": "main",
+            "unit_id": "chapter10/p04",
+            "node_id": "unit/chapter10/p04"
+          },
+          {
+            "id": "chapter10/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter10/p04",
+            "node_id": "outcome/chapter10/p04"
+          },
+          {
+            "id": "chapter10/time/9",
+            "kind": "main",
+            "unit_id": "chapter10/p05",
+            "node_id": "unit/chapter10/p05"
+          },
+          {
+            "id": "chapter10/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter10/p05",
+            "node_id": "outcome/chapter10/p05"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter11",
+        "rows": [
+          {
+            "id": "chapter11/time/1",
+            "kind": "main",
+            "unit_id": "chapter11/p01",
+            "node_id": "unit/chapter11/p01"
+          },
+          {
+            "id": "chapter11/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter11/p01",
+            "node_id": "outcome/chapter11/p01"
+          },
+          {
+            "id": "chapter11/time/3",
+            "kind": "main",
+            "unit_id": "chapter11/p02",
+            "node_id": "unit/chapter11/p02"
+          },
+          {
+            "id": "chapter11/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter11/p02",
+            "node_id": "outcome/chapter11/p02"
+          },
+          {
+            "id": "chapter11/time/5",
+            "kind": "main",
+            "unit_id": "chapter11/p03",
+            "node_id": "unit/chapter11/p03"
+          },
+          {
+            "id": "chapter11/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter11/p03",
+            "node_id": "outcome/chapter11/p03"
+          },
+          {
+            "id": "chapter11/time/7",
+            "kind": "main",
+            "unit_id": "chapter11/p04",
+            "node_id": "unit/chapter11/p04"
+          },
+          {
+            "id": "chapter11/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter11/p04",
+            "node_id": "outcome/chapter11/p04"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter12",
+        "rows": [
+          {
+            "id": "chapter12/time/1",
+            "kind": "main",
+            "unit_id": "chapter12/p01",
+            "node_id": "unit/chapter12/p01"
+          },
+          {
+            "id": "chapter12/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter12/p01",
+            "node_id": "outcome/chapter12/p01"
+          },
+          {
+            "id": "chapter12/time/3",
+            "kind": "main",
+            "unit_id": "chapter12/p02",
+            "node_id": "unit/chapter12/p02"
+          },
+          {
+            "id": "chapter12/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter12/p02",
+            "node_id": "outcome/chapter12/p02"
+          },
+          {
+            "id": "chapter12/time/5",
+            "kind": "main",
+            "unit_id": "chapter12/p03",
+            "node_id": "unit/chapter12/p03"
+          },
+          {
+            "id": "chapter12/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter12/p03",
+            "node_id": "outcome/chapter12/p03"
+          },
+          {
+            "id": "chapter12/time/7",
+            "kind": "main",
+            "unit_id": "chapter12/p04",
+            "node_id": "unit/chapter12/p04"
+          },
+          {
+            "id": "chapter12/time/8",
+            "kind": "decision",
+            "unit_id": "chapter12/p04",
+            "group_id": "shelter_prepare",
+            "cards": [
+              {
+                "node_id": "option/shelter_prepare/food",
+                "source_options": [
+                  "shelter_prepare/food"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/shelter_prepare/equipment",
+                "source_options": [
+                  "shelter_prepare/equipment"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter12/time/9",
+            "kind": "outcome",
+            "unit_id": "chapter12/p04",
+            "node_id": "outcome/chapter12/p04"
+          },
+          {
+            "id": "chapter12/time/10",
+            "kind": "main",
+            "unit_id": "chapter12/p05",
+            "node_id": "unit/chapter12/p05"
+          },
+          {
+            "id": "chapter12/time/11",
+            "kind": "outcome",
+            "unit_id": "chapter12/p05",
+            "node_id": "outcome/chapter12/p05"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter13",
+        "rows": [
+          {
+            "id": "chapter13/time/1",
+            "kind": "main",
+            "unit_id": "chapter13/p01",
+            "node_id": "unit/chapter13/p01"
+          },
+          {
+            "id": "chapter13/time/2",
+            "kind": "reaction",
+            "unit_id": "chapter13/p01",
+            "group_id": "shelter_prepare",
+            "cards": [
+              {
+                "node_id": "reaction/food_preparation",
+                "source_options": [
+                  "shelter_prepare/food"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/branches/series.json",
+                  "pointer": "/reactions/5"
+                }
+              },
+              {
+                "node_id": "reaction/equipment_preparation",
+                "source_options": [
+                  "shelter_prepare/equipment"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/branches/series.json",
+                  "pointer": "/reactions/6"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter13/time/3",
+            "kind": "outcome",
+            "unit_id": "chapter13/p01",
+            "node_id": "outcome/chapter13/p01"
+          },
+          {
+            "id": "chapter13/time/4",
+            "kind": "main",
+            "unit_id": "chapter13/p02",
+            "node_id": "unit/chapter13/p02"
+          },
+          {
+            "id": "chapter13/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter13/p02",
+            "node_id": "outcome/chapter13/p02"
+          },
+          {
+            "id": "chapter13/time/6",
+            "kind": "main",
+            "unit_id": "chapter13/p03",
+            "node_id": "unit/chapter13/p03"
+          },
+          {
+            "id": "chapter13/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter13/p03",
+            "node_id": "outcome/chapter13/p03"
+          },
+          {
+            "id": "chapter13/time/8",
+            "kind": "main",
+            "unit_id": "chapter13/p04",
+            "node_id": "unit/chapter13/p04"
+          },
+          {
+            "id": "chapter13/time/9",
+            "kind": "outcome",
+            "unit_id": "chapter13/p04",
+            "node_id": "outcome/chapter13/p04"
+          },
+          {
+            "id": "chapter13/time/10",
+            "kind": "main",
+            "unit_id": "chapter13/p05",
+            "node_id": "unit/chapter13/p05"
+          },
+          {
+            "id": "chapter13/time/11",
+            "kind": "outcome",
+            "unit_id": "chapter13/p05",
+            "node_id": "outcome/chapter13/p05"
+          },
+          {
+            "id": "chapter13/time/12",
+            "kind": "main",
+            "unit_id": "chapter13/p06",
+            "node_id": "unit/chapter13/p06"
+          },
+          {
+            "id": "chapter13/time/13",
+            "kind": "outcome",
+            "unit_id": "chapter13/p06",
+            "node_id": "outcome/chapter13/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter14",
+        "rows": [
+          {
+            "id": "chapter14/time/1",
+            "kind": "main",
+            "unit_id": "chapter14/p01",
+            "node_id": "unit/chapter14/p01"
+          },
+          {
+            "id": "chapter14/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter14/p01",
+            "node_id": "outcome/chapter14/p01"
+          },
+          {
+            "id": "chapter14/time/3",
+            "kind": "main",
+            "unit_id": "chapter14/p02",
+            "node_id": "unit/chapter14/p02"
+          },
+          {
+            "id": "chapter14/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter14/p02",
+            "node_id": "outcome/chapter14/p02"
+          },
+          {
+            "id": "chapter14/time/5",
+            "kind": "main",
+            "unit_id": "chapter14/p03",
+            "node_id": "unit/chapter14/p03"
+          },
+          {
+            "id": "chapter14/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter14/p03",
+            "node_id": "outcome/chapter14/p03"
+          },
+          {
+            "id": "chapter14/time/7",
+            "kind": "main",
+            "unit_id": "chapter14/p04",
+            "node_id": "unit/chapter14/p04"
+          },
+          {
+            "id": "chapter14/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter14/p04",
+            "node_id": "outcome/chapter14/p04"
+          },
+          {
+            "id": "chapter14/time/9",
+            "kind": "main",
+            "unit_id": "chapter14/p05",
+            "node_id": "unit/chapter14/p05"
+          },
+          {
+            "id": "chapter14/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter14/p05",
+            "node_id": "outcome/chapter14/p05"
+          },
+          {
+            "id": "chapter14/time/11",
+            "kind": "main",
+            "unit_id": "chapter14/p06",
+            "node_id": "unit/chapter14/p06"
+          },
+          {
+            "id": "chapter14/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter14/p06",
+            "node_id": "outcome/chapter14/p06"
+          },
+          {
+            "id": "chapter14/time/13",
+            "kind": "main",
+            "unit_id": "chapter14/p07",
+            "node_id": "unit/chapter14/p07"
+          },
+          {
+            "id": "chapter14/time/14",
+            "kind": "outcome",
+            "unit_id": "chapter14/p07",
+            "node_id": "outcome/chapter14/p07"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter15",
+        "rows": [
+          {
+            "id": "chapter15/time/1",
+            "kind": "main",
+            "unit_id": "chapter15/p01",
+            "node_id": "unit/chapter15/p01"
+          },
+          {
+            "id": "chapter15/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter15/p01",
+            "node_id": "outcome/chapter15/p01"
+          },
+          {
+            "id": "chapter15/time/3",
+            "kind": "main",
+            "unit_id": "chapter15/p02",
+            "node_id": "unit/chapter15/p02"
+          },
+          {
+            "id": "chapter15/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter15/p02",
+            "node_id": "outcome/chapter15/p02"
+          },
+          {
+            "id": "chapter15/time/5",
+            "kind": "main",
+            "unit_id": "chapter15/p03",
+            "node_id": "unit/chapter15/p03"
+          },
+          {
+            "id": "chapter15/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter15/p03",
+            "node_id": "outcome/chapter15/p03"
+          },
+          {
+            "id": "chapter15/time/7",
+            "kind": "main",
+            "unit_id": "chapter15/p04",
+            "node_id": "unit/chapter15/p04"
+          },
+          {
+            "id": "chapter15/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter15/p04",
+            "node_id": "outcome/chapter15/p04"
+          },
+          {
+            "id": "chapter15/time/9",
+            "kind": "main",
+            "unit_id": "chapter15/p05",
+            "node_id": "unit/chapter15/p05"
+          },
+          {
+            "id": "chapter15/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter15/p05",
+            "node_id": "outcome/chapter15/p05"
+          }
+        ]
+      }
+    ]
+  }
 }

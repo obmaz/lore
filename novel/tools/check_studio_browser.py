@@ -6,9 +6,9 @@ from pathlib import Path
 from materials import ROOT
 
 
-def check(screenshots=None):
+def check(screenshots=None,bundle=None):
     from playwright.sync_api import sync_playwright
-    path=ROOT/'writing/studio/generated/index.html'
+    path=Path(bundle) if bundle else ROOT/'writing/studio/generated/index.html'
     report=[]
     with sync_playwright() as playwright:
         browser=playwright.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
@@ -90,32 +90,47 @@ def check(screenshots=None):
             assert page.locator('.unit').count()==7
             view('graph')
             assert page.locator('#chapter-select').input_value()=='chapter09'
-            assert page.locator('#chapter-diagram svg').count()==1
-            assert '질문' in page.locator('#chapter-diagram svg').text_content()
-            assert '두 봉인을 모두 풀어야 한다' in page.locator('#chapter-diagram svg').text_content()
-            assert '늪 속 장치가 있는 동굴부터 찾는다' in page.locator('#chapter-diagram svg').text_content()
-            assert '선택 뒤 발췌' in page.locator('#chapter-diagram svg').text_content()
-            assert '후속 반응 발췌' in page.locator('#chapter-diagram svg').text_content()
-            assert '다른 장 참고 · 10-1' in page.locator('#chapter-diagram svg').text_content()
-            dotted=page.locator('#chapter-diagram .flow-edge path[stroke-dasharray]')
-            assert dotted.count()>0
-            assert all('C' not in d and 'H' in d and 'V' in d for d in dotted.evaluate_all('(es)=>es.map(e=>e.getAttribute("d"))'))
-            node=page.locator('#chapter-diagram [data-flow-node="option/side_return_knots/take"]')
+            assert page.locator('#chapter-diagram svg').count()==0
+            assert '질문' in page.locator('#chapter-diagram').inner_text()
+            assert '두 봉인을 모두 풀어야 한다' in page.locator('#chapter-diagram').inner_text()
+            assert '늪 속 장치가 있는 동굴부터 찾는다' in page.locator('#chapter-diagram').inner_text()
+            assert page.locator('.tl-parallel-sequence').count()==2
+            assert page.locator('#chapter-diagram .flow-edge').count()==0
+            assert page.locator('[data-flow-node="reaction/side_return_knots_take"]').count()==0
+            pair=page.locator('.tl-variants[data-timeline-group="side_return_knots"]')
+            a=pair.locator('[data-path="side_return_knots/take"]')
+            b=pair.locator('[data-path="side_return_knots/skip"]')
+            if width==390:
+                assert a.is_visible() and not b.is_visible()
+                tabs=pair.locator('..').locator('.timeline-tabs')
+                tabs.locator('[data-timeline-option="side_return_knots/take"]').focus()
+                page.keyboard.press('ArrowRight')
+                assert b.is_visible() and not a.is_visible()
+                assert tabs.locator('[data-timeline-option="side_return_knots/skip"]').get_attribute('aria-selected')=='true'
+                page.keyboard.press('ArrowLeft')
+                assert a.is_visible() and not b.is_visible()
+            else:
+                assert a.is_visible() and b.is_visible()
+                assert abs(a.bounding_box()['y']-b.bounding_box()['y'])<1
+                assert a.bounding_box()['x']!=b.bounding_box()['x']
+            assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+            node=a.locator('[data-select-node]')
             node.focus()
             scroll=page.locator('#chapter-diagram').evaluate('(e)=>[e.scrollTop,e.scrollLeft]')
             route=page.url
             page.keyboard.press('Enter')
             assert node.get_attribute('aria-pressed')=='true'
-            assert page.locator('#chapter-diagram .flow-edge.is-related').count()==1
-            assert page.locator('#chapter-diagram [data-flow-node="reaction/side_return_knots_take"]').evaluate('(e)=>e.classList.contains("is-related")')
+            assert page.locator('#chapter-diagram .timeline-cell.is-related').count()==1
             assert page.url==route
             assert page.locator('#chapter-diagram').evaluate('(e)=>[e.scrollTop,e.scrollLeft]')==scroll
             target=page.locator('#graph-selection [data-flow-focus="reaction/side_return_knots_take"]')
             assert '10-1' in target.inner_text()
             target.click()
-            assert page.locator('#chapter-diagram [data-flow-node="reaction/side_return_knots_take"]').get_attribute('aria-pressed')=='true'
-            assert page.url==route
+            assert page.locator('#chapter-select').input_value()=='chapter10'
+            assert page.locator('[data-select-node="reaction/side_return_knots_take"]').get_attribute('aria-pressed')=='true'
+            assert '후속 반응' in page.locator('#chapter-diagram').inner_text()
             page.locator('#graph-selection [data-flow-focus="option/side_return_knots/take"]').click()
+            assert page.locator('#chapter-select').input_value()=='chapter09'
             assert node.get_attribute('aria-pressed')=='true'
             page.locator('#graph-selection>details>summary').click()
             assert page.locator('#graph-selection .graph-selection-body').inner_text().strip()
@@ -124,7 +139,7 @@ def check(screenshots=None):
             page.go_back()
             page.locator('#chapter-diagram').wait_for()
             assert page.locator('#graph-selection').is_hidden()
-            node=page.locator('#chapter-diagram [data-flow-node="option/side_return_knots/take"]')
+            node=page.locator('#chapter-diagram [data-select-node="option/side_return_knots/take"]')
             node.focus();page.keyboard.press(' ')
             assert node.get_attribute('aria-pressed')=='true'
             page.keyboard.press('Escape')
@@ -162,6 +177,17 @@ def check(screenshots=None):
             assert '무너진 제빵소의 마지막 자루' in page.locator('#branch-details').inner_text()
             page.locator('[data-graph-panel="diagram"]').click()
             assert page.locator('#chapter-select').input_value()=='chapter02'
+            if width==390:
+                package=json.loads(page.locator('#studio-data').text_content())
+                shared=next((c,r,card) for c in package['timeline']['chapters'] for r in c['rows'] if r['kind']=='reaction' for card in r['cards'] if 0<len(card['source_options'])<len(package['timeline']['groups'][r['group_id']]['options']))
+                c,r,card=shared;group=package['timeline']['groups'][r['group_id']]
+                page.locator('#chapter-select').select_option(c['chapter_id'])
+                outside=next(o['id'] for o in group['options'] if o['id'] not in card['source_options'])
+                buttons=page.locator('.timeline-tabs').filter(has=page.locator(f'[data-timeline-group="{group["id"]}"]'))
+                buttons.first.locator(f'[data-timeline-option="{outside}"]').click()
+                assert not page.locator(f'[data-flow-node="{card["node_id"]}"]').is_visible()
+                buttons.first.locator(f'[data-timeline-option="{card["source_options"][0]}"]').click()
+                assert page.locator(f'[data-flow-node="{card["node_id"]}"]').is_visible()
             view('order')
             assert page.locator('[data-row-kind="main"]:visible').count()==88
             assert page.locator('[data-row-kind="choice"]:visible').count()==0
@@ -250,7 +276,7 @@ def check(screenshots=None):
             assert legacy.locator('#chapter-select').input_value()=='chapter09'
             assert '#/graph?' in legacy.url
             legacy.close()
-            report.append({'width':width,'views':7,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'side_chapters_checked':15,'side_memory_checked':True,'side_next_gate':True,'source_json_download':True,'browser_back_forward':True,'graph_questions':True,'graph_result_excerpts':True,'orthogonal_dotted_edges':True,'cross_chapter_reference':True,'graph_link_focus':True,'unified_branch_details':True,'legacy_branch_bookmark':True,'compact_type':True,'dense_basic_height':basic_height,'evidence_keyboard_toggle':True})
+            report.append({'width':width,'views':7,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'side_chapters_checked':15,'side_memory_checked':True,'side_next_gate':True,'source_json_download':True,'browser_back_forward':True,'comparison_timeline':True,'no_default_edges':True,'mobile_path_tabs':True,'parallel_orders_preserved':True,'cross_chapter_actual_timing':True,'graph_link_focus':True,'unified_branch_details':True,'legacy_branch_bookmark':True,'compact_type':True,'dense_basic_height':basic_height,'evidence_keyboard_toggle':True})
             page.close()
         browser.close()
     return report
@@ -259,5 +285,6 @@ def check(screenshots=None):
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--screenshots',type=Path)
+    parser.add_argument('--bundle',type=Path)
     args=parser.parse_args()
-    print(json.dumps(check(args.screenshots),ensure_ascii=False,indent=2))
+    print(json.dumps(check(args.screenshots,args.bundle),ensure_ascii=False,indent=2))

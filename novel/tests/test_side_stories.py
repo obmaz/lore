@@ -132,3 +132,15 @@ class SideStoryTests(unittest.TestCase):
         # external references; do not register another copy of that test class.
         import test_publication_flow
         test_publication_flow.PublicationFlowTests.test_13_all_dotted_svg_routes_are_orthogonal_and_avoid_box_interiors(self)
+
+    def test_11_timeline_places_each_callback_in_its_real_chapter_not_an_external_stub(self):
+        timeline=self.flow.graph['timeline'];found={}
+        for chapter in timeline['chapters']:
+            for row in chapter['rows']:
+                for card in row.get('cards',[]):
+                    if row['kind']=='reaction':found[card['node_id']]=(chapter['chapter_id'],row['unit_id'],row['group_id'],card['source_options'])
+        for did,story in self.session.story_by_decision.items():
+            for index,mode in enumerate(('take','skip')):
+                self.assertEqual(found['reaction/'+did+'_'+mode],(story['reaction_unit'].split('/')[0],story['reaction_unit'],did,[did+'/'+mode]))
+        import test_publication_flow
+        test_publication_flow.PublicationFlowTests.test_14_timeline_covers_all_main_choice_and_reaction_nodes_at_real_stages(self)

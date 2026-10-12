@@ -18425,5 +18425,3294 @@
     "writing/side-stories/generated/runtime.plan.json",
     "writing/side-stories/generated/flow.plan.json"
   ],
-  "sequence_policy": "conditional_DAG_not_all_choices_on_one_route"
+  "sequence_policy": "conditional_DAG_not_all_choices_on_one_route",
+  "timeline": {
+    "version": 1,
+    "status": "read_only_projection",
+    "origin": "authored",
+    "metadata": {
+      "addition": true,
+      "kind": "new_setting",
+      "note": "추가: 기존 장·소단락·분기를 출판 준비용 트리·그래프로 표시하는 편집 구조. 새 이야기나 분기를 확정하거나 본문·페이지를 승인하지 않는다.",
+      "knowledge_policy": "author_reference_not_character_knowledge"
+    },
+    "sequence_policy": "editorial_unit_order; parallel alternatives retain both required blocks",
+    "condition_policy": "exact guards remain authoritative; shared-state witness links are not sufficient conditions",
+    "groups": {
+      "prepare": {
+        "id": "prepare",
+        "anchor_unit": "chapter01/p05",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/prepare"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/0/prompt"
+        },
+        "options": [
+          {
+            "id": "prepare/armory",
+            "node_id": "option/prepare/armory",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/0/options/0/label"
+            }
+          },
+          {
+            "id": "prepare/self",
+            "node_id": "option/prepare/self",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/0/options/1/label"
+            }
+          }
+        ]
+      },
+      "company": {
+        "id": "company",
+        "anchor_unit": "chapter01/p05",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/company"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/1/prompt"
+        },
+        "options": [
+          {
+            "id": "company/join",
+            "node_id": "option/company/join",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/1/options/0/label"
+            }
+          },
+          {
+            "id": "company/talk_join",
+            "node_id": "option/company/talk_join",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/1/options/1/label"
+            }
+          },
+          {
+            "id": "company/leave",
+            "node_id": "option/company/leave",
+            "letter": "C",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/1/options/2/label"
+            }
+          }
+        ]
+      },
+      "aid": {
+        "id": "aid",
+        "anchor_unit": "chapter03/p04",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/aid"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/2/prompt"
+        },
+        "options": [
+          {
+            "id": "aid/cook",
+            "node_id": "option/aid/cook",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/2/options/0/label"
+            }
+          },
+          {
+            "id": "aid/magician",
+            "node_id": "option/aid/magician",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/2/options/1/label"
+            }
+          },
+          {
+            "id": "aid/together",
+            "node_id": "option/aid/together",
+            "letter": "C",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/2/options/2/label"
+            }
+          }
+        ]
+      },
+      "spica_company": {
+        "id": "spica_company",
+        "anchor_unit": "chapter07/p03",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/spica_company"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/3/prompt"
+        },
+        "options": [
+          {
+            "id": "spica_company/join",
+            "node_id": "option/spica_company/join",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/3/options/0/label"
+            }
+          },
+          {
+            "id": "spica_company/continue",
+            "node_id": "option/spica_company/continue",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/3/options/1/label"
+            }
+          }
+        ]
+      },
+      "seal_order": {
+        "id": "seal_order",
+        "anchor_unit": "chapter09/p01",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/seal_order"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/4/prompt"
+        },
+        "options": [
+          {
+            "id": "seal_order/evil_first",
+            "node_id": "option/seal_order/evil_first",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/4/options/0/label"
+            }
+          },
+          {
+            "id": "seal_order/muddy_first",
+            "node_id": "option/seal_order/muddy_first",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/4/options/1/label"
+            }
+          }
+        ]
+      },
+      "shelter_prepare": {
+        "id": "shelter_prepare",
+        "anchor_unit": "chapter12/p04",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/shelter_prepare"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/5/prompt"
+        },
+        "options": [
+          {
+            "id": "shelter_prepare/food",
+            "node_id": "option/shelter_prepare/food",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/5/options/0/label"
+            }
+          },
+          {
+            "id": "shelter_prepare/equipment",
+            "node_id": "option/shelter_prepare/equipment",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/5/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_well_bucket": {
+        "id": "side_well_bucket",
+        "anchor_unit": "chapter01/p04",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_well_bucket"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/6/prompt"
+        },
+        "options": [
+          {
+            "id": "side_well_bucket/take",
+            "node_id": "option/side_well_bucket/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/6/options/0/label"
+            }
+          },
+          {
+            "id": "side_well_bucket/skip",
+            "node_id": "option/side_well_bucket/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/6/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_flour_sack": {
+        "id": "side_flour_sack",
+        "anchor_unit": "chapter02/p02",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_flour_sack"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/7/prompt"
+        },
+        "options": [
+          {
+            "id": "side_flour_sack/take",
+            "node_id": "option/side_flour_sack/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/7/options/0/label"
+            }
+          },
+          {
+            "id": "side_flour_sack/skip",
+            "node_id": "option/side_flour_sack/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/7/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_ruin_cart": {
+        "id": "side_ruin_cart",
+        "anchor_unit": "chapter03/p02",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_ruin_cart"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/8/prompt"
+        },
+        "options": [
+          {
+            "id": "side_ruin_cart/take",
+            "node_id": "option/side_ruin_cart/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/8/options/0/label"
+            }
+          },
+          {
+            "id": "side_ruin_cart/skip",
+            "node_id": "option/side_ruin_cart/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/8/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_blind_chamber": {
+        "id": "side_blind_chamber",
+        "anchor_unit": "chapter04/p02",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_blind_chamber"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/9/prompt"
+        },
+        "options": [
+          {
+            "id": "side_blind_chamber/take",
+            "node_id": "option/side_blind_chamber/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/9/options/0/label"
+            }
+          },
+          {
+            "id": "side_blind_chamber/skip",
+            "node_id": "option/side_blind_chamber/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/9/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_ledge_rope": {
+        "id": "side_ledge_rope",
+        "anchor_unit": "chapter05/p03",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_ledge_rope"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/10/prompt"
+        },
+        "options": [
+          {
+            "id": "side_ledge_rope/take",
+            "node_id": "option/side_ledge_rope/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/10/options/0/label"
+            }
+          },
+          {
+            "id": "side_ledge_rope/skip",
+            "node_id": "option/side_ledge_rope/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/10/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_caught_sail": {
+        "id": "side_caught_sail",
+        "anchor_unit": "chapter06/p02",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_caught_sail"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/11/prompt"
+        },
+        "options": [
+          {
+            "id": "side_caught_sail/take",
+            "node_id": "option/side_caught_sail/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/11/options/0/label"
+            }
+          },
+          {
+            "id": "side_caught_sail/skip",
+            "node_id": "option/side_caught_sail/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/11/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_small_bell": {
+        "id": "side_small_bell",
+        "anchor_unit": "chapter07/p02",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_small_bell"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/12/prompt"
+        },
+        "options": [
+          {
+            "id": "side_small_bell/take",
+            "node_id": "option/side_small_bell/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/12/options/0/label"
+            }
+          },
+          {
+            "id": "side_small_bell/skip",
+            "node_id": "option/side_small_bell/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/12/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_dying_fire": {
+        "id": "side_dying_fire",
+        "anchor_unit": "chapter08/p02",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_dying_fire"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/13/prompt"
+        },
+        "options": [
+          {
+            "id": "side_dying_fire/take",
+            "node_id": "option/side_dying_fire/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/13/options/0/label"
+            }
+          },
+          {
+            "id": "side_dying_fire/skip",
+            "node_id": "option/side_dying_fire/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/13/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_return_knots": {
+        "id": "side_return_knots",
+        "anchor_unit": "chapter09/p07",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_return_knots"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/14/prompt"
+        },
+        "options": [
+          {
+            "id": "side_return_knots/take",
+            "node_id": "option/side_return_knots/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/14/options/0/label"
+            }
+          },
+          {
+            "id": "side_return_knots/skip",
+            "node_id": "option/side_return_knots/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/14/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_ash_barrel": {
+        "id": "side_ash_barrel",
+        "anchor_unit": "chapter10/p05",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_ash_barrel"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/15/prompt"
+        },
+        "options": [
+          {
+            "id": "side_ash_barrel/take",
+            "node_id": "option/side_ash_barrel/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/15/options/0/label"
+            }
+          },
+          {
+            "id": "side_ash_barrel/skip",
+            "node_id": "option/side_ash_barrel/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/15/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_cell_voice": {
+        "id": "side_cell_voice",
+        "anchor_unit": "chapter11/p02",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_cell_voice"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/16/prompt"
+        },
+        "options": [
+          {
+            "id": "side_cell_voice/take",
+            "node_id": "option/side_cell_voice/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/16/options/0/label"
+            }
+          },
+          {
+            "id": "side_cell_voice/skip",
+            "node_id": "option/side_cell_voice/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/16/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_leaking_channel": {
+        "id": "side_leaking_channel",
+        "anchor_unit": "chapter12/p02",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_leaking_channel"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/17/prompt"
+        },
+        "options": [
+          {
+            "id": "side_leaking_channel/take",
+            "node_id": "option/side_leaking_channel/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/17/options/0/label"
+            }
+          },
+          {
+            "id": "side_leaking_channel/skip",
+            "node_id": "option/side_leaking_channel/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/17/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_fallen_store": {
+        "id": "side_fallen_store",
+        "anchor_unit": "chapter13/p04",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_fallen_store"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/18/prompt"
+        },
+        "options": [
+          {
+            "id": "side_fallen_store/take",
+            "node_id": "option/side_fallen_store/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/18/options/0/label"
+            }
+          },
+          {
+            "id": "side_fallen_store/skip",
+            "node_id": "option/side_fallen_store/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/18/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_hot_frame": {
+        "id": "side_hot_frame",
+        "anchor_unit": "chapter14/p02",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_hot_frame"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/19/prompt"
+        },
+        "options": [
+          {
+            "id": "side_hot_frame/take",
+            "node_id": "option/side_hot_frame/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/19/options/0/label"
+            }
+          },
+          {
+            "id": "side_hot_frame/skip",
+            "node_id": "option/side_hot_frame/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/19/options/1/label"
+            }
+          }
+        ]
+      },
+      "side_last_step": {
+        "id": "side_last_step",
+        "anchor_unit": "chapter15/p04",
+        "title_ref": {
+          "file": "writing/side-stories/generated/flow.plan.json",
+          "pointer": "/decision_titles/side_last_step"
+        },
+        "prompt_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/decisions/20/prompt"
+        },
+        "options": [
+          {
+            "id": "side_last_step/take",
+            "node_id": "option/side_last_step/take",
+            "letter": "A",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/20/options/0/label"
+            }
+          },
+          {
+            "id": "side_last_step/skip",
+            "node_id": "option/side_last_step/skip",
+            "letter": "B",
+            "label_ref": {
+              "file": "writing/side-stories/generated/runtime.plan.json",
+              "pointer": "/decisions/20/options/1/label"
+            }
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "id": "L01",
+        "from": "option/prepare/armory",
+        "to": "reaction/armory_weapon",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/0"
+        }
+      },
+      {
+        "id": "L02",
+        "from": "option/company/talk_join",
+        "to": "reaction/skeleton_memory",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/1"
+        }
+      },
+      {
+        "id": "L03",
+        "from": "option/aid/cook",
+        "to": "reaction/aid_cook_memory",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/2"
+        }
+      },
+      {
+        "id": "L04",
+        "from": "option/shelter_prepare/food",
+        "to": "reaction/food_preparation",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/5"
+        }
+      },
+      {
+        "id": "L05",
+        "from": "option/side_well_bucket/skip",
+        "to": "reaction/side_well_bucket_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/8"
+        }
+      },
+      {
+        "id": "L06",
+        "from": "option/side_flour_sack/take",
+        "to": "reaction/side_flour_sack_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/9"
+        }
+      },
+      {
+        "id": "L07",
+        "from": "option/side_ruin_cart/skip",
+        "to": "reaction/side_ruin_cart_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/12"
+        }
+      },
+      {
+        "id": "L08",
+        "from": "option/side_blind_chamber/take",
+        "to": "reaction/side_blind_chamber_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/13"
+        }
+      },
+      {
+        "id": "L09",
+        "from": "option/side_ledge_rope/skip",
+        "to": "reaction/side_ledge_rope_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/16"
+        }
+      },
+      {
+        "id": "L10",
+        "from": "option/side_caught_sail/take",
+        "to": "reaction/side_caught_sail_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/17"
+        }
+      },
+      {
+        "id": "L11",
+        "from": "option/side_small_bell/skip",
+        "to": "reaction/side_small_bell_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/20"
+        }
+      },
+      {
+        "id": "L12",
+        "from": "option/side_dying_fire/take",
+        "to": "reaction/side_dying_fire_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/21"
+        }
+      },
+      {
+        "id": "L13",
+        "from": "option/side_return_knots/skip",
+        "to": "reaction/side_return_knots_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/24"
+        }
+      },
+      {
+        "id": "L14",
+        "from": "option/side_ash_barrel/take",
+        "to": "reaction/side_ash_barrel_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/25"
+        }
+      },
+      {
+        "id": "L15",
+        "from": "option/side_cell_voice/skip",
+        "to": "reaction/side_cell_voice_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/28"
+        }
+      },
+      {
+        "id": "L16",
+        "from": "option/side_leaking_channel/take",
+        "to": "reaction/side_leaking_channel_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/29"
+        }
+      },
+      {
+        "id": "L17",
+        "from": "option/side_fallen_store/skip",
+        "to": "reaction/side_fallen_store_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/32"
+        }
+      },
+      {
+        "id": "L18",
+        "from": "option/side_hot_frame/take",
+        "to": "reaction/side_hot_frame_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/33"
+        }
+      },
+      {
+        "id": "L19",
+        "from": "option/side_last_step/skip",
+        "to": "reaction/side_last_step_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/36"
+        }
+      },
+      {
+        "id": "L20",
+        "from": "option/side_flour_sack/skip",
+        "to": "reaction/side_flour_sack_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/10"
+        }
+      },
+      {
+        "id": "L21",
+        "from": "option/side_blind_chamber/skip",
+        "to": "reaction/side_blind_chamber_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/14"
+        }
+      },
+      {
+        "id": "L22",
+        "from": "option/side_caught_sail/skip",
+        "to": "reaction/side_caught_sail_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/18"
+        }
+      },
+      {
+        "id": "L23",
+        "from": "option/side_dying_fire/skip",
+        "to": "reaction/side_dying_fire_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/22"
+        }
+      },
+      {
+        "id": "L24",
+        "from": "option/side_ash_barrel/skip",
+        "to": "reaction/side_ash_barrel_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/26"
+        }
+      },
+      {
+        "id": "L25",
+        "from": "option/side_leaking_channel/skip",
+        "to": "reaction/side_leaking_channel_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/30"
+        }
+      },
+      {
+        "id": "L26",
+        "from": "option/side_hot_frame/skip",
+        "to": "reaction/side_hot_frame_skip",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/34"
+        }
+      },
+      {
+        "id": "L27",
+        "from": "option/side_well_bucket/take",
+        "to": "reaction/side_well_bucket_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/7"
+        }
+      },
+      {
+        "id": "L28",
+        "from": "option/side_ruin_cart/take",
+        "to": "reaction/side_ruin_cart_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/11"
+        }
+      },
+      {
+        "id": "L29",
+        "from": "option/side_ledge_rope/take",
+        "to": "reaction/side_ledge_rope_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/15"
+        }
+      },
+      {
+        "id": "L30",
+        "from": "option/side_small_bell/take",
+        "to": "reaction/side_small_bell_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/19"
+        }
+      },
+      {
+        "id": "L31",
+        "from": "option/side_return_knots/take",
+        "to": "reaction/side_return_knots_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/23"
+        }
+      },
+      {
+        "id": "L32",
+        "from": "option/side_cell_voice/take",
+        "to": "reaction/side_cell_voice_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/27"
+        }
+      },
+      {
+        "id": "L33",
+        "from": "option/side_fallen_store/take",
+        "to": "reaction/side_fallen_store_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/31"
+        }
+      },
+      {
+        "id": "L34",
+        "from": "option/side_last_step/take",
+        "to": "reaction/side_last_step_take",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/35"
+        }
+      },
+      {
+        "id": "L35",
+        "from": "option/shelter_prepare/equipment",
+        "to": "reaction/equipment_preparation",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/6"
+        }
+      },
+      {
+        "id": "L36",
+        "from": "option/aid/magician",
+        "to": "reaction/aid_magician_memory",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/3"
+        }
+      },
+      {
+        "id": "L37",
+        "from": "option/spica_company/join",
+        "to": "reaction/spica_present",
+        "guard_ref": {
+          "file": "writing/side-stories/generated/runtime.plan.json",
+          "pointer": "/reactions/4"
+        }
+      }
+    ],
+    "chapters": [
+      {
+        "chapter_id": "chapter01",
+        "rows": [
+          {
+            "id": "chapter01/time/1",
+            "kind": "main",
+            "unit_id": "chapter01/p01",
+            "node_id": "unit/chapter01/p01"
+          },
+          {
+            "id": "chapter01/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter01/p01",
+            "node_id": "outcome/chapter01/p01"
+          },
+          {
+            "id": "chapter01/time/3",
+            "kind": "main",
+            "unit_id": "chapter01/p02",
+            "node_id": "unit/chapter01/p02"
+          },
+          {
+            "id": "chapter01/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter01/p02",
+            "node_id": "outcome/chapter01/p02"
+          },
+          {
+            "id": "chapter01/time/5",
+            "kind": "main",
+            "unit_id": "chapter01/p03",
+            "node_id": "unit/chapter01/p03"
+          },
+          {
+            "id": "chapter01/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter01/p03",
+            "node_id": "outcome/chapter01/p03"
+          },
+          {
+            "id": "chapter01/time/7",
+            "kind": "main",
+            "unit_id": "chapter01/p04",
+            "node_id": "unit/chapter01/p04"
+          },
+          {
+            "id": "chapter01/time/8",
+            "kind": "decision",
+            "unit_id": "chapter01/p04",
+            "group_id": "side_well_bucket",
+            "cards": [
+              {
+                "node_id": "option/side_well_bucket/take",
+                "source_options": [
+                  "side_well_bucket/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_well_bucket/skip",
+                "source_options": [
+                  "side_well_bucket/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter01/time/9",
+            "kind": "outcome",
+            "unit_id": "chapter01/p04",
+            "node_id": "outcome/chapter01/p04"
+          },
+          {
+            "id": "chapter01/time/10",
+            "kind": "main",
+            "unit_id": "chapter01/p05",
+            "node_id": "unit/chapter01/p05"
+          },
+          {
+            "id": "chapter01/time/11",
+            "kind": "decision",
+            "unit_id": "chapter01/p05",
+            "group_id": "prepare",
+            "cards": [
+              {
+                "node_id": "option/prepare/armory",
+                "source_options": [
+                  "prepare/armory"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/prepare/self",
+                "source_options": [
+                  "prepare/self"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter01/time/12",
+            "kind": "decision",
+            "unit_id": "chapter01/p05",
+            "group_id": "company",
+            "cards": [
+              {
+                "node_id": "option/company/join",
+                "source_options": [
+                  "company/join"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/company/talk_join",
+                "source_options": [
+                  "company/talk_join"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/company/leave",
+                "source_options": [
+                  "company/leave"
+                ],
+                "slot": 2,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter01/time/13",
+            "kind": "outcome",
+            "unit_id": "chapter01/p05",
+            "node_id": "outcome/chapter01/p05"
+          },
+          {
+            "id": "chapter01/time/14",
+            "kind": "main",
+            "unit_id": "chapter01/p06",
+            "node_id": "unit/chapter01/p06"
+          },
+          {
+            "id": "chapter01/time/15",
+            "kind": "reaction",
+            "unit_id": "chapter01/p06",
+            "group_id": "prepare",
+            "cards": [
+              {
+                "node_id": "reaction/armory_weapon",
+                "source_options": [
+                  "prepare/armory"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/0"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter01/time/16",
+            "kind": "reaction",
+            "unit_id": "chapter01/p06",
+            "group_id": "company",
+            "cards": [
+              {
+                "node_id": "reaction/skeleton_memory",
+                "source_options": [
+                  "company/talk_join"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/1"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter01/time/17",
+            "kind": "reaction",
+            "unit_id": "chapter01/p06",
+            "group_id": "side_well_bucket",
+            "cards": [
+              {
+                "node_id": "reaction/side_well_bucket_take",
+                "source_options": [
+                  "side_well_bucket/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/7"
+                }
+              },
+              {
+                "node_id": "reaction/side_well_bucket_skip",
+                "source_options": [
+                  "side_well_bucket/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/8"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter01/time/18",
+            "kind": "outcome",
+            "unit_id": "chapter01/p06",
+            "node_id": "outcome/chapter01/p06"
+          },
+          {
+            "id": "chapter01/time/19",
+            "kind": "main",
+            "unit_id": "chapter01/p07",
+            "node_id": "unit/chapter01/p07"
+          },
+          {
+            "id": "chapter01/time/20",
+            "kind": "outcome",
+            "unit_id": "chapter01/p07",
+            "node_id": "outcome/chapter01/p07"
+          },
+          {
+            "id": "chapter01/time/21",
+            "kind": "main",
+            "unit_id": "chapter01/p08",
+            "node_id": "unit/chapter01/p08"
+          },
+          {
+            "id": "chapter01/time/22",
+            "kind": "outcome",
+            "unit_id": "chapter01/p08",
+            "node_id": "outcome/chapter01/p08"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter02",
+        "rows": [
+          {
+            "id": "chapter02/time/1",
+            "kind": "main",
+            "unit_id": "chapter02/p01",
+            "node_id": "unit/chapter02/p01"
+          },
+          {
+            "id": "chapter02/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter02/p01",
+            "node_id": "outcome/chapter02/p01"
+          },
+          {
+            "id": "chapter02/time/3",
+            "kind": "main",
+            "unit_id": "chapter02/p02",
+            "node_id": "unit/chapter02/p02"
+          },
+          {
+            "id": "chapter02/time/4",
+            "kind": "decision",
+            "unit_id": "chapter02/p02",
+            "group_id": "side_flour_sack",
+            "cards": [
+              {
+                "node_id": "option/side_flour_sack/take",
+                "source_options": [
+                  "side_flour_sack/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_flour_sack/skip",
+                "source_options": [
+                  "side_flour_sack/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter02/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter02/p02",
+            "node_id": "outcome/chapter02/p02"
+          },
+          {
+            "id": "chapter02/time/6",
+            "kind": "main",
+            "unit_id": "chapter02/p03",
+            "node_id": "unit/chapter02/p03"
+          },
+          {
+            "id": "chapter02/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter02/p03",
+            "node_id": "outcome/chapter02/p03"
+          },
+          {
+            "id": "chapter02/time/8",
+            "kind": "main",
+            "unit_id": "chapter02/p04",
+            "node_id": "unit/chapter02/p04"
+          },
+          {
+            "id": "chapter02/time/9",
+            "kind": "outcome",
+            "unit_id": "chapter02/p04",
+            "node_id": "outcome/chapter02/p04"
+          },
+          {
+            "id": "chapter02/time/10",
+            "kind": "main",
+            "unit_id": "chapter02/p05",
+            "node_id": "unit/chapter02/p05"
+          },
+          {
+            "id": "chapter02/time/11",
+            "kind": "reaction",
+            "unit_id": "chapter02/p05",
+            "group_id": "side_flour_sack",
+            "cards": [
+              {
+                "node_id": "reaction/side_flour_sack_take",
+                "source_options": [
+                  "side_flour_sack/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/9"
+                }
+              },
+              {
+                "node_id": "reaction/side_flour_sack_skip",
+                "source_options": [
+                  "side_flour_sack/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/10"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter02/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter02/p05",
+            "node_id": "outcome/chapter02/p05"
+          },
+          {
+            "id": "chapter02/time/13",
+            "kind": "main",
+            "unit_id": "chapter02/p06",
+            "node_id": "unit/chapter02/p06"
+          },
+          {
+            "id": "chapter02/time/14",
+            "kind": "outcome",
+            "unit_id": "chapter02/p06",
+            "node_id": "outcome/chapter02/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter03",
+        "rows": [
+          {
+            "id": "chapter03/time/1",
+            "kind": "main",
+            "unit_id": "chapter03/p01",
+            "node_id": "unit/chapter03/p01"
+          },
+          {
+            "id": "chapter03/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter03/p01",
+            "node_id": "outcome/chapter03/p01"
+          },
+          {
+            "id": "chapter03/time/3",
+            "kind": "main",
+            "unit_id": "chapter03/p02",
+            "node_id": "unit/chapter03/p02"
+          },
+          {
+            "id": "chapter03/time/4",
+            "kind": "decision",
+            "unit_id": "chapter03/p02",
+            "group_id": "side_ruin_cart",
+            "cards": [
+              {
+                "node_id": "option/side_ruin_cart/take",
+                "source_options": [
+                  "side_ruin_cart/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_ruin_cart/skip",
+                "source_options": [
+                  "side_ruin_cart/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter03/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter03/p02",
+            "node_id": "outcome/chapter03/p02"
+          },
+          {
+            "id": "chapter03/time/6",
+            "kind": "main",
+            "unit_id": "chapter03/p03",
+            "node_id": "unit/chapter03/p03"
+          },
+          {
+            "id": "chapter03/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter03/p03",
+            "node_id": "outcome/chapter03/p03"
+          },
+          {
+            "id": "chapter03/time/8",
+            "kind": "main",
+            "unit_id": "chapter03/p04",
+            "node_id": "unit/chapter03/p04"
+          },
+          {
+            "id": "chapter03/time/9",
+            "kind": "decision",
+            "unit_id": "chapter03/p04",
+            "group_id": "aid",
+            "cards": [
+              {
+                "node_id": "option/aid/cook",
+                "source_options": [
+                  "aid/cook"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/aid/magician",
+                "source_options": [
+                  "aid/magician"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/aid/together",
+                "source_options": [
+                  "aid/together"
+                ],
+                "slot": 2,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter03/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter03/p04",
+            "node_id": "outcome/chapter03/p04"
+          },
+          {
+            "id": "chapter03/time/11",
+            "kind": "main",
+            "unit_id": "chapter03/p05",
+            "node_id": "unit/chapter03/p05"
+          },
+          {
+            "id": "chapter03/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter03/p05",
+            "node_id": "outcome/chapter03/p05"
+          },
+          {
+            "id": "chapter03/time/13",
+            "kind": "main",
+            "unit_id": "chapter03/p06",
+            "node_id": "unit/chapter03/p06"
+          },
+          {
+            "id": "chapter03/time/14",
+            "kind": "reaction",
+            "unit_id": "chapter03/p06",
+            "group_id": "aid",
+            "cards": [
+              {
+                "node_id": "reaction/aid_cook_memory",
+                "source_options": [
+                  "aid/cook"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/2"
+                }
+              },
+              {
+                "node_id": "reaction/aid_magician_memory",
+                "source_options": [
+                  "aid/magician"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/3"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter03/time/15",
+            "kind": "reaction",
+            "unit_id": "chapter03/p06",
+            "group_id": "side_ruin_cart",
+            "cards": [
+              {
+                "node_id": "reaction/side_ruin_cart_take",
+                "source_options": [
+                  "side_ruin_cart/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/11"
+                }
+              },
+              {
+                "node_id": "reaction/side_ruin_cart_skip",
+                "source_options": [
+                  "side_ruin_cart/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/12"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter03/time/16",
+            "kind": "outcome",
+            "unit_id": "chapter03/p06",
+            "node_id": "outcome/chapter03/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter04",
+        "rows": [
+          {
+            "id": "chapter04/time/1",
+            "kind": "main",
+            "unit_id": "chapter04/p01",
+            "node_id": "unit/chapter04/p01"
+          },
+          {
+            "id": "chapter04/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter04/p01",
+            "node_id": "outcome/chapter04/p01"
+          },
+          {
+            "id": "chapter04/time/3",
+            "kind": "main",
+            "unit_id": "chapter04/p02",
+            "node_id": "unit/chapter04/p02"
+          },
+          {
+            "id": "chapter04/time/4",
+            "kind": "decision",
+            "unit_id": "chapter04/p02",
+            "group_id": "side_blind_chamber",
+            "cards": [
+              {
+                "node_id": "option/side_blind_chamber/take",
+                "source_options": [
+                  "side_blind_chamber/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_blind_chamber/skip",
+                "source_options": [
+                  "side_blind_chamber/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter04/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter04/p02",
+            "node_id": "outcome/chapter04/p02"
+          },
+          {
+            "id": "chapter04/time/6",
+            "kind": "main",
+            "unit_id": "chapter04/p03",
+            "node_id": "unit/chapter04/p03"
+          },
+          {
+            "id": "chapter04/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter04/p03",
+            "node_id": "outcome/chapter04/p03"
+          },
+          {
+            "id": "chapter04/time/8",
+            "kind": "main",
+            "unit_id": "chapter04/p04",
+            "node_id": "unit/chapter04/p04"
+          },
+          {
+            "id": "chapter04/time/9",
+            "kind": "reaction",
+            "unit_id": "chapter04/p04",
+            "group_id": "side_blind_chamber",
+            "cards": [
+              {
+                "node_id": "reaction/side_blind_chamber_take",
+                "source_options": [
+                  "side_blind_chamber/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/13"
+                }
+              },
+              {
+                "node_id": "reaction/side_blind_chamber_skip",
+                "source_options": [
+                  "side_blind_chamber/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/14"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter04/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter04/p04",
+            "node_id": "outcome/chapter04/p04"
+          },
+          {
+            "id": "chapter04/time/11",
+            "kind": "main",
+            "unit_id": "chapter04/p05",
+            "node_id": "unit/chapter04/p05"
+          },
+          {
+            "id": "chapter04/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter04/p05",
+            "node_id": "outcome/chapter04/p05"
+          },
+          {
+            "id": "chapter04/time/13",
+            "kind": "main",
+            "unit_id": "chapter04/p06",
+            "node_id": "unit/chapter04/p06"
+          },
+          {
+            "id": "chapter04/time/14",
+            "kind": "outcome",
+            "unit_id": "chapter04/p06",
+            "node_id": "outcome/chapter04/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter05",
+        "rows": [
+          {
+            "id": "chapter05/time/1",
+            "kind": "main",
+            "unit_id": "chapter05/p01",
+            "node_id": "unit/chapter05/p01"
+          },
+          {
+            "id": "chapter05/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter05/p01",
+            "node_id": "outcome/chapter05/p01"
+          },
+          {
+            "id": "chapter05/time/3",
+            "kind": "main",
+            "unit_id": "chapter05/p02",
+            "node_id": "unit/chapter05/p02"
+          },
+          {
+            "id": "chapter05/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter05/p02",
+            "node_id": "outcome/chapter05/p02"
+          },
+          {
+            "id": "chapter05/time/5",
+            "kind": "main",
+            "unit_id": "chapter05/p03",
+            "node_id": "unit/chapter05/p03"
+          },
+          {
+            "id": "chapter05/time/6",
+            "kind": "decision",
+            "unit_id": "chapter05/p03",
+            "group_id": "side_ledge_rope",
+            "cards": [
+              {
+                "node_id": "option/side_ledge_rope/take",
+                "source_options": [
+                  "side_ledge_rope/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_ledge_rope/skip",
+                "source_options": [
+                  "side_ledge_rope/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter05/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter05/p03",
+            "node_id": "outcome/chapter05/p03"
+          },
+          {
+            "id": "chapter05/time/8",
+            "kind": "main",
+            "unit_id": "chapter05/p04",
+            "node_id": "unit/chapter05/p04"
+          },
+          {
+            "id": "chapter05/time/9",
+            "kind": "outcome",
+            "unit_id": "chapter05/p04",
+            "node_id": "outcome/chapter05/p04"
+          },
+          {
+            "id": "chapter05/time/10",
+            "kind": "main",
+            "unit_id": "chapter05/p05",
+            "node_id": "unit/chapter05/p05"
+          },
+          {
+            "id": "chapter05/time/11",
+            "kind": "reaction",
+            "unit_id": "chapter05/p05",
+            "group_id": "side_ledge_rope",
+            "cards": [
+              {
+                "node_id": "reaction/side_ledge_rope_take",
+                "source_options": [
+                  "side_ledge_rope/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/15"
+                }
+              },
+              {
+                "node_id": "reaction/side_ledge_rope_skip",
+                "source_options": [
+                  "side_ledge_rope/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/16"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter05/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter05/p05",
+            "node_id": "outcome/chapter05/p05"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter06",
+        "rows": [
+          {
+            "id": "chapter06/time/1",
+            "kind": "main",
+            "unit_id": "chapter06/p01",
+            "node_id": "unit/chapter06/p01"
+          },
+          {
+            "id": "chapter06/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter06/p01",
+            "node_id": "outcome/chapter06/p01"
+          },
+          {
+            "id": "chapter06/time/3",
+            "kind": "main",
+            "unit_id": "chapter06/p02",
+            "node_id": "unit/chapter06/p02"
+          },
+          {
+            "id": "chapter06/time/4",
+            "kind": "decision",
+            "unit_id": "chapter06/p02",
+            "group_id": "side_caught_sail",
+            "cards": [
+              {
+                "node_id": "option/side_caught_sail/take",
+                "source_options": [
+                  "side_caught_sail/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_caught_sail/skip",
+                "source_options": [
+                  "side_caught_sail/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter06/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter06/p02",
+            "node_id": "outcome/chapter06/p02"
+          },
+          {
+            "id": "chapter06/time/6",
+            "kind": "main",
+            "unit_id": "chapter06/p03",
+            "node_id": "unit/chapter06/p03"
+          },
+          {
+            "id": "chapter06/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter06/p03",
+            "node_id": "outcome/chapter06/p03"
+          },
+          {
+            "id": "chapter06/time/8",
+            "kind": "main",
+            "unit_id": "chapter06/p04",
+            "node_id": "unit/chapter06/p04"
+          },
+          {
+            "id": "chapter06/time/9",
+            "kind": "outcome",
+            "unit_id": "chapter06/p04",
+            "node_id": "outcome/chapter06/p04"
+          },
+          {
+            "id": "chapter06/time/10",
+            "kind": "main",
+            "unit_id": "chapter06/p05",
+            "node_id": "unit/chapter06/p05"
+          },
+          {
+            "id": "chapter06/time/11",
+            "kind": "outcome",
+            "unit_id": "chapter06/p05",
+            "node_id": "outcome/chapter06/p05"
+          },
+          {
+            "id": "chapter06/time/12",
+            "kind": "main",
+            "unit_id": "chapter06/p06",
+            "node_id": "unit/chapter06/p06"
+          },
+          {
+            "id": "chapter06/time/13",
+            "kind": "reaction",
+            "unit_id": "chapter06/p06",
+            "group_id": "side_caught_sail",
+            "cards": [
+              {
+                "node_id": "reaction/side_caught_sail_take",
+                "source_options": [
+                  "side_caught_sail/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/17"
+                }
+              },
+              {
+                "node_id": "reaction/side_caught_sail_skip",
+                "source_options": [
+                  "side_caught_sail/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/18"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter06/time/14",
+            "kind": "outcome",
+            "unit_id": "chapter06/p06",
+            "node_id": "outcome/chapter06/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter07",
+        "rows": [
+          {
+            "id": "chapter07/time/1",
+            "kind": "main",
+            "unit_id": "chapter07/p01",
+            "node_id": "unit/chapter07/p01"
+          },
+          {
+            "id": "chapter07/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter07/p01",
+            "node_id": "outcome/chapter07/p01"
+          },
+          {
+            "id": "chapter07/time/3",
+            "kind": "main",
+            "unit_id": "chapter07/p02",
+            "node_id": "unit/chapter07/p02"
+          },
+          {
+            "id": "chapter07/time/4",
+            "kind": "decision",
+            "unit_id": "chapter07/p02",
+            "group_id": "side_small_bell",
+            "cards": [
+              {
+                "node_id": "option/side_small_bell/take",
+                "source_options": [
+                  "side_small_bell/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_small_bell/skip",
+                "source_options": [
+                  "side_small_bell/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter07/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter07/p02",
+            "node_id": "outcome/chapter07/p02"
+          },
+          {
+            "id": "chapter07/time/6",
+            "kind": "main",
+            "unit_id": "chapter07/p03",
+            "node_id": "unit/chapter07/p03"
+          },
+          {
+            "id": "chapter07/time/7",
+            "kind": "decision",
+            "unit_id": "chapter07/p03",
+            "group_id": "spica_company",
+            "cards": [
+              {
+                "node_id": "option/spica_company/join",
+                "source_options": [
+                  "spica_company/join"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/spica_company/continue",
+                "source_options": [
+                  "spica_company/continue"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter07/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter07/p03",
+            "node_id": "outcome/chapter07/p03"
+          },
+          {
+            "id": "chapter07/time/9",
+            "kind": "main",
+            "unit_id": "chapter07/p04",
+            "node_id": "unit/chapter07/p04"
+          },
+          {
+            "id": "chapter07/time/10",
+            "kind": "reaction",
+            "unit_id": "chapter07/p04",
+            "group_id": "spica_company",
+            "cards": [
+              {
+                "node_id": "reaction/spica_present",
+                "source_options": [
+                  "spica_company/join"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/4"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter07/time/11",
+            "kind": "outcome",
+            "unit_id": "chapter07/p04",
+            "node_id": "outcome/chapter07/p04"
+          },
+          {
+            "id": "chapter07/time/12",
+            "kind": "main",
+            "unit_id": "chapter07/p05",
+            "node_id": "unit/chapter07/p05"
+          },
+          {
+            "id": "chapter07/time/13",
+            "kind": "outcome",
+            "unit_id": "chapter07/p05",
+            "node_id": "outcome/chapter07/p05"
+          },
+          {
+            "id": "chapter07/time/14",
+            "kind": "main",
+            "unit_id": "chapter07/p06",
+            "node_id": "unit/chapter07/p06"
+          },
+          {
+            "id": "chapter07/time/15",
+            "kind": "reaction",
+            "unit_id": "chapter07/p06",
+            "group_id": "side_small_bell",
+            "cards": [
+              {
+                "node_id": "reaction/side_small_bell_take",
+                "source_options": [
+                  "side_small_bell/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/19"
+                }
+              },
+              {
+                "node_id": "reaction/side_small_bell_skip",
+                "source_options": [
+                  "side_small_bell/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/20"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter07/time/16",
+            "kind": "outcome",
+            "unit_id": "chapter07/p06",
+            "node_id": "outcome/chapter07/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter08",
+        "rows": [
+          {
+            "id": "chapter08/time/1",
+            "kind": "main",
+            "unit_id": "chapter08/p01",
+            "node_id": "unit/chapter08/p01"
+          },
+          {
+            "id": "chapter08/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter08/p01",
+            "node_id": "outcome/chapter08/p01"
+          },
+          {
+            "id": "chapter08/time/3",
+            "kind": "main",
+            "unit_id": "chapter08/p02",
+            "node_id": "unit/chapter08/p02"
+          },
+          {
+            "id": "chapter08/time/4",
+            "kind": "decision",
+            "unit_id": "chapter08/p02",
+            "group_id": "side_dying_fire",
+            "cards": [
+              {
+                "node_id": "option/side_dying_fire/take",
+                "source_options": [
+                  "side_dying_fire/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_dying_fire/skip",
+                "source_options": [
+                  "side_dying_fire/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter08/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter08/p02",
+            "node_id": "outcome/chapter08/p02"
+          },
+          {
+            "id": "chapter08/time/6",
+            "kind": "main",
+            "unit_id": "chapter08/p03",
+            "node_id": "unit/chapter08/p03"
+          },
+          {
+            "id": "chapter08/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter08/p03",
+            "node_id": "outcome/chapter08/p03"
+          },
+          {
+            "id": "chapter08/time/8",
+            "kind": "main",
+            "unit_id": "chapter08/p04",
+            "node_id": "unit/chapter08/p04"
+          },
+          {
+            "id": "chapter08/time/9",
+            "kind": "outcome",
+            "unit_id": "chapter08/p04",
+            "node_id": "outcome/chapter08/p04"
+          },
+          {
+            "id": "chapter08/time/10",
+            "kind": "main",
+            "unit_id": "chapter08/p05",
+            "node_id": "unit/chapter08/p05"
+          },
+          {
+            "id": "chapter08/time/11",
+            "kind": "outcome",
+            "unit_id": "chapter08/p05",
+            "node_id": "outcome/chapter08/p05"
+          },
+          {
+            "id": "chapter08/time/12",
+            "kind": "main",
+            "unit_id": "chapter08/p06",
+            "node_id": "unit/chapter08/p06"
+          },
+          {
+            "id": "chapter08/time/13",
+            "kind": "reaction",
+            "unit_id": "chapter08/p06",
+            "group_id": "side_dying_fire",
+            "cards": [
+              {
+                "node_id": "reaction/side_dying_fire_take",
+                "source_options": [
+                  "side_dying_fire/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/21"
+                }
+              },
+              {
+                "node_id": "reaction/side_dying_fire_skip",
+                "source_options": [
+                  "side_dying_fire/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/22"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter08/time/14",
+            "kind": "outcome",
+            "unit_id": "chapter08/p06",
+            "node_id": "outcome/chapter08/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter09",
+        "rows": [
+          {
+            "id": "chapter09/time/1",
+            "kind": "main",
+            "unit_id": "chapter09/p01",
+            "node_id": "unit/chapter09/p01"
+          },
+          {
+            "id": "chapter09/time/2",
+            "kind": "decision",
+            "unit_id": "chapter09/p01",
+            "group_id": "seal_order",
+            "cards": [
+              {
+                "node_id": "option/seal_order/evil_first",
+                "source_options": [
+                  "seal_order/evil_first"
+                ],
+                "slot": 0,
+                "parallel_sequence": [
+                  {
+                    "unit_id": "chapter09/p01",
+                    "main_node_id": null,
+                    "outcome_node_id": "outcome/chapter09/p01@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p02",
+                    "main_node_id": "unit/chapter09/p02@seal_order/evil_first",
+                    "outcome_node_id": "outcome/chapter09/p02@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p03",
+                    "main_node_id": "unit/chapter09/p03@seal_order/evil_first",
+                    "outcome_node_id": "outcome/chapter09/p03@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p04",
+                    "main_node_id": "unit/chapter09/p04@seal_order/evil_first",
+                    "outcome_node_id": "outcome/chapter09/p04@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p05",
+                    "main_node_id": "unit/chapter09/p05@seal_order/evil_first",
+                    "outcome_node_id": "outcome/chapter09/p05@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p06",
+                    "main_node_id": "unit/chapter09/p06@seal_order/evil_first",
+                    "outcome_node_id": "outcome/chapter09/p06@seal_order/evil_first",
+                    "reaction_node_ids": []
+                  }
+                ]
+              },
+              {
+                "node_id": "option/seal_order/muddy_first",
+                "source_options": [
+                  "seal_order/muddy_first"
+                ],
+                "slot": 1,
+                "parallel_sequence": [
+                  {
+                    "unit_id": "chapter09/p01",
+                    "main_node_id": null,
+                    "outcome_node_id": "outcome/chapter09/p01@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p04",
+                    "main_node_id": "unit/chapter09/p04@seal_order/muddy_first",
+                    "outcome_node_id": "outcome/chapter09/p04@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p05",
+                    "main_node_id": "unit/chapter09/p05@seal_order/muddy_first",
+                    "outcome_node_id": "outcome/chapter09/p05@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p06",
+                    "main_node_id": "unit/chapter09/p06@seal_order/muddy_first",
+                    "outcome_node_id": "outcome/chapter09/p06@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p02",
+                    "main_node_id": "unit/chapter09/p02@seal_order/muddy_first",
+                    "outcome_node_id": "outcome/chapter09/p02@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  },
+                  {
+                    "unit_id": "chapter09/p03",
+                    "main_node_id": "unit/chapter09/p03@seal_order/muddy_first",
+                    "outcome_node_id": "outcome/chapter09/p03@seal_order/muddy_first",
+                    "reaction_node_ids": []
+                  }
+                ]
+              }
+            ],
+            "timing": "both_parallel_blocks_required_in_selected_order"
+          },
+          {
+            "id": "chapter09/time/3",
+            "kind": "main",
+            "unit_id": "chapter09/p07",
+            "node_id": "unit/chapter09/p07"
+          },
+          {
+            "id": "chapter09/time/4",
+            "kind": "decision",
+            "unit_id": "chapter09/p07",
+            "group_id": "side_return_knots",
+            "cards": [
+              {
+                "node_id": "option/side_return_knots/take",
+                "source_options": [
+                  "side_return_knots/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_return_knots/skip",
+                "source_options": [
+                  "side_return_knots/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter09/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter09/p07",
+            "node_id": "outcome/chapter09/p07"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter10",
+        "rows": [
+          {
+            "id": "chapter10/time/1",
+            "kind": "main",
+            "unit_id": "chapter10/p01",
+            "node_id": "unit/chapter10/p01"
+          },
+          {
+            "id": "chapter10/time/2",
+            "kind": "reaction",
+            "unit_id": "chapter10/p01",
+            "group_id": "side_return_knots",
+            "cards": [
+              {
+                "node_id": "reaction/side_return_knots_take",
+                "source_options": [
+                  "side_return_knots/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/23"
+                }
+              },
+              {
+                "node_id": "reaction/side_return_knots_skip",
+                "source_options": [
+                  "side_return_knots/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/24"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter10/time/3",
+            "kind": "outcome",
+            "unit_id": "chapter10/p01",
+            "node_id": "outcome/chapter10/p01"
+          },
+          {
+            "id": "chapter10/time/4",
+            "kind": "main",
+            "unit_id": "chapter10/p02",
+            "node_id": "unit/chapter10/p02"
+          },
+          {
+            "id": "chapter10/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter10/p02",
+            "node_id": "outcome/chapter10/p02"
+          },
+          {
+            "id": "chapter10/time/6",
+            "kind": "main",
+            "unit_id": "chapter10/p03",
+            "node_id": "unit/chapter10/p03"
+          },
+          {
+            "id": "chapter10/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter10/p03",
+            "node_id": "outcome/chapter10/p03"
+          },
+          {
+            "id": "chapter10/time/8",
+            "kind": "main",
+            "unit_id": "chapter10/p04",
+            "node_id": "unit/chapter10/p04"
+          },
+          {
+            "id": "chapter10/time/9",
+            "kind": "outcome",
+            "unit_id": "chapter10/p04",
+            "node_id": "outcome/chapter10/p04"
+          },
+          {
+            "id": "chapter10/time/10",
+            "kind": "main",
+            "unit_id": "chapter10/p05",
+            "node_id": "unit/chapter10/p05"
+          },
+          {
+            "id": "chapter10/time/11",
+            "kind": "decision",
+            "unit_id": "chapter10/p05",
+            "group_id": "side_ash_barrel",
+            "cards": [
+              {
+                "node_id": "option/side_ash_barrel/take",
+                "source_options": [
+                  "side_ash_barrel/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_ash_barrel/skip",
+                "source_options": [
+                  "side_ash_barrel/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter10/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter10/p05",
+            "node_id": "outcome/chapter10/p05"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter11",
+        "rows": [
+          {
+            "id": "chapter11/time/1",
+            "kind": "main",
+            "unit_id": "chapter11/p01",
+            "node_id": "unit/chapter11/p01"
+          },
+          {
+            "id": "chapter11/time/2",
+            "kind": "reaction",
+            "unit_id": "chapter11/p01",
+            "group_id": "side_ash_barrel",
+            "cards": [
+              {
+                "node_id": "reaction/side_ash_barrel_take",
+                "source_options": [
+                  "side_ash_barrel/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/25"
+                }
+              },
+              {
+                "node_id": "reaction/side_ash_barrel_skip",
+                "source_options": [
+                  "side_ash_barrel/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/26"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter11/time/3",
+            "kind": "outcome",
+            "unit_id": "chapter11/p01",
+            "node_id": "outcome/chapter11/p01"
+          },
+          {
+            "id": "chapter11/time/4",
+            "kind": "main",
+            "unit_id": "chapter11/p02",
+            "node_id": "unit/chapter11/p02"
+          },
+          {
+            "id": "chapter11/time/5",
+            "kind": "decision",
+            "unit_id": "chapter11/p02",
+            "group_id": "side_cell_voice",
+            "cards": [
+              {
+                "node_id": "option/side_cell_voice/take",
+                "source_options": [
+                  "side_cell_voice/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_cell_voice/skip",
+                "source_options": [
+                  "side_cell_voice/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter11/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter11/p02",
+            "node_id": "outcome/chapter11/p02"
+          },
+          {
+            "id": "chapter11/time/7",
+            "kind": "main",
+            "unit_id": "chapter11/p03",
+            "node_id": "unit/chapter11/p03"
+          },
+          {
+            "id": "chapter11/time/8",
+            "kind": "outcome",
+            "unit_id": "chapter11/p03",
+            "node_id": "outcome/chapter11/p03"
+          },
+          {
+            "id": "chapter11/time/9",
+            "kind": "main",
+            "unit_id": "chapter11/p04",
+            "node_id": "unit/chapter11/p04"
+          },
+          {
+            "id": "chapter11/time/10",
+            "kind": "reaction",
+            "unit_id": "chapter11/p04",
+            "group_id": "side_cell_voice",
+            "cards": [
+              {
+                "node_id": "reaction/side_cell_voice_take",
+                "source_options": [
+                  "side_cell_voice/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/27"
+                }
+              },
+              {
+                "node_id": "reaction/side_cell_voice_skip",
+                "source_options": [
+                  "side_cell_voice/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/28"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter11/time/11",
+            "kind": "outcome",
+            "unit_id": "chapter11/p04",
+            "node_id": "outcome/chapter11/p04"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter12",
+        "rows": [
+          {
+            "id": "chapter12/time/1",
+            "kind": "main",
+            "unit_id": "chapter12/p01",
+            "node_id": "unit/chapter12/p01"
+          },
+          {
+            "id": "chapter12/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter12/p01",
+            "node_id": "outcome/chapter12/p01"
+          },
+          {
+            "id": "chapter12/time/3",
+            "kind": "main",
+            "unit_id": "chapter12/p02",
+            "node_id": "unit/chapter12/p02"
+          },
+          {
+            "id": "chapter12/time/4",
+            "kind": "decision",
+            "unit_id": "chapter12/p02",
+            "group_id": "side_leaking_channel",
+            "cards": [
+              {
+                "node_id": "option/side_leaking_channel/take",
+                "source_options": [
+                  "side_leaking_channel/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_leaking_channel/skip",
+                "source_options": [
+                  "side_leaking_channel/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter12/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter12/p02",
+            "node_id": "outcome/chapter12/p02"
+          },
+          {
+            "id": "chapter12/time/6",
+            "kind": "main",
+            "unit_id": "chapter12/p03",
+            "node_id": "unit/chapter12/p03"
+          },
+          {
+            "id": "chapter12/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter12/p03",
+            "node_id": "outcome/chapter12/p03"
+          },
+          {
+            "id": "chapter12/time/8",
+            "kind": "main",
+            "unit_id": "chapter12/p04",
+            "node_id": "unit/chapter12/p04"
+          },
+          {
+            "id": "chapter12/time/9",
+            "kind": "decision",
+            "unit_id": "chapter12/p04",
+            "group_id": "shelter_prepare",
+            "cards": [
+              {
+                "node_id": "option/shelter_prepare/food",
+                "source_options": [
+                  "shelter_prepare/food"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/shelter_prepare/equipment",
+                "source_options": [
+                  "shelter_prepare/equipment"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter12/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter12/p04",
+            "node_id": "outcome/chapter12/p04"
+          },
+          {
+            "id": "chapter12/time/11",
+            "kind": "main",
+            "unit_id": "chapter12/p05",
+            "node_id": "unit/chapter12/p05"
+          },
+          {
+            "id": "chapter12/time/12",
+            "kind": "reaction",
+            "unit_id": "chapter12/p05",
+            "group_id": "side_leaking_channel",
+            "cards": [
+              {
+                "node_id": "reaction/side_leaking_channel_take",
+                "source_options": [
+                  "side_leaking_channel/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/29"
+                }
+              },
+              {
+                "node_id": "reaction/side_leaking_channel_skip",
+                "source_options": [
+                  "side_leaking_channel/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/30"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter12/time/13",
+            "kind": "outcome",
+            "unit_id": "chapter12/p05",
+            "node_id": "outcome/chapter12/p05"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter13",
+        "rows": [
+          {
+            "id": "chapter13/time/1",
+            "kind": "main",
+            "unit_id": "chapter13/p01",
+            "node_id": "unit/chapter13/p01"
+          },
+          {
+            "id": "chapter13/time/2",
+            "kind": "reaction",
+            "unit_id": "chapter13/p01",
+            "group_id": "shelter_prepare",
+            "cards": [
+              {
+                "node_id": "reaction/food_preparation",
+                "source_options": [
+                  "shelter_prepare/food"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/5"
+                }
+              },
+              {
+                "node_id": "reaction/equipment_preparation",
+                "source_options": [
+                  "shelter_prepare/equipment"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/6"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter13/time/3",
+            "kind": "outcome",
+            "unit_id": "chapter13/p01",
+            "node_id": "outcome/chapter13/p01"
+          },
+          {
+            "id": "chapter13/time/4",
+            "kind": "main",
+            "unit_id": "chapter13/p02",
+            "node_id": "unit/chapter13/p02"
+          },
+          {
+            "id": "chapter13/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter13/p02",
+            "node_id": "outcome/chapter13/p02"
+          },
+          {
+            "id": "chapter13/time/6",
+            "kind": "main",
+            "unit_id": "chapter13/p03",
+            "node_id": "unit/chapter13/p03"
+          },
+          {
+            "id": "chapter13/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter13/p03",
+            "node_id": "outcome/chapter13/p03"
+          },
+          {
+            "id": "chapter13/time/8",
+            "kind": "main",
+            "unit_id": "chapter13/p04",
+            "node_id": "unit/chapter13/p04"
+          },
+          {
+            "id": "chapter13/time/9",
+            "kind": "decision",
+            "unit_id": "chapter13/p04",
+            "group_id": "side_fallen_store",
+            "cards": [
+              {
+                "node_id": "option/side_fallen_store/take",
+                "source_options": [
+                  "side_fallen_store/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_fallen_store/skip",
+                "source_options": [
+                  "side_fallen_store/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter13/time/10",
+            "kind": "outcome",
+            "unit_id": "chapter13/p04",
+            "node_id": "outcome/chapter13/p04"
+          },
+          {
+            "id": "chapter13/time/11",
+            "kind": "main",
+            "unit_id": "chapter13/p05",
+            "node_id": "unit/chapter13/p05"
+          },
+          {
+            "id": "chapter13/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter13/p05",
+            "node_id": "outcome/chapter13/p05"
+          },
+          {
+            "id": "chapter13/time/13",
+            "kind": "main",
+            "unit_id": "chapter13/p06",
+            "node_id": "unit/chapter13/p06"
+          },
+          {
+            "id": "chapter13/time/14",
+            "kind": "reaction",
+            "unit_id": "chapter13/p06",
+            "group_id": "side_fallen_store",
+            "cards": [
+              {
+                "node_id": "reaction/side_fallen_store_take",
+                "source_options": [
+                  "side_fallen_store/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/31"
+                }
+              },
+              {
+                "node_id": "reaction/side_fallen_store_skip",
+                "source_options": [
+                  "side_fallen_store/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/32"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter13/time/15",
+            "kind": "outcome",
+            "unit_id": "chapter13/p06",
+            "node_id": "outcome/chapter13/p06"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter14",
+        "rows": [
+          {
+            "id": "chapter14/time/1",
+            "kind": "main",
+            "unit_id": "chapter14/p01",
+            "node_id": "unit/chapter14/p01"
+          },
+          {
+            "id": "chapter14/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter14/p01",
+            "node_id": "outcome/chapter14/p01"
+          },
+          {
+            "id": "chapter14/time/3",
+            "kind": "main",
+            "unit_id": "chapter14/p02",
+            "node_id": "unit/chapter14/p02"
+          },
+          {
+            "id": "chapter14/time/4",
+            "kind": "decision",
+            "unit_id": "chapter14/p02",
+            "group_id": "side_hot_frame",
+            "cards": [
+              {
+                "node_id": "option/side_hot_frame/take",
+                "source_options": [
+                  "side_hot_frame/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_hot_frame/skip",
+                "source_options": [
+                  "side_hot_frame/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter14/time/5",
+            "kind": "outcome",
+            "unit_id": "chapter14/p02",
+            "node_id": "outcome/chapter14/p02"
+          },
+          {
+            "id": "chapter14/time/6",
+            "kind": "main",
+            "unit_id": "chapter14/p03",
+            "node_id": "unit/chapter14/p03"
+          },
+          {
+            "id": "chapter14/time/7",
+            "kind": "outcome",
+            "unit_id": "chapter14/p03",
+            "node_id": "outcome/chapter14/p03"
+          },
+          {
+            "id": "chapter14/time/8",
+            "kind": "main",
+            "unit_id": "chapter14/p04",
+            "node_id": "unit/chapter14/p04"
+          },
+          {
+            "id": "chapter14/time/9",
+            "kind": "outcome",
+            "unit_id": "chapter14/p04",
+            "node_id": "outcome/chapter14/p04"
+          },
+          {
+            "id": "chapter14/time/10",
+            "kind": "main",
+            "unit_id": "chapter14/p05",
+            "node_id": "unit/chapter14/p05"
+          },
+          {
+            "id": "chapter14/time/11",
+            "kind": "outcome",
+            "unit_id": "chapter14/p05",
+            "node_id": "outcome/chapter14/p05"
+          },
+          {
+            "id": "chapter14/time/12",
+            "kind": "main",
+            "unit_id": "chapter14/p06",
+            "node_id": "unit/chapter14/p06"
+          },
+          {
+            "id": "chapter14/time/13",
+            "kind": "outcome",
+            "unit_id": "chapter14/p06",
+            "node_id": "outcome/chapter14/p06"
+          },
+          {
+            "id": "chapter14/time/14",
+            "kind": "main",
+            "unit_id": "chapter14/p07",
+            "node_id": "unit/chapter14/p07"
+          },
+          {
+            "id": "chapter14/time/15",
+            "kind": "reaction",
+            "unit_id": "chapter14/p07",
+            "group_id": "side_hot_frame",
+            "cards": [
+              {
+                "node_id": "reaction/side_hot_frame_take",
+                "source_options": [
+                  "side_hot_frame/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/33"
+                }
+              },
+              {
+                "node_id": "reaction/side_hot_frame_skip",
+                "source_options": [
+                  "side_hot_frame/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/34"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter14/time/16",
+            "kind": "outcome",
+            "unit_id": "chapter14/p07",
+            "node_id": "outcome/chapter14/p07"
+          }
+        ]
+      },
+      {
+        "chapter_id": "chapter15",
+        "rows": [
+          {
+            "id": "chapter15/time/1",
+            "kind": "main",
+            "unit_id": "chapter15/p01",
+            "node_id": "unit/chapter15/p01"
+          },
+          {
+            "id": "chapter15/time/2",
+            "kind": "outcome",
+            "unit_id": "chapter15/p01",
+            "node_id": "outcome/chapter15/p01"
+          },
+          {
+            "id": "chapter15/time/3",
+            "kind": "main",
+            "unit_id": "chapter15/p02",
+            "node_id": "unit/chapter15/p02"
+          },
+          {
+            "id": "chapter15/time/4",
+            "kind": "outcome",
+            "unit_id": "chapter15/p02",
+            "node_id": "outcome/chapter15/p02"
+          },
+          {
+            "id": "chapter15/time/5",
+            "kind": "main",
+            "unit_id": "chapter15/p03",
+            "node_id": "unit/chapter15/p03"
+          },
+          {
+            "id": "chapter15/time/6",
+            "kind": "outcome",
+            "unit_id": "chapter15/p03",
+            "node_id": "outcome/chapter15/p03"
+          },
+          {
+            "id": "chapter15/time/7",
+            "kind": "main",
+            "unit_id": "chapter15/p04",
+            "node_id": "unit/chapter15/p04"
+          },
+          {
+            "id": "chapter15/time/8",
+            "kind": "decision",
+            "unit_id": "chapter15/p04",
+            "group_id": "side_last_step",
+            "cards": [
+              {
+                "node_id": "option/side_last_step/take",
+                "source_options": [
+                  "side_last_step/take"
+                ],
+                "slot": 0,
+                "parallel_sequence": []
+              },
+              {
+                "node_id": "option/side_last_step/skip",
+                "source_options": [
+                  "side_last_step/skip"
+                ],
+                "slot": 1,
+                "parallel_sequence": []
+              }
+            ],
+            "timing": "alternative_paragraphs_same_stage"
+          },
+          {
+            "id": "chapter15/time/9",
+            "kind": "outcome",
+            "unit_id": "chapter15/p04",
+            "node_id": "outcome/chapter15/p04"
+          },
+          {
+            "id": "chapter15/time/10",
+            "kind": "main",
+            "unit_id": "chapter15/p05",
+            "node_id": "unit/chapter15/p05"
+          },
+          {
+            "id": "chapter15/time/11",
+            "kind": "reaction",
+            "unit_id": "chapter15/p05",
+            "group_id": "side_last_step",
+            "cards": [
+              {
+                "node_id": "reaction/side_last_step_take",
+                "source_options": [
+                  "side_last_step/take"
+                ],
+                "slot": 0,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/35"
+                }
+              },
+              {
+                "node_id": "reaction/side_last_step_skip",
+                "source_options": [
+                  "side_last_step/skip"
+                ],
+                "slot": 1,
+                "guard_ref": {
+                  "file": "writing/side-stories/generated/runtime.plan.json",
+                  "pointer": "/reactions/36"
+                }
+              }
+            ]
+          },
+          {
+            "id": "chapter15/time/12",
+            "kind": "outcome",
+            "unit_id": "chapter15/p05",
+            "node_id": "outcome/chapter15/p05"
+          }
+        ]
+      }
+    ]
+  }
 }

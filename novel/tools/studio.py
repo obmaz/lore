@@ -256,8 +256,8 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
     source_index = [{'file':path, 'role':'생성물 · 직접 편집 금지' if '/generated/' in path else 'JSON 원본 · 파일에서 수정'} for path in sources]
     graph_details={}
     for node in publication.nodes:
-        if node['kind'] not in ('option','reaction'):continue
-        rule=publication.resolve(node['guard_ref'])
+        if node['kind'] not in ('option','reaction','unit','outcome'):continue
+        rule=publication.resolve(node['guard_ref']) if node.get('guard_ref') else {}
         graph_details[node['id']]={'label':session.display(node['label_rich_text']),
             'chapter_id':node['chapter_id'],'kind':node['kind'],'location':publication.unit_numbers[node['unit_id']],
             'body':session.display(publication.resolve(node['content_ref'])),
@@ -267,6 +267,10 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
             'origin':'authored','metadata':plan['metadata'],'plan':plan,'report':publication.report,
             'chapters':chapters,'documents':documents,'settings':settings,'editions':[*core_publication.editions['editions'],*publication.editions['editions']],
             'overview_svg':publication.svg(publication.graph['overview']), 'sources':sources,'source_index':source_index,'graph_details':graph_details,
+            'timeline':{**publication.graph['timeline'],'groups':{gid:{**g,'title':session.display(publication.resolve(g['title_ref'])),
+                'prompt':session.display(publication.resolve(g['prompt_ref'])) if g['prompt_ref'] else '',
+                'options':[{**o,'label':session.display(publication.resolve(o['label_ref']))} for o in g['options']]}
+                for gid,g in publication.graph['timeline']['groups'].items()}},
             'rules':[(ROOT/'AGENTS.md').read_text(encoding='utf-8'),(ROOT/'writing/AGENTS.md').read_text(encoding='utf-8'),(ROOT/'characters/AGENTS.md').read_text(encoding='utf-8')]}
     return data
 

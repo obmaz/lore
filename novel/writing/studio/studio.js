@@ -3,7 +3,7 @@
   const data = JSON.parse(document.getElementById('studio-data').textContent);
   const $ = id => document.getElementById(id);
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const defaults = {open:false, view:'overview', chapter:data.chapters[0].id, document:data.plan.default_document, category:'characters', query:'', item:'', tab:'', source:'writing/project.json', pointer:'', edition:data.editions[0].id, graphPanel:'diagram', graphOverview:false, graphZoom:'1', orderFull:false};
+  const defaults = {open:false, view:'overview', chapter:data.chapters[0].id, document:data.plan.default_document, category:'characters', query:'', item:'', tab:'', source:'writing/project.json', pointer:'', edition:data.editions[0].id, graphPanel:'diagram', graphOverview:false, graphZoom:'1', orderFull:false, timelinePaths:{}};
   const state = {...defaults};
   let routeIndex=0,lastHash='';
   let graphSelected='';
@@ -11,7 +11,7 @@
     overview:'현재까지 작성된 원고와 구성, 설정을 한곳에서 확인합니다. 상세 본문과 구성 초안은 구분합니다.',
     reading:'첫 장 선택형 초고와 전편 곁가지 선택판, 기존 소편·기본 경로·원작 연결 판본을 구별해 읽습니다.',
     outline:'15장의 큰 이야기와 88개 소단락. 제목은 중앙 JSON을 참조하고 본문 완성 여부는 따로 표시합니다.',
-    graph:'같은 장의 갈림·합류를 그림으로 보고, 조건·결과 탭에서 선택 뒤 이야기와 후속 반응을 확인합니다.',
+    graph:'아래로 시간의 흐름을 따라 공통 본줄기와 선택별 조건부 문단을 비교합니다. 같은 높이는 대체 문단이며 모두 읽는 경로가 아닙니다.',
     order:'실제 선택 경로에서 뽑은 편집 순서입니다. 정사·출판 승인·페이지 확정이 아닌 예시입니다.',
     settings:'인물, 관계, 무기, 마법과 공개 시점. 원작·증언·추론·창작 추가의 표시를 함께 확인합니다.',
     sources:'조회 중인 내용의 실제 JSON과 작업 규칙입니다. 수정·저장은 원본 파일에서 하고 화면은 재생성합니다.'
@@ -47,6 +47,7 @@
     }
     if(state.graphOverview)params.set('graphOverview','1');
     if(state.orderFull)params.set('orderFull','1');
+    if(Object.keys(state.timelinePaths).length)params.set('lanes',JSON.stringify(state.timelinePaths));
     return '#/'+state.view+(params.size?'?'+params.toString():'');
   }
   function recordRoute(mode='push') {
@@ -76,6 +77,7 @@
     if(data.editions.some(e=>e.id===params.get('edition')))state.edition=params.get('edition');
     state.graphOverview=params.get('graphOverview')==='1';state.orderFull=params.get('orderFull')==='1';
     if(['0.75','1','1.25','1.5'].includes(params.get('graphZoom')))state.graphZoom=params.get('graphZoom');
+    try{const lanes=JSON.parse(params.get('lanes')||'{}');if(lanes&&typeof lanes==='object'&&!Array.isArray(lanes))state.timelinePaths=Object.fromEntries(Object.entries(lanes).filter(([gid,oid])=>data.timeline.groups[gid]?.options.some(o=>o.id===oid)));}catch{state.timelinePaths={};}
     routeIndex=Number.isInteger(history.state?.studioIndex)?history.state.studioIndex:0;
   }
   function onHistory() {
@@ -105,11 +107,11 @@
     } else if (view==='outline') {
       content.innerHTML=chapterToolbar()+`<div class="split"><aside class="chapter-tree" aria-label="전체 장 목차">${data.chapters.map(c=>`<button type="button" data-chapter="${c.id}" aria-current="${c.id===state.chapter}">제${c.number}장 · ${esc(c.title)}<br><small>${c.units.length}소단락 · ${c.implementation==='runtime_bound'?'첫 장 독자 판본 별도':'상세 본문 미집필'}</small></button>`).join('')}</aside><section class="card"><span class="badge">큰 이야기 초고 · 상세 본문 아님</span><h2 style="margin-top:14px">제${chapter().number}장 · ${esc(chapter().title)}</h2>${chapter().story_html}${sourceButton({file:'writing/storyboard/chapter-stories.json',pointer:'/chapters/'+(chapter().number-1)})}</section></div><h2 style="margin-top:28px">소단락의 주요 내용</h2>${chapter().units.map(u=>`<details class="unit" id="${esc(u.unit_id.replace('/','-'))}"><summary>${esc(u.number+' · '+u.title)} ${u.decision_ids.length?'<span class="badge">구현 분기</span>':u.candidate_deferred?'<span class="badge added">분기 후보 · 미구현</span>':''}</summary><div class="unit-body">${u.html}${sourceButton(u.source_ref)}</div></details>`).join('')}`;
     } else if (view==='graph') {
-      const panels=`<nav class="view-tabs" aria-label="분기 · 그래프 보기"><button type="button" class="button" data-graph-panel="diagram" aria-pressed="${state.graphPanel==='diagram'}">장별 그래프</button><button type="button" class="button" data-graph-panel="rules" aria-pressed="${state.graphPanel==='rules'}">조건 · 결과</button></nav>`;
-      const diagram=`<div class="toolbar graph-tools"><button type="button" class="button" data-view="outline">같은 장의 주요 내용</button><button type="button" class="button" id="${state.graphOverview?'return-chapter-graph':'open-overview-graph'}">${state.graphOverview?'장별 그래프로 돌아가기':'전체 장 연결도'}</button><label for="graph-zoom">그림 크기</label><select id="graph-zoom">${['0.75','1','1.25','1.5'].map(z=>`<option value="${z}" ${z===state.graphZoom?'selected':''}>${Number(z)*100}%</option>`).join('')}</select></div><p class="view-hint">선택 뒤 내용과 후속 반응은 상자 안의 본문 발췌로 표시됩니다. 선택·반응 상자를 누르면 관련 점선이 강조되고 전체 문단을 펼쳐 볼 수 있습니다.</p><section class="graph-selection" id="graph-selection" aria-label="선택한 그래프 문단" hidden></section><div class="diagram" id="chapter-diagram">${state.graphOverview?data.overview_svg:chapter().svg}</div><details class="unit"><summary>그래프를 읽는 방법</summary><div class="unit-body">실선은 읽기·선택·합류, 보라색 꺾은 점선은 조건부 반응과 관찰된 후속 영향입니다. 긴 연결의 양 끝에 같은 L 번호를 표시합니다. ‘다른 장 참고’ 상자는 장간 기억 연결이며 다음에 읽을 본줄기 단계가 아닙니다. 선택지는 조건이 맞을 때만 열리며 전부 한 경로에서 읽지 않습니다. 9장의 두 탐색은 순서만 달라지고 둘 다 필수입니다.</div></details>`;
+      const panels=`<nav class="view-tabs" aria-label="분기 · 그래프 보기"><button type="button" class="button" data-graph-panel="diagram" aria-pressed="${state.graphPanel==='diagram'}">비교 타임라인</button><button type="button" class="button" data-graph-panel="rules" aria-pressed="${state.graphPanel==='rules'}">조건 · 결과</button></nav>`;
+      const diagram=`<div class="toolbar graph-tools"><button type="button" class="button" data-view="outline">같은 장의 주요 내용</button><button type="button" class="button" id="${state.graphOverview?'return-chapter-graph':'open-overview-graph'}">${state.graphOverview?'타임라인으로 돌아가기':'전체 장 연결도'}</button></div><p class="view-hint">왼쪽은 공통 진행, 오른쪽은 같은 시점의 선택별 문단입니다. 카드를 누르면 원인·후속 결과만 강조됩니다. 경로 탭은 비교용이며 소설 진행 상태를 바꾸지 않습니다.</p><section class="graph-selection" id="graph-selection" aria-label="선택한 그래프 문단" hidden></section><div class="${state.graphOverview?'diagram':'timeline-board'}" id="chapter-diagram">${state.graphOverview?data.overview_svg:renderTimeline()}</div><details class="unit"><summary>타임라인을 읽는 방법</summary><div class="unit-body">아래로 갈수록 다음 이야기 시점입니다. A/B/C는 해당 질문 안의 경로이며 다른 질문의 같은 글자를 같은 선택으로 합치지 않습니다. 조건부 문단은 원래 등장하는 소단락에 놓이며 실제 조건이 충족될 때만 읽습니다. 공유 상태와 관찰된 연결은 충분조건이나 유일한 원인의 증명이 아닙니다. 9장의 두 탐색은 순서만 달라지고 둘 다 필수입니다. 실행용 합류·조건 불일치 상자와 긴 점선은 표시하지 않습니다.</div></details>`;
       content.innerHTML=chapterToolbar()+panels+(state.graphPanel==='diagram'?diagram:`<section id="branch-details" aria-label="이 장의 분기 조건과 결과">${chapter().branch_html}</section>`);
       applyGraphZoom();
-      graphSelected='';enableGraphNodes();
+      graphSelected='';applyTimelinePaths();
     } else if (view==='order') {
       const edition=data.editions.find(e=>e.id===state.edition);
       content.innerHTML=`<div class="toolbar"><label for="edition-select">편집 경로</label><select id="edition-select">${data.editions.map(e=>`<option value="${esc(e.id)}" ${e.id===state.edition?'selected':''}>${esc(e.id)}</option>`).join('')}</select></div><div class="edition-head"><strong>제안 경로 · 페이지 미정 · 미승인</strong><p>${esc(edition.note)}</p><small>${esc(edition.manual_route.join(' → '))}</small></div><div class="toolbar"><label for="order-detail"><input id="order-detail" type="checkbox"> 선택·조건부 반응·필수 결과까지 펼쳐 보기</label></div><div class="scroll-table"><table><thead><tr><th>순서</th><th>소제목</th><th>문단 역할</th><th>페이지</th><th>본문 참조</th></tr></thead><tbody>${edition.rows.map(r=>`<tr data-row-kind="${r.kind}" ${r.kind==='main'?'':'hidden'}><td>${r.position}</td><td>${esc(headingForUnit(r.unit_id))}</td><td>${esc(kindNames[r.kind])}${r.choice_or_reaction_id?'<br><small>'+esc(r.choice_or_reaction_id)+'</small>':''}</td><td>미정</td><td><button class="button small" data-source="${esc(r.content_ref.file)}" data-pointer="${esc(r.content_ref.pointer)}">문단 JSON</button></td></tr>`).join('')}</tbody></table></div>${sourceButton({file:'writing/publication/flow.plan.json',pointer:'/linear_editions'})}`;
@@ -137,26 +139,63 @@
     old.replaceWith(fresh);
   }
   function applyGraphZoom(){const svg=$('chapter-diagram')?.querySelector('svg');if(svg){const box=svg.viewBox.baseVal;svg.style.width=box.width*Number(state.graphZoom)+'px';svg.style.height=box.height*Number(state.graphZoom)+'px';}}
-  function enableGraphNodes(){
-    const svg=$('chapter-diagram')?.querySelector('svg');if(!svg)return;
-    svg.setAttribute('role','group');
-    svg.querySelectorAll('[data-flow-node]').forEach(node=>{
-      if(data.graph_details[node.dataset.flowNode]){node.setAttribute('role','button');node.setAttribute('tabindex','0');node.setAttribute('aria-pressed','false');}
+  function excerpt(text,limit=130){const value=String(text).replace(/\s+/g,' ').trim(),head=Math.floor((limit-3)/2);return value.length<=limit?value:value.slice(0,head)+' … '+value.slice(-(limit-3-head));}
+  function timelineCard(card,group){
+    const info=data.graph_details[card.node_id],letters=card.source_options.map(id=>group.options.find(o=>o.id===id)?.letter).filter(Boolean);
+    const path=card.source_options.length===1?card.source_options[0]:'';
+    const condition=info.kind==='option'?'선택 뒤 문단':(letters.length?letters.join('·')+'에서 연결 · 실제 조건 충족 시':'상태·동행 조건 충족 시');
+    const sequence=(card.parallel_sequence||[]).map(step=>{
+      const main=data.graph_details[step.main_node_id],outcome=data.graph_details[step.outcome_node_id];
+      return '<li>'+ (main?'<strong>'+esc(main.location+' · '+main.label)+'</strong><details><summary>주요 내용</summary><p>'+esc(main.body)+'</p>'+sourceButton(main.source_ref)+'</details>':'')+'<small>'+esc(excerpt(outcome.body,100))+'</small>'+(step.reaction_node_ids||[]).map(id=>timelineCard({node_id:id,source_options:[],slot:null},group)).join('')+'</li>';
+    }).join('');
+    return `<article class="timeline-cell tl-card" data-flow-node="${esc(card.node_id)}" data-path="${esc(path)}" data-source-options="${esc(JSON.stringify(card.source_options))}" data-group="${esc(group.id)}" data-slot="${card.slot??'shared'}" style="grid-column:${card.slot===null?'1 / -1':card.slot+1}"><span class="tl-condition">${letters.length?esc(letters.join('·'))+' · ':''}${esc(condition)}</span><button type="button" class="tl-select" data-select-node="${esc(card.node_id)}" aria-pressed="false">${esc(info.label)}</button><p>${esc(excerpt(info.body))}</p>${sequence?'<p class="tl-parallel-note">두 목표 모두 필수 · 이 경로의 탐색 순서</p><ol class="tl-parallel-sequence">'+sequence+'</ol>':''}<details class="tl-body"><summary>전체 문단</summary><p>${esc(info.body)}</p>${sourceButton(info.source_ref)}</details></article>`;
+  }
+  function renderTimeline(){
+    const timeline=data.timeline.chapters.find(c=>c.chapter_id===state.chapter);
+    return '<div class="tl-heading"><span>시간 ↓ · 공통 본줄기</span><span>선택별 조건부 문단 · 같은 높이는 대체 내용</span></div>'+timeline.rows.map((row,index)=>{
+      const location=headingForUnit(row.unit_id).split(' · ')[0];
+      if(row.kind==='main'){
+        const info=data.graph_details[row.node_id];
+        return `<section class="timeline-row tl-main-row" data-time="${index}" data-unit="${esc(row.unit_id)}"><div class="tl-common"><span class="tl-time">${esc(location)}</span><details><summary>${esc(info.label)}</summary><p>${esc(info.body)}</p>${sourceButton(info.source_ref)}</details></div><div class="tl-stage-note">공통 본줄기 · 모든 경로에서 진행</div></section>`;
+      }
+      if(row.kind==='outcome'){
+        const info=data.graph_details[row.node_id];
+        return `<section class="timeline-row tl-outcome-row" data-time="${index}"><div class="tl-common"><details class="tl-outcome"><summary>공통 결과</summary><p>${esc(info.body)}</p>${sourceButton(info.source_ref)}</details></div><div class="tl-stage-note">공통 진행 · 다음 본줄기로</div></section>`;
+      }
+      const group=data.timeline.groups[row.group_id],count=Math.max(1,group.options.length);
+      const tabs=group.options.length?'<div class="timeline-tabs" role="tablist" aria-label="'+esc(group.title)+' 경로 비교">'+group.options.map(o=>'<button type="button" role="tab" data-timeline-group="'+esc(group.id)+'" data-timeline-option="'+esc(o.id)+'" aria-selected="false">'+esc(o.letter+' · '+o.label)+'</button>').join('')+'</div>':'';
+      return `<section class="timeline-row tl-conditional-row" data-time="${index}" data-choice-group="${esc(group.id)}"><div class="tl-common"><small>${row.kind==='decision'?'선택':'후속 반응'}</small><span class="tl-time">${esc(location)}</span></div><div class="tl-comparison"><header><strong>${esc(group.title)}</strong><small>${row.kind==='reaction'?'앞선 '+esc(headingForUnit(group.anchor_unit).split(' · ')[0])+' 선택/상태와 연결 · 원래 조건 적용':''}</small>${row.kind==='decision'?'<p class="tl-question">질문 · '+esc(group.prompt)+'</p>':''}</header>${tabs}<div class="tl-variants" data-timeline-group="${esc(group.id)}" style="--paths:${count}">${row.cards.map(card=>timelineCard(card,group)).join('')}<p class="tl-empty" hidden>이 비교 경로에 연결된 문단은 없습니다. 다른 상태·동행 조건은 별도로 확인하세요.</p></div></div></section>`;
+    }).join('');
+  }
+  function applyTimelinePaths(){
+    document.querySelectorAll('.tl-variants').forEach(row=>{
+      const group=data.timeline.groups[row.dataset.timelineGroup],selected=state.timelinePaths[group.id]||group.options[0]?.id||'';
+      const cells=Array.from(row.children).filter(e=>e.classList.contains('timeline-cell'));
+      cells.forEach(cell=>{const candidates=JSON.parse(cell.dataset.sourceOptions||'[]');cell.classList.toggle('is-current',!candidates.length||candidates.includes(selected));});
+      row.querySelector('.tl-empty').hidden=cells.some(cell=>cell.classList.contains('is-current'));
     });
+    document.querySelectorAll('[data-timeline-option]').forEach(tab=>{const g=data.timeline.groups[tab.dataset.timelineGroup];tab.setAttribute('aria-selected',String(tab.dataset.timelineOption===(state.timelinePaths[g.id]||g.options[0]?.id)));});
+  }
+  function setTimelinePath(gid,oid){
+    if(!data.timeline.groups[gid]?.options.some(o=>o.id===oid))return;
+    const board=$('chapter-diagram'),top=board?.scrollTop||0;
+    state.timelinePaths={...state.timelinePaths,[gid]:oid};applyTimelinePaths();if(board)board.scrollTop=top;recordRoute('replace');
   }
   function selectGraphNode(key){
-    const svg=$('chapter-diagram')?.querySelector('svg'),panel=$('graph-selection');if(!svg||!panel)return;
+    const svg=$('chapter-diagram'),panel=$('graph-selection');if(!svg||!panel)return;
     graphSelected=key===graphSelected?'':key;
+    const chosen=Array.from(svg.querySelectorAll('[data-flow-node]')).find(n=>n.dataset.flowNode===graphSelected);
+    const preferred=chosen?.dataset.path||JSON.parse(chosen?.dataset.sourceOptions||'[]')[0];
+    if(preferred){state.timelinePaths={...state.timelinePaths,[chosen.dataset.group]:preferred};applyTimelinePaths();}
     const related=new Set(graphSelected?[graphSelected]:[]),links=[];
     svg.classList.toggle('has-graph-selection',!!graphSelected);
-    svg.querySelectorAll('.flow-edge').forEach(edge=>{
-      const active=!!graphSelected&&edge.dataset.edgeKind==='influence'&&[edge.dataset.from,edge.dataset.to].includes(graphSelected);
-      edge.classList.toggle('is-related',active);
-      if(active){related.add(edge.dataset.from);related.add(edge.dataset.to);links.push({id:edge.dataset.link,key:edge.dataset.from===graphSelected?edge.dataset.to:edge.dataset.from,direction:edge.dataset.from===graphSelected?'후속 결과':'앞선 선택'});}
+    data.timeline.links.forEach(edge=>{
+      const active=!!graphSelected&&[edge.from,edge.to].includes(graphSelected);
+      if(active){related.add(edge.from);related.add(edge.to);links.push({id:edge.id,key:edge.from===graphSelected?edge.to:edge.from,direction:edge.from===graphSelected?'후속 결과':'앞선 선택'});}
     });
     svg.querySelectorAll('[data-flow-node]').forEach(node=>{
       node.classList.toggle('is-related',related.has(node.dataset.flowNode));node.classList.toggle('is-selected',node.dataset.flowNode===graphSelected);
-      if(node.getAttribute('role')==='button')node.setAttribute('aria-pressed',String(node.dataset.flowNode===graphSelected));
+      node.querySelector('[data-select-node]')?.setAttribute('aria-pressed',String(node.dataset.flowNode===graphSelected));
     });
     const info=data.graph_details[graphSelected];panel.hidden=!info;if(!info){panel.innerHTML='';return;}
     const remote=info.chapter_id!==state.chapter;
@@ -164,11 +203,15 @@
     panel.innerHTML=`<div class="graph-selection-head"><strong>${esc(info.location+' · '+info.label)}</strong><button type="button" class="button small" id="clear-graph-selection">강조 해제</button></div>${targets?'<div class="graph-related">'+targets+'</div>':'<small>현재 그래프에 관찰된 후속 영향선은 없습니다.</small>'}<details><summary>${info.kind==='option'?'선택 뒤 전체 내용':'조건부 후속 문단'} 펼치기</summary><div class="graph-selection-body">${info.body.split(/\n\n+/).map(p=>'<p>'+esc(p)+'</p>').join('')}</div>${sourceButton(info.source_ref)}<details><summary>조건 · 상태 변화 · 창작 표시</summary><pre>${esc(JSON.stringify(info.rules,null,2))}</pre></details></details>${remote?'<button type="button" class="button small" data-chapter="'+esc(info.chapter_id)+'">해당 장 그래프 보기 →</button>':''}`;
   }
   function focusGraphNode(key){
+    const info=data.graph_details[key];if(!info)return;
+    if(info.chapter_id!==state.chapter){state.chapter=info.chapter_id;state.graphOverview=false;state.graphPanel='diagram';go('graph');}
     const diagram=$('chapter-diagram'),node=Array.from(diagram.querySelectorAll('[data-flow-node]')).find(n=>n.dataset.flowNode===key);
-    if(!node)return;selectGraphNode(key);
+    if(!node)return;
+    if(node.dataset.path)setTimelinePath(node.dataset.group,node.dataset.path);
+    selectGraphNode(key);
     const box=diagram.getBoundingClientRect(),target=node.getBoundingClientRect();
     diagram.scrollTo({left:Math.max(0,diagram.scrollLeft+target.left-box.left-(diagram.clientWidth-target.width)/2),top:Math.max(0,diagram.scrollTop+target.top-box.top-(diagram.clientHeight-target.height)/2),behavior:'instant'});
-    node.focus({preventScroll:true});
+    node.querySelector('[data-select-node]')?.focus({preventScroll:true});
   }
   function filterSettings() {
     const query=state.query.trim().toLocaleLowerCase();
@@ -200,8 +243,6 @@
     a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
   document.addEventListener('click', event => {
-    const node=event.target.closest('[data-flow-node][role="button"]');
-    if(node){selectGraphNode(node.dataset.flowNode);return;}
     const button=event.target.closest('button'); if (!button || button.disabled) return;
     if (button.id==='open-studio') {
       state.open=true; $('author-gate').hidden=true; $('workspace').hidden=false;nav.querySelectorAll('button').forEach(b=>{b.disabled=false;});restoreRoute();go(state.view,true,'replace');
@@ -214,6 +255,8 @@
     else if (button.id==='return-chapter-graph') {state.graphOverview=false;go('graph');}
     else if (button.id==='clear-graph-selection') selectGraphNode(graphSelected);
     else if (button.dataset.flowFocus) focusGraphNode(button.dataset.flowFocus);
+    else if (button.dataset.selectNode) selectGraphNode(button.dataset.selectNode);
+    else if (button.dataset.timelineOption) setTimelinePath(button.dataset.timelineGroup,button.dataset.timelineOption);
     else if (button.dataset.graphPanel) {state.graphPanel=button.dataset.graphPanel;go('graph');}
     else if (button.dataset.setting) {state.item=button.dataset.setting;state.tab='';go('settings');}
     else if (button.dataset.settingTab) {state.tab=button.dataset.settingTab;renderSetting();recordRoute();}
@@ -235,8 +278,10 @@
   });
   document.addEventListener('input', event => {if(event.target.id==='setting-search') {state.query=event.target.value;state.item='';state.tab='';filterSettings();recordRoute('replace');}});
   document.addEventListener('keydown',event=>{
-    const node=event.target.closest('[data-flow-node][role="button"]');
-    if(node&&['Enter',' '].includes(event.key)){event.preventDefault();selectGraphNode(node.dataset.flowNode);}
-    else if(event.key==='Escape'&&graphSelected)selectGraphNode(graphSelected);
+    const tab=event.target.closest('[data-timeline-option]');
+    if(tab&&['ArrowLeft','ArrowRight'].includes(event.key)){
+      event.preventDefault();const g=data.timeline.groups[tab.dataset.timelineGroup],index=g.options.findIndex(o=>o.id===tab.dataset.timelineOption),next=g.options[(index+(event.key==='ArrowRight'?1:g.options.length-1))%g.options.length];
+      setTimelinePath(g.id,next.id);Array.from(tab.parentElement.querySelectorAll('button')).find(b=>b.dataset.timelineOption===next.id)?.focus();
+    }else if(event.key==='Escape'&&graphSelected)selectGraphNode(graphSelected);
   });
 })();

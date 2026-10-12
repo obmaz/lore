@@ -4,15 +4,15 @@
   "source_sha256": {
     "writing/studio/studio.plan.json": "e2ac982213d2dd820ef18c15a1e011c6f8898bde661ba824f10f95da2bfbd1ba",
     "writing/studio/studio.schema.json": "b670be722d1f9d11689edd448887187ff68f6a6f3ad5680f2b9f14f7e66bc93c",
-    "writing/studio/shell.html": "6c7031c298e8330e0d7ea765a5aada51e68978947319b744aa367713e69d9bc4",
-    "writing/studio/studio.js": "031183d1d23fb61289878756d8a32a9053ac4ca8b4c70d612c3d6adbe1548b24",
-    "tools/studio.py": "1e1c8d0d7a794eae0c088372b5d6dd1f6d1143b89b3fd13e6aa5135f128b206b",
+    "writing/studio/shell.html": "54870621c4ee7358ee8d7499c4e58a3b060c4585c4dfba0704bb6246806d38d4",
+    "writing/studio/studio.js": "c5bc30629a40ecee0d6c8a2c839a2e52f35249c8be42cae54627310e212ba18b",
+    "tools/studio.py": "3dd458b61de6b4e3d469e788859ad4221b3a68f54913b811db9fe75a0200576a",
     "tools/export_reference.py": "2fb37a42477fafd4e277edb2e77d7500cb9f2138b8d0e7641d32f7983b3699c0",
-    "tools/publication_flow.py": "31902f339526f46ebe1f24d0c037815157fe3eeb0c92464888f15a2fdeef7a42",
+    "tools/publication_flow.py": "1348104a254f68a5bed7f244e362887580818ee8cbee407ed5873f2a5798e839",
     "AGENTS.md": "bc94225d460037d2913be1be46216d3f429e89a628e4858281edeb2df8edc711",
     "writing/AGENTS.md": "96c0889f26bfd0cb66a7f12c577322b66e7ab977116ec206d48b3d28817a8e29",
     "characters/AGENTS.md": "a2dea8ef50f25d6cc7287c76e5a991af193e8efbe8cf8b48edd432e43e9a1145",
-    "writing/previews/manifest.json": "05cbd01b3cf84a3aa2e5d8a0005605c96b370cdeef925e12a85dea26464187ad",
+    "writing/previews/manifest.json": "f9588f428381376233a7f3c9e631513779cb644c5cc1e5f402ebb8e7756c16b9",
     "writing/previews/branch-system.html": "f1ea31a3839a07dee60e4e86c39125b6076affb06a5c24d302639b7004026217",
     "writing/previews/chapter-stories.html": "5d89cbeaad5a2ceec2a2093dec848d926718bc32a1d585f46817e28f5ee6910a",
     "writing/previews/chapter-subsections.html": "1613e0c3b754f3e048b9b29982734883cbc0446aa2184e26dfbe9f30865dc920",
@@ -65,15 +65,15 @@
     "writing/quests/lore_menace.json": "00648f96e4f9306fdfcede2dd1ea2a24e1ec957b8da269366ce5491bebafaf21",
     "writing/quests/prologue.continuity.json": "0d96ea9bd20c0e90facf5120c43f0c1bf051ba38673ac205bf0700ee31772c79",
     "writing/quests/prologue.json": "ee4394f7eb10879fe98ae6fc3aaf8e9ba37692bf207c95719015387a48467a5d",
-    "writing/publication/generated/flow.graph.json": "7b6e404517b401214524f83311e3911b9504dbc0be98d78af40ce4694edc12fe",
+    "writing/publication/generated/flow.graph.json": "37ac0cf4444f0470789dbb42f8b32946c96c8199372cd63912ddf46e6dac1202",
     "writing/publication/generated/linear-editions.json": "3320eb8cca6fb6f5891cac73e6e5d1cadb143eabb7cbe08e96bc72615c9bd373",
     "writing/publication/generated/coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746",
     "writing/side-stories/series.json": "bf49ceb3ed86781eb38541c3be811efa08a01d98c752028a0010b16996153f70",
-    "writing/side-stories/generated/flow.graph.json": "3c80f6da61b7baf924b9712b67b645711d8182c24b5cf4e01195ebcdd7250296",
+    "writing/side-stories/generated/flow.graph.json": "864c870c7c7d0ecd90d2b80dc0c23d1c7aa4044f043ccbb898c29b96a2113241",
     "writing/side-stories/generated/linear-editions.json": "cdc9cb0e2021ff3f4ef2c949011ef5d57e090546790215caf83f175e80c5941b",
     "writing/side-stories/generated/coverage.json": "f7ef4278e6f369286eb7fb322cd3e4899fdd62dab7da7c7ca82e8c4bc97c1872"
   },
   "artifacts": {
-    "index.html": "58cf810d673954367ec2c1f3396a086ff86d94f7219ab70a7f5c73a788782b96"
+    "index.html": "c21a4ce310e04a54e08544ecfc2af50a79a8dbde8a148f437eb921153f533715"
   }
 }
