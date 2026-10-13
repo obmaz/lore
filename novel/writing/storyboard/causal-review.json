@@ -1,0 +1,488 @@
+{
+  "version": 1,
+  "revision": 1,
+  "status": "reviewed_for_drafting",
+  "visibility": "author_only",
+  "origin": "authored",
+  "metadata": {
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 사용자가 요청한 전편 인과 검토 기록. 원작 설정이나 원고 승인 자료가 아니라 상세 집필을 위한 편집 점검이다.",
+    "knowledge_policy": "author_reference_not_character_knowledge"
+  },
+  "inputs": {
+    "macro_story": "writing/storyboard/chapter-stories.json",
+    "macro_revision": 4,
+    "subsections": "writing/storyboard/chapter-subsections.json",
+    "subsection_revision": 3,
+    "source_manuscript": "writing/source-connected/manuscript.json",
+    "source_coverage": "writing/source-connected/coverage.json",
+    "original_route_index": "materials/quests.json#/route_edges",
+    "style": "writing/project.json",
+    "style_revision": 1
+  },
+  "policy": {
+    "original_text": "keep_all_occurrences_and_mutually_exclusive_paths",
+    "optional_memory": "only_actual_visits",
+    "mandatory_story": "all_main_beats_on_every_complete_route",
+    "approval": "not_approved_by_structural_checks"
+  },
+  "chapters": [
+    {
+      "chapter_ref": "chapter01",
+      "source_sections": [
+        "01-invitation",
+        "01-audience",
+        "01-request",
+        "01-city",
+        "01-depart",
+        "01-cave",
+        "01-report"
+      ],
+      "required_beats": [
+        "chapter01/arrival",
+        "chapter01/audience",
+        "chapter01/assignment",
+        "chapter01/departure",
+        "chapter01/center",
+        "chapter01/report"
+      ],
+      "next_chapter": "chapter02",
+      "causal_link": [
+        {
+          "text": "재앙과 침략자의 설명 → 수행 능력 확인을 위한 중심부 탐사 → 실제 귀환 보고와 보상 → 동쪽 성의 새 부탁. 선택 방문은 보고의 선행 조건이 아니다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "무기고·유골·주점·수감소 방문을 선택 이력에 묶는다."
+          }
+        ],
+        [
+          {
+            "text": "시작 동료와 선택 동료, 보상과 현재 장비를 구별한다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter02",
+      "source_sections": [
+        "02-town",
+        "02-request",
+        "02-pyramid",
+        "02-gate"
+      ],
+      "required_beats": [
+        "chapter02/request",
+        "chapter02/confrontation",
+        "chapter02/report"
+      ],
+      "next_chapter": "chapter03",
+      "causal_link": [
+        {
+          "text": "앞 성의 소개로 의뢰인을 만나고 북쪽 동굴의 적을 격퇴한다. 귀환 보고와 보상을 마친 뒤 다음 대륙으로 통하는 문을 안내받는다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "주민의 서쪽 안내와 성주의 북동쪽 안내를 원문 그대로 보존한다. 서로 다른 원문을 하나의 새 방위로 치환하지 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter03",
+      "source_sections": [
+        "03-ruins",
+        "03-rigel",
+        "03-seal"
+      ],
+      "required_beats": [
+        "chapter03/request",
+        "chapter03/discovery",
+        "chapter03/report"
+      ],
+      "next_chapter": "chapter04",
+      "causal_link": [
+        {
+          "text": "파괴된 성과 성주의 경고가 숨겨진 봉인을 찾을 이유가 된다. 봉인은 발견만 하고 풀지 않으며, 귀환 보고가 같은 대륙에 남은 다른 위협의 의뢰로 이어진다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "용사 구출의 영입 응답과 치료 후 떠남을 같은 경로에서 동시에 실행하지 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter04",
+      "source_sections": [
+        "04-quake",
+        "04-key"
+      ],
+      "required_beats": [
+        "chapter04/request",
+        "chapter04/confrontation",
+        "chapter04/key"
+      ],
+      "next_chapter": "chapter05",
+      "causal_link": [
+        {
+          "text": "남은 동굴의 적을 격퇴한 뒤 보고한다. 물의 열쇠는 실제 보고 보상 뒤에 얻고, 그 열쇠가 다음 대륙의 문을 향할 이유와 수단이 된다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "전투 승리만으로 열쇠를 먼저 지급하지 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter05",
+      "source_sections": [
+        "05-passage"
+      ],
+      "required_beats": [
+        "chapter05/passage",
+        "chapter05/crossing"
+      ],
+      "next_chapter": "chapter06",
+      "causal_link": [
+        {
+          "text": "앞 장에서 받은 열쇠를 문까지 가져가는 통과 장이다. 통로의 적을 넘어 실제로 문을 건넌 다음에야 새 대륙의 주민을 만난다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "재시도 시 이미 격퇴한 통로의 적을 되살리지 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter06",
+      "source_sections": [
+        "06-town",
+        "06-request",
+        "06-antares",
+        "06-report"
+      ],
+      "required_beats": [
+        "chapter06/survivors",
+        "chapter06/confrontation",
+        "chapter06/report"
+      ],
+      "next_chapter": "chapter07",
+      "causal_link": [
+        {
+          "text": "침몰한 대륙의 성주에게 두 위협을 듣고 첫 동굴의 의뢰를 수행한다. 현재 만남의 자기소개와 조건 있는 가르침을 얻은 뒤 격퇴 결과를 보고한다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "이전 가족·유골 방문을 생략한 경로에서도 이번 자기소개는 가능하다."
+          }
+        ],
+        [
+          {
+            "text": "간접 공격을 가르쳤다고 여섯 기법의 능력 조건이 모두 충족되지는 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter07",
+      "source_sections": [
+        "07-learning",
+        "07-choices",
+        "07-dragon",
+        "07-return"
+      ],
+      "required_beats": [
+        "chapter07/request",
+        "chapter07/confrontation",
+        "chapter07/key"
+      ],
+      "next_chapter": "chapter08",
+      "causal_link": [
+        {
+          "text": "같은 성에 남은 두 번째 위협을 해결하고 보고 보상으로 늪의 열쇠를 받는다. 초자연력 설명·실제 사용 능력·선택 영입을 따로 관리하며 앞 대륙의 문으로 돌아간다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "수도자 영입 없이도 설명을 들을 수 있다. 이후 동료 문단에는 실제 동행 조건을 붙인다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter08",
+      "source_sections": [
+        "08-gate",
+        "08-prophecy",
+        "08-evil",
+        "08-draconian"
+      ],
+      "required_beats": [
+        "chapter08/access",
+        "chapter08/two_objectives"
+      ],
+      "next_chapter": "chapter09",
+      "causal_link": [
+        {
+          "text": "열쇠와 필요한 진행 상태로 늪에 진입한다. 문 앞 조언·선택한 기록과 만남이 두 봉인의 탐색 목적을 알려 준다. 기록과 증언을 전지적 진실로 승격하지 않는다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "ref": {
+              "catalog": "terms",
+              "id": "prophecy_book"
+            }
+          },
+          {
+            "text": "의 창조·선악 설명은 기록의 주장으로 남긴다."
+          }
+        ],
+        [
+          {
+            "text": "새 식량과 다른 인물의 자동 영입을 조언에 덧붙이지 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter09",
+      "source_sections": [
+        "09-evilgod",
+        "09-muddy"
+      ],
+      "required_beats": [
+        "chapter09/first_seal",
+        "chapter09/second_seal"
+      ],
+      "next_chapter": "chapter10",
+      "causal_link": [
+        {
+          "text": "두 동굴의 봉인은 모두 필수지만 탐색 순서는 자유다. 각 동굴의 실제 장치·시험·대결·해제 결과가 모두 갖추어져야 다음 문으로 합류한다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "양쪽 봉인의 원문과 상태를 모두 보존한다."
+          }
+        ],
+        [
+          {
+            "text": "무작위 시험의 모든 문항을 한 번의 시험에 동시에 출제하지 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter10",
+      "source_sections": [
+        "10-lava"
+      ],
+      "required_beats": [
+        "chapter10/both_seals",
+        "chapter10/guardians",
+        "chapter10/advice"
+      ],
+      "next_chapter": "chapter11",
+      "causal_link": [
+        {
+          "text": "두 봉인과 문 주변의 적을 통과해 용암 대륙에 들어간다. 성주의 조언이 첫 요새 아래 피난처를 찾아 물자와 도움을 구할 이유가 된다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "두 존재가 함께 돕겠다는 약속을 지금의 계급 상승으로 처리하지 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter11",
+      "source_sections": [
+        "11-imperium"
+      ],
+      "required_beats": [
+        "chapter11/fortress",
+        "chapter11/underground"
+      ],
+      "next_chapter": "chapter12",
+      "causal_link": [
+        {
+          "text": "첫 요새의 적을 넘는 목적은 지하 피난처에 도달하는 것이다. 입구 도착·적 격퇴·지하 진입을 구별하고, 주민의 증언은 다음 장에서 실제로 만난 뒤 얻는다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "첫 요새를 통과한 것을 최종 승리나 피난처 물자 획득으로 처리하지 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter12",
+      "source_sections": [
+        "12-shelter"
+      ],
+      "required_beats": [
+        "chapter12/refuge",
+        "chapter12/return"
+      ],
+      "next_chapter": "chapter13",
+      "causal_link": [
+        {
+          "text": "피난처 주민과 제작자를 자처하는 인물의 말을 듣는다. 실제로 택한 준비만 기록하고, 주민들의 기대를 이미 실현한 구조 성과로 쓰지 않은 채 남은 요새로 향한다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "전편 평가를 들었다고 인물의 마음이나 세계의 진상을 확정하지 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter13",
+      "source_sections": [
+        "13-guard",
+        "13-illusion",
+        "13-hidden"
+      ],
+      "required_beats": [
+        "chapter13/entrance",
+        "chapter13/identity",
+        "chapter13/hidden_fortress"
+      ],
+      "next_chapter": "chapter14",
+      "causal_link": [
+        {
+          "text": "입구의 적 → 환상과 대결 → 전투 뒤 정체 고백 → 표지에 따라 실제 레버 작동 → 숨은 성 출현의 순서다. 상대의 진상을 대결 전에 공개하지 않는다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "숨긴 인물의 참조는 정체 공개 체크포인트 전까지 중립 공개명을 사용한다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter14",
+      "source_sections": [
+        "14-entrance",
+        "14-panzer",
+        "14-levers"
+      ],
+      "required_beats": [
+        "chapter14/entrance",
+        "chapter14/clues",
+        "chapter14/levers",
+        "chapter14/last_guardian"
+      ],
+      "next_chapter": "chapter15",
+      "causal_link": [
+        {
+          "text": "마지막 입구와 중간의 적을 넘은 뒤 약속된 도움과 계급 변화를 얻는다. 두 레버의 실제 작동과 마지막 수문장 통과가 최종 방 진입의 조건이다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "특정 자리 동료를 공격하는 원작 사건은 해당 동료가 실제로 있는 경로에만 적용한다."
+          }
+        ],
+        [
+          {
+            "text": "도움의 화자를 임의 확정하거나 사망 동료를 자동 부활시키지 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    },
+    {
+      "chapter_ref": "chapter15",
+      "source_sections": [
+        "15-final",
+        "15-ending"
+      ],
+      "required_beats": [
+        "chapter15/introduction",
+        "chapter15/outcome",
+        "chapter15/ending"
+      ],
+      "next_chapter": null,
+      "causal_link": [
+        {
+          "text": "최종 상대의 소개와 도주 금지 뒤 대결한다. 성공 뒤 상대는 죽는 대신 차원을 통해 떠나며, 마지막 운명 진술·세계의 마무리·제작자 소개는 서로 다른 층으로 보존한다."
+        }
+      ],
+      "guard_notes": [
+        [
+          {
+            "text": "상대의 떠남을 사망·추가 부활·새 배후 공개로 고쳐 쓰지 않는다."
+          }
+        ]
+      ],
+      "review_result": "ready_for_detailing_with_path_guards"
+    }
+  ],
+  "changes": [
+    {
+      "id": "optional_visit_memory",
+      "affected_chapters": [
+        "chapter01",
+        "chapter06"
+      ],
+      "resolution": "무기고와 유골을 공통 필수 경험으로 쓰던 문장을 조건부 경험과 현재의 자기소개로 정정했다."
+    },
+    {
+      "id": "parallel_seal_order",
+      "affected_chapters": [
+        "chapter09"
+      ],
+      "resolution": "첫째·둘째라는 고정 순서 표현 대신 해당 동굴의 실제 봉인 결과와 두 목표의 합류를 명시했다."
+    }
+  ],
+  "next_work": {
+    "chapter_ref": "chapter01",
+    "scope": "mandatory_prose_and_existing_applicable_dialogue",
+    "source_policy": "do_not_edit_archival_literals",
+    "branch_policy": "preserve_existing_choices_and_state_effects",
+    "editorial_status": "draft_not_publication_approved"
+  }
+}

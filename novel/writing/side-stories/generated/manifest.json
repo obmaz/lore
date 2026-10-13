@@ -5,9 +5,9 @@
     "writing/side-stories/series.json": "816a7624906e22ea10fc0308a816fc2445be63ddbe6e50743d5dd1e521e8d4d2",
     "writing/side-stories.schema.json": "5924b1012056a8c21907d5cbae306b82f0fa6f7a4a0804b77477db4d6cc9b30b",
     "writing/side-stories/reader.js": "efbe3905e3fbfa638eb65c6247495ec40a0d3ffbb5f98bf0df01b89594d2fbf5",
-    "writing/branches/series.json": "37757bb453985433357ec82011920ef9b294c8c71c6cb1c7633d016d85270a86",
+    "writing/branches/series.json": "e05b52a97129a62e1d05ef87ba82245b6004d015841ace03fe46deb4eb577eca",
     "writing/publication/flow.plan.json": "aa4f571d4be3dbfd3e6509920cf558170f86aedfc0d33c976aaf62f9b8acce3d",
-    "writing/storyboard/chapter-subsections.json": "4d7bf0ea68ada11f245ced2f189a3b7fc268223162d3ea6ac8d937354b15d0b0",
+    "writing/storyboard/chapter-subsections.json": "49638630aa01235affe114e56e4b31a98955bd1eda2ea2c4f47bdc38b7a57baf",
     "writing/storyboard/chapters.json": "a9429277e0fa9237fbf960ac63668b1df8dfb761ad5d7a86bdb9b05981230634",
     "tools/side_stories.py": "9ae8a32a74a5d0617ba8b9425dc640467bf776c4a8044c188f81becbbe64a700",
     "tools/branch_system.py": "220e080488bc68009e8e88cc3d602bf6c6f2a03f735a01b1a1141ac8320bf46c",
@@ -27,13 +27,13 @@
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe"
   },
   "artifacts": {
-    "runtime.plan.json": "4f3700a6dbaec92b788033f97be06c5682e427b3f4f514b0187943acfe55f535",
+    "runtime.plan.json": "b22e05ac6b127e00bad49887ef6b240ffd8f5f55175c6c9f729162cf4d640369",
     "flow.plan.json": "df63dc31ceb51d7f5dcaee9d0c21db93307c3c37acfa678d76f75d4547e075c4",
     "flow.graph.json": "c165155d707fe97ac5be79f83fa8929316535947a14b2c8a6686caaa211605cd",
-    "linear-editions.json": "8fa05ffff687965b2c15743a2c48643fd4b1febce9c5462a481a775e89605dad",
+    "linear-editions.json": "72b638e65e81c64d829e69052ef4e441b70d8dc887b2aad0fdea0340eeb0b4fa",
     "coverage.json": "7a2576524223d1d3f4acd2da4565568d53fb15d3ff09290cc24e56b47310d2d0",
     "flow.md": "5430cec42de864f747b45d11acf3995030bb7a8f5673ffcea6293dbfa59b98ba",
-    "flow.html": "005bbde0a18b6e3843943984446d2003d45c574e155040737d30d79e5439fed0",
-    "side-adventures.html": "7eba51d05ab980a2fbe37e8dcc26a379f38665ede5f0e37c9a50997b01608ded"
+    "flow.html": "9d079b6da543fbb0043debadcd66250cf4147e204f5f71b1e70d9b7a11cbe002",
+    "side-adventures.html": "9da4a516c11518cc65fc572a39af03033d99dcbbecb8b9bc890c48adc19b4a79"
   }
 }

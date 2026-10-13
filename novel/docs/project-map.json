@@ -16,13 +16,13 @@
     "agent_policy": 3,
     "compiled_reference": 5,
     "configuration": 2,
-    "editable_authoring_input": 25,
+    "editable_authoring_input": 26,
     "generated_inventory": 1,
     "generated_reading": 55,
     "immutable_source_snapshot": 25,
     "schema": 17,
     "shared_template": 10,
-    "test": 22,
+    "test": 23,
     "tool": 26,
     "ui_source": 4,
     "usage_documentation": 14,
@@ -1973,6 +1973,17 @@
       "automatic_deletion": false
     },
     {
+      "file": "tests/test_causal_review.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tests/test_chapter_plan.py",
       "role": "test",
       "consumers": [
@@ -2405,6 +2416,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_causal_review.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_chapter_plan.py"
         },
         {
@@ -2705,6 +2720,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_causal_review.py"
         },
         {
           "kind": "python_import",
@@ -3013,6 +3032,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "reference/README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_causal_review.py"
         },
         {
           "kind": "python_import",
@@ -3399,6 +3422,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_branch_system.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_causal_review.py"
         },
         {
           "kind": "python_import",
@@ -6581,6 +6608,29 @@
       "automatic_deletion": false
     },
     {
+      "file": "writing/storyboard/causal-review.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_causal_review.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "writing/storyboard/chapter-stories.json",
       "role": "editable_authoring_input",
       "consumers": [
@@ -6591,6 +6641,10 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_causal_review.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6646,6 +6700,10 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_causal_review.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
