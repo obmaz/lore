@@ -148,7 +148,7 @@
       const main=data.graph_details[step.main_node_id],outcome=data.graph_details[step.outcome_node_id];
       return '<li>'+ (main?'<strong>'+esc(main.location+' · '+main.label)+'</strong><details><summary>주요 내용</summary><p>'+esc(main.body)+'</p>'+sourceButton(main.source_ref)+'</details>':'')+'<small>'+esc(excerpt(outcome.body,100))+'</small>'+(step.reaction_node_ids||[]).map(id=>timelineCard({node_id:id,source_options:[],slot:null},group)).join('')+'</li>';
     }).join('');
-    return `<article class="timeline-cell tl-card" data-flow-node="${esc(card.node_id)}" data-path="${esc(path)}" data-source-options="${esc(JSON.stringify(card.source_options))}" data-group="${esc(group.id)}" data-slot="${card.slot??'shared'}" style="grid-column:${card.slot===null?'1 / -1':card.slot+1}"><span class="tl-condition">${letters.length?esc(letters.join('·'))+' · ':''}${esc(condition)}</span><button type="button" class="tl-select" data-select-node="${esc(card.node_id)}" aria-pressed="false">${esc(info.label)}</button><p>${esc(excerpt(info.body))}</p>${sequence?'<p class="tl-parallel-note">두 목표 모두 필수 · 이 경로의 탐색 순서</p><ol class="tl-parallel-sequence">'+sequence+'</ol>':''}<details class="tl-body"><summary>전체 문단</summary><p>${esc(info.body)}</p>${sourceButton(info.source_ref)}</details></article>`;
+    return `<article class="timeline-cell tl-card" data-flow-node="${esc(card.node_id)}" data-select-node="${esc(card.node_id)}" tabindex="0" role="button" aria-label="${esc(info.label)}" data-path="${esc(path)}" data-source-options="${esc(JSON.stringify(card.source_options))}" data-group="${esc(group.id)}" data-slot="${card.slot??'shared'}" style="grid-column:${card.slot===null?'1 / -1':card.slot+1}"><span class="tl-condition">${letters.length?esc(letters.join('·'))+' · ':''}${esc(condition)}</span><strong class="tl-select">${esc(info.label)}</strong><p>${esc(excerpt(info.body))}</p>${sequence?'<p class="tl-parallel-note">두 목표 모두 필수 · 이 경로의 탐색 순서</p><ol class="tl-parallel-sequence">'+sequence+'</ol>':''}<details class="tl-body"><summary>전체 문단</summary><p>${esc(info.body)}</p>${sourceButton(info.source_ref)}</details></article>`;
   }
   function renderTimeline(){
     const timeline=data.timeline.chapters.find(c=>c.chapter_id===state.chapter);
@@ -196,7 +196,8 @@
     });
     svg.querySelectorAll('[data-flow-node]').forEach(node=>{
       node.classList.toggle('is-related',related.has(node.dataset.flowNode));node.classList.toggle('is-selected',node.dataset.flowNode===graphSelected);
-      node.querySelector('[data-select-node]')?.setAttribute('aria-pressed',String(node.dataset.flowNode===graphSelected));
+      node.setAttribute('aria-pressed',String(node.dataset.flowNode===graphSelected));
+      node.querySelector('button[data-select-node]')?.setAttribute('aria-pressed',String(node.dataset.flowNode===graphSelected));
     });
     const info=data.graph_details[graphSelected];panel.hidden=!info;if(!info){panel.innerHTML='';return;}
     const remote=info.chapter_id!==state.chapter;
@@ -244,7 +245,7 @@
     a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
   document.addEventListener('click', event => {
-    const button=event.target.closest('button'); if (!button || button.disabled) return;
+    const button=event.target.closest('button,[data-select-node]'); if (!button || (button.tagName==='BUTTON' && button.disabled)) return;
     if (button.id==='open-studio') {
       state.open=true; $('author-gate').hidden=true; $('workspace').hidden=false;nav.querySelectorAll('button').forEach(b=>{b.disabled=false;});restoreRoute();go(state.view,true,'replace');
     } else if (button.dataset.view) {if(button.dataset.document)state.document=button.dataset.document;if(button.dataset.graphPanel)state.graphPanel=button.dataset.graphPanel;go(button.dataset.view);}
@@ -279,6 +280,8 @@
   });
   document.addEventListener('input', event => {if(event.target.id==='setting-search') {state.query=event.target.value;state.item='';state.tab='';filterSettings();recordRoute('replace');}});
   document.addEventListener('keydown',event=>{
+    const card=event.target.closest('[data-select-node].tl-card');
+    if(card&&['Enter',' '].includes(event.key)&&event.target===card){event.preventDefault();selectGraphNode(card.dataset.selectNode);return;}
     const tab=event.target.closest('[data-timeline-option]');
     if(tab&&['ArrowLeft','ArrowRight'].includes(event.key)){
       event.preventDefault();const g=data.timeline.groups[tab.dataset.timelineGroup],index=g.options.findIndex(o=>o.id===tab.dataset.timelineOption),next=g.options[(index+(event.key==='ArrowRight'?1:g.options.length-1))%g.options.length];
