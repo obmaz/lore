@@ -23,7 +23,7 @@ class PagesDeploymentTest(unittest.TestCase):
         self.script = textwrap.dedent(match.group(1))
         self.novel = self.checkout / "novel"
         manifest = json.loads((ROOT / "novel/writing/previews/manifest.json").read_text())
-        files = [*manifest["source_sha256"], "writing/previews/manifest.json", "writing/previews/chapter01-interactive.html"]
+        files = [*manifest["source_sha256"], "writing/previews/manifest.json", "writing/previews/novel-reader.html"]
         studio_manifest = json.loads((ROOT / 'novel/writing/studio/generated/manifest.json').read_text())
         files += [*studio_manifest['source_sha256'], 'writing/studio/generated/manifest.json',
                   'writing/studio/generated/index.html', 'writing/studio/publication.json']
@@ -48,7 +48,7 @@ class PagesDeploymentTest(unittest.TestCase):
         site = self.checkout / "site"
         self.assertEqual(sorted(p.name for p in (site / "novel").iterdir()), ["index.html", "studio"])
         self.assertEqual((site / "novel/index.html").read_bytes(),
-                         (self.novel / "writing/previews/chapter01-interactive.html").read_bytes())
+                         (self.novel / "writing/previews/novel-reader.html").read_bytes())
         self.assertEqual(sorted(p.name for p in (site / 'novel/studio').iterdir()),['index.html'])
         self.assertEqual((site / 'novel/studio/index.html').read_bytes(),
                          (self.novel / 'writing/studio/generated/index.html').read_bytes())
@@ -67,7 +67,7 @@ class PagesDeploymentTest(unittest.TestCase):
         self.assertFalse((self.checkout / "site/novel/index.html").exists())
 
     def test_modified_reader_is_not_published(self):
-        (self.novel / "writing/previews/chapter01-interactive.html").write_text("changed output")
+        (self.novel / "writing/previews/novel-reader.html").write_text("changed output")
         result = self.assemble()
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("reader differs", result.stderr)
@@ -91,7 +91,7 @@ class PagesDeploymentTest(unittest.TestCase):
         self.assertFalse((self.checkout / 'site/novel/studio/index.html').exists())
 
     def test_stale_studio_source_stops_publication(self):
-        (self.novel / 'writing/previews/menace-01.html').write_text('changed preview')
+        (self.novel / 'writing/previews/chapter01-web.html').write_text('changed preview')
         result=self.assemble()
         self.assertNotEqual(result.returncode,0)
         self.assertIn('studio export is stale',result.stderr)
