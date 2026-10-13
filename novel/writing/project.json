@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 2,
+  "revision": 3,
   "status": "proposed",
   "viewpoint": {
     "field": "viewpoint",
@@ -44,12 +44,31 @@
     "dialogue": "갈등·정보·관계가 실제로 움직일 때 대화를 쓴다. 대화 비율을 숫자로 강제하지 않으며 원작 대사 반영을 우선한다.",
     "emotion": "감정을 설명만 하지 않고 행동·망설임·시선·선택으로 드러낸다. 주인공이 모르는 다른 인물의 속마음은 단정하지 않는다.",
     "humor": "작은 유머와 인물 간 온도 차이를 허용하되 위험과 원작의 분위기를 가볍게 무효화하지 않는다.",
-    "avoid": ["설정 검증과 미정 사항을 소설 본문에서 설명하기", "사건을 요약한 뒤 같은 사실을 반복하기", "과도한 미사여구와 의미 없는 대화", "짧은 선택을 늘려 분량 채우기"],
+    "avoid": [
+      "설정 검증과 미정 사항을 소설 본문에서 설명하기",
+      "사건을 요약한 뒤 같은 사실을 반복하기",
+      "과도한 미사여구와 의미 없는 대화",
+      "짧은 선택을 늘려 분량 채우기"
+    ],
     "stage_policy": {
       "outline": "스토리보드와 소단락 골격은 인과·행동·결과를 담은 명료한 요약으로 쓴다. 미사여구와 새 대사를 넣지 않는다.",
       "prose": "상세 본문을 쓸 때 시점·어조와 이 문체 기준을 적용한다. 한 소편을 충분히 전개하고 검토한 뒤 다음 소편을 쓴다."
     },
     "application_policy": "매 집필·재집필 전에 이 파일을 읽는다. 문체 수정은 이후 집필부터 적용하며 기존 원고 전체를 자동으로 다시 쓰지 않는다. 집필 인계 메모에는 적용한 style.revision을 기록한다."
   },
-  "style_note": "현재 제한적 3인칭과 감각·대화 중심 문체로 소편을 이어 쓴다. 문체는 후속 편집에서 바꿀 수 있다. 여러 소편 요청도 한 소편씩 집필·확인·푸시한 뒤 다음 소편으로 진행한다. 처음의 긴 채팅 원고와 동일한 문체를 복원했다고 주장하지 않는다."
+  "style_note": "현재 제한적 3인칭과 감각·대화 중심 문체로 소편을 이어 쓴다. 문체는 후속 편집에서 바꿀 수 있다. 여러 소편 요청도 한 소편씩 집필·확인·푸시한 뒤 다음 소편으로 진행한다. 처음의 긴 채팅 원고와 동일한 문체를 복원했다고 주장하지 않는다.",
+  "branch_policy": {
+    "scope": "all_chapters",
+    "single_option": "automatic_without_button",
+    "decision": "choose_one_path_then_rejoin_forward",
+    "revisit": "only_explicit_reader_undo_or_restart",
+    "discovery": "continuous_prose_not_click_to_collect",
+    "origin": "authored",
+    "metadata": {
+      "addition": true,
+      "kind": "new_setting",
+      "note": "추가: 전 장의 편집·독서 원칙. 원작 발생 기록은 보존하며 같은 갈림길의 모든 결과를 한 경로에 섞지 않는다.",
+      "knowledge_policy": "author_reference_not_character_knowledge"
+    }
+  }
 }

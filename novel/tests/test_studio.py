@@ -27,7 +27,8 @@ class StudioTests(unittest.TestCase):
         self.assertEqual({d['id'] for d in self.data['documents']},expected)
         self.assertEqual(len(expected),10)
         self.assertEqual({d['id'] for d in self.data['documents'] if d['reader_edition']},
-                         {'chapter01-interactive.html','side-adventures.html'})
+                         {'chapter01-interactive.html'})
+        self.assertEqual({d['id'] for d in self.data['documents'] if d['branch_preview']},{'side-adventures.html'})
         for row in self.data['documents']:
             self.assertEqual(row['html'],(ROOT/row['source_ref']).read_text(encoding='utf-8'))
 

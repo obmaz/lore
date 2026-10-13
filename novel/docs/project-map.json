@@ -4627,10 +4627,6 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
-          "file": "tools/check_studio_browser.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
           "file": "tools/interactive.py"
         },
         {
@@ -4799,19 +4795,11 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
-          "file": "README.md"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_studio.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/check_studio_browser.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -4921,6 +4909,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6059,19 +6051,11 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
-          "file": "README.md"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_side_stories.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_studio.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/check_studio_browser.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",

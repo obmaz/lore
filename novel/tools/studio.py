@@ -197,7 +197,8 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
         elif name=='source-connected.html': group, note = 'source', '15장 원문 연결 판본 · 조건부 원문·기술 부록 포함'
         label = reading_labels.get(name,title+(' · 동행 거절 경로' if '-declined' in name else ' · 주점 방문 경로' if '-tavern' in name else ''))
         documents.append({'id':name,'title':title,'label':label,'group':group,'note':note,'source_ref':'writing/previews/'+name,'html':body})
-        documents[-1]['reader_edition']=name in ('chapter01-interactive.html','side-adventures.html')
+        documents[-1]['reader_edition']=name=='chapter01-interactive.html'
+        documents[-1]['branch_preview']=name=='side-adventures.html'
     names = {key:title_of(p) for key,p in session.profiles['characters'].items()}
     checkpoints = session.profiles['disclosure_checkpoints']
     settings = []

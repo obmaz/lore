@@ -26,7 +26,7 @@
 사용자 요청으로 공개 게시된 읽기 전용·전편 스포일러 화면이며 로그인은 없습니다.
 [사용·갱신 안내](writing/studio/README.md)를 참고합니다.
 
-[15장 곁가지 선택 시범](https://obmaz.github.io/lore/novel/studio/#/reading?document=side-adventures.html)은
+[15장 곁가지 선택 시범](https://obmaz.github.io/lore/novel/studio/#/graph?graphPanel=preview)은
 각 장 두 개의 곁가지와 5개 중첩 선택·후속 반응을 확인하는 창작 초고입니다. 본줄기는 기존 기본 경로의 주요 내용으로
 유지하며, 원문 전체·완성 장편 판본과 구분합니다. [원본 JSON·연결·검사 범위](writing/side-stories/README.md).
 

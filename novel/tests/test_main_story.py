@@ -19,7 +19,9 @@ class MainStoryTests(unittest.TestCase):
 
     def test_01_early_veteran_can_only_rejoin_before_lord(self):
         route = ['prologue/enter_courtyard', 'prologue/visit_tavern']
-        packet = self.session.replay(route)
+        route, packet = self.session.choose(route,'i/tavern_menu')
+        self.assertEqual(packet['available_choices'],['i/late_veteran'])
+        route,packet=self.session.choose(route,'i/late_veteran')
         self.assertEqual(packet['available_choices'], ['prologue/remember_veteran'])
         with self.assertRaises(ValueError):
             self.session.choose(route, 'i/late_veteran_back')

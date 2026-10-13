@@ -332,6 +332,8 @@ def documents():
         'auto_rules':overlay['auto_rules'],'insertions':overlay['display_insertions'],'party':overlay['party'],'equipment':overlay['initial_equipment'],
         'contracts':memory['contracts'],'conditional_required':overlay['conditional_required'],
         'main_story':overlay['main_story']['required_scenes']}
+    payload['display_groups']={n['id']:'i/treasure_hub' for n in story['nodes']
+        if n['id'].startswith('i/gold_') or n['id'] in ('lore_menace/center','i/treasure_hub','i/shield','i/shield_equipped','i/shield_cancel')}
     encoded = json.dumps(payload,ensure_ascii=False,sort_keys=True)
     payload['fingerprint'] = hashlib.sha256(encoded.encode()).hexdigest()
     safe = json.dumps(payload,ensure_ascii=False,sort_keys=True).replace('<','\\u003c').replace('&','\\u0026')

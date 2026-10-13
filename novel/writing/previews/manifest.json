@@ -1,11 +1,11 @@
 {
   "version": 1,
   "source_sha256": {
-    "writing/interactive/chapter01.json": "31473e42b9039c25a79862321a7c452c4b981f25e666df5027a41d0c9ec76bb6",
-    "writing/interactive/reader.js": "9749c3408f599baa61fe899a8b023efc80f33ba1ecf8c79621d5fc857a0976c7",
+    "writing/interactive/chapter01.json": "9f5137a8a749acf3be565bcdf01a01cfdd73d2f512b6e97310cd3b561c613cfc",
+    "writing/interactive/reader.js": "74d29115bc4568cc418a3ccf026fa260a9e5a2527ac65f66713d317cb878e473",
     "writing/interactive/overlay.schema.json": "77f9d32b48639f3fdd962763a529e6f49252bf1cf2ef30dd6c8e6bdcfeb923ea",
-    "writing/interactive/episodes.json": "b1a3efb45155f541f2721c25fc164c8ddfd5cc8d03e172adf916c99282127fbe",
-    "tools/interactive.py": "beb302bee2bbb28e9c49c5c21b5e8645012fe696de276bab96e7e2f8335a4564",
+    "writing/interactive/episodes.json": "7205b0196c3c9eb1738d32ce51413bbfa5512af90803ba2b68f79a777c19cdd5",
+    "tools/interactive.py": "9040f4947da40aba2bdd7c2ce2841d289c1fa836298dcc11c07fad26f3a5717b",
     "writing/storyboard/series.json": "c2f89a6336c40f4b74c98415323c1e078fd8ced4af669beed0136682276cb652",
     "writing/storyboard/chapters.json": "a9429277e0fa9237fbf960ac63668b1df8dfb761ad5d7a86bdb9b05981230634",
     "writing/chapters.schema.json": "8e548560e5a3a59cce72b56175bb2e7d608d610022727540592e6646fa0a45c5",
@@ -32,7 +32,7 @@
     "reference/names.json": "2fb45df00f9a8361eb6cdf9eea9335cb710334363e7a149cf7a8d080cd179ab6",
     "reference/terms.json": "a26cfd9104992f78b5afaa0a4ec08cea6722ab16643ad50ac414a471832db646",
     "continuity/canon.json": "02392cb0559da1ed83b8deda9f33642e926d94bf9b46b54143dad227e73d5705",
-    "writing/project.json": "6932cc9941785da03bd59cb1db8dc08142df86574615005c14e02b8a4d8106fa",
+    "writing/project.json": "da12a25e36fb80e4d45763f0e32d4ff0a4a745f766b9ec7a45e3978ba0bfaf51",
     "tools/writing.py": "db8fb842ce1e80bfbf3e7dd6ff35c78ffa06ea147e1619e892be74724494a09b",
     "tools/text_refs.py": "da5326edfb63354058ea19f6c6419d8cc3e61f8b46c685f6ae2f73e41b3568bc",
     "tools/story_continuity.py": "7cca2c56f1df8dc977612b51fd6fb0630cc8e0ae09489d6a736df5e8c6089599",
@@ -59,11 +59,11 @@
     "writing/publication/generated/flow.md": "618e724c1b946b9bfb9767a4d90e24c28ab762dcbc258a4f05b6a3187cb5d5c8",
     "writing/publication/generated/flow.html": "27e1bad0925d995e5c495eddc8573a99d63e5f78b0c0d27ad123e9a5964cc946",
     "writing/publication/generated/coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746",
-    "writing/studio/studio.plan.json": "b18b4fc4631f2d7db5a02324d669be1d90672609ec56cfe79d2ad20e7cab202c",
+    "writing/studio/studio.plan.json": "0502b63066eb9b5d9a14830fa61b6aeee1982f180a47fa9314267b3f55087ab4",
     "writing/studio/studio.schema.json": "b670be722d1f9d11689edd448887187ff68f6a6f3ad5680f2b9f14f7e66bc93c",
     "writing/studio/shell.html": "ec33a1aba4e4070c68c9edca4b7180467c06a7f721060632e5a7232d7eaa4de8",
-    "writing/studio/studio.js": "79ed83f5b45cac640f11cd73fc4307e0cf536a19df34dcfc02af21d853acf135",
-    "tools/studio.py": "e55cbd5ea4f4f1f0d93726737dd6a19822ff4c8aa587a25afe8a976780d7bd9c",
+    "writing/studio/studio.js": "38d4c6b1b38faadbe8475593a7bf19462d52d375a1fde8307a9ede1f8534923f",
+    "tools/studio.py": "fff732fc1294893c182a56feb10cab9d21611b466bfd7893aa5129111f6438f3",
     "writing/side-stories/series.json": "816a7624906e22ea10fc0308a816fc2445be63ddbe6e50743d5dd1e521e8d4d2",
     "writing/side-stories.schema.json": "5924b1012056a8c21907d5cbae306b82f0fa6f7a4a0804b77477db4d6cc9b30b",
     "writing/side-stories/reader.js": "efbe3905e3fbfa638eb65c6247495ec40a0d3ffbb5f98bf0df01b89594d2fbf5",
@@ -88,8 +88,8 @@
     "publication-flow.html": "27e1bad0925d995e5c495eddc8573a99d63e5f78b0c0d27ad123e9a5964cc946",
     "side-adventures.html": "9da4a516c11518cc65fc572a39af03033d99dcbbecb8b9bc890c48adc19b4a79",
     "source-connected.html": "dd1ad8a71d77f4f435214e644f14f35d82b90305686d75bbe84be843d002ada9",
-    "chapter01-interactive.html": "e37b234a255246b323e95b5801dbbd9566c4c64607e878679999ef368e3d3aa1",
+    "chapter01-interactive.html": "86dc0ac4a9acffe6b01a03f2f00581f2ad3238c4a4d18f53620283516a83d17e",
     "chapter01-branches.html": "1a96e2a7a78a8ad6ceea0014cbaa0bde95e94378ad658a98b2d47f55bfae8b6a",
-    "chapter01-coverage.json": "bd915eb4c241825995aa1d5c9e7a36e35a1f85b221bcff98e484a7633447ba7d"
+    "chapter01-coverage.json": "d83a33a739654ca4efee41840e8646c5573811fbfc015479fe31d263daa850dc"
   }
 }

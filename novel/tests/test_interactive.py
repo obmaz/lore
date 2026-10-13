@@ -48,13 +48,16 @@ class InteractiveTests(unittest.TestCase):
             route,packet = self.walk(['lore_menace/accept_skeleton' if skeleton else 'lore_menace/decline_skeleton'],route)
         route,packet = self.walk(['lore_menace/set_out'],route)
         if roles:
+            self.assertEqual(len(roles),1,'one role approach per reading path')
             route,packet = self.walk(['i/choose_role'],route)
-            for actor in roles: route,packet = self.walk(['i/use_'+actor,'i/role_back_'+actor],route)
-            route,packet = self.walk(['i/role_finish'],route)
+            actor=roles[0]
+            route,packet = self.walk(['i/use_'+actor,'i/role_enter_'+actor],route)
         else: route,packet = self.walk(['lore_menace/enter_menace'],route)
         route,packet = self.walk(['lore_menace/walk_deeper','lore_menace/confirm_center'],route)
-        if treasure: route,packet = self.walk(['i/cave_treasure',*treasure],route)
-        route,packet = self.walk(['lore_menace/return_to_lore','lore_menace/report_success',
+        if treasure:
+            route,packet=self.walk(['i/cave_treasure','i/gold_1',*[f'i/gold_back_{i}' for i in range(1,7)],*treasure],route)
+        else:route,packet=self.walk(['lore_menace/return_to_lore'],route)
+        route,packet = self.walk(['lore_menace/report_success',
             'lore_menace/acknowledge_reward','lore_menace/hear_next_task','lore_menace/leave_audience'],route)
         self.assertEqual(packet['state']['quest.lore_stage'],6)
         self.assertTrue(packet['state']['quest.menace_reward_claimed'])
@@ -124,19 +127,16 @@ class InteractiveTests(unittest.TestCase):
         for p,w in self.session.overlay['initial_equipment'].items(): self.assertEqual(packet['state']['event.weapon.'+p],w)
         self.finish(route)
 
-    def test_04_every_pair_of_region_orders_and_three_visit_auto(self):
+    def test_04_each_region_rejoins_forward_without_collecting_other_regions(self):
         simple = {'armory':['i/armory_finish','i/armory_back'],'streets':[],
                   'grave':['i/grave_back'],'support':[],'mine_lore':['i/mine_lore_back']}
-        for regions in itertools.permutations(simple,2):
-            route,packet = self.town([c for r in regions for c in ['i/visit_'+r,*simple[r]]])
-            self.assertEqual(packet['state']['event.city_visits'],2)
-            self.assertEqual(packet['node_id'],'i/hub')
-        route,packet = self.town(['i/visit_armory','i/armory_finish','i/armory_back','i/visit_streets','i/visit_mine_lore','i/mine_lore_back'])
-        self.assertEqual(packet['state']['event.city_visits'],3)
-        self.assertEqual(packet['node_id'],'lore_menace/castle_exit')
-        self.assertIn('i/depart_now',route)
-        self.assertEqual(route[-1],'i/threshold_outside')
-        self.finish(route)
+        for region,ending in simple.items():
+            route,packet=self.town(['i/visit_'+region,*ending])
+            self.assertEqual(packet['state']['event.city_visits'],1)
+            self.assertEqual(packet['node_id'],'lore_menace/castle_exit')
+            self.assertEqual([h['node_id'] for h in packet['history']].count('i/hub'),1)
+            with self.assertRaises(ValueError):self.session.choose(route,'i/visit_mine_lore')
+            self.finish(route)
 
     def test_05_same_region_cannot_repeat(self):
         route,packet = self.town(['i/visit_mine_lore','i/mine_lore_back'])
@@ -144,12 +144,13 @@ class InteractiveTests(unittest.TestCase):
         with self.assertRaises(ValueError):self.session.choose(route,'i/visit_mine_lore')
 
     def test_06_both_tavern_greetings_and_late_testimony(self):
-        for earlier in [[],['i/visit_mine_lore','i/mine_lore_back']]:
-            route,packet = self.town([*earlier,'i/visit_tavern','i/late_veteran','i/late_veteran_back'])
-            self.assertTrue(packet['state']['knowledge.missing_squad'])
-            self.assertIn('veteran_story',packet['knowledge']['protagonist'])
-            self.finish(route)
-        route,packet = self.walk(['prologue/enter_courtyard','prologue/visit_tavern','prologue/remember_veteran'])
+        route,packet = self.town(['i/visit_tavern','i/late_veteran','i/late_veteran_back'])
+        self.assertTrue(packet['state']['knowledge.missing_squad'])
+        self.assertIn('veteran_story',packet['knowledge']['protagonist'])
+        self.assertIn('i/tavern_personal',route)
+        self.finish(route)
+        route,packet = self.walk(['prologue/enter_courtyard','prologue/visit_tavern','i/late_veteran','prologue/remember_veteran'])
+        self.assertIn('i/tavern_menu',route)
         self.assertNotIn('prologue/visit_tavern',packet['available_choices'])
 
     def test_07_grave_chest_only_after_actual_visit(self):
@@ -160,8 +161,9 @@ class InteractiveTests(unittest.TestCase):
         self.finish(route)
 
     def test_08_repeated_conditional_city_lines(self):
-        route,_ = self.town(['i/visit_streets','i/visit_support'])
-        self.finish(route)
+        for region in ['streets','support']:
+            route,_ = self.town(['i/visit_'+region])
+            self.finish(route)
 
     def test_09_prison_refusal_no_free_recruit(self):
         route,packet = self.town(['i/visit_prison','i/prison_request','i/decline_joe','i/joe_declined_back'])
@@ -198,10 +200,10 @@ class InteractiveTests(unittest.TestCase):
         self.assertNotIn('skeleton',packet['character_profiles'])
 
     def test_13_replace_slot_confirmed_never_two_optional_companions(self):
-        route,_ = self.town(['i/visit_prison','i/prison_service','i/service_inside','i/accept_joe','i/joe_quiet_exit','i/joe_quiet_back','i/depart_now'])
+        route,_ = self.town(['i/visit_prison','i/prison_service','i/service_inside','i/accept_joe','i/joe_quiet_exit','i/joe_quiet_back'])
         packet = self.session.replay(route)
         self.assertNotIn('lore_menace/accept_skeleton',packet['available_choices'])
-        route,packet = self.walk(['i/skeleton_replace','i/replace_confirm','lore_menace/accept_skeleton'],route)
+        route,packet = self.walk(['i/skeleton_replace','i/replace_confirm'],route)
         self.assertEqual(packet['state']['companions.optional_recruits'],['skeleton'])
         self.assertEqual(packet['state']['event.slot6'],'skeleton')
         self.finish(route)
@@ -209,20 +211,22 @@ class InteractiveTests(unittest.TestCase):
     def test_14_skeleton_conversation_once_after_continuous_departure(self):
         route,packet = self.walk([*INTRO,'lore_menace/leave_castle'])
         self.assertEqual(packet['node_id'],'lore_menace/castle_exit')
-        route,packet = self.walk(['i/skeleton_ask','i/conversation_back'],route)
-        self.assertNotIn('i/skeleton_ask',packet['available_choices'])
-        self.assertFalse(any(b['provenance']['origin']=='source_exact' for b in packet['visible_blocks']))
+        route,packet = self.walk(['i/skeleton_ask','i/conversation_accept'],route)
+        self.assertEqual(packet['node_id'],'lore_menace/departure_path')
+        self.assertEqual([h['node_id'] for h in packet['history']].count('lore_menace/castle_exit'),1)
         self.finish(route)
 
     def test_15_all_profession_reactions_and_real_knowledge(self):
-        route,_ = self.walk(INTRO)
-        route,packet = self.finish(route,roles=self.session.overlay['party'])
-        visible = {b for h in packet['history'] for b in h['visible_block_ids']}
         for p in self.session.overlay['party']:
+            route,_=self.walk(INTRO)
+            route,packet=self.finish(route,roles=[p])
+            visible = {b for h in packet['history'] for b in h['visible_block_ids']}
             self.assertIn('i/role_echo_'+p,visible)
             self.assertIn('i/role_report_'+p,visible)
             self.assertIn('menace_assignment_account',packet['knowledge'][p])
             self.assertIn('lastditch_direction_account',packet['knowledge'][p])
+            for other in set(self.session.overlay['party'])-{p}:
+                self.assertNotIn('i/role_echo_'+other,visible)
         self.assertIn('menace_assignment_account',packet['knowledge']['skeleton'])
 
     def test_16_reaction_requires_actor_weapon_and_experience(self):
@@ -239,8 +243,7 @@ class InteractiveTests(unittest.TestCase):
 
     def test_17_all_six_gold_spots_once_and_reward_milestone_preserved(self):
         route,_ = self.walk(INTRO)
-        choices=[c for i in range(1,7) for c in ['i/gold_'+str(i),'i/gold_back_'+str(i)]]
-        route,packet = self.finish(route,treasure=[*choices,'i/treasure_finish'])
+        route,packet = self.finish(route,treasure=['i/shield_cancel','i/shield_cancel_back'])
         self.assertEqual(packet['state']['event.gold'],7000)
         self.assertEqual(packet['state']['event.shield_owner'],'')
         center = next(e for e in packet['proposed_events'] if e['id']=='lore_menace/center_confirmed')
@@ -249,14 +252,14 @@ class InteractiveTests(unittest.TestCase):
 
     def test_18_shield_cancel_has_no_item(self):
         route,_ = self.walk(INTRO)
-        _,packet = self.finish(route,treasure=['i/shield_find','i/shield_cancel','i/shield_cancel_back'])
+        _,packet = self.finish(route,treasure=['i/shield_cancel','i/shield_cancel_back'])
         self.assertEqual(packet['state']['event.shield_owner'],'')
-        self.assertEqual(packet['state']['event.gold'],0)
+        self.assertEqual(packet['state']['event.gold'],7000)
 
     def test_19_shield_recipient_stable_id_in_handoff(self):
         for recipient in ['protagonist',*self.session.overlay['party']]:
             route,_ = self.walk(INTRO)
-            _,packet = self.finish(route,treasure=['i/shield_find','i/shield_'+recipient,'i/shield_back'])
+            _,packet = self.finish(route,treasure=['i/shield_'+recipient,'i/shield_back'])
             self.assertEqual(packet['handoff_packet']['state']['event.shield_owner'],recipient)
             self.assertIn('companions.starting',packet['handoff_packet']['state'])
 
@@ -300,9 +303,10 @@ class InteractiveTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'outside source'):compile_chapter(o)
 
     def test_25_joe_armory_only_when_really_present_and_unarmed(self):
-        route,packet = self.town(['i/visit_prison','i/prison_service','i/service_inside','i/accept_joe','i/joe_quiet_exit','i/joe_quiet_back',
-            'i/visit_armory','i/armory_finish_joe','i/armory_back'])
-        self.assertEqual(packet['state']['event.weapon.mad_joe'],'weapon_1')
+        route,packet = self.town(['i/visit_prison','i/prison_service','i/service_inside','i/accept_joe','i/joe_quiet_exit','i/joe_quiet_back'])
+        self.assertFalse(packet['state']['event.armory_used'])
+        self.assertEqual(packet['state']['event.weapon.mad_joe'],'weapon_0')
+        with self.assertRaises(ValueError):self.session.choose(route,'i/visit_armory')
         self.assertEqual(packet['state']['event.slot6'],'mad_joe')
         self.finish(route,skeleton=False)
 
@@ -312,7 +316,7 @@ class InteractiveTests(unittest.TestCase):
         town_routes=[
             ['i/visit_armory','i/armory_finish','i/armory_back'],
             ['i/visit_streets'],
-            ['i/visit_mine_lore','i/mine_lore_back','i/visit_tavern','i/late_veteran','i/late_veteran_back'],
+            ['i/visit_tavern','i/late_veteran','i/late_veteran_back'],
             ['i/visit_tavern','i/tavern_back'],
             ['i/visit_grave','i/grave_chest','i/grave_chest_back'],
             ['i/visit_support'],
@@ -324,13 +328,14 @@ class InteractiveTests(unittest.TestCase):
             self.finish(route)
         route,_=self.walk([*INTRO,'lore_menace/leave_castle'])
         self.finish(route)
-        for treasure in [[c for i in range(1,7) for c in ['i/gold_'+str(i),'i/gold_back_'+str(i)]]+['i/treasure_finish'],
-                         ['i/shield_find','i/shield_protagonist','i/shield_back'],['i/shield_find','i/shield_cancel','i/shield_cancel_back']]:
+        self.walk(['prologue/enter_courtyard','prologue/visit_tavern','i/late_veteran','prologue/remember_veteran'])
+        for treasure in [['i/shield_protagonist','i/shield_back'],['i/shield_cancel','i/shield_cancel_back']]:
             route,_=self.walk(INTRO)
             self.finish(route,treasure=treasure)
-        expected={b['id'] for n in self.session.story['nodes'] for b in n['blocks']
-                  if b['id'].startswith('i/') and b['provenance']['origin']=='source_exact'}
-        self.assertFalse(expected-self.witnessed,sorted(expected-self.witnessed))
+        quoted={b['id']:set(b['literal_ids']) for n in self.session.story['nodes'] for b in n['blocks'] if b['provenance']['origin']=='source_exact'}
+        expected=set().union(*(ids for key,ids in quoted.items() if key.startswith('i/')))
+        seen=set().union(*(quoted[key] for key in self.witnessed if key in quoted))
+        self.assertFalse(expected-seen,sorted(expected-seen))
 
     def test_27_reader_export_is_identical_across_process_hash_seeds(self):
         script='import hashlib,json;from interactive import documents;print(json.dumps({k:hashlib.sha256(v.encode()).hexdigest() for k,v in documents().items()},sort_keys=True))'
@@ -345,10 +350,10 @@ class InteractiveTests(unittest.TestCase):
         unit=read(ROOT/'writing/interactive/episodes.json')['units'][0]
         data=indexes(self.profiles,load_references())
         ls=literals()
-        for earlier,greeting in [([], 'menu'),(['i/visit_mine_lore','i/mine_lore_back'],'personal')]:
-            route,packet=self.town([*earlier,'i/visit_tavern'])
+        for early,greeting in [(True,'menu'),(False,'personal')]:
+            route,packet=self.walk(['prologue/enter_courtyard','prologue/visit_tavern']) if early else self.town(['i/visit_tavern'])
             self.assertEqual(packet['node_id'],'i/tavern_people')
-            self.assertEqual(packet['available_choices'],['i/late_veteran','i/tavern_back'])
+            self.assertEqual(packet['available_choices'],['i/late_veteran'] if early else ['i/late_veteran','i/tavern_back'])
             self.assertIn('i/tavern_'+greeting,route)
             self.assertNotIn('i/tavern_'+('personal' if greeting=='menu' else 'menu'),route)
             sections=[h['node_id'] for h in packet['history'] if h['node_id'] in unit['node_ids']]+['i/tavern_people']
@@ -359,11 +364,11 @@ class InteractiveTests(unittest.TestCase):
             self.assertEqual(packet['state']['event.gold'],0)
             self.assertFalse(packet['state']['knowledge.missing_squad'])
             state=copy.deepcopy(packet['state'])
-            _,after=self.walk(['i/tavern_back'],route)
+            _,after=self.walk(['i/late_veteran','prologue/remember_veteran'] if early else ['i/tavern_back'],route)
             self.assertTrue(after['state']['event.visited.tavern'])
             self.assertEqual(after['state']['event.city_visits'],state['event.city_visits']+1)
-            self.assertFalse(after['state']['knowledge.missing_squad'])
-            self.assertIn('i/tavern_departure',[h['node_id'] for h in after['history']])
+            self.assertEqual(after['state']['knowledge.missing_squad'],early)
+            if not early:self.assertIn('i/tavern_departure',[h['node_id'] for h in after['history']])
             self.assertEqual(after['state']['companions.optional_recruits'],state['companions.optional_recruits'])
         for key in unit['node_ids']:
             for block in self.nodes[key]['blocks']:
@@ -392,7 +397,7 @@ class InteractiveTests(unittest.TestCase):
         for region,blocks in [('streets',{'i/menace_monsters'}),
                               ('support',{'i/support_first','i/support_farewell_prose','i/support_repeat'})]:
             route,packet=self.town(['i/visit_'+region])
-            self.assertEqual(packet['node_id'],'i/hub')
+            self.assertEqual(packet['node_id'],'lore_menace/castle_exit')
             self.assertEqual(packet['state']['event.city_visits'],1)
             self.assertTrue(packet['state']['event.visited.'+region])
             self.assertEqual(packet['state']['event.gold'],0)
@@ -405,9 +410,9 @@ class InteractiveTests(unittest.TestCase):
 
     def test_31_saved_routes_cannot_bypass_an_automatic_narrative(self):
         route,_=self.town(['i/visit_tavern'])
-        index=route.index('i/tavern_menu')
-        forged=[*route[:index],'i/tavern_personal','i/hear_tavern_people']
-        with self.assertRaisesRegex(ValueError,'automatic transition bypassed'):
+        index=route.index('i/tavern_personal')
+        forged=[*route[:index],'i/tavern_menu','i/hear_tavern_people_menu']
+        with self.assertRaises(ValueError):
             self.session.replay(forged)
 
 

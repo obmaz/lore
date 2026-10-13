@@ -1,6 +1,6 @@
 {
   "id": "interactive_chapter01",
-  "revision": 5,
+  "revision": 7,
   "quests": [
     "prologue.json",
     "lore_menace.json"
@@ -14,7 +14,7 @@
   "metadata": {
     "addition": true,
     "kind": "new_setting",
-    "note": "사용자가 지정한 네 시작 동료와 직업별 장비, 지역 방문 순서·3곳 제한·영입 접근법·역할별 후속 장면을 첫 챕터에만 추가한 집필 초고. 문턱의 거절·재고·결심과 거리의 추가 설명·격려의 재인사는 선택 메뉴가 아닌 연속 서사로 각색한다. 원문 응답은 서로 다른 대화 시점에 보존하고 결심을 독자의 선택인 척 표시하지 않는다. 원작 게임 변경이 아니다."
+    "note": "사용자가 지정한 네 시작 동료와 직업별 장비, 지역 방문 순서·3곳 제한·영입 접근법·역할별 후속 장면을 첫 챕터에만 추가한 집필 초고. 문턱의 거절·재고·결심과 거리의 추가 설명·격려의 재인사는 선택 메뉴가 아닌 연속 서사로 각색한다. 원문 응답은 서로 다른 대화 시점에 보존하고 결심을 독자의 선택인 척 표시하지 않는다. 원작 게임 변경이 아니다. 추가: 탐방과 직업 역할은 한 경로만 고른 뒤 본줄기로 합류한다. 금화 발견·방패 확인은 연속 본문이며 실제 장착 담당자만 선택한다. 같은 갈림길의 다른 결과를 정방향으로 수집하지 않는다."
   },
   "party": [
     "party_woodcutter",
@@ -923,7 +923,51 @@
             "state": "quest.lore_stage",
             "op": "eq",
             "value": 2
-          }
+          },
+          "effects": [
+            {
+              "state": "knowledge.missing_squad",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [
+                  "prologue/veteran"
+                ],
+                "note": "새로 집필한 연결 서사·표현. 원작 문장이나 확정 설정이 아니다."
+              }
+            },
+            {
+              "state": "event.visited.tavern",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "knowledge.missing_squad",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ]
         }
       },
       "append_choices": [
@@ -934,8 +978,12 @@
               "text": "다른 곳을 살피거나 출발한다"
             }
           ],
-          "when": {"state": "quest.lore_stage", "op": "eq", "value": 3},
-          "target": "i/hub",
+          "when": {
+            "state": "quest.lore_stage",
+            "op": "eq",
+            "value": 3
+          },
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.tavern",
@@ -1730,9 +1778,18 @@
             }
           ],
           "when": {
-            "state": "event.cave_detour_done",
-            "op": "eq",
-            "value": false
+            "all": [
+              {
+                "state": "event.cave_detour_done",
+                "op": "eq",
+                "value": false
+              },
+              {
+                "state": "event.cave_detour_done",
+                "op": "eq",
+                "value": false
+              }
+            ]
           },
           "target": "i/treasure_hub",
           "effects": [],
@@ -1790,7 +1847,8 @@
             "state": "knowledge.missing_squad",
             "op": "eq",
             "value": false
-          }
+          },
+          "target": "i/tavern"
         }
       }
     },
@@ -3238,11 +3296,11 @@
           "id": "i/street_second_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.streets",
@@ -3274,7 +3332,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -3501,7 +3559,11 @@
               "text": "주인이 가까이 다가와 인사한다"
             }
           ],
-          "when": true,
+          "when": {
+            "state": "quest.lore_stage",
+            "op": "gte",
+            "value": 3
+          },
           "target": "i/tavern_personal",
           "effects": [],
           "branch_kind": "navigation",
@@ -3523,7 +3585,11 @@
               "text": "주인이 음료를 권한다"
             }
           ],
-          "when": true,
+          "when": {
+            "state": "quest.lore_stage",
+            "op": "lte",
+            "value": 2
+          },
           "target": "i/tavern_menu",
           "effects": [],
           "branch_kind": "navigation",
@@ -4505,7 +4571,11 @@
               "text": "더 머물지 않고 밖으로 나간다"
             }
           ],
-          "when": true,
+          "when": {
+            "state": "quest.lore_stage",
+            "op": "eq",
+            "value": 3
+          },
           "target": "i/tavern_departure",
           "effects": [
             {
@@ -4732,11 +4802,11 @@
           "id": "i/grave_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.grave",
@@ -4768,7 +4838,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -4844,11 +4914,11 @@
           "id": "i/grave_chest_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.grave",
@@ -4890,7 +4960,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -5146,9 +5216,17 @@
           "kind": "narration",
           "speaker": null,
           "when": true,
-          "text": [{"text": "일행은 더 붙잡혀 있을 수 없어 인사를 하고 돌아섰다. 몇 걸음 뒤에서 같은 목소리가 다시 들렸다. 이번에는 긴 이야기가 아니었다. 걸음을 붙들지 않으면서도 등에 남을 만큼 또렷한 말이었다."}],
+          "text": [
+            {
+              "text": "일행은 더 붙잡혀 있을 수 없어 인사를 하고 돌아섰다. 몇 걸음 뒤에서 같은 목소리가 다시 들렸다. 이번에는 긴 이야기가 아니었다. 걸음을 붙들지 않으면서도 등에 남을 만큼 또렷한 말이었다."
+            }
+          ],
           "literal_ids": [],
-          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 원작 재인사 응답을 떠나는 길의 배웅으로 각색한다. 재인사 선택·두 번째 지역 방문·새 보상은 만들지 않는다."}
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 원작 재인사 응답을 떠나는 길의 배웅으로 각색한다. 재인사 선택·두 번째 지역 방문·새 보상은 만들지 않는다."
+          }
         },
         {
           "id": "i/support_repeat",
@@ -5184,11 +5262,11 @@
           "id": "i/support_repeat_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.support",
@@ -5220,7 +5298,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -5315,11 +5393,11 @@
           "id": "i/mine_lore_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.mine_lore",
@@ -5351,7 +5429,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -5508,11 +5586,11 @@
           "id": "i/prison_leave",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.prison",
@@ -5544,7 +5622,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -6172,11 +6250,11 @@
           "id": "i/joe_declined_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.prison",
@@ -6208,7 +6286,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -6407,11 +6485,11 @@
           "id": "i/joe_quiet_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.prison",
@@ -6443,7 +6521,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -6702,11 +6780,11 @@
           "id": "i/guard_victory_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.prison",
@@ -6738,7 +6816,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -6810,11 +6888,11 @@
           "id": "i/guard_escape_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.prison",
@@ -6846,7 +6924,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -6996,11 +7074,11 @@
           "id": "i/guard_repeat_leave_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.prison",
@@ -7032,7 +7110,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -7409,10 +7487,10 @@
       ],
       "choices": [
         {
-          "id": "i/conversation_back",
+          "id": "i/conversation_accept",
           "label": [
             {
-              "text": "원래 제안에 답한다"
+              "text": "당신을 환영하오."
             }
           ],
           "when": {
@@ -7420,19 +7498,91 @@
             "op": "eq",
             "value": ""
           },
-          "target": "lore_menace/castle_exit",
-          "effects": [],
-          "branch_kind": "navigation",
+          "target": "lore_menace/departure_path",
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "set",
+              "value": [
+                "skeleton"
+              ],
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "skeleton",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.skeleton_offer_seen",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "branch_kind": "companion",
           "consequence": [
             {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
             }
           ],
           "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
+            "origin": "source_exact",
+            "source_refs": [
+              "lore_menace/skeleton_exit"
+            ],
+            "note": "원작 수락·거절 선택 문구 그대로."
+          },
+          "label_literal_id": "LORESPEC.PAS:literal:12269"
+        },
+        {
+          "id": "i/conversation_decline",
+          "label": [
+            {
+              "text": "미안하지만 안되겠소."
+            }
+          ],
+          "when": true,
+          "target": "lore_menace/departure_path",
+          "effects": [
+            {
+              "state": "event.skeleton_offer_seen",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "branch_kind": "companion",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "lore_menace/skeleton_exit"
+            ],
+            "note": "원작 수락·거절 선택 문구 그대로."
+          },
+          "label_literal_id": "LORESPEC.PAS:literal:12307"
         },
         {
           "id": "i/conversation_replace",
@@ -7518,7 +7668,7 @@
             }
           ],
           "when": true,
-          "target": "lore_menace/castle_exit",
+          "target": "lore_menace/departure_path",
           "effects": [
             {
               "state": "companions.optional_recruits",
@@ -7534,6 +7684,38 @@
               "state": "event.slot6",
               "op": "set",
               "value": "",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "set",
+              "value": [
+                "skeleton"
+              ],
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "skeleton",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.skeleton_offer_seen",
+              "op": "set",
+              "value": true,
               "provenance": {
                 "origin": "authored",
                 "source_refs": [],
@@ -7979,28 +8161,6 @@
       ],
       "choices": [
         {
-          "id": "i/role_back_party_woodcutter",
-          "label": [
-            {
-              "text": "다른 사람의 방법도 살핀다"
-            }
-          ],
-          "when": true,
-          "target": "i/roles",
-          "effects": [],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
-        {
           "id": "i/role_enter_party_woodcutter",
           "label": [
             {
@@ -8101,28 +8261,6 @@
         }
       ],
       "choices": [
-        {
-          "id": "i/role_back_party_hunter",
-          "label": [
-            {
-              "text": "다른 사람의 방법도 살핀다"
-            }
-          ],
-          "when": true,
-          "target": "i/roles",
-          "effects": [],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
         {
           "id": "i/role_enter_party_hunter",
           "label": [
@@ -8225,28 +8363,6 @@
       ],
       "choices": [
         {
-          "id": "i/role_back_party_cook",
-          "label": [
-            {
-              "text": "다른 사람의 방법도 살핀다"
-            }
-          ],
-          "when": true,
-          "target": "i/roles",
-          "effects": [],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
-        {
           "id": "i/role_enter_party_cook",
           "label": [
             {
@@ -8348,28 +8464,6 @@
       ],
       "choices": [
         {
-          "id": "i/role_back_party_magician",
-          "label": [
-            {
-              "text": "다른 사람의 방법도 살핀다"
-            }
-          ],
-          "when": true,
-          "target": "i/roles",
-          "effects": [],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
-        {
           "id": "i/role_enter_party_magician",
           "label": [
             {
@@ -8407,7 +8501,7 @@
           "text": "돌아가기 전의 작은 길"
         }
       ],
-      "kind": "hub",
+      "kind": "scene",
       "entry_when": true,
       "provenance": {
         "origin": "authored",
@@ -8422,14 +8516,14 @@
           "when": true,
           "text": [
             {
-              "text": "여기까지 왔다는 사실과 여기서 무엇을 가져가느냐는 다른 일이었다. 돌아갈 길을 먼저 눈에 익힌 뒤, 일행은 가까운 곳에 남아 있는 광산의 자취를 살폈다. 아무것도 가져가지 않고 떠날 수도 있었다."
+              "text": "좁은 돌 틈을 살피기로 한 뒤에는 길을 여러 번 되짚지 않았다. 일행은 안쪽에서 바깥쪽으로 움직이며 손이 닿는 자리를 차례로 확인했다. 돌 아래 남겨진 작은 금속 조각들이 빛을 받았고, 흙을 걷어내자 금화가 드러났다. 한 사람이 모은 것을 놓을 자리를 마련하고, 나머지는 방금 지나온 곳을 다시 밟지 않도록 길을 비웠다. 마지막 자리를 살핀 뒤에는 돌아가는 쪽으로 몸을 돌렸다. 멀지 않은 곳에 기대어 놓인 방패도 그 길에서 보였다."
             }
           ],
           "literal_ids": [],
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 여섯 원작 금화 지점을 순방향 탐색 하나로 묶은 창작 서사다. 새 보상은 없으며 원래 취득 효과·출력 발생을 순서대로 유지한다."
           }
         }
       ],
@@ -8490,350 +8584,6 @@
             "source_refs": [],
             "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
           }
-        },
-        {
-          "id": "i/gold_2",
-          "label": [
-            {
-              "text": "광산의 금화 흔적 2을 살핀다"
-            }
-          ],
-          "when": {
-            "state": "event.gold_spot_2",
-            "op": "eq",
-            "value": false
-          },
-          "target": "i/gold_2",
-          "effects": [
-            {
-              "state": "event.gold_spot_2",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.gold_last",
-              "op": "set",
-              "value": 2500,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.gold",
-              "op": "increment",
-              "value": 2500,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            }
-          ],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
-        {
-          "id": "i/gold_3",
-          "label": [
-            {
-              "text": "광산의 금화 흔적 3을 살핀다"
-            }
-          ],
-          "when": {
-            "state": "event.gold_spot_3",
-            "op": "eq",
-            "value": false
-          },
-          "target": "i/gold_3",
-          "effects": [
-            {
-              "state": "event.gold_spot_3",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.gold_last",
-              "op": "set",
-              "value": 400,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.gold",
-              "op": "increment",
-              "value": 400,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            }
-          ],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
-        {
-          "id": "i/gold_4",
-          "label": [
-            {
-              "text": "광산의 금화 흔적 4을 살핀다"
-            }
-          ],
-          "when": {
-            "state": "event.gold_spot_4",
-            "op": "eq",
-            "value": false
-          },
-          "target": "i/gold_4",
-          "effects": [
-            {
-              "state": "event.gold_spot_4",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.gold_last",
-              "op": "set",
-              "value": 600,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.gold",
-              "op": "increment",
-              "value": 600,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            }
-          ],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
-        {
-          "id": "i/gold_5",
-          "label": [
-            {
-              "text": "광산의 금화 흔적 5을 살핀다"
-            }
-          ],
-          "when": {
-            "state": "event.gold_spot_5",
-            "op": "eq",
-            "value": false
-          },
-          "target": "i/gold_5",
-          "effects": [
-            {
-              "state": "event.gold_spot_5",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.gold_last",
-              "op": "set",
-              "value": 1500,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.gold",
-              "op": "increment",
-              "value": 1500,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            }
-          ],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
-        {
-          "id": "i/gold_6",
-          "label": [
-            {
-              "text": "광산의 금화 흔적 6을 살핀다"
-            }
-          ],
-          "when": {
-            "state": "event.gold_spot_6",
-            "op": "eq",
-            "value": false
-          },
-          "target": "i/gold_6",
-          "effects": [
-            {
-              "state": "event.gold_spot_6",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.gold_last",
-              "op": "set",
-              "value": 1000,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            },
-            {
-              "state": "event.gold",
-              "op": "increment",
-              "value": 1000,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-              }
-            }
-          ],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
-        {
-          "id": "i/shield_find",
-          "label": [
-            {
-              "text": "둘러싸인 벽 안쪽의 방패를 살핀다"
-            }
-          ],
-          "when": {
-            "state": "event.shield_owner",
-            "op": "eq",
-            "value": ""
-          },
-          "target": "i/shield",
-          "effects": [],
-          "branch_kind": "navigation",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
-        },
-        {
-          "id": "i/treasure_finish",
-          "label": [
-            {
-              "text": "더 찾지 않고 돌아간다"
-            }
-          ],
-          "when": true,
-          "target": "lore_menace/center",
-          "effects": [
-            {
-              "state": "event.cave_detour_done",
-              "op": "set",
-              "value": true,
-              "provenance": {
-                "origin": "authored",
-                "source_refs": [],
-                "note": "추가: 경로 사건의 반복/인계 관리. 실제 영입과 이탈만 상태에 남긴다."
-              }
-            }
-          ],
-          "branch_kind": "quest",
-          "consequence": [
-            {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
-            }
-          ],
-          "provenance": {
-            "origin": "authored",
-            "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
-          }
         }
       ],
       "handoff": null,
@@ -8848,7 +8598,7 @@
       "id": "i/gold_1",
       "title": [
         {
-          "text": "돌 틈의 금화"
+          "text": "동굴의 곁길"
         }
       ],
       "kind": "scene",
@@ -8910,12 +8660,43 @@
           "id": "i/gold_back_1",
           "label": [
             {
-              "text": "다른 흔적을 살피거나 떠난다"
+              "text": "돌 틈을 지나 다음 자리로 이어간다"
             }
           ],
           "when": true,
-          "target": "i/treasure_hub",
-          "effects": [],
+          "target": "i/gold_2",
+          "effects": [
+            {
+              "state": "event.gold_spot_2",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold_last",
+              "op": "set",
+              "value": 2500,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 2500,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
           "branch_kind": "navigation",
           "consequence": [
             {
@@ -8941,7 +8722,7 @@
       "id": "i/gold_2",
       "title": [
         {
-          "text": "돌 틈의 금화"
+          "text": "동굴의 곁길"
         }
       ],
       "kind": "scene",
@@ -9003,12 +8784,43 @@
           "id": "i/gold_back_2",
           "label": [
             {
-              "text": "다른 흔적을 살피거나 떠난다"
+              "text": "돌 틈을 지나 다음 자리로 이어간다"
             }
           ],
           "when": true,
-          "target": "i/treasure_hub",
-          "effects": [],
+          "target": "i/gold_3",
+          "effects": [
+            {
+              "state": "event.gold_spot_3",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold_last",
+              "op": "set",
+              "value": 400,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 400,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
           "branch_kind": "navigation",
           "consequence": [
             {
@@ -9034,7 +8846,7 @@
       "id": "i/gold_3",
       "title": [
         {
-          "text": "돌 틈의 금화"
+          "text": "동굴의 곁길"
         }
       ],
       "kind": "scene",
@@ -9096,12 +8908,43 @@
           "id": "i/gold_back_3",
           "label": [
             {
-              "text": "다른 흔적을 살피거나 떠난다"
+              "text": "돌 틈을 지나 다음 자리로 이어간다"
             }
           ],
           "when": true,
-          "target": "i/treasure_hub",
-          "effects": [],
+          "target": "i/gold_4",
+          "effects": [
+            {
+              "state": "event.gold_spot_4",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold_last",
+              "op": "set",
+              "value": 600,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 600,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
           "branch_kind": "navigation",
           "consequence": [
             {
@@ -9127,7 +8970,7 @@
       "id": "i/gold_4",
       "title": [
         {
-          "text": "돌 틈의 금화"
+          "text": "동굴의 곁길"
         }
       ],
       "kind": "scene",
@@ -9189,12 +9032,43 @@
           "id": "i/gold_back_4",
           "label": [
             {
-              "text": "다른 흔적을 살피거나 떠난다"
+              "text": "돌 틈을 지나 다음 자리로 이어간다"
             }
           ],
           "when": true,
-          "target": "i/treasure_hub",
-          "effects": [],
+          "target": "i/gold_5",
+          "effects": [
+            {
+              "state": "event.gold_spot_5",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold_last",
+              "op": "set",
+              "value": 1500,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 1500,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
           "branch_kind": "navigation",
           "consequence": [
             {
@@ -9220,7 +9094,7 @@
       "id": "i/gold_5",
       "title": [
         {
-          "text": "돌 틈의 금화"
+          "text": "동굴의 곁길"
         }
       ],
       "kind": "scene",
@@ -9282,12 +9156,43 @@
           "id": "i/gold_back_5",
           "label": [
             {
-              "text": "다른 흔적을 살피거나 떠난다"
+              "text": "돌 틈을 지나 다음 자리로 이어간다"
             }
           ],
           "when": true,
-          "target": "i/treasure_hub",
-          "effects": [],
+          "target": "i/gold_6",
+          "effects": [
+            {
+              "state": "event.gold_spot_6",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold_last",
+              "op": "set",
+              "value": 1000,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 1000,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
           "branch_kind": "navigation",
           "consequence": [
             {
@@ -9313,7 +9218,7 @@
       "id": "i/gold_6",
       "title": [
         {
-          "text": "돌 틈의 금화"
+          "text": "동굴의 곁길"
         }
       ],
       "kind": "scene",
@@ -9375,11 +9280,11 @@
           "id": "i/gold_back_6",
           "label": [
             {
-              "text": "다른 흔적을 살피거나 떠난다"
+              "text": "돌 틈을 지나 다음 자리로 이어간다"
             }
           ],
           "when": true,
-          "target": "i/treasure_hub",
+          "target": "i/shield",
           "effects": [],
           "branch_kind": "navigation",
           "consequence": [
@@ -9736,7 +9641,7 @@
           "id": "i/shield_back",
           "label": [
             {
-              "text": "돌아갈 길로 향한다"
+              "text": "동굴을 나와 보고하러 돌아간다"
             }
           ],
           "when": true,
@@ -9821,7 +9726,7 @@
           "id": "i/shield_cancel_back",
           "label": [
             {
-              "text": "돌아갈 길로 향한다"
+              "text": "동굴을 나와 보고하러 돌아간다"
             }
           ],
           "when": true,
@@ -9917,11 +9822,11 @@
           "id": "i/armory_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [
             {
               "state": "event.visited.armory",
@@ -9953,7 +9858,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -10037,11 +9942,11 @@
           "id": "i/tavern_depart_finish",
           "label": [
             {
-              "text": "주점을 떠나 길을 잇는다"
+              "text": "앞으로 이어지는 길로 나선다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/threshold",
           "effects": [],
           "branch_kind": "navigation",
           "consequence": [
@@ -10052,7 +9957,7 @@
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다. 추가: 탐방 뒤 같은 갈림길로 돌아가지 않고 본줄기로 합류한다."
           }
         }
       ],
@@ -10755,32 +10660,138 @@
         "value": "mad_joe"
       },
       "approval": "proposed"
+    },
+    {
+      "id": "i/skeleton_joined/conversation_accept",
+      "trigger_choice": "i/conversation_accept",
+      "description": "해당 경로에서 서술한 사건/증언의 경험만 기록한다. 원문 증언을 객관적 진상으로 바꾸지 않는다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "lore_menace/skeleton_exit"
+      ],
+      "requires_events": [
+        "lore_menace/assignment_heard"
+      ],
+      "participants": [
+        "protagonist",
+        "skeleton"
+      ],
+      "knowledge_gained": [
+        {
+          "character_id": "protagonist",
+          "fact_id": "skeleton_departure_account",
+          "method": "heard",
+          "informant_id": "skeleton"
+        }
+      ],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "i/skeleton_declined/conversation_decline",
+      "trigger_choice": "i/conversation_decline",
+      "description": "해당 경로에서 서술한 사건/증언의 경험만 기록한다. 원문 증언을 객관적 진상으로 바꾸지 않는다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "lore_menace/skeleton_exit"
+      ],
+      "requires_events": [
+        "lore_menace/assignment_heard"
+      ],
+      "participants": [
+        "protagonist",
+        "skeleton"
+      ],
+      "knowledge_gained": [
+        {
+          "character_id": "protagonist",
+          "fact_id": "skeleton_departure_account",
+          "method": "heard",
+          "informant_id": "skeleton"
+        }
+      ],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "i/skeleton_joined/replace_confirm",
+      "trigger_choice": "i/replace_confirm",
+      "description": "해당 경로에서 서술한 사건/증언의 경험만 기록한다. 원문 증언을 객관적 진상으로 바꾸지 않는다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "lore_menace/skeleton_exit"
+      ],
+      "requires_events": [
+        "lore_menace/assignment_heard"
+      ],
+      "participants": [
+        "protagonist",
+        "skeleton"
+      ],
+      "knowledge_gained": [
+        {
+          "character_id": "protagonist",
+          "fact_id": "skeleton_departure_account",
+          "method": "heard",
+          "informant_id": "skeleton"
+        }
+      ],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
     }
   ],
   "auto_rules": [
-    {"node": "i/threshold", "when": true, "choice": "i/threshold_no", "reason": ""},
-    {"node": "i/threshold_no", "when": true, "choice": "i/threshold_reconsider", "reason": ""},
-    {"node": "i/threshold_yes", "when": true, "choice": "i/threshold_outside", "reason": ""},
-    {"node": "i/streets", "when": true, "choice": "i/streets_repeat_hint", "reason": ""},
-    {"node": "i/street_second", "when": true, "choice": "i/street_second_back", "reason": ""},
-    {"node": "i/support", "when": true, "choice": "i/support_again", "reason": ""},
-    {"node": "i/support_again", "when": true, "choice": "i/support_repeat_back", "reason": ""},
     {
-      "node": "i/hub",
-      "when": {
-        "state": "event.city_visits",
-        "op": "gte",
-        "value": 3
-      },
-      "choice": "i/depart_now",
-      "reason": "세 곳의 탐방을 마쳐 출발 장면으로 이어집니다. 방문하지 않은 곳의 대사·장비·지식은 얻지 않습니다."
+      "node": "i/threshold",
+      "when": true,
+      "choice": "i/threshold_no",
+      "reason": ""
+    },
+    {
+      "node": "i/threshold_no",
+      "when": true,
+      "choice": "i/threshold_reconsider",
+      "reason": ""
+    },
+    {
+      "node": "i/threshold_yes",
+      "when": true,
+      "choice": "i/threshold_outside",
+      "reason": ""
+    },
+    {
+      "node": "i/streets",
+      "when": true,
+      "choice": "i/streets_repeat_hint",
+      "reason": ""
+    },
+    {
+      "node": "i/street_second",
+      "when": true,
+      "choice": "i/street_second_back",
+      "reason": ""
+    },
+    {
+      "node": "i/support",
+      "when": true,
+      "choice": "i/support_again",
+      "reason": ""
+    },
+    {
+      "node": "i/support_again",
+      "when": true,
+      "choice": "i/support_repeat_back",
+      "reason": ""
     },
     {
       "node": "i/tavern",
       "when": {
-        "state": "event.city_visits",
-        "op": "eq",
-        "value": 0
+        "state": "quest.lore_stage",
+        "op": "lte",
+        "value": 2
       },
       "choice": "i/tavern_menu",
       "reason": ""
@@ -10788,9 +10799,9 @@
     {
       "node": "i/tavern",
       "when": {
-        "state": "event.city_visits",
+        "state": "quest.lore_stage",
         "op": "gte",
-        "value": 1
+        "value": 3
       },
       "choice": "i/tavern_personal",
       "reason": ""
@@ -10811,6 +10822,16 @@
       "node": "i/tavern_departure",
       "when": true,
       "choice": "i/tavern_depart_finish",
+      "reason": ""
+    },
+    {
+      "node": "lore_menace/center",
+      "when": {
+        "state": "event.cave_detour_done",
+        "op": "eq",
+        "value": true
+      },
+      "choice": "lore_menace/return_to_lore",
       "reason": ""
     }
   ],

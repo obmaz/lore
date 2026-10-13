@@ -47,14 +47,15 @@ def check(screenshots=None,bundle=None):
             assert frame.get_by_role('button').count()>0
             frame.locator('#choices button').first.click()
             assert not errors,errors
-            assert page.locator('#document-select option').count()==2
-            page.locator('#document-select').select_option('side-adventures.html')
+            assert page.locator('#document-select option').count()==1
+            view('graph')
+            page.locator('[data-graph-panel="preview"]').click()
+            frame=page.frame_locator('#branch-preview-frame')
             frame.locator('#side-choices button').first.wait_for()
             page.go_back()
-            page.wait_for_function('document.getElementById("document-select")?.value === "chapter01-interactive.html"')
+            page.locator('#chapter-diagram').wait_for()
             page.go_forward()
-            page.wait_for_function('document.getElementById("document-select")?.value === "side-adventures.html"')
-            page.locator('#document-select').select_option('side-adventures.html')
+            page.locator('#branch-preview-frame').wait_for()
             frame.locator('#side-choices button').first.wait_for()
             side_data = json.loads(frame.locator('#side-data').text_content())
             assert len(side_data['stories']) == 30
@@ -121,6 +122,7 @@ def check(screenshots=None,bundle=None):
             assert page.locator('.unit').count()==7
             view('graph')
             assert page.locator('#chapter-select').input_value()=='chapter09'
+            page.locator('[data-graph-panel="diagram"]').click()
             assert page.locator('[data-graph-panel="diagram"]').get_attribute('aria-pressed')=='true'
             for index in range(1,16):
                 page.locator('#chapter-select').select_option(f'chapter{index:02}')

@@ -7,7 +7,7 @@
 `metadata.addition: true`, `status: proposed`인 창작 초고입니다. 설정·집필 규칙은
 [상위 AGENTS.md](../AGENTS.md)를 따르며 이 문서는 파일 역할과 사용법만 안내합니다.
 
-[제작실에서 선택하며 읽기](https://obmaz.github.io/lore/novel/studio/#/reading?document=side-adventures.html).
+[제작실에서 선택하며 읽기](https://obmaz.github.io/lore/novel/studio/#/graph?graphPanel=preview).
 기존 `paper-draft` 본줄기를 고정하고 곁가지와 중첩 해결 방법만 선택하는 작가용 시범입니다.
 본줄기는 소단락 주요 내용이며 완성 장편 본문이나 원문 대사 전체 판본이 아닙니다.
 원문 전체는 기존 원작 연결 판본에 보존하고, 공개 `/novel/` 첫 장 독자판은 그대로 둡니다.

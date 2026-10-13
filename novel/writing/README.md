@@ -15,7 +15,7 @@
   사용자 요청으로 별도 주소에 공개된 작가용 전편 스포일러·읽기 전용 화면입니다.
   기존 독자 읽기본에는 포함하지 않습니다. [사용·갱신 안내](studio/README.md).
 
-- [전편 15장 곁가지 · 선택하며 읽기](https://obmaz.github.io/lore/novel/studio/#/reading?document=side-adventures.html):
+- [전편 15장 곁가지 · 선택하며 읽기](https://obmaz.github.io/lore/novel/studio/#/graph?graphPanel=preview):
   각 장 두 개, 총 30개 창작 모험과 후속 반응. 5개 모험에는 참여 후 해결 방법을 고르는 중첩 선택이 있습니다.
   본줄기는 기존 기본 경로의 주요 내용입니다. [집필 원본과 검사 범위](side-stories/README.md).
   결합 그래프는 41개 결정·89개 실행 옵션이며 그중 자동 우회 5개는 독자 선택지에서 제외합니다.
@@ -57,7 +57,7 @@
 - [전편 곁가지 선택판](previews/side-adventures.html): 15장 주요 내용과 창작 곁가지 초고.
 - [전편 스토리보드](previews/storyboard.html): 작가 전용, 전편 스포일러 포함.
 
-소설 읽기에는 위 최신 두 판본만 표시한다. 옛 도입부 시범판·소편별 HTML·수락/거절별
+소설 읽기에는 실제 집필한 본문만 표시한다. 전편 선택 시범은 분기 미리보기로 옮겼다. 옛 도입부 시범판·소편별 HTML·수락/거절별
 중복 HTML 18개는 제거했고 재생성하지 않는다. 원작 원문과 `quests/`, `episodes/`,
 `reading.json`의 원고·검증용 경로는 그대로 보존한다. 두 판본의 성격은 서로 다르며
 전편 곁가지 판본이 15장 상세 산문의 완성을 뜻하지 않는다. 구성·원문 연결 자료는 별도 메뉴다.

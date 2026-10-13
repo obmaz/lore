@@ -36,7 +36,9 @@
   function automatic(node, state) {
     const rules = data.auto_rules.filter(r => r.node === node && matches(r.when, state));
     if (rules.length > 1) throw Error('자동 진행 충돌');
-    return rules[0];
+    if (rules[0]) return rules[0];
+    const choices=nodes[node].choices.filter(c=>matches(c.when,state));
+    return choices.length===1 ? {choice:choices[0].id,reason:''} : undefined;
   }
   function replay(saved) {
     if (!Array.isArray(saved) || saved.length > 160 || saved.some(x => typeof x !== 'string')) throw Error('잘못된 경로');
@@ -117,18 +119,28 @@
   function readFromSection(index) {
     const sections = document.getElementById('manuscript').children;
     const section = index === undefined ? sections[sections.length - 1] : sections[index];
-    section.querySelector('h2').focus({preventScroll:true});
+    const target=section.querySelector('h2')||section;
+    target.tabIndex=-1;target.focus({preventScroll:true});
     section.scrollIntoView({block:'start',behavior:'instant'});
   }
   function redraw() {
+    for(let count=0;count<data.nodes.length;count++){
+      const current=replay(route),auto=automatic(current.node.id,current.state);
+      if(!auto)break;
+      route.push(auto.choice);
+      if(count===data.nodes.length-1)throw Error('자동 진행 반복');
+    }
     const packet = replay(route), manuscript = document.getElementById('manuscript');
     manuscript.replaceChildren();
+    let priorGroup=null;
     for (const section of packet.sections) {
       const root = document.createElement('section');
       const heading = element('h2',text(section.node.title,section.state));
       heading.dataset.storyRole = data.main_story.some(r => r.node === section.node.id) ? 'main' : 'optional';
       heading.tabIndex = -1;
-      root.append(heading);
+      const group=data.display_groups?.[section.node.id]||section.node.id;
+      if(group!==priorGroup)root.append(heading);
+      priorGroup=group;
       for (const b of section.blocks) {
         const p = element('p',text(b.text,section.state,b.id),b.provenance.origin === 'source_exact' ? 'quote' : '');
         p.dataset.blockId = b.id;
@@ -147,7 +159,7 @@
         try {
           const firstNewSection = route.length + 1;
           const next = [...route,choice.id]; let notice = '';
-          for (let count = 0; count < 8; count++) {
+          for (let count = 0; count < data.nodes.length; count++) {
             const p = replay(next), auto = automatic(p.node.id,p.state);
             if (!auto) { route = next; redraw(); message(notice); readFromSection(firstNewSection); return; }
             next.push(auto.choice); notice = auto.reason;
@@ -165,7 +177,7 @@
     if (packet.state['event.slot6'] === 'mad_joe') info.append(element('p',data.labels.characters.mad_joe + ': ' + (data.labels.equipment[packet.state['event.weapon.mad_joe']] || '미정')));
     if (packet.state['event.shield_owner']) info.append(element('p','발견 방패 장착자: ' + data.labels.characters[packet.state['event.shield_owner']]));
     if (!current.choices.length) box.append(element('p','첫 챕터 끝. 선택한 동료·장비·경험은 다음 챕터 집필용 인계 상태로 보존됩니다. 다음 챕터 본문은 아직 없습니다.'));
-    document.getElementById('back').disabled = !route.length;
+    document.getElementById('back').disabled = !packet.sections.some(s=>s.selected&&!automatic(s.node.id,s.state));
   }
   document.getElementById('restart').addEventListener('click',() => { route = []; redraw(); message('처음부터 시작합니다.'); readFromSection(0); });
   document.getElementById('back').addEventListener('click',() => {
