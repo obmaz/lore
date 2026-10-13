@@ -25,7 +25,9 @@ class StudioTests(unittest.TestCase):
     def test_01_every_preview_is_available_without_opening_another_file(self):
         expected = {name for name in read(ROOT/'writing/previews/manifest.json')['artifacts'] if name.endswith('.html')}
         self.assertEqual({d['id'] for d in self.data['documents']},expected)
-        self.assertEqual(len(expected),28)
+        self.assertEqual(len(expected),10)
+        self.assertEqual({d['id'] for d in self.data['documents'] if d['reader_edition']},
+                         {'chapter01-interactive.html','side-adventures.html'})
         for row in self.data['documents']:
             self.assertEqual(row['html'],(ROOT/row['source_ref']).read_text(encoding='utf-8'))
 

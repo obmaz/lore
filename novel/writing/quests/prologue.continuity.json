@@ -1,9 +1,9 @@
 {
   "version": 2,
   "story_id": "prologue_pilot_v1",
-  "story_revision": 2,
+  "story_revision": 3,
   "canon_revision": 4,
-  "character_registry_revision": 10,
+  "character_registry_revision": 13,
   "contracts": {
     "arrival": {
       "before": true,
@@ -16,7 +16,8 @@
       ],
       "dependencies": [],
       "continuity_notes": [
-        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다.",
+        "추가: 공용 문체 style.revision=1로 1장 본줄기의 도입·행동·보고를 보강했다. 원작 대사 발생 ID·선택 조건·상태 효과는 유지한다. 공간과 일시적 움직임은 창작이며 새 고정 설정·부상·보상·능력 습득을 선언하지 않는다."
       ],
       "knowledge_required": [],
       "cast": [
@@ -28,7 +29,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 6
+          "revision": 8
         }
       ]
     },
@@ -45,7 +46,8 @@
       ],
       "dependencies": [],
       "continuity_notes": [
-        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다.",
+        "추가: 공용 문체 style.revision=1로 1장 본줄기의 도입·행동·보고를 보강했다. 원작 대사 발생 ID·선택 조건·상태 효과는 유지한다. 공간과 일시적 움직임은 창작이며 새 고정 설정·부상·보상·능력 습득을 선언하지 않는다."
       ],
       "knowledge_required": [],
       "cast": [
@@ -61,11 +63,11 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 6
+          "revision": 8
         },
         {
           "character_id": "castle_guide",
-          "revision": 3
+          "revision": 5
         }
       ]
     },
@@ -84,7 +86,8 @@
       ],
       "dependencies": [],
       "continuity_notes": [
-        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다.",
+        "추가: 공용 문체 style.revision=1로 1장 본줄기의 도입·행동·보고를 보강했다. 원작 대사 발생 ID·선택 조건·상태 효과는 유지한다. 공간과 일시적 움직임은 창작이며 새 고정 설정·부상·보상·능력 습득을 선언하지 않는다."
       ],
       "knowledge_required": [],
       "cast": [
@@ -100,11 +103,11 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 6
+          "revision": 8
         },
         {
           "character_id": "veteran",
-          "revision": 3
+          "revision": 5
         }
       ]
     },
@@ -121,7 +124,8 @@
       ],
       "dependencies": [],
       "continuity_notes": [
-        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다.",
+        "추가: 공용 문체 style.revision=1로 1장 본줄기의 도입·행동·보고를 보강했다. 원작 대사 발생 ID·선택 조건·상태 효과는 유지한다. 공간과 일시적 움직임은 창작이며 새 고정 설정·부상·보상·능력 습득을 선언하지 않는다."
       ],
       "knowledge_required": [],
       "cast": [
@@ -137,11 +141,11 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 6
+          "revision": 8
         },
         {
           "character_id": "lord_ahn",
-          "revision": 4
+          "revision": 6
         }
       ]
     },
@@ -158,7 +162,8 @@
       ],
       "dependencies": [],
       "continuity_notes": [
-        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다.",
+        "추가: 공용 문체 style.revision=1로 1장 본줄기의 도입·행동·보고를 보강했다. 원작 대사 발생 ID·선택 조건·상태 효과는 유지한다. 공간과 일시적 움직임은 창작이며 새 고정 설정·부상·보상·능력 습득을 선언하지 않는다."
       ],
       "knowledge_required": [],
       "cast": [
@@ -174,11 +179,11 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 6
+          "revision": 8
         },
         {
           "character_id": "lord_ahn",
-          "revision": 4
+          "revision": 6
         }
       ]
     },
@@ -193,7 +198,8 @@
       ],
       "dependencies": [],
       "continuity_notes": [
-        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다.",
+        "추가: 공용 문체 style.revision=1로 1장 본줄기의 도입·행동·보고를 보강했다. 원작 대사 발생 ID·선택 조건·상태 효과는 유지한다. 공간과 일시적 움직임은 창작이며 새 고정 설정·부상·보상·능력 습득을 선언하지 않는다."
       ],
       "knowledge_required": [
         {
@@ -210,7 +216,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 6
+          "revision": 8
         }
       ]
     }

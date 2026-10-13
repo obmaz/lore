@@ -1,6 +1,9 @@
 import copy
 import json
 import unittest
+import tempfile
+import hashlib
+from pathlib import Path
 from unittest.mock import patch
 
 import jsonschema
@@ -11,7 +14,7 @@ from reference import load_references, schema_validator
 from story_continuity import CANON, context, input_hashes, validate as validate_continuity
 from text_refs import archival, indexes, literals, particle, render, source_ids, validate_text, reject_fixed_names, validate_names
 from validate_story_authoring import validate
-from writing import BOARD, PILOT, WRITING, DEFAULT_ROUTE, preview_story, validate_board
+from writing import BOARD, PILOT, WRITING, DEFAULT_ROUTE, preview_story, validate_board, prune_legacy_previews, LEGACY_PREVIEWS
 
 
 class WritingTest(unittest.TestCase):
@@ -29,6 +32,25 @@ class WritingTest(unittest.TestCase):
 
     def quote(self,key):
         return copy.deepcopy(next(b for n in self.story['nodes'] for b in n['blocks'] if b['id']==key))
+
+    def test_retired_html_cleanup_is_explicit_hash_guarded_and_keeps_sources(self):
+        self.assertEqual(len(LEGACY_PREVIEWS),18)
+        with tempfile.TemporaryDirectory(prefix='lore-retired-editions-') as temporary:
+            folder=Path(temporary)
+            old=folder/'prologue.html';old.write_text('generated',encoding='utf-8')
+            keep=folder/'chapter01-interactive.html';keep.write_text('latest',encoding='utf-8')
+            original=folder/'prologue.json';original.write_text('source draft',encoding='utf-8')
+            manifest={'artifacts':{'prologue.html':hashlib.sha256(old.read_bytes()).hexdigest()}}
+            (folder/'manifest.json').write_text(json.dumps(manifest),encoding='utf-8')
+            with self.assertRaisesRegex(ValueError,'remains'):prune_legacy_previews(folder,check=True)
+            old.write_text('user edited',encoding='utf-8')
+            with self.assertRaisesRegex(ValueError,'preserve'):prune_legacy_previews(folder)
+            self.assertTrue(old.exists())
+            old.write_text('generated',encoding='utf-8')
+            self.assertEqual(prune_legacy_previews(folder),['prologue.html'])
+            self.assertFalse(old.exists())
+            self.assertEqual(keep.read_text(), 'latest')
+            self.assertEqual(original.read_text(), 'source draft')
 
     def test_whole_board_accounts_for_eighteen_story_quests(self):
         board = read(BOARD)

@@ -5,10 +5,23 @@
   "units": [
     {
       "id": "tavern-01",
-      "title": [{"text": "잔을 고르기 전에"}],
-      "node_ids": ["i/tavern", "i/tavern_menu", "i/tavern_personal", "i/tavern_people", "i/tavern_departure"],
+      "title": [
+        {
+          "text": "잔을 고르기 전에"
+        }
+      ],
+      "node_ids": [
+        "i/tavern",
+        "i/tavern_menu",
+        "i/tavern_personal",
+        "i/tavern_people",
+        "i/tavern_departure"
+      ],
       "status": "revised_draft",
-      "target_chars": [3500, 6500],
+      "target_chars": [
+        3500,
+        6500
+      ],
       "focus": "주점 입장, 인사와 음료 권유, 들려오는 원작 대화들을 한 독서 구간으로 펼치고 끝에서 말을 걸거나 떠나는 행동을 정한다.",
       "stop_after": "노인에게 말을 거는 선택 또는 주점 퇴장. 노인 증언 본문의 추가 재집필과 다른 지역은 별도 소편이다.",
       "origin": "authored",
@@ -20,17 +33,268 @@
       },
       "continuity": {
         "status": "proposed",
-        "body_paths": [["i/tavern", "i/tavern_menu", "i/tavern_people"], ["i/tavern", "i/tavern_personal", "i/tavern_people"]],
-        "cast": ["protagonist"],
-        "preserve_source_block_ids": ["i/tavern_welcome", "i/welcome_menu", "i/welcome_personal", "i/silence", "i/ghost_rumor", "i/drink_offer", "i/drunk_lord", "i/skeleton_prejudice", "i/burp"],
+        "body_paths": [
+          [
+            "i/tavern",
+            "i/tavern_menu",
+            "i/tavern_people"
+          ],
+          [
+            "i/tavern",
+            "i/tavern_personal",
+            "i/tavern_people"
+          ]
+        ],
+        "cast": [
+          "protagonist"
+        ],
+        "preserve_source_block_ids": [
+          "i/tavern_welcome",
+          "i/welcome_menu",
+          "i/welcome_personal",
+          "i/silence",
+          "i/ghost_rumor",
+          "i/drink_offer",
+          "i/drunk_lord",
+          "i/skeleton_prejudice",
+          "i/burp"
+        ],
         "state_policy": "입장·인사·주변 대화에는 추가 상태 변경이 없다. 퇴장 선택의 기존 방문 완료/탐방 1회만 유지한다. 노인의 증언은 그 경로를 실제 선택한 경우에만 기존 사건으로 얻는다.",
         "knowledge_policy": "주점 소문·취중 평가·혐오 발언은 듣는 장면이지 세계의 확정 사실이나 주인공의 신념이 아니다. 노인과 이미 대화한 경로에는 처음 발견하는 묘사를 노출하지 않는다.",
         "inventory_policy": "음료 권유를 받되 구매·섭취·무료 지급·금화 지출·장비 획득을 새로 만들지 않는다.",
         "character_policy": "익명 주인/손님의 손놀림·일시적 반응을 장면 창작으로만 둔다. 이름·나이·성별·과거·고정 성향·관계는 추가 확정하지 않는다. 원작 ReturnSex 호칭은 여전히 미정이다.",
         "pacing_policy": "주점 첫 탐방은 음료 인사, 이전 탐방이 있으면 가까운 인사. 두 원문은 배타 경로에 남기며 자동 선택 ID는 저장하되 독자의 선택 표시에서는 숨긴다.",
-        "review_notes": ["분량은 body_paths별 표시 본문 기준이다. 퇴장 보충은 분량 산정 밖이다.", "원작 말의 배치와 새 산문의 의미는 편집 검토가 남아 있다.", "전체 첫 챕터의 모든 짧은 장면을 장편화한 것으로 표시하지 않는다."]
+        "review_notes": [
+          "분량은 body_paths별 표시 본문 기준이다. 퇴장 보충은 분량 산정 밖이다.",
+          "원작 말의 배치와 새 산문의 의미는 편집 검토가 남아 있다.",
+          "전체 첫 챕터의 모든 짧은 장면을 장편화한 것으로 표시하지 않는다."
+        ]
       }
     }
   ],
-  "notes": ["본문과 원문을 복사하지 않고 overlay_file의 안정된 노드/블록 ID를 참조한다.", "공용 writing/templates/episode.template.json의 소편·분량·검토 원칙을 선택형 오버레이에 맞춰 적용한다."]
+  "notes": [
+    "본문과 원문을 복사하지 않고 overlay_file의 안정된 노드/블록 ID를 참조한다.",
+    "공용 writing/templates/episode.template.json의 소편·분량·검토 원칙을 선택형 오버레이에 맞춰 적용한다."
+  ],
+  "chapter_units": [
+    {
+      "id": "chapter01/p01",
+      "title_ref": {
+        "file": "writing/storyboard/chapter-subsections.json",
+        "pointer": "/chapters/0/units/0/title"
+      },
+      "source_section_refs": [
+        "01-invitation"
+      ],
+      "node_ids": [
+        "prologue/arrival",
+        "prologue/courtyard"
+      ],
+      "status": "revised_draft",
+      "style_revision": 1,
+      "focus": "성문에서 서로의 걸음과 장비를 확인하고 안내받은 접견으로 향한다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락의 본문 연결과 인과·문체 검토 메모다. 실제 본문·원문·이름·장비는 복제하지 않는다. 장면 행동과 심리는 창작 초고이며 정사·문체 승인과 다르다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "chapter01/p02",
+      "title_ref": {
+        "file": "writing/storyboard/chapter-subsections.json",
+        "pointer": "/chapters/0/units/1/title"
+      },
+      "source_section_refs": [
+        "01-audience"
+      ],
+      "node_ids": [
+        "prologue/audience",
+        "prologue/briefing"
+      ],
+      "status": "revised_draft",
+      "style_revision": 1,
+      "focus": "성주의 자기소개와 세계 설명을 원문 순서대로 듣고, 먼 위협 앞에서 지금 할 수 있는 일을 묻는다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락의 본문 연결과 인과·문체 검토 메모다. 실제 본문·원문·이름·장비는 복제하지 않는다. 장면 행동과 심리는 창작 초고이며 정사·문체 승인과 다르다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "chapter01/p03",
+      "title_ref": {
+        "file": "writing/storyboard/chapter-subsections.json",
+        "pointer": "/chapters/0/units/2/title"
+      },
+      "source_section_refs": [
+        "01-request"
+      ],
+      "node_ids": [
+        "lore_menace/assignment"
+      ],
+      "status": "revised_draft",
+      "style_revision": 1,
+      "focus": "첫 탐사의 범위를 듣고 돌아오겠다는 약속을 받아들인다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락의 본문 연결과 인과·문체 검토 메모다. 실제 본문·원문·이름·장비는 복제하지 않는다. 장면 행동과 심리는 창작 초고이며 정사·문체 승인과 다르다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "chapter01/p04",
+      "title_ref": {
+        "file": "writing/storyboard/chapter-subsections.json",
+        "pointer": "/chapters/0/units/3/title"
+      },
+      "source_section_refs": [
+        "01-city"
+      ],
+      "node_ids": [
+        "i/hub"
+      ],
+      "status": "revised_draft",
+      "style_revision": 1,
+      "focus": "바로 출발하거나 성 안에서 준비한다. 방문하지 않은 장소의 소문과 물건은 얻지 않는다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락의 본문 연결과 인과·문체 검토 메모다. 실제 본문·원문·이름·장비는 복제하지 않는다. 장면 행동과 심리는 창작 초고이며 정사·문체 승인과 다르다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "chapter01/p05",
+      "title_ref": {
+        "file": "writing/storyboard/chapter-subsections.json",
+        "pointer": "/chapters/0/units/4/title"
+      },
+      "source_section_refs": [
+        "01-depart",
+        "01-city"
+      ],
+      "node_ids": [
+        "lore_menace/preparation",
+        "i/threshold",
+        "lore_menace/castle_exit",
+        "lore_menace/departure_path"
+      ],
+      "status": "revised_draft",
+      "style_revision": 1,
+      "focus": "출발에 이르는 망설임은 연속 서사로 읽고 바깥에서 실제 동행을 선택한다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락의 본문 연결과 인과·문체 검토 메모다. 실제 본문·원문·이름·장비는 복제하지 않는다. 장면 행동과 심리는 창작 초고이며 정사·문체 승인과 다르다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "chapter01/p06",
+      "title_ref": {
+        "file": "writing/storyboard/chapter-subsections.json",
+        "pointer": "/chapters/0/units/5/title"
+      },
+      "source_section_refs": [
+        "01-cave"
+      ],
+      "node_ids": [
+        "lore_menace/road",
+        "lore_menace/cave_entry"
+      ],
+      "status": "revised_draft",
+      "style_revision": 1,
+      "focus": "실제로 함께 걷는 사람들과 남서쪽 동굴까지 이동한다. 역할 선택은 현장 행동만 달라지게 한다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락의 본문 연결과 인과·문체 검토 메모다. 실제 본문·원문·이름·장비는 복제하지 않는다. 장면 행동과 심리는 창작 초고이며 정사·문체 승인과 다르다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "chapter01/p07",
+      "title_ref": {
+        "file": "writing/storyboard/chapter-subsections.json",
+        "pointer": "/chapters/0/units/6/title"
+      },
+      "source_section_refs": [
+        "01-cave"
+      ],
+      "node_ids": [
+        "lore_menace/cave_walk",
+        "lore_menace/center"
+      ],
+      "status": "revised_draft",
+      "style_revision": 1,
+      "focus": "발밑의 느슨한 돌과 좁은 통로를 함께 지나 중심을 확인하고 돌아갈 범위를 정한다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락의 본문 연결과 인과·문체 검토 메모다. 실제 본문·원문·이름·장비는 복제하지 않는다. 장면 행동과 심리는 창작 초고이며 정사·문체 승인과 다르다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "chapter01/p08",
+      "title_ref": {
+        "file": "writing/storyboard/chapter-subsections.json",
+        "pointer": "/chapters/0/units/7/title"
+      },
+      "source_section_refs": [
+        "01-report"
+      ],
+      "node_ids": [
+        "lore_menace/return_road",
+        "lore_menace/report",
+        "lore_menace/next_task",
+        "lore_menace/farewell"
+      ],
+      "status": "revised_draft",
+      "style_revision": 1,
+      "focus": "지나온 길의 작은 사건을 기억하며 돌아와 확인한 것을 보고한다. 성공 인정과 다음 부탁 뒤 동쪽 성으로 향할 준비를 한다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 소단락의 본문 연결과 인과·문체 검토 메모다. 실제 본문·원문·이름·장비는 복제하지 않는다. 장면 행동과 심리는 창작 초고이며 정사·문체 승인과 다르다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  ],
+  "handoff": {
+    "chapter_id": "chapter01",
+    "status": "revised_main_draft",
+    "style_revision": 1,
+    "source_revisions": {
+      "prologue": 3,
+      "lore_menace": 8,
+      "overlay": 5,
+      "macro": 4,
+      "subsections": 3
+    },
+    "required_scene_policy": "all_17_ordered_checkpoints_unchanged",
+    "outline_numbering": "chapter_units는 장별 8소단락 ID다. 기존 menace-01~06은 첫 의뢰 이후의 집필 묶음이며 서로 다른 번호 체계다.",
+    "optional_scene_status": "주점은 긴 초고, 그 밖의 일부 탐방·보물·영입 보충은 구조 초고를 유지한다. 모든 선택 장면이 장편화됐다고 표시하지 않는다.",
+    "continuity": "방문·영입·장비·증언은 해당 경로만 유지한다. 보고 전 보상, 새 고정 보스·습득 능력·부상·두 번째 장의 현장 경험을 만들지 않는다.",
+    "next_work": "먼저 도입부터 귀환까지 실제 독서 호흡을 검토한다. 이후 짧은 선택 장면을 별도 소편으로 보강하며 2장 본문은 새 인계에서 시작한다.",
+    "origin": "authored",
+    "metadata": {
+      "addition": true,
+      "kind": "new_setting",
+      "note": "추가: 첫 장 본줄기 집필 결과와 남은 범위를 구분한 편집 인계다. 기존 초고를 승인하거나 모든 경로의 의미를 자동 검증한 기록이 아니다.",
+      "knowledge_policy": "author_reference_not_character_knowledge"
+    }
+  }
 }

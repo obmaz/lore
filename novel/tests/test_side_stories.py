@@ -4,6 +4,7 @@ import json
 import re
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from unittest.mock import patch
 
@@ -32,6 +33,62 @@ class SideStoryTests(unittest.TestCase):
             self.assertTrue(story['metadata']['addition'])
             self.assertEqual(story['metadata']['knowledge_policy'], 'author_reference_not_character_knowledge')
         self.assertEqual(read(PLAN), self.session.proposal)
+
+    def test_15_exclusive_nested_callbacks_share_one_row_and_one_join(self):
+        chart=next(c for c in self.flow.charts if c['id']=='chapter13')
+        groups=self.flow.graph['presentation']['groups']
+        group=next(g for g in groups if any('loose_stair_approach' in key for key in g['node_ids']))
+        self.assertEqual(len(group['node_ids']),3)  # skip or either nested approach
+        self.assertTrue(group['proof']['at_most_one'])
+        self.assertTrue(group['proof']['exhaustive'])
+        self.assertTrue(group['proof']['required_visits_guaranteed'])
+        self.assertFalse(group['bypass_possible'])
+        ns={'s':'http://www.w3.org/2000/svg'}
+        svg=ET.fromstring(self.flow.svg(chart['node_ids']))
+        boxes={n.attrib['data-flow-node']:n for n in svg.findall('s:g',ns) if n.attrib.get('class')=='flow-node'}
+        rows={boxes[key].find('s:rect',ns).attrib['y'] for key in group['node_ids']}
+        self.assertEqual(len(rows),1)
+        self.assertEqual(len({boxes[key].find('s:rect',ns).attrib['x'] for key in group['node_ids']}),3)
+        self.assertIn(group['join_id'],boxes)
+        self.assertTrue(set(group['hidden_merge_ids']).isdisjoint(boxes))
+        edges={(e.attrib['data-from'],e.attrib['data-to']) for e in svg.findall('s:g',ns) if e.attrib.get('class')=='flow-edge'}
+        for key in group['node_ids']:
+            self.assertIn((group['entry_id'],key),edges)
+            self.assertIn((key,group['join_id']),edges)
+            self.assertEqual(boxes[key].attrib['data-exclusive-group'],group['id'])
+        # Presentation must not rewrite replay/technical DAG or chart membership.
+        logical={n['id'] for n in self.flow.nodes}
+        self.assertTrue(set(group['hidden_merge_ids'])<=logical)
+        self.assertTrue(set(group['hidden_merge_ids'])<=set(chart['node_ids']))
+
+    def test_16_exclusivity_is_proven_not_inferred_from_two_witness_routes(self):
+        a={'state':'side.loose_stair','op':'eq','value':True}
+        inverse={**a,'op':'ne'}
+        b={'state':'side.well_bucket','op':'eq','value':True}
+        proof=self.flow.exclusive_conditions([a,inverse])
+        self.assertTrue(proof['exhaustive'])
+        self.assertIsNone(self.flow.exclusive_conditions([a,b]))
+        self.assertIsNone(self.flow.exclusive_conditions([a,a]))
+        self.assertIsNone(self.flow.exclusive_conditions([{'state':'companions.current','op':'contains','value':'skeleton'},a]))
+
+    def test_17_partial_callback_chart_does_not_hide_unrelated_merge_nodes(self):
+        group=next(g for g in self.flow.graph['presentation']['groups'] if len(g['node_ids'])==3)
+        original={group['entry_id'],group['node_ids'][0],group['hidden_merge_ids'][0]}
+        keys=list(original)
+        edges=[e for e in self.flow.edges if e['from'] in original and e['to'] in original]
+        out,shown,links,membership=self.flow.svg_presentation(original,keys,edges)
+        self.assertEqual(out,original)
+        self.assertEqual(shown,keys)
+        self.assertEqual(links,edges)
+        self.assertEqual(membership,{})
+
+    def test_18_unproven_visit_and_participant_gates_keep_no_result_bypass(self):
+        group=next(g for g in self.flow.graph['presentation']['groups'] if len(g['node_ids'])==3)
+        rule=self.flow.resolve(next(n for n in self.flow.nodes if n['id']==group['node_ids'][0])['guard_ref'])
+        for change in ({'requires_units':['chapter15/p06']},{'participants':['skeleton']}):
+            with patch.dict(rule,change):
+                result=next(g for g in self.flow.reaction_presentation()['groups'] if g['id']==group['id'])
+                self.assertTrue(result['bypass_possible'])
 
     def test_02_compiler_changes_only_own_boolean_and_keeps_core_source(self):
         base = self.session.base

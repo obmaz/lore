@@ -47,13 +47,13 @@ def check(screenshots=None,bundle=None):
             assert frame.get_by_role('button').count()>0
             frame.locator('#choices button').first.click()
             assert not errors,errors
-            page.locator('#document-select').select_option('menace-01.html')
-            frame.locator('h2').first.wait_for()
-            assert '돌아오겠다는 말' in frame.locator('body').inner_text()
+            assert page.locator('#document-select option').count()==2
+            page.locator('#document-select').select_option('side-adventures.html')
+            frame.locator('#side-choices button').first.wait_for()
             page.go_back()
             page.wait_for_function('document.getElementById("document-select")?.value === "chapter01-interactive.html"')
             page.go_forward()
-            page.wait_for_function('document.getElementById("document-select")?.value === "menace-01.html"')
+            page.wait_for_function('document.getElementById("document-select")?.value === "side-adventures.html"')
             page.locator('#document-select').select_option('side-adventures.html')
             frame.locator('#side-choices button').first.wait_for()
             side_data = json.loads(frame.locator('#side-data').text_content())
@@ -233,6 +233,18 @@ def check(screenshots=None,bundle=None):
             nested.focus();page.keyboard.press('Enter')
             assert page.locator('#graph-selection [data-flow-focus^="option/side_gate_lantern_approach/"]').count()==2
             if screenshots:page.screenshot(path=str(screenshots/f'studio-nested-{width}.png'))
+            page.keyboard.press('Escape')
+            page.locator('#chapter-select').select_option('chapter13')
+            alternatives=page.locator('#chapter-diagram .flow-node[data-exclusive-group]:not([data-exclusive-group=""]) [y]').evaluate_all('''(es)=>es.filter(e=>e.tagName.toLowerCase()==='rect').map(e=>({id:e.parentNode.dataset.flowNode,group:e.parentNode.dataset.exclusiveGroup,x:+e.getAttribute('x'),y:+e.getAttribute('y')}))''')
+            stair=[n for n in alternatives if n['id'].startswith('reaction/side_loose_stair')]
+            assert len(stair)==3
+            assert len({n['y'] for n in stair})==1
+            assert len({n['x'] for n in stair})==3
+            assert len({n['group'] for n in stair})==1
+            page.locator('#chapter-diagram [data-flow-node="'+stair[0]['id']+'"]').focus()
+            page.keyboard.press('Enter')
+            assert page.locator('#graph-selection').is_visible()
+            if screenshots:page.screenshot(path=str(screenshots/f'studio-exclusive-{width}.png'))
             page.keyboard.press('Escape')
             view('order')
             assert page.locator('[data-row-kind="main"]:visible').count()==88

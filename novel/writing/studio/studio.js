@@ -11,7 +11,7 @@
   try {const saved=JSON.parse(sessionStorage.getItem('lore-studio-layout')||'{}');if(Number.isFinite(saved.width))graphLayout.width=Math.max(25,Math.min(80,saved.width));if(Number.isFinite(saved.height))graphLayout.height=Math.max(160,Math.min(innerHeight*.65,saved.height));}catch{}
   const descriptions = {
     overview:'현재까지 작성된 원고와 구성, 설정을 한곳에서 확인합니다. 상세 본문과 구성 초안은 구분합니다.',
-    reading:'첫 장 선택형 초고와 전편 곁가지 선택판, 기존 소편·기본 경로·원작 연결 판본을 구별해 읽습니다.',
+    reading:'최신 첫 장 선택형 초고와 전편 곁가지 선택판만 읽습니다. 구성과 원문 자료는 별도 메뉴에서 확인합니다.',
     outline:'15장의 큰 이야기와 88개 소단락. 제목은 중앙 JSON을 참조하고 본문 완성 여부는 따로 표시합니다.',
     graph:'아래로 시간의 흐름을 따라 공통 본줄기와 선택별 조건부 문단을 비교합니다. 같은 높이는 대체 문단이며 모두 읽는 경로가 아닙니다.',
     order:'실제 선택 경로에서 뽑은 편집 순서입니다. 정사·출판 승인·페이지 확정이 아닌 예시입니다.',
@@ -67,7 +67,7 @@
     if(['diagram','rules'].includes(params.get('graphPanel')))state.graphPanel=params.get('graphPanel');
     if(view==='branches')state.graphPanel='rules';
     if(data.chapters.some(c=>c.id===params.get('chapter')))state.chapter=params.get('chapter');
-    if(data.documents.some(d=>d.id===params.get('document')))state.document=params.get('document');
+    if(data.documents.some(d=>d.reader_edition&&d.id===params.get('document')))state.document=params.get('document');
     if(categoryNames[params.get('category')])state.category=params.get('category');
     state.query=(params.get('query')||'').slice(0,120);
     if(data.settings.some(r=>r.id===params.get('item')&&r.category===state.category))state.item=params.get('item');
@@ -96,14 +96,13 @@
     $('view-description').textContent=descriptions[view];
     const content=$('view-content');
     if (view==='overview') {
-      const cards=[['reading','현재 소설 읽기','첫 장의 최신 선택형 초고와 기존 소편·경로 판본을 읽습니다.'],['outline','큰 흐름부터 살펴보기','15장 큰 이야기와 소단락 주요 내용을 나란히 확인합니다.'],['graph','갈림과 합류 확인','장별 실행 그래프와 두 봉인의 순서, 후속 반응을 살펴봅니다.'],['settings','집필 설정 찾기','인물·직업·성향·관계·장비·마법과 추가 설정의 근거를 검색합니다.']];
-      content.innerHTML=`<div class="stats"><div class="stat"><strong>${data.chapters.length}</strong><span>큰 장 · 구성 초안</span></div><div class="stat"><strong>${data.report.subsections}</strong><span>소단락 · 주요 내용 초안</span></div><div class="stat"><strong>${data.report.runtime_paths_checked}</strong><span>본줄기 투영·대표 검사 경로</span></div><div class="stat"><strong>${data.settings.filter(r=>r.category==='characters').length}</strong><span>인물 카드 · 작가용</span></div></div><div class="grid">${cards.map(([v,t,n])=>`<article class="card"><h3>${t}</h3><p>${n}</p><button type="button" class="button" data-view="${v}">열기 →</button>${v==='reading'?'<button type="button" class="button" data-view="reading" data-document="side-adventures.html">전편 곁가지 선택판 →</button>':''}</article>`).join('')}</div><h2 style="margin-top:28px">현재 집필 단계</h2><article class="card"><ol class="stage-list"><li>전편 큰 구성·큰 이야기·소단락 주요 내용: <span class="badge">초안</span></li><li>15장 원문 연결 판본: <span class="badge">원문 보존 · 조건별 자료 포함</span></li><li>전편 소단락 분기: <span class="badge">${data.report.decisions}결정 · ${data.report.options}선택지 · 곁가지 ${data.sources['writing/side-stories/series.json'].stories.length}개 포함</span></li><li>첫 장 선택형 본문과 기존 소편: <span class="badge">미승인 초고 · 판본별 구분</span></li><li>나머지 장의 상세 산문·최종 출판 경로·페이지: <span class="badge added">미완성 · 미정</span></li></ol></article><h3>자료를 수정할 때</h3><p class="notice">이 제작실은 읽기 전용입니다. 원본 JSON에서 수정한 뒤 <code>python3 tools/writing.py export</code>로 다시 생성합니다. 화면의 탐색과 독자 경로 선택은 Git 파일을 수정하지 않습니다.</p>`;
+      const cards=[['reading','현재 소설 읽기','최신 첫 장 본문과 전편 곁가지 선택판을 읽습니다.'],['outline','큰 흐름부터 살펴보기','15장 큰 이야기와 소단락 주요 내용을 나란히 확인합니다.'],['graph','갈림과 합류 확인','장별 실행 그래프와 두 봉인의 순서, 후속 반응을 살펴봅니다.'],['settings','집필 설정 찾기','인물·직업·성향·관계·장비·마법과 추가 설정의 근거를 검색합니다.']];
+      content.innerHTML=`<div class="stats"><div class="stat"><strong>${data.chapters.length}</strong><span>큰 장 · 구성 초안</span></div><div class="stat"><strong>${data.report.subsections}</strong><span>소단락 · 주요 내용 초안</span></div><div class="stat"><strong>${data.report.runtime_paths_checked}</strong><span>본줄기 투영·대표 검사 경로</span></div><div class="stat"><strong>${data.settings.filter(r=>r.category==='characters').length}</strong><span>인물 카드 · 작가용</span></div></div><div class="grid">${cards.map(([v,t,n])=>`<article class="card"><h3>${t}</h3><p>${n}</p><button type="button" class="button" data-view="${v}">열기 →</button>${v==='reading'?'<button type="button" class="button" data-view="reading" data-document="side-adventures.html">전편 곁가지 선택판 →</button>':''}</article>`).join('')}</div><h2 style="margin-top:28px">현재 집필 단계</h2><article class="card"><ol class="stage-list"><li>전편 큰 구성·큰 이야기·소단락 주요 내용: <span class="badge">초안</span></li><li>15장 원문 연결 판본: <span class="badge">원문 보존 · 조건별 자료 포함</span></li><li>전편 소단락 분기: <span class="badge">${data.report.decisions}결정 · ${data.report.options}선택지 · 곁가지 ${data.sources['writing/side-stories/series.json'].stories.length}개 포함</span></li><li>첫 장 선택형 본줄기: <span class="badge">본줄기 보강 · 미승인 초고</span></li><li>나머지 장의 상세 산문·최종 출판 경로·페이지: <span class="badge added">미완성 · 미정</span></li></ol></article><h3>자료를 수정할 때</h3><p class="notice">이 제작실은 읽기 전용입니다. 원본 JSON에서 수정한 뒤 <code>python3 tools/writing.py export</code>로 다시 생성합니다. 화면의 탐색과 독자 경로 선택은 Git 파일을 수정하지 않습니다.</p>`;
       const project=data.sources['writing/project.json'],style=project.style;
       if(style)content.insertAdjacentHTML('beforeend',`<details class="unit" id="writing-style"><summary>공용 문체 기준 · 개정 ${esc(style.revision)}</summary><div class="unit-body"><p><strong>시점</strong> · ${esc(project.viewpoint.value)}</p><p><strong>어조</strong> · ${esc(project.tone.value)}</p>${Object.entries({sentence_rhythm:'문장 호흡',description:'묘사',dialogue:'대화',emotion:'감정',humor:'유머'}).map(([key,label])=>`<p><strong>${label}</strong> · ${esc(style[key])}</p>`).join('')}<p><strong>피할 표현</strong> · ${esc(style.avoid.join(' / '))}</p><p><strong>골격 단계</strong> · ${esc(style.stage_policy.outline)}</p><p><strong>본문 단계</strong> · ${esc(style.stage_policy.prose)}</p><p>${esc(style.application_policy)}</p>${sourceButton({file:'writing/project.json',pointer:'/style'})}</div></details>`);
     } else if (view==='reading') {
       const chosen=state.document;
-      const groups=[['interactive','최신 선택형 본문'],['prose','기존 소편 · 기본 경로'],['source','원작 원문 연결 판본'],['structure','작가용 구성 자료']];
-      const options=groups.map(([g,t])=>`<optgroup label="${t}">${data.documents.filter(d=>d.group===g).map(d=>`<option value="${esc(d.id)}" ${d.id===chosen?'selected':''}>${esc(d.label)}</option>`).join('')}</optgroup>`).join('');
+      const options=data.documents.filter(d=>d.reader_edition).map(d=>`<option value="${esc(d.id)}" ${d.id===chosen?'selected':''}>${esc(d.label)}</option>`).join('');
       content.innerHTML=`<div class="toolbar"><label for="document-select">읽을 판본</label><select id="document-select">${options}</select><button type="button" class="button" id="restart-document">현재 판본 처음부터</button></div><p class="notice" id="document-note"></p><iframe class="reader-frame" id="document-frame" title="소설 읽기" sandbox="allow-scripts allow-downloads"></iframe>`;
       openDocument(chosen);
     } else if (view==='outline') {
@@ -138,7 +137,7 @@
     }
   }
   function openDocument(id) {
-    const doc=data.documents.find(d=>d.id===id);
+    const doc=data.documents.find(d=>d.reader_edition&&d.id===id);
     if (!doc) return;
     $('document-note').textContent=doc.note+' · '+doc.source_ref+' · 원고를 수정하지 않는 조회 화면';
     const old=$('document-frame'),fresh=old.cloneNode(false);

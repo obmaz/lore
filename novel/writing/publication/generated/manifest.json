@@ -7,7 +7,7 @@
     "writing/storyboard/chapters.json": "a9429277e0fa9237fbf960ac63668b1df8dfb761ad5d7a86bdb9b05981230634",
     "writing/storyboard/chapter-subsections.json": "49638630aa01235affe114e56e4b31a98955bd1eda2ea2c4f47bdc38b7a57baf",
     "writing/branches/series.json": "e05b52a97129a62e1d05ef87ba82245b6004d015841ace03fe46deb4eb577eca",
-    "tools/publication_flow.py": "5699223ebb79bd2cca55d8e69a0874b29e7b6e7b7c44eddf33439c3ef2d6b68f",
+    "tools/publication_flow.py": "fe603d38503d6b4d565a88fa376d2ddfe6af095a3fafb2ce0bd6c5622739629d",
     "tools/branch_system.py": "220e080488bc68009e8e88cc3d602bf6c6f2a03f735a01b1a1141ac8320bf46c",
     "tools/chapter_subsections.py": "8c3e92399cdf96928fb4bde81fd2c42e7d01c6d6ab0caab86848ab00b15a2ab3",
     "tools/text_refs.py": "da5326edfb63354058ea19f6c6419d8cc3e61f8b46c685f6ae2f73e41b3568bc",
@@ -20,10 +20,10 @@
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe"
   },
   "artifacts": {
-    "flow.graph.json": "37ac0cf4444f0470789dbb42f8b32946c96c8199372cd63912ddf46e6dac1202",
+    "flow.graph.json": "936f239a60679bbda33f918bd9e65b2c16a7b5d4a15128fb74d790ae2ecc192b",
     "linear-editions.json": "5e3dead7930fabc81d7cfc40e3c29019f72e7aa9f90609d0f83a27f32bafc2bd",
     "flow.md": "618e724c1b946b9bfb9767a4d90e24c28ab762dcbc258a4f05b6a3187cb5d5c8",
-    "flow.html": "bfc60f1f57a4077ed69f80014b4090b556ec883324eae2cea2a4af03cd1e0286",
+    "flow.html": "27e1bad0925d995e5c495eddc8573a99d63e5f78b0c0d27ad123e9a5964cc946",
     "coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746"
   }
 }

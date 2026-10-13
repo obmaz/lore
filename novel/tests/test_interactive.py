@@ -7,7 +7,7 @@ import subprocess
 import sys
 import unittest
 
-from interactive import Session, compile_chapter
+from interactive import Session, compile_chapter, validate_handoff, EPISODES
 from materials import ROOT, read
 from text_refs import archival, indexes, literals, render
 from characters import load_characters
@@ -79,6 +79,32 @@ class InteractiveTests(unittest.TestCase):
             self.assertIsNone(refs['equipment']['items'][weapon]['original_name']['value'])
             self.assertEqual(refs['equipment']['items'][weapon]['writing_name']['origin'],'authored')
         self.assertEqual(self.profiles['characters']['initial_merlin']['canonical_name']['value'],'Merlin')
+
+    def test_chapter_handoff_binds_eight_units_to_all_seventeen_required_scenes(self):
+        report=validate_handoff(self.session.story,self.session.overlay)
+        self.assertEqual((report['units'],report['required_scenes'],report['style_revision']),(8,17,1))
+        self.assertFalse(report['publication_approved'])
+        plan=read(EPISODES)
+        for mutation in ('missing','duplicate','stale','unmarked','title'):
+            changed=copy.deepcopy(plan)
+            if mutation=='missing':changed['chapter_units'][0]['node_ids'].pop()
+            elif mutation=='duplicate':changed['chapter_units'][1]['node_ids'].append('prologue/arrival')
+            elif mutation=='stale':changed['handoff']['source_revisions']['overlay']-=1
+            elif mutation=='unmarked':changed['chapter_units'][0]['metadata']['addition']=False
+            else:changed['chapter_units'][0]['title_ref']['pointer']='/chapters/0/units/1/title'
+            with self.subTest(mutation=mutation),self.assertRaises(ValueError):
+                validate_handoff(self.session.story,self.session.overlay,changed)
+
+    def test_revised_party_intros_keep_names_and_weapons_as_refs_and_mark_new_prose(self):
+        blocks={b['id']:b for n in self.session.story['nodes'] for b in n['blocks']}
+        for cid in self.session.overlay['party']:
+            block=blocks['i/intro_'+cid]
+            refs=[span['ref'] for span in block['text'] if 'ref' in span]
+            self.assertIn({'catalog':'characters','id':cid,'particle':'은/는'},refs)
+            self.assertIn({'catalog':'equipment','id':self.session.overlay['initial_equipment'][cid]},refs)
+            self.assertEqual(block['provenance']['origin'],'authored')
+            self.assertIn('style.revision=1',block['provenance']['note'])
+            self.assertGreater(sum(len(span.get('text','')) for span in block['text']),300)
 
     def test_02_skip_every_optional_place(self):
         route,packet = self.walk(INTRO)

@@ -15,6 +15,40 @@ from text_refs import indexes, literals, render, source_ids, validate_text
 OVERLAY = ROOT / 'writing/interactive/chapter01.json'
 READER = ROOT / 'writing/interactive/reader.js'
 SCHEMA = ROOT / 'writing/interactive/overlay.schema.json'
+EPISODES = ROOT / 'writing/interactive/episodes.json'
+
+
+def validate_handoff(story, overlay, plan=None):
+    """Keep the editorial eight-unit index bound to actual first-chapter prose."""
+    plan = read(EPISODES) if plan is None else plan
+    board = read(ROOT/'writing/storyboard/chapter-subsections.json')
+    rows = board['chapters'][0]['units']
+    units = plan['chapter_units']
+    nodes = {n['id'] for n in story['nodes']}
+    if [u['id'] for u in units] != [u['id'] for u in rows]:
+        raise ValueError('chapter handoff: subsection IDs differ')
+    assigned = [key for u in units for key in u['node_ids']]
+    if len(set(assigned)) != len(assigned) or not set(assigned) <= nodes:
+        raise ValueError('chapter handoff: duplicate or unknown prose node')
+    required = [r['node'] for r in overlay['main_story']['required_scenes']]
+    if [key for key in assigned if key in required] != required:
+        raise ValueError('chapter handoff: required scene order differs')
+    style = read(ROOT/'writing/project.json')['style']['revision']
+    for i, (unit, row) in enumerate(zip(units, rows)):
+        if unit['title_ref'] != {'file':'writing/storyboard/chapter-subsections.json',
+                                 'pointer':f'/chapters/0/units/{i}/title'}:
+            raise ValueError('chapter handoff: title must remain a reference')
+        if unit['source_section_refs'] != row['source_section_refs'] or unit['style_revision'] != style:
+            raise ValueError('chapter handoff: source/style review is stale')
+        if unit['origin'] != 'authored' or not unit['metadata']['addition']:
+            raise ValueError('chapter handoff: editorial additions must be marked')
+    pins = {'prologue':read(ROOT/'writing/quests/prologue.json')['meta']['revision'],
+            'lore_menace':read(ROOT/'writing/quests/lore_menace.json')['meta']['revision'],
+            'overlay':overlay['revision'],'macro':board['macro_revision'],'subsections':board['revision']}
+    if plan['handoff']['source_revisions'] != pins or plan['handoff']['style_revision'] != style:
+        raise ValueError('chapter handoff: input revision changed; review index')
+    return {'units':len(units),'required_scenes':len(required),'style_revision':style,
+            'status':plan['handoff']['status'],'publication_approved':False}
 
 
 def possible(predicate, guards):

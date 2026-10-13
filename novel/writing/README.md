@@ -53,26 +53,14 @@
 
 - [첫 챕터 · 선택하며 읽기](previews/chapter01-interactive.html): 최신 선택형 판본.
   [분기 구조와 집필 규칙](interactive/README.md), [작가용 분기 안내](previews/chapter01-branches.html).
-  아래 기존 기본 경로 읽기본은 보존 판본이며 새 선택·동료 설정은 별도 오버레이에 있다.
-- **첫 소편:** [1-1 · 돌아오겠다는 말](previews/menace-01.html) /
-  [주점 방문 기억이 있는 경로](previews/menace-01-tavern.html). 약 4,100~4,350자이며 첫 의뢰 수락에서 멈춘다.
-- [1-2 · 성문 앞의 목소리](previews/menace-02.html) /
-  [동행 거절](previews/menace-02-declined.html). 소편별로 집필·푸시하며 아래 진행표를 갱신한다.
-- [1-3 · 빛이 남아 있는 곳](previews/menace-03.html) /
-  [동행 거절 경로](previews/menace-03-declined.html).
-- [1-4 · 어둠의 중심](previews/menace-04.html) /
-  [동행 거절 경로](previews/menace-04-declined.html).
-- [1-5 · 돌아온 사람들](previews/menace-05.html) /
-  [동행 거절 경로](previews/menace-05-declined.html).
-- [1-6 · 다음 부탁](previews/menace-06.html) /
-  [동행 거절 경로](previews/menace-06-declined.html).
-- [도입부터 1장까지 · 동행 수락](previews/first-journey.html): 첫 탐사·귀환 보고와 다음 부탁까지.
-- [도입부터 1장까지 · 동행 거절](previews/first-journey-declined.html): 같은 의뢰, 다른 현재 동료.
-- [주점 방문 후 1장 · 수락](previews/first-journey-tavern.html) /
-  [거절](previews/first-journey-tavern-declined.html): 앞서 들은 증언이 이동·귀환 문단에 이어진다.
+  새 선택·동료 설정은 오버레이에 있고 기존 긴 본문을 참조해 사용한다.
+- [전편 곁가지 선택판](previews/side-adventures.html): 15장 주요 내용과 창작 곁가지 초고.
 - [전편 스토리보드](previews/storyboard.html): 작가 전용, 전편 스포일러 포함.
-- [도입부 · 성주 직행](previews/prologue.html): 첫 의뢰 제시 직전까지의 시범 본문.
-- [도입부 · 주점 방문](previews/prologue-tavern.html): 선택 방문을 한 경로의 시범 본문.
+
+소설 읽기에는 위 최신 두 판본만 표시한다. 옛 도입부 시범판·소편별 HTML·수락/거절별
+중복 HTML 18개는 제거했고 재생성하지 않는다. 원작 원문과 `quests/`, `episodes/`,
+`reading.json`의 원고·검증용 경로는 그대로 보존한다. 두 판본의 성격은 서로 다르며
+전편 곁가지 판본이 15장 상세 산문의 완성을 뜻하지 않는다. 구성·원문 연결 자료는 별도 메뉴다.
 
 HTML을 다운로드해 브라우저로 열면 된다. 서버·게임·외부 네트워크가 필요 없고,
 인쇄/PDF 저장 버튼은 제거했다. GitHub 파일 화면 자체는 HTML을 실행하지 않는다.
@@ -129,6 +117,9 @@ HTML은 편집 대상이 아니라 JSON에서 생성한 스냅샷이다.
 
 첫 퀘스트 기본 경로의 여섯 소편은 긴 본문 초고입니다. 소편별 작업 목록은
 [episodes/lore_menace.json](episodes/lore_menace.json)에 있습니다. 첫 챕터 선택형 보충 판본은 별도로 관리합니다.
+이번 도입·동료 소개·이동·탐사·보고 보강과 8소단락의 본문 연결은
+[interactive/episodes.json](interactive/episodes.json)의 `chapter_units`와 `handoff`에 기록했습니다.
+본줄기 초고의 완성과 모든 짧은 선택 장면의 장편화·편집 승인은 구분합니다.
 후속 장의 큰 줄거리·소단락·일부 작가용 실행 분기는 상세 장편 본문의 완성을 뜻하지 않습니다.
 공용 문체는 [project.json](project.json)의 `viewpoint`, `tone`, `style`에서 편집합니다.
 제작실의 작업 현황 → `공용 문체 기준`에서도 읽고 원본을 열 수 있습니다.

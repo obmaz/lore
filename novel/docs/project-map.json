@@ -18,7 +18,7 @@
     "configuration": 2,
     "editable_authoring_input": 26,
     "generated_inventory": 1,
-    "generated_reading": 55,
+    "generated_reading": 37,
     "immutable_source_snapshot": 25,
     "schema": 17,
     "shared_template": 10,
@@ -223,6 +223,14 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_story_authoring.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -738,6 +746,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/build_reference.py"
         },
         {
@@ -1007,6 +1019,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/build_reference.py"
         },
         {
@@ -1243,6 +1259,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
         },
         {
@@ -1301,6 +1321,14 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_story_authoring.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -3343,6 +3371,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tools/reading.py"
         },
         {
@@ -4239,6 +4271,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
         },
         {
@@ -4331,8 +4367,28 @@
       "role": "editable_authoring_input",
       "consumers": [
         {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -4563,6 +4619,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/check_interactive_browser.py"
         },
         {
@@ -4612,98 +4672,6 @@
       "automatic_deletion": false
     },
     {
-      "file": "writing/previews/first-journey-declined.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/studio.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/first-journey-tavern-declined.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/studio.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/first-journey-tavern.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/studio.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/first-journey.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/studio.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
       "file": "writing/previews/manifest.json",
       "role": "generated_reading",
       "consumers": [
@@ -4738,6 +4706,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -4778,292 +4750,6 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/side-stories/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-01-tavern.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-01.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/check_studio_browser.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-02-declined.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-02.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-03-declined.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-03.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-04-declined.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-04.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-05-declined.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-05.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-06-declined.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/menace-06.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/prologue-tavern.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/studio.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/writing.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
-        }
-      ],
-      "automatic_deletion": false
-    },
-    {
-      "file": "writing/previews/prologue.html",
-      "role": "generated_reading",
-      "consumers": [
-        {
-          "kind": "output_hash_guard",
-          "file": "writing/previews/manifest.json"
-        },
-        {
-          "kind": "input_hash_guard",
-          "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/studio.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/writing.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "writing/README.md"
         }
       ],
       "automatic_deletion": false
@@ -5118,6 +4804,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5211,6 +4901,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5637,6 +5331,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/build_reference.py"
         },
         {
@@ -5716,6 +5414,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_first_chapter.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5810,6 +5512,14 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_story_authoring.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6251,6 +5961,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/build_reference.py"
         },
         {
@@ -6350,6 +6064,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6715,6 +6433,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/side_stories.py"
         },
         {
@@ -6998,6 +6720,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",

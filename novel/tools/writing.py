@@ -24,6 +24,28 @@ PILOT = WRITING/'quests/prologue.json'
 TEXT_FIELDS = ('title','opening','goal','conflict','turn','ending','emotional_arc','bridge')
 DEFAULT_ROUTE = ['enter_courtyard','visit_lord','hear_lord_intro','hear_lord_briefing']
 READING = WRITING/'reading.json'
+LEGACY_PREVIEWS = frozenset([
+    'prologue.html','prologue-tavern.html',
+    'first-journey.html','first-journey-declined.html','first-journey-tavern.html','first-journey-tavern-declined.html',
+    'menace-01.html','menace-01-tavern.html',
+    *[f'menace-{i:02}{suffix}.html' for i in range(2,7) for suffix in ('','-declined')]])
+
+
+def prune_legacy_previews(output, check=False):
+    """Remove only explicitly retired generated editions with verified ownership."""
+    previous = read(output/'manifest.json') if (output/'manifest.json').is_file() else {}
+    targets = []
+    for name in sorted(LEGACY_PREVIEWS):
+        path = output/name
+        if not path.exists(): continue
+        if check: raise ValueError('retired reading edition remains: '+name)
+        digest = previous.get('artifacts',{}).get(name)
+        if path.is_symlink() or not path.is_file() or not digest or hashlib.sha256(path.read_bytes()).hexdigest()!=digest:
+            raise ValueError('preserve manually changed or unowned retired reading edition: '+name)
+        targets.append(path)
+    # Validate every exact target before deleting any. Original JSON is untouched.
+    for path in targets: path.unlink()
+    return [path.name for path in targets]
 
 
 def reading_preview(key):
@@ -404,40 +426,11 @@ def export_documents(output,check=False):
     from source_story import PLAN as SOURCE_PLAN, SCHEMA as SOURCE_SCHEMA, OUTPUT as SOURCE_OUTPUT, export as source_export, story_document as source_document
     source_export(check=check)
     docs['source-connected.html'] = source_document(read(SOURCE_OUTPUT/'manuscript.json'))
-    previews = [('prologue.html',preview_story(story,continuity,DEFAULT_ROUTE,profiles,refs)),
-                ('prologue-tavern.html',preview_story(story,continuity,['enter_courtyard','visit_tavern','remember_veteran',*DEFAULT_ROUTE[1:]],profiles,refs))]
-    if READING.exists():
-        previews += [(key+'.html',reading_preview(key)) for key in read(READING)['routes']]
-        # Full-path paragraphs were rendered with each scene's own disclosure prefix.
-        # Derive small reading units with a separate, bounded endpoint packet.
-        from reading import load_reading
-        foundation,memory,_ = load_reading(read(READING)['routes']['first-journey'])
-        packet_for = context_for_routes(foundation,memory,read(CANON),profiles)
-        plan = read(WRITING/'episodes/lore_menace.json')
-        validate_episode_plan(plan)
-        full = dict(previews)
-        for unit in plan['units'][1:]:
-            if unit['status']!='revised_draft': continue
-            for suffix,key in [('', 'first-journey'),('-declined','first-journey-declined')]:
-                previews.append((unit['id']+suffix+'.html',focus_episode(full[key+'.html'],unit,
-                    Path(plan['quest_file']).stem,packet_for,profiles,refs)))
-    for name,preview in previews:
-        body = '<p class="notice">시범 원고 · 미승인. 창작 연결 서사와 원문 대사를 함께 배치했습니다. 원작 고유명은 현재 참조 표시명으로 각색해 보여 주며, 원문 기록은 JSON에 보존됩니다.</p>'
-        if 'reading_note' in preview:
-            body += '<p class="note">'+esc(preview['reading_note'])+'</p>'
-        for section in preview['sections']:
-            body += '<section><h2>'+esc(section['title'])+'</h2>'
-            for block in section['blocks']:
-                body += ('<p class="quote">'+(f'<small>{esc(block["speaker"])}</small><br>' if block['speaker'] else '')+esc(block['text'])+'</p>') if block['origin']=='source_exact' else '<p>'+esc(block['text'])+'</p>'
-            if section['selected_choice']:
-                chosen = next(c['label'] for c in section['choices'] if c['id']==section['selected_choice'])
-                body += f'<p class="note">선택: {esc(chosen)}</p>'
-            body += '</section>'
-        body += '<h2>집필 메모</h2><ul>'+''.join(f'<li>{esc(q)}</li>' for q in preview['open_questions'])+'</ul>'
-        docs[name] = html_doc(preview['title'],body)
-    from interactive import documents as interactive_documents, OVERLAY, READER, SCHEMA
+    from interactive import documents as interactive_documents, OVERLAY, READER, SCHEMA, EPISODES, compile_chapter, validate_handoff
+    chapter_story,_,chapter_overlay = compile_chapter()
+    validate_handoff(chapter_story,chapter_overlay)
     docs.update(interactive_documents())
-    inputs = [OVERLAY,READER,SCHEMA,ROOT/'tools/interactive.py',BOARD,CHAPTERS,CHAPTER_SCHEMA,STORIES,STORY_SCHEMA,ROOT/'tools/chapter_stories.py',SUBSECTIONS,SUBSECTION_SCHEMA,SUBSECTION_TEMPLATE,ROOT/'tools/chapter_subsections.py',BRANCHES,BRANCH_SCHEMA,BRANCH_TEMPLATE,ROOT/'tools/branch_system.py',SOURCE_PLAN,SOURCE_SCHEMA,ROOT/'tools/source_story.py',SOURCE_OUTPUT/'manuscript.json',SOURCE_OUTPUT/'coverage.json',SOURCE_OUTPUT/'generated-manifest.json',PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
+    inputs = [OVERLAY,READER,SCHEMA,EPISODES,ROOT/'tools/interactive.py',BOARD,CHAPTERS,CHAPTER_SCHEMA,STORIES,STORY_SCHEMA,ROOT/'tools/chapter_stories.py',SUBSECTIONS,SUBSECTION_SCHEMA,SUBSECTION_TEMPLATE,ROOT/'tools/chapter_subsections.py',BRANCHES,BRANCH_SCHEMA,BRANCH_TEMPLATE,ROOT/'tools/branch_system.py',SOURCE_PLAN,SOURCE_SCHEMA,ROOT/'tools/source_story.py',SOURCE_OUTPUT/'manuscript.json',SOURCE_OUTPUT/'coverage.json',SOURCE_OUTPUT/'generated-manifest.json',PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
               ROOT/'reference/terms.json',ROOT/'continuity/canon.json',ROOT/'writing/project.json',Path(__file__),ROOT/'tools/text_refs.py',
               ROOT/'tools/story_continuity.py',ROOT/'tools/disclosure.py',ROOT/'tools/validate_story_authoring.py',
               ROOT/'authoring/story.schema.json',WRITING/'storyboard.schema.json',
@@ -456,6 +449,7 @@ def export_documents(output,check=False):
                *[SIDE_OUTPUT/name for name in ('runtime.plan.json','flow.plan.json','flow.graph.json','linear-editions.json','coverage.json','flow.md','flow.html','side-adventures.html')]]
     manifest = {'version':1,'source_sha256':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
                 'artifacts':{name:hashlib.sha256(value.encode()).hexdigest() for name,value in docs.items()}}
+    removed = prune_legacy_previews(output,check)
     if check:
         if not (output/'manifest.json').is_file() or read(output/'manifest.json')!=manifest:
             raise ValueError('writing previews are stale; run writing.py export')
@@ -468,7 +462,7 @@ def export_documents(output,check=False):
             (output/name).write_text(body,encoding='utf-8')
         (output/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     studio = studio_export(check=check,docs=docs,publication=publication,side_publication=side_publication)
-    return {'output':str(output),'artifacts':list(docs),'storyboard_units':len(board['units']),'studio':studio,'checked':check}
+    return {'output':str(output),'artifacts':list(docs),'retired_reading_editions_removed':removed,'storyboard_units':len(board['units']),'studio':studio,'checked':check}
 
 
 def main():
@@ -522,9 +516,10 @@ def main():
             result['quests'][path.stem] = {**validate(draft),'needs_review':validate_continuity(draft,read(path.with_name(path.stem+'.continuity.json')),read(CANON))}
         result['episodes'] = {p.stem:validate_episode_plan(read(p)) for p in sorted((WRITING/'episodes').glob('*.json'))}
         result['episode_template'] = validate_episode_plan(read(WRITING/'templates/episode.template.json'),template)
-        from interactive import compile_chapter
-        interactive_story,_,_ = compile_chapter()
+        from interactive import compile_chapter, validate_handoff
+        interactive_story,_,interactive_overlay = compile_chapter()
         result['interactive_chapter01'] = validate(interactive_story)
+        result['chapter01_handoff'] = validate_handoff(interactive_story,interactive_overlay)
     elif args.action=='preview':
         result = preview_story(read(args.story),read(args.story.with_name(args.story.stem+'.continuity.json')),args.route)
     elif args.action=='reading':

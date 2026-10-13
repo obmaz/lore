@@ -131,7 +131,7 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
     docs = docs if docs is not None else verify_previews()
     docs = {name:body for name,body in docs.items() if name.endswith('.html')}
     if plan['default_document'] not in docs: raise ValueError('unknown studio default document')
-    required = {'chapter01-interactive.html', 'source-connected.html', 'branch-system.html', 'first-journey.html'}
+    required = {'chapter01-interactive.html', 'side-adventures.html', 'source-connected.html', 'branch-system.html'}
     if not required <= set(docs): raise ValueError('studio missing required reading documents')
     publication = publication or PublicationFlow()
     core_publication = publication
@@ -197,6 +197,7 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
         elif name=='source-connected.html': group, note = 'source', '15장 원문 연결 판본 · 조건부 원문·기술 부록 포함'
         label = reading_labels.get(name,title+(' · 동행 거절 경로' if '-declined' in name else ' · 주점 방문 경로' if '-tavern' in name else ''))
         documents.append({'id':name,'title':title,'label':label,'group':group,'note':note,'source_ref':'writing/previews/'+name,'html':body})
+        documents[-1]['reader_edition']=name in ('chapter01-interactive.html','side-adventures.html')
     names = {key:title_of(p) for key,p in session.profiles['characters'].items()}
     checkpoints = session.profiles['disclosure_checkpoints']
     settings = []
@@ -247,7 +248,7 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
                          'source_ref':{'file':'characters/registry.json','pointer':'/disclosure_checkpoints/'+key},'search':key+' '+re.sub('<[^>]+>',' ',html.unescape(body))})
     source_paths = ['writing/project.json','writing/reading.json','writing/storyboard/series.json',publication.cp,
                     'writing/storyboard/chapter-stories.json',publication.up,publication.bp,publication.pp,core_publication.bp,core_publication.pp,
-                    'writing/storyboard/source-connected.plan.json','writing/storyboard/causal-review.json','writing/interactive/chapter01.json',
+                    'writing/storyboard/source-connected.plan.json','writing/storyboard/causal-review.json','writing/interactive/chapter01.json','writing/interactive/episodes.json',
                     'characters/registry.json','reference/names.json','reference/terms.json','continuity/canon.json',
                     *[f'reference/{key}.json' for key in session.references], PLAN.relative_to(ROOT).as_posix(),
                     *[p.relative_to(ROOT).as_posix() for p in sorted((ROOT/'writing/episodes').glob('*.json'))],

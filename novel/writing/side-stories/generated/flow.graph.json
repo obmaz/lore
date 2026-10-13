@@ -32427,5 +32427,626 @@
         ]
       }
     ]
+  },
+  "presentation": {
+    "version": 1,
+    "policy": "presentation_only_runtime_dag_unchanged",
+    "groups": [
+      {
+        "id": "alternatives/side_road_stones_take",
+        "unit_id": "chapter02/p06",
+        "context": null,
+        "node_ids": [
+          "reaction/side_road_stones_take",
+          "reaction/side_road_stones_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_road_stones_take"
+        ],
+        "join_id": "reaction-merge/side_road_stones_skip",
+        "entry_id": "unit/chapter02/p06",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.road_stones"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_gate_lantern_skip",
+        "unit_id": "chapter03/p03",
+        "context": null,
+        "node_ids": [
+          "reaction/side_gate_lantern_skip",
+          "reaction/side_gate_lantern_approach_careful",
+          "reaction/side_gate_lantern_approach_direct"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_gate_lantern_skip",
+          "reaction-merge/side_gate_lantern_approach_careful"
+        ],
+        "join_id": "reaction-merge/side_gate_lantern_approach_direct",
+        "entry_id": "unit/chapter03/p03",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.gate_lantern",
+            "side.gate_lantern.approach"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_ruin_cart_take",
+        "unit_id": "chapter03/p06",
+        "context": null,
+        "node_ids": [
+          "reaction/side_ruin_cart_take",
+          "reaction/side_ruin_cart_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_ruin_cart_take"
+        ],
+        "join_id": "reaction-merge/side_ruin_cart_skip",
+        "entry_id": "reaction-merge/aid_magician_memory",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.ruin_cart"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_cold_hearth_take",
+        "unit_id": "chapter03/p06",
+        "context": null,
+        "node_ids": [
+          "reaction/side_cold_hearth_take",
+          "reaction/side_cold_hearth_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_cold_hearth_take"
+        ],
+        "join_id": "reaction-merge/side_cold_hearth_skip",
+        "entry_id": "reaction-merge/side_ruin_cart_skip",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.cold_hearth"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_blind_chamber_take",
+        "unit_id": "chapter04/p04",
+        "context": null,
+        "node_ids": [
+          "reaction/side_blind_chamber_take",
+          "reaction/side_blind_chamber_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_blind_chamber_take"
+        ],
+        "join_id": "reaction-merge/side_blind_chamber_skip",
+        "entry_id": "unit/chapter04/p04",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.blind_chamber"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_ledge_rope_take",
+        "unit_id": "chapter05/p05",
+        "context": null,
+        "node_ids": [
+          "reaction/side_ledge_rope_take",
+          "reaction/side_ledge_rope_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_ledge_rope_take"
+        ],
+        "join_id": "reaction-merge/side_ledge_rope_skip",
+        "entry_id": "unit/chapter05/p05",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.ledge_rope"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_passage_echo_take",
+        "unit_id": "chapter05/p05",
+        "context": null,
+        "node_ids": [
+          "reaction/side_passage_echo_take",
+          "reaction/side_passage_echo_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_passage_echo_take"
+        ],
+        "join_id": "reaction-merge/side_passage_echo_skip",
+        "entry_id": "reaction-merge/side_ledge_rope_skip",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.passage_echo"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_stone_niche_skip",
+        "unit_id": "chapter06/p04",
+        "context": null,
+        "node_ids": [
+          "reaction/side_stone_niche_skip",
+          "reaction/side_stone_niche_approach_careful",
+          "reaction/side_stone_niche_approach_direct"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_stone_niche_skip",
+          "reaction-merge/side_stone_niche_approach_careful"
+        ],
+        "join_id": "reaction-merge/side_stone_niche_approach_direct",
+        "entry_id": "unit/chapter06/p04",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.stone_niche",
+            "side.stone_niche.approach"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_shore_crates_take",
+        "unit_id": "chapter06/p06",
+        "context": null,
+        "node_ids": [
+          "reaction/side_shore_crates_take",
+          "reaction/side_shore_crates_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_shore_crates_take"
+        ],
+        "join_id": "reaction-merge/side_shore_crates_skip",
+        "entry_id": "unit/chapter06/p06",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.shore_crates"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_dying_fire_take",
+        "unit_id": "chapter08/p06",
+        "context": null,
+        "node_ids": [
+          "reaction/side_dying_fire_take",
+          "reaction/side_dying_fire_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_dying_fire_take"
+        ],
+        "join_id": "reaction-merge/side_dying_fire_skip",
+        "entry_id": "unit/chapter08/p06",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.dying_fire"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_wet_pages_take",
+        "unit_id": "chapter08/p06",
+        "context": null,
+        "node_ids": [
+          "reaction/side_wet_pages_take",
+          "reaction/side_wet_pages_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_wet_pages_take"
+        ],
+        "join_id": "reaction-merge/side_wet_pages_skip",
+        "entry_id": "reaction-merge/side_dying_fire_skip",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.wet_pages"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_shelter_screen_skip",
+        "unit_id": "chapter09/p07",
+        "context": null,
+        "node_ids": [
+          "reaction/side_shelter_screen_skip",
+          "reaction/side_shelter_screen_approach_careful",
+          "reaction/side_shelter_screen_approach_direct"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_shelter_screen_skip",
+          "reaction-merge/side_shelter_screen_approach_careful"
+        ],
+        "join_id": "reaction-merge/side_shelter_screen_approach_direct",
+        "entry_id": "unit/chapter09/p07",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.shelter_screen",
+            "side.shelter_screen.approach"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_return_knots_take",
+        "unit_id": "chapter10/p01",
+        "context": null,
+        "node_ids": [
+          "reaction/side_return_knots_take",
+          "reaction/side_return_knots_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_return_knots_take"
+        ],
+        "join_id": "reaction-merge/side_return_knots_skip",
+        "entry_id": "unit/chapter10/p01",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.return_knots"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_reed_marker_take",
+        "unit_id": "chapter10/p01",
+        "context": null,
+        "node_ids": [
+          "reaction/side_reed_marker_take",
+          "reaction/side_reed_marker_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_reed_marker_take"
+        ],
+        "join_id": "reaction-merge/side_reed_marker_skip",
+        "entry_id": "reaction-merge/side_return_knots_skip",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.reed_marker"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_ash_barrel_take",
+        "unit_id": "chapter11/p01",
+        "context": null,
+        "node_ids": [
+          "reaction/side_ash_barrel_take",
+          "reaction/side_ash_barrel_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_ash_barrel_take"
+        ],
+        "join_id": "reaction-merge/side_ash_barrel_skip",
+        "entry_id": "unit/chapter11/p01",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.ash_barrel"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_ash_cloth_take",
+        "unit_id": "chapter11/p01",
+        "context": null,
+        "node_ids": [
+          "reaction/side_ash_cloth_take",
+          "reaction/side_ash_cloth_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_ash_cloth_take"
+        ],
+        "join_id": "reaction-merge/side_ash_cloth_skip",
+        "entry_id": "reaction-merge/side_ash_barrel_skip",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.ash_cloth"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_cell_voice_take",
+        "unit_id": "chapter11/p04",
+        "context": null,
+        "node_ids": [
+          "reaction/side_cell_voice_take",
+          "reaction/side_cell_voice_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_cell_voice_take"
+        ],
+        "join_id": "reaction-merge/side_cell_voice_skip",
+        "entry_id": "unit/chapter11/p04",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.cell_voice"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_leaking_channel_take",
+        "unit_id": "chapter12/p05",
+        "context": null,
+        "node_ids": [
+          "reaction/side_leaking_channel_take",
+          "reaction/side_leaking_channel_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_leaking_channel_take"
+        ],
+        "join_id": "reaction-merge/side_leaking_channel_skip",
+        "entry_id": "unit/chapter12/p05",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.leaking_channel"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_loose_stair_skip",
+        "unit_id": "chapter13/p03",
+        "context": null,
+        "node_ids": [
+          "reaction/side_loose_stair_skip",
+          "reaction/side_loose_stair_approach_careful",
+          "reaction/side_loose_stair_approach_direct"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_loose_stair_skip",
+          "reaction-merge/side_loose_stair_approach_careful"
+        ],
+        "join_id": "reaction-merge/side_loose_stair_approach_direct",
+        "entry_id": "unit/chapter13/p03",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.loose_stair",
+            "side.loose_stair.approach"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_fallen_store_take",
+        "unit_id": "chapter13/p06",
+        "context": null,
+        "node_ids": [
+          "reaction/side_fallen_store_take",
+          "reaction/side_fallen_store_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_fallen_store_take"
+        ],
+        "join_id": "reaction-merge/side_fallen_store_skip",
+        "entry_id": "unit/chapter13/p06",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.fallen_store"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_dust_door_take",
+        "unit_id": "chapter13/p06",
+        "context": null,
+        "node_ids": [
+          "reaction/side_dust_door_take",
+          "reaction/side_dust_door_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_dust_door_take"
+        ],
+        "join_id": "reaction-merge/side_dust_door_skip",
+        "entry_id": "reaction-merge/side_fallen_store_skip",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.dust_door"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_hot_frame_take",
+        "unit_id": "chapter14/p07",
+        "context": null,
+        "node_ids": [
+          "reaction/side_hot_frame_take",
+          "reaction/side_hot_frame_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_hot_frame_take"
+        ],
+        "join_id": "reaction-merge/side_hot_frame_skip",
+        "entry_id": "unit/chapter14/p07",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.hot_frame"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_cool_recess_skip",
+        "unit_id": "chapter15/p02",
+        "context": null,
+        "node_ids": [
+          "reaction/side_cool_recess_skip",
+          "reaction/side_cool_recess_approach_careful",
+          "reaction/side_cool_recess_approach_direct"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_cool_recess_skip",
+          "reaction-merge/side_cool_recess_approach_careful"
+        ],
+        "join_id": "reaction-merge/side_cool_recess_approach_direct",
+        "entry_id": "unit/chapter15/p02",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.cool_recess",
+            "side.cool_recess.approach"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      },
+      {
+        "id": "alternatives/side_last_step_take",
+        "unit_id": "chapter15/p05",
+        "context": null,
+        "node_ids": [
+          "reaction/side_last_step_take",
+          "reaction/side_last_step_skip"
+        ],
+        "hidden_merge_ids": [
+          "reaction-merge/side_last_step_take"
+        ],
+        "join_id": "reaction-merge/side_last_step_skip",
+        "entry_id": "unit/chapter15/p05",
+        "layout": "horizontal_alternatives_single_join",
+        "proof": {
+          "at_most_one": true,
+          "exhaustive": true,
+          "proof": "declared_boolean_truth_table",
+          "state_keys": [
+            "side.last_step"
+          ],
+          "required_visits_guaranteed": true
+        },
+        "bypass_possible": false
+      }
+    ]
   }
 }

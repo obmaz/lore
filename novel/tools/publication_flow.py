@@ -4,6 +4,7 @@ import copy
 import hashlib
 import html
 import json
+import itertools
 import textwrap
 from collections import Counter
 from pathlib import Path
@@ -16,6 +17,7 @@ from reference import COMMON, validate_claim
 from text_refs import validate_text, reject_fixed_names, validate_names
 from branch_system import BranchSession, PLAN as BRANCHES
 from chapter_subsections import PLAN as SUBSECTIONS
+from story_continuity import matches
 
 PLAN = ROOT/'writing/publication/flow.plan.json'
 SCHEMA = ROOT/'writing/publication.schema.json'
@@ -61,6 +63,104 @@ class PublicationFlow:
         self.editions = self._editions()
         self.report = self.validate()
         self.graph['timeline'] = self.timeline()
+        self.graph['presentation'] = self.reaction_presentation()
+
+    def exclusive_conditions(self, conditions):
+        """Conservative proof over declared Boolean states, not route witnesses."""
+        states=set()
+        def supported(condition):
+            if isinstance(condition,bool): return True
+            if 'not' in condition: return supported(condition['not'])
+            for operator in ('all','any'):
+                if operator in condition: return all(supported(c) for c in condition[operator])
+            key=condition.get('state')
+            if (self.session.states.get(key,{}).get('type')!='boolean'
+                    or condition.get('op') not in ('eq','ne')
+                    or not isinstance(condition.get('value'),bool)): return False
+            states.add(key)
+            return True
+        if not all(supported(c) for c in conditions) or len(states)>10: return None
+        counts=[sum(matches(c,dict(zip(sorted(states),values))) for c in conditions)
+                for values in itertools.product((False,True),repeat=len(states))]
+        if max(counts,default=0)>1: return None
+        return {'at_most_one':True,'exhaustive':bool(counts) and min(counts)==1,
+                'proof':'declared_boolean_truth_table','state_keys':sorted(states)}
+
+    def reaction_presentation(self):
+        groups=[]
+        # Intersection of required unit IDs on every logical predecessor path.
+        # Ignoring guards is conservative; optional choices cannot manufacture
+        # a visited-unit guarantee. Variant node IDs share their original unit.
+        predecessors={n['id']:[] for n in self.nodes if n['kind']!='chapter'}
+        successors={key:[] for key in predecessors}
+        for edge in self.edges:
+            if edge['kind'] in ('influence','overview'): continue
+            predecessors[edge['to']].append(edge['from'])
+            successors[edge['from']].append(edge['to'])
+        remaining={key:len(parents) for key,parents in predecessors.items()}
+        pending=[key for key,count in remaining.items() if not count]
+        guaranteed={}; node_index={n['id']:n for n in self.nodes}
+        while pending:
+            key=pending.pop(0); parents=predecessors[key]
+            visited=set.intersection(*(guaranteed[p] for p in parents)) if parents else set()
+            if node_index[key]['kind']=='unit':visited.add(node_index[key]['unit_id'])
+            guaranteed[key]=visited
+            for child in successors[key]:
+                remaining[child]-=1
+                if remaining[child]==0:pending.append(child)
+        by_unit={}
+        for node in self.nodes:
+            if node['kind']=='reaction': by_unit.setdefault((node['unit_id'],node['context']),[]).append(node)
+        for (unit,context),rows in by_unit.items():
+            run=[]
+            def finish():
+                if len(run)<2: return
+                rules=[self.resolve(n['guard_ref']) for n in run]
+                proof=self.exclusive_conditions([r['when'] for r in rules])
+                first=run[0]['id']; merges=[n['id'].replace('reaction/','reaction-merge/',1) for n in run]
+                predecessor=next(e['from'] for e in self.edges if e['to']==first and e['kind']=='reaction')
+                # Unknown participant gates retain a bypass. Required visits may
+                # remove it only when guaranteed on every predecessor path.
+                visits=all(set(r['requires_units'])<=guaranteed[predecessor] for r in rules)
+                exhaustive=proof['exhaustive'] and visits and all(not r['participants'] for r in rules)
+                proof['required_visits_guaranteed']=visits
+                groups.append({'id':'alternatives/'+first.removeprefix('reaction/'),
+                    'unit_id':unit,'context':context,'node_ids':[n['id'] for n in run],
+                    'hidden_merge_ids':merges[:-1],'join_id':merges[-1], 'entry_id':predecessor,
+                    'layout':'horizontal_alternatives_single_join','proof':proof,
+                    'bypass_possible':not exhaustive})
+            for row in rows:
+                candidate=run+[row]
+                if self.exclusive_conditions([self.resolve(n['guard_ref'])['when'] for n in candidate]) is None:
+                    finish();run=[row]
+                else:run=candidate
+            finish()
+        return {'version':1,'policy':'presentation_only_runtime_dag_unchanged',
+                'groups':groups}
+
+    def svg_presentation(self, original, keys, edges):
+        """Flatten only whole, proven-exclusive chains inside the selected chart."""
+        membership={}
+        for group in self.graph['presentation']['groups']:
+            required={group['entry_id'],group['join_id'],*group['node_ids'],*group['hidden_merge_ids']}
+            if not required<=original: continue
+            hidden=set(group['hidden_merge_ids']); reactions=set(group['node_ids'])
+            internal=hidden|reactions|{group['join_id']}
+            edges=[e for e in edges if not (e['kind'].startswith('reaction')
+                   and e['from'] in internal|{group['entry_id']} and e['to'] in internal)]
+            keys=[key for key in keys if key not in hidden];original=original-hidden
+            nodes={n['id']:n for n in self.nodes}
+            for key in group['node_ids']:
+                edges.append({'from':group['entry_id'],'to':key,'kind':'reaction',
+                              'guard_ref':nodes[key]['guard_ref'],'negated':False,'label_ref':None})
+                edges.append({'from':key,'to':group['join_id'],'kind':'reaction',
+                              'guard_ref':None,'negated':False,'label_ref':None})
+                membership[key]=group['id']
+            membership[group['join_id']]=group['id']
+            if group['bypass_possible']:
+                edges.append({'from':group['entry_id'],'to':group['join_id'],'kind':'reaction_skip',
+                              'guard_ref':None,'negated':False,'label_ref':None})
+        return original,keys,edges,membership
 
     def timeline(self):
         """Reference-bound editorial comparison, never a simulated reader route."""
@@ -438,8 +538,10 @@ class PublicationFlow:
 
     def svg(self, keys):
         original=set(keys); keys=self.svg_keys(keys)
-        chosen = set(keys); nodes = {n['id']:n for n in self.nodes if n['id'] in chosen}
+        chosen = set(keys)
         edges = [e for e in self.edges if e['from'] in chosen and e['to'] in chosen]
+        original,keys,edges,exclusive=self.svg_presentation(original,keys,edges)
+        nodes = {n['id']:n for n in self.nodes if n['id'] in keys}
         # Causal memory links must not determine the chapter's reading layout.
         layout_edges=[e for e in edges if e['from'] in original and e['to'] in original
                       and (e['kind']!='influence' or not any(n['kind']=='unit' for n in nodes.values()))]
@@ -524,7 +626,9 @@ class PublicationFlow:
             n = nodes[key]; x,y = positions[key]; label = caption(key)
             fill = colors.get(n['kind'],'#fff')
             tooltip=label+('\n\n'+self.session.display(self.resolve(n['content_ref'])) if n.get('content_ref') else '')
-            out.append(f'<g class="flow-node" data-flow-node="{esc(key,quote=True)}" data-node-kind="{n["kind"]}" data-external="{str(key in external).lower()}" aria-label="{esc(label,quote=True)}"><title>{esc(tooltip)}</title><rect x="{x-140}" y="{y}" width="280" height="{box_heights[key]}" rx="8" fill="{fill}" stroke="#607269"'+(' stroke-dasharray="3 3"' if key in external else '')+'/>')
+            alternative=exclusive.get(key,'')
+            if alternative: tooltip+='\n같은 시점의 배타 결과 · 조건에 따라 최대 한 문단 표시'
+            out.append(f'<g class="flow-node" data-flow-node="{esc(key,quote=True)}" data-node-kind="{n["kind"]}" data-exclusive-group="{esc(alternative,quote=True)}" data-external="{str(key in external).lower()}" aria-label="{esc(label,quote=True)}"><title>{esc(tooltip)}</title><rect x="{x-140}" y="{y}" width="280" height="{box_heights[key]}" rx="8" fill="{fill}" stroke="#607269"'+(' stroke-dasharray="3 3"' if key in external else '')+'/>')
             out.append(f'<text x="{x}" y="{y+25}" text-anchor="middle" fill="#25372e" font-size="15">')
             out.extend(f'<tspan x="{x}" dy="{0 if j==0 else 19}">{esc(line)}</tspan>' for j,line in enumerate(text_rows[key]))
             out.append('</text></g>')
@@ -548,7 +652,7 @@ class PublicationFlow:
         for e in self.editions['editions']:
             body += '<h3>'+esc(e['id'])+'</h3><p>'+esc(e['note'])+'</p><ol>'
             body += ''.join('<li>'+esc(self.unit_numbers[key]+' · '+self.session.display(self.resolve(self.heading(key))))+'</li>' for key in e['main_unit_order'])+'</ol>'
-        body += '<h2>범례와 조건</h2><p>푸른 상자는 선택 경로, 노란 상자는 결정, 녹색은 합류, 회색은 필수 결과, 보라는 조건부 반응입니다. 점선은 조건이 맞을 때의 문단이며 모든 반응을 함께 읽는 뜻이 아닙니다.</p><ul>'
+        body += '<h2>범례와 조건</h2><p>푸른 상자는 선택 경로, 노란 상자는 결정, 녹색은 합류, 회색은 필수 결과, 보라는 조건부 반응입니다. 점선은 조건이 맞을 때의 문단이며 모든 반응을 함께 읽는 뜻이 아닙니다. 같은 시점에 최대 하나만 성립하는 결과는 가로로 나란히 놓고 한 번만 합류합니다. 함께 성립할 수 있는 반응은 세로 순서를 유지합니다.</p><ul>'
         body += ''.join('<li>'+esc(s)+'</li>' for s in self.plan['notes'])+'</ul>'
         return html_doc('출판 구성 · 소제목 트리와 흐름도',body).replace('</style>','.flow-diagram{max-width:100%;overflow-x:auto;border:1px solid #b9c8bd;padding:8px;background:#fafafa}.flow-diagram svg{display:block;font-family:inherit}@media print{.flow-diagram{overflow:visible}.flow-diagram svg{max-width:100%;height:auto}}</style>')
 
