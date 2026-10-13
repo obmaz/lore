@@ -4,7 +4,7 @@ import json
 import re
 import unittest
 from interactive_series import compile_series,SeriesSession
-from prose_variants import apply_variant,structure,VARIANT,STYLES
+from prose_variants import apply_variant,structure,VARIANT,STYLES,load_series
 from materials import ROOT,read
 from story_continuity import CANON,context_for_routes
 from text_refs import indexes,literals,render
@@ -76,7 +76,7 @@ class ProseVariantTests(unittest.TestCase):
             for leaked in ['"relationships"','"biography"','"required_beats"','"canon"']:
                 self.assertNotIn(leaked,page)
         self.assertEqual(len(payloads['A']['chapters']),3)
-        self.assertEqual(len(payloads['B']['chapters']),1)
+        self.assertEqual(len(payloads['B']['chapters']),len(load_series()['chapters']))
         self.assertNotEqual(payloads['A']['fingerprint'],payloads['B']['fingerprint'])
         wrapper=(ROOT/'writing/previews/novel-reader.html').read_text()
         self.assertIn('id="edition-select"',wrapper)
@@ -103,7 +103,7 @@ class ProseVariantTests(unittest.TestCase):
         self.assertEqual(profiles['A']['definition_ref'],'project.json#/style')
         self.assertEqual(profiles['B']['revision'],self.document['style_revision'])
         self.assertEqual(profiles['A']['written_chapters'],['chapter01','chapter02','chapter03'])
-        self.assertEqual(profiles['B']['written_chapters'],['chapter01'])
+        self.assertEqual(profiles['B']['written_chapters'],[c['chapter_id'] for c in load_series()['chapters']])
         self.assertEqual(self.document['shared_structure'],'writing/interactive/series.json')
 
 

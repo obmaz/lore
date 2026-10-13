@@ -16,13 +16,13 @@
     "agent_policy": 3,
     "compiled_reference": 5,
     "configuration": 2,
-    "editable_authoring_input": 35,
+    "editable_authoring_input": 37,
     "generated_inventory": 1,
     "generated_reading": 39,
     "immutable_source_snapshot": 25,
-    "schema": 18,
+    "schema": 19,
     "shared_template": 10,
-    "test": 26,
+    "test": 27,
     "tool": 29,
     "ui_source": 5,
     "usage_documentation": 15,
@@ -2178,6 +2178,17 @@
       "automatic_deletion": false
     },
     {
+      "file": "tests/test_prose_series.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tests/test_prose_variants.py",
       "role": "test",
       "consumers": [
@@ -2561,6 +2572,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_prose_series.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_prose_variants.py"
         },
         {
@@ -2859,6 +2874,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_prose_series.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_prose_variants.py"
         },
         {
@@ -2943,6 +2962,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_prose_series.py"
         },
         {
           "kind": "python_import",
@@ -3128,11 +3151,27 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_prose_series.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_prose_variants.py"
         },
         {
           "kind": "python_import",
+          "file": "tools/check_editions_browser.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tools/interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/studio.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -3298,6 +3337,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_prose_series.py"
         },
         {
           "kind": "python_import",
@@ -3565,6 +3608,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_prose_series.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_prose_variants.py"
         },
         {
@@ -3716,6 +3763,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_prose_series.py"
         },
         {
           "kind": "python_import",
@@ -4180,6 +4231,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/prose_variants.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/side_stories.py"
         },
         {
@@ -4220,7 +4275,15 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "writing/variants/prose.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/series.schema.json"
         }
       ],
       "automatic_deletion": false
@@ -4484,6 +4547,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/storyboard.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
         }
       ],
       "automatic_deletion": false
@@ -4511,6 +4578,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/interactive_series.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/prose_variants.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -4554,7 +4625,15 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "writing/variants/prose.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/series.schema.json"
         }
       ],
       "automatic_deletion": false
@@ -4860,6 +4939,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/prose_variants.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/side_stories.py"
         },
         {
@@ -4900,7 +4983,15 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "writing/variants/prose.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/series.schema.json"
         }
       ],
       "automatic_deletion": false
@@ -5066,10 +5157,6 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6817,6 +6904,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/prose_variants.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/side_stories.py"
         },
         {
@@ -6857,7 +6948,15 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "writing/variants/prose.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/series.schema.json"
         }
       ],
       "automatic_deletion": false
@@ -7231,6 +7330,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/prose_variants.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/side_stories.py"
         },
         {
@@ -7271,7 +7374,15 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "writing/variants/prose.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/series.schema.json"
         }
       ],
       "automatic_deletion": false
@@ -7848,6 +7959,116 @@
       "automatic_deletion": false
     },
     {
+      "file": "writing/variants/B/chapter02.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/variants/B/series.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_prose_variants.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/branch_system.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/companion_events.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/interactive_series.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/prose_variants.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/chapters.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/companion-events/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/prose.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/series.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "writing/variants/README.md",
       "role": "usage_documentation",
       "consumers": [
@@ -7888,6 +8109,25 @@
     },
     {
       "file": "writing/variants/prose.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/prose_variants.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/variants/series.schema.json",
       "role": "schema",
       "consumers": [
         {

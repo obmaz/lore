@@ -1,0 +1,12 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "type":"object","additionalProperties":false,
+  "required":["version","revision","profile","style_revision","status","shared_structure","chapters","metadata"],
+  "properties":{
+    "version":{"const":1},"revision":{"type":"integer","minimum":1},"profile":{"const":"B"},
+    "style_revision":{"type":"integer","minimum":1},"status":{"const":"draft"},
+    "shared_structure":{"const":"writing/interactive/series.json"},
+    "chapters":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["chapter_id","file"],"properties":{"chapter_id":{"type":"string","pattern":"^chapter[0-9]{2}$"},"file":{"type":"string"}}}},
+    "metadata":{"type":"object","additionalProperties":false,"required":["origin","status","addition","kind","note"],"properties":{"origin":{"const":"authored"},"status":{"const":"proposed"},"addition":{"const":true},"kind":{"const":"new_setting"},"note":{"type":"string","minLength":1}}}
+  }
+}

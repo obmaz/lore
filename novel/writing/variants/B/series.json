@@ -1,0 +1,6 @@
+{
+  "version":1,"revision":2,"profile":"B","style_revision":1,"status":"draft",
+  "shared_structure":"writing/interactive/series.json",
+  "chapters":[{"chapter_id":"chapter01","file":"writing/variants/B/chapter01.json"},{"chapter_id":"chapter02","file":"writing/variants/B/chapter02.json"}],
+  "metadata":{"origin":"authored","status":"proposed","addition":true,"kind":"new_setting","note":"추가: 집필한 B 본문만 장별 레이어로 연결하는 읽기 인덱스. 공통 목차·분기·원작 인용·연속성 계약은 복제하거나 바꾸지 않는다. 미집필 장은 A 본문으로 대체하지 않는다."}
+}

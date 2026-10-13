@@ -81,9 +81,10 @@ def check(screenshots=None,bundle=None):
             frame.locator('#choices button').first.wait_for()
             web=json.loads(frame.locator('#chapter-data').text_content())
             assert web['edition']=='B'
-            assert [c['id'] for c in web['chapters']]==['chapter01']
+            from prose_variants import load_series
+            assert [c['id'] for c in web['chapters']]==[c['chapter_id'] for c in load_series()['chapters']]
             assert '발밑에서 돌이 흔들렸다.' in frame.locator('#manuscript').inner_text()
-            assert '소설 본문 · B · 1장' in frame.locator('.notice').inner_text()
+            assert '소설 본문 · B ·' in frame.locator('.notice').inner_text()
             assert not errors,errors
             view('graph')
             page.locator('[data-graph-panel="preview"]').click()

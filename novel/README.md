@@ -30,7 +30,7 @@
 각 장 두 개의 곁가지와 5개 중첩 선택·후속 반응을 확인하는 창작 초고입니다. 본줄기는 기존 기본 경로의 주요 내용으로
 유지하며, 원문 전체·완성 장편 판본과 구분합니다. [원본 JSON·연결·검사 범위](writing/side-stories/README.md).
 
-독자용 실제 본문 · A 1~3장 / B 1장 초고: [웹에서 판본을 선택하며 읽기](https://obmaz.github.io/lore/novel/)
+독자용 실제 본문 · A 1~3장 / B 1~2장 초고: [웹에서 판본을 선택하며 읽기](https://obmaz.github.io/lore/novel/)
 
 공용 문체는 [writing/styles.json](writing/styles.json)에서 A/B로 관리합니다.
 A는 기존 산문, B는 빠른 호흡의 웹소설형입니다. 목차·구성·분기·원작 대사는 같고
@@ -118,7 +118,7 @@ python -X utf8 tools/writing.py export --check
 ```
 
 원고·읽기본을 함께 `main`에 푸시하면 저장소 Pages가 읽기본의 입력·출력 해시를 검사해
-독자용 `writing/previews/chapter01-interactive.html`을 `/novel/index.html`에,
+독자용 A/B 통합 화면 `writing/previews/novel-reader.html`을 `/novel/index.html`에,
 공개 허용된 `writing/studio/generated/index.html`을 별도 `/novel/studio/index.html`에 게시합니다.
 게시 과정은 원고를 재생성하지 않습니다. 인물 마스터·전편 설정은 독자 읽기본에 넣지 않으며
 제작실의 HTML에는 포함됩니다. 원문 JSON·PDF 파일을 별도로 게시하지는 않습니다.

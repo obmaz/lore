@@ -54,9 +54,9 @@
 - [소설 본문 · A · 1~3장](previews/chapter01-interactive.html): 실제 집필한 초고를 이어 읽는 최신 판본.
   [분기 구조와 집필 규칙](interactive/README.md), [작가용 분기 안내](previews/chapter01-branches.html).
   새 선택·동료 설정은 오버레이에 있고 기존 긴 본문을 참조해 사용한다.
-- [소설 본문 · B · 1장](previews/chapter01-web.html): 같은 구성·선택·원작 대사를 웹소설형 산문으로 재집필한 별도 초고.
+- [소설 본문 · B · 1~2장](previews/chapter01-web.html): 같은 구성·선택·원작 대사를 웹소설형 산문으로 재집필한 별도 초고.
 - [A/B 통합 독서 화면](previews/novel-reader.html): 공개 `/novel/`과 같은 판본 선택 화면.
-  공용 기준은 [styles.json](styles.json), B 본문은 [variants/B/chapter01.json](variants/B/chapter01.json)이다.
+  공용 기준은 [styles.json](styles.json), B 장별 연결은 [variants/B/series.json](variants/B/series.json)이다.
   문체와 원고의 적용 방법은 [판본 안내](variants/README.md)를 참조한다.
 - [전편 곁가지 선택판](previews/side-adventures.html): 15장 주요 내용과 창작 곁가지 초고.
 - [전편 스토리보드](previews/storyboard.html): 작가 전용, 전편 스포일러 포함.
@@ -82,6 +82,7 @@ HTML은 편집 대상이 아니라 JSON에서 생성한 스냅샷이다.
 | 출판용 소제목 트리·그래프·경로 예시 | `publication/flow.plan.json` | [출판 구성](publication/README.md), `publication/generated/` |
 | 원작 연결 배열·전후 산문 | `storyboard/source-connected.plan.json` | `source-connected/`, `previews/source-connected.html` |
 | 기본 원고와 장면 계약 | `quests/*.json`, `quests/*.continuity.json` | [연속성](../continuity/README.md) |
+| 문체별 산문·적용 버전·집필 장 목록 | `styles.json`, `variants/B/series.json`, `variants/B/chapter*.json` | [판본 집필](variants/README.md), 공통 분기·원작 대사·계약은 복제하지 않음 |
 | 소편의 장면 목록·종료 지점 | `episodes/*.json` | 실제 본문은 복제하지 않고 `node_ids`로 참조 |
 | 첫 챕터 선택형 보충 원고 | `interactive/chapter01.json` | [독자 분기 안내](interactive/README.md) |
 | 표시명·설정·관계 | 상위 `reference/`·`characters/`의 편집 입력 | [참조 사전](../reference/README.md) |
