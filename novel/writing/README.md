@@ -16,8 +16,9 @@
   기존 독자 읽기본에는 포함하지 않습니다. [사용·갱신 안내](studio/README.md).
 
 - [전편 15장 곁가지 · 선택하며 읽기](https://obmaz.github.io/lore/novel/studio/#/reading?document=side-adventures.html):
-  각 장 하나의 창작 모험과 참여·지나침에 따른 후속 반응. 본줄기는 기존 기본 경로의 주요 내용입니다.
-  [집필 원본과 검사 범위](side-stories/README.md). 제작실 결합 그래프는 21개 결정·44개 선택지입니다.
+  각 장 두 개, 총 30개 창작 모험과 후속 반응. 5개 모험에는 참여 후 해결 방법을 고르는 중첩 선택이 있습니다.
+  본줄기는 기존 기본 경로의 주요 내용입니다. [집필 원본과 검사 범위](side-stories/README.md).
+  결합 그래프는 41개 결정·89개 실행 옵션이며 그중 자동 우회 5개는 독자 선택지에서 제외합니다.
 
 - [소제목 트리·장별 흐름도](previews/publication-flow.html): 장·소단락·선택·합류·후속 반응을
   연결한 오프라인 SVG 도식. [Markdown 트리·Mermaid](publication/generated/flow.md),

@@ -149,6 +149,121 @@
       {
         "text": "끝난 싸움 뒤의 한 걸음"
       }
+    ],
+    "side_gate_lantern": [
+      {
+        "text": "성문 밖으로 흘러나온 불빛"
+      }
+    ],
+    "side_gate_lantern_approach": [
+      {
+        "text": "성문 밖으로 흘러나온 불빛"
+      },
+      {
+        "text": " · 해결 방법"
+      }
+    ],
+    "side_road_stones": [
+      {
+        "text": "북쪽 길의 쓰러진 경계돌"
+      }
+    ],
+    "side_cold_hearth": [
+      {
+        "text": "식어 버린 화덕의 재"
+      }
+    ],
+    "side_stone_niche": [
+      {
+        "text": "갈라진 벽감의 낡은 흔적"
+      }
+    ],
+    "side_stone_niche_approach": [
+      {
+        "text": "갈라진 벽감의 낡은 흔적"
+      },
+      {
+        "text": " · 해결 방법"
+      }
+    ],
+    "side_passage_echo": [
+      {
+        "text": "통로에 남은 어긋난 발소리"
+      }
+    ],
+    "side_shore_crates": [
+      {
+        "text": "섬 가장자리의 떠밀린 짐"
+      }
+    ],
+    "side_shelter_screen": [
+      {
+        "text": "미로의 바람막이"
+      }
+    ],
+    "side_shelter_screen_approach": [
+      {
+        "text": "미로의 바람막이"
+      },
+      {
+        "text": " · 해결 방법"
+      }
+    ],
+    "side_wet_pages": [
+      {
+        "text": "물기 번진 작은 장부"
+      }
+    ],
+    "side_reed_marker": [
+      {
+        "text": "두 길이 만난 곳의 꺾인 갈대"
+      }
+    ],
+    "side_ash_cloth": [
+      {
+        "text": "먼지를 막는 문턱의 천"
+      }
+    ],
+    "side_loose_stair": [
+      {
+        "text": "내려가는 계단의 흔들린 발판"
+      }
+    ],
+    "side_loose_stair_approach": [
+      {
+        "text": "내려가는 계단의 흔들린 발판"
+      },
+      {
+        "text": " · 해결 방법"
+      }
+    ],
+    "side_mended_cup": [
+      {
+        "text": "금 간 잔을 내려놓는 자리"
+      }
+    ],
+    "side_dust_door": [
+      {
+        "text": "드러난 성 곁의 먼지 낀 문"
+      }
+    ],
+    "side_cool_recess": [
+      {
+        "text": "마지막 길 옆의 식은 돌자리"
+      }
+    ],
+    "side_cool_recess_approach": [
+      {
+        "text": "마지막 길 옆의 식은 돌자리"
+      },
+      {
+        "text": " · 해결 방법"
+      }
+    ],
+    "side_silent_fragments": [
+      {
+        "text": "작별 뒤에 남은 돌조각"
+      }
     ]
   },
   "reaction_titles": {
@@ -426,6 +541,316 @@
       {
         "text": " · 지나친 경험"
       }
+    ],
+    "side_gate_lantern_skip": [
+      {
+        "text": "성문 밖으로 흘러나온 불빛"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_gate_lantern_approach_careful": [
+      {
+        "text": "성문 밖으로 흘러나온 불빛"
+      },
+      {
+        "text": " · "
+      },
+      {
+        "text": "덮개를 받쳐 문지기가 손을 넣을 틈을 만든다"
+      }
+    ],
+    "side_gate_lantern_approach_direct": [
+      {
+        "text": "성문 밖으로 흘러나온 불빛"
+      },
+      {
+        "text": " · "
+      },
+      {
+        "text": "빌린 철사로 고리를 걸어 꺼낸다"
+      }
+    ],
+    "side_road_stones_take": [
+      {
+        "text": "북쪽 길의 쓰러진 경계돌"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_road_stones_skip": [
+      {
+        "text": "북쪽 길의 쓰러진 경계돌"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_cold_hearth_take": [
+      {
+        "text": "식어 버린 화덕의 재"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_cold_hearth_skip": [
+      {
+        "text": "식어 버린 화덕의 재"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_stone_niche_skip": [
+      {
+        "text": "갈라진 벽감의 낡은 흔적"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_stone_niche_approach_careful": [
+      {
+        "text": "갈라진 벽감의 낡은 흔적"
+      },
+      {
+        "text": " · "
+      },
+      {
+        "text": "돌을 받친 뒤 꾸러미를 옮긴다"
+      }
+    ],
+    "side_stone_niche_approach_direct": [
+      {
+        "text": "갈라진 벽감의 낡은 흔적"
+      },
+      {
+        "text": " · "
+      },
+      {
+        "text": "천으로 감싸 꾸러미만 끌어낸다"
+      }
+    ],
+    "side_passage_echo_take": [
+      {
+        "text": "통로에 남은 어긋난 발소리"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_passage_echo_skip": [
+      {
+        "text": "통로에 남은 어긋난 발소리"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_shore_crates_take": [
+      {
+        "text": "섬 가장자리의 떠밀린 짐"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_shore_crates_skip": [
+      {
+        "text": "섬 가장자리의 떠밀린 짐"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_shelter_screen_skip": [
+      {
+        "text": "미로의 바람막이"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_shelter_screen_approach_careful": [
+      {
+        "text": "미로의 바람막이"
+      },
+      {
+        "text": " · "
+      },
+      {
+        "text": "천을 묶어 쉴 자리를 남긴다"
+      }
+    ],
+    "side_shelter_screen_approach_direct": [
+      {
+        "text": "미로의 바람막이"
+      },
+      {
+        "text": " · "
+      },
+      {
+        "text": "천을 접어 통로부터 비운다"
+      }
+    ],
+    "side_wet_pages_take": [
+      {
+        "text": "물기 번진 작은 장부"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_wet_pages_skip": [
+      {
+        "text": "물기 번진 작은 장부"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_reed_marker_take": [
+      {
+        "text": "두 길이 만난 곳의 꺾인 갈대"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_reed_marker_skip": [
+      {
+        "text": "두 길이 만난 곳의 꺾인 갈대"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_ash_cloth_take": [
+      {
+        "text": "먼지를 막는 문턱의 천"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_ash_cloth_skip": [
+      {
+        "text": "먼지를 막는 문턱의 천"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_loose_stair_skip": [
+      {
+        "text": "내려가는 계단의 흔들린 발판"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_loose_stair_approach_careful": [
+      {
+        "text": "내려가는 계단의 흔들린 발판"
+      },
+      {
+        "text": " · "
+      },
+      {
+        "text": "작은 묶음으로 나누어 옆길로 옮긴다"
+      }
+    ],
+    "side_loose_stair_approach_direct": [
+      {
+        "text": "내려가는 계단의 흔들린 발판"
+      },
+      {
+        "text": " · "
+      },
+      {
+        "text": "발판을 받쳐 직접 짐을 옮기게 한다"
+      }
+    ],
+    "side_mended_cup_take": [
+      {
+        "text": "금 간 잔을 내려놓는 자리"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_mended_cup_skip": [
+      {
+        "text": "금 간 잔을 내려놓는 자리"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_dust_door_take": [
+      {
+        "text": "드러난 성 곁의 먼지 낀 문"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_dust_door_skip": [
+      {
+        "text": "드러난 성 곁의 먼지 낀 문"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_cool_recess_skip": [
+      {
+        "text": "마지막 길 옆의 식은 돌자리"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
+    ],
+    "side_cool_recess_approach_careful": [
+      {
+        "text": "마지막 길 옆의 식은 돌자리"
+      },
+      {
+        "text": " · "
+      },
+      {
+        "text": "옮길 수 있는 작은 돌을 안쪽에 모은다"
+      }
+    ],
+    "side_cool_recess_approach_direct": [
+      {
+        "text": "마지막 길 옆의 식은 돌자리"
+      },
+      {
+        "text": " · "
+      },
+      {
+        "text": "돌을 두고 먼지 위에 발 디딜 곳을 표시한다"
+      }
+    ],
+    "side_silent_fragments_take": [
+      {
+        "text": "작별 뒤에 남은 돌조각"
+      },
+      {
+        "text": " · 참여한 경험"
+      }
+    ],
+    "side_silent_fragments_skip": [
+      {
+        "text": "작별 뒤에 남은 돌조각"
+      },
+      {
+        "text": " · 지나친 경험"
+      }
     ]
   },
   "linear_editions": [
@@ -436,23 +861,43 @@
         "side_well_bucket/take",
         "prepare/armory",
         "company/talk_join",
+        "side_gate_lantern/take",
+        "side_gate_lantern_approach/careful",
         "side_flour_sack/take",
+        "side_road_stones/take",
         "side_ruin_cart/take",
         "aid/cook",
+        "side_cold_hearth/take",
         "side_blind_chamber/take",
+        "side_stone_niche/take",
+        "side_stone_niche_approach/careful",
+        "side_passage_echo/take",
         "side_ledge_rope/take",
         "side_caught_sail/take",
+        "side_shore_crates/take",
         "side_small_bell/take",
+        "side_shelter_screen/take",
+        "side_shelter_screen_approach/careful",
         "side_dying_fire/take",
+        "side_wet_pages/take",
         "seal_order/evil_first",
         "side_return_knots/take",
+        "side_reed_marker/take",
+        "side_ash_cloth/take",
         "side_ash_barrel/take",
         "side_cell_voice/take",
+        "side_loose_stair/take",
+        "side_loose_stair_approach/careful",
         "side_leaking_channel/take",
+        "side_mended_cup/take",
         "shelter_prepare/food",
         "side_fallen_store/take",
+        "side_dust_door/take",
         "side_hot_frame/take",
-        "side_last_step/take"
+        "side_cool_recess/take",
+        "side_cool_recess_approach/careful",
+        "side_last_step/take",
+        "side_silent_fragments/take"
       ],
       "note": "종이책 편집 순서의 예시 경로다. 정사·최종 출판 경로·페이지·장편 본문을 승인한 것이 아니다. 곁가지 참여를 포함한 별도 편집 예시."
     },
@@ -463,23 +908,38 @@
         "side_well_bucket/skip",
         "prepare/armory",
         "company/talk_join",
+        "side_gate_lantern/skip",
         "side_flour_sack/skip",
+        "side_road_stones/skip",
         "side_ruin_cart/skip",
         "aid/cook",
+        "side_cold_hearth/skip",
         "side_blind_chamber/skip",
+        "side_stone_niche/skip",
+        "side_passage_echo/skip",
         "side_ledge_rope/skip",
         "side_caught_sail/skip",
+        "side_shore_crates/skip",
         "side_small_bell/skip",
+        "side_shelter_screen/skip",
         "side_dying_fire/skip",
+        "side_wet_pages/skip",
         "seal_order/evil_first",
         "side_return_knots/skip",
+        "side_reed_marker/skip",
+        "side_ash_cloth/skip",
         "side_ash_barrel/skip",
         "side_cell_voice/skip",
+        "side_loose_stair/skip",
         "side_leaking_channel/skip",
+        "side_mended_cup/skip",
         "shelter_prepare/food",
         "side_fallen_store/skip",
+        "side_dust_door/skip",
         "side_hot_frame/skip",
-        "side_last_step/skip"
+        "side_cool_recess/skip",
+        "side_last_step/skip",
+        "side_silent_fragments/skip"
       ],
       "note": "종이책 편집 순서의 예시 경로다. 정사·최종 출판 경로·페이지·장편 본문을 승인한 것이 아니다. 곁가지 거절를 포함한 별도 편집 예시."
     }
@@ -493,6 +953,6 @@
     "선형 출판 순서표는 실제 선택 ID 경로를 재생해 만든다. 표제·조건·본문은 원래 JSON 참조로 이어지고 아직 페이지 번호는 없다.",
     "JSON은 구조와 참조, Markdown은 목차 트리·Mermaid 흐름도, HTML/SVG는 외부 라이브러리 없이 보는 도식이다.",
     "소제목·인물·무기 이름은 원래 자료에서 참조하고 표시명 변경 뒤 재생성한다. 생성물을 직접 편집하지 않는다.",
-    "15개 곁가지는 창작 초고다. 전체 조합을 열거하지 않았으며, 원작 해석·산문 의미·출판 승인은 자동 증명하지 않는다."
+    "30개 곁가지와 5개 중첩 선택은 창작 초고다. 부모 참여 뒤에만 해결 방법을 고르고 지나친 경우 자동으로 본줄기를 잇는다. 전체 조합을 열거하지 않았으며 원작 해석·산문 의미·출판 승인은 자동 증명하지 않는다."
   ]
 }

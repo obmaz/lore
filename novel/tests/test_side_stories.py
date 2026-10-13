@@ -1,4 +1,5 @@
 import copy
+from collections import Counter
 import json
 import re
 import tempfile
@@ -19,10 +20,12 @@ class SideStoryTests(unittest.TestCase):
         cls.session = cls.flow.session
         cls.core_route = read(CORE_FLOW)['linear_editions'][0]['manual_route']
 
-    def test_01_one_authored_proposed_story_in_every_chapter(self):
+    def test_01_two_authored_proposed_stories_in_every_chapter(self):
         stories = self.session.stories
-        self.assertEqual(len(stories), 15)
+        self.assertEqual(len(stories), 30)
         self.assertEqual(len({s['chapter_id'] for s in stories}), 15)
+        self.assertEqual(set(Counter(s['chapter_id'] for s in stories).values()), {2})
+        self.assertEqual(len(self.session.approach_by_decision), 5)
         for story in stories:
             self.assertEqual(story['origin'], 'authored')
             self.assertEqual(story['status'], 'proposed')
@@ -35,8 +38,17 @@ class SideStoryTests(unittest.TestCase):
         self.assertEqual(base.plan['decisions'], self.session.plan['decisions'][:len(base.plan['decisions'])])
         self.assertEqual(self.session.source_outline, base.outline)
         added = set(self.session.states) - set(base.states)
-        self.assertEqual(added, {'side.'+s['id'] for s in self.session.stories})
+        self.assertEqual(added, {'side.'+s['id'] for s in self.session.stories} | {'side.'+s['id']+'.approach' for s in self.session.approach_by_decision.values()})
         for decision in self.session.plan['decisions'][len(base.plan['decisions']):]:
+            if decision['id'] in self.session.approach_by_decision:
+                story=self.session.approach_by_decision[decision['id']]
+                for index,option in enumerate(decision['options'][:2]):
+                    self.assertEqual(option['when'],{'op':'eq','state':'side.'+story['id'],'value':True})
+                    self.assertEqual([(e['state'],e['op'],e['value']) for e in option['effects']], [('side.'+story['id']+'.approach','set',bool(index))])
+                bypass=decision['options'][2]
+                self.assertEqual(bypass['effects'],[])
+                self.assertEqual(bypass['when'],{'op':'eq','state':'side.'+story['id'],'value':False})
+                continue
             story = self.session.story_by_decision[decision['id']]
             for mode, option in zip(('take', 'skip'), decision['options']):
                 self.assertIs(option['when'], True)
@@ -47,8 +59,8 @@ class SideStoryTests(unittest.TestCase):
     def test_03_paired_core_and_mixed_paths_preserve_mandatory_history(self):
         report = self.session.safety_report
         self.assertEqual(report['core_complete_paths'], 96)
-        self.assertEqual(report['witness_paths_checked'], 193)
-        self.assertEqual(report['projected_complete_paths'], 3145728)
+        self.assertEqual(report['witness_paths_checked'], 198)
+        self.assertEqual(report['projected_complete_paths'], 96*2**25*3**5)
         self.assertFalse(report['cartesian_paths_enumerated'])
         self.assertTrue(report['mechanical_main_projection_preserved'])
         self.assertFalse(report['prose_approved'])
@@ -61,9 +73,10 @@ class SideStoryTests(unittest.TestCase):
             self.assertEqual(len(packet['completed_beats']), 44)
             for did, story in self.session.story_by_decision.items():
                 choices = [h for h in packet['history'] if h.get('decision_id') == did]
-                reactions = [h for h in packet['history'] if h['kind'] == 'reaction' and h['id'].startswith(did+'_')]
+                reactions = [h for h in packet['history'] if h['kind'] == 'reaction' and (h['id'] in (did+'_take',did+'_skip') or h['id'].startswith(did+'_approach_'))]
                 self.assertEqual([h['id'] for h in choices], [did+'/'+mode])
-                self.assertEqual([h['id'] for h in reactions], [did+'_'+mode])
+                expected=did+'_approach_'+story['approach']['options'][0]['id'] if mode=='take' and 'approach' in story else did+'_'+mode
+                self.assertEqual([h['id'] for h in reactions], [expected])
                 self.assertEqual(packet['state']['side.'+story['id']], mode == 'take')
         self.assertEqual(self.session.main_history(packets['take']), self.session.main_history(packets['skip']))
         self.assertNotEqual(packets['take']['history'], packets['skip']['history'])
@@ -89,7 +102,7 @@ class SideStoryTests(unittest.TestCase):
 
     def test_07_combined_graph_has_all_choices_and_honest_witness_scope(self):
         report = self.flow.report
-        self.assertEqual((report['decisions'], report['options'], report['runtime_paths_checked']), (21, 44, 193))
+        self.assertEqual((report['decisions'], report['options'], report['runtime_paths_checked']), (41, 89, 198))
         self.assertTrue(report['acyclic'])
         self.assertFalse(report['publication_approved'])
         self.assertEqual(len(self.flow.editions['editions']), 2)
@@ -105,12 +118,13 @@ class SideStoryTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'manually edited'): export(flow=self.flow)
             self.assertEqual(output.read_text(encoding='utf-8'), 'manual edit')
 
-    def test_09_preview_has_15_stories_and_inert_safe_json(self):
+    def test_09_preview_has_30_stories_and_inert_safe_json(self):
         document = reader_document(self.flow)
         raw = re.search(r'<script type="application/json" id="side-data">(.*?)</script>', document, re.S).group(1)
         payload = json.loads(raw)
         self.assertEqual(len(payload['chapters']), 15)
-        self.assertEqual(len(payload['stories']), 15)
+        self.assertEqual(len(payload['stories']), 30)
+        self.assertEqual(sum('approach' in s for s in payload['stories']),5)
         self.assertNotIn('<', raw)
         self.assertNotIn('fetch(', document)
         self.assertNotIn('localStorage', document)
@@ -141,6 +155,41 @@ class SideStoryTests(unittest.TestCase):
                     if row['kind']=='reaction':found[card['node_id']]=(chapter['chapter_id'],row['unit_id'],row['group_id'],card['source_options'])
         for did,story in self.session.story_by_decision.items():
             for index,mode in enumerate(('take','skip')):
+                if mode=='take' and 'approach' in story:continue
                 self.assertEqual(found['reaction/'+did+'_'+mode],(story['reaction_unit'].split('/')[0],story['reaction_unit'],did,[did+'/'+mode]))
-        import test_publication_flow
-        test_publication_flow.PublicationFlowTests.test_14_timeline_covers_all_main_choice_and_reaction_nodes_at_real_stages(self)
+        for aid,story in self.session.approach_by_decision.items():
+            group=timeline['groups'][aid]
+            self.assertEqual(group['parent_option'],'side_'+story['id']+'/take')
+            self.assertEqual(len(group['options']),2)
+            for option in story['approach']['options']:
+                self.assertEqual(found['reaction/'+aid+'_'+option['id']],(story['reaction_unit'].split('/')[0],story['reaction_unit'],aid,[aid+'/'+option['id']]))
+        nodes={card['node_id'] for c in timeline['chapters'] for row in c['rows'] for card in row.get('cards',[])}
+        self.assertFalse(any(key.endswith('/bypass') for key in nodes))
+        self.assertEqual({key for key in nodes if key.startswith('option/')},{'option/'+key for key in self.flow.option_paths if not key.endswith('/bypass')})
+        self.assertEqual({key for key in nodes if key.startswith('reaction/')},{'reaction/'+key for key in self.flow.reaction_paths})
+        for chapter in timeline['chapters']:
+            for row in chapter['rows']:
+                if row['kind']=='reaction' and row['group_id'] in self.session.approach_by_decision:
+                    self.assertEqual(len(row['cards']),2)
+
+    def test_12_nested_alternatives_have_own_callbacks_and_skip_never_exposes_them(self):
+        for aid,story in self.session.approach_by_decision.items():
+            parent='side_'+story['id']
+            for option in story['approach']['options']:
+                route=self.session.expand_route(self.core_route,'skip',overrides={parent:'take'},approaches={aid:option['id']})
+                packet=self.session.replay(route)
+                self.assertIn(aid+'/'+option['id'],route)
+                self.assertIn(aid+'_'+option['id'],[h.get('id') for h in packet['history']])
+            route=self.session.expand_route(self.core_route,'skip')
+            packet=self.session.replay(route)
+            self.assertIn(aid+'/bypass',packet['automatic_options'])
+            self.assertFalse(any(h['kind']=='reaction' and h['id'].startswith(aid+'_') for h in packet['history']))
+            boundary=route.index(parent+'/skip')+1
+            with self.assertRaises(ValueError):self.session.replay([*route[:boundary],aid+'/'+story['approach']['options'][0]['id']])
+
+    def test_13_nested_schema_cannot_inject_core_writes_or_recruitment(self):
+        for field in ('effects','participants','when'):
+            proposal=copy.deepcopy(self.session.proposal)
+            story=next(s for s in proposal['stories'] if 'approach' in s)
+            story['approach']['options'][0][field]=[]
+            with self.assertRaises(jsonschema.ValidationError):SideStorySession(base=self.session.base,proposal=proposal)

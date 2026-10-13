@@ -54,27 +54,46 @@ def check(screenshots=None,bundle=None):
             page.locator('#document-select').select_option('side-adventures.html')
             frame.locator('#side-choices button').first.wait_for()
             side_data = json.loads(frame.locator('#side-data').text_content())
-            assert len(side_data['stories']) == 15
+            assert len(side_data['stories']) == 30
             assert frame.locator('#side-next').is_hidden()
             # Revealing a hidden navigation button cannot bypass the private choice gate.
             frame.locator('#side-next').evaluate('(e)=>{e.hidden=false;e.click()}')
             assert frame.locator('#side-progress').inner_text().startswith('1 / 15')
-            modes = {}
-            for index, story in enumerate(side_data['stories']):
-                mode = 'take' if index % 2 == 0 else 'skip'
-                assert frame.locator('#side-choices button').count() == 2
+            modes, approaches = {}, {}
+            for index, chapter in enumerate(side_data['chapters']):
                 assert frame.locator('#side-progress').inner_text().startswith(str(index+1)+' / 15')
-                frame.locator(f'[data-side-choice="{mode}"]').click()
-                modes[story['id']] = mode
-                scene = frame.locator(f'[data-side-story="{story["id"]}"]')
-                assert story['participate' if mode == 'take' else 'skip'][:40] in scene.inner_text()
+                while frame.locator('#side-choices button').count():
+                    buttons=frame.locator('#side-choices button')
+                    assert buttons.count()==2
+                    sid=buttons.first.get_attribute('data-story')
+                    story=next(s for s in side_data['stories'] if s['id']==sid)
+                    assert story['chapter_id']==chapter['id']
+                    kind=buttons.first.get_attribute('data-choice-kind')
+                    if kind=='entry':
+                        mode='take' if 'approach' in story or len(modes)%2==0 else 'skip'
+                        frame.locator(f'[data-side-choice="{mode}"]').click()
+                        modes[sid]=mode
+                        scene=frame.locator(f'[data-side-story="{sid}"]')
+                        assert story['participate' if mode=='take' else 'skip'][:40] in scene.inner_text()
+                        if mode=='skip':assert frame.locator(f'[data-side-approach="{sid}"]').count()==0
+                    else:
+                        assert modes[sid]=='take'
+                        frame.locator('#side-next').evaluate('(e)=>{e.hidden=false;e.click()}')
+                        assert frame.locator('#side-progress').inner_text().startswith(str(index+1)+' / 15')
+                        option=story['approach']['options'][len(approaches)%2]
+                        frame.locator(f'[data-side-choice="{option["id"]}"]').click()
+                        approaches[sid]=option['id']
+                        assert option['body'][:40] in frame.locator(f'[data-side-approach="{sid}"]').inner_text()
                 assert frame.locator('#side-choices button').count() == 0
                 assert frame.locator('.core-outcome').count() > 0
                 for remembered in side_data['stories']:
-                    if remembered['reaction_unit'].startswith(story['chapter_id']+'/') and remembered['id'] in modes:
+                    if remembered['reaction_unit'].startswith(chapter['id']+'/') and remembered['id'] in modes:
                         memory = frame.locator(f'[data-side-memory="{remembered["id"]}"]')
                         assert memory.get_attribute('data-mode') == modes[remembered['id']]
                         text = remembered['on_participate' if modes[remembered['id']] == 'take' else 'on_skip']
+                        if remembered['id'] in approaches:
+                            text=next(o['reaction'] for o in remembered['approach']['options'] if o['id']==approaches[remembered['id']])
+                            assert memory.get_attribute('data-approach')==approaches[remembered['id']]
                         assert text[:40] in memory.inner_text()
                 if index < 14: frame.locator('#side-next').click()
             assert frame.locator('#side-complete').is_visible()
@@ -82,9 +101,18 @@ def check(screenshots=None,bundle=None):
             frame.locator('#side-prev').click()
             assert frame.locator('#side-choices button').count() == 0
             frame.locator('#side-restart').click()
-            assert frame.locator('#side-progress').inner_text() == '1 / 15장 · 곁가지 0개 선택'
+            assert frame.locator('#side-progress').inner_text() == '1 / 15장 · 곁가지 0개 선택 · 해결 방법 0개'
             assert frame.locator('[data-side-memory]').count() == 0
             assert frame.locator('#side-choices button').count() == 2
+            # All-skip traversal never asks for a nested method or invents its memory.
+            for index in range(15):
+                while frame.locator('#side-choices button').count():
+                    assert frame.locator('#side-choices button').first.get_attribute('data-choice-kind')=='entry'
+                    frame.locator('[data-side-choice="skip"]').click()
+                assert frame.locator('[data-side-approach]').count()==0
+                assert all(v=='skip' for v in frame.locator('[data-side-memory]').evaluate_all('(es)=>es.map(e=>e.dataset.mode)'))
+                if index<14:frame.locator('#side-next').click()
+            assert frame.locator('#side-complete').is_visible()
             view('outline')
             page.locator('#chapter-select').select_option('chapter09')
             assert page.locator('.unit').count()==7
@@ -154,11 +182,11 @@ def check(screenshots=None,bundle=None):
             page.locator('#return-chapter-graph').click()
             page.locator('[data-graph-panel="rules"]').click()
             assert page.locator('#chapter-select').input_value()=='chapter09'
-            assert page.locator('#branch-details .branch-rule').count()==2
+            assert page.locator('#branch-details .branch-rule').count()==3
             assert page.locator('#chapter-diagram').count()==0
             page.locator('.branch-rule>summary').first.click()
             assert '두 봉인을 모두 풀어야 한다' in page.locator('#branch-details').inner_text()
-            assert page.locator('.branch-option').count()==4
+            assert page.locator('.branch-option').count()==6
             assert '두 목표를 모두 마친 뒤 합류' in page.locator('#branch-details').inner_text()
             page.locator('.branch-rule [data-source]').first.click()
             assert '/decisions/' in page.locator('#source-location').inner_text()
@@ -171,12 +199,23 @@ def check(screenshots=None,bundle=None):
             page.go_forward()
             page.locator('#branch-details').wait_for()
             page.locator('#chapter-select').select_option('chapter01')
-            assert page.locator('#branch-details .branch-rule').count()==3
+            assert page.locator('#branch-details .branch-rule').count()==5
             page.locator('#chapter-select').select_option('chapter02')
-            assert page.locator('#branch-details .branch-rule').count()==1
+            assert page.locator('#branch-details .branch-rule').count()==2
             assert '무너진 제빵소의 마지막 자루' in page.locator('#branch-details').inner_text()
             page.locator('[data-graph-panel="diagram"]').click()
             assert page.locator('#chapter-select').input_value()=='chapter02'
+            page.locator('#chapter-select').select_option('chapter01')
+            nested=page.locator('[data-choice-group="side_gate_lantern_approach"]')
+            assert nested.count()==2 # question stage and the later two-way memory stage
+            assert all(nested.nth(i).locator('.tl-card').count()==2 for i in range(2))
+            assert page.locator('[data-flow-node$="/bypass"]').count()==0
+            assert '참여 경로' in nested.first.inner_text()
+            nested.first.locator('.tl-nesting [data-flow-focus]').click()
+            assert page.locator('[data-select-node="option/side_gate_lantern/take"]').get_attribute('aria-pressed')=='true'
+            if screenshots:page.screenshot(path=str(screenshots/f'studio-nested-{width}.png'))
+            page.keyboard.press('Escape')
+            page.locator('#chapter-select').select_option('chapter02')
             if width==390:
                 package=json.loads(page.locator('#studio-data').text_content())
                 shared=next((c,r,card) for c in package['timeline']['chapters'] for r in c['rows'] if r['kind']=='reaction' for card in r['cards'] if 0<len(card['source_options'])<len(package['timeline']['groups'][r['group_id']]['options']))

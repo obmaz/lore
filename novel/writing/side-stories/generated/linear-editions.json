@@ -11,25 +11,45 @@
         "side_well_bucket/take",
         "prepare/armory",
         "company/talk_join",
+        "side_gate_lantern/take",
+        "side_gate_lantern_approach/careful",
         "side_flour_sack/take",
+        "side_road_stones/take",
         "side_ruin_cart/take",
         "aid/cook",
+        "side_cold_hearth/take",
         "side_blind_chamber/take",
+        "side_stone_niche/take",
+        "side_stone_niche_approach/careful",
+        "side_passage_echo/take",
         "side_ledge_rope/take",
         "side_caught_sail/take",
+        "side_shore_crates/take",
         "side_small_bell/take",
+        "side_shelter_screen/take",
+        "side_shelter_screen_approach/careful",
         "side_dying_fire/take",
+        "side_wet_pages/take",
         "seal_order/evil_first",
         "side_return_knots/take",
+        "side_reed_marker/take",
+        "side_ash_cloth/take",
         "side_ash_barrel/take",
         "side_cell_voice/take",
+        "side_loose_stair/take",
+        "side_loose_stair_approach/careful",
         "side_leaking_channel/take",
+        "side_mended_cup/take",
         "shelter_prepare/food",
         "side_fallen_store/take",
+        "side_dust_door/take",
         "side_hot_frame/take",
-        "side_last_step/take"
+        "side_cool_recess/take",
+        "side_cool_recess_approach/careful",
+        "side_last_step/take",
+        "side_silent_fragments/take"
       ],
-      "runtime_fingerprint": "1759438d848e4ec9a7c8d3df596bd77a3807b688fc787c76db3369c2ed538925",
+      "runtime_fingerprint": "2f8ff0dc860bfbb42d5216865d475586dfe63de03d19b7d8b4679e995c0e3398",
       "publication_approved": false,
       "rows": [
         {
@@ -226,6 +246,38 @@
         },
         {
           "position": 13,
+          "kind": "choice",
+          "unit_id": "chapter01/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/0/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/21/options/0/body"
+          },
+          "choice_or_reaction_id": "side_gate_lantern/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 14,
+          "kind": "choice",
+          "unit_id": "chapter01/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/0/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/22/options/0/body"
+          },
+          "choice_or_reaction_id": "side_gate_lantern_approach/careful",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 15,
           "kind": "outcome",
           "unit_id": "chapter01/p05",
           "heading_ref": {
@@ -241,7 +293,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 14,
+          "position": 16,
           "kind": "main",
           "unit_id": "chapter01/p06",
           "heading_ref": {
@@ -257,7 +309,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 15,
+          "position": 17,
           "kind": "reaction",
           "unit_id": "chapter01/p06",
           "heading_ref": {
@@ -273,7 +325,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 16,
+          "position": 18,
           "kind": "reaction",
           "unit_id": "chapter01/p06",
           "heading_ref": {
@@ -289,7 +341,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 17,
+          "position": 19,
           "kind": "reaction",
           "unit_id": "chapter01/p06",
           "heading_ref": {
@@ -305,7 +357,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 18,
+          "position": 20,
           "kind": "outcome",
           "unit_id": "chapter01/p06",
           "heading_ref": {
@@ -321,7 +373,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 19,
+          "position": 21,
           "kind": "main",
           "unit_id": "chapter01/p07",
           "heading_ref": {
@@ -337,7 +389,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 20,
+          "position": 22,
+          "kind": "reaction",
+          "unit_id": "chapter01/p07",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/0/units/6/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/38/text"
+          },
+          "choice_or_reaction_id": "side_gate_lantern_approach_careful",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 23,
           "kind": "outcome",
           "unit_id": "chapter01/p07",
           "heading_ref": {
@@ -353,7 +421,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 21,
+          "position": 24,
           "kind": "main",
           "unit_id": "chapter01/p08",
           "heading_ref": {
@@ -369,7 +437,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 22,
+          "position": 25,
           "kind": "outcome",
           "unit_id": "chapter01/p08",
           "heading_ref": {
@@ -385,7 +453,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 23,
+          "position": 26,
           "kind": "main",
           "unit_id": "chapter02/p01",
           "heading_ref": {
@@ -401,7 +469,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 24,
+          "position": 27,
           "kind": "outcome",
           "unit_id": "chapter02/p01",
           "heading_ref": {
@@ -417,7 +485,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 25,
+          "position": 28,
           "kind": "main",
           "unit_id": "chapter02/p02",
           "heading_ref": {
@@ -433,7 +501,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 26,
+          "position": 29,
           "kind": "choice",
           "unit_id": "chapter02/p02",
           "heading_ref": {
@@ -449,7 +517,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 27,
+          "position": 30,
           "kind": "outcome",
           "unit_id": "chapter02/p02",
           "heading_ref": {
@@ -465,7 +533,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 28,
+          "position": 31,
           "kind": "main",
           "unit_id": "chapter02/p03",
           "heading_ref": {
@@ -481,7 +549,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 29,
+          "position": 32,
+          "kind": "choice",
+          "unit_id": "chapter02/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/1/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/23/options/0/body"
+          },
+          "choice_or_reaction_id": "side_road_stones/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 33,
           "kind": "outcome",
           "unit_id": "chapter02/p03",
           "heading_ref": {
@@ -497,7 +581,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 30,
+          "position": 34,
           "kind": "main",
           "unit_id": "chapter02/p04",
           "heading_ref": {
@@ -513,7 +597,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 31,
+          "position": 35,
           "kind": "outcome",
           "unit_id": "chapter02/p04",
           "heading_ref": {
@@ -529,7 +613,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 32,
+          "position": 36,
           "kind": "main",
           "unit_id": "chapter02/p05",
           "heading_ref": {
@@ -545,7 +629,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 33,
+          "position": 37,
           "kind": "reaction",
           "unit_id": "chapter02/p05",
           "heading_ref": {
@@ -561,7 +645,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 34,
+          "position": 38,
           "kind": "outcome",
           "unit_id": "chapter02/p05",
           "heading_ref": {
@@ -577,7 +661,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 35,
+          "position": 39,
           "kind": "main",
           "unit_id": "chapter02/p06",
           "heading_ref": {
@@ -593,7 +677,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 36,
+          "position": 40,
+          "kind": "reaction",
+          "unit_id": "chapter02/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/1/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/40/text"
+          },
+          "choice_or_reaction_id": "side_road_stones_take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 41,
           "kind": "outcome",
           "unit_id": "chapter02/p06",
           "heading_ref": {
@@ -609,7 +709,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 37,
+          "position": 42,
           "kind": "main",
           "unit_id": "chapter03/p01",
           "heading_ref": {
@@ -625,7 +725,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 38,
+          "position": 43,
           "kind": "outcome",
           "unit_id": "chapter03/p01",
           "heading_ref": {
@@ -641,7 +741,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 39,
+          "position": 44,
           "kind": "main",
           "unit_id": "chapter03/p02",
           "heading_ref": {
@@ -657,7 +757,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 40,
+          "position": 45,
           "kind": "choice",
           "unit_id": "chapter03/p02",
           "heading_ref": {
@@ -673,7 +773,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 41,
+          "position": 46,
           "kind": "outcome",
           "unit_id": "chapter03/p02",
           "heading_ref": {
@@ -689,7 +789,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 42,
+          "position": 47,
           "kind": "main",
           "unit_id": "chapter03/p03",
           "heading_ref": {
@@ -705,7 +805,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 43,
+          "position": 48,
           "kind": "outcome",
           "unit_id": "chapter03/p03",
           "heading_ref": {
@@ -721,7 +821,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 44,
+          "position": 49,
           "kind": "main",
           "unit_id": "chapter03/p04",
           "heading_ref": {
@@ -737,7 +837,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 45,
+          "position": 50,
           "kind": "choice",
           "unit_id": "chapter03/p04",
           "heading_ref": {
@@ -753,7 +853,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 46,
+          "position": 51,
+          "kind": "choice",
+          "unit_id": "chapter03/p04",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/2/units/3/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/24/options/0/body"
+          },
+          "choice_or_reaction_id": "side_cold_hearth/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 52,
           "kind": "outcome",
           "unit_id": "chapter03/p04",
           "heading_ref": {
@@ -769,7 +885,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 47,
+          "position": 53,
           "kind": "main",
           "unit_id": "chapter03/p05",
           "heading_ref": {
@@ -785,7 +901,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 48,
+          "position": 54,
           "kind": "outcome",
           "unit_id": "chapter03/p05",
           "heading_ref": {
@@ -801,7 +917,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 49,
+          "position": 55,
           "kind": "main",
           "unit_id": "chapter03/p06",
           "heading_ref": {
@@ -817,7 +933,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 50,
+          "position": 56,
           "kind": "reaction",
           "unit_id": "chapter03/p06",
           "heading_ref": {
@@ -833,7 +949,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 51,
+          "position": 57,
           "kind": "reaction",
           "unit_id": "chapter03/p06",
           "heading_ref": {
@@ -849,7 +965,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 52,
+          "position": 58,
+          "kind": "reaction",
+          "unit_id": "chapter03/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/2/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/42/text"
+          },
+          "choice_or_reaction_id": "side_cold_hearth_take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 59,
           "kind": "outcome",
           "unit_id": "chapter03/p06",
           "heading_ref": {
@@ -865,7 +997,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 53,
+          "position": 60,
           "kind": "main",
           "unit_id": "chapter04/p01",
           "heading_ref": {
@@ -881,7 +1013,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 54,
+          "position": 61,
           "kind": "outcome",
           "unit_id": "chapter04/p01",
           "heading_ref": {
@@ -897,7 +1029,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 55,
+          "position": 62,
           "kind": "main",
           "unit_id": "chapter04/p02",
           "heading_ref": {
@@ -913,7 +1045,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 56,
+          "position": 63,
           "kind": "choice",
           "unit_id": "chapter04/p02",
           "heading_ref": {
@@ -929,7 +1061,39 @@
           "prose_status": "outline"
         },
         {
-          "position": 57,
+          "position": 64,
+          "kind": "choice",
+          "unit_id": "chapter04/p02",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/3/units/1/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/25/options/0/body"
+          },
+          "choice_or_reaction_id": "side_stone_niche/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 65,
+          "kind": "choice",
+          "unit_id": "chapter04/p02",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/3/units/1/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/26/options/0/body"
+          },
+          "choice_or_reaction_id": "side_stone_niche_approach/careful",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 66,
           "kind": "outcome",
           "unit_id": "chapter04/p02",
           "heading_ref": {
@@ -945,7 +1109,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 58,
+          "position": 67,
           "kind": "main",
           "unit_id": "chapter04/p03",
           "heading_ref": {
@@ -961,7 +1125,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 59,
+          "position": 68,
           "kind": "outcome",
           "unit_id": "chapter04/p03",
           "heading_ref": {
@@ -977,7 +1141,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 60,
+          "position": 69,
           "kind": "main",
           "unit_id": "chapter04/p04",
           "heading_ref": {
@@ -993,7 +1157,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 61,
+          "position": 70,
           "kind": "reaction",
           "unit_id": "chapter04/p04",
           "heading_ref": {
@@ -1009,7 +1173,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 62,
+          "position": 71,
           "kind": "outcome",
           "unit_id": "chapter04/p04",
           "heading_ref": {
@@ -1025,7 +1189,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 63,
+          "position": 72,
           "kind": "main",
           "unit_id": "chapter04/p05",
           "heading_ref": {
@@ -1041,7 +1205,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 64,
+          "position": 73,
+          "kind": "reaction",
+          "unit_id": "chapter04/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/3/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/45/text"
+          },
+          "choice_or_reaction_id": "side_stone_niche_approach_careful",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 74,
           "kind": "outcome",
           "unit_id": "chapter04/p05",
           "heading_ref": {
@@ -1057,7 +1237,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 65,
+          "position": 75,
           "kind": "main",
           "unit_id": "chapter04/p06",
           "heading_ref": {
@@ -1073,7 +1253,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 66,
+          "position": 76,
           "kind": "outcome",
           "unit_id": "chapter04/p06",
           "heading_ref": {
@@ -1089,7 +1269,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 67,
+          "position": 77,
           "kind": "main",
           "unit_id": "chapter05/p01",
           "heading_ref": {
@@ -1105,7 +1285,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 68,
+          "position": 78,
           "kind": "outcome",
           "unit_id": "chapter05/p01",
           "heading_ref": {
@@ -1121,7 +1301,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 69,
+          "position": 79,
           "kind": "main",
           "unit_id": "chapter05/p02",
           "heading_ref": {
@@ -1137,7 +1317,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 70,
+          "position": 80,
+          "kind": "choice",
+          "unit_id": "chapter05/p02",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/4/units/1/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/27/options/0/body"
+          },
+          "choice_or_reaction_id": "side_passage_echo/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 81,
           "kind": "outcome",
           "unit_id": "chapter05/p02",
           "heading_ref": {
@@ -1153,7 +1349,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 71,
+          "position": 82,
           "kind": "main",
           "unit_id": "chapter05/p03",
           "heading_ref": {
@@ -1169,7 +1365,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 72,
+          "position": 83,
           "kind": "choice",
           "unit_id": "chapter05/p03",
           "heading_ref": {
@@ -1185,7 +1381,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 73,
+          "position": 84,
           "kind": "outcome",
           "unit_id": "chapter05/p03",
           "heading_ref": {
@@ -1201,7 +1397,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 74,
+          "position": 85,
           "kind": "main",
           "unit_id": "chapter05/p04",
           "heading_ref": {
@@ -1217,7 +1413,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 75,
+          "position": 86,
           "kind": "outcome",
           "unit_id": "chapter05/p04",
           "heading_ref": {
@@ -1233,7 +1429,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 76,
+          "position": 87,
           "kind": "main",
           "unit_id": "chapter05/p05",
           "heading_ref": {
@@ -1249,7 +1445,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 77,
+          "position": 88,
           "kind": "reaction",
           "unit_id": "chapter05/p05",
           "heading_ref": {
@@ -1265,7 +1461,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 78,
+          "position": 89,
+          "kind": "reaction",
+          "unit_id": "chapter05/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/4/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/47/text"
+          },
+          "choice_or_reaction_id": "side_passage_echo_take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 90,
           "kind": "outcome",
           "unit_id": "chapter05/p05",
           "heading_ref": {
@@ -1281,7 +1493,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 79,
+          "position": 91,
           "kind": "main",
           "unit_id": "chapter06/p01",
           "heading_ref": {
@@ -1297,7 +1509,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 80,
+          "position": 92,
           "kind": "outcome",
           "unit_id": "chapter06/p01",
           "heading_ref": {
@@ -1313,7 +1525,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 81,
+          "position": 93,
           "kind": "main",
           "unit_id": "chapter06/p02",
           "heading_ref": {
@@ -1329,7 +1541,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 82,
+          "position": 94,
           "kind": "choice",
           "unit_id": "chapter06/p02",
           "heading_ref": {
@@ -1345,7 +1557,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 83,
+          "position": 95,
           "kind": "outcome",
           "unit_id": "chapter06/p02",
           "heading_ref": {
@@ -1361,7 +1573,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 84,
+          "position": 96,
           "kind": "main",
           "unit_id": "chapter06/p03",
           "heading_ref": {
@@ -1377,7 +1589,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 85,
+          "position": 97,
+          "kind": "choice",
+          "unit_id": "chapter06/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/5/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/28/options/0/body"
+          },
+          "choice_or_reaction_id": "side_shore_crates/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 98,
           "kind": "outcome",
           "unit_id": "chapter06/p03",
           "heading_ref": {
@@ -1393,7 +1621,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 86,
+          "position": 99,
           "kind": "main",
           "unit_id": "chapter06/p04",
           "heading_ref": {
@@ -1409,7 +1637,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 87,
+          "position": 100,
           "kind": "outcome",
           "unit_id": "chapter06/p04",
           "heading_ref": {
@@ -1425,7 +1653,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 88,
+          "position": 101,
           "kind": "main",
           "unit_id": "chapter06/p05",
           "heading_ref": {
@@ -1441,7 +1669,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 89,
+          "position": 102,
           "kind": "outcome",
           "unit_id": "chapter06/p05",
           "heading_ref": {
@@ -1457,7 +1685,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 90,
+          "position": 103,
           "kind": "main",
           "unit_id": "chapter06/p06",
           "heading_ref": {
@@ -1473,7 +1701,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 91,
+          "position": 104,
           "kind": "reaction",
           "unit_id": "chapter06/p06",
           "heading_ref": {
@@ -1489,7 +1717,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 92,
+          "position": 105,
+          "kind": "reaction",
+          "unit_id": "chapter06/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/5/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/49/text"
+          },
+          "choice_or_reaction_id": "side_shore_crates_take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 106,
           "kind": "outcome",
           "unit_id": "chapter06/p06",
           "heading_ref": {
@@ -1505,7 +1749,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 93,
+          "position": 107,
           "kind": "main",
           "unit_id": "chapter07/p01",
           "heading_ref": {
@@ -1521,7 +1765,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 94,
+          "position": 108,
           "kind": "outcome",
           "unit_id": "chapter07/p01",
           "heading_ref": {
@@ -1537,7 +1781,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 95,
+          "position": 109,
           "kind": "main",
           "unit_id": "chapter07/p02",
           "heading_ref": {
@@ -1553,7 +1797,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 96,
+          "position": 110,
           "kind": "choice",
           "unit_id": "chapter07/p02",
           "heading_ref": {
@@ -1569,7 +1813,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 97,
+          "position": 111,
           "kind": "outcome",
           "unit_id": "chapter07/p02",
           "heading_ref": {
@@ -1585,7 +1829,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 98,
+          "position": 112,
           "kind": "main",
           "unit_id": "chapter07/p03",
           "heading_ref": {
@@ -1601,7 +1845,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 99,
+          "position": 113,
           "kind": "automatic",
           "unit_id": "chapter07/p03",
           "heading_ref": {
@@ -1617,7 +1861,39 @@
           "prose_status": "outline"
         },
         {
-          "position": 100,
+          "position": 114,
+          "kind": "choice",
+          "unit_id": "chapter07/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/6/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/29/options/0/body"
+          },
+          "choice_or_reaction_id": "side_shelter_screen/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 115,
+          "kind": "choice",
+          "unit_id": "chapter07/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/6/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/30/options/0/body"
+          },
+          "choice_or_reaction_id": "side_shelter_screen_approach/careful",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 116,
           "kind": "outcome",
           "unit_id": "chapter07/p03",
           "heading_ref": {
@@ -1633,7 +1909,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 101,
+          "position": 117,
           "kind": "main",
           "unit_id": "chapter07/p04",
           "heading_ref": {
@@ -1649,7 +1925,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 102,
+          "position": 118,
           "kind": "outcome",
           "unit_id": "chapter07/p04",
           "heading_ref": {
@@ -1665,7 +1941,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 103,
+          "position": 119,
           "kind": "main",
           "unit_id": "chapter07/p05",
           "heading_ref": {
@@ -1681,7 +1957,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 104,
+          "position": 120,
           "kind": "outcome",
           "unit_id": "chapter07/p05",
           "heading_ref": {
@@ -1697,7 +1973,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 105,
+          "position": 121,
           "kind": "main",
           "unit_id": "chapter07/p06",
           "heading_ref": {
@@ -1713,7 +1989,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 106,
+          "position": 122,
           "kind": "reaction",
           "unit_id": "chapter07/p06",
           "heading_ref": {
@@ -1729,7 +2005,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 107,
+          "position": 123,
+          "kind": "reaction",
+          "unit_id": "chapter07/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/6/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/52/text"
+          },
+          "choice_or_reaction_id": "side_shelter_screen_approach_careful",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 124,
           "kind": "outcome",
           "unit_id": "chapter07/p06",
           "heading_ref": {
@@ -1745,7 +2037,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 108,
+          "position": 125,
           "kind": "main",
           "unit_id": "chapter08/p01",
           "heading_ref": {
@@ -1761,7 +2053,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 109,
+          "position": 126,
           "kind": "outcome",
           "unit_id": "chapter08/p01",
           "heading_ref": {
@@ -1777,7 +2069,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 110,
+          "position": 127,
           "kind": "main",
           "unit_id": "chapter08/p02",
           "heading_ref": {
@@ -1793,7 +2085,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 111,
+          "position": 128,
           "kind": "choice",
           "unit_id": "chapter08/p02",
           "heading_ref": {
@@ -1809,7 +2101,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 112,
+          "position": 129,
           "kind": "outcome",
           "unit_id": "chapter08/p02",
           "heading_ref": {
@@ -1825,7 +2117,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 113,
+          "position": 130,
           "kind": "main",
           "unit_id": "chapter08/p03",
           "heading_ref": {
@@ -1841,7 +2133,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 114,
+          "position": 131,
           "kind": "outcome",
           "unit_id": "chapter08/p03",
           "heading_ref": {
@@ -1857,7 +2149,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 115,
+          "position": 132,
           "kind": "main",
           "unit_id": "chapter08/p04",
           "heading_ref": {
@@ -1873,7 +2165,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 116,
+          "position": 133,
           "kind": "outcome",
           "unit_id": "chapter08/p04",
           "heading_ref": {
@@ -1889,7 +2181,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 117,
+          "position": 134,
           "kind": "main",
           "unit_id": "chapter08/p05",
           "heading_ref": {
@@ -1905,7 +2197,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 118,
+          "position": 135,
+          "kind": "choice",
+          "unit_id": "chapter08/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/7/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/31/options/0/body"
+          },
+          "choice_or_reaction_id": "side_wet_pages/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 136,
           "kind": "outcome",
           "unit_id": "chapter08/p05",
           "heading_ref": {
@@ -1921,7 +2229,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 119,
+          "position": 137,
           "kind": "main",
           "unit_id": "chapter08/p06",
           "heading_ref": {
@@ -1937,7 +2245,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 120,
+          "position": 138,
           "kind": "reaction",
           "unit_id": "chapter08/p06",
           "heading_ref": {
@@ -1953,7 +2261,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 121,
+          "position": 139,
+          "kind": "reaction",
+          "unit_id": "chapter08/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/7/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/54/text"
+          },
+          "choice_or_reaction_id": "side_wet_pages_take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 140,
           "kind": "outcome",
           "unit_id": "chapter08/p06",
           "heading_ref": {
@@ -1969,7 +2293,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 122,
+          "position": 141,
           "kind": "main",
           "unit_id": "chapter09/p01",
           "heading_ref": {
@@ -1985,7 +2309,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 123,
+          "position": 142,
           "kind": "choice",
           "unit_id": "chapter09/p01",
           "heading_ref": {
@@ -2001,7 +2325,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 124,
+          "position": 143,
           "kind": "outcome",
           "unit_id": "chapter09/p01",
           "heading_ref": {
@@ -2017,7 +2341,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 125,
+          "position": 144,
           "kind": "main",
           "unit_id": "chapter09/p02",
           "heading_ref": {
@@ -2033,7 +2357,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 126,
+          "position": 145,
           "kind": "outcome",
           "unit_id": "chapter09/p02",
           "heading_ref": {
@@ -2049,7 +2373,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 127,
+          "position": 146,
           "kind": "main",
           "unit_id": "chapter09/p03",
           "heading_ref": {
@@ -2065,7 +2389,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 128,
+          "position": 147,
           "kind": "outcome",
           "unit_id": "chapter09/p03",
           "heading_ref": {
@@ -2081,7 +2405,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 129,
+          "position": 148,
           "kind": "main",
           "unit_id": "chapter09/p04",
           "heading_ref": {
@@ -2097,7 +2421,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 130,
+          "position": 149,
           "kind": "outcome",
           "unit_id": "chapter09/p04",
           "heading_ref": {
@@ -2113,7 +2437,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 131,
+          "position": 150,
           "kind": "main",
           "unit_id": "chapter09/p05",
           "heading_ref": {
@@ -2129,7 +2453,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 132,
+          "position": 151,
           "kind": "outcome",
           "unit_id": "chapter09/p05",
           "heading_ref": {
@@ -2145,7 +2469,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 133,
+          "position": 152,
           "kind": "main",
           "unit_id": "chapter09/p06",
           "heading_ref": {
@@ -2161,7 +2485,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 134,
+          "position": 153,
           "kind": "outcome",
           "unit_id": "chapter09/p06",
           "heading_ref": {
@@ -2177,7 +2501,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 135,
+          "position": 154,
           "kind": "main",
           "unit_id": "chapter09/p07",
           "heading_ref": {
@@ -2193,7 +2517,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 136,
+          "position": 155,
           "kind": "choice",
           "unit_id": "chapter09/p07",
           "heading_ref": {
@@ -2209,7 +2533,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 137,
+          "position": 156,
+          "kind": "choice",
+          "unit_id": "chapter09/p07",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/8/units/6/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/32/options/0/body"
+          },
+          "choice_or_reaction_id": "side_reed_marker/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 157,
           "kind": "outcome",
           "unit_id": "chapter09/p07",
           "heading_ref": {
@@ -2225,7 +2565,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 138,
+          "position": 158,
           "kind": "main",
           "unit_id": "chapter10/p01",
           "heading_ref": {
@@ -2241,7 +2581,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 139,
+          "position": 159,
           "kind": "reaction",
           "unit_id": "chapter10/p01",
           "heading_ref": {
@@ -2257,7 +2597,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 140,
+          "position": 160,
+          "kind": "reaction",
+          "unit_id": "chapter10/p01",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/9/units/0/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/56/text"
+          },
+          "choice_or_reaction_id": "side_reed_marker_take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 161,
           "kind": "outcome",
           "unit_id": "chapter10/p01",
           "heading_ref": {
@@ -2273,7 +2629,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 141,
+          "position": 162,
           "kind": "main",
           "unit_id": "chapter10/p02",
           "heading_ref": {
@@ -2289,7 +2645,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 142,
+          "position": 163,
           "kind": "outcome",
           "unit_id": "chapter10/p02",
           "heading_ref": {
@@ -2305,7 +2661,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 143,
+          "position": 164,
           "kind": "main",
           "unit_id": "chapter10/p03",
           "heading_ref": {
@@ -2321,7 +2677,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 144,
+          "position": 165,
           "kind": "outcome",
           "unit_id": "chapter10/p03",
           "heading_ref": {
@@ -2337,7 +2693,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 145,
+          "position": 166,
           "kind": "main",
           "unit_id": "chapter10/p04",
           "heading_ref": {
@@ -2353,7 +2709,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 146,
+          "position": 167,
+          "kind": "choice",
+          "unit_id": "chapter10/p04",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/9/units/3/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/33/options/0/body"
+          },
+          "choice_or_reaction_id": "side_ash_cloth/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 168,
           "kind": "outcome",
           "unit_id": "chapter10/p04",
           "heading_ref": {
@@ -2369,7 +2741,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 147,
+          "position": 169,
           "kind": "main",
           "unit_id": "chapter10/p05",
           "heading_ref": {
@@ -2385,7 +2757,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 148,
+          "position": 170,
           "kind": "choice",
           "unit_id": "chapter10/p05",
           "heading_ref": {
@@ -2401,7 +2773,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 149,
+          "position": 171,
           "kind": "outcome",
           "unit_id": "chapter10/p05",
           "heading_ref": {
@@ -2417,7 +2789,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 150,
+          "position": 172,
           "kind": "main",
           "unit_id": "chapter11/p01",
           "heading_ref": {
@@ -2433,7 +2805,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 151,
+          "position": 173,
           "kind": "reaction",
           "unit_id": "chapter11/p01",
           "heading_ref": {
@@ -2449,7 +2821,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 152,
+          "position": 174,
+          "kind": "reaction",
+          "unit_id": "chapter11/p01",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/10/units/0/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/58/text"
+          },
+          "choice_or_reaction_id": "side_ash_cloth_take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 175,
           "kind": "outcome",
           "unit_id": "chapter11/p01",
           "heading_ref": {
@@ -2465,7 +2853,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 153,
+          "position": 176,
           "kind": "main",
           "unit_id": "chapter11/p02",
           "heading_ref": {
@@ -2481,7 +2869,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 154,
+          "position": 177,
           "kind": "choice",
           "unit_id": "chapter11/p02",
           "heading_ref": {
@@ -2497,7 +2885,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 155,
+          "position": 178,
           "kind": "outcome",
           "unit_id": "chapter11/p02",
           "heading_ref": {
@@ -2513,7 +2901,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 156,
+          "position": 179,
           "kind": "main",
           "unit_id": "chapter11/p03",
           "heading_ref": {
@@ -2529,7 +2917,39 @@
           "prose_status": "outline"
         },
         {
-          "position": 157,
+          "position": 180,
+          "kind": "choice",
+          "unit_id": "chapter11/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/10/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/34/options/0/body"
+          },
+          "choice_or_reaction_id": "side_loose_stair/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 181,
+          "kind": "choice",
+          "unit_id": "chapter11/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/10/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/35/options/0/body"
+          },
+          "choice_or_reaction_id": "side_loose_stair_approach/careful",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 182,
           "kind": "outcome",
           "unit_id": "chapter11/p03",
           "heading_ref": {
@@ -2545,7 +2965,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 158,
+          "position": 183,
           "kind": "main",
           "unit_id": "chapter11/p04",
           "heading_ref": {
@@ -2561,7 +2981,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 159,
+          "position": 184,
           "kind": "reaction",
           "unit_id": "chapter11/p04",
           "heading_ref": {
@@ -2577,7 +2997,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 160,
+          "position": 185,
+          "kind": "reaction",
+          "unit_id": "chapter11/p04",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/10/units/3/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/61/text"
+          },
+          "choice_or_reaction_id": "side_loose_stair_approach_careful",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 186,
           "kind": "outcome",
           "unit_id": "chapter11/p04",
           "heading_ref": {
@@ -2593,7 +3029,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 161,
+          "position": 187,
           "kind": "main",
           "unit_id": "chapter12/p01",
           "heading_ref": {
@@ -2609,7 +3045,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 162,
+          "position": 188,
           "kind": "outcome",
           "unit_id": "chapter12/p01",
           "heading_ref": {
@@ -2625,7 +3061,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 163,
+          "position": 189,
           "kind": "main",
           "unit_id": "chapter12/p02",
           "heading_ref": {
@@ -2641,7 +3077,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 164,
+          "position": 190,
           "kind": "choice",
           "unit_id": "chapter12/p02",
           "heading_ref": {
@@ -2657,7 +3093,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 165,
+          "position": 191,
           "kind": "outcome",
           "unit_id": "chapter12/p02",
           "heading_ref": {
@@ -2673,7 +3109,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 166,
+          "position": 192,
           "kind": "main",
           "unit_id": "chapter12/p03",
           "heading_ref": {
@@ -2689,7 +3125,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 167,
+          "position": 193,
+          "kind": "choice",
+          "unit_id": "chapter12/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/11/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/36/options/0/body"
+          },
+          "choice_or_reaction_id": "side_mended_cup/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 194,
           "kind": "outcome",
           "unit_id": "chapter12/p03",
           "heading_ref": {
@@ -2705,7 +3157,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 168,
+          "position": 195,
           "kind": "main",
           "unit_id": "chapter12/p04",
           "heading_ref": {
@@ -2721,7 +3173,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 169,
+          "position": 196,
           "kind": "choice",
           "unit_id": "chapter12/p04",
           "heading_ref": {
@@ -2737,7 +3189,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 170,
+          "position": 197,
           "kind": "outcome",
           "unit_id": "chapter12/p04",
           "heading_ref": {
@@ -2753,7 +3205,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 171,
+          "position": 198,
           "kind": "main",
           "unit_id": "chapter12/p05",
           "heading_ref": {
@@ -2769,7 +3221,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 172,
+          "position": 199,
           "kind": "reaction",
           "unit_id": "chapter12/p05",
           "heading_ref": {
@@ -2785,7 +3237,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 173,
+          "position": 200,
+          "kind": "reaction",
+          "unit_id": "chapter12/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/11/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/63/text"
+          },
+          "choice_or_reaction_id": "side_mended_cup_take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 201,
           "kind": "outcome",
           "unit_id": "chapter12/p05",
           "heading_ref": {
@@ -2801,7 +3269,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 174,
+          "position": 202,
           "kind": "main",
           "unit_id": "chapter13/p01",
           "heading_ref": {
@@ -2817,7 +3285,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 175,
+          "position": 203,
           "kind": "reaction",
           "unit_id": "chapter13/p01",
           "heading_ref": {
@@ -2833,7 +3301,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 176,
+          "position": 204,
           "kind": "outcome",
           "unit_id": "chapter13/p01",
           "heading_ref": {
@@ -2849,7 +3317,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 177,
+          "position": 205,
           "kind": "main",
           "unit_id": "chapter13/p02",
           "heading_ref": {
@@ -2865,7 +3333,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 178,
+          "position": 206,
           "kind": "outcome",
           "unit_id": "chapter13/p02",
           "heading_ref": {
@@ -2881,7 +3349,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 179,
+          "position": 207,
           "kind": "main",
           "unit_id": "chapter13/p03",
           "heading_ref": {
@@ -2897,7 +3365,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 180,
+          "position": 208,
           "kind": "outcome",
           "unit_id": "chapter13/p03",
           "heading_ref": {
@@ -2913,7 +3381,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 181,
+          "position": 209,
           "kind": "main",
           "unit_id": "chapter13/p04",
           "heading_ref": {
@@ -2929,7 +3397,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 182,
+          "position": 210,
           "kind": "choice",
           "unit_id": "chapter13/p04",
           "heading_ref": {
@@ -2945,7 +3413,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 183,
+          "position": 211,
           "kind": "outcome",
           "unit_id": "chapter13/p04",
           "heading_ref": {
@@ -2961,7 +3429,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 184,
+          "position": 212,
           "kind": "main",
           "unit_id": "chapter13/p05",
           "heading_ref": {
@@ -2977,7 +3445,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 185,
+          "position": 213,
+          "kind": "choice",
+          "unit_id": "chapter13/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/12/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/37/options/0/body"
+          },
+          "choice_or_reaction_id": "side_dust_door/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 214,
           "kind": "outcome",
           "unit_id": "chapter13/p05",
           "heading_ref": {
@@ -2993,7 +3477,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 186,
+          "position": 215,
           "kind": "main",
           "unit_id": "chapter13/p06",
           "heading_ref": {
@@ -3009,7 +3493,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 187,
+          "position": 216,
           "kind": "reaction",
           "unit_id": "chapter13/p06",
           "heading_ref": {
@@ -3025,7 +3509,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 188,
+          "position": 217,
+          "kind": "reaction",
+          "unit_id": "chapter13/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/12/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/65/text"
+          },
+          "choice_or_reaction_id": "side_dust_door_take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 218,
           "kind": "outcome",
           "unit_id": "chapter13/p06",
           "heading_ref": {
@@ -3041,7 +3541,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 189,
+          "position": 219,
           "kind": "main",
           "unit_id": "chapter14/p01",
           "heading_ref": {
@@ -3057,7 +3557,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 190,
+          "position": 220,
           "kind": "outcome",
           "unit_id": "chapter14/p01",
           "heading_ref": {
@@ -3073,7 +3573,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 191,
+          "position": 221,
           "kind": "main",
           "unit_id": "chapter14/p02",
           "heading_ref": {
@@ -3089,7 +3589,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 192,
+          "position": 222,
           "kind": "choice",
           "unit_id": "chapter14/p02",
           "heading_ref": {
@@ -3105,7 +3605,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 193,
+          "position": 223,
           "kind": "outcome",
           "unit_id": "chapter14/p02",
           "heading_ref": {
@@ -3121,7 +3621,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 194,
+          "position": 224,
           "kind": "main",
           "unit_id": "chapter14/p03",
           "heading_ref": {
@@ -3137,7 +3637,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 195,
+          "position": 225,
           "kind": "outcome",
           "unit_id": "chapter14/p03",
           "heading_ref": {
@@ -3153,7 +3653,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 196,
+          "position": 226,
           "kind": "main",
           "unit_id": "chapter14/p04",
           "heading_ref": {
@@ -3169,7 +3669,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 197,
+          "position": 227,
           "kind": "outcome",
           "unit_id": "chapter14/p04",
           "heading_ref": {
@@ -3185,7 +3685,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 198,
+          "position": 228,
           "kind": "main",
           "unit_id": "chapter14/p05",
           "heading_ref": {
@@ -3201,7 +3701,39 @@
           "prose_status": "outline"
         },
         {
-          "position": 199,
+          "position": 229,
+          "kind": "choice",
+          "unit_id": "chapter14/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/13/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/38/options/0/body"
+          },
+          "choice_or_reaction_id": "side_cool_recess/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 230,
+          "kind": "choice",
+          "unit_id": "chapter14/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/13/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/39/options/0/body"
+          },
+          "choice_or_reaction_id": "side_cool_recess_approach/careful",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 231,
           "kind": "outcome",
           "unit_id": "chapter14/p05",
           "heading_ref": {
@@ -3217,7 +3749,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 200,
+          "position": 232,
           "kind": "main",
           "unit_id": "chapter14/p06",
           "heading_ref": {
@@ -3233,7 +3765,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 201,
+          "position": 233,
           "kind": "outcome",
           "unit_id": "chapter14/p06",
           "heading_ref": {
@@ -3249,7 +3781,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 202,
+          "position": 234,
           "kind": "main",
           "unit_id": "chapter14/p07",
           "heading_ref": {
@@ -3265,7 +3797,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 203,
+          "position": 235,
           "kind": "reaction",
           "unit_id": "chapter14/p07",
           "heading_ref": {
@@ -3281,7 +3813,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 204,
+          "position": 236,
+          "kind": "reaction",
+          "unit_id": "chapter14/p07",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/13/units/6/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/68/text"
+          },
+          "choice_or_reaction_id": "side_cool_recess_approach_careful",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 237,
           "kind": "outcome",
           "unit_id": "chapter14/p07",
           "heading_ref": {
@@ -3297,7 +3845,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 205,
+          "position": 238,
           "kind": "main",
           "unit_id": "chapter15/p01",
           "heading_ref": {
@@ -3313,7 +3861,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 206,
+          "position": 239,
           "kind": "outcome",
           "unit_id": "chapter15/p01",
           "heading_ref": {
@@ -3329,7 +3877,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 207,
+          "position": 240,
           "kind": "main",
           "unit_id": "chapter15/p02",
           "heading_ref": {
@@ -3345,7 +3893,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 208,
+          "position": 241,
           "kind": "outcome",
           "unit_id": "chapter15/p02",
           "heading_ref": {
@@ -3361,7 +3909,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 209,
+          "position": 242,
           "kind": "main",
           "unit_id": "chapter15/p03",
           "heading_ref": {
@@ -3377,7 +3925,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 210,
+          "position": 243,
           "kind": "outcome",
           "unit_id": "chapter15/p03",
           "heading_ref": {
@@ -3393,7 +3941,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 211,
+          "position": 244,
           "kind": "main",
           "unit_id": "chapter15/p04",
           "heading_ref": {
@@ -3409,7 +3957,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 212,
+          "position": 245,
           "kind": "choice",
           "unit_id": "chapter15/p04",
           "heading_ref": {
@@ -3425,7 +3973,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 213,
+          "position": 246,
+          "kind": "choice",
+          "unit_id": "chapter15/p04",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/14/units/3/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/40/options/0/body"
+          },
+          "choice_or_reaction_id": "side_silent_fragments/take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 247,
           "kind": "outcome",
           "unit_id": "chapter15/p04",
           "heading_ref": {
@@ -3441,7 +4005,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 214,
+          "position": 248,
           "kind": "main",
           "unit_id": "chapter15/p05",
           "heading_ref": {
@@ -3457,7 +4021,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 215,
+          "position": 249,
           "kind": "reaction",
           "unit_id": "chapter15/p05",
           "heading_ref": {
@@ -3473,7 +4037,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 216,
+          "position": 250,
+          "kind": "reaction",
+          "unit_id": "chapter15/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/14/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/70/text"
+          },
+          "choice_or_reaction_id": "side_silent_fragments_take",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 251,
           "kind": "outcome",
           "unit_id": "chapter15/p05",
           "heading_ref": {
@@ -3634,25 +4214,40 @@
         "side_well_bucket/skip",
         "prepare/armory",
         "company/talk_join",
+        "side_gate_lantern/skip",
         "side_flour_sack/skip",
+        "side_road_stones/skip",
         "side_ruin_cart/skip",
         "aid/cook",
+        "side_cold_hearth/skip",
         "side_blind_chamber/skip",
+        "side_stone_niche/skip",
+        "side_passage_echo/skip",
         "side_ledge_rope/skip",
         "side_caught_sail/skip",
+        "side_shore_crates/skip",
         "side_small_bell/skip",
+        "side_shelter_screen/skip",
         "side_dying_fire/skip",
+        "side_wet_pages/skip",
         "seal_order/evil_first",
         "side_return_knots/skip",
+        "side_reed_marker/skip",
+        "side_ash_cloth/skip",
         "side_ash_barrel/skip",
         "side_cell_voice/skip",
+        "side_loose_stair/skip",
         "side_leaking_channel/skip",
+        "side_mended_cup/skip",
         "shelter_prepare/food",
         "side_fallen_store/skip",
+        "side_dust_door/skip",
         "side_hot_frame/skip",
-        "side_last_step/skip"
+        "side_cool_recess/skip",
+        "side_last_step/skip",
+        "side_silent_fragments/skip"
       ],
-      "runtime_fingerprint": "1759438d848e4ec9a7c8d3df596bd77a3807b688fc787c76db3369c2ed538925",
+      "runtime_fingerprint": "2f8ff0dc860bfbb42d5216865d475586dfe63de03d19b7d8b4679e995c0e3398",
       "publication_approved": false,
       "rows": [
         {
@@ -3849,6 +4444,38 @@
         },
         {
           "position": 13,
+          "kind": "choice",
+          "unit_id": "chapter01/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/0/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/21/options/1/body"
+          },
+          "choice_or_reaction_id": "side_gate_lantern/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 14,
+          "kind": "automatic",
+          "unit_id": "chapter01/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/0/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/22/options/2/body"
+          },
+          "choice_or_reaction_id": "side_gate_lantern_approach/bypass",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 15,
           "kind": "outcome",
           "unit_id": "chapter01/p05",
           "heading_ref": {
@@ -3864,7 +4491,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 14,
+          "position": 16,
           "kind": "main",
           "unit_id": "chapter01/p06",
           "heading_ref": {
@@ -3880,7 +4507,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 15,
+          "position": 17,
           "kind": "reaction",
           "unit_id": "chapter01/p06",
           "heading_ref": {
@@ -3896,7 +4523,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 16,
+          "position": 18,
           "kind": "reaction",
           "unit_id": "chapter01/p06",
           "heading_ref": {
@@ -3912,7 +4539,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 17,
+          "position": 19,
           "kind": "reaction",
           "unit_id": "chapter01/p06",
           "heading_ref": {
@@ -3928,7 +4555,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 18,
+          "position": 20,
           "kind": "outcome",
           "unit_id": "chapter01/p06",
           "heading_ref": {
@@ -3944,7 +4571,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 19,
+          "position": 21,
           "kind": "main",
           "unit_id": "chapter01/p07",
           "heading_ref": {
@@ -3960,7 +4587,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 20,
+          "position": 22,
+          "kind": "reaction",
+          "unit_id": "chapter01/p07",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/0/units/6/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/37/text"
+          },
+          "choice_or_reaction_id": "side_gate_lantern_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 23,
           "kind": "outcome",
           "unit_id": "chapter01/p07",
           "heading_ref": {
@@ -3976,7 +4619,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 21,
+          "position": 24,
           "kind": "main",
           "unit_id": "chapter01/p08",
           "heading_ref": {
@@ -3992,7 +4635,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 22,
+          "position": 25,
           "kind": "outcome",
           "unit_id": "chapter01/p08",
           "heading_ref": {
@@ -4008,7 +4651,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 23,
+          "position": 26,
           "kind": "main",
           "unit_id": "chapter02/p01",
           "heading_ref": {
@@ -4024,7 +4667,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 24,
+          "position": 27,
           "kind": "outcome",
           "unit_id": "chapter02/p01",
           "heading_ref": {
@@ -4040,7 +4683,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 25,
+          "position": 28,
           "kind": "main",
           "unit_id": "chapter02/p02",
           "heading_ref": {
@@ -4056,7 +4699,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 26,
+          "position": 29,
           "kind": "choice",
           "unit_id": "chapter02/p02",
           "heading_ref": {
@@ -4072,7 +4715,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 27,
+          "position": 30,
           "kind": "outcome",
           "unit_id": "chapter02/p02",
           "heading_ref": {
@@ -4088,7 +4731,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 28,
+          "position": 31,
           "kind": "main",
           "unit_id": "chapter02/p03",
           "heading_ref": {
@@ -4104,7 +4747,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 29,
+          "position": 32,
+          "kind": "choice",
+          "unit_id": "chapter02/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/1/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/23/options/1/body"
+          },
+          "choice_or_reaction_id": "side_road_stones/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 33,
           "kind": "outcome",
           "unit_id": "chapter02/p03",
           "heading_ref": {
@@ -4120,7 +4779,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 30,
+          "position": 34,
           "kind": "main",
           "unit_id": "chapter02/p04",
           "heading_ref": {
@@ -4136,7 +4795,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 31,
+          "position": 35,
           "kind": "outcome",
           "unit_id": "chapter02/p04",
           "heading_ref": {
@@ -4152,7 +4811,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 32,
+          "position": 36,
           "kind": "main",
           "unit_id": "chapter02/p05",
           "heading_ref": {
@@ -4168,7 +4827,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 33,
+          "position": 37,
           "kind": "reaction",
           "unit_id": "chapter02/p05",
           "heading_ref": {
@@ -4184,7 +4843,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 34,
+          "position": 38,
           "kind": "outcome",
           "unit_id": "chapter02/p05",
           "heading_ref": {
@@ -4200,7 +4859,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 35,
+          "position": 39,
           "kind": "main",
           "unit_id": "chapter02/p06",
           "heading_ref": {
@@ -4216,7 +4875,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 36,
+          "position": 40,
+          "kind": "reaction",
+          "unit_id": "chapter02/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/1/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/41/text"
+          },
+          "choice_or_reaction_id": "side_road_stones_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 41,
           "kind": "outcome",
           "unit_id": "chapter02/p06",
           "heading_ref": {
@@ -4232,7 +4907,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 37,
+          "position": 42,
           "kind": "main",
           "unit_id": "chapter03/p01",
           "heading_ref": {
@@ -4248,7 +4923,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 38,
+          "position": 43,
           "kind": "outcome",
           "unit_id": "chapter03/p01",
           "heading_ref": {
@@ -4264,7 +4939,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 39,
+          "position": 44,
           "kind": "main",
           "unit_id": "chapter03/p02",
           "heading_ref": {
@@ -4280,7 +4955,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 40,
+          "position": 45,
           "kind": "choice",
           "unit_id": "chapter03/p02",
           "heading_ref": {
@@ -4296,7 +4971,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 41,
+          "position": 46,
           "kind": "outcome",
           "unit_id": "chapter03/p02",
           "heading_ref": {
@@ -4312,7 +4987,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 42,
+          "position": 47,
           "kind": "main",
           "unit_id": "chapter03/p03",
           "heading_ref": {
@@ -4328,7 +5003,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 43,
+          "position": 48,
           "kind": "outcome",
           "unit_id": "chapter03/p03",
           "heading_ref": {
@@ -4344,7 +5019,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 44,
+          "position": 49,
           "kind": "main",
           "unit_id": "chapter03/p04",
           "heading_ref": {
@@ -4360,7 +5035,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 45,
+          "position": 50,
           "kind": "choice",
           "unit_id": "chapter03/p04",
           "heading_ref": {
@@ -4376,7 +5051,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 46,
+          "position": 51,
+          "kind": "choice",
+          "unit_id": "chapter03/p04",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/2/units/3/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/24/options/1/body"
+          },
+          "choice_or_reaction_id": "side_cold_hearth/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 52,
           "kind": "outcome",
           "unit_id": "chapter03/p04",
           "heading_ref": {
@@ -4392,7 +5083,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 47,
+          "position": 53,
           "kind": "main",
           "unit_id": "chapter03/p05",
           "heading_ref": {
@@ -4408,7 +5099,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 48,
+          "position": 54,
           "kind": "outcome",
           "unit_id": "chapter03/p05",
           "heading_ref": {
@@ -4424,7 +5115,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 49,
+          "position": 55,
           "kind": "main",
           "unit_id": "chapter03/p06",
           "heading_ref": {
@@ -4440,7 +5131,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 50,
+          "position": 56,
           "kind": "reaction",
           "unit_id": "chapter03/p06",
           "heading_ref": {
@@ -4456,7 +5147,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 51,
+          "position": 57,
           "kind": "reaction",
           "unit_id": "chapter03/p06",
           "heading_ref": {
@@ -4472,7 +5163,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 52,
+          "position": 58,
+          "kind": "reaction",
+          "unit_id": "chapter03/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/2/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/43/text"
+          },
+          "choice_or_reaction_id": "side_cold_hearth_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 59,
           "kind": "outcome",
           "unit_id": "chapter03/p06",
           "heading_ref": {
@@ -4488,7 +5195,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 53,
+          "position": 60,
           "kind": "main",
           "unit_id": "chapter04/p01",
           "heading_ref": {
@@ -4504,7 +5211,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 54,
+          "position": 61,
           "kind": "outcome",
           "unit_id": "chapter04/p01",
           "heading_ref": {
@@ -4520,7 +5227,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 55,
+          "position": 62,
           "kind": "main",
           "unit_id": "chapter04/p02",
           "heading_ref": {
@@ -4536,7 +5243,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 56,
+          "position": 63,
           "kind": "choice",
           "unit_id": "chapter04/p02",
           "heading_ref": {
@@ -4552,7 +5259,39 @@
           "prose_status": "outline"
         },
         {
-          "position": 57,
+          "position": 64,
+          "kind": "choice",
+          "unit_id": "chapter04/p02",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/3/units/1/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/25/options/1/body"
+          },
+          "choice_or_reaction_id": "side_stone_niche/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 65,
+          "kind": "automatic",
+          "unit_id": "chapter04/p02",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/3/units/1/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/26/options/2/body"
+          },
+          "choice_or_reaction_id": "side_stone_niche_approach/bypass",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 66,
           "kind": "outcome",
           "unit_id": "chapter04/p02",
           "heading_ref": {
@@ -4568,7 +5307,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 58,
+          "position": 67,
           "kind": "main",
           "unit_id": "chapter04/p03",
           "heading_ref": {
@@ -4584,7 +5323,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 59,
+          "position": 68,
           "kind": "outcome",
           "unit_id": "chapter04/p03",
           "heading_ref": {
@@ -4600,7 +5339,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 60,
+          "position": 69,
           "kind": "main",
           "unit_id": "chapter04/p04",
           "heading_ref": {
@@ -4616,7 +5355,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 61,
+          "position": 70,
           "kind": "reaction",
           "unit_id": "chapter04/p04",
           "heading_ref": {
@@ -4632,7 +5371,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 62,
+          "position": 71,
           "kind": "outcome",
           "unit_id": "chapter04/p04",
           "heading_ref": {
@@ -4648,7 +5387,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 63,
+          "position": 72,
           "kind": "main",
           "unit_id": "chapter04/p05",
           "heading_ref": {
@@ -4664,7 +5403,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 64,
+          "position": 73,
+          "kind": "reaction",
+          "unit_id": "chapter04/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/3/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/44/text"
+          },
+          "choice_or_reaction_id": "side_stone_niche_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 74,
           "kind": "outcome",
           "unit_id": "chapter04/p05",
           "heading_ref": {
@@ -4680,7 +5435,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 65,
+          "position": 75,
           "kind": "main",
           "unit_id": "chapter04/p06",
           "heading_ref": {
@@ -4696,7 +5451,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 66,
+          "position": 76,
           "kind": "outcome",
           "unit_id": "chapter04/p06",
           "heading_ref": {
@@ -4712,7 +5467,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 67,
+          "position": 77,
           "kind": "main",
           "unit_id": "chapter05/p01",
           "heading_ref": {
@@ -4728,7 +5483,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 68,
+          "position": 78,
           "kind": "outcome",
           "unit_id": "chapter05/p01",
           "heading_ref": {
@@ -4744,7 +5499,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 69,
+          "position": 79,
           "kind": "main",
           "unit_id": "chapter05/p02",
           "heading_ref": {
@@ -4760,7 +5515,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 70,
+          "position": 80,
+          "kind": "choice",
+          "unit_id": "chapter05/p02",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/4/units/1/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/27/options/1/body"
+          },
+          "choice_or_reaction_id": "side_passage_echo/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 81,
           "kind": "outcome",
           "unit_id": "chapter05/p02",
           "heading_ref": {
@@ -4776,7 +5547,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 71,
+          "position": 82,
           "kind": "main",
           "unit_id": "chapter05/p03",
           "heading_ref": {
@@ -4792,7 +5563,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 72,
+          "position": 83,
           "kind": "choice",
           "unit_id": "chapter05/p03",
           "heading_ref": {
@@ -4808,7 +5579,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 73,
+          "position": 84,
           "kind": "outcome",
           "unit_id": "chapter05/p03",
           "heading_ref": {
@@ -4824,7 +5595,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 74,
+          "position": 85,
           "kind": "main",
           "unit_id": "chapter05/p04",
           "heading_ref": {
@@ -4840,7 +5611,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 75,
+          "position": 86,
           "kind": "outcome",
           "unit_id": "chapter05/p04",
           "heading_ref": {
@@ -4856,7 +5627,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 76,
+          "position": 87,
           "kind": "main",
           "unit_id": "chapter05/p05",
           "heading_ref": {
@@ -4872,7 +5643,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 77,
+          "position": 88,
           "kind": "reaction",
           "unit_id": "chapter05/p05",
           "heading_ref": {
@@ -4888,7 +5659,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 78,
+          "position": 89,
+          "kind": "reaction",
+          "unit_id": "chapter05/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/4/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/48/text"
+          },
+          "choice_or_reaction_id": "side_passage_echo_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 90,
           "kind": "outcome",
           "unit_id": "chapter05/p05",
           "heading_ref": {
@@ -4904,7 +5691,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 79,
+          "position": 91,
           "kind": "main",
           "unit_id": "chapter06/p01",
           "heading_ref": {
@@ -4920,7 +5707,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 80,
+          "position": 92,
           "kind": "outcome",
           "unit_id": "chapter06/p01",
           "heading_ref": {
@@ -4936,7 +5723,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 81,
+          "position": 93,
           "kind": "main",
           "unit_id": "chapter06/p02",
           "heading_ref": {
@@ -4952,7 +5739,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 82,
+          "position": 94,
           "kind": "choice",
           "unit_id": "chapter06/p02",
           "heading_ref": {
@@ -4968,7 +5755,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 83,
+          "position": 95,
           "kind": "outcome",
           "unit_id": "chapter06/p02",
           "heading_ref": {
@@ -4984,7 +5771,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 84,
+          "position": 96,
           "kind": "main",
           "unit_id": "chapter06/p03",
           "heading_ref": {
@@ -5000,7 +5787,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 85,
+          "position": 97,
+          "kind": "choice",
+          "unit_id": "chapter06/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/5/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/28/options/1/body"
+          },
+          "choice_or_reaction_id": "side_shore_crates/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 98,
           "kind": "outcome",
           "unit_id": "chapter06/p03",
           "heading_ref": {
@@ -5016,7 +5819,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 86,
+          "position": 99,
           "kind": "main",
           "unit_id": "chapter06/p04",
           "heading_ref": {
@@ -5032,7 +5835,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 87,
+          "position": 100,
           "kind": "outcome",
           "unit_id": "chapter06/p04",
           "heading_ref": {
@@ -5048,7 +5851,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 88,
+          "position": 101,
           "kind": "main",
           "unit_id": "chapter06/p05",
           "heading_ref": {
@@ -5064,7 +5867,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 89,
+          "position": 102,
           "kind": "outcome",
           "unit_id": "chapter06/p05",
           "heading_ref": {
@@ -5080,7 +5883,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 90,
+          "position": 103,
           "kind": "main",
           "unit_id": "chapter06/p06",
           "heading_ref": {
@@ -5096,7 +5899,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 91,
+          "position": 104,
           "kind": "reaction",
           "unit_id": "chapter06/p06",
           "heading_ref": {
@@ -5112,7 +5915,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 92,
+          "position": 105,
+          "kind": "reaction",
+          "unit_id": "chapter06/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/5/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/50/text"
+          },
+          "choice_or_reaction_id": "side_shore_crates_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 106,
           "kind": "outcome",
           "unit_id": "chapter06/p06",
           "heading_ref": {
@@ -5128,7 +5947,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 93,
+          "position": 107,
           "kind": "main",
           "unit_id": "chapter07/p01",
           "heading_ref": {
@@ -5144,7 +5963,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 94,
+          "position": 108,
           "kind": "outcome",
           "unit_id": "chapter07/p01",
           "heading_ref": {
@@ -5160,7 +5979,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 95,
+          "position": 109,
           "kind": "main",
           "unit_id": "chapter07/p02",
           "heading_ref": {
@@ -5176,7 +5995,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 96,
+          "position": 110,
           "kind": "choice",
           "unit_id": "chapter07/p02",
           "heading_ref": {
@@ -5192,7 +6011,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 97,
+          "position": 111,
           "kind": "outcome",
           "unit_id": "chapter07/p02",
           "heading_ref": {
@@ -5208,7 +6027,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 98,
+          "position": 112,
           "kind": "main",
           "unit_id": "chapter07/p03",
           "heading_ref": {
@@ -5224,7 +6043,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 99,
+          "position": 113,
           "kind": "automatic",
           "unit_id": "chapter07/p03",
           "heading_ref": {
@@ -5240,7 +6059,39 @@
           "prose_status": "outline"
         },
         {
-          "position": 100,
+          "position": 114,
+          "kind": "choice",
+          "unit_id": "chapter07/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/6/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/29/options/1/body"
+          },
+          "choice_or_reaction_id": "side_shelter_screen/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 115,
+          "kind": "automatic",
+          "unit_id": "chapter07/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/6/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/30/options/2/body"
+          },
+          "choice_or_reaction_id": "side_shelter_screen_approach/bypass",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 116,
           "kind": "outcome",
           "unit_id": "chapter07/p03",
           "heading_ref": {
@@ -5256,7 +6107,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 101,
+          "position": 117,
           "kind": "main",
           "unit_id": "chapter07/p04",
           "heading_ref": {
@@ -5272,7 +6123,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 102,
+          "position": 118,
           "kind": "outcome",
           "unit_id": "chapter07/p04",
           "heading_ref": {
@@ -5288,7 +6139,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 103,
+          "position": 119,
           "kind": "main",
           "unit_id": "chapter07/p05",
           "heading_ref": {
@@ -5304,7 +6155,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 104,
+          "position": 120,
           "kind": "outcome",
           "unit_id": "chapter07/p05",
           "heading_ref": {
@@ -5320,7 +6171,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 105,
+          "position": 121,
           "kind": "main",
           "unit_id": "chapter07/p06",
           "heading_ref": {
@@ -5336,7 +6187,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 106,
+          "position": 122,
           "kind": "reaction",
           "unit_id": "chapter07/p06",
           "heading_ref": {
@@ -5352,7 +6203,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 107,
+          "position": 123,
+          "kind": "reaction",
+          "unit_id": "chapter07/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/6/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/51/text"
+          },
+          "choice_or_reaction_id": "side_shelter_screen_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 124,
           "kind": "outcome",
           "unit_id": "chapter07/p06",
           "heading_ref": {
@@ -5368,7 +6235,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 108,
+          "position": 125,
           "kind": "main",
           "unit_id": "chapter08/p01",
           "heading_ref": {
@@ -5384,7 +6251,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 109,
+          "position": 126,
           "kind": "outcome",
           "unit_id": "chapter08/p01",
           "heading_ref": {
@@ -5400,7 +6267,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 110,
+          "position": 127,
           "kind": "main",
           "unit_id": "chapter08/p02",
           "heading_ref": {
@@ -5416,7 +6283,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 111,
+          "position": 128,
           "kind": "choice",
           "unit_id": "chapter08/p02",
           "heading_ref": {
@@ -5432,7 +6299,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 112,
+          "position": 129,
           "kind": "outcome",
           "unit_id": "chapter08/p02",
           "heading_ref": {
@@ -5448,7 +6315,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 113,
+          "position": 130,
           "kind": "main",
           "unit_id": "chapter08/p03",
           "heading_ref": {
@@ -5464,7 +6331,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 114,
+          "position": 131,
           "kind": "outcome",
           "unit_id": "chapter08/p03",
           "heading_ref": {
@@ -5480,7 +6347,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 115,
+          "position": 132,
           "kind": "main",
           "unit_id": "chapter08/p04",
           "heading_ref": {
@@ -5496,7 +6363,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 116,
+          "position": 133,
           "kind": "outcome",
           "unit_id": "chapter08/p04",
           "heading_ref": {
@@ -5512,7 +6379,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 117,
+          "position": 134,
           "kind": "main",
           "unit_id": "chapter08/p05",
           "heading_ref": {
@@ -5528,7 +6395,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 118,
+          "position": 135,
+          "kind": "choice",
+          "unit_id": "chapter08/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/7/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/31/options/1/body"
+          },
+          "choice_or_reaction_id": "side_wet_pages/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 136,
           "kind": "outcome",
           "unit_id": "chapter08/p05",
           "heading_ref": {
@@ -5544,7 +6427,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 119,
+          "position": 137,
           "kind": "main",
           "unit_id": "chapter08/p06",
           "heading_ref": {
@@ -5560,7 +6443,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 120,
+          "position": 138,
           "kind": "reaction",
           "unit_id": "chapter08/p06",
           "heading_ref": {
@@ -5576,7 +6459,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 121,
+          "position": 139,
+          "kind": "reaction",
+          "unit_id": "chapter08/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/7/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/55/text"
+          },
+          "choice_or_reaction_id": "side_wet_pages_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 140,
           "kind": "outcome",
           "unit_id": "chapter08/p06",
           "heading_ref": {
@@ -5592,7 +6491,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 122,
+          "position": 141,
           "kind": "main",
           "unit_id": "chapter09/p01",
           "heading_ref": {
@@ -5608,7 +6507,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 123,
+          "position": 142,
           "kind": "choice",
           "unit_id": "chapter09/p01",
           "heading_ref": {
@@ -5624,7 +6523,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 124,
+          "position": 143,
           "kind": "outcome",
           "unit_id": "chapter09/p01",
           "heading_ref": {
@@ -5640,7 +6539,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 125,
+          "position": 144,
           "kind": "main",
           "unit_id": "chapter09/p02",
           "heading_ref": {
@@ -5656,7 +6555,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 126,
+          "position": 145,
           "kind": "outcome",
           "unit_id": "chapter09/p02",
           "heading_ref": {
@@ -5672,7 +6571,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 127,
+          "position": 146,
           "kind": "main",
           "unit_id": "chapter09/p03",
           "heading_ref": {
@@ -5688,7 +6587,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 128,
+          "position": 147,
           "kind": "outcome",
           "unit_id": "chapter09/p03",
           "heading_ref": {
@@ -5704,7 +6603,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 129,
+          "position": 148,
           "kind": "main",
           "unit_id": "chapter09/p04",
           "heading_ref": {
@@ -5720,7 +6619,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 130,
+          "position": 149,
           "kind": "outcome",
           "unit_id": "chapter09/p04",
           "heading_ref": {
@@ -5736,7 +6635,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 131,
+          "position": 150,
           "kind": "main",
           "unit_id": "chapter09/p05",
           "heading_ref": {
@@ -5752,7 +6651,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 132,
+          "position": 151,
           "kind": "outcome",
           "unit_id": "chapter09/p05",
           "heading_ref": {
@@ -5768,7 +6667,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 133,
+          "position": 152,
           "kind": "main",
           "unit_id": "chapter09/p06",
           "heading_ref": {
@@ -5784,7 +6683,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 134,
+          "position": 153,
           "kind": "outcome",
           "unit_id": "chapter09/p06",
           "heading_ref": {
@@ -5800,7 +6699,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 135,
+          "position": 154,
           "kind": "main",
           "unit_id": "chapter09/p07",
           "heading_ref": {
@@ -5816,7 +6715,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 136,
+          "position": 155,
           "kind": "choice",
           "unit_id": "chapter09/p07",
           "heading_ref": {
@@ -5832,7 +6731,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 137,
+          "position": 156,
+          "kind": "choice",
+          "unit_id": "chapter09/p07",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/8/units/6/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/32/options/1/body"
+          },
+          "choice_or_reaction_id": "side_reed_marker/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 157,
           "kind": "outcome",
           "unit_id": "chapter09/p07",
           "heading_ref": {
@@ -5848,7 +6763,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 138,
+          "position": 158,
           "kind": "main",
           "unit_id": "chapter10/p01",
           "heading_ref": {
@@ -5864,7 +6779,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 139,
+          "position": 159,
           "kind": "reaction",
           "unit_id": "chapter10/p01",
           "heading_ref": {
@@ -5880,7 +6795,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 140,
+          "position": 160,
+          "kind": "reaction",
+          "unit_id": "chapter10/p01",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/9/units/0/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/57/text"
+          },
+          "choice_or_reaction_id": "side_reed_marker_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 161,
           "kind": "outcome",
           "unit_id": "chapter10/p01",
           "heading_ref": {
@@ -5896,7 +6827,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 141,
+          "position": 162,
           "kind": "main",
           "unit_id": "chapter10/p02",
           "heading_ref": {
@@ -5912,7 +6843,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 142,
+          "position": 163,
           "kind": "outcome",
           "unit_id": "chapter10/p02",
           "heading_ref": {
@@ -5928,7 +6859,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 143,
+          "position": 164,
           "kind": "main",
           "unit_id": "chapter10/p03",
           "heading_ref": {
@@ -5944,7 +6875,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 144,
+          "position": 165,
           "kind": "outcome",
           "unit_id": "chapter10/p03",
           "heading_ref": {
@@ -5960,7 +6891,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 145,
+          "position": 166,
           "kind": "main",
           "unit_id": "chapter10/p04",
           "heading_ref": {
@@ -5976,7 +6907,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 146,
+          "position": 167,
+          "kind": "choice",
+          "unit_id": "chapter10/p04",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/9/units/3/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/33/options/1/body"
+          },
+          "choice_or_reaction_id": "side_ash_cloth/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 168,
           "kind": "outcome",
           "unit_id": "chapter10/p04",
           "heading_ref": {
@@ -5992,7 +6939,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 147,
+          "position": 169,
           "kind": "main",
           "unit_id": "chapter10/p05",
           "heading_ref": {
@@ -6008,7 +6955,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 148,
+          "position": 170,
           "kind": "choice",
           "unit_id": "chapter10/p05",
           "heading_ref": {
@@ -6024,7 +6971,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 149,
+          "position": 171,
           "kind": "outcome",
           "unit_id": "chapter10/p05",
           "heading_ref": {
@@ -6040,7 +6987,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 150,
+          "position": 172,
           "kind": "main",
           "unit_id": "chapter11/p01",
           "heading_ref": {
@@ -6056,7 +7003,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 151,
+          "position": 173,
           "kind": "reaction",
           "unit_id": "chapter11/p01",
           "heading_ref": {
@@ -6072,7 +7019,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 152,
+          "position": 174,
+          "kind": "reaction",
+          "unit_id": "chapter11/p01",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/10/units/0/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/59/text"
+          },
+          "choice_or_reaction_id": "side_ash_cloth_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 175,
           "kind": "outcome",
           "unit_id": "chapter11/p01",
           "heading_ref": {
@@ -6088,7 +7051,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 153,
+          "position": 176,
           "kind": "main",
           "unit_id": "chapter11/p02",
           "heading_ref": {
@@ -6104,7 +7067,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 154,
+          "position": 177,
           "kind": "choice",
           "unit_id": "chapter11/p02",
           "heading_ref": {
@@ -6120,7 +7083,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 155,
+          "position": 178,
           "kind": "outcome",
           "unit_id": "chapter11/p02",
           "heading_ref": {
@@ -6136,7 +7099,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 156,
+          "position": 179,
           "kind": "main",
           "unit_id": "chapter11/p03",
           "heading_ref": {
@@ -6152,7 +7115,39 @@
           "prose_status": "outline"
         },
         {
-          "position": 157,
+          "position": 180,
+          "kind": "choice",
+          "unit_id": "chapter11/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/10/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/34/options/1/body"
+          },
+          "choice_or_reaction_id": "side_loose_stair/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 181,
+          "kind": "automatic",
+          "unit_id": "chapter11/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/10/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/35/options/2/body"
+          },
+          "choice_or_reaction_id": "side_loose_stair_approach/bypass",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 182,
           "kind": "outcome",
           "unit_id": "chapter11/p03",
           "heading_ref": {
@@ -6168,7 +7163,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 158,
+          "position": 183,
           "kind": "main",
           "unit_id": "chapter11/p04",
           "heading_ref": {
@@ -6184,7 +7179,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 159,
+          "position": 184,
           "kind": "reaction",
           "unit_id": "chapter11/p04",
           "heading_ref": {
@@ -6200,7 +7195,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 160,
+          "position": 185,
+          "kind": "reaction",
+          "unit_id": "chapter11/p04",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/10/units/3/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/60/text"
+          },
+          "choice_or_reaction_id": "side_loose_stair_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 186,
           "kind": "outcome",
           "unit_id": "chapter11/p04",
           "heading_ref": {
@@ -6216,7 +7227,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 161,
+          "position": 187,
           "kind": "main",
           "unit_id": "chapter12/p01",
           "heading_ref": {
@@ -6232,7 +7243,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 162,
+          "position": 188,
           "kind": "outcome",
           "unit_id": "chapter12/p01",
           "heading_ref": {
@@ -6248,7 +7259,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 163,
+          "position": 189,
           "kind": "main",
           "unit_id": "chapter12/p02",
           "heading_ref": {
@@ -6264,7 +7275,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 164,
+          "position": 190,
           "kind": "choice",
           "unit_id": "chapter12/p02",
           "heading_ref": {
@@ -6280,7 +7291,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 165,
+          "position": 191,
           "kind": "outcome",
           "unit_id": "chapter12/p02",
           "heading_ref": {
@@ -6296,7 +7307,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 166,
+          "position": 192,
           "kind": "main",
           "unit_id": "chapter12/p03",
           "heading_ref": {
@@ -6312,7 +7323,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 167,
+          "position": 193,
+          "kind": "choice",
+          "unit_id": "chapter12/p03",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/11/units/2/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/36/options/1/body"
+          },
+          "choice_or_reaction_id": "side_mended_cup/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 194,
           "kind": "outcome",
           "unit_id": "chapter12/p03",
           "heading_ref": {
@@ -6328,7 +7355,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 168,
+          "position": 195,
           "kind": "main",
           "unit_id": "chapter12/p04",
           "heading_ref": {
@@ -6344,7 +7371,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 169,
+          "position": 196,
           "kind": "choice",
           "unit_id": "chapter12/p04",
           "heading_ref": {
@@ -6360,7 +7387,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 170,
+          "position": 197,
           "kind": "outcome",
           "unit_id": "chapter12/p04",
           "heading_ref": {
@@ -6376,7 +7403,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 171,
+          "position": 198,
           "kind": "main",
           "unit_id": "chapter12/p05",
           "heading_ref": {
@@ -6392,7 +7419,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 172,
+          "position": 199,
           "kind": "reaction",
           "unit_id": "chapter12/p05",
           "heading_ref": {
@@ -6408,7 +7435,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 173,
+          "position": 200,
+          "kind": "reaction",
+          "unit_id": "chapter12/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/11/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/64/text"
+          },
+          "choice_or_reaction_id": "side_mended_cup_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 201,
           "kind": "outcome",
           "unit_id": "chapter12/p05",
           "heading_ref": {
@@ -6424,7 +7467,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 174,
+          "position": 202,
           "kind": "main",
           "unit_id": "chapter13/p01",
           "heading_ref": {
@@ -6440,7 +7483,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 175,
+          "position": 203,
           "kind": "reaction",
           "unit_id": "chapter13/p01",
           "heading_ref": {
@@ -6456,7 +7499,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 176,
+          "position": 204,
           "kind": "outcome",
           "unit_id": "chapter13/p01",
           "heading_ref": {
@@ -6472,7 +7515,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 177,
+          "position": 205,
           "kind": "main",
           "unit_id": "chapter13/p02",
           "heading_ref": {
@@ -6488,7 +7531,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 178,
+          "position": 206,
           "kind": "outcome",
           "unit_id": "chapter13/p02",
           "heading_ref": {
@@ -6504,7 +7547,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 179,
+          "position": 207,
           "kind": "main",
           "unit_id": "chapter13/p03",
           "heading_ref": {
@@ -6520,7 +7563,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 180,
+          "position": 208,
           "kind": "outcome",
           "unit_id": "chapter13/p03",
           "heading_ref": {
@@ -6536,7 +7579,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 181,
+          "position": 209,
           "kind": "main",
           "unit_id": "chapter13/p04",
           "heading_ref": {
@@ -6552,7 +7595,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 182,
+          "position": 210,
           "kind": "choice",
           "unit_id": "chapter13/p04",
           "heading_ref": {
@@ -6568,7 +7611,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 183,
+          "position": 211,
           "kind": "outcome",
           "unit_id": "chapter13/p04",
           "heading_ref": {
@@ -6584,7 +7627,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 184,
+          "position": 212,
           "kind": "main",
           "unit_id": "chapter13/p05",
           "heading_ref": {
@@ -6600,7 +7643,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 185,
+          "position": 213,
+          "kind": "choice",
+          "unit_id": "chapter13/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/12/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/37/options/1/body"
+          },
+          "choice_or_reaction_id": "side_dust_door/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 214,
           "kind": "outcome",
           "unit_id": "chapter13/p05",
           "heading_ref": {
@@ -6616,7 +7675,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 186,
+          "position": 215,
           "kind": "main",
           "unit_id": "chapter13/p06",
           "heading_ref": {
@@ -6632,7 +7691,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 187,
+          "position": 216,
           "kind": "reaction",
           "unit_id": "chapter13/p06",
           "heading_ref": {
@@ -6648,7 +7707,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 188,
+          "position": 217,
+          "kind": "reaction",
+          "unit_id": "chapter13/p06",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/12/units/5/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/66/text"
+          },
+          "choice_or_reaction_id": "side_dust_door_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 218,
           "kind": "outcome",
           "unit_id": "chapter13/p06",
           "heading_ref": {
@@ -6664,7 +7739,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 189,
+          "position": 219,
           "kind": "main",
           "unit_id": "chapter14/p01",
           "heading_ref": {
@@ -6680,7 +7755,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 190,
+          "position": 220,
           "kind": "outcome",
           "unit_id": "chapter14/p01",
           "heading_ref": {
@@ -6696,7 +7771,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 191,
+          "position": 221,
           "kind": "main",
           "unit_id": "chapter14/p02",
           "heading_ref": {
@@ -6712,7 +7787,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 192,
+          "position": 222,
           "kind": "choice",
           "unit_id": "chapter14/p02",
           "heading_ref": {
@@ -6728,7 +7803,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 193,
+          "position": 223,
           "kind": "outcome",
           "unit_id": "chapter14/p02",
           "heading_ref": {
@@ -6744,7 +7819,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 194,
+          "position": 224,
           "kind": "main",
           "unit_id": "chapter14/p03",
           "heading_ref": {
@@ -6760,7 +7835,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 195,
+          "position": 225,
           "kind": "outcome",
           "unit_id": "chapter14/p03",
           "heading_ref": {
@@ -6776,7 +7851,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 196,
+          "position": 226,
           "kind": "main",
           "unit_id": "chapter14/p04",
           "heading_ref": {
@@ -6792,7 +7867,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 197,
+          "position": 227,
           "kind": "outcome",
           "unit_id": "chapter14/p04",
           "heading_ref": {
@@ -6808,7 +7883,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 198,
+          "position": 228,
           "kind": "main",
           "unit_id": "chapter14/p05",
           "heading_ref": {
@@ -6824,7 +7899,39 @@
           "prose_status": "outline"
         },
         {
-          "position": 199,
+          "position": 229,
+          "kind": "choice",
+          "unit_id": "chapter14/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/13/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/38/options/1/body"
+          },
+          "choice_or_reaction_id": "side_cool_recess/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 230,
+          "kind": "automatic",
+          "unit_id": "chapter14/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/13/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/39/options/2/body"
+          },
+          "choice_or_reaction_id": "side_cool_recess_approach/bypass",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 231,
           "kind": "outcome",
           "unit_id": "chapter14/p05",
           "heading_ref": {
@@ -6840,7 +7947,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 200,
+          "position": 232,
           "kind": "main",
           "unit_id": "chapter14/p06",
           "heading_ref": {
@@ -6856,7 +7963,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 201,
+          "position": 233,
           "kind": "outcome",
           "unit_id": "chapter14/p06",
           "heading_ref": {
@@ -6872,7 +7979,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 202,
+          "position": 234,
           "kind": "main",
           "unit_id": "chapter14/p07",
           "heading_ref": {
@@ -6888,7 +7995,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 203,
+          "position": 235,
           "kind": "reaction",
           "unit_id": "chapter14/p07",
           "heading_ref": {
@@ -6904,7 +8011,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 204,
+          "position": 236,
+          "kind": "reaction",
+          "unit_id": "chapter14/p07",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/13/units/6/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/67/text"
+          },
+          "choice_or_reaction_id": "side_cool_recess_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 237,
           "kind": "outcome",
           "unit_id": "chapter14/p07",
           "heading_ref": {
@@ -6920,7 +8043,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 205,
+          "position": 238,
           "kind": "main",
           "unit_id": "chapter15/p01",
           "heading_ref": {
@@ -6936,7 +8059,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 206,
+          "position": 239,
           "kind": "outcome",
           "unit_id": "chapter15/p01",
           "heading_ref": {
@@ -6952,7 +8075,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 207,
+          "position": 240,
           "kind": "main",
           "unit_id": "chapter15/p02",
           "heading_ref": {
@@ -6968,7 +8091,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 208,
+          "position": 241,
           "kind": "outcome",
           "unit_id": "chapter15/p02",
           "heading_ref": {
@@ -6984,7 +8107,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 209,
+          "position": 242,
           "kind": "main",
           "unit_id": "chapter15/p03",
           "heading_ref": {
@@ -7000,7 +8123,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 210,
+          "position": 243,
           "kind": "outcome",
           "unit_id": "chapter15/p03",
           "heading_ref": {
@@ -7016,7 +8139,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 211,
+          "position": 244,
           "kind": "main",
           "unit_id": "chapter15/p04",
           "heading_ref": {
@@ -7032,7 +8155,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 212,
+          "position": 245,
           "kind": "choice",
           "unit_id": "chapter15/p04",
           "heading_ref": {
@@ -7048,7 +8171,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 213,
+          "position": 246,
+          "kind": "choice",
+          "unit_id": "chapter15/p04",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/14/units/3/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/decisions/40/options/1/body"
+          },
+          "choice_or_reaction_id": "side_silent_fragments/skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 247,
           "kind": "outcome",
           "unit_id": "chapter15/p04",
           "heading_ref": {
@@ -7064,7 +8203,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 214,
+          "position": 248,
           "kind": "main",
           "unit_id": "chapter15/p05",
           "heading_ref": {
@@ -7080,7 +8219,7 @@
           "prose_status": "outline"
         },
         {
-          "position": 215,
+          "position": 249,
           "kind": "reaction",
           "unit_id": "chapter15/p05",
           "heading_ref": {
@@ -7096,7 +8235,23 @@
           "prose_status": "outline"
         },
         {
-          "position": 216,
+          "position": 250,
+          "kind": "reaction",
+          "unit_id": "chapter15/p05",
+          "heading_ref": {
+            "file": "writing/storyboard/chapter-subsections.json",
+            "pointer": "/chapters/14/units/4/title"
+          },
+          "content_ref": {
+            "file": "writing/side-stories/generated/runtime.plan.json",
+            "pointer": "/reactions/71/text"
+          },
+          "choice_or_reaction_id": "side_silent_fragments_skip",
+          "page": null,
+          "prose_status": "outline"
+        },
+        {
+          "position": 251,
           "kind": "outcome",
           "unit_id": "chapter15/p05",
           "heading_ref": {

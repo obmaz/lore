@@ -49,8 +49,9 @@ def chapter_branch_details(publication, chapter_id):
             body += '<p>탐색 순서만 달라집니다. 두 목표를 모두 마친 뒤 합류합니다.</p>'+raw(orders,'병렬 목표 순서 JSON')
         body += source(publication.decision_paths[d['id']])
         if side:
-            index=next(i for i,s in enumerate(session.stories) if 'side_'+s['id']==d['id'])
-            body += '<div class="source-note"><button type="button" class="button small" data-source="writing/side-stories/series.json" data-pointer="/stories/'+str(index)+'">곁가지 집필 원본 JSON</button></div>'
+            story=session.story_by_decision.get(d['id']) or session.approach_by_decision[d['id']]
+            index=next(i for i,s in enumerate(session.stories) if s['id']==story['id'])
+            body += '<div class="source-note"><button type="button" class="button small" data-source="writing/side-stories/series.json" data-pointer="/stories/'+str(index)+('/approach' if d['id'] in session.approach_by_decision else '')+'">곁가지 집필 원본 JSON</button></div>'
         body += '</div></details>'
     if not decisions:
         body += '<p class="muted">이 장에는 구현된 선택이 없습니다. 필수 본줄기를 따라 진행합니다.</p>'
@@ -151,8 +152,8 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
         story_html += ''.join('<h3>'+label+'</h3><p>'+display(story['story'][key])+'</p>' for key,label in stage_labels.items())
         story_html += '<h3>변화와 다음 장</h3><p>'+display(story['emotional_change'])+'</p><p>'+display(story['handoff']['reason'])+'</p>'
         story_html += '<details><summary>연속성 주의</summary><ul>'+''.join('<li>'+display(v)+'</li>' for v in story['continuity_limits'])+'</ul></details>'
-        side=next(s for s in session.stories if s['chapter_id']==cid)
-        story_html += '<p class="notice">선택 곁가지 · 창작 초고: '+display(side['title'])+'<br>참여/거절 후 같은 본줄기에 합류하며 후속 반응만 달라집니다. <button type="button" class="button small" data-view="graph" data-graph-panel="rules">분기 내용 보기</button></p>'
+        sides=[s for s in session.stories if s['chapter_id']==cid]
+        story_html += '<p class="notice">선택 곁가지 · 창작 초고: '+' / '.join(display(side['title'])+(' · 중첩 선택 포함' if 'approach' in side else '') for side in sides)+'<br>참여/거절과 해결 방법 후 같은 본줄기에 합류하며 후속 반응만 달라집니다. <button type="button" class="button small" data-view="graph" data-graph-panel="rules">분기 내용 보기</button></p>'
         units = []
         for child in tree['children']:
             key = child['unit_id']; unit = session.units[key]

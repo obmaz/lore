@@ -56,12 +56,12 @@
       }
     },
     "policy": {
-      "const": "one_optional_local_adventure_per_chapter_no_main_state_writes"
+      "const": "two_optional_local_adventures_per_chapter_isolated_nested_choices"
     },
     "stories": {
       "type": "array",
-      "minItems": 15,
-      "maxItems": 15,
+      "minItems": 30,
+      "maxItems": 30,
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -83,6 +83,9 @@
           "on_skip"
         ],
         "properties": {
+          "approach": {
+            "$ref": "#/$defs/approach"
+          },
           "id": {
             "type": "string",
             "pattern": "^[a-z][a-z0-9_]+$"
@@ -153,6 +156,29 @@
           },
           "on_skip": {
             "$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "approach": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt", "options"],
+      "properties": {
+        "prompt": {"$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"},
+        "options": {
+          "type": "array", "minItems": 2, "maxItems": 2,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["id", "label", "body", "reaction"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]+$"},
+              "label": {"$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"},
+              "body": {"$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"},
+              "reaction": {"$ref": "https://lore.local/novel/authoring/story.schema.json#/$defs/text"}
+            }
           }
         }
       }
