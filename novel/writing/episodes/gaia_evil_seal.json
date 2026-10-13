@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "quest_file": "gaia_evil_seal.json",
+  "purpose": "small_batch_authoring_not_game_runtime",
+  "units": [
+    {
+      "id": "seal-01",
+      "title": [
+        {
+          "text": "3-1 · 쌍둥이 성의 실제 모습"
+        }
+      ],
+      "node_ids": [
+        "ruins"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        6500
+      ],
+      "focus": "3장 소단락 1의 실제 행동과 원문·선택 결과를 펼친다.",
+      "stop_after": "다음 본줄기의 장면으로 합류한 순간.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 6개 소편의 집필 제목·묶음·분량은 편집 구성이다. 원작 밖 수련/보급/교체 연결은 개별 본문·상태에 표시했다. style.revision=1.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "seal-02",
+      "title": [
+        {
+          "text": "3-2 · 풀어서는 안 되는 봉인"
+        }
+      ],
+      "node_ids": [
+        "request",
+        "town"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        6500
+      ],
+      "focus": "3장 소단락 2의 실제 행동과 원문·선택 결과를 펼친다.",
+      "stop_after": "다음 본줄기의 장면으로 합류한 순간.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 6개 소편의 집필 제목·묶음·분량은 편집 구성이다. 원작 밖 수련/보급/교체 연결은 개별 본문·상태에 표시했다. style.revision=1.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "seal-03",
+      "title": [
+        {
+          "text": "3-3 · 지각이 끊어 놓은 길"
+        }
+      ],
+      "node_ids": [
+        "cave_entrance",
+        "floating",
+        "numbered_doors",
+        "rigel_encounter"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        6500
+      ],
+      "focus": "3장 소단락 3의 실제 행동과 원문·선택 결과를 펼친다.",
+      "stop_after": "다음 본줄기의 장면으로 합류한 순간.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 6개 소편의 집필 제목·묶음·분량은 편집 구성이다. 원작 밖 수련/보급/교체 연결은 개별 본문·상태에 표시했다. style.revision=1.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "seal-04",
+      "title": [
+        {
+          "text": "3-4 · 부상자 앞에서 정한 일"
+        }
+      ],
+      "node_ids": [
+        "rigel_offer",
+        "rigel_replacement",
+        "rigel_joined",
+        "rigel_aided",
+        "rigel_left"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        6500
+      ],
+      "focus": "3장 소단락 4의 실제 행동과 원문·선택 결과를 펼친다.",
+      "stop_after": "다음 본줄기의 장면으로 합류한 순간.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 6개 소편의 집필 제목·묶음·분량은 편집 구성이다. 원작 밖 수련/보급/교체 연결은 개별 본문·상태에 표시했다. style.revision=1.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "seal-05",
+      "title": [
+        {
+          "text": "3-5 · 황금의 봉인을 찾아 지키다"
+        }
+      ],
+      "node_ids": [
+        "passcode",
+        "seal_found"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        6500
+      ],
+      "focus": "3장 소단락 5의 실제 행동과 원문·선택 결과를 펼친다.",
+      "stop_after": "다음 본줄기의 장면으로 합류한 순간.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 6개 소편의 집필 제목·묶음·분량은 편집 구성이다. 원작 밖 수련/보급/교체 연결은 개별 본문·상태에 표시했다. style.revision=1.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "seal-06",
+      "title": [
+        {
+          "text": "3-6 · 발견 뒤에도 남은 위험"
+        }
+      ],
+      "node_ids": [
+        "report",
+        "next_request",
+        "next_quest_boundary"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        6500
+      ],
+      "focus": "3장 소단락 6의 실제 행동과 원문·선택 결과를 펼친다.",
+      "stop_after": "다음 동굴의 의뢰를 받고 길 앞에서 멈춘다. 4장 사건은 아직 집필하지 않는다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 6개 소편의 집필 제목·묶음·분량은 편집 구성이다. 원작 밖 수련/보급/교체 연결은 개별 본문·상태에 표시했다. style.revision=1.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  ],
+  "notes": [
+    "본문은 quest_file과 node_ids를 참조하며 복제하지 않는다.",
+    "4번째 소편은 기본 구성의 치료/배웅 예시 외에도 원작 영입/거절을 각각 보존하는 실제 독자 분기다. 서로 다른 결말은 한 경로에 섞지 않는다."
+  ]
+}

@@ -1,10 +1,11 @@
 {
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "status": "draft",
   "first_overlay": "writing/interactive/chapter01.json",
   "quest_files": [
-    "lastditch_pyramid.json"
+    "lastditch_pyramid.json",
+    "gaia_evil_seal.json"
   ],
   "style_revision": 1,
   "branch_policy_ref": "writing/project.json#/branch_policy",
@@ -12,7 +13,7 @@
   "metadata": {
     "addition": true,
     "kind": "new_setting",
-    "note": "추가: 실제 집필한 1~2장을 앞 장의 선택/상태/사건을 초기화하지 않고 이어 읽는 편집 계약. 전체 소설 완성/승인이나 게임 실행 규칙이 아니다.",
+    "note": "추가: 실제 집필한 1~3장을 본문 참조와 명시적 상태 인계로 이어 읽는다. 4장 이후의 상세 집필/출판 승인을 주장하지 않는다.",
     "knowledge_policy": "author_reference_not_character_knowledge"
   },
   "chapters": [
@@ -22,7 +23,9 @@
       "quest_file": "writing/quests/lastditch_pyramid.json",
       "continuity_file": "writing/quests/lastditch_pyramid.continuity.json",
       "status": "revised_main_draft",
-      "guard_states": ["quest.lastditch_stage"],
+      "guard_states": [
+        "quest.lastditch_stage"
+      ],
       "main_story": [
         {
           "node": "lastditch_pyramid/arrival",
@@ -226,6 +229,246 @@
         "event.weapon.party_magician",
         "event.weapon.mad_joe"
       ]
+    },
+    {
+      "chapter_id": "chapter03",
+      "quest_id": "gaia_evil_seal",
+      "quest_file": "writing/quests/gaia_evil_seal.json",
+      "continuity_file": "writing/quests/gaia_evil_seal.continuity.json",
+      "status": "revised_main_draft",
+      "guard_states": [
+        "quest.gaia_stage"
+      ],
+      "main_story": [
+        {
+          "node": "gaia_evil_seal/ruins",
+          "required_block_ids": [
+            "gaia_evil_seal/ruins_body",
+            "gaia_evil_seal/ruins_sign_423",
+            "gaia_evil_seal/ruins_sign_424",
+            "gaia_evil_seal/ruins_sign_425",
+            "gaia_evil_seal/road_sign_384",
+            "gaia_evil_seal/road_sign_385",
+            "gaia_evil_seal/road_sign_386",
+            "gaia_evil_seal/road_sign_387",
+            "gaia_evil_seal/city_name",
+            "gaia_evil_seal/city_welcome",
+            "gaia_evil_seal/meet_lord",
+            "gaia_evil_seal/ruins_wait"
+          ]
+        },
+        {
+          "node": "gaia_evil_seal/request",
+          "required_block_ids": [
+            "gaia_evil_seal/request_before",
+            "gaia_evil_seal/request_516",
+            "gaia_evil_seal/request_517",
+            "gaia_evil_seal/request_518",
+            "gaia_evil_seal/request_519",
+            "gaia_evil_seal/request_520",
+            "gaia_evil_seal/request_521",
+            "gaia_evil_seal/request_522",
+            "gaia_evil_seal/request_523",
+            "gaia_evil_seal/request_524",
+            "gaia_evil_seal/request_525",
+            "gaia_evil_seal/request_526",
+            "gaia_evil_seal/request_527",
+            "gaia_evil_seal/request_528",
+            "gaia_evil_seal/request_529",
+            "gaia_evil_seal/request_530"
+          ]
+        },
+        {
+          "node": "gaia_evil_seal/town",
+          "required_block_ids": [
+            "gaia_evil_seal/town_487",
+            "gaia_evil_seal/town_489",
+            "gaia_evil_seal/town_491",
+            "gaia_evil_seal/town_492",
+            "gaia_evil_seal/town_493",
+            "gaia_evil_seal/town_497",
+            "gaia_evil_seal/town_498",
+            "gaia_evil_seal/town_499",
+            "gaia_evil_seal/town_503",
+            "gaia_evil_seal/town_505",
+            "gaia_evil_seal/town_507",
+            "gaia_evil_seal/town_509",
+            "gaia_evil_seal/town_512",
+            "gaia_evil_seal/request_after",
+            "gaia_evil_seal/reminder_535",
+            "gaia_evil_seal/reminder_536",
+            "gaia_evil_seal/reminder_537",
+            "gaia_evil_seal/prepared_body"
+          ]
+        },
+        {
+          "node": "gaia_evil_seal/cave_entrance",
+          "required_block_ids": [
+            "gaia_evil_seal/cave_sign",
+            "gaia_evil_seal/entrance_body",
+            "gaia_evil_seal/cliff_body",
+            "gaia_evil_seal/cliff_warning"
+          ]
+        },
+        {
+          "node": "gaia_evil_seal/floating",
+          "required_block_ids": [
+            "gaia_evil_seal/floating_body",
+            "gaia_evil_seal/floating_message"
+          ]
+        },
+        {
+          "node": "gaia_evil_seal/numbered_doors",
+          "required_block_ids": [
+            "gaia_evil_seal/doors_body",
+            "gaia_evil_seal/wrong_door_feedback",
+            "gaia_evil_seal/door_clue_437",
+            "gaia_evil_seal/door_clue_438",
+            "gaia_evil_seal/door_clue_439",
+            "gaia_evil_seal/door_calculation",
+            "gaia_evil_seal/door_number",
+            "gaia_evil_seal/correct_door",
+            "gaia_evil_seal/door_crossing",
+            "gaia_evil_seal/door_wait"
+          ]
+        },
+        {
+          "node": "gaia_evil_seal/rigel_encounter",
+          "required_block_ids": [
+            "gaia_evil_seal/rigel_approach",
+            "gaia_evil_seal/rigel_601",
+            "gaia_evil_seal/rigel_602",
+            "gaia_evil_seal/rigel_605",
+            "gaia_evil_seal/rigel_606",
+            "gaia_evil_seal/rigel_607",
+            "gaia_evil_seal/rigel_608",
+            "gaia_evil_seal/rigel_609",
+            "gaia_evil_seal/rigel_610"
+          ]
+        },
+        {
+          "node": "gaia_evil_seal/rigel_offer",
+          "required_block_ids": [
+            "gaia_evil_seal/rigel_common",
+            "gaia_evil_seal/rigel_wait"
+          ]
+        },
+        {
+          "node": "gaia_evil_seal/passcode",
+          "required_block_ids": [
+            "gaia_evil_seal/passcode_clue_445",
+            "gaia_evil_seal/passcode_clue_447",
+            "gaia_evil_seal/passcode_clue_449",
+            "gaia_evil_seal/passcode_number",
+            "gaia_evil_seal/seal_body"
+          ]
+        },
+        {
+          "node": "gaia_evil_seal/seal_found",
+          "required_block_ids": [
+            "gaia_evil_seal/seal_success_590",
+            "gaia_evil_seal/seal_success_591",
+            "gaia_evil_seal/seal_success_592",
+            "gaia_evil_seal/seal_return",
+            "gaia_evil_seal/exit_body"
+          ]
+        },
+        {
+          "node": "gaia_evil_seal/report",
+          "required_block_ids": [
+            "gaia_evil_seal/report_body",
+            "gaia_evil_seal/report_success",
+            "gaia_evil_seal/report_experience",
+            "gaia_evil_seal/report_confirmation"
+          ]
+        },
+        {
+          "node": "gaia_evil_seal/next_request",
+          "required_block_ids": [
+            "gaia_evil_seal/next_549",
+            "gaia_evil_seal/next_550",
+            "gaia_evil_seal/next_551",
+            "gaia_evil_seal/next_552",
+            "gaia_evil_seal/next_553",
+            "gaia_evil_seal/next_554",
+            "gaia_evil_seal/next_555",
+            "gaia_evil_seal/next_body",
+            "gaia_evil_seal/next_wait",
+            "gaia_evil_seal/next_road_390",
+            "gaia_evil_seal/next_road_391",
+            "gaia_evil_seal/next_road_392",
+            "gaia_evil_seal/next_road_393"
+          ]
+        }
+      ],
+      "units": [
+        {
+          "unit_id": "chapter03/p01",
+          "episode_id": "seal-01",
+          "node_ids": [
+            "gaia_evil_seal/ruins"
+          ]
+        },
+        {
+          "unit_id": "chapter03/p02",
+          "episode_id": "seal-02",
+          "node_ids": [
+            "gaia_evil_seal/request",
+            "gaia_evil_seal/town"
+          ]
+        },
+        {
+          "unit_id": "chapter03/p03",
+          "episode_id": "seal-03",
+          "node_ids": [
+            "gaia_evil_seal/cave_entrance",
+            "gaia_evil_seal/floating",
+            "gaia_evil_seal/numbered_doors",
+            "gaia_evil_seal/rigel_encounter"
+          ]
+        },
+        {
+          "unit_id": "chapter03/p04",
+          "episode_id": "seal-04",
+          "node_ids": [
+            "gaia_evil_seal/rigel_offer",
+            "gaia_evil_seal/rigel_replacement",
+            "gaia_evil_seal/rigel_joined",
+            "gaia_evil_seal/rigel_aided",
+            "gaia_evil_seal/rigel_left"
+          ]
+        },
+        {
+          "unit_id": "chapter03/p05",
+          "episode_id": "seal-05",
+          "node_ids": [
+            "gaia_evil_seal/passcode",
+            "gaia_evil_seal/seal_found"
+          ]
+        },
+        {
+          "unit_id": "chapter03/p06",
+          "episode_id": "seal-06",
+          "node_ids": [
+            "gaia_evil_seal/report",
+            "gaia_evil_seal/next_request",
+            "gaia_evil_seal/next_quest_boundary"
+          ]
+        }
+      ],
+      "shared_states": [
+        "companions.starting",
+        "companions.optional_recruits",
+        "event.slot6",
+        "event.weapon.party_woodcutter",
+        "event.weapon.party_hunter",
+        "event.weapon.party_cook",
+        "event.weapon.party_magician",
+        "event.weapon.protagonist",
+        "event.weapon.skeleton",
+        "event.weapon.mad_joe",
+        "event.weapon.polaris"
+      ]
     }
   ],
   "display_insertions": {
@@ -247,6 +490,20 @@
         "state": "event.chapter02.spear_owner",
         "state_ref_catalog": "characters",
         "note": "실제로 장착한 인물 이름만 표시한다."
+      }
+    ],
+    "gaia_evil_seal/door_number": [
+      {
+        "offset": 19,
+        "state": "event.chapter03.door_number",
+        "note": "원문 표지와 수식을 확인한 결과만 표시한다. Pascal 표현식은 실행하지 않는다."
+      }
+    ],
+    "gaia_evil_seal/passcode_number": [
+      {
+        "offset": 18,
+        "state": "event.chapter03.passcode",
+        "note": "원문 표지와 수식을 확인한 결과만 표시한다. Pascal 표현식은 실행하지 않는다."
       }
     ]
   },

@@ -30,7 +30,7 @@
 각 장 두 개의 곁가지와 5개 중첩 선택·후속 반응을 확인하는 창작 초고입니다. 본줄기는 기존 기본 경로의 주요 내용으로
 유지하며, 원문 전체·완성 장편 판본과 구분합니다. [원본 JSON·연결·검사 범위](writing/side-stories/README.md).
 
-독자용 실제 본문 · 1~2장 초고: [웹에서 선택하며 읽기](https://obmaz.github.io/lore/novel/)
+독자용 실제 본문 · A · 1~3장 초고: [웹에서 선택하며 읽기](https://obmaz.github.io/lore/novel/)
 또는 [오프라인 HTML](writing/previews/chapter01-interactive.html)을 내려받아 브라우저로 엽니다.
 경로는 다운로드 파일로 저장/불러오며 계정·서버 저장 기능은 없습니다.
 

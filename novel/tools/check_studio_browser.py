@@ -50,7 +50,7 @@ def check(screenshots=None,bundle=None):
             assert page.locator('#document-select option').count()==1
             # Real prose is a single forward book, not the fifteen-chapter prototype.
             book=json.loads(frame.locator('#chapter-data').text_content())
-            assert [c['id'] for c in book['chapters']]==['chapter01','chapter02']
+            assert [c['id'] for c in book['chapters']]==['chapter01','chapter02','chapter03']
             chosen=[]
             for _ in range(40):
                 buttons=frame.locator('#choices button')
@@ -60,14 +60,14 @@ def check(screenshots=None,bundle=None):
                 preferred=['prologue/visit_lord','i/depart_now','lore_menace/decline_skeleton',
                            'lore_menace/enter_menace','lore_menace/return_to_lore',
                            'lastditch_pyramid/accept_polaris','lastditch_pyramid/equip_spear_party_hunter',
-                           'lastditch_pyramid/separate_pressure']
+                           'lastditch_pyramid/separate_pressure','gaia_evil_seal/aid_rigel']
                 key=next((c for c in preferred if c in ids),ids[0])
                 assert key not in chosen,'a completed fork became available again'
                 chosen.append(key)
                 frame.locator(f'#choices [data-choice="{key}"]').click()
                 assert not errors,errors
             assert frame.locator('#choices button').count()==0
-            assert '제2장 끝' in frame.locator('#choices').inner_text()
+            assert '제3장 끝' in frame.locator('#choices').inner_text()
             assert '제2장 · 모래 아래의 오래된 적' in frame.locator('#manuscript').inner_text()
             assert frame.locator('[data-block-id="lastditch_pyramid/arrival_body"]').count()>4
             assert frame.locator('[data-block-id="lastditch_pyramid/battle_spear_party_hunter"]').count()==1

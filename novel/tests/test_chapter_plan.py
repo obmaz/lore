@@ -29,11 +29,11 @@ class ChapterPlanTests(unittest.TestCase):
     def test_01_all_titles_and_main_beats_exist_without_claiming_future_prose(self):
         result = self.validate(self.plan, runtime=True)
         self.assertEqual(result['chapters'], 15)
-        self.assertEqual(result['runtime_bound'], ['chapter01','chapter02'])
+        self.assertEqual(result['runtime_bound'], ['chapter01','chapter02','chapter03'])
         self.assertFalse(result['future_prose_complete'])
         self.assertEqual([c['number'] for c in self.plan['chapters']], list(range(1,16)))
         self.assertTrue(all(c['mandatory'] and c['exit_requires_all'] for c in self.plan['chapters']))
-        self.assertTrue(all(b['scene_nodes'] is None for c in self.plan['chapters'][2:] for b in c['required_beats']))
+        self.assertTrue(all(b['scene_nodes'] is None for c in self.plan['chapters'][3:] for b in c['required_beats']))
         self.assertEqual(self.session.story['meta']['title'], self.plan['chapters'][0]['title'])
 
     def test_02_every_original_board_unit_is_preserved_once(self):
@@ -67,8 +67,8 @@ class ChapterPlanTests(unittest.TestCase):
     def test_05_unwritten_chapter_cannot_claim_fake_implemented_scenes(self):
         for mode in ['fake_scene', 'fake_runtime']:
             plan = copy.deepcopy(self.plan)
-            if mode == 'fake_scene': plan['chapters'][2]['required_beats'][0]['scene_nodes'] = ['made_up/scene']
-            else: plan['chapters'][2]['implementation'] = 'runtime_bound'
+            if mode == 'fake_scene': plan['chapters'][3]['required_beats'][0]['scene_nodes'] = ['made_up/scene']
+            else: plan['chapters'][3]['implementation'] = 'runtime_bound'
             with self.assertRaisesRegex(ValueError, 'unwritten chapter|future chapter'):
                 self.validate(plan)
 
@@ -109,7 +109,7 @@ class ChapterPlanTests(unittest.TestCase):
             for beat in chapter['required_beats']:
                 beat['id'] = beat['id'].replace(old_id+'/',new_id+'/')
                 beat['after'] = [p.replace(old_id+'/',new_id+'/') for p in beat['after']]
-        with self.assertRaisesRegex(ValueError, 'original required progress gate'):
+        with self.assertRaisesRegex(ValueError, 'original required progress gate|future chapter'):
             self.validate(plan)
 
     def test_10_reader_has_current_title_no_print_button_or_future_outline(self):
@@ -122,7 +122,8 @@ class ChapterPlanTests(unittest.TestCase):
         self.assertNotIn('onclick="print()"', page)
         self.assertNotIn('"required_beats"', page)
         self.assertIn(render(self.plan['chapters'][1]['title'],self.data,self.literals,self.profiles,author=True),page)
-        for chapter in self.plan['chapters'][2:]:
+        self.assertIn(render(self.plan['chapters'][2]['title'],self.data,self.literals,self.profiles,author=True),page)
+        for chapter in self.plan['chapters'][3:]:
             self.assertNotIn(json.dumps(chapter['title'],ensure_ascii=False), page)
             self.assertNotIn(render(chapter['title'],self.data,self.literals,self.profiles,author=True), page)
 

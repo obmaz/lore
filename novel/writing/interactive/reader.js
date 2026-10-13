@@ -196,7 +196,7 @@
       if(weapon)info.append(element('p',data.labels.characters[id]+': '+(data.labels.equipment[weapon]||'미정')));
     }
     if(packet.state['event.chapter02.spear_owner'])info.append(element('p',data.labels.terms.oedipus_spear+': '+data.labels.characters[packet.state['event.chapter02.spear_owner']]));
-    if (!current.choices.length) box.append(element('p','제2장 끝. 선택한 동료·장비·경험은 다음 장으로 인계됩니다. 3장 이후는 아직 집필 전이며, 전편 개요와 분기 미리보기는 제작 자료입니다.'));
+    if (!current.choices.length) box.append(element('p',`제${data.chapters.length}장 끝. 선택한 동료·장비·경험은 다음 장으로 인계됩니다. ${data.chapters.length+1}장 이후는 이 판본에서 아직 집필 전이며, 전편 개요와 분기 미리보기는 제작 자료입니다.`));
     document.getElementById('back').disabled = !packet.sections.some(s=>s.selected&&!automatic(s.node.id,s.state));
   }
   document.getElementById('restart').addEventListener('click',() => { route = []; redraw(); message('처음부터 시작합니다.'); readFromSection(0); });

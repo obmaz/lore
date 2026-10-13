@@ -124,6 +124,9 @@ def validate(document, catalog=None):
             validate_text(block['text'],text_data,literals,require_bindings=document['meta'].get('reference_text',False))
             if document['meta'].get('reference_text') and block['kind']!='source_quote':
                 reject_fixed_names(block['text'],text_data)
+                if block['kind']!='author_note':
+                    plain=block['text'] if isinstance(block['text'],str) else ''.join(s.get('text','') for s in block['text'])
+                    require('주인공' not in plain,'use the protagonist character reference instead of its role label in prose')
             for literal_id in source_ids(block['text']):
                 if literal_id in literals:
                     check_literal(literal_id,literals[literal_id]['text'],block['provenance']['source_refs'])

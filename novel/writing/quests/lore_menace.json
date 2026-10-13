@@ -15,7 +15,7 @@
         "text": "첫 탐사 의뢰, 성을 떠날 때의 동행 선택, 지하 동굴 중심부 확인과 귀환 보고. 다음 성을 도우라는 의뢰와 작별까지."
       }
     ],
-    "revision": 8,
+    "revision": 9,
     "reference_text": true,
     "source_catalog": "materials/scripts.json",
     "character_registry": "characters/registry.json"
@@ -2786,7 +2786,17 @@
               }
             },
             {
-              "text": " 바로 멀지 않은 곳에 있었다. 돌아보는 눈길을 받자 걸음을 멈췄다가, 주인공이 움직이자 다시 따라왔다. 따로 정한 신호는 없었는데도 그 정도 움직임은 서로 알아볼 수 있었다. "
+              "text": " 바로 멀지 않은 곳에 있었다. 돌아보는 눈길을 받자 걸음을 멈췄다가, "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "이/가"
+              }
+            },
+            {
+              "text": " 움직이자 다시 따라왔다. 따로 정한 신호는 없었는데도 그 정도 움직임은 서로 알아볼 수 있었다. "
             },
             {
               "ref": {

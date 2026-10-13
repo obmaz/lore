@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 3,
+  "revision": 4,
   "kind": "series",
   "visibility": "author_only",
   "status": "outline",
@@ -344,7 +344,7 @@
       ],
       "arc": "crossing",
       "mandatory": true,
-      "implementation": "outline_only",
+      "implementation": "runtime_bound",
       "origin": "authored",
       "status": "proposed",
       "metadata": {
@@ -366,7 +366,11 @@
             "gaia_evil_seal:seal_request"
           ],
           "after": [],
-          "scene_nodes": null,
+          "scene_nodes": [
+            "gaia_evil_seal/ruins",
+            "gaia_evil_seal/request",
+            "gaia_evil_seal/town"
+          ],
           "origin": "inferred",
           "status": "proposed",
           "metadata": {
@@ -389,7 +393,15 @@
           "after": [
             "chapter03/request"
           ],
-          "scene_nodes": null,
+          "scene_nodes": [
+            "gaia_evil_seal/cave_entrance",
+            "gaia_evil_seal/floating",
+            "gaia_evil_seal/numbered_doors",
+            "gaia_evil_seal/rigel_encounter",
+            "gaia_evil_seal/rigel_offer",
+            "gaia_evil_seal/passcode",
+            "gaia_evil_seal/seal_found"
+          ],
           "origin": "inferred",
           "status": "proposed",
           "metadata": {
@@ -412,7 +424,10 @@
           "after": [
             "chapter03/discovery"
           ],
-          "scene_nodes": null,
+          "scene_nodes": [
+            "gaia_evil_seal/report",
+            "gaia_evil_seal/next_request"
+          ],
           "origin": "inferred",
           "status": "proposed",
           "metadata": {

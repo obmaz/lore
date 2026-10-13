@@ -148,7 +148,7 @@ def validate_text(text,data,all_literals,require_bindings=False):
                                    item.get('korean_name',{}).get('value'))
                       if isinstance(name,str) and len(name)>=2}
             for name in labels:
-                pattern = re.escape(name) if not name.isascii() else r'(?<![A-Za-z])'+re.escape(name)+r'(?![A-Za-z])'
+                pattern = r'(?<![A-Za-z0-9가-힣_])'+re.escape(name) if not name.isascii() else r'(?<![A-Za-z])'+re.escape(name)+r'(?![A-Za-z])'
                 for hit in re.finditer(pattern,raw):
                     if not any(b['start']<=hit.start() and hit.end()<=b['end'] for b in source['bindings']):
                         raise ValueError('unbound source entity name; add a display reference: '+name)
@@ -185,6 +185,6 @@ def reject_fixed_names(text,data):
             for name in labels:
                 if not isinstance(name,str) or len(name)<2:
                     continue
-                pattern = re.escape(name) if not name.isascii() else r'(?<![A-Za-z])'+re.escape(name)+r'(?![A-Za-z])'
+                pattern = r'(?<![A-Za-z0-9가-힣_])'+re.escape(name) if not name.isascii() else r'(?<![A-Za-z])'+re.escape(name)+r'(?![A-Za-z])'
                 if re.search(pattern,plain):
                     raise ValueError(f'fixed entity name in new prose; use a reference: {name}')

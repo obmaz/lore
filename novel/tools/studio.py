@@ -177,7 +177,7 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
                          'svg':publication.svg(chart['node_ids']), 'source_ref':tree['heading_ref']})
     documents = []
     reading_labels = {
-        'chapter01-interactive.html':'소설 본문 · 1~2장 초고',
+        'chapter01-interactive.html':f'A · 1~{sum(c["implementation"]=="runtime_bound" for c in chapters)}장 초고',
         'side-adventures.html':'전편 15장 · 곁가지 모험 선택 시범',
         'source-connected.html':'전편 15장 · 원작 원문 연결 판본',
         'first-journey.html':'도입부터 첫 임무 끝까지 · 동행 수락',
@@ -192,7 +192,7 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
         title = html.unescape(match.group(1)) if match else name
         group = 'prose' if name.startswith(('menace-', 'prologue', 'first-journey')) else 'structure'
         note = '보존 기본 경로 · 초고' if group=='prose' else '작가용 구성 · 상세 본문과 구별'
-        if name=='chapter01-interactive.html': group, note = 'interactive', '실제 집필한 1~2장 · 전편 개요/분기 시범과 별도'
+        if name=='chapter01-interactive.html': group, note = 'interactive', '현재 문체 A로 집필한 본문'
         elif name=='side-adventures.html': group, note = 'interactive', '15장 곁가지 선택판 · 본줄기 기본 경로의 주요 내용 + 창작 모험 초고'
         elif name=='source-connected.html': group, note = 'source', '15장 원문 연결 판본 · 조건부 원문·기술 부록 포함'
         label = reading_labels.get(name,title+(' · 동행 거절 경로' if '-declined' in name else ' · 주점 방문 경로' if '-tavern' in name else ''))

@@ -1,0 +1,2765 @@
+{
+  "version": 2,
+  "story_id": "gaia_evil_seal_draft_v1",
+  "story_revision": 1,
+  "canon_revision": 4,
+  "character_registry_revision": 13,
+  "contracts": {
+    "ruins": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 0
+          },
+          true
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "ruins_body",
+        "ruins_sign_423",
+        "ruins_sign_424",
+        "ruins_sign_425",
+        "road_sign_384",
+        "road_sign_385",
+        "road_sign_386",
+        "road_sign_387",
+        "city_name",
+        "city_welcome",
+        "meet_lord",
+        "ruins_wait"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "request": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 0
+          },
+          true
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "knowledge.chapter03_warning",
+        "quest.gaia_stage"
+      ],
+      "must_include_block_ids": [
+        "request_before",
+        "request_516",
+        "request_517",
+        "request_518",
+        "request_519",
+        "request_520",
+        "request_521",
+        "request_522",
+        "request_523",
+        "request_524",
+        "request_525",
+        "request_526",
+        "request_527",
+        "request_528",
+        "request_529",
+        "request_530"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "town": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 1
+          },
+          true
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "event.chapter03.food",
+        "event.chapter03.prepared_sp",
+        "knowledge.spells.protagonist"
+      ],
+      "must_include_block_ids": [
+        "town_487",
+        "town_489",
+        "town_491",
+        "town_492",
+        "town_493",
+        "town_497",
+        "town_498",
+        "town_499",
+        "town_503",
+        "town_505",
+        "town_507",
+        "town_509",
+        "town_512",
+        "request_after",
+        "reminder_535",
+        "reminder_536",
+        "reminder_537",
+        "prepared_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "cave_entrance": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 1
+          },
+          true
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "cave_sign",
+        "entrance_body",
+        "cliff_body",
+        "cliff_warning"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "floating": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "all": [
+              {
+                "state": "knowledge.spells.protagonist",
+                "op": "contains",
+                "value": "magic_34"
+              },
+              {
+                "state": "event.chapter03.prepared_sp",
+                "op": "gte",
+                "value": 5
+              }
+            ]
+          }
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "event.chapter03.floating",
+        "event.chapter03.prepared_sp"
+      ],
+      "must_include_block_ids": [
+        "floating_body",
+        "floating_message"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "numbered_doors": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "state": "event.chapter03.floating",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "doors_body",
+        "wrong_door_feedback",
+        "door_clue_437",
+        "door_clue_438",
+        "door_clue_439",
+        "door_calculation",
+        "door_number",
+        "correct_door",
+        "door_crossing",
+        "door_wait"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "rigel_encounter": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "state": "event.chapter03.floating",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "rigel_approach",
+        "rigel_601",
+        "rigel_602",
+        "rigel_605",
+        "rigel_606",
+        "rigel_607",
+        "rigel_608",
+        "rigel_609",
+        "rigel_610"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "rigel_offer": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "state": "event.chapter03.floating",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "companions.optional_recruits",
+        "event.chapter03.blessing_offered",
+        "event.chapter03.food",
+        "event.chapter03.prepared_sp",
+        "event.chapter03.rigel_hp",
+        "event.chapter03.rigel_response",
+        "event.slot6",
+        "event.weapon.rigel"
+      ],
+      "must_include_block_ids": [
+        "rigel_common",
+        "rigel_wait"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "rigel_replacement": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 1
+          },
+          true
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "companions.optional_recruits",
+        "companions.starting",
+        "event.chapter03.departed",
+        "event.chapter03.rigel_hp",
+        "event.chapter03.rigel_response",
+        "event.slot6",
+        "event.weapon.rigel"
+      ],
+      "must_include_block_ids": [
+        "replacement_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "rigel_joined": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 1
+          },
+          true
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "joined_body",
+        "joined_more"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "rigel_aided": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 1
+          },
+          true
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "aided_body",
+        "aid_result_643",
+        "aid_result_644",
+        "aid_result_645",
+        "aid_result_646",
+        "aid_result_647",
+        "aided_more"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "rigel_left": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 1
+          },
+          true
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "left_body",
+        "left_more"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "passcode": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 1
+          },
+          {
+            "all": [
+              {
+                "state": "event.chapter03.floating",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "state": "event.chapter03.rigel_response",
+                "op": "ne",
+                "value": ""
+              }
+            ]
+          }
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "quest.gaia_stage",
+        "quest.golden_seal_found"
+      ],
+      "must_include_block_ids": [
+        "passcode_clue_445",
+        "passcode_clue_447",
+        "passcode_clue_449",
+        "passcode_number",
+        "seal_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "seal_found": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 2
+          },
+          {
+            "state": "quest.golden_seal_found",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "event.chapter03.floating"
+      ],
+      "must_include_block_ids": [
+        "seal_success_590",
+        "seal_success_591",
+        "seal_success_592",
+        "seal_return",
+        "exit_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "report": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 2
+          },
+          {
+            "state": "quest.golden_seal_found",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "event.chapter03.experience_bonus",
+        "quest.gaia_stage"
+      ],
+      "must_include_block_ids": [
+        "report_body",
+        "report_success",
+        "report_experience",
+        "report_confirmation"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "next_request": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 3
+          },
+          true
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "quest.gaia_stage"
+      ],
+      "must_include_block_ids": [
+        "next_549",
+        "next_550",
+        "next_551",
+        "next_552",
+        "next_553",
+        "next_554",
+        "next_555",
+        "next_body",
+        "next_wait",
+        "next_road_390",
+        "next_road_391",
+        "next_road_392",
+        "next_road_393"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    },
+    "next_quest_boundary": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.gaia_stage",
+            "op": "eq",
+            "value": 4
+          },
+          true
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: 본문 호칭은 인물 참조. 앞 장의 실제 동행과 무기를 초기화하지 않는다. 봉인의 발견/해제, 리겔 영입/치료 후 작별/거절, 축복/무기 강화, 마법 수련/시전 자원을 별도로 관리한다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        },
+        {
+          "character_id": "rigel",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "rigel"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        },
+        {
+          "character_id": "rigel",
+          "revision": 5
+        }
+      ]
+    }
+  },
+  "event_templates": [
+    {
+      "id": "seal_request_heard",
+      "trigger_choice": "continue_request",
+      "description": "파괴된 성과 봉인 해제의 위험을 설명받아 발견 임무를 맡았다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "city_dialogue"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "preparation_completed",
+      "trigger_choice": "continue_town",
+      "description": "추가: 수련과 탐방 보급을 실제 준비 장면 이후에만 기록한다. 기존 초기 능력/물자를 소급 추정하지 않는다.",
+      "origin": "authored",
+      "source_refs": [],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "floating_activated",
+      "trigger_choice": "continue_floating",
+      "description": "공중 부상 상태를 시전하고 자원 5를 소모해 절벽을 지나갈 조건이 생겼다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "floating_spell"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "rigel_response_join_rigel",
+      "trigger_choice": "join_rigel",
+      "description": "부상당한 리겔의 원문 설명을 듣고 실제 한 응답을 선택했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "rigel_rescue"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "rigel_response_replace_for_rigel",
+      "trigger_choice": "replace_for_rigel",
+      "description": "부상당한 리겔의 원문 설명을 듣고 실제 한 응답을 선택했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "rigel_rescue"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "rigel_response_aid_rigel",
+      "trigger_choice": "aid_rigel",
+      "description": "부상당한 리겔의 원문 설명을 듣고 실제 한 응답을 선택했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "rigel_rescue"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "rigel_response_leave_rigel",
+      "trigger_choice": "leave_rigel",
+      "description": "부상당한 리겔의 원문 설명을 듣고 실제 한 응답을 선택했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "rigel_rescue"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "rigel_response_replace_party_woodcutter",
+      "trigger_choice": "replace_party_woodcutter",
+      "description": "부상당한 리겔의 원문 설명을 듣고 실제 한 응답을 선택했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "rigel_rescue"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "rigel_response_replace_party_hunter",
+      "trigger_choice": "replace_party_hunter",
+      "description": "부상당한 리겔의 원문 설명을 듣고 실제 한 응답을 선택했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "rigel_rescue"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "rigel_response_replace_party_cook",
+      "trigger_choice": "replace_party_cook",
+      "description": "부상당한 리겔의 원문 설명을 듣고 실제 한 응답을 선택했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "rigel_rescue"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "rigel_response_replace_party_magician",
+      "trigger_choice": "replace_party_magician",
+      "description": "부상당한 리겔의 원문 설명을 듣고 실제 한 응답을 선택했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "rigel_rescue"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "rigel_response_replace_skeleton",
+      "trigger_choice": "replace_skeleton",
+      "description": "부상당한 리겔의 원문 설명을 듣고 실제 한 응답을 선택했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "rigel_rescue"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "rigel_response_replace_mad_joe",
+      "trigger_choice": "replace_mad_joe",
+      "description": "부상당한 리겔의 원문 설명을 듣고 실제 한 응답을 선택했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "rigel_rescue"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "rigel_response_replace_polaris",
+      "trigger_choice": "replace_polaris",
+      "description": "부상당한 리겔의 원문 설명을 듣고 실제 한 응답을 선택했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "rigel_rescue"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "seal_found",
+      "trigger_choice": "continue_passcode",
+      "description": "봉인을 발견했으며 풀거나 가져가지 않았다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "cave_events"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "seal_reported",
+      "trigger_choice": "continue_report",
+      "description": "실제 발견 뒤 보고하고 원작 경험 보상을 한 번 받았다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "city_dialogue"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "quake_request_heard",
+      "trigger_choice": "continue_next_request",
+      "description": "다음 동굴의 격퇴 요청을 들었다. 격퇴나 열쇠 보상은 아직 발생하지 않았다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "city_dialogue"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    }
+  ],
+  "threads": [],
+  "review": {
+    "status": "draft",
+    "issues": [
+      "미승인 3장 초고. 추가 수련/보급/교체 연결·산문의 의미·원작 조건 선정·문체를 사람의 편집 검토 대상으로 남긴다."
+    ],
+    "approved_story_revision": null,
+    "approved_canon_revision": null,
+    "approved_input_hashes": null
+  }
+}

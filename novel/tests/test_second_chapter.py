@@ -9,7 +9,7 @@ from text_refs import archival, literals, source_ids
 class SecondChapterTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.session=SeriesSession()
+        cls.session=SeriesSession(chapter_limit=2)
         cls.nodes={n['id']:n for n in cls.session.story['nodes']}
         cls.quest=read(ROOT/'writing/quests/lastditch_pyramid.json')
 

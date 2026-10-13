@@ -16,13 +16,13 @@
     "agent_policy": 3,
     "compiled_reference": 5,
     "configuration": 2,
-    "editable_authoring_input": 30,
+    "editable_authoring_input": 33,
     "generated_inventory": 1,
     "generated_reading": 37,
     "immutable_source_snapshot": 25,
     "schema": 17,
     "shared_template": 10,
-    "test": 24,
+    "test": 25,
     "tool": 27,
     "ui_source": 4,
     "usage_documentation": 14,
@@ -1192,7 +1192,7 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
-          "file": "tests/test_standalone.py"
+          "file": "tests/test_third_chapter.py"
         }
       ],
       "automatic_deletion": false
@@ -1204,6 +1204,10 @@
         {
           "kind": "output_hash_guard",
           "file": "materials/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_standalone.py"
         }
       ],
       "automatic_deletion": false
@@ -1241,10 +1245,6 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_second_chapter.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/writing.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -2252,6 +2252,17 @@
       "automatic_deletion": false
     },
     {
+      "file": "tests/test_third_chapter.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tests/test_writing.py",
       "role": "test",
       "consumers": [
@@ -2778,6 +2789,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_third_chapter.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tools/interactive.py"
         },
         {
@@ -2874,6 +2889,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_third_chapter.py"
         },
         {
           "kind": "python_import",
@@ -3564,6 +3583,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_source_story.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_third_chapter.py"
         },
         {
           "kind": "python_import",
@@ -4352,6 +4375,25 @@
       "automatic_deletion": false
     },
     {
+      "file": "writing/episodes/gaia_evil_seal.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_third_chapter.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "writing/episodes/lastditch_pyramid.json",
       "role": "editable_authoring_input",
       "consumers": [
@@ -4366,10 +4408,6 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_second_chapter.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/writing.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5577,7 +5615,22 @@
       "automatic_deletion": false
     },
     {
-      "file": "writing/quests/lastditch_pyramid.continuity.json",
+      "file": "writing/quests/gaia_evil_seal.continuity.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/quests/gaia_evil_seal.json",
       "role": "editable_authoring_input",
       "consumers": [
         {
@@ -5590,7 +5643,22 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
-          "file": "tools/writing.py"
+          "file": "tests/test_third_chapter.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/quests/lastditch_pyramid.continuity.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
         }
       ],
       "automatic_deletion": false
@@ -5610,10 +5678,6 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_second_chapter.py"
-        },
-        {
-          "kind": "static_mention_not_runtime_proof",
-          "file": "tools/writing.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",

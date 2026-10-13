@@ -1,10 +1,19 @@
 {
   "version": 1,
-  "scope": "실제 집필한 1~2장. 전편 15장 개요·선택 시범은 별도 제작 자료.",
+  "scope": "실제 집필한 1~3장. 전편 15장 개요·선택 시범은 별도 제작 자료.",
   "status": "draft",
   "dialogue_coverage": {
     "status": "complete",
     "required_source_refs": [
+      "gaia_evil_seal/cave_entry",
+      "gaia_evil_seal/cave_events",
+      "gaia_evil_seal/cave_labels",
+      "gaia_evil_seal/city_dialogue",
+      "gaia_evil_seal/city_signs",
+      "gaia_evil_seal/floating_spell",
+      "gaia_evil_seal/next_road",
+      "gaia_evil_seal/road_signs",
+      "gaia_evil_seal/ruins_signs",
       "i/castle_dialogue",
       "i/castle_optional",
       "i/cave_optional",
@@ -42,6 +51,85 @@
         "block_ids": [],
         "choice_ids": [],
         "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:5675",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:14319",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/road_sign_384"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:14359",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/road_sign_385"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:14419",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/road_sign_386"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:14459",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/road_sign_387"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:14577",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_road_390"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:14618",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_road_391"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:14668",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_road_392"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:14709",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_road_393"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
       },
       {
         "literal_id": "LOREENT.PAS:literal:15559",
@@ -93,6 +181,202 @@
         "handling": "verbatim",
         "block_ids": [
           "lastditch_pyramid/gate_sign"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:15927",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/ruins_sign_423"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:15940",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/ruins_sign_423"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:15958",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/ruins_sign_423"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:15995",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/ruins_sign_424"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16050",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/ruins_sign_425"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16128",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/cave_sign"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16324",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/city_name"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16341",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/city_name"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16354",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/city_name"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16391",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/city_welcome"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16523",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/door_clue_437"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16593",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/door_clue_438"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16663",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/door_clue_439"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16844",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/door_number"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16869",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/door_number"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:16944",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/passcode_clue_445"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:17046",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/passcode_clue_447"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:17106",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:17141",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/passcode_clue_449"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:17346",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/passcode_number"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:17370",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/passcode_number"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREMENU.PAS:literal:6885",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/floating_message"
         ],
         "choice_ids": [],
         "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
@@ -527,6 +811,244 @@
         "handling": "verbatim",
         "block_ids": [
           "lastditch_pyramid/mission_succeeded"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:23417",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/correct_door"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:23589",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/wrong_door_feedback"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:23975",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/seal_success_590"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24028",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/seal_success_591"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24081",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/seal_success_592"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24430",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/rigel_601"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24486",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/rigel_602"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24597",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/rigel_605"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24628",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/rigel_605"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24636",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/rigel_605"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24669",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/rigel_606"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24725",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/rigel_607"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24781",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/rigel_608"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24838",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/rigel_609"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24894",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/rigel_610"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24936",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:24966",
+        "handling": "verbatim",
+        "block_ids": [],
+        "choice_ids": [
+          "gaia_evil_seal/join_rigel",
+          "gaia_evil_seal/replace_for_rigel"
+        ],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:25010",
+        "handling": "verbatim",
+        "block_ids": [],
+        "choice_ids": [
+          "gaia_evil_seal/aid_rigel"
+        ],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:25055",
+        "handling": "verbatim",
+        "block_ids": [],
+        "choice_ids": [
+          "gaia_evil_seal/leave_rigel"
+        ],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:25616",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:26301",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/aid_result_643"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:26367",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/aid_result_644"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:26433",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/aid_result_645"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:26501",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/aid_result_646"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:26567",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/aid_result_647"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:26896",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:27484",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/cliff_warning"
         ],
         "choice_ids": [],
         "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
@@ -3322,6 +3844,533 @@
         "handling": "verbatim",
         "block_ids": [
           "lastditch_pyramid/guidance_474"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18667",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_487"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18753",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_489"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18848",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_491"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18908",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_492"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18956",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_493"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19048",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_497"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19105",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_498"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19156",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_499"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19245",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_503"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19334",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_505"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19406",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_507"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19494",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_509"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19661",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/meet_lord"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19697",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/town_512"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19809",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_516"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19849",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_517"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19900",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_518"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:19953",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_519"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20011",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_520"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20019",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_520"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20037",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_520"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20080",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_521"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20129",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_522"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20192",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_523"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20200",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_523"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20212",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_523"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20250",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_524"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20303",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_525"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20352",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_526"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20402",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_527"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20451",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_528"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20483",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_529"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20515",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_529"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20520",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_529"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20548",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_530"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20551",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_530"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20558",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/request_530"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20588",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20686",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/reminder_535"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20724",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/reminder_535"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20728",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/reminder_535"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20756",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/reminder_536"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20759",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/reminder_536"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20767",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/reminder_536"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20799",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/reminder_537"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20902",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/report_success"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:20949",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/report_experience"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21021",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21207",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_549"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21257",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_550"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21290",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_551"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21307",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_551"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21315",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_551"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21350",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_552"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21402",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_553"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21446",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_554"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21450",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_554"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21458",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_554"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:21512",
+        "handling": "verbatim",
+        "block_ids": [
+          "gaia_evil_seal/next_555"
         ],
         "choice_ids": [],
         "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
@@ -7311,6 +8360,2386 @@
     },
     {
       "id": "lastditch_pyramid/next_quest_boundary",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/next_quest_boundary/continue",
+          "target": "gaia_evil_seal/ruins",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/ruins",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_ruins",
+          "target": "gaia_evil_seal/request",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/request",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_request",
+          "target": "gaia_evil_seal/town",
+          "when": true,
+          "effects": [
+            {
+              "state": "quest.gaia_stage",
+              "op": "set",
+              "value": 1,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/city_dialogue"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "knowledge.chapter03_warning",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/city_dialogue"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/town",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_town",
+          "target": "gaia_evil_seal/cave_entrance",
+          "when": true,
+          "effects": [
+            {
+              "state": "knowledge.spells.protagonist",
+              "op": "add",
+              "value": "magic_19",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "knowledge.spells.protagonist",
+              "op": "add",
+              "value": "magic_34",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.prepared_sp",
+              "op": "set",
+              "value": 10,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.food",
+              "op": "set",
+              "value": 5,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/cave_entrance",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_cave_entrance",
+          "target": "gaia_evil_seal/floating",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/floating",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_floating",
+          "target": "gaia_evil_seal/numbered_doors",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.chapter03.floating",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/floating_spell"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.prepared_sp",
+              "op": "increment",
+              "value": -5,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/floating_spell"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/numbered_doors",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_numbered_doors",
+          "target": "gaia_evil_seal/rigel_encounter",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/rigel_encounter",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_rigel_encounter",
+          "target": "gaia_evil_seal/rigel_offer",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/rigel_offer",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/join_rigel",
+          "target": "gaia_evil_seal/rigel_joined",
+          "when": {
+            "not": {
+              "any": [
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "polaris"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "rigel",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "rigel",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.rigel",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_hp",
+              "op": "set",
+              "value": 1,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_response",
+              "op": "set",
+              "value": "joined",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "source_exact"
+        },
+        {
+          "id": "gaia_evil_seal/replace_for_rigel",
+          "target": "gaia_evil_seal/rigel_replacement",
+          "when": {
+            "any": [
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "polaris"
+                  }
+                ]
+              }
+            ]
+          },
+          "effects": [],
+          "origin": "source_exact"
+        },
+        {
+          "id": "gaia_evil_seal/aid_rigel",
+          "target": "gaia_evil_seal/rigel_aided",
+          "when": {
+            "all": [
+              {
+                "state": "knowledge.spells.protagonist",
+                "op": "contains",
+                "value": "magic_19"
+              },
+              {
+                "state": "event.chapter03.prepared_sp",
+                "op": "gte",
+                "value": 1
+              },
+              {
+                "state": "event.chapter03.food",
+                "op": "gte",
+                "value": 5
+              }
+            ]
+          },
+          "effects": [
+            {
+              "state": "event.chapter03.rigel_response",
+              "op": "set",
+              "value": "aided",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.food",
+              "op": "increment",
+              "value": -5,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.prepared_sp",
+              "op": "set",
+              "value": 0,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.blessing_offered",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "source_exact"
+        },
+        {
+          "id": "gaia_evil_seal/leave_rigel",
+          "target": "gaia_evil_seal/rigel_left",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.chapter03.rigel_response",
+              "op": "set",
+              "value": "left",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "source_exact"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/rigel_replacement",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/replace_party_woodcutter",
+          "target": "gaia_evil_seal/rigel_joined",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          },
+          "effects": [
+            {
+              "state": "companions.starting",
+              "op": "remove",
+              "value": "party_woodcutter",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.departed",
+              "op": "set",
+              "value": "party_woodcutter",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "rigel",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "rigel",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.rigel",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_hp",
+              "op": "set",
+              "value": 1,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_response",
+              "op": "set",
+              "value": "joined",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "gaia_evil_seal/replace_party_hunter",
+          "target": "gaia_evil_seal/rigel_joined",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          },
+          "effects": [
+            {
+              "state": "companions.starting",
+              "op": "remove",
+              "value": "party_hunter",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.departed",
+              "op": "set",
+              "value": "party_hunter",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "rigel",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "rigel",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.rigel",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_hp",
+              "op": "set",
+              "value": 1,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_response",
+              "op": "set",
+              "value": "joined",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "gaia_evil_seal/replace_party_cook",
+          "target": "gaia_evil_seal/rigel_joined",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          },
+          "effects": [
+            {
+              "state": "companions.starting",
+              "op": "remove",
+              "value": "party_cook",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.departed",
+              "op": "set",
+              "value": "party_cook",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "rigel",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "rigel",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.rigel",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_hp",
+              "op": "set",
+              "value": 1,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_response",
+              "op": "set",
+              "value": "joined",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "gaia_evil_seal/replace_party_magician",
+          "target": "gaia_evil_seal/rigel_joined",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          },
+          "effects": [
+            {
+              "state": "companions.starting",
+              "op": "remove",
+              "value": "party_magician",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.departed",
+              "op": "set",
+              "value": "party_magician",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "rigel",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "rigel",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.rigel",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_hp",
+              "op": "set",
+              "value": 1,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_response",
+              "op": "set",
+              "value": "joined",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "gaia_evil_seal/replace_skeleton",
+          "target": "gaia_evil_seal/rigel_joined",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          },
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "remove",
+              "value": "skeleton",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.departed",
+              "op": "set",
+              "value": "skeleton",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "rigel",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "rigel",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.rigel",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_hp",
+              "op": "set",
+              "value": 1,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_response",
+              "op": "set",
+              "value": "joined",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "gaia_evil_seal/replace_mad_joe",
+          "target": "gaia_evil_seal/rigel_joined",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          },
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "remove",
+              "value": "mad_joe",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.departed",
+              "op": "set",
+              "value": "mad_joe",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "rigel",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "rigel",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.rigel",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_hp",
+              "op": "set",
+              "value": 1,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_response",
+              "op": "set",
+              "value": "joined",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "gaia_evil_seal/replace_polaris",
+          "target": "gaia_evil_seal/rigel_joined",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          },
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "remove",
+              "value": "polaris",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.departed",
+              "op": "set",
+              "value": "polaris",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "rigel",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "rigel",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: style.revision=1의 새 장면·행동·대화·준비를 원작 사건 사이에 연결한 미승인 창작 초고. 고정 인물 설정이나 원작의 자동 성공으로 승격하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.rigel",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_hp",
+              "op": "set",
+              "value": 1,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.rigel_response",
+              "op": "set",
+              "value": "joined",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/rigel_joined",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_rigel_joined",
+          "target": "gaia_evil_seal/passcode",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/rigel_aided",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_rigel_aided",
+          "target": "gaia_evil_seal/passcode",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/rigel_left",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_rigel_left",
+          "target": "gaia_evil_seal/passcode",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/passcode",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_passcode",
+          "target": "gaia_evil_seal/seal_found",
+          "when": true,
+          "effects": [
+            {
+              "state": "quest.gaia_stage",
+              "op": "set",
+              "value": 2,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "quest.golden_seal_found",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/cave_events"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/seal_found",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_seal_found",
+          "target": "gaia_evil_seal/report",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.chapter03.floating",
+              "op": "set",
+              "value": false,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/floating_spell"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/report",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_report",
+          "target": "gaia_evil_seal/next_request",
+          "when": true,
+          "effects": [
+            {
+              "state": "quest.gaia_stage",
+              "op": "set",
+              "value": 3,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/city_dialogue"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter03.experience_bonus",
+              "op": "increment",
+              "value": 10000,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/city_dialogue"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/next_request",
+      "choices": [
+        {
+          "id": "gaia_evil_seal/continue_next_request",
+          "target": "gaia_evil_seal/next_quest_boundary",
+          "when": true,
+          "effects": [
+            {
+              "state": "quest.gaia_stage",
+              "op": "set",
+              "value": 4,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "gaia_evil_seal/city_dialogue"
+                ],
+                "note": "원작 조건·선택·결과를 독립 집필 상태로 표현한다. 전투/마법 레벨/행운 난수를 실행하거나 새 효과를 보장하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "gaia_evil_seal/next_quest_boundary",
       "choices": []
     }
   ],
@@ -7416,7 +10845,8 @@
     },
     "guard_states": [
       "quest.lore_stage",
-      "quest.lastditch_stage"
+      "quest.lastditch_stage",
+      "quest.gaia_stage"
     ],
     "required_scenes": [
       {
@@ -7657,6 +11087,166 @@
           "lastditch_pyramid/gate_body",
           "lastditch_pyramid/gate_sign"
         ]
+      },
+      {
+        "node": "gaia_evil_seal/ruins",
+        "required_block_ids": [
+          "gaia_evil_seal/ruins_body",
+          "gaia_evil_seal/ruins_sign_423",
+          "gaia_evil_seal/ruins_sign_424",
+          "gaia_evil_seal/ruins_sign_425",
+          "gaia_evil_seal/road_sign_384",
+          "gaia_evil_seal/road_sign_385",
+          "gaia_evil_seal/road_sign_386",
+          "gaia_evil_seal/road_sign_387",
+          "gaia_evil_seal/city_name",
+          "gaia_evil_seal/city_welcome",
+          "gaia_evil_seal/meet_lord",
+          "gaia_evil_seal/ruins_wait"
+        ]
+      },
+      {
+        "node": "gaia_evil_seal/request",
+        "required_block_ids": [
+          "gaia_evil_seal/request_before",
+          "gaia_evil_seal/request_516",
+          "gaia_evil_seal/request_517",
+          "gaia_evil_seal/request_518",
+          "gaia_evil_seal/request_519",
+          "gaia_evil_seal/request_520",
+          "gaia_evil_seal/request_521",
+          "gaia_evil_seal/request_522",
+          "gaia_evil_seal/request_523",
+          "gaia_evil_seal/request_524",
+          "gaia_evil_seal/request_525",
+          "gaia_evil_seal/request_526",
+          "gaia_evil_seal/request_527",
+          "gaia_evil_seal/request_528",
+          "gaia_evil_seal/request_529",
+          "gaia_evil_seal/request_530"
+        ]
+      },
+      {
+        "node": "gaia_evil_seal/town",
+        "required_block_ids": [
+          "gaia_evil_seal/town_487",
+          "gaia_evil_seal/town_489",
+          "gaia_evil_seal/town_491",
+          "gaia_evil_seal/town_492",
+          "gaia_evil_seal/town_493",
+          "gaia_evil_seal/town_497",
+          "gaia_evil_seal/town_498",
+          "gaia_evil_seal/town_499",
+          "gaia_evil_seal/town_503",
+          "gaia_evil_seal/town_505",
+          "gaia_evil_seal/town_507",
+          "gaia_evil_seal/town_509",
+          "gaia_evil_seal/town_512",
+          "gaia_evil_seal/request_after",
+          "gaia_evil_seal/reminder_535",
+          "gaia_evil_seal/reminder_536",
+          "gaia_evil_seal/reminder_537",
+          "gaia_evil_seal/prepared_body"
+        ]
+      },
+      {
+        "node": "gaia_evil_seal/cave_entrance",
+        "required_block_ids": [
+          "gaia_evil_seal/cave_sign",
+          "gaia_evil_seal/entrance_body",
+          "gaia_evil_seal/cliff_body",
+          "gaia_evil_seal/cliff_warning"
+        ]
+      },
+      {
+        "node": "gaia_evil_seal/floating",
+        "required_block_ids": [
+          "gaia_evil_seal/floating_body",
+          "gaia_evil_seal/floating_message"
+        ]
+      },
+      {
+        "node": "gaia_evil_seal/numbered_doors",
+        "required_block_ids": [
+          "gaia_evil_seal/doors_body",
+          "gaia_evil_seal/wrong_door_feedback",
+          "gaia_evil_seal/door_clue_437",
+          "gaia_evil_seal/door_clue_438",
+          "gaia_evil_seal/door_clue_439",
+          "gaia_evil_seal/door_calculation",
+          "gaia_evil_seal/door_number",
+          "gaia_evil_seal/correct_door",
+          "gaia_evil_seal/door_crossing",
+          "gaia_evil_seal/door_wait"
+        ]
+      },
+      {
+        "node": "gaia_evil_seal/rigel_encounter",
+        "required_block_ids": [
+          "gaia_evil_seal/rigel_approach",
+          "gaia_evil_seal/rigel_601",
+          "gaia_evil_seal/rigel_602",
+          "gaia_evil_seal/rigel_605",
+          "gaia_evil_seal/rigel_606",
+          "gaia_evil_seal/rigel_607",
+          "gaia_evil_seal/rigel_608",
+          "gaia_evil_seal/rigel_609",
+          "gaia_evil_seal/rigel_610"
+        ]
+      },
+      {
+        "node": "gaia_evil_seal/rigel_offer",
+        "required_block_ids": [
+          "gaia_evil_seal/rigel_common",
+          "gaia_evil_seal/rigel_wait"
+        ]
+      },
+      {
+        "node": "gaia_evil_seal/passcode",
+        "required_block_ids": [
+          "gaia_evil_seal/passcode_clue_445",
+          "gaia_evil_seal/passcode_clue_447",
+          "gaia_evil_seal/passcode_clue_449",
+          "gaia_evil_seal/passcode_number",
+          "gaia_evil_seal/seal_body"
+        ]
+      },
+      {
+        "node": "gaia_evil_seal/seal_found",
+        "required_block_ids": [
+          "gaia_evil_seal/seal_success_590",
+          "gaia_evil_seal/seal_success_591",
+          "gaia_evil_seal/seal_success_592",
+          "gaia_evil_seal/seal_return",
+          "gaia_evil_seal/exit_body"
+        ]
+      },
+      {
+        "node": "gaia_evil_seal/report",
+        "required_block_ids": [
+          "gaia_evil_seal/report_body",
+          "gaia_evil_seal/report_success",
+          "gaia_evil_seal/report_experience",
+          "gaia_evil_seal/report_confirmation"
+        ]
+      },
+      {
+        "node": "gaia_evil_seal/next_request",
+        "required_block_ids": [
+          "gaia_evil_seal/next_549",
+          "gaia_evil_seal/next_550",
+          "gaia_evil_seal/next_551",
+          "gaia_evil_seal/next_552",
+          "gaia_evil_seal/next_553",
+          "gaia_evil_seal/next_554",
+          "gaia_evil_seal/next_555",
+          "gaia_evil_seal/next_body",
+          "gaia_evil_seal/next_wait",
+          "gaia_evil_seal/next_road_390",
+          "gaia_evil_seal/next_road_391",
+          "gaia_evil_seal/next_road_392",
+          "gaia_evil_seal/next_road_393"
+        ]
       }
     ]
   },
@@ -7665,7 +11255,8 @@
     "first_visit_body_checked_at_runtime": true,
     "guard_states": [
       "quest.lore_stage",
-      "quest.lastditch_stage"
+      "quest.lastditch_stage",
+      "quest.gaia_stage"
     ],
     "method": "추적 상태의 유한 그래프. 추적하지 않은 조건은 가능하다고 보수적으로 처리한다. 실제 독자의 읽음·모든 상태 조건·산문 의미를 증명하지 않는다."
   },

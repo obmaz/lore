@@ -448,8 +448,9 @@ def export_documents(output,check=False):
             path = WRITING/'quests'/name
             inputs += [path,path.with_name(path.stem+'.continuity.json')]
     inputs += sorted((WRITING/'episodes').glob('*.json'))
-    inputs += [ROOT/'writing/interactive/series.json',ROOT/'tools/interactive_series.py',
-               ROOT/'writing/quests/lastditch_pyramid.json',ROOT/'writing/quests/lastditch_pyramid.continuity.json']
+    inputs += [ROOT/'writing/interactive/series.json',ROOT/'tools/interactive_series.py']
+    for chapter in read(ROOT/'writing/interactive/series.json')['chapters']:
+        inputs += [ROOT/chapter['quest_file'],ROOT/chapter['continuity_file']]
     inputs += [FLOW_PLAN,FLOW_SCHEMA,FLOW_TEMPLATE,ROOT/'tools/publication_flow.py',FLOW_OUTPUT/'manifest.json',
                *(FLOW_OUTPUT/name for name in ('flow.graph.json','linear-editions.json','flow.md','flow.html','coverage.json'))]
     from studio import PLAN as STUDIO_PLAN, SCHEMA as STUDIO_SCHEMA, TEMPLATE as STUDIO_TEMPLATE, SCRIPT as STUDIO_SCRIPT, export as studio_export

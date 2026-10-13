@@ -340,7 +340,8 @@ def documents():
     encoded = json.dumps(payload,ensure_ascii=False,sort_keys=True)
     payload['fingerprint'] = hashlib.sha256(encoded.encode()).hexdigest()
     safe = json.dumps(payload,ensure_ascii=False,sort_keys=True).replace('<','\\u003c').replace('&','\\u0026')
-    body = '<p class="notice">소설 본문 · 1~2장 초고. 선택한 이야기만 앞으로 이어 읽습니다. 발견·확인만 하는 부분은 자동으로 이어집니다. 다른 갈래는 명시적으로 선택을 되돌리거나 처음부터 읽을 때만 볼 수 있습니다. 네 시작 동료와 연결 서사는 집필용 추가입니다.</p><p><button id="back" type="button">한 선택 뒤로</button> <button id="restart" type="button">처음부터</button> <button id="save" type="button">경로 저장</button> <button id="load" type="button">경로 불러오기</button><input id="file" type="file" accept="application/json" hidden></p><p id="message" role="status"></p><details><summary>현재 동료·장비·경험</summary><div id="state"></div></details><div id="manuscript"></div><div id="choices" aria-label="이야기 선택"></div>'
+    count = len(overlay['chapters'])
+    body = f'<p class="notice">소설 본문 · A · 1~{count}장 초고. 선택한 이야기만 앞으로 이어 읽습니다. 발견·확인만 하는 부분은 자동으로 이어집니다. 다른 갈래는 명시적으로 선택을 되돌리거나 처음부터 읽을 때만 볼 수 있습니다. 네 시작 동료와 연결 서사는 집필용 추가입니다.</p><p><button id="back" type="button">한 선택 뒤로</button> <button id="restart" type="button">처음부터</button> <button id="save" type="button">경로 저장</button> <button id="load" type="button">경로 불러오기</button><input id="file" type="file" accept="application/json" hidden></p><p id="message" role="status"></p><details><summary>현재 동료·장비·경험</summary><div id="state"></div></details><div id="manuscript"></div><div id="choices" aria-label="이야기 선택"></div>'
     body += '<script type="application/json" id="chapter-data">'+safe+'</script><script>'+READER.read_text()+'</script>'
     page = html_doc('제1장 · '+render(story['meta']['title'],data,ls,profiles,()),body).replace('</style>','button{max-width:100%;white-space:normal;overflow-wrap:anywhere;cursor:pointer;margin:4px;padding:10px}#choices{display:flex;flex-wrap:wrap}#state{overflow-wrap:anywhere}.selected{border-left:3px solid #977;padding-left:12px}@media print{#choices,button,#state{display:none}}</style>')
     report = {'version':1,'scope':overlay['scope'],'status':'draft','dialogue_coverage':story['coverage'],
@@ -355,8 +356,8 @@ def documents():
         node = next(n for n in story['nodes'] if n['id'] == item['node'])
         guide += '<li>'+html.escape(render(node['title'],data,ls,profiles,author=True))+' <code>'+html.escape(item['node'])+'</code> · 필수 블록: '+html.escape(', '.join(item['required_block_ids']))+'</li>'
     guide += '</ol>'
-    guide += '<h2>원문 반영</h2><p>실제 집필한 1~2장의 명시 범위 '+str(len(story['coverage']['literal_dispositions']))+'개 발생 기록. 상세 위치·본문/선택 ID는 chapter01-coverage.json을 참조합니다. 3장 이후의 산문 완성을 주장하지 않습니다.</p>'
-    return {'chapter01-interactive.html':page,'chapter01-branches.html':html_doc('집필 본문 분기 안내 · 1~2장 · 작가용',guide),
+    guide += f'<h2>원문 반영</h2><p>실제 집필한 1~{count}장의 명시 범위 '+str(len(story['coverage']['literal_dispositions']))+f'개 발생 기록. 상세 위치·본문/선택 ID는 chapter01-coverage.json을 참조합니다. {count+1}장 이후의 산문 완성을 주장하지 않습니다.</p>'
+    return {'chapter01-interactive.html':page,'chapter01-branches.html':html_doc(f'집필 본문 분기 안내 · 1~{count}장 · 작가용',guide),
         'chapter01-coverage.json':json.dumps(report,ensure_ascii=False,indent=2)+'\n'}
 
 

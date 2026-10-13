@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 3,
+  "revision": 4,
   "status": "proposed",
   "viewpoint": {
     "field": "viewpoint",
@@ -68,6 +68,21 @@
       "addition": true,
       "kind": "new_setting",
       "note": "추가: 전 장의 편집·독서 원칙. 원작 발생 기록은 보존하며 같은 갈림길의 모든 결과를 한 경로에 섞지 않는다.",
+      "knowledge_policy": "author_reference_not_character_knowledge"
+    }
+  },
+  "protagonist_reference_policy": {
+    "scope": "reader_prose",
+    "render": "character_reference_not_role_label",
+    "character_ref": {
+      "catalog": "characters",
+      "id": "protagonist"
+    },
+    "origin": "authored",
+    "metadata": {
+      "addition": true,
+      "kind": "new_setting",
+      "note": "추가: 사용자 요청에 따라 본문에서는 주인공이라는 호칭 대신 인물 참조로 현재 이름과 조사를 표시한다. 작업 메타데이터의 역할 설명과 보존 원문은 변경하지 않는다.",
       "knowledge_policy": "author_reference_not_character_knowledge"
     }
   }

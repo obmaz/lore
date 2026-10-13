@@ -8,10 +8,18 @@ from story_continuity import CANON, context_for_routes, matches, validate
 PLAN = ROOT / 'writing/interactive/series.json'
 
 
-def compile_series():
+def compile_series(chapter_limit=None):
     from interactive import compile_chapter, coverage, validate_main_story
     story, memory, overlay = compile_chapter()
     plan = read(PLAN)
+    if chapter_limit is not None:
+        if not isinstance(chapter_limit,int) or not 1<=chapter_limit<=len(plan['chapters'])+1:
+            raise ValueError('unknown written chapter limit')
+        plan=copy.deepcopy(plan)
+        plan['chapters']=plan['chapters'][:chapter_limit-1]
+        plan['quest_files']=plan['quest_files'][:chapter_limit-1]
+        prefixes=tuple(c['quest_id']+'/' for c in plan['chapters'])
+        plan['display_insertions']={k:v for k,v in plan['display_insertions'].items() if k.startswith(prefixes)}
     if plan['style_revision'] != read(ROOT/'writing/project.json')['style']['revision']:
         raise ValueError('written series style review is stale')
     if plan['branch_policy_ref'] != 'writing/project.json#/branch_policy':
@@ -90,11 +98,15 @@ def compile_series():
                 raise ValueError('chapter insertion overlaps a source name binding')
             if 'ref' in item:
                 validate_text([{'ref':item['ref']}],data,raw)
-            elif item.get('state') not in story['state_definitions'] or story['state_definitions'][item['state']]['type']!='string':
-                raise ValueError('chapter name variable must be a declared string ID')
+            elif item.get('state') not in story['state_definitions']:
+                raise ValueError('chapter variable must be declared')
+            elif item.get('state_ref_catalog') and story['state_definitions'][item['state']]['type']!='string':
+                raise ValueError('chapter name variable must be a string ID')
+            elif not item.get('state_ref_catalog') and story['state_definitions'][item['state']]['type'] not in ('integer','string'):
+                raise ValueError('chapter display variable must be a scalar')
             if item.get('replace_length',0) and (item['replace_length']!=1 or template[offset:offset+1]!='가' or item.get('particle')!='이/가'):
                 raise ValueError('only the archived fixed subject particle may be adapted')
-    overlay['scope'] = '실제 집필한 1~2장. 전편 15장 개요·선택 시범은 별도 제작 자료.'
+    overlay['scope'] = f'실제 집필한 1~{len(overlay["chapters"])}장. 전편 15장 개요·선택 시범은 별도 제작 자료.'
     for node in story['nodes']:
         if node['handoff']:
             node['handoff']['carry_states'] = [k for k,d in story['state_definitions'].items() if d['scope']=='story']
@@ -106,8 +118,8 @@ def compile_series():
 
 
 class SeriesSession:
-    def __init__(self):
-        self.story, self.memory, self.overlay = compile_series()
+    def __init__(self,chapter_limit=None):
+        self.story, self.memory, self.overlay = compile_series(chapter_limit)
         self.packet_for = context_for_routes(self.story, self.memory, read(CANON))
 
     def replay(self, route):

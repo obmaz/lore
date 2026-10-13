@@ -1,7 +1,7 @@
 {
   "version": 2,
   "story_id": "lastditch_pyramid_draft_v1",
-  "story_revision": 1,
+  "story_revision": 2,
   "canon_revision": 4,
   "character_registry_revision": 13,
   "contracts": {
@@ -2830,7 +2830,8 @@
   "review": {
     "status": "draft",
     "issues": [
-      "미승인 본문 초고. 산문의 의미·전투 편집·원작 배타 조건·문체는 사람의 검토가 남아 있다."
+      "미승인 본문 초고. 산문의 의미·전투 편집·원작 배타 조건·문체는 사람의 검토가 남아 있다.",
+      "추가: 서술의 주인공 호칭을 인물 참조로 정정했다. 이름 변경은 공용 사전에서 반영되며 원문 인용은 변경하지 않았다."
     ],
     "approved_story_revision": null,
     "approved_canon_revision": null,
