@@ -138,6 +138,21 @@
       "occupation": "성주",
       "trait": "임무와 보상으로 일행을 시험하고 움직이는 지휘자.",
       "speech": "하오체로 재앙의 배경을 길게 설명하며 임무를 제시함.",
+      "writing_overrides": {
+        "name": {
+          "field": "name",
+          "value": "동욱",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "소설에서 사용할 성주의 대체 이름. 원작 이름 Lord Ahn은 canonical_name에 보존한다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
       "source_claims": [
         {
           "field": "prophecy_testimony",

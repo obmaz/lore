@@ -137,6 +137,11 @@ def build(analysis, catalog, templates):
                 biography[field] = claim(field, spec[field], citations)
         biography.update(copy.deepcopy(spec.get("biography_overrides", {})))
         profile["biography"] = biography
+        overrides = copy.deepcopy(spec.get("writing_overrides", {}))
+        profile["writing_overrides"] = {
+            field: overrides.get(field, claim(field, None))
+            for field in ("name", "age", "appearance", "species", "personality", "origin", "settings")
+        }
         for field, value in (("traits", spec.get("trait")), ("speech", spec.get("speech"))):
             if value:
                 profile["writing"][field].append(claim("temperament" if field == "traits" else "voice", value, citations, "inferred"))

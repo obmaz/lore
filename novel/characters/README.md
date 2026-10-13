@@ -34,6 +34,7 @@
 | `writing.speech` | 말투와 표현 습관 |
 | `writing.goals` | 동기·목표. 아직 정하지 않았다면 빈 배열 |
 | `writing.boundaries` | 서술 시 지켜야 할 제한 |
+| `writing_overrides` | 소설에서 원본 대신 우선 사용할 집필용 대체값. 이름·나이·외모·종족·성격·출신·설정을 각각 claim으로 기록 |
 | `relationships` | 다른 인물 ID와 관계의 근거·확정 여부 |
 | `disclosure` | 작가 전용 원본, 공개용 ID/이름, 필드 공개 조건 |
 | `source_excerpts` | 카드 근거 범위의 원문 출력 문자열. 주변 인물의 말도 포함할 수 있음 |
@@ -65,7 +66,8 @@
 }
 ```
 
-나이·외모는 `biography`에, 신념·반응 습관은 `writing.traits`에 같은 구조로 추가한다.
+소설 집필 시에는 `writing_overrides`를 먼저 조회하고 값이 `null`이면 원본 `canonical_name`·`biography`·`writing`으로 fallback한다.
+대체값이 원본에 없는 항목이어도 이곳에 기록할 수 있다. 나이·외모는 `biography`에, 신념·반응 습관은 `writing.traits`에 같은 구조로 추가한다.
 `value: null`, `origin: unknown`, `status: unknown`, `metadata.kind: unknown`은
 미상이지 임의의 나이를 채우라는 지시가 아니다.
 일시적 부상·소지품·생존·영입 상태는 인물 카드에 고정하지 말고 경로 상태와 사건에
@@ -74,7 +76,7 @@
 
 변경은 [분석 입력](../reference/analysis.json)의 `enrichment` 또는 `new_characters`에서
 하고 `python3 tools/build_reference.py`로 재생성한다. 문구 요약·음역·해석 입력은
-생성 시 메타데이터를 붙이며, 창작 나이는 `biography_overrides.age`에 완전한 claim을
+생성 시 메타데이터를 붙이며, 창작 나이는 `writing_overrides.age`에 완전한 claim을
 넣는다. 창작 성향은 `writing_additions.traits`에 완전한 claim을 넣고, 관계는
 [relationships.analysis.json](relationships.analysis.json)에서 공개 정책과 함께 작성한다.
 옛 `relationships_additions`를 사용하면 생성 도구가 중단하므로 새 형식으로 옮긴다.

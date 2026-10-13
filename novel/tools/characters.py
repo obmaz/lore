@@ -44,6 +44,13 @@ def validate_registry(document, catalog=None, references=None):
         elif name["literal_ids"]:
             raise ValueError(f"non-exact name cannot claim exact literals: {key}")
         claims = profile["source_facts"] + list(profile["biography"].values()) + profile["writing"]["traits"] + profile["writing"]["speech"] + profile["writing"]["goals"]
+        overrides = profile.get('writing_overrides', {})
+        for override in overrides.values():
+            validate_claim(override, catalog)
+            if override['value'] is not None and (override['origin'] != 'authored' or
+                    override['metadata']['addition'] is not True or
+                    override['metadata']['kind'] != 'new_setting'):
+                raise ValueError(f'non-empty writing override must be marked authored: {key}')
         if 'writing_name' in profile:
             claims.append(profile['writing_name'])
         for fact in profile["source_facts"]:

@@ -35,8 +35,16 @@ def literals(catalog=None):
 
 
 def name_of(item):
-    return (item.get('writing_name',{}).get('value') or item.get('korean_name',{}).get('value')
+    return (item.get('writing_overrides',{}).get('name',{}).get('value') or item.get('writing_name',{}).get('value') or item.get('korean_name',{}).get('value')
             or item.get('display_name') or item.get('original_name',{}).get('value'))
+
+
+def writing_value(item, field, fallback=None):
+    """Resolve a writer-facing field: explicit override first, original data second."""
+    override = item.get('writing_overrides', {}).get(field, {})
+    if override.get('value') is not None:
+        return override['value']
+    return fallback
 
 
 def particle(name,pair):
