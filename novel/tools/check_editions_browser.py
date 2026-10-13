@@ -44,6 +44,11 @@ def check():
             assert f'제{count}장 끝' in frame.locator('#choices').inner_text()
             assert f'제{count+1}장 ·' not in frame.locator('#manuscript').inner_text()
             if count>=2:assert '성벽이 보이지 않았다.' in frame.locator('[data-block-id="lastditch_pyramid/arrival_body"]').first.inner_text()
+            if count>=3:
+                assert '벽이 있어야 할 곳에 하늘이 보였다.' in frame.locator('[data-block-id="gaia_evil_seal/ruins_body"]').first.inner_text()
+                assert '식량을 꺼냈다.' in frame.locator('[data-block-id="gaia_evil_seal/aided_body"]').first.inner_text()
+                assert frame.locator('[data-block-id="gaia_evil_seal/joined_body"]').count()==0
+                assert frame.locator('[data-block-id="gaia_evil_seal/left_body"]').count()==0
             assert frame.locator('#manuscript').get_by_text('주인공',exact=True).count()==0
             # A route file is deliberately rejected by B even if IDs are shared.
             frame.locator('#file').set_input_files({'name':'A-route.json','mimeType':'application/json',

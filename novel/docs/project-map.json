@@ -16,7 +16,7 @@
     "agent_policy": 3,
     "compiled_reference": 5,
     "configuration": 2,
-    "editable_authoring_input": 37,
+    "editable_authoring_input": 38,
     "generated_inventory": 1,
     "generated_reading": 39,
     "immutable_source_snapshot": 25,
@@ -7969,6 +7969,29 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_prose_series.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",

@@ -114,7 +114,7 @@ class ProseSeriesTests(unittest.TestCase):
             self.assertEqual(p['handoff_packet']['quest_id'],'gaia_quake')
             visible={b for h in p['history'] for b in h['visible_block_ids']}
             for other in {'joined','aided','left'}-{response}:
-                self.assertFalse(any('/'+other+'_body' in b for b in visible))
+                self.assertNotIn('gaia_evil_seal/'+other+'_body',visible)
 
     @unittest.skipUnless((ROOT/'writing/variants/B/chapter03.json').is_file(),'B 3장 집필 후 검사')
     def test_preparation_is_visible_before_floating_and_seal_is_not_opened(self):
@@ -126,6 +126,21 @@ class ProseSeriesTests(unittest.TestCase):
         self.assertTrue(p['state']['quest.golden_seal_found'])
         self.assertEqual(p['state']['event.chapter03.passcode'],5)
         self.assertEqual(p['state']['event.chapter03.door_number'],16)
+
+    @unittest.skipUnless((ROOT/'writing/variants/B/chapter03.json').is_file(),'B 3장 집필 후 검사')
+    def test_replaced_starting_companion_has_no_later_narration(self):
+        if self.count<3:self.skipTest('3장은 아직 연결하지 않음')
+        route,p=self.session.advance([])
+        while p['available_choices']:
+            preferred=['prologue/visit_lord','i/depart_now','lore_menace/decline_skeleton',
+                'lore_menace/enter_menace','lore_menace/return_to_lore','lastditch_pyramid/accept_polaris',
+                'lastditch_pyramid/equip_spear_party_hunter','lastditch_pyramid/hold_together',
+                'gaia_evil_seal/replace_for_rigel','gaia_evil_seal/replace_party_woodcutter']
+            route,p=self.session.choose(route,next((c for c in preferred if c in p['available_choices']),p['available_choices'][0]))
+        self.assertEqual(p['state']['event.chapter03.departed'],'party_woodcutter')
+        self.assertNotIn('party_woodcutter',p['state']['companions.starting'])
+        later=[b for h in p['history'] if h['node_id'] in ['gaia_evil_seal/passcode','gaia_evil_seal/next_request'] for b in h['visible_block_ids']]
+        self.assertFalse(any(b.endswith('_party_party_woodcutter') for b in later))
 
 
 if __name__=='__main__':unittest.main()

@@ -53,12 +53,13 @@
     "writing/episodes/lore_menace.json": "c4a7040a11b197865b4250b89adec34696be0ea5a145bec99e9b1b5670694549",
     "writing/interactive/series.json": "963965994e3244ddfc7952f106f48f4c73d655dce96d8fde726ca6da50828935",
     "tools/interactive_series.py": "affb4db16ee933422c26f32d998a9605b41cbdb5f85036339d2d648953fc205f",
-    "writing/styles.json": "91249f90b1cd756a403905953905024133f77392898730034840e2fe5986d13d",
+    "writing/styles.json": "6ee8b50be6b26eac5ce9e71603737cd2e73eb26623d48476e688b5dc5e344b8b",
     "writing/variants/prose.schema.json": "2493aac3762b94f83c2a0e491a5672560455e59f32b39d797e1cf83c0128cc2f",
-    "writing/variants/B/series.json": "2db14d6dbd8abf4072f82eec5716296d4ca903c39e73dbb200ed97955b238f74",
+    "writing/variants/B/series.json": "3c14f428f5c685551480c5df4c7c7aaae14c8464a369ecc03a6519e5a4c96b12",
     "writing/variants/series.schema.json": "91540d76a050849a4a377e639ad2797a4bc67f18dfd50f1e38a1a2387a8146e2",
     "writing/variants/B/chapter01.json": "66d2a5f2b506500fd537fee6735c66e98b2872ca7930a5b0f21071a47d7c561b",
     "writing/variants/B/chapter02.json": "8aae0383a45f01b0b5297bd09cc9ac2f40ad045d289e8a227e346061d2a9ed8a",
+    "writing/variants/B/chapter03.json": "dff37acde793009340e581e7a9c95d201927e52af84cab031977af02b9406890",
     "tools/prose_variants.py": "c7f22bce09dc1451079c32657948f12a37525f9a8477c4207f51e693a731c6cc",
     "writing/interactive/editions.html": "d25b19c73ce70cf8d9c696320456103104053e151a4995658c1034954700553c",
     "writing/quests/lastditch_pyramid.json": "e0050c52cc0a1e10ddd509f45c85529c832d2fea8fa801d049c71267aa95a4c6",
@@ -107,7 +108,7 @@
     "chapter01-interactive.html": "5cdcc1ac6a7e90bf8bc3fedb8c44d8b448d70878eb0f0aa094822d8842b8e2bc",
     "chapter01-branches.html": "61d34b5bd9074735231fa73972fb48befbb3cc653d31bf28b3e04d7f39e9b109",
     "chapter01-coverage.json": "db24433dc6c7bd93d016b032d4f74caec7c7046ee1f3e3548380489fa0af23b7",
-    "chapter01-web.html": "56455b4974dc6ea444732cc3b6126ffb48814c6cb238d725d2d7bdbf72cba99f",
-    "novel-reader.html": "3e1e3cc11757326495781b61497addc3d4bc17a7584ee7ae04e5e3c873dce58d"
+    "chapter01-web.html": "2610137be81758ebe465d9d5731462aee345abe1ec3b6503ab3f27a922ed803a",
+    "novel-reader.html": "679940f93cd9796cfd0ab84b040363bb007c770e303cb864fffac5eb743dcd73"
   }
 }

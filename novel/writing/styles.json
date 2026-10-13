@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 2,
+  "revision": 3,
   "default_profile": "A",
   "shared_structure": ["storyboard/chapters.json", "storyboard/chapter-subsections.json", "interactive/series.json"],
   "policy": {
@@ -32,7 +32,7 @@
       "stage_policy": {"outline": "A와 동일한 공통 인과·구성·분기 골격을 참조한다.", "prose": "행동과 판단을 앞세우는 웹소설형 산문으로 공통 장면을 재집필한다. 짧은 원작 대사도 그대로 보존한다."},
       "application_policy": "B 집필·재집필 전에 이 항목을 읽고 revision을 원고에 기록한다. 기준 변경은 검토 후 적용하며 기존 원고를 자동 덮어쓰지 않는다.",
       "manuscript": "variants/B/series.json",
-      "written_chapters": ["chapter01", "chapter02"]
+      "written_chapters": ["chapter01", "chapter02", "chapter03"]
     }
   },
   "metadata": {"origin": "authored", "status": "proposed", "addition": true, "kind": "new_setting", "note": "추가: 사용자 요청에 따른 공용 A/B 편집 문체. A는 현재 원고와 기준을 그대로 참조하며 B는 웹소설 장르의 일반적 호흡으로 재집필한다. 원작 사실이나 특정 작가의 고유 문체 복제가 아니다."}

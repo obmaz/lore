@@ -12,15 +12,15 @@
     "AGENTS.md": "93925a7e95cd55fc8575352e56d3b0eea6c5077d582052afc5b8d30de1f6f9fc",
     "writing/AGENTS.md": "cf1480ca1ca5adb99632ea33c32493af7407174aa6d94fe1cd23cc8909b17f09",
     "characters/AGENTS.md": "6d75d88010e211d9d24c6286b752b11452c8d994fad42506af03a1398a7b8bde",
-    "writing/previews/manifest.json": "3b75259483898c2ccc2725d7daca3cbba51aa601f2e840d61a3ca17a6a49a073",
+    "writing/previews/manifest.json": "78ae2ceb371e3b84a594fc38ccc6b1218378a672a1ba1d8bf385a365e59229b8",
     "writing/previews/branch-system.html": "f1ea31a3839a07dee60e4e86c39125b6076affb06a5c24d302639b7004026217",
     "writing/previews/chapter-stories.html": "d807cd203d282f9936ae21c1671189d996e7a65f9313744116ac7b4e9305136c",
     "writing/previews/chapter-subsections.html": "94d7e177a4a6ee12cf09e3649e0f3670cb3c8543eb25a9f1bbec6b2e3cc3112d",
     "writing/previews/chapter01-branches.html": "61d34b5bd9074735231fa73972fb48befbb3cc653d31bf28b3e04d7f39e9b109",
     "writing/previews/chapter01-interactive.html": "5cdcc1ac6a7e90bf8bc3fedb8c44d8b448d70878eb0f0aa094822d8842b8e2bc",
-    "writing/previews/chapter01-web.html": "56455b4974dc6ea444732cc3b6126ffb48814c6cb238d725d2d7bdbf72cba99f",
+    "writing/previews/chapter01-web.html": "2610137be81758ebe465d9d5731462aee345abe1ec3b6503ab3f27a922ed803a",
     "writing/previews/chapters.html": "6ce8c38708856b07417fe6e304335cd5651edcfe9fefbd8b87441488030e2785",
-    "writing/previews/novel-reader.html": "3e1e3cc11757326495781b61497addc3d4bc17a7584ee7ae04e5e3c873dce58d",
+    "writing/previews/novel-reader.html": "679940f93cd9796cfd0ab84b040363bb007c770e303cb864fffac5eb743dcd73",
     "writing/previews/publication-flow.html": "27e1bad0925d995e5c495eddc8573a99d63e5f78b0c0d27ad123e9a5964cc946",
     "writing/previews/side-adventures.html": "9da4a516c11518cc65fc572a39af03033d99dcbbecb8b9bc890c48adc19b4a79",
     "writing/previews/source-connected.html": "dd1ad8a71d77f4f435214e644f14f35d82b90305686d75bbe84be843d002ada9",
@@ -65,12 +65,13 @@
     "writing/side-stories/generated/flow.graph.json": "6fd43b114405d819ba2603b7b37bfbd3c5d4b00b84fc9c4cb8b588a48c72fa07",
     "writing/side-stories/generated/linear-editions.json": "1fd9cc3d8a3b7b166e72128426bdc532bb93cd968c1efe76b0b10dac054d05eb",
     "writing/side-stories/generated/coverage.json": "7a2576524223d1d3f4acd2da4565568d53fb15d3ff09290cc24e56b47310d2d0",
-    "writing/styles.json": "91249f90b1cd756a403905953905024133f77392898730034840e2fe5986d13d",
-    "writing/variants/B/series.json": "2db14d6dbd8abf4072f82eec5716296d4ca903c39e73dbb200ed97955b238f74",
+    "writing/styles.json": "6ee8b50be6b26eac5ce9e71603737cd2e73eb26623d48476e688b5dc5e344b8b",
+    "writing/variants/B/series.json": "3c14f428f5c685551480c5df4c7c7aaae14c8464a369ecc03a6519e5a4c96b12",
     "writing/variants/B/chapter01.json": "66d2a5f2b506500fd537fee6735c66e98b2872ca7930a5b0f21071a47d7c561b",
-    "writing/variants/B/chapter02.json": "8aae0383a45f01b0b5297bd09cc9ac2f40ad045d289e8a227e346061d2a9ed8a"
+    "writing/variants/B/chapter02.json": "8aae0383a45f01b0b5297bd09cc9ac2f40ad045d289e8a227e346061d2a9ed8a",
+    "writing/variants/B/chapter03.json": "dff37acde793009340e581e7a9c95d201927e52af84cab031977af02b9406890"
   },
   "artifacts": {
-    "index.html": "5ac6d83d80d7edca528df0cc705241301f07327460046b6afa33a5204e898ec7"
+    "index.html": "b2bc05c8dffb3b772398e290f89b682c7969ba83d3d6201052626898c0e360b8"
   }
 }

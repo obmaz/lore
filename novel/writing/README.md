@@ -54,7 +54,7 @@
 - [소설 본문 · A · 1~3장](previews/chapter01-interactive.html): 실제 집필한 초고를 이어 읽는 최신 판본.
   [분기 구조와 집필 규칙](interactive/README.md), [작가용 분기 안내](previews/chapter01-branches.html).
   새 선택·동료 설정은 오버레이에 있고 기존 긴 본문을 참조해 사용한다.
-- [소설 본문 · B · 1~2장](previews/chapter01-web.html): 같은 구성·선택·원작 대사를 웹소설형 산문으로 재집필한 별도 초고.
+- [소설 본문 · B · 1~3장](previews/chapter01-web.html): 같은 구성·선택·원작 대사를 웹소설형 산문으로 재집필한 별도 초고.
 - [A/B 통합 독서 화면](previews/novel-reader.html): 공개 `/novel/`과 같은 판본 선택 화면.
   공용 기준은 [styles.json](styles.json), B 장별 연결은 [variants/B/series.json](variants/B/series.json)이다.
   문체와 원고의 적용 방법은 [판본 안내](variants/README.md)를 참조한다.
