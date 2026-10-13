@@ -1,9 +1,9 @@
 {
   "version": 3,
-  "revision": 12,
+  "revision": 13,
   "characters": {
     "protagonist": {
-      "revision": 7,
+      "revision": 8,
       "kind": "protagonist",
       "canonical_name": {
         "value": null,
@@ -256,99 +256,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -454,7 +361,7 @@
       }
     },
     "castle_guide": {
-      "revision": 4,
+      "revision": 5,
       "kind": "npc",
       "canonical_name": {
         "value": null,
@@ -643,99 +550,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -769,7 +583,7 @@
       }
     },
     "veteran": {
-      "revision": 4,
+      "revision": 5,
       "kind": "npc",
       "canonical_name": {
         "value": null,
@@ -958,99 +772,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -1118,7 +839,7 @@
       }
     },
     "prisoner": {
-      "revision": 4,
+      "revision": 5,
       "kind": "npc",
       "canonical_name": {
         "value": null,
@@ -1370,99 +1091,6 @@
         },
         "alignment": {
           "field": "alignment",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
           "value": null,
           "origin": "unknown",
           "status": "unknown",
@@ -2564,7 +2192,7 @@
       }
     },
     "mad_joe": {
-      "revision": 5,
+      "revision": 6,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Mad Joe",
@@ -2918,99 +2546,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [
           "weapon_0"
@@ -3046,7 +2581,7 @@
       }
     },
     "polaris": {
-      "revision": 4,
+      "revision": 5,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Polaris",
@@ -3336,99 +2871,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [
           "weapon_4",
@@ -3478,7 +2920,7 @@
       }
     },
     "lore_hunter": {
-      "revision": 4,
+      "revision": 5,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Lore Hunter",
@@ -3768,99 +3210,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [
           "weapon_5",
@@ -3918,7 +3267,7 @@
       }
     },
     "rigel": {
-      "revision": 4,
+      "revision": 5,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Rigel",
@@ -4187,99 +3536,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [
           "weapon_4",
@@ -4369,7 +3625,7 @@
       }
     },
     "red_antares": {
-      "revision": 4,
+      "revision": 5,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Red Antares",
@@ -4727,99 +3983,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [
           "weapon_0"
@@ -4998,7 +4161,7 @@
       }
     },
     "jr_antares": {
-      "revision": 5,
+      "revision": 6,
       "kind": "npc",
       "canonical_name": {
         "value": "Jr. Antares",
@@ -5231,99 +4394,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -5425,7 +4495,7 @@
       }
     },
     "draconian": {
-      "revision": 4,
+      "revision": 5,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Draconian",
@@ -5744,99 +4814,6 @@
         },
         "alignment": {
           "field": "alignment",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
           "value": null,
           "origin": "unknown",
           "status": "unknown",
@@ -6216,7 +5193,7 @@
       }
     },
     "necromancer": {
-      "revision": 4,
+      "revision": 5,
       "kind": "antagonist",
       "canonical_name": {
         "value": "Necromancer",
@@ -6538,99 +5515,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -6846,7 +5730,7 @@
       }
     },
     "ancient_evil": {
-      "revision": 5,
+      "revision": 6,
       "kind": "npc",
       "canonical_name": {
         "value": "Ancient Evil",
@@ -7415,99 +6299,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -8017,7 +6808,7 @@
       }
     },
     "initial_hercules": {
-      "revision": 4,
+      "revision": 5,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Hercules",
@@ -8280,99 +7071,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -8395,7 +7093,7 @@
       }
     },
     "initial_titan": {
-      "revision": 4,
+      "revision": 5,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Titan",
@@ -8658,99 +7356,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -8773,7 +7378,7 @@
       }
     },
     "initial_merlin": {
-      "revision": 4,
+      "revision": 5,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Merlin",
@@ -9036,99 +7641,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -9151,7 +7663,7 @@
       }
     },
     "initial_betelgeuse": {
-      "revision": 4,
+      "revision": 5,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Betelgeuse",
@@ -9414,99 +7926,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -9529,7 +7948,7 @@
       }
     },
     "initial_genius_kie": {
-      "revision": 4,
+      "revision": 5,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Genius Kie",
@@ -9792,99 +8211,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -9907,7 +8233,7 @@
       }
     },
     "initial_bellatrix": {
-      "revision": 4,
+      "revision": 5,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Bellatrix",
@@ -10170,99 +8496,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -10285,7 +8518,7 @@
       }
     },
     "initial_regulus": {
-      "revision": 4,
+      "revision": 5,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Regulus",
@@ -10548,99 +8781,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -10663,7 +8803,7 @@
       }
     },
     "initial_procyon": {
-      "revision": 4,
+      "revision": 5,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Procyon",
@@ -10926,99 +9066,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -11041,7 +9088,7 @@
       }
     },
     "initial_arcturus": {
-      "revision": 4,
+      "revision": 5,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Arcturus",
@@ -11304,99 +9351,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -11419,7 +9373,7 @@
       }
     },
     "initial_algol": {
-      "revision": 4,
+      "revision": 5,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Algol",
@@ -11682,99 +9636,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -11797,7 +9658,7 @@
       }
     },
     "spica": {
-      "revision": 3,
+      "revision": 4,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Spica",
@@ -12093,99 +9954,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [
           "weapon_1",
@@ -12309,7 +10077,7 @@
       }
     },
     "major_mummy": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Major Mummy",
@@ -12550,99 +10318,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -12682,7 +10357,7 @@
       }
     },
     "sphinx": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Sphinx",
@@ -12923,99 +10598,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -13047,7 +10629,7 @@
       }
     },
     "archigagoyle": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "ArchiGagoyle",
@@ -13250,99 +10832,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -13378,7 +10867,7 @@
       }
     },
     "wivern": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Wivern",
@@ -13591,99 +11080,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -13721,7 +11117,7 @@
       }
     },
     "hidra": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Hidra",
@@ -13922,99 +11318,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -14056,7 +11359,7 @@
       }
     },
     "huge_dragon": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Huge Dragon",
@@ -14259,99 +11562,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -14393,7 +11603,7 @@
       }
     },
     "stheno": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Stheno",
@@ -14696,99 +11906,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -14844,7 +11961,7 @@
       }
     },
     "euryale": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Euryale",
@@ -15147,99 +12264,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -15295,7 +12319,7 @@
       }
     },
     "medusa": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Medusa",
@@ -15598,99 +12622,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -15746,7 +12677,7 @@
       }
     },
     "minotaur": {
-      "revision": 3,
+      "revision": 4,
       "kind": "creature",
       "canonical_name": {
         "value": "Minotaur",
@@ -15974,99 +12905,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -16116,7 +12954,7 @@
       }
     },
     "crab_god": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Crab God",
@@ -16344,99 +13182,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -16482,7 +13227,7 @@
       }
     },
     "astral_mud": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Astral Mud",
@@ -16743,99 +13488,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -16899,7 +13551,7 @@
       }
     },
     "false_necromancer": {
-      "revision": 3,
+      "revision": 4,
       "kind": "antagonist",
       "canonical_name": {
         "value": "Necromancer",
@@ -17172,99 +13824,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -17376,7 +13935,7 @@
       }
     },
     "archidraconian": {
-      "revision": 4,
+      "revision": 5,
       "kind": "boss",
       "canonical_name": {
         "value": "ArchiDraconian",
@@ -17684,99 +14243,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -17836,7 +14302,7 @@
       }
     },
     "panzer_viper": {
-      "revision": 4,
+      "revision": 5,
       "kind": "boss",
       "canonical_name": {
         "value": "Panzer Viper",
@@ -18144,99 +14610,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -18324,7 +14697,7 @@
       }
     },
     "black_knight": {
-      "revision": 4,
+      "revision": 5,
       "kind": "boss",
       "canonical_name": {
         "value": "Black Knight",
@@ -18547,99 +14920,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -18671,7 +14951,7 @@
       }
     },
     "archimonk": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "ArchiMonk",
@@ -18932,99 +15212,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [
           "weapon_0"
@@ -19098,7 +15285,7 @@
       }
     },
     "archimage": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "ArchiMage",
@@ -19359,99 +15546,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -19523,7 +15617,7 @@
       }
     },
     "frost_dragon": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Frost Dragon",
@@ -19736,99 +15830,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -19855,7 +15856,7 @@
       }
     },
     "guardian_left": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Guardian-Lft",
@@ -20068,99 +16069,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -20185,7 +16093,7 @@
       }
     },
     "guardian_right": {
-      "revision": 3,
+      "revision": 4,
       "kind": "boss",
       "canonical_name": {
         "value": "Guardian-Rgt",
@@ -20398,99 +16306,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -20515,7 +16330,7 @@
       }
     },
     "mega_robo": {
-      "revision": 3,
+      "revision": 4,
       "kind": "creature",
       "canonical_name": {
         "value": "Mega-Robo",
@@ -20766,99 +16581,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -20946,7 +16668,7 @@
       }
     },
     "hunter_spouse": {
-      "revision": 2,
+      "revision": 3,
       "kind": "npc",
       "canonical_name": {
         "value": null,
@@ -21166,99 +16888,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -21292,7 +16921,7 @@
       }
     },
     "skeleton": {
-      "revision": 3,
+      "revision": 4,
       "kind": "creature",
       "canonical_name": {
         "value": "Skeleton",
@@ -21490,99 +17119,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [],
         "abilities": [],
@@ -21607,7 +17143,7 @@
       }
     },
     "party_woodcutter": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": null,
@@ -21803,99 +17339,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [
           "story_axe"
@@ -21922,7 +17365,7 @@
       }
     },
     "party_hunter": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": null,
@@ -22118,99 +17561,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [
           "story_bow"
@@ -22237,7 +17587,7 @@
       }
     },
     "party_cook": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": null,
@@ -22433,99 +17783,6 @@
           }
         }
       },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
       "resource_refs": {
         "equipment": [
           "story_knife"
@@ -22552,7 +17809,7 @@
       }
     },
     "party_magician": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": null,
@@ -22736,99 +17993,6 @@
         },
         "alignment": {
           "field": "alignment",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        }
-      },
-      "writing_overrides": {
-        "name": {
-          "field": "name",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "age": {
-          "field": "age",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "appearance": {
-          "field": "appearance",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "species": {
-          "field": "species",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "personality": {
-          "field": "personality",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "origin": {
-          "field": "origin",
-          "value": null,
-          "origin": "unknown",
-          "status": "unknown",
-          "evidence": [],
-          "metadata": {
-            "addition": false,
-            "kind": "unknown",
-            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
-            "knowledge_policy": "author_reference_not_character_knowledge"
-          }
-        },
-        "settings": {
-          "field": "settings",
           "value": null,
           "origin": "unknown",
           "status": "unknown",
