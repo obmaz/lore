@@ -51,6 +51,8 @@ select,input[type=search]{min-width:0;min-height:34px;border:1px solid var(--lin
 .unit-body{padding:0 14px 14px;font-size:14px;line-height:1.75}.unit-body h4:first-child{margin-top:8px}
 .source-note{font-size:11px;display:flex;gap:7px;flex-wrap:wrap;align-items:center;color:var(--muted);padding-top:10px;margin:18px 0 0;border-top:1px solid var(--line)}.source-note>span{overflow-wrap:anywhere}
 .diagram{max-height:70vh;overflow:auto;max-width:100%;padding:10px;background:white;border:1px solid var(--line);border-radius:7px}
+.graph-workspace{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:start}.graph-workspace:has(.graph-selection:not([hidden])){grid-template-columns:minmax(0,1fr) minmax(240px,300px)}.graph-workspace .graph-selection{margin:0;max-height:70vh;overflow:auto}.graph-workspace .graph-selection-body{max-height:none}.graph-workspace .diagram{min-width:0}#chapter-diagram{overflow-anchor:none}.diagram .flow-edge[data-edge-kind="influence"]{display:none}.diagram .flow-edge[data-edge-kind="influence"].is-related{display:block}
+@media(max-width:900px){.graph-workspace:has(.graph-selection:not([hidden])){grid-template-columns:minmax(0,1fr)}.graph-workspace:has(.graph-selection:not([hidden])) .diagram{max-height:48vh}.graph-workspace .graph-selection{max-height:35vh}}
 .diagram svg{display:block;font-family:inherit}.diagram svg text{font-size:13px}
 .diagram .flow-edge text{font-size:9px}.flow-edge path{vector-effect:non-scaling-stroke}
 .flow-node[role="button"]{cursor:pointer}.flow-node[role="button"]:focus{outline:none}.flow-node[role="button"]:focus>rect{stroke:#365f99;stroke-width:3}

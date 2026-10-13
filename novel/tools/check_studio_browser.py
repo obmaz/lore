@@ -118,6 +118,30 @@ def check(screenshots=None,bundle=None):
             assert page.locator('.unit').count()==7
             view('graph')
             assert page.locator('#chapter-select').input_value()=='chapter09'
+            assert page.locator('[data-graph-panel="diagram"]').get_attribute('aria-pressed')=='true'
+            for index in range(1,16):
+                page.locator('#chapter-select').select_option(f'chapter{index:02}')
+                assert page.locator('#chapter-diagram svg').count()==1
+                assert page.locator('#chapter-diagram [data-node-kind="decision"]').count()>=2
+                canvas=page.locator('#chapter-diagram').bounding_box()
+                first=page.locator('#chapter-diagram [data-node-kind="unit"] rect').first.bounding_box()
+                assert first['x']<canvas['x']+canvas['width'] and first['x']+first['width']>canvas['x']
+                node=page.locator('#chapter-diagram [data-node-kind="decision"]').first
+                node.focus();page.keyboard.press('Enter')
+                assert page.locator('#graph-selection').is_visible()
+                assert page.locator('#graph-selection .graph-selection-body').inner_text().strip()
+                assert page.locator('#graph-selection [data-flow-focus]').count()>=2
+                assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+                page.keyboard.press('Escape')
+                assert page.locator('#graph-selection').is_hidden()
+                main=page.locator('#chapter-diagram [data-node-kind="unit"]').first
+                main.locator('rect').click()
+                assert '목표' in page.locator('#graph-selection').inner_text()
+                assert '다음 행동의 이유' in page.locator('#graph-selection').inner_text()
+                page.keyboard.press('Escape')
+            page.locator('#chapter-select').select_option('chapter09')
+            if screenshots:page.screenshot(path=str(screenshots/f'studio-chapter-graph-{width}.png'))
+            page.locator('[data-graph-panel="timeline"]').click()
             assert page.locator('#chapter-diagram svg').count()==0
             assert '질문' in page.locator('#chapter-diagram').inner_text()
             assert '두 봉인을 모두 풀어야 한다' in page.locator('#chapter-diagram').inner_text()
@@ -142,7 +166,7 @@ def check(screenshots=None,bundle=None):
                 assert abs(a.bounding_box()['y']-b.bounding_box()['y'])<1
                 assert a.bounding_box()['x']!=b.bounding_box()['x']
             assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
-            node=a.locator('[data-select-node]')
+            node=a
             node.focus()
             scroll=page.locator('#chapter-diagram').evaluate('(e)=>[e.scrollTop,e.scrollLeft]')
             route=page.url
@@ -160,7 +184,6 @@ def check(screenshots=None,bundle=None):
             page.locator('#graph-selection [data-flow-focus="option/side_return_knots/take"]').click()
             assert page.locator('#chapter-select').input_value()=='chapter09'
             assert node.get_attribute('aria-pressed')=='true'
-            page.locator('#graph-selection>details>summary').click()
             assert page.locator('#graph-selection .graph-selection-body').inner_text().strip()
             page.locator('#graph-selection [data-source]').click()
             assert 'runtime.plan.json' in page.locator('#source-location').inner_text()
@@ -177,6 +200,7 @@ def check(screenshots=None,bundle=None):
             assert page.get_by_role('heading',name='이 장의 질문과 선택',exact=True).count()==0
             if screenshots:
                 page.screenshot(path=str(screenshots/f'studio-graph-{width}.png'))
+            page.locator('[data-graph-panel="diagram"]').click()
             page.locator('#open-overview-graph').click()
             assert page.locator('#return-chapter-graph').is_visible()
             page.locator('#return-chapter-graph').click()
@@ -203,7 +227,7 @@ def check(screenshots=None,bundle=None):
             page.locator('#chapter-select').select_option('chapter02')
             assert page.locator('#branch-details .branch-rule').count()==2
             assert '무너진 제빵소의 마지막 자루' in page.locator('#branch-details').inner_text()
-            page.locator('[data-graph-panel="diagram"]').click()
+            page.locator('[data-graph-panel="timeline"]').click()
             assert page.locator('#chapter-select').input_value()=='chapter02'
             page.locator('#chapter-select').select_option('chapter01')
             nested=page.locator('[data-choice-group="side_gate_lantern_approach"]')

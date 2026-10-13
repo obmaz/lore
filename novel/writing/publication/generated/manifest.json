@@ -5,11 +5,11 @@
     "writing/publication.schema.json": "729c1117456f2d267bc9f150a0675af6a16a6d18a3acd4691351339cf1b694b2",
     "writing/templates/publication-flow.template.json": "aa4f571d4be3dbfd3e6509920cf558170f86aedfc0d33c976aaf62f9b8acce3d",
     "writing/storyboard/chapters.json": "a9429277e0fa9237fbf960ac63668b1df8dfb761ad5d7a86bdb9b05981230634",
-    "writing/storyboard/chapter-subsections.json": "6c52711ebbabe18d1a3213bff9cf731c45051c55da7aa8783907e05abb73bcb5",
-    "writing/branches/series.json": "5101667f8e54bd59f477ab04bc2a75924d71aeafdfa4728556c9c5b25daf164d",
+    "writing/storyboard/chapter-subsections.json": "4d7bf0ea68ada11f245ced2f189a3b7fc268223162d3ea6ac8d937354b15d0b0",
+    "writing/branches/series.json": "37757bb453985433357ec82011920ef9b294c8c71c6cb1c7633d016d85270a86",
     "tools/publication_flow.py": "1348104a254f68a5bed7f244e362887580818ee8cbee407ed5873f2a5798e839",
     "tools/branch_system.py": "220e080488bc68009e8e88cc3d602bf6c6f2a03f735a01b1a1141ac8320bf46c",
-    "tools/chapter_subsections.py": "7fad725402222728ec0e2ad78a72c17abe66097bcb9877268076165e21182824",
+    "tools/chapter_subsections.py": "8c3e92399cdf96928fb4bde81fd2c42e7d01c6d6ab0caab86848ab00b15a2ab3",
     "tools/text_refs.py": "20381d86af6d198efb308c63b8d0103d545e72298a6aaee65fe7b139100c533b",
     "tools/story_continuity.py": "7cca2c56f1df8dc977612b51fd6fb0630cc8e0ae09489d6a736df5e8c6089599",
     "characters/registry.json": "b4115f8048537721e0e5f3210ec88b87e68a2d596b51e860583e53ba5532d174",
@@ -21,9 +21,9 @@
   },
   "artifacts": {
     "flow.graph.json": "37ac0cf4444f0470789dbb42f8b32946c96c8199372cd63912ddf46e6dac1202",
-    "linear-editions.json": "36f70fd74cd423537182b8fde735691a84d015e6a6ab107ae6f611630df6fca0",
+    "linear-editions.json": "d4bdcd703bd1e29970deea13b741a248538b59541a8d2bba1efe81b67f3a249f",
     "flow.md": "618e724c1b946b9bfb9767a4d90e24c28ab762dcbc258a4f05b6a3187cb5d5c8",
-    "flow.html": "2497a4ddbcf9217e2cc00c6710b945eb1f2fc50c62585cbb7377f9b9e3f56852",
+    "flow.html": "d2c9485871b2818b97f4703c05c72d8ed576c6cfe1d66e200e0761f9ed7f85c2",
     "coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746"
   }
 }

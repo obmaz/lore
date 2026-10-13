@@ -44,6 +44,10 @@
         "completes_beats": {"$ref": "#/$defs/ids"}, "after": {"$ref": "#/$defs/ids"},
         "reading_next": {"type": ["string", "null"]},
         "entry": {"$ref": "#/$defs/text"}, "main_content": {"$ref": "#/$defs/text"}, "outcome": {"$ref": "#/$defs/text"},
+        "logic": {"type": "object", "additionalProperties": false,
+          "required": ["goal", "obstacle", "next_reason"],
+          "properties": {"goal": {"$ref": "#/$defs/text"}, "obstacle": {"$ref": "#/$defs/text"},
+            "next_reason": {"$ref": "#/$defs/text"}}},
         "branch": {"type": "object", "additionalProperties": false,
           "required": ["status", "mode", "variation_scope", "rejoin_before", "carry_keys", "main_result_locked"],
           "properties": {

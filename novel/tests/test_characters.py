@@ -43,6 +43,10 @@ class CharacterReferenceTest(unittest.TestCase):
     def test_changed_personality_marks_dependent_scenes(self):
         story, canon = read(DEFAULT), read(CANON)
         continuity = read(DEFAULT.with_name("prologue.continuity.json"))
+        # Isolate this edit from unrelated revisions in the preserved example.
+        for contract in continuity['contracts'].values():
+            for dependency in contract.get('character_dependencies', []):
+                dependency['revision'] = self.profiles['characters'][dependency['character_id']]['revision']
         self.profiles["characters"]["mad_joe"]["revision"] += 1
         self.profiles["revision"] += 1
         result = context(story, continuity, canon, [], self.profiles)

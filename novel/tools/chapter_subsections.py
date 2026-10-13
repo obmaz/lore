@@ -90,6 +90,11 @@ def validate_subsections(plan, chapters=None, macro=None, profiles=None, referen
             for value in [unit['title'], unit['entry'], unit['main_content'], unit['outcome'], *([branch['variation_scope']] if branch['variation_scope'] else [])]:
                 validate_text(value, data, raw)
                 reject_fixed_names(value, data)
+            for value in unit.get('logic', {}).values():
+                validate_text(value, data, raw)
+                reject_fixed_names(value, data)
+                if not value:
+                    raise ValueError('subsection logic must describe a concrete goal and transition')
             validate_claim({'field': 'subsection', 'value': unit['main_content'], 'origin': unit['origin'],
                             'status': 'proposed', 'evidence': [], 'metadata': unit['metadata']}, catalog)
         groups = chapter['parallel_groups']
@@ -138,6 +143,9 @@ def subsection_document(plan=None, chapters=None, profiles=None, references=None
         for i, unit in enumerate(chapter['units'], 1):
             body += '<section id="'+html.escape(unit['id'].replace('/','-'))+'"><h3>'+str(c['number'])+'-'+str(i)+' · '+display(unit['title'])+'</h3>'
             body += '<p class="note">시작 · '+display(unit['entry'])+'</p><p>'+display(unit['main_content'])+'</p><p class="note">필수 결과 · '+display(unit['outcome'])+'</p>'
+            if unit.get('logic'):
+                body += '<dl>'+''.join('<dt>'+label+'</dt><dd>'+display(unit['logic'][key])+'</dd>'
+                    for key,label in [('goal','목표'),('obstacle','장애 · 주의'),('next_reason','다음 행동의 이유')])+'</dl>'
             branch = unit['branch']
             body += '<details><summary>'+('분기 여지 · 아직 설계 전' if branch['mode']=='candidate' else '필수 흐름 · 분기 후보 없음')+'</summary>'
             if branch['mode'] == 'candidate':

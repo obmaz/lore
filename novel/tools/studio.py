@@ -161,6 +161,9 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
             text = rule['content_override'] if rule and rule['content_override'] is not None else unit['main_content']
             content = '<h4>시작 상황</h4><p>'+display(unit['entry'])+'</p><h4>주요 이야기</h4><p>'+display(text)+'</p>'
             content += '<h4>필수 결과</h4><p>'+display(unit['outcome'])+'</p>'
+            if unit.get('logic'):
+                content += ''.join('<h4>'+label+'</h4><p>'+display(unit['logic'][field])+'</p>'
+                                  for field,label in [('goal','목표'),('obstacle','장애 · 주의'),('next_reason','다음 행동의 이유')])
             content += '<small>필수 사건: '+esc(', '.join(unit['completes_beats']) or '다음 사건으로 연결')+'</small>'
             units.append({**child, 'title':session.display(publication.resolve(child['heading_ref'])), 'html':content,
                           'source_ref':{'file':publication.up,'pointer':publication.unit_paths[key]}})
@@ -257,13 +260,24 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
     source_index = [{'file':path, 'role':'생성물 · 직접 편집 금지' if '/generated/' in path else 'JSON 원본 · 파일에서 수정'} for path in sources]
     graph_details={}
     for node in publication.nodes:
-        if node['kind'] not in ('option','reaction','unit','outcome'):continue
+        content_ref=node.get('content_ref') or node.get('question_ref') or node['label_ref']
         rule=publication.resolve(node['guard_ref']) if node.get('guard_ref') else {}
+        if node.get('definition_ref'):
+            rule=publication.resolve(node['definition_ref'])
+        body=session.display(publication.resolve(content_ref))
+        if node['kind'] in ('merge','reaction_merge','parallel_merge'):
+            body={'merge':'각 선택의 이야기가 이 지점에서 같은 본줄기로 이어집니다.',
+                  'reaction_merge':'조건에 맞는 후속 문단을 읽거나 건너뛴 뒤 같은 진행으로 이어집니다.',
+                  'parallel_merge':'두 탐색을 모두 완료한 뒤 다음 본줄기로 이어집니다.'}[node['kind']]
+        elif node['kind']=='chapter':
+            body=session.display(stories[node['chapter_id']]['dramatic_question'])
         graph_details[node['id']]={'label':session.display(node['label_rich_text']),
-            'chapter_id':node['chapter_id'],'kind':node['kind'],'location':publication.unit_numbers[node['unit_id']],
-            'body':session.display(publication.resolve(node['content_ref'])),
-            'source_ref':node['content_ref'],
-            'rules':{k:rule[k] for k in ('when','participants','requires_units','effects','origin','metadata') if k in rule}}
+            'chapter_id':node['chapter_id'],'kind':node['kind'],'location':publication.unit_numbers.get(node['unit_id'],'제'+str(next(c['number'] for c in chapters if c['id']==node['chapter_id']))+'장'),
+            'body':body,'source_ref':content_ref,
+            'options':[{'id':o['id'],'label':session.display(o['label'])} for o in rule.get('options',[])],
+            'rules':{k:rule[k] for k in ('when','participants','requires_units','effects','rejoin_before','origin','metadata') if k in rule}}
+        if node['kind']=='unit':
+            graph_details[node['id']]['logic']={k:session.display(v) for k,v in session.units[node['unit_id']].get('logic',{}).items()}
     data = {'version':1,'status':'draft','visibility':'author_only','source_policy':plan['source_policy'],
             'origin':'authored','metadata':plan['metadata'],'plan':plan,'report':publication.report,
             'chapters':chapters,'documents':documents,'settings':settings,'editions':[*core_publication.editions['editions'],*publication.editions['editions']],

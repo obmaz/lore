@@ -63,7 +63,7 @@
     const [view,query='']=location.hash.replace(/^#\/?/,'').split('?');
     const params=new URLSearchParams(query);
     Object.assign(state,defaults,{open:true,view:view==='branches'?'graph':descriptions[view]?view:'overview'});
-    if(['diagram','rules'].includes(params.get('graphPanel')))state.graphPanel=params.get('graphPanel');
+    if(['diagram','timeline','rules'].includes(params.get('graphPanel')))state.graphPanel=params.get('graphPanel');
     if(view==='branches')state.graphPanel='rules';
     if(data.chapters.some(c=>c.id===params.get('chapter')))state.chapter=params.get('chapter');
     if(data.documents.some(d=>d.id===params.get('document')))state.document=params.get('document');
@@ -107,10 +107,14 @@
     } else if (view==='outline') {
       content.innerHTML=chapterToolbar()+`<div class="split"><aside class="chapter-tree" aria-label="전체 장 목차">${data.chapters.map(c=>`<button type="button" data-chapter="${c.id}" aria-current="${c.id===state.chapter}">제${c.number}장 · ${esc(c.title)}<br><small>${c.units.length}소단락 · ${c.implementation==='runtime_bound'?'첫 장 독자 판본 별도':'상세 본문 미집필'}</small></button>`).join('')}</aside><section class="card"><span class="badge">큰 이야기 초고 · 상세 본문 아님</span><h2 style="margin-top:14px">제${chapter().number}장 · ${esc(chapter().title)}</h2>${chapter().story_html}${sourceButton({file:'writing/storyboard/chapter-stories.json',pointer:'/chapters/'+(chapter().number-1)})}</section></div><h2 style="margin-top:28px">소단락의 주요 내용</h2>${chapter().units.map(u=>`<details class="unit" id="${esc(u.unit_id.replace('/','-'))}"><summary>${esc(u.number+' · '+u.title)} ${u.decision_ids.length?'<span class="badge">구현 분기</span>':u.candidate_deferred?'<span class="badge added">분기 후보 · 미구현</span>':''}</summary><div class="unit-body">${u.html}${sourceButton(u.source_ref)}</div></details>`).join('')}`;
     } else if (view==='graph') {
-      const panels=`<nav class="view-tabs" aria-label="분기 · 그래프 보기"><button type="button" class="button" data-graph-panel="diagram" aria-pressed="${state.graphPanel==='diagram'}">비교 타임라인</button><button type="button" class="button" data-graph-panel="rules" aria-pressed="${state.graphPanel==='rules'}">조건 · 결과</button></nav>`;
-      const diagram=`<div class="toolbar graph-tools"><button type="button" class="button" data-view="outline">같은 장의 주요 내용</button><button type="button" class="button" id="${state.graphOverview?'return-chapter-graph':'open-overview-graph'}">${state.graphOverview?'타임라인으로 돌아가기':'전체 장 연결도'}</button></div><p class="view-hint">왼쪽은 공통 진행, 오른쪽은 같은 시점의 선택별 문단입니다. 카드를 누르면 원인·후속 결과만 강조됩니다. 경로 탭은 비교용이며 소설 진행 상태를 바꾸지 않습니다.</p><section class="graph-selection" id="graph-selection" aria-label="선택한 그래프 문단" hidden></section><div class="${state.graphOverview?'diagram':'timeline-board'}" id="chapter-diagram">${state.graphOverview?data.overview_svg:renderTimeline()}</div><details class="unit"><summary>타임라인을 읽는 방법</summary><div class="unit-body">아래로 갈수록 다음 이야기 시점입니다. A/B/C는 해당 질문 안의 경로이며 다른 질문의 같은 글자를 같은 선택으로 합치지 않습니다. 조건부 문단은 원래 등장하는 소단락에 놓이며 실제 조건이 충족될 때만 읽습니다. 공유 상태와 관찰된 연결은 충분조건이나 유일한 원인의 증명이 아닙니다. 9장의 두 탐색은 순서만 달라지고 둘 다 필수입니다. 실행용 합류·조건 불일치 상자와 긴 점선은 표시하지 않습니다.</div></details>`;
-      content.innerHTML=chapterToolbar()+panels+(state.graphPanel==='diagram'?diagram:`<section id="branch-details" aria-label="이 장의 분기 조건과 결과">${chapter().branch_html}</section>`);
+      const panels=`<nav class="view-tabs" aria-label="분기 · 그래프 보기">${[['diagram','장별 분기 그래프'],['timeline','비교 타임라인'],['rules','조건 · 결과']].map(([id,label])=>`<button type="button" class="button" data-graph-panel="${id}" aria-pressed="${state.graphPanel===id}">${label}</button>`).join('')}</nav>`;
+      const graphical=state.graphPanel==='diagram',overview=graphical&&state.graphOverview;
+      const diagram=`<div class="toolbar graph-tools"><button type="button" class="button" data-view="outline">같은 장의 주요 내용</button>${graphical?`<button type="button" class="button" id="${overview?'return-chapter-graph':'open-overview-graph'}">${overview?'장별 그래프로 돌아가기':'전체 장 연결도'}</button><label for="graph-zoom">크기</label><select id="graph-zoom">${['0.75','1','1.25','1.5'].map(z=>`<option value="${z}" ${state.graphZoom===z?'selected':''}>${Number(z)*100}%</option>`).join('')}</select>`:''}</div><p class="view-hint">${graphical?'아래로 갈수록 다음 사건입니다. 박스를 누르면 본문·질문·선택 조건과 후속 영향을 확인할 수 있습니다. 보라색 영향선은 선택한 박스와 연결된 것만 표시합니다.':'왼쪽은 공통 진행, 오른쪽은 같은 시점의 선택별 문단입니다. 카드를 누르면 상세 정보와 연결된 결과가 표시됩니다.'}</p><div class="graph-workspace"><div class="${graphical?'diagram':'timeline-board'}" id="chapter-diagram">${graphical?(overview?data.overview_svg:chapter().svg):renderTimeline()}</div><section class="graph-selection" id="graph-selection" aria-label="선택한 그래프 상세" aria-live="polite" hidden></section></div>`;
+      content.innerHTML=chapterToolbar()+panels+(state.graphPanel==='rules'?`<section id="branch-details" aria-label="이 장의 분기 조건과 결과">${chapter().branch_html}</section>`:diagram);
+      content.querySelectorAll('svg [data-flow-node]').forEach(node=>{if(data.graph_details[node.dataset.flowNode]){node.setAttribute('role','button');node.setAttribute('tabindex','0');node.setAttribute('aria-pressed','false');}});
       applyGraphZoom();
+      const canvas=$('chapter-diagram'),first=canvas?.querySelector('.flow-node[data-node-kind="unit"] rect, .flow-node[data-node-kind="chapter"] rect');
+      if(first){canvas.scrollLeft=Math.max(0,(Number(first.getAttribute('x'))+Number(first.getAttribute('width'))/2)*Number(state.graphZoom)-canvas.clientWidth/2);}
       graphSelected='';applyTimelinePaths();
     } else if (view==='order') {
       const edition=data.editions.find(e=>e.id===state.edition);
@@ -184,6 +188,7 @@
   }
   function selectGraphNode(key){
     const svg=$('chapter-diagram'),panel=$('graph-selection');if(!svg||!panel)return;
+    const scroll={top:svg.scrollTop,left:svg.scrollLeft};
     graphSelected=key===graphSelected?'':key;
     const chosen=Array.from(svg.querySelectorAll('[data-flow-node]')).find(n=>n.dataset.flowNode===graphSelected);
     const preferred=chosen?.dataset.path||JSON.parse(chosen?.dataset.sourceOptions||'[]')[0];
@@ -194,26 +199,35 @@
       const active=!!graphSelected&&[edge.from,edge.to].includes(graphSelected);
       if(active){related.add(edge.from);related.add(edge.to);links.push({id:edge.id,key:edge.from===graphSelected?edge.to:edge.from,direction:edge.from===graphSelected?'후속 결과':'앞선 선택'});}
     });
+    svg.querySelectorAll('.flow-edge').forEach(edge=>{
+      const active=!!graphSelected&&[edge.dataset.from,edge.dataset.to].includes(graphSelected);
+      edge.classList.toggle('is-related',active);
+      if(active){related.add(edge.dataset.from);related.add(edge.dataset.to);}
+    });
     svg.querySelectorAll('[data-flow-node]').forEach(node=>{
       node.classList.toggle('is-related',related.has(node.dataset.flowNode));node.classList.toggle('is-selected',node.dataset.flowNode===graphSelected);
       node.setAttribute('aria-pressed',String(node.dataset.flowNode===graphSelected));
       node.querySelector('button[data-select-node]')?.setAttribute('aria-pressed',String(node.dataset.flowNode===graphSelected));
     });
-    const info=data.graph_details[graphSelected];panel.hidden=!info;if(!info){panel.innerHTML='';return;}
+    const info=data.graph_details[graphSelected];panel.hidden=!info;if(!info){panel.innerHTML='';svg.scrollTo(scroll);return;}
     const remote=info.chapter_id!==state.chapter;
     const targets=links.map(link=>{const target=data.graph_details[link.key];return target?'<button type="button" class="button small" data-flow-focus="'+esc(link.key)+'">'+esc(link.id+' · '+link.direction+' → '+target.location+' · '+target.label)+'</button>':'';}).join('');
-    panel.innerHTML=`<div class="graph-selection-head"><strong>${esc(info.location+' · '+info.label)}</strong><button type="button" class="button small" id="clear-graph-selection">강조 해제</button></div>${targets?'<div class="graph-related">'+targets+'</div>':'<small>현재 그래프에 관찰된 후속 영향선은 없습니다.</small>'}<details><summary>${info.kind==='option'?'선택 뒤 전체 내용':'조건부 후속 문단'} 펼치기</summary><div class="graph-selection-body">${info.body.split(/\n\n+/).map(p=>'<p>'+esc(p)+'</p>').join('')}</div>${sourceButton(info.source_ref)}<details><summary>조건 · 상태 변화 · 창작 표시</summary><pre>${esc(JSON.stringify(info.rules,null,2))}</pre></details></details>${remote?'<button type="button" class="button small" data-chapter="'+esc(info.chapter_id)+'">해당 장 그래프 보기 →</button>':''}`;
+    const labels={unit:'주요 이야기',decision:'질문과 선택',option:'선택 뒤 이야기',reaction:'조건부 후속 문단',outcome:'필수 결과',merge:'분기 합류',reaction_merge:'조건부 문단 합류',parallel_merge:'병렬 탐색 완료',chapter:'장별 구성'};
+    const logic=Object.entries(info.logic||{}).map(([field,value])=>'<p><strong>'+esc({goal:'목표',obstacle:'장애 · 주의',next_reason:'다음 행동의 이유'}[field])+'</strong><br>'+esc(value)+'</p>').join('');
+    panel.innerHTML=`<div class="graph-selection-head"><strong>${esc(info.location+' · '+info.label)}</strong><button type="button" class="button small" id="clear-graph-selection">닫기</button></div><small>${esc(labels[info.kind]||'연결 정보')}</small><div class="graph-selection-body">${info.body.split(/\n\n+/).map(p=>'<p>'+esc(p)+'</p>').join('')}${(info.options||[]).map(o=>'<p><button type="button" class="button small" data-flow-focus="option/'+esc(o.id)+'">'+esc(o.label)+'</button></p>').join('')}</div>${targets?'<div class="graph-related">'+targets+'</div>':''}${sourceButton(info.source_ref)}${Object.keys(info.rules).length?'<details><summary>조건 · 상태 변화 · 창작 표시</summary><pre>'+esc(JSON.stringify(info.rules,null,2))+'</pre></details>':''}${remote?'<button type="button" class="button small" data-chapter="'+esc(info.chapter_id)+'">해당 장 그래프 보기 →</button>':''}`;
+    if(logic)panel.querySelector('.graph-selection-body').insertAdjacentHTML('beforeend',logic);
+    svg.scrollTo(scroll);
   }
   function focusGraphNode(key){
     const info=data.graph_details[key];if(!info)return;
-    if(info.chapter_id!==state.chapter){state.chapter=info.chapter_id;state.graphOverview=false;state.graphPanel='diagram';go('graph');}
+    if(info.chapter_id!==state.chapter){state.chapter=info.chapter_id;state.graphOverview=false;go('graph');}
     const diagram=$('chapter-diagram'),node=Array.from(diagram.querySelectorAll('[data-flow-node]')).find(n=>n.dataset.flowNode===key);
     if(!node)return;
     if(node.dataset.path)setTimelinePath(node.dataset.group,node.dataset.path);
     selectGraphNode(key);
     const box=diagram.getBoundingClientRect(),target=node.getBoundingClientRect();
     diagram.scrollTo({left:Math.max(0,diagram.scrollLeft+target.left-box.left-(diagram.clientWidth-target.width)/2),top:Math.max(0,diagram.scrollTop+target.top-box.top-(diagram.clientHeight-target.height)/2),behavior:'instant'});
-    node.querySelector('[data-select-node]')?.focus({preventScroll:true});
+    (node.matches('[tabindex]')?node:node.querySelector('[data-select-node]'))?.focus({preventScroll:true});
   }
   function filterSettings() {
     const query=state.query.trim().toLocaleLowerCase();
@@ -245,6 +259,9 @@
     a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
   document.addEventListener('click', event => {
+    const svgNode=event.target.closest('svg [data-flow-node][role="button"]');
+    if(svgNode){selectGraphNode(svgNode.dataset.flowNode);return;}
+    if(event.target.closest('.tl-card')&&event.target.closest('summary,details')&&!event.target.closest('button'))return;
     const button=event.target.closest('button,[data-select-node]'); if (!button || (button.tagName==='BUTTON' && button.disabled)) return;
     if (button.id==='open-studio') {
       state.open=true; $('author-gate').hidden=true; $('workspace').hidden=false;nav.querySelectorAll('button').forEach(b=>{b.disabled=false;});restoreRoute();go(state.view,true,'replace');
@@ -280,6 +297,8 @@
   });
   document.addEventListener('input', event => {if(event.target.id==='setting-search') {state.query=event.target.value;state.item='';state.tab='';filterSettings();recordRoute('replace');}});
   document.addEventListener('keydown',event=>{
+    const svgNode=event.target.closest('svg [data-flow-node][role="button"]');
+    if(svgNode&&['Enter',' '].includes(event.key)){event.preventDefault();selectGraphNode(svgNode.dataset.flowNode);return;}
     const card=event.target.closest('[data-select-node].tl-card');
     if(card&&['Enter',' '].includes(event.key)&&event.target===card){event.preventDefault();selectGraphNode(card.dataset.selectNode);return;}
     const tab=event.target.closest('[data-timeline-option]');
