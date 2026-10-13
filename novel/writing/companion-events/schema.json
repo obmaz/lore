@@ -1,0 +1,24 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://lore.local/novel/writing/companion-events/schema.json",
+  "type":"object","additionalProperties":false,
+  "required":["version","revision","status","visibility","origin","metadata","policy","events"],
+  "properties":{
+    "version":{"const":1},"revision":{"type":"integer","minimum":1},"status":{"const":"draft"},
+    "visibility":{"const":"author_only"},"origin":{"const":"authored"},
+    "metadata":{"$ref":"#/$defs/meta"},
+    "policy":{"const":"join_gated_companion_scene_no_main_state_writes"},
+    "events":{"type":"array","minItems":6,"maxItems":6,"items":{"$ref":"#/$defs/event"}}
+  },
+  "$defs":{
+    "meta":{"type":"object","additionalProperties":false,"required":["addition","kind","note","knowledge_policy"],"properties":{"addition":{"const":true},"kind":{"const":"new_setting"},"note":{"type":"string","minLength":1},"knowledge_policy":{"const":"author_reference_not_character_knowledge"}}},
+    "text":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["text"],"properties":{"text":{"type":"string","minLength":1}}}},
+    "ref":{"type":"object","additionalProperties":false,"required":["catalog","id"],"properties":{"catalog":{"enum":["characters","equipment"]},"id":{"type":"string","minLength":1}}},
+    "event":{"type":"object","additionalProperties":false,"required":["id","companion_ref","equipment_ref","join_trigger","chapter_id","unit_id","title","scene","role_reaction","follow_up","main_state_writes","origin","status","metadata"],"properties":{
+      "id":{"type":"string","pattern":"^[a-z][a-z0-9_]+$"},"companion_ref":{"$ref":"#/$defs/ref"},"equipment_ref":{"oneOf":[{"$ref":"#/$defs/ref"},{"type":"null"}]},
+      "join_trigger":{"type":"object","additionalProperties":false,"required":["state","value","description"],"properties":{"state":{"type":"string","minLength":1},"value":{"type":"string","minLength":1},"description":{"type":"string","minLength":1}}},
+      "chapter_id":{"type":"string","pattern":"^chapter(0[1-9]|1[0-5])$"},"unit_id":{"type":"string","pattern":"^chapter[0-9]{2}/p[0-9]{2}$"},
+      "title":{"$ref":"#/$defs/text"},"scene":{"$ref":"#/$defs/text"},"role_reaction":{"$ref":"#/$defs/text"},"follow_up":{"$ref":"#/$defs/text"},"main_state_writes":{"const":[]},"origin":{"const":"authored"},"status":{"const":"proposed"},"metadata":{"$ref":"#/$defs/meta"}
+    }}
+  }
+}

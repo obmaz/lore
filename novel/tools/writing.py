@@ -508,6 +508,8 @@ def main():
         result['publication_flow'] = PublicationFlow().report
         from side_stories import SideStorySession
         result['side_stories'] = SideStorySession().validate_paths()
+        from companion_events import validate as validate_companion_events
+        result['companion_events'] = validate_companion_events()
         from studio import validate_plan
         result['studio'] = validate_plan()
         from source_story import OUTPUT as SOURCE_OUTPUT, validate_story as validate_source_story
