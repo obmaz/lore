@@ -51,7 +51,7 @@
 - [전편 15장 큰 구성](previews/chapters.html): 작가 전용 챕터 제목과 필수 사건 목록.
   [원본 JSON](storyboard/chapters.json), [공용 양식](templates/chapters.template.json).
 
-- [첫 챕터 · 선택하며 읽기](previews/chapter01-interactive.html): 최신 선택형 판본.
+- [소설 본문 · 1~2장](previews/chapter01-interactive.html): 실제 집필한 초고를 이어 읽는 최신 판본.
   [분기 구조와 집필 규칙](interactive/README.md), [작가용 분기 안내](previews/chapter01-branches.html).
   새 선택·동료 설정은 오버레이에 있고 기존 긴 본문을 참조해 사용한다.
 - [전편 곁가지 선택판](previews/side-adventures.html): 15장 주요 내용과 창작 곁가지 초고.

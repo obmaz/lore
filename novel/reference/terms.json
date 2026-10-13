@@ -936,6 +936,46 @@
           "knowledge_policy": "author_reference_not_character_knowledge"
         }
       }
+    },
+    "oedipus_spear": {
+      "original_name": {
+        "field": "original_name",
+        "value": "오이디푸스의 창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESPEC.PAS",
+            "line_start": 500,
+            "line_end": 503
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 창 발견/장착 대사의 명칭. 각색 이름은 이 한국어 참조값에서 별도로 바꾸며 보존 원문은 변경하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "오이디푸스의 창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESPEC.PAS",
+            "line_start": 500,
+            "line_end": 503
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 창 발견/장착 대사의 명칭. 각색 이름은 이 한국어 참조값에서 별도로 바꾸며 보존 원문은 변경하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     }
   }
 }

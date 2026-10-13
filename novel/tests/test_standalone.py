@@ -65,16 +65,16 @@ class IndependentNovelTest(unittest.TestCase):
     def test_new_quest_uses_shared_template_without_overwrite(self):
         # The shared checkout must return to its committed input set before
         # later freshness tests; only delete this test's temporary new draft.
-        for name in ('lastditch_pyramid.json','lastditch_pyramid.continuity.json'):
+        for name in ('gaia_evil_seal.json','gaia_evil_seal.continuity.json'):
             self.addCleanup((self.standalone/'writing/quests'/name).unlink,missing_ok=True)
-        result = json.loads(self.run_tool('writing','new-quest','--quest-id','lastditch_pyramid'))
+        result = json.loads(self.run_tool('writing','new-quest','--quest-id','gaia_evil_seal'))
         self.assertEqual(len(result['created']),2)
-        self.assertIn('lastditch_pyramid_draft_v1',(self.standalone/'writing/quests/lastditch_pyramid.json').read_text())
-        before = (self.standalone/'writing/quests/lastditch_pyramid.json').read_bytes()
-        result = subprocess.run([sys.executable,'tools/writing.py','new-quest','--quest-id','lastditch_pyramid'],cwd=self.standalone,text=True,capture_output=True)
+        self.assertIn('gaia_evil_seal_draft_v1',(self.standalone/'writing/quests/gaia_evil_seal.json').read_text())
+        before = (self.standalone/'writing/quests/gaia_evil_seal.json').read_bytes()
+        result = subprocess.run([sys.executable,'tools/writing.py','new-quest','--quest-id','gaia_evil_seal'],cwd=self.standalone,text=True,capture_output=True)
         self.assertNotEqual(result.returncode,0)
         self.assertIn('refusing overwrite',result.stderr)
-        self.assertEqual(before,(self.standalone/'writing/quests/lastditch_pyramid.json').read_bytes())
+        self.assertEqual(before,(self.standalone/'writing/quests/gaia_evil_seal.json').read_bytes())
 
     def test_subsection_branches_execute_without_original_or_remake(self):
         report = json.loads(self.run_tool('branch_system', 'validate'))

@@ -1,0 +1,274 @@
+{
+  "version": 1,
+  "revision": 1,
+  "status": "draft",
+  "first_overlay": "writing/interactive/chapter01.json",
+  "quest_files": [
+    "lastditch_pyramid.json"
+  ],
+  "style_revision": 1,
+  "branch_policy_ref": "writing/project.json#/branch_policy",
+  "origin": "authored",
+  "metadata": {
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 실제 집필한 1~2장을 앞 장의 선택/상태/사건을 초기화하지 않고 이어 읽는 편집 계약. 전체 소설 완성/승인이나 게임 실행 규칙이 아니다.",
+    "knowledge_policy": "author_reference_not_character_knowledge"
+  },
+  "chapters": [
+    {
+      "chapter_id": "chapter02",
+      "quest_id": "lastditch_pyramid",
+      "quest_file": "writing/quests/lastditch_pyramid.json",
+      "continuity_file": "writing/quests/lastditch_pyramid.continuity.json",
+      "status": "revised_main_draft",
+      "guard_states": ["quest.lastditch_stage"],
+      "main_story": [
+        {
+          "node": "lastditch_pyramid/arrival",
+          "required_block_ids": [
+            "lastditch_pyramid/arrival_body",
+            "lastditch_pyramid/arrival_sign",
+            "lastditch_pyramid/arrival_welcome",
+            "lastditch_pyramid/meet_lord",
+            "lastditch_pyramid/arrival_audience"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/request",
+          "required_block_ids": [
+            "lastditch_pyramid/request_443",
+            "lastditch_pyramid/request_444",
+            "lastditch_pyramid/request_445",
+            "lastditch_pyramid/request_446",
+            "lastditch_pyramid/request_447",
+            "lastditch_pyramid/request_448",
+            "lastditch_pyramid/request_449",
+            "lastditch_pyramid/request_450",
+            "lastditch_pyramid/request_451",
+            "lastditch_pyramid/request_452",
+            "lastditch_pyramid/request_453",
+            "lastditch_pyramid/request_after"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/town",
+          "required_block_ids": [
+            "lastditch_pyramid/town_body",
+            "lastditch_pyramid/town_386",
+            "lastditch_pyramid/town_388",
+            "lastditch_pyramid/town_390",
+            "lastditch_pyramid/town_392",
+            "lastditch_pyramid/town_394",
+            "lastditch_pyramid/town_398",
+            "lastditch_pyramid/town_400",
+            "lastditch_pyramid/town_405",
+            "lastditch_pyramid/request_reminder",
+            "lastditch_pyramid/request_reminder_end"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/family",
+          "required_block_ids": [
+            "lastditch_pyramid/family_before",
+            "lastditch_pyramid/family_account",
+            "lastditch_pyramid/hunter_reputation",
+            "lastditch_pyramid/family_after"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/road",
+          "required_block_ids": [
+            "lastditch_pyramid/road_body"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/entrance",
+          "required_block_ids": [
+            "lastditch_pyramid/pyramid_sign",
+            "lastditch_pyramid/entrance_body"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/spear",
+          "required_block_ids": [
+            "lastditch_pyramid/spear_496",
+            "lastditch_pyramid/spear_498",
+            "lastditch_pyramid/spear_499",
+            "lastditch_pyramid/spear_500",
+            "lastditch_pyramid/spear_501",
+            "lastditch_pyramid/spear_503",
+            "lastditch_pyramid/spear_after"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/room",
+          "required_block_ids": [
+            "lastditch_pyramid/mummy_room",
+            "lastditch_pyramid/room_body"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/battle",
+          "required_block_ids": [
+            "lastditch_pyramid/battle_body"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/won",
+          "required_block_ids": [
+            "lastditch_pyramid/mummy_defeated",
+            "lastditch_pyramid/mission_succeeded",
+            "lastditch_pyramid/won_body"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/return_road",
+          "required_block_ids": [
+            "lastditch_pyramid/return_body"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/report",
+          "required_block_ids": [
+            "lastditch_pyramid/report_body",
+            "lastditch_pyramid/report_462",
+            "lastditch_pyramid/report_463",
+            "lastditch_pyramid/report_464"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/guidance",
+          "required_block_ids": [
+            "lastditch_pyramid/guidance_470",
+            "lastditch_pyramid/guidance_471",
+            "lastditch_pyramid/guidance_472",
+            "lastditch_pyramid/guidance_473",
+            "lastditch_pyramid/guidance_474",
+            "lastditch_pyramid/guidance_body"
+          ]
+        },
+        {
+          "node": "lastditch_pyramid/gate",
+          "required_block_ids": [
+            "lastditch_pyramid/gate_body",
+            "lastditch_pyramid/gate_sign"
+          ]
+        }
+      ],
+      "units": [
+        {
+          "unit_id": "chapter02/p01",
+          "episode_id": "pyramid-01",
+          "node_ids": [
+            "lastditch_pyramid/arrival",
+            "lastditch_pyramid/request"
+          ]
+        },
+        {
+          "unit_id": "chapter02/p02",
+          "episode_id": "pyramid-02",
+          "node_ids": [
+            "lastditch_pyramid/town",
+            "lastditch_pyramid/family",
+            "lastditch_pyramid/polaris_offer",
+            "lastditch_pyramid/polaris_replace",
+            "lastditch_pyramid/polaris_joined",
+            "lastditch_pyramid/polaris_declined"
+          ]
+        },
+        {
+          "unit_id": "chapter02/p03",
+          "episode_id": "pyramid-03",
+          "node_ids": [
+            "lastditch_pyramid/road",
+            "lastditch_pyramid/entrance",
+            "lastditch_pyramid/spear",
+            "lastditch_pyramid/spear_result"
+          ]
+        },
+        {
+          "unit_id": "chapter02/p04",
+          "episode_id": "pyramid-04",
+          "node_ids": [
+            "lastditch_pyramid/room",
+            "lastditch_pyramid/tactics_hold",
+            "lastditch_pyramid/tactics_separate",
+            "lastditch_pyramid/battle",
+            "lastditch_pyramid/won"
+          ]
+        },
+        {
+          "unit_id": "chapter02/p05",
+          "episode_id": "pyramid-05",
+          "node_ids": [
+            "lastditch_pyramid/return_road",
+            "lastditch_pyramid/report"
+          ]
+        },
+        {
+          "unit_id": "chapter02/p06",
+          "episode_id": "pyramid-06",
+          "node_ids": [
+            "lastditch_pyramid/guidance",
+            "lastditch_pyramid/gate",
+            "lastditch_pyramid/next_quest_boundary"
+          ]
+        }
+      ],
+      "shared_states": [
+        "companions.starting",
+        "companions.optional_recruits",
+        "event.slot6",
+        "event.weapon.party_woodcutter",
+        "event.weapon.party_hunter",
+        "event.weapon.party_cook",
+        "event.weapon.party_magician",
+        "event.weapon.mad_joe"
+      ]
+    }
+  ],
+  "display_insertions": {
+    "lastditch_pyramid/request_443": [
+      {
+        "offset": 5,
+        "ref": {
+          "catalog": "characters",
+          "id": "protagonist"
+        },
+        "note": "원문 동적 주인공 이름을 집필 참조로 표시한다."
+      }
+    ],
+    "lastditch_pyramid/spear_equipped": [
+      {
+        "offset": 1,
+        "replace_length": 1,
+        "particle": "이/가",
+        "state": "event.chapter02.spear_owner",
+        "state_ref_catalog": "characters",
+        "note": "실제로 장착한 인물 이름만 표시한다."
+      }
+    ]
+  },
+  "term_equipment_links": [
+    {
+      "term_ref": {
+        "catalog": "terms",
+        "id": "oedipus_spear"
+      },
+      "equipment_ref": {
+        "catalog": "equipment",
+        "id": "weapon_3"
+      },
+      "origin": "source_adaptation",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 512,
+          "line_end": 518
+        }
+      ],
+      "note": "별칭과 원작 장착 인덱스의 대응이다. 새 무기 효과를 추가하지 않는다."
+    }
+  ]
+}

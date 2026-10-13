@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 2,
+  "revision": 3,
   "kind": "series",
   "visibility": "author_only",
   "status": "outline",
@@ -225,7 +225,7 @@
       ],
       "arc": "departure",
       "mandatory": true,
-      "implementation": "outline_only",
+      "implementation": "runtime_bound",
       "origin": "authored",
       "status": "proposed",
       "metadata": {
@@ -256,7 +256,10 @@
             "lastditch_pyramid:mummy_request"
           ],
           "after": [],
-          "scene_nodes": null,
+          "scene_nodes": [
+            "lastditch_pyramid/arrival",
+            "lastditch_pyramid/request"
+          ],
           "origin": "inferred",
           "status": "proposed",
           "metadata": {
@@ -279,7 +282,16 @@
           "after": [
             "chapter02/request"
           ],
-          "scene_nodes": null,
+          "scene_nodes": [
+            "lastditch_pyramid/town",
+            "lastditch_pyramid/family",
+            "lastditch_pyramid/road",
+            "lastditch_pyramid/entrance",
+            "lastditch_pyramid/spear",
+            "lastditch_pyramid/room",
+            "lastditch_pyramid/battle",
+            "lastditch_pyramid/won"
+          ],
           "origin": "inferred",
           "status": "proposed",
           "metadata": {
@@ -302,7 +314,12 @@
           "after": [
             "chapter02/confrontation"
           ],
-          "scene_nodes": null,
+          "scene_nodes": [
+            "lastditch_pyramid/return_road",
+            "lastditch_pyramid/report",
+            "lastditch_pyramid/guidance",
+            "lastditch_pyramid/gate"
+          ],
           "origin": "inferred",
           "status": "proposed",
           "metadata": {

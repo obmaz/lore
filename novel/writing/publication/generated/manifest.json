@@ -4,7 +4,7 @@
     "writing/publication/flow.plan.json": "aa4f571d4be3dbfd3e6509920cf558170f86aedfc0d33c976aaf62f9b8acce3d",
     "writing/publication.schema.json": "729c1117456f2d267bc9f150a0675af6a16a6d18a3acd4691351339cf1b694b2",
     "writing/templates/publication-flow.template.json": "aa4f571d4be3dbfd3e6509920cf558170f86aedfc0d33c976aaf62f9b8acce3d",
-    "writing/storyboard/chapters.json": "a9429277e0fa9237fbf960ac63668b1df8dfb761ad5d7a86bdb9b05981230634",
+    "writing/storyboard/chapters.json": "f72dc013e113ccc9bb41f861ab2d10a758a1085084a21661a89819ec875e63db",
     "writing/storyboard/chapter-subsections.json": "49638630aa01235affe114e56e4b31a98955bd1eda2ea2c4f47bdc38b7a57baf",
     "writing/branches/series.json": "e05b52a97129a62e1d05ef87ba82245b6004d015841ace03fe46deb4eb577eca",
     "tools/publication_flow.py": "fe603d38503d6b4d565a88fa376d2ddfe6af095a3fafb2ce0bd6c5622739629d",
@@ -14,14 +14,14 @@
     "tools/story_continuity.py": "7cca2c56f1df8dc977612b51fd6fb0630cc8e0ae09489d6a736df5e8c6089599",
     "characters/registry.json": "b4115f8048537721e0e5f3210ec88b87e68a2d596b51e860583e53ba5532d174",
     "reference/names.json": "2fb45df00f9a8361eb6cdf9eea9335cb710334363e7a149cf7a8d080cd179ab6",
-    "reference/terms.json": "a26cfd9104992f78b5afaa0a4ec08cea6722ab16643ad50ac414a471832db646",
+    "reference/terms.json": "f0e22730eda2f7a2e13d8e4e750999827780fe91fd32a30f3b86ed281ae21d0b",
     "reference/equipment.json": "8bc36e5009643d9684f7d40aa4a83ac7038dd185369ab05d45fb6400d63c46b1",
     "reference/abilities.json": "fa6f36f6a77f18a459a27f7aee9380bd5a64d0f2281d0c7639eb53bacf04052b",
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe"
   },
   "artifacts": {
     "flow.graph.json": "936f239a60679bbda33f918bd9e65b2c16a7b5d4a15128fb74d790ae2ecc192b",
-    "linear-editions.json": "5e3dead7930fabc81d7cfc40e3c29019f72e7aa9f90609d0f83a27f32bafc2bd",
+    "linear-editions.json": "b197d757867b9e7d39ec1d1c38a165894e8a03fc3e7e396683df42dfa271113d",
     "flow.md": "618e724c1b946b9bfb9767a4d90e24c28ab762dcbc258a4f05b6a3187cb5d5c8",
     "flow.html": "27e1bad0925d995e5c495eddc8573a99d63e5f78b0c0d27ad123e9a5964cc946",
     "coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746"

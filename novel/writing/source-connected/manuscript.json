@@ -28987,7 +28987,16 @@
                 "literal_ids": [
                   "LORESPEC.PAS:literal:20518"
                 ],
-                "bindings": []
+                "bindings": [
+                  {
+                    "start": 12,
+                    "end": 20,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "oedipus_spear"
+                    }
+                  }
+                ]
               }
             }
           ],
@@ -29142,7 +29151,16 @@
                 "literal_ids": [
                   "LORESPEC.PAS:literal:20657"
                 ],
-                "bindings": []
+                "bindings": [
+                  {
+                    "start": 3,
+                    "end": 11,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "oedipus_spear"
+                    }
+                  }
+                ]
               }
             }
           ],
@@ -29313,7 +29331,16 @@
                 "literal_ids": [
                   "LORESPEC.PAS:literal:21240"
                 ],
-                "bindings": []
+                "bindings": [
+                  {
+                    "start": 3,
+                    "end": 11,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "oedipus_spear"
+                    }
+                  }
+                ]
               }
             }
           ],

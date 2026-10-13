@@ -43,7 +43,7 @@
   function replay(saved) {
     if (!Array.isArray(saved) || saved.length > 160 || saved.some(x => typeof x !== 'string')) throw Error('잘못된 경로');
     let key = data.entry;
-    const state = clone(data.initial), events = [], knowledge = {}, sections = [], mainStory = [];
+    const state = clone(data.initial), events = [], knowledge = {}, sections = [], mainStory = [], decisions=new Set();
     for (let index = 0; index <= saved.length; index++) {
       const node = nodes[key], contract = data.contracts[key];
       if (!node || !matches(node.entry_when, state) || !matches(contract.before, state)) throw Error('접근할 수 없는 장면');
@@ -65,6 +65,11 @@
       if (['boundary', 'ending'].includes(node.kind) && mainStory.length !== data.main_story.length) throw Error('필수 본줄기 전에 끝나는 경로');
       if (blocks.some(b => b.speaker && !cast.includes(b.speaker))) throw Error('없는 동료가 말하는 장면');
       const choices = node.choices.filter(c => matches(c.when, state));
+      if(choices.length>1&&!automatic(key,state)){
+        const fork=key+'|'+choices.map(c=>c.id).sort().join('|');
+        if(decisions.has(fork))throw Error('같은 분기로 돌아가 다른 선택을 수집할 수 없습니다.');
+        decisions.add(fork);
+      }
       if (!choices.length && !['boundary', 'ending'].includes(node.kind)) throw Error('막힌 분기');
       sections.push({node, blocks, choices, state: clone(state), selected: saved[index]});
       if (index === saved.length) return {node, state, events, knowledge, sections, mainStory};
@@ -132,9 +137,14 @@
     }
     const packet = replay(route), manuscript = document.getElementById('manuscript');
     manuscript.replaceChildren();
-    let priorGroup=null;
+    let priorGroup=null,priorChapter='chapter01';
     for (const section of packet.sections) {
       const root = document.createElement('section');
+      const chapter=data.chapters?.find(c=>c.prefixes.some(prefix=>section.node.id.startsWith(prefix)));
+      if(chapter&&chapter.id!==priorChapter){
+        root.append(element('h2','제'+Number(chapter.id.slice(7))+'장 · '+text(chapter.title,section.state)));
+        priorChapter=chapter.id;
+      }
       const heading = element('h2',text(section.node.title,section.state));
       heading.dataset.storyRole = data.main_story.some(r => r.node === section.node.id) ? 'main' : 'optional';
       heading.tabIndex = -1;
@@ -142,10 +152,14 @@
       if(group!==priorGroup)root.append(heading);
       priorGroup=group;
       for (const b of section.blocks) {
-        const p = element('p',text(b.text,section.state,b.id),b.provenance.origin === 'source_exact' ? 'quote' : '');
-        p.dataset.blockId = b.id;
-        if (b.speaker) p.prepend(element('small',data.labels.characters[b.speaker] || b.speaker),document.createElement('br'));
-        root.append(p);
+        const body=text(b.text,section.state,b.id);
+        const paragraphs=b.provenance.origin==='authored'?body.split(/\n{2,}/):[body];
+        paragraphs.forEach((paragraph,index)=>{
+          const p=element('p',paragraph,b.provenance.origin==='source_exact'?'quote':'');
+          p.dataset.blockId=b.id;
+          if(b.speaker&&index===0)p.prepend(element('small',data.labels.characters[b.speaker]||b.speaker),document.createElement('br'));
+          root.append(p);
+        });
       }
       if (section.selected && !automatic(section.node.id,section.state)) root.append(element('p','선택: ' + text(section.choices.find(c => c.id === section.selected).label,section.state),'selected'));
       manuscript.append(root);
@@ -172,11 +186,17 @@
     const info = document.getElementById('state'); info.replaceChildren();
     const companions = [...packet.state['companions.starting'],...packet.state['companions.optional_recruits']];
     info.append(element('p','동행: ' + companions.map(id => data.labels.characters[id] || id).join(', ')));
-    info.append(element('p','탐방: ' + packet.state['event.city_visits'] + '/3곳 · 금화: ' + packet.state['event.gold']));
+    info.append(element('p','성 안에서 들른 곳: ' + packet.state['event.city_visits'] + ' · 금화: ' + packet.state['event.gold']));
     for (const id of packet.state['companions.starting']) info.append(element('p',data.labels.characters[id] + ': ' + (data.labels.equipment[packet.state['event.weapon.' + id]] || '미정')));
-    if (packet.state['event.slot6'] === 'mad_joe') info.append(element('p',data.labels.characters.mad_joe + ': ' + (data.labels.equipment[packet.state['event.weapon.mad_joe']] || '미정')));
+    if (companions.includes('mad_joe')) info.append(element('p',data.labels.characters.mad_joe + ': ' + (data.labels.equipment[packet.state['event.weapon.mad_joe']] || '미정')));
     if (packet.state['event.shield_owner']) info.append(element('p','발견 방패 장착자: ' + data.labels.characters[packet.state['event.shield_owner']]));
-    if (!current.choices.length) box.append(element('p','첫 챕터 끝. 선택한 동료·장비·경험은 다음 챕터 집필용 인계 상태로 보존됩니다. 다음 챕터 본문은 아직 없습니다.'));
+    for(const id of ['protagonist','skeleton','polaris']){
+      if(id!=='protagonist'&&!companions.includes(id))continue;
+      const weapon=packet.state['event.weapon.'+id];
+      if(weapon)info.append(element('p',data.labels.characters[id]+': '+(data.labels.equipment[weapon]||'미정')));
+    }
+    if(packet.state['event.chapter02.spear_owner'])info.append(element('p',data.labels.terms.oedipus_spear+': '+data.labels.characters[packet.state['event.chapter02.spear_owner']]));
+    if (!current.choices.length) box.append(element('p','제2장 끝. 선택한 동료·장비·경험은 다음 장으로 인계됩니다. 3장 이후는 아직 집필 전이며, 전편 개요와 분기 미리보기는 제작 자료입니다.'));
     document.getElementById('back').disabled = !packet.sections.some(s=>s.selected&&!automatic(s.node.id,s.state));
   }
   document.getElementById('restart').addEventListener('click',() => { route = []; redraw(); message('처음부터 시작합니다.'); readFromSection(0); });
@@ -188,7 +208,7 @@
   document.getElementById('save').addEventListener('click',() => {
     const value = JSON.stringify({fingerprint:data.fingerprint,route},null,2), a = document.createElement('a');
     const url = URL.createObjectURL(new Blob([value],{type:'application/json'}));
-    a.href = url; a.download = 'chapter01-route.json'; a.click(); URL.revokeObjectURL(url);
+    a.href = url; a.download = 'novel-route.json'; a.click(); URL.revokeObjectURL(url);
     message('경로만 저장했습니다. 동료·금화·지식을 임의 저장하지 않습니다.');
   });
   document.getElementById('load').addEventListener('click',() => document.getElementById('file').click());

@@ -1,0 +1,195 @@
+{
+  "version": 1,
+  "quest_file": "lastditch_pyramid.json",
+  "purpose": "small_batch_authoring_not_game_runtime",
+  "units": [
+    {
+      "id": "pyramid-01",
+      "title": [
+        {
+          "text": "2-1 · "
+        },
+        {
+          "text": "도착을 기다리던 성"
+        }
+      ],
+      "node_ids": [
+        "arrival",
+        "request"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        7000
+      ],
+      "focus": "2장 1번째 소단락의 실제 행동·대화·결과를 펼치며 원작 발생과 조건을 유지한다.",
+      "stop_after": "다음 소단락의 본줄기로 앞으로 합류한 순간.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 2장 소편의 제목·묶음·분량·행동·심리는 창작 초고. style.revision=1이며 원문/조건/장비 효과를 새로 확정하거나 출판 승인하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "pyramid-02",
+      "title": [
+        {
+          "text": "2-2 · "
+        },
+        {
+          "text": "실종자에게 가족이 있었다"
+        }
+      ],
+      "node_ids": [
+        "town",
+        "family",
+        "polaris_offer",
+        "polaris_replace",
+        "polaris_joined",
+        "polaris_declined"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        7000
+      ],
+      "focus": "2장 2번째 소단락의 실제 행동·대화·결과를 펼치며 원작 발생과 조건을 유지한다.",
+      "stop_after": "다음 소단락의 본줄기로 앞으로 합류한 순간.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 2장 소편의 제목·묶음·분량·행동·심리는 창작 초고. style.revision=1이며 원문/조건/장비 효과를 새로 확정하거나 출판 승인하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "pyramid-03",
+      "title": [
+        {
+          "text": "2-3 · "
+        },
+        {
+          "text": "북쪽으로 향하는 이유"
+        }
+      ],
+      "node_ids": [
+        "road",
+        "entrance",
+        "spear",
+        "spear_result"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        7000
+      ],
+      "focus": "2장 3번째 소단락의 실제 행동·대화·결과를 펼치며 원작 발생과 조건을 유지한다.",
+      "stop_after": "다음 소단락의 본줄기로 앞으로 합류한 순간.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 2장 소편의 제목·묶음·분량·행동·심리는 창작 초고. style.revision=1이며 원문/조건/장비 효과를 새로 확정하거나 출판 승인하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "pyramid-04",
+      "title": [
+        {
+          "text": "2-4 · "
+        },
+        {
+          "text": "성을 위협하던 상대와의 대결"
+        }
+      ],
+      "node_ids": [
+        "room",
+        "tactics_hold",
+        "tactics_separate",
+        "battle",
+        "won"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        7000
+      ],
+      "focus": "2장 4번째 소단락의 실제 행동·대화·결과를 펼치며 원작 발생과 조건을 유지한다.",
+      "stop_after": "다음 소단락의 본줄기로 앞으로 합류한 순간.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 2장 소편의 제목·묶음·분량·행동·심리는 창작 초고. style.revision=1이며 원문/조건/장비 효과를 새로 확정하거나 출판 승인하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "pyramid-05",
+      "title": [
+        {
+          "text": "2-5 · "
+        },
+        {
+          "text": "구제의 결과를 보고하다"
+        }
+      ],
+      "node_ids": [
+        "return_road",
+        "report"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        7000
+      ],
+      "focus": "2장 5번째 소단락의 실제 행동·대화·결과를 펼치며 원작 발생과 조건을 유지한다.",
+      "stop_after": "다음 소단락의 본줄기로 앞으로 합류한 순간.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 2장 소편의 제목·묶음·분량·행동·심리는 창작 초고. style.revision=1이며 원문/조건/장비 효과를 새로 확정하거나 출판 승인하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "pyramid-06",
+      "title": [
+        {
+          "text": "2-6 · "
+        },
+        {
+          "text": "쌍둥이 성으로 이어지는 문"
+        }
+      ],
+      "node_ids": [
+        "guidance",
+        "gate",
+        "next_quest_boundary"
+      ],
+      "status": "revised_draft",
+      "target_chars": [
+        3500,
+        7000
+      ],
+      "focus": "2장 6번째 소단락의 실제 행동·대화·결과를 펼치며 원작 발생과 조건을 유지한다.",
+      "stop_after": "다음 땅으로 이어지는 문 앞. 3장 본문은 새 인계에서 시작한다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 2장 소편의 제목·묶음·분량·행동·심리는 창작 초고. style.revision=1이며 원문/조건/장비 효과를 새로 확정하거나 출판 승인하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  ],
+  "notes": [
+    "본문은 quest_file과 안정된 node_ids로 참조한다. 원문/본문/인물 이름을 복사하지 않는다.",
+    "여섯 소단락의 긴 본문 초고이며 원작의 모든 전투/상점 경로를 완성했다는 뜻이 아니다."
+  ]
+}

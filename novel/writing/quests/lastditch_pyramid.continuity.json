@@ -1,0 +1,2839 @@
+{
+  "version": 2,
+  "story_id": "lastditch_pyramid_draft_v1",
+  "story_revision": 1,
+  "canon_revision": 4,
+  "character_registry_revision": 13,
+  "contracts": {
+    "arrival": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 0
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "arrival_body",
+        "arrival_sign",
+        "arrival_welcome",
+        "meet_lord",
+        "arrival_audience"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "request": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 0
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "quest.lastditch_stage"
+      ],
+      "must_include_block_ids": [
+        "request_443",
+        "request_444",
+        "request_445",
+        "request_446",
+        "request_447",
+        "request_448",
+        "request_449",
+        "request_450",
+        "request_451",
+        "request_452",
+        "request_453",
+        "request_after"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "town": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "town_body",
+        "town_386",
+        "town_388",
+        "town_390",
+        "town_392",
+        "town_394",
+        "town_398",
+        "town_400",
+        "town_405",
+        "request_reminder",
+        "request_reminder_end"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "family": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "knowledge.chapter02_family"
+      ],
+      "must_include_block_ids": [
+        "family_before",
+        "family_account",
+        "hunter_reputation",
+        "family_after"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "polaris_offer": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "companions.optional_recruits",
+        "event.slot6",
+        "event.weapon.polaris"
+      ],
+      "must_include_block_ids": [
+        "offer_before",
+        "polaris_407",
+        "polaris_408",
+        "polaris_409"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "polaris_replace": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "companions.starting",
+        "event.chapter02.departed",
+        "companions.optional_recruits",
+        "event.slot6",
+        "event.weapon.polaris"
+      ],
+      "must_include_block_ids": [
+        "replacement_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "polaris_joined": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "joined_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "polaris_declined": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "declined_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "road": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "road_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "entrance": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "pyramid_sign",
+        "entrance_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "spear": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "event.chapter02.spear_owner",
+        "event.weapon.protagonist",
+        "event.weapon.party_woodcutter",
+        "event.weapon.party_hunter",
+        "event.weapon.party_cook",
+        "event.weapon.party_magician",
+        "event.weapon.skeleton",
+        "event.weapon.mad_joe",
+        "event.weapon.polaris"
+      ],
+      "must_include_block_ids": [
+        "spear_496",
+        "spear_498",
+        "spear_499",
+        "spear_500",
+        "spear_501",
+        "spear_503",
+        "spear_after"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "spear_result": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "room": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "event.chapter02.approach"
+      ],
+      "must_include_block_ids": [
+        "mummy_room",
+        "room_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "tactics_hold": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "hold_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "tactics_separate": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "separate_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "battle": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 1
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "quest.lastditch_stage"
+      ],
+      "must_include_block_ids": [
+        "battle_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "won": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 2
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "mummy_defeated",
+        "mission_succeeded",
+        "won_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "return_road": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 2
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "return_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "report": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 2
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "quest.lastditch_stage",
+        "event.chapter02.experience_bonus"
+      ],
+      "must_include_block_ids": [
+        "report_body",
+        "report_462",
+        "report_463",
+        "report_464"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "guidance": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 3
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "knowledge.chapter02_gate"
+      ],
+      "must_include_block_ids": [
+        "guidance_470",
+        "guidance_471",
+        "guidance_472",
+        "guidance_473",
+        "guidance_474",
+        "guidance_body"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "gate": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 3
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "gate_body",
+        "gate_sign"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    },
+    "next_quest_boundary": {
+      "before": {
+        "state": "quest.lastditch_stage",
+        "op": "eq",
+        "value": 3
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "추가: style.revision=1. 원작 대사·실제 합류/교체/장착·임무 상태는 분리한다. 소문과 가족의 기다림은 실종자의 생존 증명이 아니다. 새 산문은 창작 초고이며 승인된 사실로 승격하지 않는다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "party_woodcutter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          }
+        },
+        {
+          "character_id": "party_hunter",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          }
+        },
+        {
+          "character_id": "party_cook",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          }
+        },
+        {
+          "character_id": "party_magician",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          }
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        },
+        {
+          "character_id": "mad_joe",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          }
+        },
+        {
+          "character_id": "polaris",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 8
+        },
+        {
+          "character_id": "party_woodcutter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_hunter",
+          "revision": 3
+        },
+        {
+          "character_id": "party_cook",
+          "revision": 3
+        },
+        {
+          "character_id": "party_magician",
+          "revision": 3
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 4
+        },
+        {
+          "character_id": "mad_joe",
+          "revision": 6
+        },
+        {
+          "character_id": "polaris",
+          "revision": 5
+        }
+      ]
+    }
+  },
+  "event_templates": [
+    {
+      "id": "family_heard",
+      "trigger_choice": "continue_family",
+      "description": "배우자에게서 실종된 지휘관의 이름을 들었다. 생존/현재 위치를 얻은 사건이 아니다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "lastditch_dialogue"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "hunter_family_testimony"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "polaris_offer_accept_polaris",
+      "trigger_choice": "accept_polaris",
+      "description": "동행 제안을 실제로 듣고 대답했다. 제안을 들은 것과 실제 영입은 구분한다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "lastditch_dialogue"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "polaris_offer"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "polaris_offer_replace_for_polaris",
+      "trigger_choice": "replace_for_polaris",
+      "description": "동행 제안을 실제로 듣고 대답했다. 제안을 들은 것과 실제 영입은 구분한다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "lastditch_dialogue"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "polaris_offer"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "polaris_offer_decline_polaris",
+      "trigger_choice": "decline_polaris",
+      "description": "동행 제안을 실제로 듣고 대답했다. 제안을 들은 것과 실제 영입은 구분한다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "lastditch_dialogue"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "polaris_offer"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "mummy_room_hold_together",
+      "trigger_choice": "hold_together",
+      "description": "적 세 명이 있는 방에서 실제 대결을 시작했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "pyramid"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "mummy_encounter"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "mummy_room_separate_pressure",
+      "trigger_choice": "separate_pressure",
+      "description": "적 세 명이 있는 방에서 실제 대결을 시작했다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "pyramid"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "mummy_encounter"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "mummy_defeated",
+      "trigger_choice": "continue_battle",
+      "description": "원문 성공 경로를 채택한 대결을 끝내 보고 가능한 상태가 되었다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "pyramid"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "lastditch_reported",
+      "trigger_choice": "continue_report",
+      "description": "실제 성공 뒤 보고해 원작 경험 보상을 한 번 받았다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "lastditch_dialogue"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "gate_guidance",
+      "trigger_choice": "continue_guidance",
+      "description": "다른 대륙으로 이어지는 문과 피해 지역 안내를 들었다. 실제 도착과는 다르다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "lastditch_dialogue"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    }
+  ],
+  "threads": [],
+  "review": {
+    "status": "draft",
+    "issues": [
+      "미승인 본문 초고. 산문의 의미·전투 편집·원작 배타 조건·문체는 사람의 검토가 남아 있다."
+    ],
+    "approved_story_revision": null,
+    "approved_canon_revision": null,
+    "approved_input_hashes": null
+  }
+}

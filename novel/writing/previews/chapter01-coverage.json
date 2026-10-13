@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "도입부터 첫 탐사 성공 보고·다음 부탁 경계까지. LORE 성의 정적 대사, MENACE 입구·중심·선택 보물, 호출된 금화/거절 문구. 공유 상점·훈련·회복·무작위 전투 UI와 후속 퀘스트 제외.",
+  "scope": "실제 집필한 1~2장. 전편 15장 개요·선택 시범은 별도 제작 자료.",
   "status": "draft",
   "dialogue_coverage": {
     "status": "complete",
@@ -10,6 +10,11 @@
       "i/cave_optional",
       "i/decline_helper",
       "i/gold_helper",
+      "lastditch_pyramid/gate",
+      "lastditch_pyramid/lastditch_dialogue",
+      "lastditch_pyramid/pyramid",
+      "lastditch_pyramid/pyramid_entry",
+      "lastditch_pyramid/town_entry",
       "lore_menace/assignment",
       "lore_menace/center",
       "lore_menace/menace_entry",
@@ -30,6 +35,67 @@
         "block_ids": [],
         "choice_ids": [],
         "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:5368",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:15559",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/arrival_sign"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:15575",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/arrival_sign"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:15587",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/arrival_sign"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:15624",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/arrival_welcome"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:15713",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/pyramid_sign"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LOREENT.PAS:literal:15784",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/gate_sign"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
       },
       {
         "literal_id": "LORESPEC.PAS:literal:8315",
@@ -336,6 +402,133 @@
           "lore_menace/decline_skeleton",
           "i/conversation_decline"
         ],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12949",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:20356",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/spear_496"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:20433",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/spear_498"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:20486",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/spear_499"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:20518",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/spear_500"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:20570",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/spear_501"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:20657",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/spear_503"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:20928",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/monk_no_weapon"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:21240",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/spear_equipped"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:21644",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:21807",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/mummy_room"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:22053",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:22331",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:22654",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/mummy_defeated"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:22711",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/mission_succeeded"
+        ],
+        "choice_ids": [],
         "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
       },
       {
@@ -2624,9 +2817,517 @@
         ],
         "choice_ids": [],
         "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14722",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/town_386"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14814",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/town_388"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14884",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/town_390"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14953",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/town_392"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15033",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/town_394"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15111",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/family_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15202",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/town_398"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15289",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/town_400"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15370",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/hunter_reputation"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15535",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/meet_lord"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15569",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/town_405"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15663",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/polaris_407"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15673",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/polaris_407"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15683",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/polaris_407"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15709",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/polaris_408"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15763",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/polaris_409"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15806",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15828",
+        "handling": "verbatim",
+        "block_ids": [],
+        "choice_ids": [
+          "lastditch_pyramid/accept_polaris",
+          "lastditch_pyramid/replace_for_polaris"
+        ],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:15868",
+        "handling": "verbatim",
+        "block_ids": [],
+        "choice_ids": [
+          "lastditch_pyramid/decline_polaris"
+        ],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:16115",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:16923",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_443"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:16946",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_443"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:16974",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_444"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17027",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_445"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17076",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_446"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17125",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_447"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17174",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_448"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17210",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_449"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17233",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_449"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17243",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_449"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17272",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_450"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17284",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_450"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17298",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_450"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17332",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_451"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17381",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_452"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17421",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_453"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17519",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_reminder"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17541",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_reminder"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17555",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_reminder"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17585",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/request_reminder_end"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17678",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/report_462"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17719",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/report_463"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17753",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/report_464"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:17834",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18000",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_470"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18016",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_470"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18030",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_470"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18067",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_471"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18082",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_471"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18096",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_471"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18134",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_472"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18141",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_472"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18159",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_472"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18202",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_473"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18207",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_473"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18225",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_473"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:18271",
+        "handling": "verbatim",
+        "block_ids": [
+          "lastditch_pyramid/guidance_474"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
       }
     ],
-    "notes": "첫 챕터에 명시한 원문 범위의 정적 대사·선택 라벨 반영. 공유 상점/전투 UI와 후속 퀘스트 전체의 완성을 뜻하지 않음. 산문 의미와 원작 미확정 접근 조건은 편집 검토 필요."
+    "notes": "실제 집필한 장에 명시한 정적 대사·선택 라벨의 발생별 반영표. 모든 분기의 동시 발생이나 공유 UI·미집필 장의 산문 완성을 뜻하지 않는다. 산문 의미는 별도 편집 검토 대상이다."
   },
   "nodes": [
     {
@@ -3190,7 +3891,15 @@
     },
     {
       "id": "lore_menace/next_quest_boundary",
-      "choices": []
+      "choices": [
+        {
+          "id": "lore_menace/next_quest_boundary/continue",
+          "target": "lastditch_pyramid/arrival",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
     },
     {
       "id": "i/hub",
@@ -5156,6 +5865,1453 @@
           "origin": "authored"
         }
       ]
+    },
+    {
+      "id": "lastditch_pyramid/arrival",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_arrival",
+          "target": "lastditch_pyramid/request",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/request",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_request",
+          "target": "lastditch_pyramid/town",
+          "when": true,
+          "effects": [
+            {
+              "state": "quest.lastditch_stage",
+              "op": "set",
+              "value": 1,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/town",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_town",
+          "target": "lastditch_pyramid/family",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/family",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_family",
+          "target": "lastditch_pyramid/polaris_offer",
+          "when": true,
+          "effects": [
+            {
+              "state": "knowledge.chapter02_family",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/polaris_offer",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/accept_polaris",
+          "target": "lastditch_pyramid/polaris_joined",
+          "when": {
+            "not": {
+              "any": [
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_woodcutter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_hunter"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_cook"
+                    },
+                    {
+                      "state": "companions.starting",
+                      "op": "contains",
+                      "value": "party_magician"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "skeleton"
+                    },
+                    {
+                      "state": "companions.optional_recruits",
+                      "op": "contains",
+                      "value": "mad_joe"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "polaris",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "polaris",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.polaris",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "source_exact"
+        },
+        {
+          "id": "lastditch_pyramid/replace_for_polaris",
+          "target": "lastditch_pyramid/polaris_replace",
+          "when": {
+            "any": [
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_woodcutter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_hunter"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_cook"
+                  },
+                  {
+                    "state": "companions.starting",
+                    "op": "contains",
+                    "value": "party_magician"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "skeleton"
+                  },
+                  {
+                    "state": "companions.optional_recruits",
+                    "op": "contains",
+                    "value": "mad_joe"
+                  }
+                ]
+              }
+            ]
+          },
+          "effects": [],
+          "origin": "source_exact"
+        },
+        {
+          "id": "lastditch_pyramid/decline_polaris",
+          "target": "lastditch_pyramid/polaris_declined",
+          "when": true,
+          "effects": [],
+          "origin": "source_exact"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/polaris_replace",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/replace_party_woodcutter",
+          "target": "lastditch_pyramid/polaris_joined",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          },
+          "effects": [
+            {
+              "state": "companions.starting",
+              "op": "remove",
+              "value": "party_woodcutter",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter02.departed",
+              "op": "set",
+              "value": "party_woodcutter",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "polaris",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "polaris",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.polaris",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/replace_party_hunter",
+          "target": "lastditch_pyramid/polaris_joined",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          },
+          "effects": [
+            {
+              "state": "companions.starting",
+              "op": "remove",
+              "value": "party_hunter",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter02.departed",
+              "op": "set",
+              "value": "party_hunter",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "polaris",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "polaris",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.polaris",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/replace_party_cook",
+          "target": "lastditch_pyramid/polaris_joined",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          },
+          "effects": [
+            {
+              "state": "companions.starting",
+              "op": "remove",
+              "value": "party_cook",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter02.departed",
+              "op": "set",
+              "value": "party_cook",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "polaris",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "polaris",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.polaris",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/replace_party_magician",
+          "target": "lastditch_pyramid/polaris_joined",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          },
+          "effects": [
+            {
+              "state": "companions.starting",
+              "op": "remove",
+              "value": "party_magician",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter02.departed",
+              "op": "set",
+              "value": "party_magician",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "polaris",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "polaris",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.polaris",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/replace_skeleton",
+          "target": "lastditch_pyramid/polaris_joined",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          },
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "remove",
+              "value": "skeleton",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter02.departed",
+              "op": "set",
+              "value": "skeleton",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "polaris",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "polaris",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.polaris",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/replace_mad_joe",
+          "target": "lastditch_pyramid/polaris_joined",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          },
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "remove",
+              "value": "mad_joe",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter02.departed",
+              "op": "set",
+              "value": "mad_joe",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "polaris",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "polaris",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.polaris",
+              "op": "set",
+              "value": "weapon_4",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/cancel_replacement",
+          "target": "lastditch_pyramid/polaris_declined",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/polaris_joined",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_polaris_joined",
+          "target": "lastditch_pyramid/road",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/polaris_declined",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_polaris_declined",
+          "target": "lastditch_pyramid/road",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/road",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_road",
+          "target": "lastditch_pyramid/entrance",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/entrance",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_entrance",
+          "target": "lastditch_pyramid/spear",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/spear",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/equip_spear_protagonist",
+          "target": "lastditch_pyramid/spear_result",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.chapter02.spear_owner",
+              "op": "set",
+              "value": "protagonist",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.protagonist",
+              "op": "set",
+              "value": "weapon_3",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/equip_spear_party_woodcutter",
+          "target": "lastditch_pyramid/spear_result",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          },
+          "effects": [
+            {
+              "state": "event.chapter02.spear_owner",
+              "op": "set",
+              "value": "party_woodcutter",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.party_woodcutter",
+              "op": "set",
+              "value": "weapon_3",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/equip_spear_party_hunter",
+          "target": "lastditch_pyramid/spear_result",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          },
+          "effects": [
+            {
+              "state": "event.chapter02.spear_owner",
+              "op": "set",
+              "value": "party_hunter",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.party_hunter",
+              "op": "set",
+              "value": "weapon_3",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/equip_spear_party_cook",
+          "target": "lastditch_pyramid/spear_result",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          },
+          "effects": [
+            {
+              "state": "event.chapter02.spear_owner",
+              "op": "set",
+              "value": "party_cook",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.party_cook",
+              "op": "set",
+              "value": "weapon_3",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/equip_spear_party_magician",
+          "target": "lastditch_pyramid/spear_result",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          },
+          "effects": [
+            {
+              "state": "event.chapter02.spear_owner",
+              "op": "set",
+              "value": "party_magician",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.party_magician",
+              "op": "set",
+              "value": "weapon_3",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/equip_spear_skeleton",
+          "target": "lastditch_pyramid/spear_result",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          },
+          "effects": [
+            {
+              "state": "event.chapter02.spear_owner",
+              "op": "set",
+              "value": "skeleton",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.skeleton",
+              "op": "set",
+              "value": "weapon_3",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/equip_spear_mad_joe",
+          "target": "lastditch_pyramid/spear_result",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "mad_joe"
+          },
+          "effects": [
+            {
+              "state": "event.chapter02.spear_owner",
+              "op": "set",
+              "value": "mad_joe",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.mad_joe",
+              "op": "set",
+              "value": "weapon_3",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/equip_spear_polaris",
+          "target": "lastditch_pyramid/spear_result",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "polaris"
+          },
+          "effects": [
+            {
+              "state": "event.chapter02.spear_owner",
+              "op": "set",
+              "value": "polaris",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.polaris",
+              "op": "set",
+              "value": "weapon_3",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/leave_spear",
+          "target": "lastditch_pyramid/spear_result",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/spear_result",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_spear_result",
+          "target": "lastditch_pyramid/room",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/room",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/hold_together",
+          "target": "lastditch_pyramid/tactics_hold",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.chapter02.approach",
+              "op": "set",
+              "value": "hold",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "lastditch_pyramid/separate_pressure",
+          "target": "lastditch_pyramid/tactics_separate",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.chapter02.approach",
+              "op": "set",
+              "value": "separate",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 장면의 행동·공간·대화·심리는 원작에 없는 창작 초고. style.revision=1을 적용했으며 새 고정 인물 설정·보상·능력·사망을 선언하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/tactics_hold",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_tactics_hold",
+          "target": "lastditch_pyramid/battle",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/tactics_separate",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_tactics_separate",
+          "target": "lastditch_pyramid/battle",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/battle",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_battle",
+          "target": "lastditch_pyramid/won",
+          "when": true,
+          "effects": [
+            {
+              "state": "quest.lastditch_stage",
+              "op": "set",
+              "value": 2,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/pyramid"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/won",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_won",
+          "target": "lastditch_pyramid/return_road",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/return_road",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_return_road",
+          "target": "lastditch_pyramid/report",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/report",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_report",
+          "target": "lastditch_pyramid/guidance",
+          "when": true,
+          "effects": [
+            {
+              "state": "quest.lastditch_stage",
+              "op": "set",
+              "value": 3,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            },
+            {
+              "state": "event.chapter02.experience_bonus",
+              "op": "increment",
+              "value": 10000,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/guidance",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_guidance",
+          "target": "lastditch_pyramid/gate",
+          "when": true,
+          "effects": [
+            {
+              "state": "knowledge.chapter02_gate",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lastditch_pyramid/lastditch_dialogue"
+                ],
+                "note": "원작의 조건/상태를 독립 집필 상태로 표현한다. 게임 코드나 저장 값을 실행하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/gate",
+      "choices": [
+        {
+          "id": "lastditch_pyramid/continue_gate",
+          "target": "lastditch_pyramid/next_quest_boundary",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lastditch_pyramid/next_quest_boundary",
+      "choices": []
     }
   ],
   "auto_rules": [
@@ -5259,7 +7415,8 @@
       "note": "추가: 소설 판본의 필수 독서 순서와 첫 방문 필수 본문 계약. 원작 전체의 강제 조건을 새로 확정한 것이 아니다. 선택 탐방은 본줄기에 합류하며 지식·동료·보물은 실제 선택 경로만 유지한다."
     },
     "guard_states": [
-      "quest.lore_stage"
+      "quest.lore_stage",
+      "quest.lastditch_stage"
     ],
     "required_scenes": [
       {
@@ -5369,6 +7526,137 @@
         "required_block_ids": [
           "lore_menace/farewell_quote"
         ]
+      },
+      {
+        "node": "lastditch_pyramid/arrival",
+        "required_block_ids": [
+          "lastditch_pyramid/arrival_body",
+          "lastditch_pyramid/arrival_sign",
+          "lastditch_pyramid/arrival_welcome",
+          "lastditch_pyramid/meet_lord",
+          "lastditch_pyramid/arrival_audience"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/request",
+        "required_block_ids": [
+          "lastditch_pyramid/request_443",
+          "lastditch_pyramid/request_444",
+          "lastditch_pyramid/request_445",
+          "lastditch_pyramid/request_446",
+          "lastditch_pyramid/request_447",
+          "lastditch_pyramid/request_448",
+          "lastditch_pyramid/request_449",
+          "lastditch_pyramid/request_450",
+          "lastditch_pyramid/request_451",
+          "lastditch_pyramid/request_452",
+          "lastditch_pyramid/request_453",
+          "lastditch_pyramid/request_after"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/town",
+        "required_block_ids": [
+          "lastditch_pyramid/town_body",
+          "lastditch_pyramid/town_386",
+          "lastditch_pyramid/town_388",
+          "lastditch_pyramid/town_390",
+          "lastditch_pyramid/town_392",
+          "lastditch_pyramid/town_394",
+          "lastditch_pyramid/town_398",
+          "lastditch_pyramid/town_400",
+          "lastditch_pyramid/town_405",
+          "lastditch_pyramid/request_reminder",
+          "lastditch_pyramid/request_reminder_end"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/family",
+        "required_block_ids": [
+          "lastditch_pyramid/family_before",
+          "lastditch_pyramid/family_account",
+          "lastditch_pyramid/hunter_reputation",
+          "lastditch_pyramid/family_after"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/road",
+        "required_block_ids": [
+          "lastditch_pyramid/road_body"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/entrance",
+        "required_block_ids": [
+          "lastditch_pyramid/pyramid_sign",
+          "lastditch_pyramid/entrance_body"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/spear",
+        "required_block_ids": [
+          "lastditch_pyramid/spear_496",
+          "lastditch_pyramid/spear_498",
+          "lastditch_pyramid/spear_499",
+          "lastditch_pyramid/spear_500",
+          "lastditch_pyramid/spear_501",
+          "lastditch_pyramid/spear_503",
+          "lastditch_pyramid/spear_after"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/room",
+        "required_block_ids": [
+          "lastditch_pyramid/mummy_room",
+          "lastditch_pyramid/room_body"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/battle",
+        "required_block_ids": [
+          "lastditch_pyramid/battle_body"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/won",
+        "required_block_ids": [
+          "lastditch_pyramid/mummy_defeated",
+          "lastditch_pyramid/mission_succeeded",
+          "lastditch_pyramid/won_body"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/return_road",
+        "required_block_ids": [
+          "lastditch_pyramid/return_body"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/report",
+        "required_block_ids": [
+          "lastditch_pyramid/report_body",
+          "lastditch_pyramid/report_462",
+          "lastditch_pyramid/report_463",
+          "lastditch_pyramid/report_464"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/guidance",
+        "required_block_ids": [
+          "lastditch_pyramid/guidance_470",
+          "lastditch_pyramid/guidance_471",
+          "lastditch_pyramid/guidance_472",
+          "lastditch_pyramid/guidance_473",
+          "lastditch_pyramid/guidance_474",
+          "lastditch_pyramid/guidance_body"
+        ]
+      },
+      {
+        "node": "lastditch_pyramid/gate",
+        "required_block_ids": [
+          "lastditch_pyramid/gate_body",
+          "lastditch_pyramid/gate_sign"
+        ]
       }
     ]
   },
@@ -5376,7 +7664,8 @@
     "ordered_checkpoints": true,
     "first_visit_body_checked_at_runtime": true,
     "guard_states": [
-      "quest.lore_stage"
+      "quest.lore_stage",
+      "quest.lastditch_stage"
     ],
     "method": "추적 상태의 유한 그래프. 추적하지 않은 조건은 가능하다고 보수적으로 처리한다. 실제 독자의 읽음·모든 상태 조건·산문 의미를 증명하지 않는다."
   },

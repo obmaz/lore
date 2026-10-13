@@ -230,7 +230,10 @@ def validate_chapters(plan, board=None, story=None, main_story=None, profiles=No
         if chapter['id'] != 'chapter'+str(chapter['number']).zfill(2):
             raise ValueError('chapter IDs must remain stable numbered references')
         if chapter['implementation'] == 'runtime_bound' and chapter['id'] != 'chapter01':
-            raise ValueError('future chapter has no implemented runtime binding')
+            written = read(ROOT/'writing/interactive/series.json')['chapters']
+            binding = next((c for c in written if c['chapter_id']==chapter['id']),None)
+            if binding is None:
+                raise ValueError('future chapter has no implemented runtime binding')
         ids.append(chapter['id'])
         owners.extend(chapter['unit_ids'])
         if not set(chapter['unit_ids']) <= set(units) or chapter['arc'] not in arcs:
@@ -287,6 +290,10 @@ def validate_chapters(plan, board=None, story=None, main_story=None, profiles=No
                     raise ValueError('parallel main objectives must not require each other')
         if len(scene_ids) != len(set(scene_ids)):
             raise ValueError('scene bound to multiple main beats')
+        if chapter['implementation']=='runtime_bound' and chapter['id']!='chapter01':
+            actual = {binding['quest_id']+'/'+n['id'] for n in read(ROOT/binding['quest_file'])['nodes']}
+            if not set(scene_ids)<=actual or scene_ids != [r['node'] for r in binding['main_story']]:
+                raise ValueError('written chapter macro must bind its actual complete main story')
         if story is not None and chapter['id'] == 'chapter01':
             if chapter['implementation'] != 'runtime_bound' or scene_ids != [r['node'] for r in main_story['required_scenes']]:
                 raise ValueError('chapter01 macro beats must bind the complete ordered runtime backbone')
@@ -441,6 +448,8 @@ def export_documents(output,check=False):
             path = WRITING/'quests'/name
             inputs += [path,path.with_name(path.stem+'.continuity.json')]
     inputs += sorted((WRITING/'episodes').glob('*.json'))
+    inputs += [ROOT/'writing/interactive/series.json',ROOT/'tools/interactive_series.py',
+               ROOT/'writing/quests/lastditch_pyramid.json',ROOT/'writing/quests/lastditch_pyramid.continuity.json']
     inputs += [FLOW_PLAN,FLOW_SCHEMA,FLOW_TEMPLATE,ROOT/'tools/publication_flow.py',FLOW_OUTPUT/'manifest.json',
                *(FLOW_OUTPUT/name for name in ('flow.graph.json','linear-editions.json','flow.md','flow.html','coverage.json'))]
     from studio import PLAN as STUDIO_PLAN, SCHEMA as STUDIO_SCHEMA, TEMPLATE as STUDIO_TEMPLATE, SCRIPT as STUDIO_SCRIPT, export as studio_export
@@ -520,6 +529,9 @@ def main():
         interactive_story,_,interactive_overlay = compile_chapter()
         result['interactive_chapter01'] = validate(interactive_story)
         result['chapter01_handoff'] = validate_handoff(interactive_story,interactive_overlay)
+        from interactive_series import compile_series
+        written_story,_,written_overlay=compile_series()
+        result['written_series']={**validate(written_story),'chapters':len(written_overlay['chapters'])}
     elif args.action=='preview':
         result = preview_story(read(args.story),read(args.story.with_name(args.story.stem+'.continuity.json')),args.route)
     elif args.action=='reading':
