@@ -311,9 +311,13 @@ class Session:
         raise ValueError('automatic transition cycle')
 
 
-def documents():
+def documents(profile='A'):
     from interactive_series import compile_series
-    story,memory,overlay = compile_series()
+    if profile=='B':
+        from prose_variants import compile_variant
+        story,memory,overlay=compile_variant()
+    elif profile=='A':story,memory,overlay = compile_series()
+    else:raise ValueError('unknown prose edition')
     from writing import html_doc
     profiles = load_characters()
     data,ls = indexes(profiles,load_references()),literals()
@@ -328,7 +332,7 @@ def documents():
                 for ref in refs:
                     labels.setdefault(ref['catalog'],{})[ref['id']] = render([{'ref':{'catalog':ref['catalog'],'id':ref['id']}}],data,ls,profiles,())
     used = {i for n in story['nodes'] for b in n['blocks'] for i in source_ids(b['text'])} | {i for n in story['nodes'] for c in n['choices'] for i in source_ids(c['label'])}
-    payload = {'version':overlay['revision'],'entry':story['entry_node'],'initial':{k:d['initial'] for k,d in story['state_definitions'].items()},
+    payload = {'edition':profile,'version':overlay['revision'],'entry':story['entry_node'],'initial':{k:d['initial'] for k,d in story['state_definitions'].items()},
         'nodes':story['nodes'],'labels':labels,'literals':{i:ls[i]['text'] for i in used},'events':memory['event_templates'],
         'auto_rules':overlay['auto_rules'],'insertions':overlay['display_insertions'],'party':overlay['party'],'equipment':overlay['initial_equipment'],
         'contracts':memory['contracts'],'conditional_required':overlay['conditional_required'],
@@ -341,9 +345,11 @@ def documents():
     payload['fingerprint'] = hashlib.sha256(encoded.encode()).hexdigest()
     safe = json.dumps(payload,ensure_ascii=False,sort_keys=True).replace('<','\\u003c').replace('&','\\u0026')
     count = len(overlay['chapters'])
-    body = f'<p class="notice">소설 본문 · A · 1~{count}장 초고. 선택한 이야기만 앞으로 이어 읽습니다. 발견·확인만 하는 부분은 자동으로 이어집니다. 다른 갈래는 명시적으로 선택을 되돌리거나 처음부터 읽을 때만 볼 수 있습니다. 네 시작 동료와 연결 서사는 집필용 추가입니다.</p><p><button id="back" type="button">한 선택 뒤로</button> <button id="restart" type="button">처음부터</button> <button id="save" type="button">경로 저장</button> <button id="load" type="button">경로 불러오기</button><input id="file" type="file" accept="application/json" hidden></p><p id="message" role="status"></p><details><summary>현재 동료·장비·경험</summary><div id="state"></div></details><div id="manuscript"></div><div id="choices" aria-label="이야기 선택"></div>'
+    written=f'1~{count}장' if count>1 else '1장'
+    body = f'<p class="notice">소설 본문 · {profile} · {written} 초고. 선택한 이야기만 앞으로 이어 읽습니다. 발견·확인만 하는 부분은 자동으로 이어집니다. 다른 갈래는 명시적으로 선택을 되돌리거나 처음부터 읽을 때만 볼 수 있습니다. 네 시작 동료와 연결 서사는 집필용 추가입니다.</p><p><button id="back" type="button">한 선택 뒤로</button> <button id="restart" type="button">처음부터</button> <button id="save" type="button">경로 저장</button> <button id="load" type="button">경로 불러오기</button><input id="file" type="file" accept="application/json" hidden></p><p id="message" role="status"></p><details><summary>현재 동료·장비·경험</summary><div id="state"></div></details><div id="manuscript"></div><div id="choices" aria-label="이야기 선택"></div>'
     body += '<script type="application/json" id="chapter-data">'+safe+'</script><script>'+READER.read_text()+'</script>'
     page = html_doc('제1장 · '+render(story['meta']['title'],data,ls,profiles,()),body).replace('</style>','button{max-width:100%;white-space:normal;overflow-wrap:anywhere;cursor:pointer;margin:4px;padding:10px}#choices{display:flex;flex-wrap:wrap}#state{overflow-wrap:anywhere}.selected{border-left:3px solid #977;padding-left:12px}@media print{#choices,button,#state{display:none}}</style>')
+    if profile=='B':return {'chapter01-web.html':page}
     report = {'version':1,'scope':overlay['scope'],'status':'draft','dialogue_coverage':story['coverage'],
         'nodes':[{'id':n['id'],'choices':[{'id':c['id'],'target':c['target'],'when':c['when'],'effects':c['effects'],'origin':c['provenance']['origin']} for c in n['choices']]} for n in story['nodes']],
         'auto_rules':overlay['auto_rules'],'main_story':overlay['main_story'],

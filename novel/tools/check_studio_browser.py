@@ -47,7 +47,7 @@ def check(screenshots=None,bundle=None):
             assert frame.get_by_role('button').count()>0
             frame.locator('#choices button').first.click()
             assert not errors,errors
-            assert page.locator('#document-select option').count()==1
+            assert page.locator('#document-select option').count()==2
             # Real prose is a single forward book, not the fifteen-chapter prototype.
             book=json.loads(frame.locator('#chapter-data').text_content())
             assert [c['id'] for c in book['chapters']]==['chapter01','chapter02','chapter03']
@@ -75,6 +75,16 @@ def check(screenshots=None,bundle=None):
             assert frame.locator('[data-block-id="lastditch_pyramid/skeleton_present_4"]').count()==0
             frame.locator('details summary').click()
             assert '폴라리스' in frame.locator('#state').inner_text()
+            # B shares the first chapter's source and choices, not later A prose.
+            page.locator('#document-select').select_option('chapter01-web.html')
+            frame=page.frame_locator('#document-frame')
+            frame.locator('#choices button').first.wait_for()
+            web=json.loads(frame.locator('#chapter-data').text_content())
+            assert web['edition']=='B'
+            assert [c['id'] for c in web['chapters']]==['chapter01']
+            assert '발밑에서 돌이 흔들렸다.' in frame.locator('#manuscript').inner_text()
+            assert '소설 본문 · B · 1장' in frame.locator('.notice').inner_text()
+            assert not errors,errors
             view('graph')
             page.locator('[data-graph-panel="preview"]').click()
             frame=page.frame_locator('#branch-preview-frame')

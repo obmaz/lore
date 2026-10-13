@@ -178,6 +178,8 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
     documents = []
     reading_labels = {
         'chapter01-interactive.html':f'A · 1~{sum(c["implementation"]=="runtime_bound" for c in chapters)}장 초고',
+        'chapter01-web.html':'B · 1장 초고',
+        'novel-reader.html':'A/B 통합 독서 화면',
         'side-adventures.html':'전편 15장 · 곁가지 모험 선택 시범',
         'source-connected.html':'전편 15장 · 원작 원문 연결 판본',
         'first-journey.html':'도입부터 첫 임무 끝까지 · 동행 수락',
@@ -193,11 +195,12 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
         group = 'prose' if name.startswith(('menace-', 'prologue', 'first-journey')) else 'structure'
         note = '보존 기본 경로 · 초고' if group=='prose' else '작가용 구성 · 상세 본문과 구별'
         if name=='chapter01-interactive.html': group, note = 'interactive', '현재 문체 A로 집필한 본문'
+        elif name=='chapter01-web.html':group,note='interactive','빠른 호흡의 B 문체로 재집필한 본문 · 구성과 선택은 A 1장과 공통'
         elif name=='side-adventures.html': group, note = 'interactive', '15장 곁가지 선택판 · 본줄기 기본 경로의 주요 내용 + 창작 모험 초고'
         elif name=='source-connected.html': group, note = 'source', '15장 원문 연결 판본 · 조건부 원문·기술 부록 포함'
         label = reading_labels.get(name,title+(' · 동행 거절 경로' if '-declined' in name else ' · 주점 방문 경로' if '-tavern' in name else ''))
         documents.append({'id':name,'title':title,'label':label,'group':group,'note':note,'source_ref':'writing/previews/'+name,'html':body})
-        documents[-1]['reader_edition']=name=='chapter01-interactive.html'
+        documents[-1]['reader_edition']=name in ('chapter01-interactive.html','chapter01-web.html')
         documents[-1]['branch_preview']=name=='side-adventures.html'
     names = {key:title_of(p) for key,p in session.profiles['characters'].items()}
     checkpoints = session.profiles['disclosure_checkpoints']
@@ -262,6 +265,9 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
     for name in ('runtime.plan.json','flow.plan.json','flow.graph.json','linear-editions.json','coverage.json'):
         sources[(SIDE_OUTPUT/name).relative_to(ROOT).as_posix()] = read(SIDE_OUTPUT/name)
     source_index = [{'file':path, 'role':'생성물 · 직접 편집 금지' if '/generated/' in path else 'JSON 원본 · 파일에서 수정'} for path in sources]
+    sources['writing/styles.json']=read(ROOT/'writing/styles.json')
+    sources['writing/variants/B/chapter01.json']=read(ROOT/'writing/variants/B/chapter01.json')
+    source_index.extend({'file':path,'role':'JSON 원본 · 파일에서 수정'} for path in ['writing/styles.json','writing/variants/B/chapter01.json'])
     graph_details={}
     for node in publication.nodes:
         content_ref=node.get('content_ref') or node.get('question_ref') or node['label_ref']

@@ -437,6 +437,11 @@ def export_documents(output,check=False):
     chapter_story,_,chapter_overlay = compile_chapter()
     validate_handoff(chapter_story,chapter_overlay)
     docs.update(interactive_documents())
+    from prose_variants import STYLES,VARIANT,SCHEMA as VARIANT_SCHEMA
+    docs.update(interactive_documents(profile='B'))
+    editions={key:docs[name] for key,name in [('A','chapter01-interactive.html'),('B','chapter01-web.html')]}
+    wrapper=ROOT/'writing/interactive/editions.html'
+    docs['novel-reader.html']=wrapper.read_text().replace('__EDITIONS__',json.dumps(editions,ensure_ascii=False).replace('<','\\u003c').replace('&','\\u0026'))
     inputs = [OVERLAY,READER,SCHEMA,EPISODES,ROOT/'tools/interactive.py',BOARD,CHAPTERS,CHAPTER_SCHEMA,STORIES,STORY_SCHEMA,ROOT/'tools/chapter_stories.py',SUBSECTIONS,SUBSECTION_SCHEMA,SUBSECTION_TEMPLATE,ROOT/'tools/chapter_subsections.py',BRANCHES,BRANCH_SCHEMA,BRANCH_TEMPLATE,ROOT/'tools/branch_system.py',SOURCE_PLAN,SOURCE_SCHEMA,ROOT/'tools/source_story.py',SOURCE_OUTPUT/'manuscript.json',SOURCE_OUTPUT/'coverage.json',SOURCE_OUTPUT/'generated-manifest.json',PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
               ROOT/'reference/terms.json',ROOT/'continuity/canon.json',ROOT/'writing/project.json',Path(__file__),ROOT/'tools/text_refs.py',
               ROOT/'tools/story_continuity.py',ROOT/'tools/disclosure.py',ROOT/'tools/validate_story_authoring.py',
@@ -448,7 +453,7 @@ def export_documents(output,check=False):
             path = WRITING/'quests'/name
             inputs += [path,path.with_name(path.stem+'.continuity.json')]
     inputs += sorted((WRITING/'episodes').glob('*.json'))
-    inputs += [ROOT/'writing/interactive/series.json',ROOT/'tools/interactive_series.py']
+    inputs += [ROOT/'writing/interactive/series.json',ROOT/'tools/interactive_series.py',STYLES,VARIANT,VARIANT_SCHEMA,ROOT/'tools/prose_variants.py',wrapper]
     for chapter in read(ROOT/'writing/interactive/series.json')['chapters']:
         inputs += [ROOT/chapter['quest_file'],ROOT/chapter['continuity_file']]
     inputs += [FLOW_PLAN,FLOW_SCHEMA,FLOW_TEMPLATE,ROOT/'tools/publication_flow.py',FLOW_OUTPUT/'manifest.json',
@@ -533,6 +538,8 @@ def main():
         from interactive_series import compile_series
         written_story,_,written_overlay=compile_series()
         result['written_series']={**validate(written_story),'chapters':len(written_overlay['chapters'])}
+        from prose_variants import validate_profiles
+        result['prose_profiles']=validate_profiles()
     elif args.action=='preview':
         result = preview_story(read(args.story),read(args.story.with_name(args.story.stem+'.continuity.json')),args.route)
     elif args.action=='reading':

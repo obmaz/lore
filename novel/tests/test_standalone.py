@@ -91,7 +91,7 @@ class IndependentNovelTest(unittest.TestCase):
 
     def test_studio_bundle_is_independent_and_fresh(self):
         report=json.loads(self.run_tool('studio','export','--check'))
-        self.assertEqual((report['documents'],report['chapters']),(10,15))
+        self.assertEqual((report['documents'],report['chapters']),(12,15))
         self.assertEqual(report['visibility'],'author_only')
 
     def test_all_original_text_is_reconstructable_from_snapshot(self):

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>선택 소설 · A / B</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#f6f3eb;color:#25372e;font:13px/1.5 system-ui,sans-serif}header{padding:8px 12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid #bcc7be}label{font-weight:600}select{font:inherit;min-height:34px;max-width:100%;padding:4px 8px}small{color:#627367}iframe{display:block;border:0;width:100%;height:calc(100dvh - 54px);background:#f6f3eb}@media(max-width:560px){header{min-height:82px}iframe{height:calc(100dvh - 82px)}select{min-height:40px}small{flex-basis:100%}}</style>
+<header><label for="edition-select">읽을 판본</label><select id="edition-select"><option value="A">A · 장면 중심 · 1~3장</option><option value="B">B · 웹소설형 · 1장</option></select><small>구성·선택은 공통 · 판본을 바꾸면 처음부터 읽습니다.</small></header>
+<iframe id="edition-frame" title="선택한 소설 판본" sandbox="allow-scripts allow-downloads"></iframe>
+<script id="edition-data" type="application/json">__EDITIONS__</script>
+<script>
+(() => {
+  const editions=JSON.parse(document.getElementById('edition-data').textContent);
+  const select=document.getElementById('edition-select'),frame=document.getElementById('edition-frame');
+  function show(key){select.value=editions[key]?key:'A';frame.title=`소설 ${select.value} 판본`;frame.srcdoc=editions[select.value];}
+  show(new URLSearchParams(location.search).get('edition')||'A');
+  select.addEventListener('change',()=>show(select.value));
+})();
+</script></html>
