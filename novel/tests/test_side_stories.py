@@ -76,7 +76,7 @@ class SideStoryTests(unittest.TestCase):
                 reactions = [h for h in packet['history'] if h['kind'] == 'reaction' and (h['id'] in (did+'_take',did+'_skip') or h['id'].startswith(did+'_approach_'))]
                 self.assertEqual([h['id'] for h in choices], [did+'/'+mode])
                 expected=did+'_approach_'+story['approach']['options'][0]['id'] if mode=='take' and 'approach' in story else did+'_'+mode
-                self.assertEqual([h['id'] for h in reactions], [expected])
+                self.assertEqual([h['id'] for h in reactions], [] if story['reaction_unit'] is None else [expected])
                 self.assertEqual(packet['state']['side.'+story['id']], mode == 'take')
         self.assertEqual(self.session.main_history(packets['take']), self.session.main_history(packets['skip']))
         self.assertNotEqual(packets['take']['history'], packets['skip']['history'])
@@ -154,6 +154,9 @@ class SideStoryTests(unittest.TestCase):
                 for card in row.get('cards',[]):
                     if row['kind']=='reaction':found[card['node_id']]=(chapter['chapter_id'],row['unit_id'],row['group_id'],card['source_options'])
         for did,story in self.session.story_by_decision.items():
+            if story['reaction_unit'] is None:
+                self.assertFalse(any(key.startswith('reaction/'+did+'_') for key in found))
+                continue
             for index,mode in enumerate(('take','skip')):
                 if mode=='take' and 'approach' in story:continue
                 self.assertEqual(found['reaction/'+did+'_'+mode],(story['reaction_unit'].split('/')[0],story['reaction_unit'],did,[did+'/'+mode]))

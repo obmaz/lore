@@ -302,38 +302,6 @@
         "text": "장비 점검의 후속"
       }
     ],
-    "side_well_bucket_take": [
-      {
-        "text": "성벽 아래의 두레박"
-      },
-      {
-        "text": " · 참여한 경험"
-      }
-    ],
-    "side_well_bucket_skip": [
-      {
-        "text": "성벽 아래의 두레박"
-      },
-      {
-        "text": " · 지나친 경험"
-      }
-    ],
-    "side_flour_sack_take": [
-      {
-        "text": "무너진 제빵소의 마지막 자루"
-      },
-      {
-        "text": " · 참여한 경험"
-      }
-    ],
-    "side_flour_sack_skip": [
-      {
-        "text": "무너진 제빵소의 마지막 자루"
-      },
-      {
-        "text": " · 지나친 경험"
-      }
-    ],
     "side_ruin_cart_take": [
       {
         "text": "폐허에서 온 손수레"
@@ -377,38 +345,6 @@
     "side_ledge_rope_skip": [
       {
         "text": "날개 그늘 아래의 밧줄"
-      },
-      {
-        "text": " · 지나친 경험"
-      }
-    ],
-    "side_caught_sail_take": [
-      {
-        "text": "물살에 걸린 작은 돛"
-      },
-      {
-        "text": " · 참여한 경험"
-      }
-    ],
-    "side_caught_sail_skip": [
-      {
-        "text": "물살에 걸린 작은 돛"
-      },
-      {
-        "text": " · 지나친 경험"
-      }
-    ],
-    "side_small_bell_take": [
-      {
-        "text": "미로에 놓인 작은 종"
-      },
-      {
-        "text": " · 참여한 경험"
-      }
-    ],
-    "side_small_bell_skip": [
-      {
-        "text": "미로에 놓인 작은 종"
       },
       {
         "text": " · 지나친 경험"
@@ -774,22 +710,6 @@
         "text": "발판을 받쳐 직접 짐을 옮기게 한다"
       }
     ],
-    "side_mended_cup_take": [
-      {
-        "text": "금 간 잔을 내려놓는 자리"
-      },
-      {
-        "text": " · 참여한 경험"
-      }
-    ],
-    "side_mended_cup_skip": [
-      {
-        "text": "금 간 잔을 내려놓는 자리"
-      },
-      {
-        "text": " · 지나친 경험"
-      }
-    ],
     "side_dust_door_take": [
       {
         "text": "드러난 성 곁의 먼지 낀 문"
@@ -834,22 +754,6 @@
       },
       {
         "text": "돌을 두고 먼지 위에 발 디딜 곳을 표시한다"
-      }
-    ],
-    "side_silent_fragments_take": [
-      {
-        "text": "작별 뒤에 남은 돌조각"
-      },
-      {
-        "text": " · 참여한 경험"
-      }
-    ],
-    "side_silent_fragments_skip": [
-      {
-        "text": "작별 뒤에 남은 돌조각"
-      },
-      {
-        "text": " · 지나친 경험"
       }
     ]
   },

@@ -12,7 +12,7 @@
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe",
     "materials/manifest.json": "4e1f6565214b95b26d5089f24a8e40aa55f1d06d7697fac9783e671570f6131f",
     "materials/scripts.json": "e4b543bca7897361385fb0b5f363e3af02087253a23e6fc642c423d848e669a6",
-    "tools/text_refs.py": "20381d86af6d198efb308c63b8d0103d545e72298a6aaee65fe7b139100c533b",
+    "tools/text_refs.py": "da5326edfb63354058ea19f6c6419d8cc3e61f8b46c685f6ae2f73e41b3568bc",
     "tools/source_story.py": "a63d0b19edb93edca3317179b36fd366d5e858ad125e0b5e4dff6f32e7966816"
   },
   "artifacts": {

@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import patch
+from characters import load_characters
 from story_continuity import CANON, DEFAULT, context, input_hashes, read, validate
 
 
@@ -76,9 +77,16 @@ class ContinuityTest(unittest.TestCase):
             self.packet()
 
     def test_approval_pins_content(self):
+        # This fixture tests approval hashes, not deliberately stale draft pins.
+        # Keep real manuscripts unapproved and refresh only this in-memory copy.
+        profiles=load_characters()
+        self.continuity['character_registry_revision']=profiles['revision']
+        for contract in self.continuity['contracts'].values():
+            for dependency in contract['character_dependencies']:
+                dependency['revision']=profiles['characters'][dependency['character_id']]['revision']
         self.story["meta"]["status"] = "approved"
         review = self.continuity["review"]
-        review.update(status="approved", issues=[], approved_story_revision=2, approved_canon_revision=self.canon['revision'])
+        review.update(status="approved", issues=[], approved_story_revision=self.story['meta']['revision'], approved_canon_revision=self.canon['revision'])
         for event in self.continuity["event_templates"]: event["approval"] = "approved"
         review["approved_input_hashes"] = input_hashes(self.story, self.continuity, self.canon)
         # Isolate the hash gate; the real outline must also pass source completeness.

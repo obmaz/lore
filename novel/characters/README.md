@@ -67,6 +67,8 @@
 ```
 
 소설 집필 시에는 `writing_overrides`를 먼저 조회하고 값이 `null`이면 원본 `canonical_name`·`biography`·`writing`으로 fallback한다.
+제작실의 핵심 설정은 실제 적용값을 보여 주며 원작 정보 탭은 원작 이름과 기존 카드 값을 보존한다.
+예를 들어 `lord_ahn`은 소설용 이름 `동욱`을 표시하고 `Lord Ahn`은 원작 이름으로 남긴다.
 대체값이 원본에 없는 항목이어도 이곳에 기록할 수 있다. 나이·외모는 `biography`에, 신념·반응 습관은 `writing.traits`에 같은 구조로 추가한다.
 `value: null`, `origin: unknown`, `status: unknown`, `metadata.kind: unknown`은
 미상이지 임의의 나이를 채우라는 지시가 아니다.

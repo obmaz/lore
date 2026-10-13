@@ -7,10 +7,10 @@
     "writing/storyboard/chapters.json": "a9429277e0fa9237fbf960ac63668b1df8dfb761ad5d7a86bdb9b05981230634",
     "writing/storyboard/chapter-subsections.json": "4d7bf0ea68ada11f245ced2f189a3b7fc268223162d3ea6ac8d937354b15d0b0",
     "writing/branches/series.json": "37757bb453985433357ec82011920ef9b294c8c71c6cb1c7633d016d85270a86",
-    "tools/publication_flow.py": "1348104a254f68a5bed7f244e362887580818ee8cbee407ed5873f2a5798e839",
+    "tools/publication_flow.py": "5699223ebb79bd2cca55d8e69a0874b29e7b6e7b7c44eddf33439c3ef2d6b68f",
     "tools/branch_system.py": "220e080488bc68009e8e88cc3d602bf6c6f2a03f735a01b1a1141ac8320bf46c",
     "tools/chapter_subsections.py": "8c3e92399cdf96928fb4bde81fd2c42e7d01c6d6ab0caab86848ab00b15a2ab3",
-    "tools/text_refs.py": "20381d86af6d198efb308c63b8d0103d545e72298a6aaee65fe7b139100c533b",
+    "tools/text_refs.py": "da5326edfb63354058ea19f6c6419d8cc3e61f8b46c685f6ae2f73e41b3568bc",
     "tools/story_continuity.py": "7cca2c56f1df8dc977612b51fd6fb0630cc8e0ae09489d6a736df5e8c6089599",
     "characters/registry.json": "b4115f8048537721e0e5f3210ec88b87e68a2d596b51e860583e53ba5532d174",
     "reference/names.json": "2fb45df00f9a8361eb6cdf9eea9335cb710334363e7a149cf7a8d080cd179ab6",
@@ -21,9 +21,9 @@
   },
   "artifacts": {
     "flow.graph.json": "37ac0cf4444f0470789dbb42f8b32946c96c8199372cd63912ddf46e6dac1202",
-    "linear-editions.json": "d4bdcd703bd1e29970deea13b741a248538b59541a8d2bba1efe81b67f3a249f",
+    "linear-editions.json": "5b88fd4737d0f766a6f89896b0906d8aebec524f474688593d178355fa6bc01c",
     "flow.md": "618e724c1b946b9bfb9767a4d90e24c28ab762dcbc258a4f05b6a3187cb5d5c8",
-    "flow.html": "d2c9485871b2818b97f4703c05c72d8ed576c6cfe1d66e200e0761f9ed7f85c2",
+    "flow.html": "546d6fb17b00119b40a2fd5f15942fd7219ad84b76c3e8890152c873462ca723",
     "coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746"
   }
 }

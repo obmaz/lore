@@ -44,6 +44,12 @@ def writing_value(item, field, fallback=None):
     override = item.get('writing_overrides', {}).get(field, {})
     if override.get('value') is not None:
         return override['value']
+    if fallback is None:
+        if field == 'name':
+            return name_of(item)
+        if field == 'personality':
+            return [c['value'] for c in item.get('writing', {}).get('traits', []) if c.get('value') is not None] or None
+        return item.get('biography', {}).get(field, {}).get('value')
     return fallback
 
 
@@ -66,9 +72,10 @@ def resolve(ref,data,profiles=None,reveals=(),author=False):
         if profiles is None:
             raise ValueError('reader reference needs disclosure context')
         item = project_character(profiles,key,reveals)
-        name = item.get('writing_name',{}).get('value') or item['display_name']
+        replacement = item.get('writing_overrides',{}).get('name',{}).get('value')
+        name = replacement or item.get('writing_name',{}).get('value') or item['display_name']
         # Use the phonetic Korean label instead of legacy English editorial titles.
-        if 'writing_name' not in item and item['korean_name']:
+        if not replacement and 'writing_name' not in item and item['korean_name']:
             name = item['korean_name']
     else:
         name = name_of(data[catalog][key])
@@ -173,7 +180,7 @@ def reject_fixed_names(text,data):
     plain = text if isinstance(text,str) else ''.join(s['text'] for s in text if 'text' in s)
     for catalog in data.values():
         for item in catalog.values():
-            labels = {item.get('writing_name',{}).get('value'),item.get('korean_name',{}).get('value'),
+            labels = {item.get('writing_overrides',{}).get('name',{}).get('value'),item.get('writing_name',{}).get('value'),item.get('korean_name',{}).get('value'),
                       item.get('canonical_name',item.get('original_name',{})).get('value')}
             for name in labels:
                 if not isinstance(name,str) or len(name)<2:

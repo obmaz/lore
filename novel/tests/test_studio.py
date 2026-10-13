@@ -78,6 +78,24 @@ class StudioTests(unittest.TestCase):
         self.assertIn('공개 /novel',output)
         self.assertEqual(validate_plan()['views'],7)
 
+    def test_direct_entry_resizing_and_shared_style(self):
+        output=document(self.data)
+        self.assertNotIn('id="open-studio"',output)
+        self.assertNotIn('id="author-gate"',output)
+        self.assertIn('<div id="workspace">',output)
+        self.assertIn('role="separator"',output)
+        self.assertIn('setPointerCapture',output)
+        self.assertNotIn("['timeline','비교 타임라인']",output)
+        self.assertNotIn('같은 장의 주요 내용</button>',output)
+        style=self.data['sources']['writing/project.json']['style']
+        self.assertGreaterEqual(style['revision'],1)
+        self.assertIn('outline',style['stage_policy'])
+        self.assertIn('prose',style['stage_policy'])
+        nested=self.data['graph_details']['decision/side_gate_lantern_approach']['options']
+        self.assertEqual(len(nested),2)
+        self.assertTrue(all(not o['id'].endswith('/bypass') for o in nested))
+        self.assertIn('fact-card fact-long',readable_claims([dict(self.flow.session.profiles['characters']['mad_joe']['writing']['traits'][0],field='personality')]))
+
     def test_07_export_matches_and_preserves_manually_changed_output(self):
         with tempfile.TemporaryDirectory(prefix='lore-studio-') as temp:
             with patch('studio.build',return_value=self.data):

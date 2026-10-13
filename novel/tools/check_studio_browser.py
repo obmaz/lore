@@ -19,11 +19,14 @@ def check(screenshots=None,bundle=None):
             page.on('request',lambda request:requests.append(request.url))
             page.set_content(path.read_text(encoding='utf-8'))
             page.evaluate('document.fonts.ready')
-            assert page.locator('#workspace').is_hidden()
+            assert page.locator('#workspace').is_visible()
             assert page.locator('#navigation button').count()==7
-            assert page.locator('#navigation button:disabled').count()==7
+            assert page.locator('#navigation button:disabled').count()==0
             assert page.locator('#navigation [data-view="branches"]').count()==0
-            page.get_by_role('button',name='작가용 제작실 열기',exact=True).click()
+            assert page.locator('#open-studio').count()==0
+            assert page.locator('#writing-style').count()==1
+            page.locator('#writing-style summary').click()
+            assert '골격 단계' in page.locator('#writing-style').inner_text()
             assert page.locator('#workspace').is_visible()
             assert page.locator('.stat').count()==4
             assert page.locator('#view-title').evaluate('(e)=>parseFloat(getComputedStyle(e).fontSize)')<=24
@@ -87,7 +90,7 @@ def check(screenshots=None,bundle=None):
                 assert frame.locator('#side-choices button').count() == 0
                 assert frame.locator('.core-outcome').count() > 0
                 for remembered in side_data['stories']:
-                    if remembered['reaction_unit'].startswith(chapter['id']+'/') and remembered['id'] in modes:
+                    if (remembered['reaction_unit'] or '').startswith(chapter['id']+'/') and remembered['id'] in modes:
                         memory = frame.locator(f'[data-side-memory="{remembered["id"]}"]')
                         assert memory.get_attribute('data-mode') == modes[remembered['id']]
                         text = remembered['on_participate' if modes[remembered['id']] == 'take' else 'on_skip']
@@ -101,7 +104,7 @@ def check(screenshots=None,bundle=None):
             frame.locator('#side-prev').click()
             assert frame.locator('#side-choices button').count() == 0
             frame.locator('#side-restart').click()
-            assert frame.locator('#side-progress').inner_text() == '1 / 15장 · 곁가지 0개 선택 · 해결 방법 0개'
+            assert frame.locator('#side-progress').inner_text() == '1 / 15장'
             assert frame.locator('[data-side-memory]').count() == 0
             assert frame.locator('#side-choices button').count() == 2
             # All-skip traversal never asks for a nested method or invents its memory.
@@ -141,56 +144,52 @@ def check(screenshots=None,bundle=None):
                 page.keyboard.press('Escape')
             page.locator('#chapter-select').select_option('chapter09')
             if screenshots:page.screenshot(path=str(screenshots/f'studio-chapter-graph-{width}.png'))
-            page.locator('[data-graph-panel="timeline"]').click()
-            assert page.locator('#chapter-diagram svg').count()==0
-            assert '질문' in page.locator('#chapter-diagram').inner_text()
-            assert '두 봉인을 모두 풀어야 한다' in page.locator('#chapter-diagram').inner_text()
-            assert '늪 속 장치가 있는 동굴부터 찾는다' in page.locator('#chapter-diagram').inner_text()
-            assert page.locator('.tl-parallel-sequence').count()==2
-            assert page.locator('#chapter-diagram .flow-edge').count()==0
-            assert page.locator('[data-flow-node="reaction/side_return_knots_take"]').count()==0
-            pair=page.locator('.tl-variants[data-timeline-group="side_return_knots"]')
-            a=pair.locator('[data-path="side_return_knots/take"]')
-            b=pair.locator('[data-path="side_return_knots/skip"]')
-            if width==390:
-                assert a.is_visible() and not b.is_visible()
-                tabs=pair.locator('..').locator('.timeline-tabs')
-                tabs.locator('[data-timeline-option="side_return_knots/take"]').focus()
-                page.keyboard.press('ArrowRight')
-                assert b.is_visible() and not a.is_visible()
-                assert tabs.locator('[data-timeline-option="side_return_knots/skip"]').get_attribute('aria-selected')=='true'
-                page.keyboard.press('ArrowLeft')
-                assert a.is_visible() and not b.is_visible()
-            else:
-                assert a.is_visible() and b.is_visible()
-                assert abs(a.bounding_box()['y']-b.bounding_box()['y'])<1
-                assert a.bounding_box()['x']!=b.bounding_box()['x']
-            assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
-            node=a
-            node.focus()
-            scroll=page.locator('#chapter-diagram').evaluate('(e)=>[e.scrollTop,e.scrollLeft]')
-            route=page.url
-            page.keyboard.press('Enter')
+            assert page.locator('[data-graph-panel="timeline"]').count()==0
+            assert page.get_by_role('button',name='같은 장의 주요 내용',exact=True).count()==0
+            node=page.locator('#chapter-diagram [data-flow-node="option/side_return_knots/take"]')
+            node.focus();page.keyboard.press('Enter')
             assert node.get_attribute('aria-pressed')=='true'
-            assert page.locator('#chapter-diagram .timeline-cell.is-related').count()==1
-            assert page.url==route
-            assert page.locator('#chapter-diagram').evaluate('(e)=>[e.scrollTop,e.scrollLeft]')==scroll
+            divider=page.locator('#graph-divider')
+            assert divider.is_visible()
+            before=page.locator('#graph-selection').bounding_box()
+            bar=divider.bounding_box()
+            page.mouse.move(bar['x']+bar['width']/2,bar['y']+bar['height']/2)
+            page.mouse.down()
+            if width>900:
+                page.mouse.move(bar['x']-180,bar['y']+bar['height']/2,steps=10)
+            else:
+                page.mouse.move(bar['x']+bar['width']/2,bar['y']-60,steps=10)
+            page.mouse.up()
+            if width>900:
+                assert page.locator('#graph-selection').bounding_box()['width']>before['width']+100
+                assert divider.get_attribute('aria-orientation')=='vertical'
+            else:
+                assert page.locator('#chapter-diagram').bounding_box()['height']<320
+                assert divider.get_attribute('aria-orientation')=='horizontal'
+            divider.focus();value=int(divider.get_attribute('aria-valuenow'))
+            page.keyboard.press('ArrowLeft' if width>900 else 'ArrowUp')
+            assert int(divider.get_attribute('aria-valuenow'))<value
+            saved=divider.get_attribute('aria-valuenow')
+            page.locator('#chapter-select').select_option('chapter08')
+            page.locator('#chapter-diagram [data-node-kind="decision"]').first.focus();page.keyboard.press('Enter')
+            assert page.locator('#graph-divider').get_attribute('aria-valuenow')==saved
+            page.locator('#chapter-select').select_option('chapter09')
+            node=page.locator('#chapter-diagram [data-flow-node="option/side_return_knots/take"]')
+            node.focus();page.keyboard.press('Enter')
+            route=page.url
             target=page.locator('#graph-selection [data-flow-focus="reaction/side_return_knots_take"]')
             assert '10-1' in target.inner_text()
             target.click()
             assert page.locator('#chapter-select').input_value()=='chapter10'
-            assert page.locator('[data-select-node="reaction/side_return_knots_take"]').get_attribute('aria-pressed')=='true'
-            assert '후속 반응' in page.locator('#chapter-diagram').inner_text()
+            assert page.locator('#chapter-diagram [data-flow-node="reaction/side_return_knots_take"]').get_attribute('aria-pressed')=='true'
             page.locator('#graph-selection [data-flow-focus="option/side_return_knots/take"]').click()
             assert page.locator('#chapter-select').input_value()=='chapter09'
-            assert node.get_attribute('aria-pressed')=='true'
-            assert page.locator('#graph-selection .graph-selection-body').inner_text().strip()
             page.locator('#graph-selection [data-source]').click()
             assert 'runtime.plan.json' in page.locator('#source-location').inner_text()
             page.go_back()
             page.locator('#chapter-diagram').wait_for()
             assert page.locator('#graph-selection').is_hidden()
-            node=page.locator('#chapter-diagram [data-select-node="option/side_return_knots/take"]')
+            node=page.locator('#chapter-diagram [data-flow-node="option/side_return_knots/take"]')
             node.focus();page.keyboard.press(' ')
             assert node.get_attribute('aria-pressed')=='true'
             page.keyboard.press('Escape')
@@ -227,30 +226,14 @@ def check(screenshots=None,bundle=None):
             page.locator('#chapter-select').select_option('chapter02')
             assert page.locator('#branch-details .branch-rule').count()==2
             assert '무너진 제빵소의 마지막 자루' in page.locator('#branch-details').inner_text()
-            page.locator('[data-graph-panel="timeline"]').click()
-            assert page.locator('#chapter-select').input_value()=='chapter02'
+            page.locator('[data-graph-panel="diagram"]').click()
             page.locator('#chapter-select').select_option('chapter01')
-            nested=page.locator('[data-choice-group="side_gate_lantern_approach"]')
-            assert nested.count()==2 # question stage and the later two-way memory stage
-            assert all(nested.nth(i).locator('.tl-card').count()==2 for i in range(2))
-            assert page.locator('[data-flow-node$="/bypass"]').count()==0
-            assert '참여 경로' in nested.first.inner_text()
-            nested.first.locator('.tl-nesting [data-flow-focus]').click()
-            assert page.locator('[data-select-node="option/side_gate_lantern/take"]').get_attribute('aria-pressed')=='true'
+            nested=page.locator('#chapter-diagram [data-flow-node="decision/side_gate_lantern_approach"]')
+            assert nested.count()==1
+            nested.focus();page.keyboard.press('Enter')
+            assert page.locator('#graph-selection [data-flow-focus^="option/side_gate_lantern_approach/"]').count()==2
             if screenshots:page.screenshot(path=str(screenshots/f'studio-nested-{width}.png'))
             page.keyboard.press('Escape')
-            page.locator('#chapter-select').select_option('chapter02')
-            if width==390:
-                package=json.loads(page.locator('#studio-data').text_content())
-                shared=next((c,r,card) for c in package['timeline']['chapters'] for r in c['rows'] if r['kind']=='reaction' for card in r['cards'] if 0<len(card['source_options'])<len(package['timeline']['groups'][r['group_id']]['options']))
-                c,r,card=shared;group=package['timeline']['groups'][r['group_id']]
-                page.locator('#chapter-select').select_option(c['chapter_id'])
-                outside=next(o['id'] for o in group['options'] if o['id'] not in card['source_options'])
-                buttons=page.locator('.timeline-tabs').filter(has=page.locator(f'[data-timeline-group="{group["id"]}"]'))
-                buttons.first.locator(f'[data-timeline-option="{outside}"]').click()
-                assert not page.locator(f'[data-flow-node="{card["node_id"]}"]').is_visible()
-                buttons.first.locator(f'[data-timeline-option="{card["source_options"][0]}"]').click()
-                assert page.locator(f'[data-flow-node="{card["node_id"]}"]').is_visible()
             view('order')
             assert page.locator('[data-row-kind="main"]:visible').count()==88
             assert page.locator('[data-row-kind="choice"]:visible').count()==0
@@ -278,10 +261,11 @@ def check(screenshots=None,bundle=None):
             page.locator('#setting-search').fill('매드 조')
             page.locator('[data-setting="characters/mad_joe"]').click()
             basic=page.locator('.fact-grid').first
-            assert basic.locator('.fact-card').count()==7
+            assert set(basic.locator('.fact-card').evaluate_all('(es)=>es.map(e=>e.dataset.field)'))=={'name','age','appearance','species','personality','origin','settings'}
             basic_height=round(basic.bounding_box()['height'],1)
-            assert basic_height<=360,('short facts waste vertical space',width,basic_height)
-            assert all(h<=60 for h in basic.locator('.fact-card').evaluate_all('(es)=>es.map(e=>e.getBoundingClientRect().height)'))
+            short_heights=basic.locator('.fact-card:not(.fact-long)').evaluate_all('(es)=>es.map(e=>e.getBoundingClientRect().height)')
+            assert sum(short_heights)<=360,('short facts waste vertical space',width,short_heights)
+            assert all(h<=60 for h in short_heights)
             assert page.locator('.setting-detail-head').bounding_box()['height']<=90
             assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'),'dense settings overflow'
             assert basic.locator('[data-field="age"] .fact-status').inner_text()==''
@@ -327,19 +311,28 @@ def check(screenshots=None,bundle=None):
             deep=browser.new_page(viewport={'width':width,'height':height})
             deep.set_content(path.read_text(encoding='utf-8'))
             deep.evaluate('location.hash="#/settings?category=equipment&item=equipment%2Fstory_bow"')
-            deep.locator('#open-studio').click()
+            deep.locator('.setting-detail-head h2').wait_for()
             assert deep.locator('.setting-detail-head h2').inner_text()=='사냥 활'
             assert deep.locator('#setting-category').input_value()=='equipment'
             deep.close()
             legacy=browser.new_page(viewport={'width':width,'height':height})
             legacy.set_content(path.read_text(encoding='utf-8'))
             legacy.evaluate('location.hash="#/branches?chapter=chapter09"')
-            legacy.locator('#open-studio').click()
+            legacy.locator('#branch-details').wait_for()
             assert legacy.locator('[data-graph-panel="rules"][aria-pressed="true"]').is_visible()
             assert legacy.locator('#chapter-select').input_value()=='chapter09'
-            assert '#/graph?' in legacy.url
             legacy.close()
-            report.append({'width':width,'views':7,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'side_chapters_checked':15,'side_memory_checked':True,'side_next_gate':True,'source_json_download':True,'browser_back_forward':True,'comparison_timeline':True,'no_default_edges':True,'mobile_path_tabs':True,'parallel_orders_preserved':True,'cross_chapter_actual_timing':True,'graph_link_focus':True,'unified_branch_details':True,'legacy_branch_bookmark':True,'compact_type':True,'dense_basic_height':basic_height,'evidence_keyboard_toggle':True})
+            lord=browser.new_page(viewport={'width':width,'height':height})
+            lord.set_content(path.read_text(encoding='utf-8'))
+            lord.evaluate('location.hash="#/settings?item=characters%2Flord_ahn"')
+            lord.locator('#setting-detail h2').wait_for()
+            assert lord.locator('#setting-detail h2').inner_text()=='동욱'
+            assert 'Lord Ahn' in lord.locator('.setting-identity').inner_text()
+            assert '소설용 이름' in lord.locator('.setting-content').inner_text()
+            assert lord.locator('.setting-content [data-field="age"]').count()==1
+            assert '출신' in lord.locator('.setting-content').inner_text()
+            lord.close()
+            report.append({'width':width,'views':7,'external_requests':len(requests),'errors':len(errors),'reading_interaction':True,'side_chapters_checked':15,'side_memory_checked':True,'side_next_gate':True,'source_json_download':True,'browser_back_forward':True,'resizable_graph_details':True,'direct_entry':True,'shared_style':True,'parallel_orders_preserved':True,'cross_chapter_actual_timing':True,'graph_link_focus':True,'unified_branch_details':True,'legacy_branch_bookmark':True,'compact_type':True,'dense_basic_height':basic_height,'evidence_keyboard_toggle':True})
             page.close()
         browser.close()
     return report

@@ -145,7 +145,7 @@ class PublicationFlowTests(unittest.TestCase):
 
     def test_13_all_dotted_svg_routes_are_orthogonal_and_avoid_box_interiors(self):
         ns={'s':'http://www.w3.org/2000/svg'}
-        checked=0
+        checked=0;direct=0
         for chart in self.flow.charts:
             svg=ET.fromstring(self.flow.svg(chart['node_ids']))
             width,height=map(float,(svg.attrib['width'],svg.attrib['height']))
@@ -159,6 +159,7 @@ class PublicationFlowTests(unittest.TestCase):
                 path=group.find('s:path',ns)
                 if 'stroke-dasharray' not in path.attrib:continue
                 checked+=1;d=path.attrib['d'];self.assertNotRegex(d,r'[CLQ]')
+                if group.attrib.get('data-edge-kind')=='reaction' and ' H' not in d:direct+=1
                 points=[];x=y=0
                 for command,value in re.findall(r'([MVH])([^MVH]+)',d):
                     values=list(map(float,value.split()))
@@ -174,6 +175,7 @@ class PublicationFlowTests(unittest.TestCase):
                         horizontal=y==yy and by<y<by+bh and max(min(x,xx),bx)<min(max(x,xx),bx+bw)
                         self.assertFalse(vertical or horizontal,(chart['id'],group.attrib,d,(bx,by,bw,bh)))
         self.assertGreater(checked,10)
+        self.assertGreater(direct,0)
 
     def test_14_timeline_covers_all_main_choice_and_reaction_nodes_at_real_stages(self):
         timeline=self.flow.graph['timeline'];nodes={n['id']:n for n in self.flow.nodes}

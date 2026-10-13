@@ -49,6 +49,12 @@ class WritingTest(unittest.TestCase):
     def test_shared_templates_have_no_reader_prose_or_inventory(self):
         template = read(WRITING/'templates/quest.template.json')
         memory = read(WRITING/'templates/continuity.template.json')
+        # Like new-quest, bind the empty reusable template to current references;
+        # fixed pins in old drafts must still report their review requirements.
+        memory['character_registry_revision']=self.profiles['revision']
+        for contract in memory['contracts'].values():
+            for dependency in contract['character_dependencies']:
+                dependency['revision']=self.profiles['characters'][dependency['character_id']]['revision']
         validate(template)
         self.assertEqual(validate_continuity(template,memory,read(CANON)),[])
         packet = context(template,memory,read(CANON),[],self.profiles)
@@ -155,6 +161,10 @@ class WritingTest(unittest.TestCase):
         before = archival(quote,self.raw)
         data = copy.deepcopy(self.data)
         data['characters']['lord_ahn']['writing_name'] = {'value':'새성주'}
+        self.assertIn('동욱',render(quote,data,self.raw,author=True))
+        data['characters']['lord_ahn']['writing_overrides']['name']['value']='새성주'
+        self.assertIn('새성주',render(quote,data,self.raw,author=True))
+        data['characters']['lord_ahn']['writing_overrides']['name']['value']=None
         self.assertIn('새성주',render(quote,data,self.raw,author=True))
         self.assertIn('Lord Ahn',before)
         self.assertEqual(archival(quote,self.raw),before)

@@ -136,6 +136,10 @@ def project_character(document, key, reveals=()):
               "source_excerpts":[], "master_visibility":"author_only", "hidden_information_policy":"do_not_assert_or_guess"}
     if 'writing_name' in p and (open_ or d['public_display_name']==p['writing_name']['value']):
         result['writing_name'] = copy.deepcopy(p['writing_name'])
+    if open_ and p.get('writing_overrides'):
+        result['writing_overrides'] = copy.deepcopy(p['writing_overrides'])
+    elif d['public_id']==key and (identity_public or d['public_display_name']==p.get('writing_name',{}).get('value')) and p.get('writing_overrides', {}).get('name', {}).get('value') is not None:
+        result['writing_overrides'] = {'name':copy.deepcopy(p['writing_overrides']['name'])}
     # Never forward whole notes, aliases, raw excerpts or the secret disclosure rules.
     for relation in p["relationships"]:
         release = relation["disclosure"]

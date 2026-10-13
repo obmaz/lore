@@ -10,7 +10,7 @@ import jsonschema
 
 from materials import ROOT, read
 from publication_flow import PublicationFlow
-from export_reference import character_html, claim_table, relation_html, title_of, value_html, LABELS, evidence_html
+from export_reference import character_html, claim_table, relation_html, title_of, value_html, LABELS, evidence_html, writing_claims
 from text_refs import validate_names
 
 PLAN = ROOT/'writing/studio/studio.plan.json'
@@ -81,7 +81,7 @@ def readable_claims(claims):
         label=LABELS.get(claim['field'],claim['field'])
         value=claim.get('value');kind_label=LABELS.get(kind,kind)
         status_label=LABELS.get(claim.get('status','confirmed'),claim.get('status','confirmed'))
-        narrative_fields={'appearance','temperament','voice','goal','story_role','recruitment','conditions','effect','reference_usage','prophecy_testimony','mechanical_scope'}
+        narrative_fields={'appearance','personality','temperament','voice','goal','story_role','recruitment','conditions','effect','reference_usage','prophecy_testimony','mechanical_scope'}
         long_value=isinstance(value,(dict,list)) or isinstance(value,str) and (len(value)>24 or '\n' in value or claim['field'] in narrative_fields)
         # Unknown/null is already visible as the value. Keep its full provenance
         # in the disclosure instead of repeating "미상" three times in the row.
@@ -205,10 +205,12 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
         title = profile['display_name'] if '(사칭자)' in profile['display_name'] else names[key]
         settings.append({'id':'characters/'+key, 'category':'characters', 'title':title,
                          'original':profile['canonical_name']['value'] or '', 'html':body,
-                         'sections':{'핵심 설정':readable_claims([*([profile['writing_name']] if 'writing_name' in profile else []),profile['korean_name'],*profile['biography'].values()])
-                                     +''.join('<h3>'+heading+'</h3>'+readable_claims(profile['writing'][field]) for field,heading in [('traits','성향'),('speech','말투'),('goals','목표')])
+                         'sections':{'핵심 설정':'<h3>소설용 설정 · 대체값 우선</h3>'+readable_claims(writing_claims(profile))
+                                     +readable_claims([profile['biography'][f] for f in ('gender','occupation','alignment')])
+                                     +''.join('<h3>'+heading+'</h3>'+readable_claims(profile['writing'][field]) for field,heading in [('speech','말투'),('goals','목표')])
                                      +'<h3>장비·기술 참조</h3>'+value_html(profile['resource_refs']),
-                                     '원작 정보':readable_claims(profile['source_facts']),
+                                     '원작 정보':'<h3>원작 이름 · 기존 카드</h3>'+readable_claims([dict(profile['canonical_name'],field='original_name'),profile['korean_name'],*profile['biography'].values()])
+                                      +readable_claims(profile['source_facts'])+readable_claims(profile['writing']['traits']),
                                      '관계 · 공개':''.join(relation_html(r,names,checkpoints) for r in profile['relationships'])
                                       +'<h3>공개 정책</h3>'+value_html({'독자에게 보이는 이름':profile['disclosure']['public_display_name'],'공개용 ID':profile['disclosure']['public_id'],'정보가 열리는 사건':profile['disclosure']['after_events']})
                                       +'<details class="fact-evidence"><summary>필드별 상세 공개 조건 · 원본 정책</summary>'+value_html(profile['disclosure'])+'</details>'
@@ -274,10 +276,15 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
         graph_details[node['id']]={'label':session.display(node['label_rich_text']),
             'chapter_id':node['chapter_id'],'kind':node['kind'],'location':publication.unit_numbers.get(node['unit_id'],'제'+str(next(c['number'] for c in chapters if c['id']==node['chapter_id']))+'장'),
             'body':body,'source_ref':content_ref,
-            'options':[{'id':o['id'],'label':session.display(o['label'])} for o in rule.get('options',[])],
+            'options':[{'id':o['id'],'label':session.display(o['label'])} for o in rule.get('options',[]) if not o['id'].endswith('/bypass')],
             'rules':{k:rule[k] for k in ('when','participants','requires_units','effects','rejoin_before','origin','metadata') if k in rule}}
         if node['kind']=='unit':
             graph_details[node['id']]['logic']={k:session.display(v) for k,v in session.units[node['unit_id']].get('logic',{}).items()}
+        if node['kind'] in ('decision','option'):
+            did=node['id'].split('/')[1]
+            side=session.story_by_decision.get(did) or session.approach_by_decision.get(did)
+            if side:
+                graph_details[node['id']]['follow_up_unit']=side['reaction_unit']
     data = {'version':1,'status':'draft','visibility':'author_only','source_policy':plan['source_policy'],
             'origin':'authored','metadata':plan['metadata'],'plan':plan,'report':publication.report,
             'chapters':chapters,'documents':documents,'settings':settings,'editions':[*core_publication.editions['editions'],*publication.editions['editions']],

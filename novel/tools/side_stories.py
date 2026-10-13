@@ -62,9 +62,9 @@ class SideStorySession(BranchSession):
                     if ref.get('catalog') == 'equipment' and (ref['id'] not in stable_equipment or stable_equipment[ref['id']] in touched):
                         raise ValueError('side weapon prose needs review against current core equipment')
             anchor, target = story['anchor_unit'], story['reaction_unit']
-            if anchor not in units or target not in units or not anchor.startswith(story['chapter_id']+'/'):
+            if anchor not in units or (target is not None and target not in units) or not anchor.startswith(story['chapter_id']+'/'):
                 raise ValueError('side story has an unknown or foreign anchor')
-            if anchor in parallel or sequence.index(target)<=sequence.index(anchor) or units[anchor]['reading_next'] is None:
+            if anchor in parallel or (target is not None and sequence.index(target)<=sequence.index(anchor)) or units[anchor]['reading_next'] is None:
                 raise ValueError('side story must rejoin a following main unit outside parallel blocks')
             meta = copy.deepcopy(story['metadata'])
             state, did = 'side.'+story['id'], 'side_'+story['id']
@@ -81,10 +81,13 @@ class SideStorySession(BranchSession):
             decision['options'] = []
             for mode, completed in [('take',True),('skip',False)]:
                 body = 'participate' if completed else 'skip'
-                decision['options'].append({'id':did+'/'+mode,'label':story[body+'_label'],'body':story[body],
+                prose=copy.deepcopy(story[body])
+                if target is None and (not completed or 'approach' not in story):
+                    prose += [{'text':'\n\n'}]+story['on_participate' if completed else 'on_skip']
+                decision['options'].append({'id':did+'/'+mode,'label':story[body+'_label'],'body':prose,
                     'when':True,'participants':[],'effects':[{'state':state,'op':'set','value':completed,'origin':'authored','metadata':meta}],
                     'origin':'authored','metadata':meta})
-                if not completed or 'approach' not in story:
+                if target is not None and (not completed or 'approach' not in story):
                     merged['reactions'].append({'id':did+'_'+mode,'unit_id':target,'when':{'op':'eq','state':state,'value':completed},
                         'participants':[],'requires_units':[anchor],'text':story['on_participate' if completed else 'on_skip'],
                         'origin':'authored','metadata':meta})
@@ -96,13 +99,16 @@ class SideStorySession(BranchSession):
                 approach=copy.deepcopy(decision)
                 approach.update(id=aid,prompt=story['approach']['prompt'],options=[])
                 for index,option in enumerate(story['approach']['options']):
-                    approach['options'].append({'id':aid+'/'+option['id'],'label':option['label'],'body':option['body'],
+                    prose=copy.deepcopy(option['body'])
+                    if target is None:prose += [{'text':'\n\n'}]+option['reaction']
+                    approach['options'].append({'id':aid+'/'+option['id'],'label':option['label'],'body':prose,
                         'when':{'op':'eq','state':state,'value':True},'participants':[],
                         'effects':[{'state':memory,'op':'set','value':bool(index),'origin':'authored','metadata':meta}],
                         'origin':'authored','metadata':meta})
-                    merged['reactions'].append({'id':aid+'_'+option['id'],'unit_id':target,
-                        'when':{'all':[{'op':'eq','state':state,'value':True},{'op':'eq','state':memory,'value':bool(index)}]},
-                        'participants':[],'requires_units':[anchor],'text':option['reaction'],'origin':'authored','metadata':meta})
+                    if target is not None:
+                        merged['reactions'].append({'id':aid+'_'+option['id'],'unit_id':target,
+                            'when':{'all':[{'op':'eq','state':state,'value':True},{'op':'eq','state':memory,'value':bool(index)}]},
+                            'participants':[],'requires_units':[anchor],'text':option['reaction'],'origin':'authored','metadata':meta})
                 # One available option is automatic in the existing core engine.
                 # This bypass is a technical trace, never a reader question.
                 approach['options'].append({'id':aid+'/bypass','label':[{'text':'자동 연결 · 참여하지 않은 곁가지'}],
@@ -200,7 +206,9 @@ class SideStorySession(BranchSession):
                         expected=nested['decision_id']+'_'+nested['id'].rsplit('/',1)[1]
                     elif nested['kind']!='automatic' or not nested['id'].endswith('/bypass'):
                         raise ValueError('nested story appeared under a skipped parent')
-                if len(matches)!=1 or matches[0]['id']!=expected or matches[0]['unit_id']!=story['reaction_unit']:
+                if story['reaction_unit'] is None:
+                    if matches:raise ValueError('self-contained story invented a later callback')
+                elif len(matches)!=1 or matches[0]['id']!=expected or matches[0]['unit_id']!=story['reaction_unit']:
                     raise ValueError('side experience leaked, was omitted or used the wrong callback')
         if witnessed_options!={o['id'] for d in self.plan['decisions'] for o in d['options']}:
             raise ValueError('a declared option lacks a complete runtime witness')
@@ -208,6 +216,8 @@ class SideStorySession(BranchSession):
         return {'chapters':len({s['chapter_id'] for s in self.stories}),'side_stories':len(self.stories),
             'side_decisions':len(self.stories)+nested,'side_options':2*len(self.stories)+3*nested,
             'reader_side_options':2*len(self.stories)+2*nested,'nested_decisions':nested,'automatic_bypasses':nested,
+            'self_contained_stories':sum(s['reaction_unit'] is None for s in self.stories),
+            'cross_chapter_callbacks':sum(s['reaction_unit'] is not None and not s['reaction_unit'].startswith(s['chapter_id']+'/') for s in self.stories),
             'core_complete_paths':len(self.core_routes),'witness_paths_checked':len(self.validation_routes),
             'projected_complete_paths':len(self.core_routes)*2**(len(self.stories)-nested)*3**nested,'cartesian_paths_enumerated':False,
             'mechanical_main_projection_preserved':True,'validation_strategy':'isolated parent and gated approach booleans + exhaustive core projections + paired, mixed and each nested alternative witnesses',
@@ -224,13 +234,14 @@ class SidePublicationFlow(PublicationFlow):
         for did,s in session.story_by_decision.items():
             plan['decision_titles'][did]=s['title']
             for mode,label in [('take','참여한 경험'),('skip','지나친 경험')]:
-                if mode=='skip' or 'approach' not in s:
+                if s['reaction_unit'] is not None and (mode=='skip' or 'approach' not in s):
                     plan['reaction_titles'][did+'_'+mode]=[*s['title'],{'text':' · '+label}]
             if 'approach' in s:
                 aid=did+'_approach'
                 plan['decision_titles'][aid]=[*s['title'],{'text':' · 해결 방법'}]
-                for option in s['approach']['options']:
-                    plan['reaction_titles'][aid+'_'+option['id']]=[*s['title'],{'text':' · '},*option['label']]
+                if s['reaction_unit'] is not None:
+                    for option in s['approach']['options']:
+                        plan['reaction_titles'][aid+'_'+option['id']]=[*s['title'],{'text':' · '},*option['label']]
         plan['linear_editions']=[{**edition,'id':edition['id']+'-sides-'+mode,
             'manual_route':session.expand_route(edition['manual_route'],mode),
             'note':edition['note']+' 곁가지 '+('참여' if mode=='take' else '거절')+'를 포함한 별도 편집 예시.'}

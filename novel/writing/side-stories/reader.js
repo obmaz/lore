@@ -16,7 +16,7 @@
       for(const story of data.stories.filter(s=>s.reaction_unit===unit.id && Object.hasOwn(choices,s.id))){
         const mode=choices[story.id], approach=story.approach?.options.find(o=>o.id===approaches[story.id]);
         const body=mode==='skip'?story.on_skip:approach?approach.reaction:story.on_participate;
-        text+='<section class="side-memory" data-side-memory="'+escape(story.id)+'" data-mode="'+mode+'" data-approach="'+escape(approach?.id||'')+'"><p class="side-badge">곁가지의 후속 반응 · 창작 초고</p>'+paragraphs(body)+'</section>';
+        text+='<section class="side-memory" data-side-memory="'+escape(story.id)+'" data-mode="'+mode+'" data-approach="'+escape(approach?.id||'')+'"><p class="side-badge">앞선 선택이 이어지는 장면 · 창작 초고</p>'+paragraphs(body)+'</section>';
       }
       for(const block of unit.blocks.filter(b=>['choice','automatic'].includes(b.kind)))text+=paragraphs(block.text);
       for(const story of data.stories.filter(s=>s.anchor_unit===unit.id)){
@@ -25,11 +25,13 @@
         const mode=choices[story.id];
         text+='<p class="side-badge">선택: '+escape(story[mode==='take'?'participate_label':'skip_label'])+'</p>'+paragraphs(story[mode==='take'?'participate':'skip']);
         if(mode==='take'&&story.approach){
-          text+='<div class="side-approach" data-side-approach="'+escape(story.id)+'"><p class="side-badge">참여한 경우만 · 해결 방법 선택</p>'+paragraphs(story.approach.prompt);
+          text+='<div class="side-approach" data-side-approach="'+escape(story.id)+'"><p class="side-badge">이 만남의 다음 선택</p>'+paragraphs(story.approach.prompt);
           const selected=story.approach.options.find(o=>o.id===approaches[story.id]);
           if(!selected){pending={story,kind:'approach'};text+='</div></section>';break units;}
           text+='<p class="side-badge">선택: '+escape(selected.label)+'</p>'+paragraphs(selected.body)+'</div>';
+          if(story.reaction_unit===null)text+=paragraphs(selected.reaction);
         }
+        if(story.reaction_unit===null&&(mode==='skip'||!story.approach))text+=paragraphs(mode==='take'?story.on_participate:story.on_skip);
         text+='</section>';
       }
       for(const block of unit.blocks.filter(b=>b.kind==='outcome'))text+='<p class="core-outcome"><small>필수 본줄기 결과 · '+escape(block.text)+'</small></p>';
@@ -39,7 +41,7 @@
     $('side-choices').innerHTML=options.map(o=>'<button type="button" data-side-choice="'+escape(o.id)+'" data-choice-kind="'+pending.kind+'" data-story="'+escape(pending.story.id)+'">'+escape(o.label)+'</button>').join('');
     $('side-next').hidden=!!pending||chapterIndex===data.chapters.length-1;
     $('side-prev').disabled=chapterIndex===0;
-    $('side-progress').textContent=chapter.number+' / '+data.chapters.length+'장 · 곁가지 '+Object.keys(choices).length+'개 선택 · 해결 방법 '+Object.keys(approaches).length+'개';
+    $('side-progress').textContent=chapter.number+' / '+data.chapters.length+'장';
     if(!pending&&chapterIndex===data.chapters.length-1)$('side-content').insertAdjacentHTML('beforeend','<p class="notice" id="side-complete">모든 장의 필수 본줄기와 선택한 곁가지를 표시했습니다. 실제 읽음이나 본문·원문 전체의 출판 승인을 뜻하지 않습니다.</p>');
   }
   document.addEventListener('click',event=>{

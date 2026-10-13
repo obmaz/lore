@@ -14,6 +14,7 @@ TEMPLATE = ROOT / "tools/reference.template.html"
 OUTPUT = ROOT / "exports"
 LABELS = {
     "writing_name":"집필 이름 · 추가 설정", "korean_name":"한국어 음역",
+    "name":"소설용 이름", "original_name":"원작 이름", "personality":"성격", "origin":"출신", "settings":"추가 설정",
     "age":"나이", "gender":"성별", "species":"종족", "occupation":"직업",
     "appearance":"외모", "alignment":"윤리적 성향", "temperament":"성향",
     "voice":"말투", "goal":"목표", "story_role":"원작 역할", "recruitment":"영입",
@@ -75,10 +76,35 @@ def claim_table(claims):
 
 
 def title_of(profile):
+    replacement=profile.get('writing_overrides',{}).get('name',{}).get('value')
+    if replacement is not None:
+        return replacement
     if profile.get('writing_name',{}).get('value'):
         return profile['writing_name']['value']
     name = profile.get('korean_name')
     return (name.get('value') if isinstance(name,dict) else name) or profile['display_name']
+
+
+def writing_claims(profile):
+    """Keep each effective writing value paired with its original provenance."""
+    rows=[]
+    for field in ('name','age','appearance','species','personality','origin','settings'):
+        override=profile.get('writing_overrides',{}).get(field)
+        if override and override['value'] is not None:
+            claims=[override]
+        elif field=='name':
+            claims=[next((c for c in (profile.get('writing_name'),profile.get('korean_name'),profile.get('canonical_name'))
+                          if isinstance(c,dict) and c.get('value') is not None),None)]
+        elif field=='personality':
+            claims=profile['writing']['traits']
+        else:
+            claims=[profile['biography'].get(field)]
+        if not claims or claims==[None]:
+            claims=[{'value':None,'origin':'unknown','status':'unknown','evidence':[],
+                     'metadata':{'addition':False,'kind':'unknown','note':'대체값과 기존 카드 값이 없어 미정이다.',
+                                 'knowledge_policy':'author_reference_not_character_knowledge'}}]
+        rows.extend(dict(c,field=field) for c in claims)
+    return rows
 
 
 def relation_html(relation, names, checkpoints=None):
@@ -108,6 +134,7 @@ def character_html(key, profile, names, checkpoints=None):
     body = claim_table(list(profile['biography'].values()))
     if master:
         body = claim_table([*([profile['writing_name']] if 'writing_name' in profile else []),profile['korean_name']])+body
+        body = '<h4>소설용 대체 항목</h4>'+claim_table(writing_claims(profile))+body
     body += '<h4>원작 정보</h4>'+claim_table(profile['source_facts'])
     for field, title in [('traits','성향'),('speech','말투'),('goals','목표')]:
         body += f'<h4>{title}</h4>'+claim_table(profile['writing'][field])

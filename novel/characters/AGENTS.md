@@ -4,7 +4,10 @@
 [README](README.md), 공통 메타데이터·참조 규칙은 [상위 AGENTS](../AGENTS.md)에 둔다.
 
 - 상위 메타데이터 규칙을 관계·동기·복선에도 적용한다. 추론과 창작은 `proposed`다.
-- 새 집필 이름은 `reference/names.json`에서 편집하고 `writing_name` claim으로
+- 인물의 소설용 이름·나이·외모·종족·성격·출신·설정은 `writing_overrides`를 우선 조회한다.
+  대체값은 `reference/analysis.json`에서 편집하며 없거나 `null`인 항목은 기존 카드로 되돌아간다.
+  원본에 없는 항목도 창작 메타데이터를 가진 대체값으로 추가할 수 있다. 공개 필터는 대체값에도 적용한다.
+- 기존 집필 이름은 `reference/names.json`에서 편집하고 `writing_name` claim으로
   생성한다. 원작 이름·음역을 덮어쓰지 않고 고정 본문에도 복사하지 않는다.
   숨긴 정체의 새 이름은 기존 중립 공개명/공개 체크포인트를 우회할 수 없다.
 - `registry.json`은 전편 진상이 들어 있는 **작가 전용 원본**이다. 접근 권한을

@@ -474,11 +474,18 @@ class PublicationFlow:
         esc = html.escape
         marker = 'arrow-'+hashlib.sha256('|'.join(keys).encode()).hexdigest()[:12]
         # Greedy interval tracks reuse a rail when its vertical span is free.
-        # All long dotted connectors run outside every box, in row gutters.
-        routes={};rails=[]
+        # Adjacent aligned boxes connect vertically. Only blocked spans detour.
+        routes={};rails=[];rail_positions={}
         for index,e in sorted(enumerate(edges),key=lambda item:(row_bottom[item[1]['from']],positions[item[1]['to']][1],item[0])):
             if not (e['kind'].startswith('reaction') or e['kind']=='influence'):continue
             x,y=positions[e['from']];xx,yy=positions[e['to']]
+            bottom=y+box_heights[e['from']]
+            blocked=any(key not in (e['from'],e['to']) and px-140<x<px+140
+                        and max(bottom,py)<min(yy,py+box_heights[key])
+                        for key,(px,py) in positions.items())
+            if e['kind']!='influence' and x==xx and yy>=bottom and not blocked:
+                routes[index]=f'M{x} {bottom} V{yy}'
+                continue
             a,b=row_bottom[e['from']]+12,yy-12
             short=e['kind']!='influence' and x!=xx and b>=a and b-a<=24
             if short:
@@ -488,9 +495,12 @@ class PublicationFlow:
             lane=next((i for i,end in enumerate(rails) if end<interval[0]),len(rails))
             if lane==len(rails):rails.append(interval[1])
             else:rails[lane]=interval[1]
-            rail=max(px+140 for px,_ in positions.values())+36+lane*26
+            nearby=[px+140 for key,(px,py) in positions.items()
+                    if max(interval[0],py)<=min(interval[1],py+box_heights[key])]
+            rail=max(x+140,xx+140,*nearby)+24+lane*20
+            rail_positions[index]=rail
             routes[index]=f'M{x} {y+box_heights[e["from"]]} V{a} H{rail} V{b} H{xx} V{yy}'
-        width=max(width,max(px+140 for px,_ in positions.values())+72+max(0,len(rails)-1)*26) if rails else width
+        width=max(width,max(rail_positions.values(),default=0)+24)
         link_ids={id(e):f'L{i:02}' for i,e in enumerate((e for e in self.edges if e['kind']=='influence'),1)}
         out = [f'<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="소제목과 분기 흐름도" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
                f'<defs><marker id="{marker}" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#607269"/></marker><marker id="{marker}-memory" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#85629b"/></marker></defs>']
@@ -505,7 +515,7 @@ class PublicationFlow:
             title=link+' · '+self.caption(nodes[e['from']])+' → '+self.caption(nodes[e['to']])
             out.append(f'<g class="flow-edge" data-edge-kind="{e["kind"]}" data-from="{esc(e["from"],quote=True)}" data-to="{esc(e["to"],quote=True)}" data-link="{link}"><title>{esc(title)}</title><path d="{path}" fill="none" stroke="{color}" stroke-width="1.5"{dashed} marker-end="url(#{arrow})"/>')
             if link:
-                rail=float(path.split(' H')[1].split()[0])
+                rail=rail_positions[index]
                 for tag_y in (row_bottom[e['from']]+12,yy-12):
                     out.append(f'<rect x="{rail-11}" y="{tag_y-13}" width="22" height="13" rx="3" fill="#fff"/><text x="{rail}" y="{tag_y-3}" text-anchor="middle" font-size="9" fill="#78558e">{link}</text>')
             out.append('</g>')

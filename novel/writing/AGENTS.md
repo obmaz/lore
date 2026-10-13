@@ -9,6 +9,10 @@
 
 ## 구성과 작업 단위
 
+- 매 집필·재집필 전에 `project.json`의 `viewpoint`, `tone`, `style`을 읽고 따른다.
+  문체의 단일 원본은 이 파일이며 별도 지침에 문체를 복제하지 않는다. 골격 작업은
+  `style.stage_policy.outline`, 상세 산문은 `style.stage_policy.prose`를 적용한다.
+  인계 메모에 적용한 `style.revision`을 기록한다. 기준을 바꿔도 기존 원고는 자동 재집필하지 않는다.
 - 공용 `templates/`로 큰 구성 → 큰 이야기 검토 → 소단락 주요 내용 → 의미 있는 분기 →
   장면·소편 → 본문 순으로 작성한다. 전체 세부 문장을 미리 확정하지 않는다.
 - 기본 작업량은 한 소편이다. 여러 소편을 명시적으로 요청하지 않으면 한 소편을 집필하고
@@ -54,7 +58,9 @@
 ## 원문·설정·연속성
 
 - 제목·본문·대사·선택지의 이름·장비·마법·지명은 구조화된 `ref`를 쓴다. 안정된 ID를 개명하지 않는다.
-  표시명은 `../reference/names.json`에서 관리한다. 이름 문자열 복사·치환·`reference_text` 해제로 우회하지 않는다.
+  인물은 `writing_overrides`를 우선 적용하고 없는 값만 기존 카드로 되돌아간다. 대체값은
+  `../reference/analysis.json`, 기존 표시명은 `../reference/names.json`에서 관리한다.
+  이름 문자열 복사·치환·`reference_text` 해제로 우회하지 않는다.
 - 원문 대사는 순서 있는 `source.literal_ids`, 이름 위치는 원문 기준 `start/end`와 `ref`로 연결한다.
   같은 원문 이름의 가짜/진짜 인물은 사건 근거로 구별한다. 보존 원문을 개명 목적으로 수정하지 않는다.
 - `source_exact`는 보존 원문이고 표시명 치환 읽기본은 `source_adaptation`이다.
