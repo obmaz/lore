@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "category": "abilities",
   "items": {
     "magic_1": {
@@ -1882,7 +1882,7 @@
       ]
     },
     "magic_19": {
-      "revision": 1,
+      "revision": 2,
       "category": "healing",
       "original_name": {
         "field": "original_name",
@@ -1981,7 +1981,20 @@
           }
         }
       ],
-      "character_ids": []
+      "character_ids": [],
+      "writing_name": {
+        "field": "writing_name",
+        "value": "한 명 치료",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "교정 1: 원작 한명 치료의 집필 표시명만 띄어 쓴다. 원문 이름·마법 ID·소모·효과·대상 수는 그대로 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "magic_20": {
       "revision": 1,

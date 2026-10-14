@@ -17,13 +17,13 @@
     "authored_cover_asset": 4,
     "compiled_reference": 5,
     "configuration": 2,
-    "editable_authoring_input": 43,
+    "editable_authoring_input": 44,
     "generated_inventory": 1,
     "generated_reading": 44,
     "immutable_source_snapshot": 25,
     "schema": 21,
     "shared_template": 10,
-    "test": 31,
+    "test": 32,
     "tool": 35,
     "ui_source": 6,
     "usage_documentation": 18,
@@ -510,6 +510,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_copyedit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_project_structure.py"
         },
         {
@@ -567,6 +571,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/script-overrides/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
         }
       ],
       "automatic_deletion": false
@@ -1672,6 +1680,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_copyedit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/project_audit.py"
         }
       ],
@@ -2187,6 +2199,17 @@
     },
     {
       "file": "tests/test_characters.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_copyedit.py",
       "role": "test",
       "consumers": [
         {
@@ -2963,6 +2986,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_copyedit.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_ebook.py"
         },
         {
@@ -3214,6 +3241,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_copyedit.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_ebook.py"
         },
         {
@@ -3461,6 +3492,10 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_copyedit.py"
         },
         {
           "kind": "python_import",
@@ -4150,6 +4185,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_chapter_subsections.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_copyedit.py"
         },
         {
           "kind": "python_import",
@@ -6397,6 +6436,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_copyedit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_ebook.py"
         },
         {
@@ -7684,6 +7727,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_copyedit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_project_structure.py"
         },
         {
@@ -7741,6 +7788,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/script-overrides/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
         }
       ],
       "automatic_deletion": false
@@ -9499,6 +9550,29 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_prose_series.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/variants/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/variants/B/copyedit-review.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_copyedit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",

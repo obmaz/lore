@@ -13,15 +13,15 @@
     "tools/text_refs.py": "9fcefc229ed9a369f4e681d4177d3f1e8c8907a57e5611c3a48a114590980507",
     "tools/story_continuity.py": "7cca2c56f1df8dc977612b51fd6fb0630cc8e0ae09489d6a736df5e8c6089599",
     "characters/registry.json": "b4115f8048537721e0e5f3210ec88b87e68a2d596b51e860583e53ba5532d174",
-    "reference/names.json": "2fb45df00f9a8361eb6cdf9eea9335cb710334363e7a149cf7a8d080cd179ab6",
-    "reference/terms.json": "f0e22730eda2f7a2e13d8e4e750999827780fe91fd32a30f3b86ed281ae21d0b",
+    "reference/names.json": "8d770bef5f29bb2e85a97a0a69f023de29270d59e02ee1eda1e601d2092913b9",
+    "reference/terms.json": "35334576ff729738799def0de33fa0da3ad8b94e12b73da2321fa0dd0c252d3b",
     "reference/equipment.json": "8bc36e5009643d9684f7d40aa4a83ac7038dd185369ab05d45fb6400d63c46b1",
-    "reference/abilities.json": "fa6f36f6a77f18a459a27f7aee9380bd5a64d0f2281d0c7639eb53bacf04052b",
+    "reference/abilities.json": "d2b9ee8737a13f1577fc8f716a75341affeccde08791efbf7d1b6ddb57e25c15",
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe"
   },
   "artifacts": {
     "flow.graph.json": "936f239a60679bbda33f918bd9e65b2c16a7b5d4a15128fb74d790ae2ecc192b",
-    "linear-editions.json": "e2e7b7e88835adf39c1ef816d45b4e8618ee65416fd2c405755208c435371e99",
+    "linear-editions.json": "b226fef3995eb694bdabfd41961d995836e3cbf305b42600f9e268747ac69ad9",
     "flow.md": "618e724c1b946b9bfb9767a4d90e24c28ab762dcbc258a4f05b6a3187cb5d5c8",
     "flow.html": "27e1bad0925d995e5c495eddc8573a99d63e5f78b0c0d27ad123e9a5964cc946",
     "coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746"

@@ -937,6 +937,17 @@
         }
       }
     },
+    "zombie": {
+      "original_name": {
+        "field": "original_name", "value": "Zombie", "origin": "source_exact", "status": "confirmed",
+        "evidence": [{"file": "LORESPEC.PAS", "line_start": 951, "line_end": 951}],
+        "metadata": {"addition": false, "kind": "none", "note": "원작에서 적에게 지정한 이름만 참조한다. 능력·나이·수·외모·종족 설정을 이 이름으로 추정하지 않는다.", "knowledge_policy": "author_reference_not_character_knowledge"}
+      },
+      "korean_name": {
+        "field": "korean_name", "value": "좀비", "origin": "authored", "status": "proposed", "evidence": [],
+        "metadata": {"addition": true, "kind": "transliteration", "note": "추가: 3장 의뢰 대사에 이미 나온 Zombie를 읽기용 한국어 음역으로 표기한다. 보존 원문·이름 발생·사건·전투 수치는 변경하지 않는다.", "knowledge_policy": "author_reference_not_character_knowledge"}
+      }
+    },
     "oedipus_spear": {
       "original_name": {
         "field": "original_name",

@@ -39116,6 +39116,14 @@
                       "catalog": "characters",
                       "id": "archigagoyle"
                     }
+                  },
+                  {
+                    "start": 24,
+                    "end": 30,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "zombie"
+                    }
                   }
                 ]
               }
@@ -40271,6 +40279,14 @@
                       "catalog": "characters",
                       "id": "archigagoyle"
                     }
+                  },
+                  {
+                    "start": 23,
+                    "end": 29,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "zombie"
+                    }
                   }
                 ]
               }
@@ -40345,7 +40361,16 @@
                 "literal_ids": [
                   "LORESPEC.PAS:literal:39532"
                 ],
-                "bindings": []
+                "bindings": [
+                  {
+                    "start": 0,
+                    "end": 6,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "zombie"
+                    }
+                  }
+                ]
               }
             }
           ],

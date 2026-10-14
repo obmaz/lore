@@ -17,7 +17,7 @@
   "source_sha256": {
     "characters/registry.json": "b4115f8048537721e0e5f3210ec88b87e68a2d596b51e860583e53ba5532d174",
     "reference/equipment.json": "8bc36e5009643d9684f7d40aa4a83ac7038dd185369ab05d45fb6400d63c46b1",
-    "reference/abilities.json": "fa6f36f6a77f18a459a27f7aee9380bd5a64d0f2281d0c7639eb53bacf04052b",
+    "reference/abilities.json": "d2b9ee8737a13f1577fc8f716a75341affeccde08791efbf7d1b6ddb57e25c15",
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe",
     "materials/quests.json": "5a5a6878327e875420dce823059f2b944fb1f3e504468bde726b30481a24070b",
     "materials/manifest.json": "4e1f6565214b95b26d5089f24a8e40aa55f1d06d7697fac9783e671570f6131f",
@@ -31,5 +31,5 @@
     "source_files": 14,
     "literal_occurrences": 2483
   },
-  "pdf_sha256": "e1e431b2f39f7c896d41a78fb6dda98e9f4242392dcbcd1636087a5f9bcaa7d7"
+  "pdf_sha256": "eeb141e6c1867826fb0bcf96a54f0b46650abbd9282b58eb9aec52e10f8ab091"
 }

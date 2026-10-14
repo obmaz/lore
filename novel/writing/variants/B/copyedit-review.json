@@ -1,0 +1,971 @@
+{
+  "version": 1,
+  "revision": 1,
+  "profile": "B",
+  "scope": [
+    "chapter01",
+    "chapter02",
+    "chapter03"
+  ],
+  "status": "proposed",
+  "policy": {
+    "base_story_and_branch_effects_changed": false,
+    "archival_source_changed": false,
+    "A_authored_prose_changed": false,
+    "script_display_shared_A_B": true,
+    "canon_approval": false,
+    "A_source_binding_only": true
+  },
+  "changes": [
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "prologue/arrival_first",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/intro_party_hunter",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/intro_party_cook",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/intro_party_magician",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "prologue/tavern_exit",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "prologue/audience_wait",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "lore_menace/skeleton_reaction",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "lore_menace/exit_outside_sound",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "lore_menace/join_space",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "lore_menace/road_first",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "lore_menace/road_join_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "lore_menace/walk_awkward_release",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "lore_menace/center_join_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "lore_menace/return_small_mark",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "lore_menace/return_outside",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "lore_menace/return_pause",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "lore_menace/next_question_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/hub_description",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/credit_frame",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/tavern_story_personal_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/tavern_story_menu_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/tavern_story_menu_reply",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/tavern_story_silence_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/tavern_story_offer_before",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/tavern_story_offer_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/tavern_story_lord_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/tavern_story_prejudice_reply",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/joe_join_prose",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/role_action_party_woodcutter",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/role_action_party_hunter",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/role_action_party_cook",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/role_action_party_magician",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter01.json",
+      "block_id": "i/tavern_story_departure_end",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/arrival_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/arrival_audience",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/request_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/town_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/family_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/offer_before",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/joined_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/declined_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/road_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/entrance_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/spear_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/spear_owner_protagonist",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/spear_owner_party_woodcutter",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/spear_owner_party_hunter",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/spear_owner_party_cook",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/spear_owner_party_magician",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/spear_owner_skeleton",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/spear_owner_mad_joe",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/spear_owner_polaris",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/room_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/hold_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/separate_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/party_4_party_cook",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/battle_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/won_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/return_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/extra_5",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/report_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/guidance_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/gate_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/extra_6",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter02.json",
+      "block_id": "lastditch_pyramid/polaris_present_6",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/ruins_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/ruins_wait",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/request_before",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/request_after",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/prepared_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/town_party_party_hunter",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/town_party_party_cook",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/entrance_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/cliff_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/floating_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/doors_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/door_crossing",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/rigel_approach",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/rigel_common",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/rigel_wait",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/replacement_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/joined_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/joined_more",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/aided_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/aided_more",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/left_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/left_more",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/seal_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/seal_return",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/exit_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/aided_exit",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/report_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/report_confirmation",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/next_body",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/next_wait",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/next_request_optional_polaris",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/variants/B/chapter03.json",
+      "block_id": "gaia_evil_seal/rigel_next",
+      "kind": "prose_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "prologue/guide_dialogue",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/threshold_before_assignment",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "prologue/veteran_dialogue",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "prologue/lord_history_dialogue",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lore_menace/request_quote",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/guide_progress",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lore_menace/reminder_quote",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lore_menace/skeleton_quote",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lore_menace/report_quote",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lore_menace/next_quote",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lore_menace/farewell_quote",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/armory_permission",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/venom",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/orc",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/pyramid_hint",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/venom_loss",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/lord_rumor",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/loyalty",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/food_hint",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/menace_monsters",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/tavern_welcome",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/welcome_menu",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/ghost_rumor",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/drink_offer",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/drunk_lord",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/skeleton_prejudice",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/grave_warning",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/encourage_name",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/praise",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/polaris_hint",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/support_first",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/support_repeat",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/gold_rumor",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/no_visits",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/rebels",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/prisoner_account",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/thief_hint",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/joe_warning",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/joe_request",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/joe_declined_response",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/guard_first_words",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/guard_repeat_words",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/threshold_open_words",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "i/armory_after",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/arrival_sign",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/meet_lord",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/request_443",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/town_386",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/town_388",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/town_390",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/town_392",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/town_394",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/town_398",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/town_400",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/town_405",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/request_reminder",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/family_account",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/hunter_reputation",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/polaris_407",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/pyramid_sign",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/spear_500",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/report_462",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/report_464",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/guidance_470",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "lastditch_pyramid/gate_sign",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/ruins_sign_423",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/road_sign_384",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/city_name",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/meet_lord",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/request_516",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/town_487",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/town_489",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/town_491",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/town_497",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/town_503",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/town_505",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/town_507",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/town_509",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/town_512",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/reminder_535",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/cave_sign",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/door_clue_437",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/rigel_605",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/passcode_clue_445",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/report_success",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/next_549",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "block_id": "gaia_evil_seal/next_road_390",
+      "kind": "script_copyedit"
+    },
+    {
+      "file": "writing/quests/gaia_evil_seal.json",
+      "block_id": "gaia_evil_seal/next_554",
+      "kind": "source_reference_binding_only"
+    }
+  ],
+  "metadata": {
+    "origin": "authored",
+    "addition": true,
+    "kind": "new_setting",
+    "status": "proposed",
+    "note": "추가: 1~3장 집필 교정 기록. 지시 대상·행동 순서·중복 귀환·마법과 상처의 구분·띄어쓰기 및 대사의 읽기용 대체본을 점검했다. 구조 검사로 모든 문장의 문학적 완성도나 정사를 승인하지 않는다."
+  },
+  "reference_corrections": [
+    {
+      "file": "reference/names.json",
+      "ref": {
+        "catalog": "abilities",
+        "id": "magic_19"
+      },
+      "kind": "display_spacing_only"
+    },
+    {
+      "file": "reference/terms.json",
+      "ref": {
+        "catalog": "terms",
+        "id": "zombie"
+      },
+      "kind": "source_name_transliteration_only"
+    }
+  ]
+}

@@ -4,11 +4,11 @@
     "writing/storyboard/source-connected.plan.json": "ef82625eb4ea43bf13ad591cdf56ee76a7a868ad980aee0695ed14c4edeca5fa",
     "writing/source-connected.schema.json": "af552f27f92a3a3bbe01ad3cb2995cc7ec395883a0cd625a35ef1d2bb4f80697",
     "writing/storyboard/chapters.json": "24d230714844b3515ddf674aee71ece242e6a3b2f6bfbef460dc5844fb831bb8",
-    "reference/terms.json": "f0e22730eda2f7a2e13d8e4e750999827780fe91fd32a30f3b86ed281ae21d0b",
-    "reference/names.json": "2fb45df00f9a8361eb6cdf9eea9335cb710334363e7a149cf7a8d080cd179ab6",
+    "reference/terms.json": "35334576ff729738799def0de33fa0da3ad8b94e12b73da2321fa0dd0c252d3b",
+    "reference/names.json": "8d770bef5f29bb2e85a97a0a69f023de29270d59e02ee1eda1e601d2092913b9",
     "characters/registry.json": "b4115f8048537721e0e5f3210ec88b87e68a2d596b51e860583e53ba5532d174",
     "reference/equipment.json": "8bc36e5009643d9684f7d40aa4a83ac7038dd185369ab05d45fb6400d63c46b1",
-    "reference/abilities.json": "fa6f36f6a77f18a459a27f7aee9380bd5a64d0f2281d0c7639eb53bacf04052b",
+    "reference/abilities.json": "d2b9ee8737a13f1577fc8f716a75341affeccde08791efbf7d1b6ddb57e25c15",
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe",
     "materials/manifest.json": "4e1f6565214b95b26d5089f24a8e40aa55f1d06d7697fac9783e671570f6131f",
     "materials/scripts.json": "e4b543bca7897361385fb0b5f363e3af02087253a23e6fc642c423d848e669a6",
@@ -16,7 +16,7 @@
     "tools/source_story.py": "a63d0b19edb93edca3317179b36fd366d5e858ad125e0b5e4dff6f32e7966816"
   },
   "artifacts": {
-    "manuscript.json": "2965605af09ddfc76edfb3db48ecf9a5de23df17ded610e282eee413b602603e",
+    "manuscript.json": "830f17cf858c09d4a0c79a31dd3b447cf8e8d62257387ba373641c93ae46abe0",
     "coverage.json": "0fb63a3429d73117c4aed91fd9dcb1c96cdca483708fed8e9fdd259d7ec0e07c"
   }
 }

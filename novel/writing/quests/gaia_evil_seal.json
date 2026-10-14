@@ -8918,6 +8918,14 @@
                       "catalog": "characters",
                       "id": "archigagoyle"
                     }
+                  },
+                  {
+                    "start": 30,
+                    "end": 36,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "zombie"
+                    }
                   }
                 ]
               }

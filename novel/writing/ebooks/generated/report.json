@@ -107,16 +107,16 @@
   "route_note": "선형 전자책의 대표 편집 경로다. 무기고 방문, 성문 동료의 합류, 창의 담당자 결정, 부상자 치료 경로를 한 번씩 실제로 재생한다. 모든 분기를 한 경로에 합치거나 정사/출판 승인으로 확정하지 않는다. 다른 선택은 웹 판본에 남아 있다.",
   "chapters": {
     "chapter01": {
-      "paragraphs": 434,
-      "characters": 19495
+      "paragraphs": 435,
+      "characters": 19563
     },
     "chapter02": {
       "paragraphs": 419,
-      "characters": 22025
+      "characters": 22091
     },
     "chapter03": {
-      "paragraphs": 389,
-      "characters": 20892
+      "paragraphs": 386,
+      "characters": 20891
     }
   },
   "required_main_scenes": 43,
@@ -277,7 +277,62 @@
   "source_content_preserved_for_selected_route": true,
   "all_alternative_paths_included": false,
   "script_override_ids": [
+    "gaia_evil_seal/cave_sign",
+    "gaia_evil_seal/city_name",
+    "gaia_evil_seal/door_clue_437",
+    "gaia_evil_seal/meet_lord",
+    "gaia_evil_seal/next_549",
+    "gaia_evil_seal/next_road_390",
+    "gaia_evil_seal/passcode_clue_445",
+    "gaia_evil_seal/reminder_535",
+    "gaia_evil_seal/report_success",
+    "gaia_evil_seal/request_516",
+    "gaia_evil_seal/rigel_605",
+    "gaia_evil_seal/road_sign_384",
+    "gaia_evil_seal/ruins_sign_423",
+    "gaia_evil_seal/town_487",
+    "gaia_evil_seal/town_489",
+    "gaia_evil_seal/town_491",
+    "gaia_evil_seal/town_497",
+    "gaia_evil_seal/town_503",
+    "gaia_evil_seal/town_505",
+    "gaia_evil_seal/town_507",
+    "gaia_evil_seal/town_509",
+    "gaia_evil_seal/town_512",
+    "i/armory_after",
+    "i/armory_permission",
+    "i/guide_progress",
+    "i/threshold_before_assignment",
+    "i/threshold_open_words",
     "i/threshold_question",
+    "lastditch_pyramid/arrival_sign",
+    "lastditch_pyramid/family_account",
+    "lastditch_pyramid/gate_sign",
+    "lastditch_pyramid/guidance_470",
+    "lastditch_pyramid/hunter_reputation",
+    "lastditch_pyramid/meet_lord",
+    "lastditch_pyramid/polaris_407",
+    "lastditch_pyramid/pyramid_sign",
+    "lastditch_pyramid/report_462",
+    "lastditch_pyramid/report_464",
+    "lastditch_pyramid/request_443",
+    "lastditch_pyramid/request_reminder",
+    "lastditch_pyramid/spear_500",
+    "lastditch_pyramid/town_386",
+    "lastditch_pyramid/town_388",
+    "lastditch_pyramid/town_390",
+    "lastditch_pyramid/town_392",
+    "lastditch_pyramid/town_394",
+    "lastditch_pyramid/town_398",
+    "lastditch_pyramid/town_400",
+    "lastditch_pyramid/town_405",
+    "lore_menace/farewell_quote",
+    "lore_menace/next_quote",
+    "lore_menace/report_quote",
+    "lore_menace/request_quote",
+    "lore_menace/skeleton_quote",
+    "prologue/guide_dialogue",
+    "prologue/lord_history_dialogue",
     "prologue/lord_intro_dialogue"
   ],
   "shared_cover_files": [
@@ -286,6 +341,6 @@
     "writing/covers/cover-chapter02.jpg",
     "writing/covers/cover-chapter03.jpg"
   ],
-  "reader_fingerprint": "8e67367ae5c42af713a4dc9cde6b411ffe499062c8619dbc1667916f5bb4f6ed",
+  "reader_fingerprint": "83884895297a8ed1ee0ec08953608efe7727e650ff44e3633ffaeed1ed871106",
   "canonical_or_approved": false
 }
