@@ -1,12 +1,11 @@
-name: Deploy original, remake and novel
+name: Deploy Pages
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -16,6 +15,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -24,11 +24,51 @@ jobs:
       - name: Check out main
         uses: actions/checkout@v4
 
+      - name: Require successful validation of this commit
+        id: validation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
+              ...context.repo,
+              workflow_id: 'validate.yml',
+              branch: 'main',
+              head_sha: context.sha,
+              status: 'success',
+              per_page: 100,
+            });
+            const run = runs.find(run => run.head_sha === context.sha && run.conclusion === 'success');
+            if (!run) {
+              throw new Error(`Validate must succeed for ${context.sha} before deployment.`);
+            }
+            core.setOutput('run_id', run.id);
+
+      - name: Download verified original web release
+        uses: actions/download-artifact@v4
+        with:
+          name: lore-web-original
+          path: original/build/web
+          run-id: ${{ steps.validation.outputs.run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Download verified remake web release
+        uses: actions/download-artifact@v4
+        with:
+          name: lore-web-remake
+          path: remake/build/web
+          run-id: ${{ steps.validation.outputs.run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Verify downloaded releases
+        run: |
+          (cd original && python3 tool/build_web_release.py --check-only)
+          (cd remake && python3 tool/build_web_release.py --check-only)
+
       - name: Assemble independent site paths
         run: |
           mkdir -p site/original site/remake site/novel
-          cp -a original/docs/. site/original/
-          cp -a remake/docs/. site/remake/
+          cp -a original/build/web/. site/original/
+          cp -a remake/build/web/. site/remake/
           sed -i 's#<base href="/lore/">#<base href="/lore/original/">#' site/original/index.html
           sed -i 's#<base href="/lore/">#<base href="/lore/remake/">#' site/remake/index.html
           python3 - <<'PY'

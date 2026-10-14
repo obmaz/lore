@@ -27,9 +27,16 @@
 | 선택형 소설 | [novel](https://obmaz.github.io/lore/novel/) |
 | 소설 제작실 · 공개 작가용 | [studio](https://obmaz.github.io/lore/novel/studio/) |
 
-[Pages 워크플로](.github/workflows/deploy-pages.yml)는 커밋된 결과물을 각각의 URL에
-게시하는 저장소 운영 설정입니다. 프로젝트의 빌드·자료 재생성을 수행하지 않습니다.
-게임은 각자의 `docs/` 빌드를, 소설은 자체 해시 검사를 통과한 독자 읽기본과
+`main` 푸시 시 [Validate](.github/workflows/validate.yml)가 Flutter 3.47.5로 두 게임을
+각 폴더에서 독립적으로 분석·테스트·빌드하고 WASM 해시를 검사합니다.
+통과한 `build/web/` 결과는 Actions 아티팩트로 14일간 보관합니다.
+게임 소스만 커밋·푸시하면 되며, 웹 빌드 결과를 별도로 커밋할 필요가 없습니다.
+
+검증 성공 후 Actions에서 [Deploy Pages](.github/workflows/deploy-pages.yml)를
+`main` 브랜치로 수동 실행합니다. 배포는 현재 커밋과 동일한 SHA의 성공한 Validate
+결과만 사용하며, 미검증 커밋·실패한 빌드·만료된 아티팩트는 배포하지 않습니다.
+아티팩트가 만료되면 Validate를 다시 실행합니다. 푸시만으로 사이트가 바뀌지는 않습니다.
+소설은 자료를 재생성하지 않고 자체 해시 검사를 통과한 독자 읽기본과
 별도 제작실 HTML을 게시합니다. 제작실은 사용자가 공개를 허용한 **전편 스포일러 포함
 작가용 화면**이며 로그인·접근 제어가 없습니다. 기존 독자 `/novel/` 화면에는 제작실 자료를
 추가하지 않습니다. 갱신 방법은 각 README에 있습니다.

@@ -1,4 +1,4 @@
-"""Check the real Pages assembly script with isolated, prebuilt game fixtures."""
+"""Check Pages assembly consumes fresh builds and validates novel exports."""
 import hashlib
 import json
 from pathlib import Path
@@ -31,12 +31,16 @@ class PagesDeploymentTest(unittest.TestCase):
             target = self.novel / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / "novel" / relative, target)
-        # Fake game outputs: assembly must copy them without invoking any build.
+        # Assembly uses verified CI builds, never historical committed docs.
         for game in ("original", "remake"):
+            build = self.checkout / game / "build/web"
+            build.mkdir(parents=True)
+            (build / "index.html").write_text('<base href="/lore/">' + game)
+            (build / "fresh.bin").write_bytes(game.encode())
             docs = self.checkout / game / "docs"
             docs.mkdir(parents=True)
-            (docs / "index.html").write_text('<base href="/lore/">' + game)
-            (docs / "prebuilt.bin").write_bytes(game.encode())
+            (docs / "index.html").write_text('stale committed build')
+            (docs / "stale.bin").write_bytes(b'old release')
 
     def assemble(self):
         return subprocess.run(["bash", "-e", "-o", "pipefail", "-c", self.script],
@@ -55,9 +59,31 @@ class PagesDeploymentTest(unittest.TestCase):
         self.assertNotIn('studio-data',(site / 'novel/index.html').read_text())
         self.assertTrue((site / ".nojekyll").is_file())
         for game in ("original", "remake"):
-            self.assertEqual((site / game / "prebuilt.bin").read_bytes(), game.encode())
+            self.assertEqual((site / game / "fresh.bin").read_bytes(), game.encode())
+            self.assertFalse((site / game / "stale.bin").exists())
             self.assertEqual((site / game / "index.html").read_text(), '<base href="/lore/' + game + '/">' + game)
-            self.assertEqual((self.checkout / game / "docs/index.html").read_text(), '<base href="/lore/">' + game)
+            self.assertEqual((self.checkout / game / "docs/index.html").read_text(), 'stale committed build')
+
+    def test_missing_build_cannot_fall_back_to_committed_docs(self):
+        shutil.rmtree(self.checkout / 'remake/build/web')
+        result = self.assemble()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse((self.checkout / 'site/remake/stale.bin').exists())
+
+    def test_validation_and_manual_deployment_are_separate(self):
+        validate = (ROOT / '.github/workflows/validate.yml').read_text()
+        deploy = (ROOT / '.github/workflows/deploy-pages.yml').read_text()
+        self.assertIn('  push:\n    branches: [main]', validate)
+        for command in ['flutter analyze --no-pub', 'flutter test --no-pub',
+                        'python3 tool/build_web_release.py']:
+            self.assertIn(command, validate)
+        self.assertIn('actions/upload-artifact@', validate)
+        self.assertNotIn('  push:', deploy)
+        self.assertIn('  workflow_dispatch:', deploy)
+        self.assertIn("head_sha: context.sha", deploy)
+        self.assertIn("run.conclusion === 'success'", deploy)
+        self.assertEqual(deploy.count('run-id: ${{ steps.validation.outputs.run_id }}'), 2)
+        self.assertIn('tool/build_web_release.py --check-only', deploy)
 
     def test_stale_source_stops_before_publishing_reader(self):
         (self.novel / "writing/interactive/reader.js").write_text("changed input")

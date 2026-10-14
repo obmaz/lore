@@ -51,8 +51,13 @@ python -X utf8 tool/build_web_release.py
 도구가 WASM과 JavaScript 대체 버전을 빌드하고 로더의 WASM 해시를 검사해
 문서를 보존하며 이 프로젝트의 `docs/`를 갱신합니다. SDK 경로는
 `--flutter /경로/flutter/bin/flutter`로 지정합니다.
-소스와 결과물을 `main`에 커밋·푸시하면 저장소 Pages가 `/lore/original/`에 게시합니다.
-게시 단계는 커밋된 결과물을 복사하며 Flutter 빌드를 실행하지 않습니다.
+저장소의 `main`에 소스를 커밋·푸시하면 GitHub Actions의 Validate가
+Flutter 3.47.5로 분석·테스트·웹 빌드·WASM 해시 검증을 실행합니다.
+성공 후 Deploy Pages를 `main`에서 수동 실행하면 같은 커밋의 검증된
+`build/web/` 아티팩트를 `/lore/original/`에 게시합니다.
+푸시만으로 배포하지 않으며 빌드 결과를 커밋할 필요가 없습니다.
+아티팩트는 14일간 보관하므로 만료되면 Validate를 다시 실행합니다.
+위 로컬 빌드 명령은 미리보기·독립 호스팅용으로 계속 사용할 수 있습니다.
 독립 호스팅 시 base path를 맞추고 `.wasm`을 `application/wasm`으로 제공합니다.
 
 ## 출처
