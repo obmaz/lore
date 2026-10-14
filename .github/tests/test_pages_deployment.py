@@ -56,9 +56,11 @@ class PagesDeploymentTest(unittest.TestCase):
         self.assertEqual(sorted(p.name for p in (site / 'novel/studio').iterdir()),['index.html'])
         self.assertEqual((site / 'novel/studio/index.html').read_bytes(),
                          (self.novel / 'writing/studio/generated/index.html').read_bytes())
-        self.assertEqual(sorted(p.name for p in (site/'novel/downloads').iterdir()),['lore-B-chapters01-03.epub'])
+        self.assertEqual(sorted(p.name for p in (site/'novel/downloads').iterdir()),['lore-B-chapters01-03-interactive-epub3.epub','lore-B-chapters01-03.epub'])
         self.assertEqual((site/'novel/downloads/lore-B-chapters01-03.epub').read_bytes(),
                          (self.novel/'writing/ebooks/generated/lore-B-chapters01-03.epub').read_bytes())
+        self.assertEqual((site/'novel/downloads/lore-B-chapters01-03-interactive-epub3.epub').read_bytes(),
+                         (self.novel/'writing/ebooks/generated/lore-B-chapters01-03-interactive-epub3.epub').read_bytes())
         self.assertNotIn('studio-data',(site / 'novel/index.html').read_text())
         self.assertTrue((site / ".nojekyll").is_file())
         for game in ("original", "remake"):
@@ -167,6 +169,13 @@ class PagesDeploymentTest(unittest.TestCase):
         self.assertNotEqual(result.returncode,0)
         self.assertIn('EPUB publication path',result.stderr)
         self.assertFalse((self.checkout/'site/novel/downloads/lore-B-chapters01-03.epub').exists())
+
+    def test_modified_interactive_epub_is_not_published(self):
+        (self.novel/'writing/ebooks/generated/lore-B-chapters01-03-interactive-epub3.epub').write_bytes(b'changed choices')
+        result=self.assemble()
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('export is stale',result.stderr)
+        self.assertFalse((self.checkout/'site/novel/index.html').exists())
 
 
 if __name__ == "__main__":
