@@ -98,10 +98,24 @@ jobs:
           studio = root / 'writing/studio/generated/index.html'
           if hashlib.sha256(studio.read_bytes()).hexdigest() != studio_manifest['artifacts'].get('index.html'):
               raise SystemExit('Novel studio differs from its generated manifest.')
-          # Publish two validated HTML files only, not a directory of raw JSON/PDF.
+          ebook_manifest = json.loads((root / 'writing/ebooks/generated/manifest.json').read_text(encoding='utf-8'))
+          ebook_name = 'lore-B-chapters01-03.epub'
+          if ebook_manifest.get('edition') != 'B' or ebook_manifest.get('public_path') != '/novel/downloads/' + ebook_name:
+              raise SystemExit('Novel EPUB publication path is not explicitly configured.')
+          for relative, expected in ebook_manifest['source_sha256'].items():
+              source = (root / relative).resolve()
+              if not source.is_relative_to(root) or hashlib.sha256(source.read_bytes()).hexdigest() != expected:
+                  raise SystemExit(f'Novel EPUB export is stale: {relative}. Run tools/writing.py export in novel/.')
+          ebook = root / 'writing/ebooks/generated' / ebook_name
+          if hashlib.sha256(ebook.read_bytes()).hexdigest() != ebook_manifest['artifacts'].get(ebook_name):
+              raise SystemExit('Novel EPUB differs from its generated manifest.')
+          # Publish only the two validated HTML files and the requested B EPUB.
+          # Covers are embedded; raw JSON, private master cards and PDFs stay out.
           shutil.copyfile(reader, 'site/novel/index.html')
           Path('site/novel/studio').mkdir(parents=True, exist_ok=True)
           shutil.copyfile(studio, 'site/novel/studio/index.html')
+          Path('site/novel/downloads').mkdir(parents=True, exist_ok=True)
+          shutil.copyfile(ebook, Path('site/novel/downloads') / ebook_name)
           PY
           touch site/.nojekyll
 

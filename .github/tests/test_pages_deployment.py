@@ -50,12 +50,15 @@ class PagesDeploymentTest(unittest.TestCase):
         result = self.assemble()
         self.assertEqual(result.returncode, 0, result.stderr)
         site = self.checkout / "site"
-        self.assertEqual(sorted(p.name for p in (site / "novel").iterdir()), ["index.html", "studio"])
+        self.assertEqual(sorted(p.name for p in (site / "novel").iterdir()), ["downloads", "index.html", "studio"])
         self.assertEqual((site / "novel/index.html").read_bytes(),
                          (self.novel / "writing/previews/novel-reader.html").read_bytes())
         self.assertEqual(sorted(p.name for p in (site / 'novel/studio').iterdir()),['index.html'])
         self.assertEqual((site / 'novel/studio/index.html').read_bytes(),
                          (self.novel / 'writing/studio/generated/index.html').read_bytes())
+        self.assertEqual(sorted(p.name for p in (site/'novel/downloads').iterdir()),['lore-B-chapters01-03.epub'])
+        self.assertEqual((site/'novel/downloads/lore-B-chapters01-03.epub').read_bytes(),
+                         (self.novel/'writing/ebooks/generated/lore-B-chapters01-03.epub').read_bytes())
         self.assertNotIn('studio-data',(site / 'novel/index.html').read_text())
         self.assertTrue((site / ".nojekyll").is_file())
         for game in ("original", "remake"):
@@ -140,6 +143,30 @@ class PagesDeploymentTest(unittest.TestCase):
         self.assertNotEqual(result.returncode,0)
         self.assertIn('studio export is stale',result.stderr)
         self.assertFalse((self.checkout / 'site/novel/studio/index.html').exists())
+
+    def test_modified_epub_is_not_published(self):
+        (self.novel/'writing/ebooks/generated/lore-B-chapters01-03.epub').write_bytes(b'changed ebook')
+        result=self.assemble()
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('export is stale',result.stderr)
+        self.assertFalse((self.checkout/'site/novel/downloads/lore-B-chapters01-03.epub').exists())
+
+    def test_epub_cannot_publish_to_an_unreviewed_path(self):
+        path=self.novel/'writing/ebooks/generated/manifest.json'
+        value=json.loads(path.read_text());value['public_path']='/outside/unreviewed.epub'
+        path.write_text(json.dumps(value))
+        # Preserve the parent guard deliberately so this reaches the EPUB gate.
+        preview=self.novel/'writing/previews/manifest.json';parent=json.loads(preview.read_text())
+        parent['source_sha256']['writing/ebooks/generated/manifest.json']=hashlib.sha256(path.read_bytes()).hexdigest()
+        preview.write_text(json.dumps(parent))
+        studio_path=self.novel/'writing/studio/generated/manifest.json'
+        studio=json.loads(studio_path.read_text())
+        studio['source_sha256']['writing/previews/manifest.json']=hashlib.sha256(preview.read_bytes()).hexdigest()
+        studio_path.write_text(json.dumps(studio))
+        result=self.assemble()
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('EPUB publication path',result.stderr)
+        self.assertFalse((self.checkout/'site/novel/downloads/lore-B-chapters01-03.epub').exists())
 
 
 if __name__ == "__main__":
