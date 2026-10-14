@@ -50,17 +50,49 @@ def check():
                 assert frame.locator('[data-block-id="gaia_evil_seal/joined_body"]').count()==0
                 assert frame.locator('[data-block-id="gaia_evil_seal/left_body"]').count()==0
             assert frame.locator('#manuscript').get_by_text('주인공',exact=True).count()==0
+            assert frame.locator('#manuscript h2').count()==count-1,'only later chapter titles belong in the manuscript'
+            assert frame.locator('#manuscript .quote, #manuscript blockquote, #manuscript small').count()==0
+            assert frame.locator('#manuscript section[data-story-role="main"]').count()==len(b['main_story'])
+            shown=frame.locator('#manuscript [data-source-blocks]').evaluate_all('(es)=>es.flatMap(e=>JSON.parse(e.dataset.sourceBlocks))')
+            assert 'lastditch_pyramid/request_444' in shown and 'lastditch_pyramid/request_452' in shown
+            assert 'gaia_evil_seal/rigel_605' in shown and 'gaia_evil_seal/rigel_610' in shown
+            assert '성주가 입을 열었다. “' in frame.locator('[data-block-id="lastditch_pyramid/request_443"]').inner_text()
+            assert '신의 축복' in frame.locator('[data-block-id="gaia_evil_seal/aid_result_643"]').inner_text()
+            assert '[EXP' not in frame.locator('#manuscript').inner_text()
+            assert '[ EXP' not in frame.locator('#manuscript').inner_text()
             # A route file is deliberately rejected by B even if IDs are shared.
             frame.locator('#file').set_input_files({'name':'A-route.json','mimeType':'application/json',
                 'buffer':json.dumps({'fingerprint':a['fingerprint'],'route':[]}).encode()})
             expect(frame.locator('#message')).to_contain_text('다른 판본')
             assert frame.locator('#choices button').count()==0
+            # Repeat the same route through A: its prose stays distinct while
+            # chapter structure and source presentation obey the same policy.
+            page.locator('#edition-select').select_option('A')
+            frame=page.frame_locator('#edition-frame')
+            frame.locator('#choices button').first.wait_for()
+            assert frame.locator('#manuscript h2, #manuscript small, #manuscript .quote').count()==0
+            for _ in range(40):
+                buttons=frame.locator('#choices button')
+                if not buttons.count():break
+                ids=buttons.evaluate_all('(es)=>es.map(e=>e.dataset.choice)')
+                key=next((c for c in preferred if c in ids),ids[0])
+                frame.locator(f'[data-choice="{key}"]').click()
+                # The beginning of the new prose, not a removed subtitle or
+                # trailing choices, receives keyboard focus after every choice.
+                assert frame.locator('body').evaluate('()=>document.activeElement.matches("#manuscript section")')
+            assert frame.locator('#choices button').count()==0
+            assert frame.locator('#manuscript h2').count()==2
+            assert frame.locator('#manuscript h2').evaluate_all('(es)=>es.every(e=>/^제[23]장 · /.test(e.textContent))')
+            assert frame.locator('#manuscript .quote, #manuscript blockquote, #manuscript small').count()==0
+            assert frame.locator('#manuscript section[data-story-role="main"]').count()==43
+            assert '일행을 보며 말했다. “' in frame.locator('[data-block-id="lastditch_pyramid/request_443"]').inner_text()
             assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
             assert frame.locator('html').evaluate('(e)=>e.scrollWidth<=innerWidth')
             assert not errors,errors
             assert not requests,requests
             reports.append({'width':width,'A_chapters':3,'B_chapters':count,'B_complete':True,
-                            'shared_choices':True,'cross_edition_save_rejected':True,'offline':True})
+                            'shared_choices':True,'cross_edition_save_rejected':True,'offline':True,
+                            'chapter_titles_only':True,'natural_attribution_both_editions':True})
             page.close()
         browser.close()
     return reports

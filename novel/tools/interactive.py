@@ -321,6 +321,8 @@ def documents(profile='A'):
     from writing import html_doc
     profiles = load_characters()
     data,ls = indexes(profiles,load_references()),literals()
+    from prose_presentation import compile_presentation
+    presentation = compile_presentation(story,data,ls)
     # Public labels only; never serialize the master cards/canon/future relationships.
     labels = {category:{key:render([{'ref':{'catalog':category,'id':key}}],data,ls,profiles,()) for key in keys} for category,keys in {
         'characters':set(overlay['party'])|{'protagonist','skeleton','mad_joe'}|{b['speaker'] for n in story['nodes'] for b in n['blocks'] if b['speaker']},
@@ -331,12 +333,19 @@ def documents(profile='A'):
                 refs = [span['ref']] if 'ref' in span else [b['ref'] for b in span.get('source',{}).get('bindings',[])]
                 for ref in refs:
                     labels.setdefault(ref['catalog'],{})[ref['id']] = render([{'ref':{'catalog':ref['catalog'],'id':ref['id']}}],data,ls,profiles,())
+    for entry in [*presentation['groups'],*presentation['dialogues'].values()]:
+        for edition in entry['editions'].values():
+            for spans in edition.values():
+                for span in spans:
+                    if 'ref' not in span:continue
+                    ref=span['ref']
+                    labels.setdefault(ref['catalog'],{})[ref['id']]=render([{'ref':{'catalog':ref['catalog'],'id':ref['id']}}],data,ls,profiles,())
     used = {i for n in story['nodes'] for b in n['blocks'] for i in source_ids(b['text'])} | {i for n in story['nodes'] for c in n['choices'] for i in source_ids(c['label'])}
     payload = {'edition':profile,'version':overlay['revision'],'entry':story['entry_node'],'initial':{k:d['initial'] for k,d in story['state_definitions'].items()},
         'nodes':story['nodes'],'labels':labels,'literals':{i:ls[i]['text'] for i in used},'events':memory['event_templates'],
         'auto_rules':overlay['auto_rules'],'insertions':overlay['display_insertions'],'party':overlay['party'],'equipment':overlay['initial_equipment'],
         'contracts':memory['contracts'],'conditional_required':overlay['conditional_required'],
-        'main_story':overlay['main_story']['required_scenes']}
+        'main_story':overlay['main_story']['required_scenes'],'presentation':presentation}
     payload['display_groups']={n['id']:'i/treasure_hub' for n in story['nodes']
         if n['id'].startswith('i/gold_') or n['id'] in ('lore_menace/center','i/treasure_hub','i/shield','i/shield_equipped','i/shield_cancel')}
     payload['display_groups'].update(overlay['display_groups'])
@@ -351,6 +360,10 @@ def documents(profile='A'):
     page = html_doc('제1장 · '+render(story['meta']['title'],data,ls,profiles,()),body).replace('</style>','button{max-width:100%;white-space:normal;overflow-wrap:anywhere;cursor:pointer;margin:4px;padding:10px}#choices{display:flex;flex-wrap:wrap}#state{overflow-wrap:anywhere}.selected{border-left:3px solid #977;padding-left:12px}@media print{#choices,button,#state{display:none}}</style>')
     if profile=='B':return {'chapter01-web.html':page}
     report = {'version':1,'scope':overlay['scope'],'status':'draft','dialogue_coverage':story['coverage'],
+        'reader_presentation':{'policy':presentation['policy'],
+            'source_groups':len(presentation['groups']),
+            'narrative_adaptations':[g['block_ids'] for g in presentation['groups'] if g['kind']=='narration'],
+            'note':'반영표의 원문은 보존 원고 기준이다. 독자 본문에서는 발화 연결·표지 읽기·사건 각색으로 표시한다.'},
         'nodes':[{'id':n['id'],'choices':[{'id':c['id'],'target':c['target'],'when':c['when'],'effects':c['effects'],'origin':c['provenance']['origin']} for c in n['choices']]} for n in story['nodes']],
         'auto_rules':overlay['auto_rules'],'main_story':overlay['main_story'],
         'main_story_validation':{'ordered_checkpoints':True,'first_visit_body_checked_at_runtime':True,'guard_states':overlay['main_story']['guard_states'],

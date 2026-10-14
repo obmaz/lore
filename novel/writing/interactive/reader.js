@@ -3,6 +3,8 @@
   'use strict';
   const data = JSON.parse(document.getElementById('chapter-data').textContent);
   const nodes = Object.fromEntries(data.nodes.map(n => [n.id, n]));
+  const presentation = data.presentation;
+  const sourceGroups = new Map(presentation.groups.flatMap(g => g.block_ids.map(id => [id, g])));
   const clone = value => JSON.parse(JSON.stringify(value));
   let route = [];
   const message = text => { document.getElementById('message').textContent = text; };
@@ -104,6 +106,10 @@
     return spans.map(span => {
       if ('text' in span) return span.text;
       if (span.ref) return reference(span.ref);
+      if (span.state) {
+        if (!(span.state in state)) throw Error('찾을 수 없는 서술 상태');
+        return span.catalog ? reference({catalog:span.catalog,id:state[span.state],...(span.particle?{particle:span.particle}:{})}) : String(state[span.state]);
+      }
       const source = span.source, raw = Array.from(source.literal_ids.map(id => data.literals[id]).join(''));
       const edits = source.bindings.map(b => ({start:b.start, end:b.end, value:reference(b.ref)}));
       for (const insert of data.insertions[blockId] || []) {
@@ -124,9 +130,20 @@
   function readFromSection(index) {
     const sections = document.getElementById('manuscript').children;
     const section = index === undefined ? sections[sections.length - 1] : sections[index];
-    const target=section.querySelector('h2')||section;
-    target.tabIndex=-1;target.focus({preventScroll:true});
+    section.tabIndex=-1;section.focus({preventScroll:true});
     section.scrollIntoView({block:'start',behavior:'instant'});
+  }
+  function quoted(body) {
+    const value=body.trim();
+    return value.startsWith('“')&&value.endsWith('”') ? value : '“'+value+'”';
+  }
+  function appendProse(root, body, blockId, sourceBlocks) {
+    for (const paragraph of body.split(/\n{2,}/)) {
+      const p=element('p',paragraph);
+      p.dataset.blockId=blockId;
+      if(sourceBlocks)p.dataset.sourceBlocks=JSON.stringify(sourceBlocks);
+      root.append(p);
+    }
   }
   function redraw() {
     for(let count=0;count<data.nodes.length;count++){
@@ -137,29 +154,40 @@
     }
     const packet = replay(route), manuscript = document.getElementById('manuscript');
     manuscript.replaceChildren();
-    let priorGroup=null,priorChapter='chapter01';
+    let priorChapter='chapter01';
     for (const section of packet.sections) {
       const root = document.createElement('section');
+      root.dataset.nodeId=section.node.id;
+      root.dataset.storyRole=data.main_story.some(r=>r.node===section.node.id)?'main':'optional';
+      root.setAttribute('aria-label',text(section.node.title,section.state));
       const chapter=data.chapters?.find(c=>c.prefixes.some(prefix=>section.node.id.startsWith(prefix)));
       if(chapter&&chapter.id!==priorChapter){
         root.append(element('h2','제'+Number(chapter.id.slice(7))+'장 · '+text(chapter.title,section.state)));
         priorChapter=chapter.id;
       }
-      const heading = element('h2',text(section.node.title,section.state));
-      heading.dataset.storyRole = data.main_story.some(r => r.node === section.node.id) ? 'main' : 'optional';
-      heading.tabIndex = -1;
-      const group=data.display_groups?.[section.node.id]||section.node.id;
-      if(group!==priorGroup)root.append(heading);
-      priorGroup=group;
       for (const b of section.blocks) {
-        const body=text(b.text,section.state,b.id);
-        const paragraphs=b.provenance.origin==='authored'?body.split(/\n{2,}/):[body];
-        paragraphs.forEach((paragraph,index)=>{
-          const p=element('p',paragraph,b.provenance.origin==='source_exact'?'quote':'');
-          p.dataset.blockId=b.id;
-          if(b.speaker&&index===0)p.prepend(element('small',data.labels.characters[b.speaker]||b.speaker),document.createElement('br'));
-          root.append(p);
-        });
+        if(b.provenance.origin==='source_exact'){
+          const group=sourceGroups.get(b.id);
+          if(!group||group.node!==section.node.id)throw Error('서사에 연결되지 않은 원문');
+          if(group.block_ids[0]!==b.id)continue;
+          const originals=group.block_ids.map(id=>section.blocks.find(block=>block.id===id));
+          if(originals.some(block=>!block))throw Error('서로 다른 조건의 대사를 합칠 수 없습니다.');
+          const edition=group.editions[data.edition];
+          // Joining happens only in the reading view. Literal IDs, raw strings,
+          // bindings and branch conditions remain in the immutable story data.
+          const source=originals.map(block=>text(block.text,section.state,block.id)).join(group.kind==='inscription'?' ':'').replace(/\s+/g,' ').trim();
+          const body=group.kind==='narration'?text(edition.body,section.state):quoted(source);
+          appendProse(root,text(edition.before,section.state)+body+text(edition.after,section.state),b.id,group.block_ids);
+        }else{
+          let body=text(b.text,section.state,b.id);
+          if(b.speaker){
+            const entry=presentation.dialogues[b.id];
+            if(!entry||entry.speaker!==b.speaker)throw Error('서사에 연결되지 않은 화자');
+            const edition=entry.editions[data.edition];
+            body=text(edition.before,section.state)+quoted(body)+text(edition.after,section.state);
+          }
+          appendProse(root,body,b.id);
+        }
       }
       if (section.selected && !automatic(section.node.id,section.state)) root.append(element('p','선택: ' + text(section.choices.find(c => c.id === section.selected).label,section.state),'selected'));
       manuscript.append(root);

@@ -456,6 +456,8 @@ def export_documents(output,check=False):
             inputs += [path,path.with_name(path.stem+'.continuity.json')]
     inputs += sorted((WRITING/'episodes').glob('*.json'))
     inputs += [ROOT/'writing/interactive/series.json',ROOT/'tools/interactive_series.py',*variant_inputs(),ROOT/'tools/prose_variants.py',wrapper]
+    from prose_presentation import PLAN as PRESENTATION, SCHEMA as PRESENTATION_SCHEMA
+    inputs += [PRESENTATION,PRESENTATION_SCHEMA,ROOT/'tools/prose_presentation.py']
     for chapter in read(ROOT/'writing/interactive/series.json')['chapters']:
         inputs += [ROOT/chapter['quest_file'],ROOT/chapter['continuity_file']]
     inputs += [FLOW_PLAN,FLOW_SCHEMA,FLOW_TEMPLATE,ROOT/'tools/publication_flow.py',FLOW_OUTPUT/'manifest.json',
@@ -540,6 +542,11 @@ def main():
         from interactive_series import compile_series
         written_story,_,written_overlay=compile_series()
         result['written_series']={**validate(written_story),'chapters':len(written_overlay['chapters'])}
+        from prose_presentation import compile_presentation
+        presentation=compile_presentation(written_story,indexes(load_characters(),load_references()),literals())
+        result['prose_presentation']={'source_groups':len(presentation['groups']),
+            'source_blocks':sum(len(g['block_ids']) for g in presentation['groups']),
+            'dialogue_attributions':len(presentation['dialogues']),'archive_unchanged':True}
         from prose_variants import validate_profiles
         result['prose_profiles']=validate_profiles()
     elif args.action=='preview':

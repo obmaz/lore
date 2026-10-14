@@ -16,14 +16,14 @@
     "agent_policy": 3,
     "compiled_reference": 5,
     "configuration": 2,
-    "editable_authoring_input": 38,
+    "editable_authoring_input": 39,
     "generated_inventory": 1,
     "generated_reading": 39,
     "immutable_source_snapshot": 25,
-    "schema": 19,
+    "schema": 20,
     "shared_template": 10,
-    "test": 27,
-    "tool": 29,
+    "test": 28,
+    "tool": 30,
     "ui_source": 5,
     "usage_documentation": 15,
     "verification_example": 2
@@ -2178,6 +2178,17 @@
       "automatic_deletion": false
     },
     {
+      "file": "tests/test_prose_presentation.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tests/test_prose_series.py",
       "role": "test",
       "consumers": [
@@ -2569,6 +2580,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_prose_presentation.py"
         },
         {
           "kind": "python_import",
@@ -2965,6 +2980,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_prose_presentation.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_prose_series.py"
         },
         {
@@ -3073,6 +3092,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tools/prose_presentation.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tools/prose_variants.py"
         },
         {
@@ -3137,6 +3160,33 @@
         {
           "kind": "cli_entrypoint",
           "file": "tools/project_audit.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/prose_presentation.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_prose_presentation.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
         }
       ],
       "automatic_deletion": false
@@ -3337,6 +3387,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_prose_presentation.py"
         },
         {
           "kind": "python_import",
@@ -3766,6 +3820,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_prose_presentation.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_prose_series.py"
         },
         {
@@ -3819,6 +3877,10 @@
         {
           "kind": "python_import",
           "file": "tools/interactive_series.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/prose_presentation.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -4458,6 +4520,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/prose_presentation.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/prose_variants.py"
         },
         {
@@ -4879,6 +4945,60 @@
       "automatic_deletion": false
     },
     {
+      "file": "writing/interactive/presentation.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/prose_presentation.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/interactive/prose-presentation.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/prose_presentation.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "writing/interactive/reader.js",
       "role": "ui_source",
       "consumers": [
@@ -5164,6 +5284,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_prose_presentation.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_prose_variants.py"
         },
         {
@@ -5212,6 +5336,10 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_prose_presentation.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",

@@ -4378,6 +4378,156 @@
     ],
     "notes": "실제 집필한 장에 명시한 정적 대사·선택 라벨의 발생별 반영표. 모든 분기의 동시 발생이나 공유 UI·미집필 장의 산문 완성을 뜻하지 않는다. 산문 의미는 별도 편집 검토 대상이다."
   },
+  "reader_presentation": {
+    "policy": {
+      "subsection_titles": "author_only",
+      "speaker_labels": false,
+      "source_boxes": false,
+      "chapter_titles": "on_entry",
+      "archive": "immutable_source_blocks",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "status": "proposed",
+        "note": "추가: A/B 공용 독자 본문 편집 규칙. 원작 문자열·반영표·분기·상태는 보존하고 화자·행동·표지판 맥락을 판본별 서술로 연결한다. 경험치 숫자는 기록에 보존하며 본문에 상태창으로 출력하지 않는다."
+      }
+    },
+    "source_groups": 129,
+    "narrative_adaptations": [
+      [
+        "lore_menace/exit_call_quote"
+      ],
+      [
+        "lore_menace/center_quote"
+      ],
+      [
+        "lore_menace/reward_counter_quote"
+      ],
+      [
+        "i/armory_processed"
+      ],
+      [
+        "i/welcome_personal"
+      ],
+      [
+        "i/silence"
+      ],
+      [
+        "i/burp"
+      ],
+      [
+        "i/antares_voice"
+      ],
+      [
+        "i/grave_gold"
+      ],
+      [
+        "i/joe_flee"
+      ],
+      [
+        "i/guard_victory_words"
+      ],
+      [
+        "i/threshold_question"
+      ],
+      [
+        "i/threshold_no_words"
+      ],
+      [
+        "i/threshold_yes_words"
+      ],
+      [
+        "i/found_gold_1"
+      ],
+      [
+        "i/found_gold_2"
+      ],
+      [
+        "i/found_gold_3"
+      ],
+      [
+        "i/found_gold_4"
+      ],
+      [
+        "i/found_gold_5"
+      ],
+      [
+        "i/found_gold_6"
+      ],
+      [
+        "i/shield_found"
+      ],
+      [
+        "i/shield_equipped_words"
+      ],
+      [
+        "i/shield_cancel_words"
+      ],
+      [
+        "lastditch_pyramid/spear_496",
+        "lastditch_pyramid/spear_498",
+        "lastditch_pyramid/spear_499"
+      ],
+      [
+        "lastditch_pyramid/spear_503"
+      ],
+      [
+        "lastditch_pyramid/monk_no_weapon"
+      ],
+      [
+        "lastditch_pyramid/spear_equipped"
+      ],
+      [
+        "lastditch_pyramid/mummy_room"
+      ],
+      [
+        "lastditch_pyramid/mummy_defeated",
+        "lastditch_pyramid/mission_succeeded"
+      ],
+      [
+        "lastditch_pyramid/report_463"
+      ],
+      [
+        "gaia_evil_seal/cliff_warning"
+      ],
+      [
+        "gaia_evil_seal/floating_message"
+      ],
+      [
+        "gaia_evil_seal/wrong_door_feedback"
+      ],
+      [
+        "gaia_evil_seal/door_number"
+      ],
+      [
+        "gaia_evil_seal/correct_door"
+      ],
+      [
+        "gaia_evil_seal/rigel_601",
+        "gaia_evil_seal/rigel_602"
+      ],
+      [
+        "gaia_evil_seal/aid_result_643",
+        "gaia_evil_seal/aid_result_644",
+        "gaia_evil_seal/aid_result_645",
+        "gaia_evil_seal/aid_result_646",
+        "gaia_evil_seal/aid_result_647"
+      ],
+      [
+        "gaia_evil_seal/passcode_number"
+      ],
+      [
+        "gaia_evil_seal/seal_success_590",
+        "gaia_evil_seal/seal_success_591",
+        "gaia_evil_seal/seal_success_592"
+      ],
+      [
+        "gaia_evil_seal/report_experience"
+      ]
+    ],
+    "note": "반영표의 원문은 보존 원고 기준이다. 독자 본문에서는 발화 연결·표지 읽기·사건 각색으로 표시한다."
+  },
   "nodes": [
     {
       "id": "prologue/arrival",

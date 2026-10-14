@@ -85,6 +85,7 @@ HTML은 편집 대상이 아니라 JSON에서 생성한 스냅샷이다.
 | 문체별 산문·적용 버전·집필 장 목록 | `styles.json`, `variants/B/series.json`, `variants/B/chapter*.json` | [판본 집필](variants/README.md), 공통 분기·원작 대사·계약은 복제하지 않음 |
 | 소편의 장면 목록·종료 지점 | `episodes/*.json` | 실제 본문은 복제하지 않고 `node_ids`로 참조 |
 | 첫 챕터 선택형 보충 원고 | `interactive/chapter01.json` | [독자 분기 안내](interactive/README.md) |
+| A/B 본문의 발화·표지·원작 결과 연결 | `interactive/prose-presentation.json` | 원문 보존·각색 출처·판본별 연결 서술, 소단락 제목은 독자 본문에서만 숨김 |
 | 표시명·설정·관계 | 상위 `reference/`·`characters/`의 편집 입력 | [참조 사전](../reference/README.md) |
 | 읽기 배열 | `reading.json` | `previews/`는 생성물이며 직접 집필하지 않음 |
 | 통합 제작 화면의 메뉴·안내 | `studio/studio.plan.json` | [제작실](studio/README.md), `studio/generated/` |

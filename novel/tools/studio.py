@@ -252,7 +252,7 @@ def build(docs=None, publication=None, plan=None, side_publication=None):
                          'source_ref':{'file':'characters/registry.json','pointer':'/disclosure_checkpoints/'+key},'search':key+' '+re.sub('<[^>]+>',' ',html.unescape(body))})
     source_paths = ['writing/project.json','writing/reading.json','writing/storyboard/series.json',publication.cp,
                     'writing/storyboard/chapter-stories.json',publication.up,publication.bp,publication.pp,core_publication.bp,core_publication.pp,
-                    'writing/storyboard/source-connected.plan.json','writing/storyboard/causal-review.json','writing/interactive/chapter01.json','writing/interactive/episodes.json','writing/interactive/series.json',
+                    'writing/storyboard/source-connected.plan.json','writing/storyboard/causal-review.json','writing/interactive/chapter01.json','writing/interactive/episodes.json','writing/interactive/series.json','writing/interactive/prose-presentation.json',
                     'characters/registry.json','reference/names.json','reference/terms.json','continuity/canon.json',
                     *[f'reference/{key}.json' for key in session.references], PLAN.relative_to(ROOT).as_posix(),
                     *[p.relative_to(ROOT).as_posix() for p in sorted((ROOT/'writing/episodes').glob('*.json'))],
