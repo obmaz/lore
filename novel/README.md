@@ -32,6 +32,11 @@
 
 독자용 실제 본문 · A 1~3장 / B 1~3장 초고: [웹에서 판본을 선택하며 읽기](https://obmaz.github.io/lore/novel/)
 
+B안 전자책: [일반 본문 EPUB 3.0](https://obmaz.github.io/lore/novel/downloads/lore-B-chapters01-03.epub) ·
+[선택형 EPUB 3.0 시험본](https://obmaz.github.io/lore/novel/downloads/lore-B-chapters01-03-interactive-epub3.epub).
+선택형은 스크립트 지원 리더가 필요하며 리디의 실제 선택/저장 작동은 미확인입니다.
+[리디 가져오기·호환 확인](writing/ebooks/README.md#리디-호환-조사와-실제-확인).
+
 공용 문체는 [writing/styles.json](writing/styles.json)에서 A/B로 관리합니다.
 A는 기존 산문, B는 빠른 호흡의 웹소설형입니다. 목차·구성·분기·원작 대사는 같고
 B 미집필 장을 A로 자동 대체하지 않습니다. [판본 집필 방법](writing/variants/README.md).

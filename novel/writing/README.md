@@ -59,6 +59,8 @@
   공용 기준은 [styles.json](styles.json), B 장별 연결은 [variants/B/series.json](variants/B/series.json)이다.
   문체와 원고의 적용 방법은 [판본 안내](variants/README.md)를 참조한다.
 - [B안 1~3장 EPUB 초고](ebooks/generated/lore-B-chapters01-03.epub): 대표 선택 경로의 선형 전자책.
+  [EPUB 3.0 선택형 시험본](ebooks/generated/lore-B-chapters01-03-interactive-epub3.epub)은 공용 실행기로
+  선택을 처리하며 미지원 리더에서는 일반 본문을 읽습니다. 리디 선택 기능은 실기 미확인입니다.
   [출력·경로 안내](ebooks/README.md). A/B 공용 메인·장별 생성형 표지는 [covers/](covers/README.md)에 있습니다.
 - [전편 곁가지 선택판](previews/side-adventures.html): 15장 주요 내용과 창작 곁가지 초고.
 - [전편 스토리보드](previews/storyboard.html): 작가 전용, 전편 스포일러 포함.
@@ -91,6 +93,7 @@ HTML은 편집 대상이 아니라 JSON에서 생성한 스냅샷이다.
 | 소설용 스크립트 대체 텍스트 | `script-overrides/registry.json` | [대체본 안내](script-overrides/README.md), 원문은 보존 |
 | A/B 공용 생성형 표지 | `covers/manifest.json`, `covers/*.jpg` | [표지 안내](covers/README.md), 미승인 시각화 |
 | B안 선형 EPUB 경로·출력 | `ebooks/ebook.plan.json` | [전자책 안내](ebooks/README.md), 생성 EPUB/보고서는 읽기 전용 |
+| B안 EPUB 3.0 선택형 시험 출력 | `ebooks/interactive.plan.json` | 공용 실행기 재사용·저장 선택 지원·리디 미검증, [호환 확인](ebooks/README.md#리디-호환-조사와-실제-확인) |
 | 표시명·설정·관계 | 상위 `reference/`·`characters/`의 편집 입력 | [참조 사전](../reference/README.md) |
 | 읽기 배열 | `reading.json` | `previews/`는 생성물이며 직접 집필하지 않음 |
 | 통합 제작 화면의 메뉴·안내 | `studio/studio.plan.json` | [제작실](studio/README.md), `studio/generated/` |

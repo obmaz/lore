@@ -158,27 +158,36 @@ def export(check=False, page=None, context=None):
             raise ValueError('ebook: B reader was manually edited')
     page=source.read_text()if page is None else page
     book,report=assemble(page,context)
+    from epub_interactive import assemble as choice_assemble, PLAN as CHOICE_PLAN, READER
+    choice_book,choice_report=choice_assemble(page,book,report)
+    choice_name=read(CHOICE_PLAN)['filename'];choice_body=json.dumps(choice_report,ensure_ascii=False,indent=2)+'\n'
     name=read(PLAN)['filename'];body=json.dumps(report,ensure_ascii=False,indent=2)+'\n'
-    inputs=[PLAN,Path(__file__),ROOT/'tools/prose_presentation.py',*cover_inputs()]
+    inputs=[PLAN,Path(__file__),ROOT/'tools/prose_presentation.py',CHOICE_PLAN,ROOT/'tools/epub_interactive.py',READER,*cover_inputs()]
     manifest={'version':1,'edition':'B','public_path':read(PLAN)['public_path'],
+              'public_downloads':{name:read(PLAN)['public_path'],choice_name:read(CHOICE_PLAN)['public_path']},
               'source_sha256':{source.relative_to(ROOT).as_posix():hashlib.sha256(page.encode()).hexdigest(),**{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()for p in inputs}},
-              'artifacts':{name:hashlib.sha256(book).hexdigest(),'report.json':hashlib.sha256(body.encode()).hexdigest()}}
+              'artifacts':{name:hashlib.sha256(book).hexdigest(),'report.json':hashlib.sha256(body.encode()).hexdigest(),
+                           choice_name:hashlib.sha256(choice_book).hexdigest(),'interactive-report.json':hashlib.sha256(choice_body.encode()).hexdigest()}}
     path=OUTPUT/'manifest.json'
     if path.is_file():
         previous=read(path)
         for filename,digest in previous['artifacts'].items():
-            if filename not in (name,'report.json'):raise ValueError('ebook: unknown or unsafe owned output')
+            if filename not in (name,'report.json',choice_name,'interactive-report.json'):raise ValueError('ebook: unknown or unsafe owned output')
             target=OUTPUT/filename
             if not target.is_file()or hashlib.sha256(target.read_bytes()).hexdigest()!=digest:raise ValueError('ebook output was manually edited; preserve before regeneration')
+        for filename in (name,'report.json',choice_name,'interactive-report.json'):
+            if filename not in previous['artifacts']and (OUTPUT/filename).exists():raise ValueError('ebook output exists without ownership manifest')
     elif (OUTPUT/name).exists():raise ValueError('ebook output exists without ownership manifest')
     manifest_body=json.dumps(manifest,ensure_ascii=False,indent=2)+'\n'
     if check:
-        if not path.is_file()or path.read_text()!=manifest_body or (OUTPUT/name).read_bytes()!=book or (OUTPUT/'report.json').read_text()!=body:
+        if not path.is_file()or path.read_text()!=manifest_body or (OUTPUT/name).read_bytes()!=book or (OUTPUT/'report.json').read_text()!=body or not (OUTPUT/choice_name).is_file()or (OUTPUT/choice_name).read_bytes()!=choice_book or not (OUTPUT/'interactive-report.json').is_file()or (OUTPUT/'interactive-report.json').read_text()!=choice_body:
             raise ValueError('ebook is stale; run writing.py export')
     else:
         OUTPUT.mkdir(parents=True,exist_ok=True)
         (OUTPUT/name).write_bytes(book);(OUTPUT/'report.json').write_text(body);path.write_text(manifest_body)
-    return {'filename':name,'chapters':len(report['scope']),'main_scenes':report['required_main_scenes'],'sha256':manifest['artifacts'][name],'bytes':len(book),'checked':check}
+        (OUTPUT/choice_name).write_bytes(choice_book);(OUTPUT/'interactive-report.json').write_text(choice_body)
+    return {'filename':name,'chapters':len(report['scope']),'main_scenes':report['required_main_scenes'],'sha256':manifest['artifacts'][name],'bytes':len(book),'checked':check,
+            'interactive':{'filename':choice_name,'sha256':manifest['artifacts'][choice_name],'bytes':len(choice_book),'ridi_device_tested':False}}
 
 
 if __name__=='__main__':

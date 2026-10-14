@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "revision": 1,
+  "edition": "B",
+  "status": "experimental",
+  "format": "EPUB3_scripted_choice_sample",
+  "package_version": "3.0",
+  "chapter_ids": ["chapter01", "chapter02", "chapter03"],
+  "filename": "lore-B-chapters01-03-interactive-epub3.epub",
+  "public_path": "/novel/downloads/lore-B-chapters01-03-interactive-epub3.epub",
+  "storage": "optional_local_storage_choice_ids_replayed",
+  "fallback": "existing_validated_linear_B_route",
+  "ridi_support": "unverified_no_device_test",
+  "metadata": {"origin": "authored", "addition": true, "kind": "new_setting", "status": "proposed", "note": "추가: 기존 B안의 본문·선택·조건·동료·장비 상태를 공용 실행기로 처리하는 EPUB 3.0 선택형 시험 출력. 원고나 정사를 변경하지 않는다. 리더별 스크립트/저장 지원은 별도이며 리디 작동을 보장하지 않는다."}
+}

@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "edition": "B",
+  "status": "experimental",
+  "format": "EPUB3_scripted_choice_sample",
+  "package_version": "3.0",
+  "filename": "lore-B-chapters01-03-interactive-epub3.epub",
+  "scope": [
+    "chapter01",
+    "chapter02",
+    "chapter03"
+  ],
+  "reader_fingerprint": "8e67367ae5c42af713a4dc9cde6b411ffe499062c8619dbc1667916f5bb4f6ed",
+  "epub_fingerprint": "224100682807d3044a1335a905abda35b96a98ea550b27652df04d4f3583f707",
+  "shared_runtime": "writing/interactive/reader.js",
+  "branch_state_data_included": true,
+  "required_main_scenes": 43,
+  "fallback_route": [
+    {
+      "node_id": "prologue/courtyard",
+      "choice_id": "prologue/visit_lord"
+    },
+    {
+      "node_id": "lore_menace/preparation",
+      "choice_id": "i/armory_first"
+    },
+    {
+      "node_id": "lore_menace/castle_exit",
+      "choice_id": "lore_menace/accept_skeleton"
+    },
+    {
+      "node_id": "lore_menace/road",
+      "choice_id": "lore_menace/enter_menace"
+    },
+    {
+      "node_id": "lore_menace/center",
+      "choice_id": "lore_menace/return_to_lore"
+    },
+    {
+      "node_id": "lastditch_pyramid/polaris_offer",
+      "choice_id": "lastditch_pyramid/decline_polaris"
+    },
+    {
+      "node_id": "lastditch_pyramid/spear",
+      "choice_id": "lastditch_pyramid/equip_spear_party_hunter"
+    },
+    {
+      "node_id": "lastditch_pyramid/room",
+      "choice_id": "lastditch_pyramid/separate_pressure"
+    },
+    {
+      "node_id": "gaia_evil_seal/rigel_offer",
+      "choice_id": "gaia_evil_seal/aid_rigel"
+    }
+  ],
+  "storage": "optional; replay validated choice IDs, no state import",
+  "ridi_device_tested": false,
+  "canonical_or_approved": false,
+  "all_paths_rendered_or_proven": false,
+  "compatibility_note": "EPUB 3.0 package validation is not proof of scripting/storage support in RIDI or another reader."
+}

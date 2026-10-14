@@ -444,11 +444,12 @@ def export_documents(output,check=False):
     from ebook import export as ebook_export, OUTPUT as EBOOK_OUTPUT, PLAN as EBOOK_PLAN
     ebook_result=ebook_export(check=check,page=b_docs['chapter01-web.html'],context=book_context)
     ebook_bytes=(EBOOK_OUTPUT/ebook_result['filename']).read_bytes()
+    choice_bytes=(EBOOK_OUTPUT/ebook_result['interactive']['filename']).read_bytes()
     editions={key:docs[name] for key,name in [('A','chapter01-interactive.html'),('B','chapter01-web.html')]}
     wrapper=ROOT/'writing/interactive/editions.html'
     styles=read(STYLES)['profiles']
     scope=lambda key:('1~'+str(len(styles[key]['written_chapters']))+'장') if len(styles[key]['written_chapters'])>1 else '1장'
-    docs['novel-reader.html']=wrapper.read_text().replace('__A_SCOPE__',scope('A')).replace('__B_SCOPE__',scope('B')).replace('__EPUB_B__',base64.b64encode(ebook_bytes).decode()).replace('__EDITIONS__',json.dumps(editions,ensure_ascii=False).replace('<','\\u003c').replace('&','\\u0026'))
+    docs['novel-reader.html']=wrapper.read_text().replace('__A_SCOPE__',scope('A')).replace('__B_SCOPE__',scope('B')).replace('__EPUB_B__',base64.b64encode(ebook_bytes).decode()).replace('__EPUB_B_CHOICE__',base64.b64encode(choice_bytes).decode()).replace('__EDITIONS__',json.dumps(editions,ensure_ascii=False).replace('<','\\u003c').replace('&','\\u0026'))
     inputs = [OVERLAY,READER,SCHEMA,EPISODES,ROOT/'tools/interactive.py',BOARD,CHAPTERS,CHAPTER_SCHEMA,STORIES,STORY_SCHEMA,ROOT/'tools/chapter_stories.py',SUBSECTIONS,SUBSECTION_SCHEMA,SUBSECTION_TEMPLATE,ROOT/'tools/chapter_subsections.py',BRANCHES,BRANCH_SCHEMA,BRANCH_TEMPLATE,ROOT/'tools/branch_system.py',SOURCE_PLAN,SOURCE_SCHEMA,ROOT/'tools/source_story.py',SOURCE_OUTPUT/'manuscript.json',SOURCE_OUTPUT/'coverage.json',SOURCE_OUTPUT/'generated-manifest.json',PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
               ROOT/'reference/terms.json',ROOT/'continuity/canon.json',ROOT/'writing/project.json',Path(__file__),ROOT/'tools/text_refs.py',
               ROOT/'tools/story_continuity.py',ROOT/'tools/disclosure.py',ROOT/'tools/validate_story_authoring.py',
@@ -468,6 +469,7 @@ def export_documents(output,check=False):
     from cover_art import cover_inputs
     inputs += cover_inputs()
     inputs += [EBOOK_PLAN,ROOT/'tools/ebook.py',EBOOK_OUTPUT/'manifest.json',EBOOK_OUTPUT/'report.json',EBOOK_OUTPUT/ebook_result['filename']]
+    inputs += [ROOT/'writing/ebooks/interactive.plan.json',ROOT/'tools/epub_interactive.py',EBOOK_OUTPUT/'interactive-report.json',EBOOK_OUTPUT/ebook_result['interactive']['filename']]
     for chapter in read(ROOT/'writing/interactive/series.json')['chapters']:
         inputs += [ROOT/chapter['quest_file'],ROOT/chapter['continuity_file']]
     inputs += [FLOW_PLAN,FLOW_SCHEMA,FLOW_TEMPLATE,ROOT/'tools/publication_flow.py',FLOW_OUTPUT/'manifest.json',

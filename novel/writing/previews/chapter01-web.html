@@ -4,6 +4,8 @@
 (() => {
   'use strict';
   const data = JSON.parse(document.getElementById('chapter-data').textContent);
+  const epub = data.runtime?.target === 'epub';
+  const create = tag => document.createElementNS('http://www.w3.org/1999/xhtml',tag);
   const nodes = Object.fromEntries(data.nodes.map(n => [n.id, n]));
   const presentation = data.presentation;
   const mainCover=document.getElementById('book-cover-image');
@@ -13,6 +15,23 @@
   const clone = value => JSON.parse(JSON.stringify(value));
   let route = [];
   const message = text => { document.getElementById('message').textContent = text; };
+  const storageKey = 'novel-epub-route:' + data.fingerprint;
+  let storageAvailable = false;
+  function storedRoute() {
+    const raw=localStorage.getItem(storageKey);
+    if (!raw) throw Error('저장한 선택 기록이 없습니다.');
+    if (raw.length>32768) throw Error('저장 기록이 너무 큽니다.');
+    const saved=JSON.parse(raw);
+    if (Object.keys(saved).sort().join(',')!=='fingerprint,route'||saved.fingerprint!==data.fingerprint) throw Error('다른 판본 또는 변조된 저장 기록입니다.');
+    const packet=replay(saved.route);
+    if (automatic(packet.node.id,packet.state)) throw Error('자동 진행이 누락된 저장 경로입니다.');
+    return [...saved.route];
+  }
+  function persist() {
+    if (!epub||!storageAvailable) return;
+    try { localStorage.setItem(storageKey,JSON.stringify({fingerprint:data.fingerprint,route})); }
+    catch (_) { storageAvailable=false;document.getElementById('runtime-status').textContent='선택 기능 작동 · 이 리더에서는 기록 저장이 제한됩니다. 책을 닫으면 진행이 사라질 수 있습니다.'; }
+  }
   function matches(p, state) {
     if (typeof p === 'boolean') return p;
     if (p.all) return p.all.every(x => matches(x, state));
@@ -128,15 +147,16 @@
     }).join('');
   }
   function element(tag, value, className) {
-    const e = document.createElement(tag); e.textContent = value;
+    const e = create(tag); e.textContent = value;
     if (className) e.className = className;
     return e;
   }
   function readFromSection(index) {
     const sections = document.getElementById('manuscript').children;
     const section = index === undefined ? sections[sections.length - 1] : sections[index];
-    section.tabIndex=-1;section.focus({preventScroll:true});
-    section.scrollIntoView({block:'start',behavior:'instant'});
+    if (!section) return;
+    section.tabIndex=-1;
+    try {section.focus({preventScroll:true});section.scrollIntoView({block:'start',behavior:'instant'});} catch (_) { /* A paginated EPUB host may manage focus/scroll itself. */ }
   }
   function quoted(body) {
     const value=body.trim();
@@ -161,7 +181,7 @@
     manuscript.replaceChildren();
     let priorChapter=null;
     for (const section of packet.sections) {
-      const root = document.createElement('section');
+      const root = create('section');
       root.dataset.nodeId=section.node.id;
       root.dataset.storyRole=data.main_story.some(r=>r.node===section.node.id)?'main':'optional';
       root.setAttribute('aria-label',text(section.node.title,section.state));
@@ -170,7 +190,7 @@
         if(priorChapter)root.append(element('h2','제'+Number(chapter.id.slice(7))+'장 · '+text(chapter.title,section.state)));
         const art=data.covers.images[chapter.id];
         if(art){
-          const figure=document.createElement('figure'),img=document.createElement('img');
+          const figure=create('figure'),img=create('img');
           figure.className='chapter-cover';figure.dataset.chapterCover=chapter.id;
           img.src=art.src;img.alt=art.alt;img.width=art.width;img.height=art.height;
           figure.append(img);root.append(figure);
@@ -240,6 +260,7 @@
     if(packet.state['event.chapter02.spear_owner'])info.append(element('p',data.labels.terms.oedipus_spear+': '+data.labels.characters[packet.state['event.chapter02.spear_owner']]));
     if (!current.choices.length) box.append(element('p',`제${data.chapters.length}장 끝. 선택한 동료·장비·경험은 다음 장으로 인계됩니다. ${data.chapters.length+1}장 이후는 이 판본에서 아직 집필 전이며, 전편 개요와 분기 미리보기는 제작 자료입니다.`));
     document.getElementById('back').disabled = !packet.sections.some(s=>s.selected&&!automatic(s.node.id,s.state));
+    persist();
   }
   document.getElementById('restart').addEventListener('click',() => { route = []; redraw(); message('처음부터 시작합니다.'); readFromSection(0); });
   document.getElementById('back').addEventListener('click',() => {
@@ -248,13 +269,17 @@
     route = next; redraw(); message('직전 선택으로 돌아왔습니다. 상태도 경로에서 다시 계산했습니다.'); readFromSection();
   });
   document.getElementById('save').addEventListener('click',() => {
+    if(epub){persist();message(storageAvailable?'선택 기록을 이 리더의 저장소에 보관했습니다. 계정·기기간 동기화는 아닙니다.':'이 리더에서는 선택 기록 저장이 제한됩니다. 현재 읽기는 계속할 수 있습니다.');return;}
     const value = JSON.stringify({fingerprint:data.fingerprint,route},null,2), a = document.createElement('a');
     const url = URL.createObjectURL(new Blob([value],{type:'application/json'}));
     a.href = url; a.download = 'novel-route.json'; a.click(); URL.revokeObjectURL(url);
     message('경로만 저장했습니다. 동료·금화·지식을 임의 저장하지 않습니다.');
   });
-  document.getElementById('load').addEventListener('click',() => document.getElementById('file').click());
-  document.getElementById('file').addEventListener('change',async event => {
+  document.getElementById('load').addEventListener('click',() => {
+    if(!epub){document.getElementById('file').click();return;}
+    try {route=storedRoute();redraw();message('선택 기록을 검증해 불러왔습니다.');readFromSection();}catch(e){message(e.message);}
+  });
+  document.getElementById('file')?.addEventListener('change',async event => {
     try {
       const file = event.target.files[0]; if (!file || file.size > 32768) throw Error('저장 파일이 너무 큽니다.');
       const saved = JSON.parse(await file.text());
@@ -265,6 +290,17 @@
     } catch (e) { message(e.message); }
     event.target.value = '';
   });
-  redraw();
+  if(epub){
+    let notice='';
+    try {const probe=storageKey+':probe';localStorage.setItem(probe,'1');localStorage.removeItem(probe);storageAvailable=true;
+      if(localStorage.getItem(storageKey))route=storedRoute();
+    }catch(e){notice='저장 기록을 복원하지 못했습니다. '+e.message;}
+    try {
+      redraw();
+      document.getElementById('epub-app').hidden=false;
+      document.getElementById('runtime-status').textContent=storageAvailable?'선택 기능 작동 · 선택 기록은 이 리더에 자동 저장됩니다. 계정·기기간 동기화는 아닙니다.':'선택 기능 작동 · 이 리더에서는 기록 저장이 제한됩니다. 책을 닫으면 진행이 사라질 수 있습니다.';
+      if(notice)message(notice);
+    }catch(e){document.getElementById('runtime-status').textContent='이 리더에서는 선택 기능을 실행하지 못했습니다. 아래의 일반 본문 또는 웹 B안을 이용해 주세요. '+e.message;}
+  }else redraw();
 })();
 </script></html>

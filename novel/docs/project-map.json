@@ -17,14 +17,14 @@
     "authored_cover_asset": 4,
     "compiled_reference": 5,
     "configuration": 2,
-    "editable_authoring_input": 42,
+    "editable_authoring_input": 43,
     "generated_inventory": 1,
-    "generated_reading": 42,
+    "generated_reading": 44,
     "immutable_source_snapshot": 25,
     "schema": 21,
     "shared_template": 10,
-    "test": 30,
-    "tool": 33,
+    "test": 31,
+    "tool": 35,
     "ui_source": 5,
     "usage_documentation": 18,
     "verification_example": 2
@@ -775,6 +775,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_project_structure.py"
         },
         {
@@ -1077,6 +1081,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -2222,6 +2230,17 @@
       "automatic_deletion": false
     },
     {
+      "file": "tests/test_epub_interactive.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tests/test_first_chapter.py",
       "role": "test",
       "consumers": [
@@ -2779,6 +2798,17 @@
       "automatic_deletion": false
     },
     {
+      "file": "tools/check_epub_browser.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/check_epub_browser.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tools/check_interactive_browser.py",
       "role": "tool",
       "consumers": [
@@ -2937,7 +2967,19 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_epub_interactive.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_script_overrides.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/check_epub_browser.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/epub_interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -2954,6 +2996,41 @@
         {
           "kind": "cli_entrypoint",
           "file": "tools/ebook.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/epub_interactive.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_epub_interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/check_epub_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
         }
       ],
       "automatic_deletion": false
@@ -3028,6 +3105,10 @@
         {
           "kind": "python_import",
           "file": "tools/check_interactive_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
         },
         {
           "kind": "python_import",
@@ -3141,6 +3222,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_epub_interactive.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_first_chapter.py"
         },
         {
@@ -3233,6 +3318,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tools/check_epub_browser.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tools/check_interactive_browser.py"
         },
         {
@@ -3262,6 +3351,10 @@
         {
           "kind": "python_import",
           "file": "tools/ebook.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/epub_interactive.py"
         },
         {
           "kind": "python_import",
@@ -5082,6 +5175,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "writing/covers/README.md"
         }
       ],
@@ -5118,6 +5215,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5281,6 +5382,76 @@
       "automatic_deletion": false
     },
     {
+      "file": "writing/ebooks/generated/interactive-report.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/ebooks/generated/lore-B-chapters01-03-interactive-epub3.epub",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "writing/ebooks/generated/lore-B-chapters01-03.epub",
       "role": "generated_reading",
       "consumers": [
@@ -5291,6 +5462,14 @@
         {
           "kind": "output_hash_guard",
           "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5334,6 +5513,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5444,7 +5627,15 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/check_editions_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_epub_browser.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5465,6 +5656,45 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/branches/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/ebooks/interactive.plan.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5780,12 +6010,28 @@
           "file": "writing/previews/manifest.json"
         },
         {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/epub_interactive.py"
+        },
+        {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6124,6 +6370,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_prose_presentation.py"
         },
         {
@@ -6211,6 +6461,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6318,6 +6572,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6928,6 +7186,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -7834,6 +8096,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_project_structure.py"
         },
         {
@@ -8015,11 +8281,23 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -8677,6 +8955,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
