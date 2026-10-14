@@ -158,11 +158,11 @@ def export(check=False, page=None, context=None):
             raise ValueError('ebook: B reader was manually edited')
     page=source.read_text()if page is None else page
     book,report=assemble(page,context)
-    from epub_interactive import assemble as choice_assemble, PLAN as CHOICE_PLAN, READER
+    from epub_interactive import assemble as choice_assemble, PLAN as CHOICE_PLAN, READER, STORAGE
     choice_book,choice_report=choice_assemble(page,book,report)
     choice_name=read(CHOICE_PLAN)['filename'];choice_body=json.dumps(choice_report,ensure_ascii=False,indent=2)+'\n'
     name=read(PLAN)['filename'];body=json.dumps(report,ensure_ascii=False,indent=2)+'\n'
-    inputs=[PLAN,Path(__file__),ROOT/'tools/prose_presentation.py',CHOICE_PLAN,ROOT/'tools/epub_interactive.py',READER,*cover_inputs()]
+    inputs=[PLAN,Path(__file__),ROOT/'tools/prose_presentation.py',CHOICE_PLAN,ROOT/'tools/epub_interactive.py',READER,STORAGE,*cover_inputs()]
     manifest={'version':1,'edition':'B','public_path':read(PLAN)['public_path'],
               'public_downloads':{name:read(PLAN)['public_path'],choice_name:read(CHOICE_PLAN)['public_path']},
               'source_sha256':{source.relative_to(ROOT).as_posix():hashlib.sha256(page.encode()).hexdigest(),**{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()for p in inputs}},

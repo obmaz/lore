@@ -23,7 +23,7 @@ def classify(path):
     if path.startswith('tools/'):return 'tool'
     if path.startswith('tests/'):return 'test'
     if path in ('requirements.txt','.gitignore','writing/studio/publication.json'):return 'configuration'
-    if path.startswith(('writing/interactive/','writing/studio/','writing/side-stories/')) and path.endswith(('.js','.html')):return 'ui_source'
+    if path.startswith(('writing/interactive/','writing/studio/','writing/side-stories/','writing/ebooks/')) and path.endswith(('.js','.html')):return 'ui_source'
     if path.endswith('.json') and path.startswith(('reference/','characters/','continuity/','writing/')):return 'editable_authoring_input'
     return 'unclassified'
 

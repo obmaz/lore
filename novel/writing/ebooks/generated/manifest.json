@@ -7,13 +7,14 @@
     "lore-B-chapters01-03-interactive-epub3.epub": "/novel/downloads/lore-B-chapters01-03-interactive-epub3.epub"
   },
   "source_sha256": {
-    "writing/previews/chapter01-web.html": "027f8d7b984997cc4b18556e32d0c095a77814260c3c257667e2a0ce3e43c330",
+    "writing/previews/chapter01-web.html": "f01e332000cd9e191e66d0ce3c5c3e39a22f5d1311aa5322f85e5bd53feb2c82",
     "writing/ebooks/ebook.plan.json": "c89dd29e98b96d67ebbcee44e80ef0b888e9a9aebc09300d98c1ab0c296b6d97",
-    "tools/ebook.py": "62d643cca7d0228b27812e4ca868380680d2a01177507ff46ece8a80fc7547bc",
+    "tools/ebook.py": "648939363cf6a4a23e177a3d7f4140e44eae441fc3423b315466da346cee2025",
     "tools/prose_presentation.py": "3800d9a7296cc122b5cf7af4e9a478c7060f1a204b3dbbd63c26d06cdb0e26b9",
     "writing/ebooks/interactive.plan.json": "f0379dd3fc7876eb799d12bbf961f7ebcc62c6b70141dba1d07cc394caf4a937",
-    "tools/epub_interactive.py": "4077055d99294ced266e39fa3ed7d3b4955906d0703a32d7a344178921beb45e",
-    "writing/interactive/reader.js": "1ceb0cf5bdf82d8d6945cd61a7ad998e518958bd91557ce2588b4fa071edec6f",
+    "tools/epub_interactive.py": "b8475695b1a947bbe76e4c1aec81ac10611b9c32c9d7b88ef79470cb08ad9f77",
+    "writing/interactive/reader.js": "9b4d4e77f3dfe033e58f6845273547dc6562e5b28441c8f3dffa9658d165f1b6",
+    "writing/ebooks/epub-storage.js": "379ee7442305d9a7c75876bb83d43d05b72e3ed8b46aa742f82c7d7e22f8e775",
     "writing/covers/manifest.json": "b16de5fb1b928995e54bea8386a83acd3dc1487306b66eb362bcdb109a64e21b",
     "tools/cover_art.py": "3d9382fedf1a54dae36a78eff6787924cccb2efdf3cbdb51b8efaa11765f6583",
     "writing/covers/cover-main.jpg": "ef2019ad149a93ea98041539ed924e3712d384b176cd4e531f1acb15621ecf44",
@@ -24,7 +25,7 @@
   "artifacts": {
     "lore-B-chapters01-03.epub": "c8be2b69792c70447d543c8aaa16335a2b02a0b1dc8336f7104927fd3bf85c28",
     "report.json": "eb6e40eb2d9e1d367c8c108a7209f1e9ca2f3b336c9d3a484e5e25e153d5b4d3",
-    "lore-B-chapters01-03-interactive-epub3.epub": "9fb3397d259a5ddfac737e37531ea4afdb8a3915d165685d9e2de87a6dd7229c",
-    "interactive-report.json": "608d4898e3800dc71a0824f2387264e74bb779a52f1d45ec99289ec2f1450325"
+    "lore-B-chapters01-03-interactive-epub3.epub": "175d31b7d99f3d74385792c9be58e5f7e1b7f775fc0dadf9661087f114a82abd",
+    "interactive-report.json": "a63418943ec751181c61174cb6392bf3fe18f7e59db47f8eb925158641204e56"
   }
 }

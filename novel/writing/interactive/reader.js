@@ -3,6 +3,7 @@
   'use strict';
   const data = JSON.parse(document.getElementById('chapter-data').textContent);
   const epub = data.runtime?.target === 'epub';
+  const persistence = epub ? window.novelEpubStorage : null;
   const create = tag => document.createElementNS('http://www.w3.org/1999/xhtml',tag);
   const nodes = Object.fromEntries(data.nodes.map(n => [n.id, n]));
   const presentation = data.presentation;
@@ -16,7 +17,7 @@
   const storageKey = 'novel-epub-route:' + data.fingerprint;
   let storageAvailable = false;
   function storedRoute() {
-    const raw=localStorage.getItem(storageKey);
+    const raw=persistence.get(storageKey);
     if (!raw) throw Error('저장한 선택 기록이 없습니다.');
     if (raw.length>32768) throw Error('저장 기록이 너무 큽니다.');
     const saved=JSON.parse(raw);
@@ -27,7 +28,7 @@
   }
   function persist() {
     if (!epub||!storageAvailable) return;
-    try { localStorage.setItem(storageKey,JSON.stringify({fingerprint:data.fingerprint,route})); }
+    try { persistence.set(storageKey,JSON.stringify({fingerprint:data.fingerprint,route})); }
     catch (_) { storageAvailable=false;document.getElementById('runtime-status').textContent='선택 기능 작동 · 이 리더에서는 기록 저장이 제한됩니다. 책을 닫으면 진행이 사라질 수 있습니다.'; }
   }
   function matches(p, state) {
@@ -290,8 +291,8 @@
   });
   if(epub){
     let notice='';
-    try {const probe=storageKey+':probe';localStorage.setItem(probe,'1');localStorage.removeItem(probe);storageAvailable=true;
-      if(localStorage.getItem(storageKey))route=storedRoute();
+    try {const probe=storageKey+':probe';persistence.set(probe,'1');persistence.remove(probe);storageAvailable=true;
+      if(persistence.get(storageKey))route=storedRoute();
     }catch(e){notice='저장 기록을 복원하지 못했습니다. '+e.message;}
     try {
       redraw();

@@ -13,6 +13,7 @@ from ebook import XHTML, payload_from_page, validate_epub, xhtml
 
 PLAN=ROOT/'writing/ebooks/interactive.plan.json'
 READER=ROOT/'writing/interactive/reader.js'
+STORAGE=ROOT/'writing/ebooks/epub-storage.js'
 NS={'o':'http://www.idpf.org/2007/opf','h':XHTML}
 
 
@@ -28,8 +29,8 @@ def assemble(page, linear_book, linear_report):
         or plan['ridi_support']!='unverified_no_device_test'
         or not plan['metadata']['addition'] or plan['metadata']['status']!='proposed'):
         raise ValueError('interactive ebook: unreviewed scope, output or compatibility claim')
-    original_fingerprint=payload['fingerprint'];reader=READER.read_bytes()
-    payload['fingerprint']=hashlib.sha256(json.dumps([original_fingerprint,plan,hashlib.sha256(reader).hexdigest()],sort_keys=True).encode()).hexdigest()
+    original_fingerprint=payload['fingerprint'];reader=READER.read_bytes();storage=STORAGE.read_bytes()
+    payload['fingerprint']=hashlib.sha256(json.dumps([original_fingerprint,plan,hashlib.sha256(reader).hexdigest(),hashlib.sha256(storage).hexdigest()],sort_keys=True).encode()).hexdigest()
     payload['runtime']={'target':'epub','storage':'optional_local_storage_choice_ids_replayed'}
     for key,image in payload['covers']['images'].items():
         # Use manifest resources instead of data URLs in reading-system sandboxes.
@@ -43,13 +44,15 @@ def assemble(page, linear_book, linear_report):
     body+='<div id="epub-app" hidden="hidden"><figure class="chapter-art"><img id="book-cover-image" src="images/cover-main.jpg" alt="'+esc(payload['covers']['images']['main']['alt'])+'"/></figure><h2>'+esc(first_heading)+'</h2>'
     body+='<div class="reader-controls"><button type="button" id="back">이전 선택 되돌리기</button><button type="button" id="restart">처음부터</button><button type="button" id="save">경로 저장</button><button type="button" id="load">저장 불러오기</button></div><p id="message" role="status"></p><div id="manuscript"></div><div id="choices" aria-label="이야기 선택"></div><details><summary>동료·장비 확인</summary><div id="state"></div></details></div></main>'
     raw=json.dumps(payload,ensure_ascii=False,separators=(',',':')).replace('&','\\u0026').replace('<','\\u003c').replace('>','\\u003e')
-    body+='<script id="chapter-data" type="application/json">'+raw+'</script><script type="text/javascript" src="reader.js"></script>'
+    body+='<script id="chapter-data" type="application/json">'+raw+'</script><script type="text/javascript" src="epub-storage.js"></script><script type="text/javascript" src="reader.js"></script>'
     members['OEBPS/interactive.xhtml']=xhtml(title+' · 선택형 시험본',body).encode()
     members['OEBPS/reader.js']=reader
+    members['OEBPS/epub-storage.js']=storage
     members['OEBPS/styles.css']+=b'\n[hidden]{display:none!important}#choices{display:flex;flex-direction:column;gap:.5em;margin:1.5em 0}button{font:inherit;white-space:normal;text-align:left;padding:.6em .8em;border:1px solid #64796e;border-radius:.25em;color:inherit;background:transparent}.reader-controls{display:flex;flex-wrap:wrap;gap:.4em}.reader-controls button{font-size:.85em}.selected{font-size:.85em;color:#536859}section{scroll-margin-top:1em}details{margin:1em 0}#runtime-status{font-size:.9em}\n'
     opf=ET.fromstring(members['OEBPS/package.opf']);manifest=opf.find('o:manifest',NS);spine=opf.find('o:spine',NS)
     ET.SubElement(manifest,'{'+NS['o']+'}item',{'id':'interactive','href':'interactive.xhtml','media-type':'application/xhtml+xml','properties':'scripted'})
     ET.SubElement(manifest,'{'+NS['o']+'}item',{'id':'reader-js','href':'reader.js','media-type':'text/javascript'})
+    ET.SubElement(manifest,'{'+NS['o']+'}item',{'id':'epub-storage','href':'epub-storage.js','media-type':'text/javascript'})
     # Listed for direct access, but skipped by ordinary next-page navigation.
     spine.insert(2,ET.Element('{'+NS['o']+'}itemref',{'idref':'interactive','linear':'no'}))
     identity='urn:uuid:'+str(uuid.uuid5(uuid.NAMESPACE_URL,payload['fingerprint']))

@@ -11,7 +11,7 @@ from xml.etree import ElementTree as ET
 
 from materials import ROOT,read
 from ebook import OUTPUT,payload_from_page,validate_epub
-from epub_interactive import PLAN,READER,assemble
+from epub_interactive import PLAN,READER,STORAGE,assemble
 
 
 class InteractiveEpubTest(unittest.TestCase):
@@ -38,6 +38,9 @@ class InteractiveEpubTest(unittest.TestCase):
 
     def test_shared_reader_and_same_story_state_data_no_original_edits(self):
         self.assertEqual(self.zip.read('OEBPS/reader.js'),READER.read_bytes())
+        self.assertEqual(self.zip.read('OEBPS/epub-storage.js'),STORAGE.read_bytes())
+        self.assertNotIn('localStorage',READER.read_text())
+        self.assertNotIn('localStorage',self.page)
         original=payload_from_page(self.page)
         for key in original:
             if key not in ('covers','fingerprint'):self.assertEqual(self.payload[key],original[key],key)

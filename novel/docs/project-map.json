@@ -25,7 +25,7 @@
     "shared_template": 10,
     "test": 31,
     "tool": 35,
-    "ui_source": 5,
+    "ui_source": 6,
     "usage_documentation": 18,
     "verification_example": 2
   },
@@ -5373,6 +5373,37 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/ebooks/epub-storage.js",
+      "role": "ui_source",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/epub_interactive.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",

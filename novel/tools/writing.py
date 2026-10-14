@@ -469,7 +469,7 @@ def export_documents(output,check=False):
     from cover_art import cover_inputs
     inputs += cover_inputs()
     inputs += [EBOOK_PLAN,ROOT/'tools/ebook.py',EBOOK_OUTPUT/'manifest.json',EBOOK_OUTPUT/'report.json',EBOOK_OUTPUT/ebook_result['filename']]
-    inputs += [ROOT/'writing/ebooks/interactive.plan.json',ROOT/'tools/epub_interactive.py',EBOOK_OUTPUT/'interactive-report.json',EBOOK_OUTPUT/ebook_result['interactive']['filename']]
+    inputs += [ROOT/'writing/ebooks/interactive.plan.json',ROOT/'writing/ebooks/epub-storage.js',ROOT/'tools/epub_interactive.py',EBOOK_OUTPUT/'interactive-report.json',EBOOK_OUTPUT/ebook_result['interactive']['filename']]
     for chapter in read(ROOT/'writing/interactive/series.json')['chapters']:
         inputs += [ROOT/chapter['quest_file'],ROOT/chapter['continuity_file']]
     inputs += [FLOW_PLAN,FLOW_SCHEMA,FLOW_TEMPLATE,ROOT/'tools/publication_flow.py',FLOW_OUTPUT/'manifest.json',
