@@ -10,8 +10,8 @@
     "chapter02",
     "chapter03"
   ],
-  "reader_fingerprint": "83884895297a8ed1ee0ec08953608efe7727e650ff44e3633ffaeed1ed871106",
-  "epub_fingerprint": "d2ef0a01813a2c02ce1af8310077d39cc4d73be919741e166b335c8a1a8e00b3",
+  "reader_fingerprint": "f6aed092dba33d47a49169132323eeb4d4b06a2083c1d49cfa7dcaed850a0a14",
+  "epub_fingerprint": "59cabe174829352c4cb626725f78447d246762fdd4c824ecb63448bc8d6f4845",
   "shared_runtime": "writing/interactive/reader.js",
   "branch_state_data_included": true,
   "required_main_scenes": 43,

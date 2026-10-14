@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "profile": "B",
   "scope": [
     "chapter01",
@@ -948,7 +948,7 @@
     "addition": true,
     "kind": "new_setting",
     "status": "proposed",
-    "note": "추가: 1~3장 집필 교정 기록. 지시 대상·행동 순서·중복 귀환·마법과 상처의 구분·띄어쓰기 및 대사의 읽기용 대체본을 점검했다. 구조 검사로 모든 문장의 문학적 완성도나 정사를 승인하지 않는다."
+    "note": "추가: 1~3장 집필 교정 기록. 지시 대상·행동 순서·중복 귀환·마법과 상처의 구분·띄어쓰기 및 대사의 읽기용 대체본을 점검했다. 구조 검사로 모든 문장의 문학적 완성도나 정사를 승인하지 않는다. 교정 2: 내용·문체·문법의 재집필 기록. 문장 길이 측정은 참고용이고 문학적 완성도·정사·출판을 자동 승인하지 않는다."
   },
   "reference_corrections": [
     {
@@ -966,6 +966,915 @@
         "id": "zombie"
       },
       "kind": "source_name_transliteration_only"
+    }
+  ],
+  "passes": [
+    {
+      "id": "developmental-copyedit-02",
+      "style_revision": 2,
+      "status": "proposed",
+      "scope": [
+        "chapter01",
+        "chapter02",
+        "chapter03"
+      ],
+      "changes": [
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/arrival_first",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/arrival_pause",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/party_intro",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_hunter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_cook",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_magician",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/audience_enter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/audience_wait",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/briefing_after",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/briefing_end",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_before",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_silence",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_floor",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_distant_name",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_waiting_breath",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_lord_motion",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_scope_wait",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_scope_face",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_return_weight",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_dry_mouth",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_unfinished_fear",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_name_repeated",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/prep_promise",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/prep_corridor",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/prep_name",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/join_space",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/join_second_step",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/decline_not_erased",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/road_first",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/road_shoulders",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/road_checking_pace",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/road_declined_memory",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/road_distance",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/road_end",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/cave_outside_noise",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/cave_first_step",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/cave_look_back",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/cave_breath",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/cave_not_far",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/cave_decision",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_wall_hand",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_stop_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_awkward_release",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_declined_space",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_focus",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_after",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_listen",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_hands",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_group_pause",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_small_sentence",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_turning",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_echo_reply",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_absent",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_light",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_reset",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_double_word",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_declined",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/next_question_after",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/next_declined",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/next_answer_measure",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/next_hold_name",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/farewell_declined",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/farewell_hands",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/hub_description",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/street_second_end",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_personal_after",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_menu_after",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_menu_reply",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_offer_after",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/slot_replace",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/role_action_party_hunter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/role_action_party_magician",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/arrival_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/request_after",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/town_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/family_before",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/family_after",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/offer_before",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/replacement_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/joined_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/declined_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/road_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/extra_3",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/entrance_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_after",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_left",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_protagonist",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_party_woodcutter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_party_hunter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_party_cook",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_party_magician",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_skeleton",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_mad_joe",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_polaris",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/room_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/hold_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/separate_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_4_party_cook",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_weapon_party_magician",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_protagonist",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_party_woodcutter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_party_hunter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_party_cook",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_party_magician",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_skeleton",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_mad_joe",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_polaris",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/won_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_5_party_woodcutter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/return_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/report_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/guidance_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/gate_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/extra_6",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_wait",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_party_party_hunter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_optional_polaris",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/request_before",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/request_after",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/prepared_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/cliff_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/floating_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/doors_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/door_calculation",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/door_wait",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/rigel_common",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/rigel_wait",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/replacement_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/joined_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/joined_more",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/aided_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/aided_more",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/left_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/left_more",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/seal_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/seal_return",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/exit_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/aided_exit",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/report_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/report_confirmation",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/next_body",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/next_wait",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/interactive/prose-presentation.json",
+          "block_id": "gaia_evil_seal/road_sign_384",
+          "kind": "B_transition_only"
+        },
+        {
+          "file": "writing/interactive/prose-presentation.json",
+          "block_id": "gaia_evil_seal/city_name",
+          "kind": "B_transition_only"
+        },
+        {
+          "file": "writing/interactive/prose-presentation.json",
+          "block_id": "gaia_evil_seal/next_road_390",
+          "kind": "B_transition_only"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/role_echo_party_woodcutter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/role_echo_party_hunter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/role_echo_party_cook",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/role_echo_party_magician",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/cave_eyes",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_join_pause",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_veteran",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_woodcutter",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/exit_called",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/armory_owned",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_threshold",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_wait",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_before_return",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/next_after",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/support_prose",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/street_prose",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/gold_prose_5",
+          "kind": "rhythm_and_continuity_edit"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/rigel_next",
+          "kind": "rhythm_and_continuity_edit"
+        }
+      ],
+      "sentence_metrics": {
+        "chapter01": {
+          "before": {
+            "blocks": 274,
+            "characters": 27410,
+            "sentences": 1355,
+            "median_sentence_characters": 17,
+            "shorter_than_15_characters": 488
+          },
+          "after": {
+            "blocks": 274,
+            "characters": 27474,
+            "sentences": 1188,
+            "median_sentence_characters": 19,
+            "shorter_than_15_characters": 347
+          }
+        },
+        "chapter02": {
+          "before": {
+            "blocks": 77,
+            "characters": 25747,
+            "sentences": 1115,
+            "median_sentence_characters": 20,
+            "shorter_than_15_characters": 299
+          },
+          "after": {
+            "blocks": 77,
+            "characters": 20994,
+            "sentences": 717,
+            "median_sentence_characters": 25,
+            "shorter_than_15_characters": 96
+          }
+        },
+        "chapter03": {
+          "before": {
+            "blocks": 70,
+            "characters": 24502,
+            "sentences": 1066,
+            "median_sentence_characters": 19,
+            "shorter_than_15_characters": 286
+          },
+          "after": {
+            "blocks": 70,
+            "characters": 18654,
+            "sentences": 638,
+            "median_sentence_characters": 26,
+            "shorter_than_15_characters": 85
+          }
+        }
+      },
+      "sequence_checks": [
+        "1장: 주점 인사·음료 거절은 자리로 이동하는 단계, 실제 착석은 공통 people 장면에서 한 번만 서술한다.",
+        "2장: 전투 본문은 싸움 중에 끝내고, 무기별 동작 뒤 원작 승리 문구와 won 본문에서 결과를 확인한다.",
+        "2장: 귀환 전 동료 블록에서 미리 바깥에 도착하지 않으며 성주의 인정은 report 원문 뒤에 나온다.",
+        "3장: 폐허 본문은 표지판 앞에서 끝내고, 길표→새 성문→접견으로 연결한다.",
+        "3장: 리겔 치료 본문은 축복 전까지, 원작 결과 뒤 후속 본문에서 작별을 반영한다.",
+        "3장: 봉인 앞에서 귀환을 준비하고 번호 문→절벽→바깥으로 한 번만 나간다. 부상 마법은 유지 중이며 새 시전·힘·식량을 부여하지 않는다.",
+        "3장: 다음 의뢰를 접견실에서 확인한 뒤 복도 휴식→성문 길표 순으로 진행한다."
+      ],
+      "policy": {
+        "A_prose_changed": false,
+        "common_source_scripts_changed": false,
+        "branch_graph_or_effects_changed": false,
+        "new_fixed_setting": false,
+        "literary_or_canon_approval": false
+      },
+      "review_notes": [
+        "대화 한마디와 발견 직후의 짧은 문장은 남긴다. 문장 수치만 맞추기 위해 늘리지 않는다.",
+        "중복된 자리 확인·추상적인 의미 풀이를 줄이고 기존 만남·전투·치료·발견 안의 감각과 행동을 보강했다. 새로운 퀘스트나 능력·보상은 추가하지 않는다."
+      ]
     }
   ]
 }

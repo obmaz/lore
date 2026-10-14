@@ -52,7 +52,7 @@ class ProseSeriesTests(unittest.TestCase):
             doc=read(ROOT/row['file'])
             self.assertEqual(len(doc['block_overrides']),expected[row['chapter_id']])
             self.assertTrue(doc['metadata']['addition'])
-            self.assertEqual(doc['style_revision'],1)
+            self.assertEqual(doc['style_revision'],self.plan['style_revision'])
             for override in doc['block_overrides'].values():
                 self.assertEqual(override['provenance']['origin'],'authored')
                 self.assertNotIn('주인공',''.join(t.get('text','') for t in override['text']))

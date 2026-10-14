@@ -1,8 +1,12 @@
 {
   "version": 1,
-  "revision": 3,
+  "revision": 4,
   "default_profile": "A",
-  "shared_structure": ["storyboard/chapters.json", "storyboard/chapter-subsections.json", "interactive/series.json"],
+  "shared_structure": [
+    "storyboard/chapters.json",
+    "storyboard/chapter-subsections.json",
+    "interactive/series.json"
+  ],
   "policy": {
     "structure": "목차·장별 구성·질문·선택·조건·효과·합류·공개 시점은 공통 원본 하나를 사용한다.",
     "prose": "문체별로 서술·미세한 행동·대화의 호흡을 바꾸되 사건 결과·동료·소지품·마법·인물 지식은 바꾸지 않는다. 사건이나 분기 변경은 먼저 공통 구조에서 검토한다.",
@@ -16,24 +20,49 @@
       "viewpoint_ref": "project.json#/viewpoint",
       "tone_ref": "project.json#/tone",
       "manuscript": "interactive/series.json",
-      "written_chapters": ["chapter01", "chapter02", "chapter03"]
+      "written_chapters": [
+        "chapter01",
+        "chapter02",
+        "chapter03"
+      ]
     },
     "B": {
       "label": "B · 빠른 호흡의 웹소설",
-      "revision": 1,
+      "revision": 2,
       "viewpoint": "서진 참조 인물의 제한적 3인칭. 인물이 실제로 보고 들은 범위에서 행동과 판단을 따라간다.",
-      "sentence_rhythm": "짧고 중간 길이 문장을 섞고 문단을 짧게 나눈다. 행동·새 정보·판단이 바뀔 때 호흡을 끊는다. 모든 문장을 한 줄로 강제하거나 같은 단문을 반복하지 않는다.",
-      "description": "행동과 장애물을 먼저 보여 주고 필요한 감각·공간을 붙인다. 같은 사유를 여러 번 풀이하기보다 다음 행동으로 전환한다.",
+      "sentence_rhythm": "중간 길이 문장을 기본으로 하되 긴장·전환·발견의 순간에는 짧은 문장을 섞는다. 같은 주체의 원인·행동·결과는 자연스러운 한 문장 또는 문단으로 잇고, 문장의 길이가 아니라 시선·행동·정보의 변화에 맞춰 문단을 나눈다. 단문·한 단어 문단을 연달아 쌓거나 문장을 기계적으로 길게 합치지 않는다.",
+      "description": "인물이 지금 겪는 목표·장애물·감각을 행동에 붙여 보여 준다. 같은 멈춤·발밑 확인·길 비켜 주기와 그 의미를 반복하지 않는다. 설명을 들음·준비·수행·결과·다음 이동의 순서를 지키며 뒤의 사건을 이미 끝난 일로 서술하지 않는다.",
       "dialogue": "정보·관계·선택을 움직이는 대화를 선명하게 쓴다. 원작 대사와 조건을 보존하며 새 대사는 창작으로 표시한다.",
       "emotion": "짧은 반응과 판단을 행동 사이에 배치한다. 서진 참조 인물이 모르는 속마음이나 후속 스포일러를 서술하지 않는다.",
       "tension": "현재의 목표·장애물·위험과 다음 행동을 또렷하게 연결한다. 장면 끝에 실제 남아 있는 문제로 긴장을 남긴다. 원작에 없는 보스·보상·공포를 예고하지 않는다.",
       "humor": "상황에서 생기는 짧은 온도 차이를 허용한다. 모든 인물을 냉소적이거나 과장된 성격으로 바꾸지 않는다.",
-      "avoid": ["특정 작품의 고유 문장·설정·인물·시스템을 복제하기", "상태창·레벨업·새 능력·보상을 문체만으로 추가하기", "원작 사건을 줄이거나 분기 결과를 섞기", "짧은 문장을 반복해 분량 채우기"],
-      "stage_policy": {"outline": "A와 동일한 공통 인과·구성·분기 골격을 참조한다.", "prose": "행동과 판단을 앞세우는 웹소설형 산문으로 공통 장면을 재집필한다. 짧은 원작 대사도 그대로 보존한다."},
+      "avoid": [
+        "특정 작품의 고유 문장·설정·인물·시스템을 복제하기",
+        "상태창·레벨업·새 능력·보상을 문체만으로 추가하기",
+        "원작 사건을 줄이거나 분기 결과를 섞기",
+        "짧은 문장을 반복해 분량 채우기",
+        "같은 행동을 단문으로 잘게 나눈 뒤 의미를 재설명하기",
+        "서술 중인 위치와 시점을 이동한 뒤 이전 장소로 이유 없이 돌아가기",
+        "문법적으로 불분명한 주체·목적어·지시어와 기계적인 번역투"
+      ],
+      "stage_policy": {
+        "outline": "A와 동일한 공통 인과·구성·분기 골격을 참조한다.",
+        "prose": "행동과 판단을 앞세우는 웹소설형 산문으로 공통 장면을 재집필한다. 짧은 원작 대사도 그대로 보존한다."
+      },
       "application_policy": "B 집필·재집필 전에 이 항목을 읽고 revision을 원고에 기록한다. 기준 변경은 검토 후 적용하며 기존 원고를 자동 덮어쓰지 않는다.",
       "manuscript": "variants/B/series.json",
-      "written_chapters": ["chapter01", "chapter02", "chapter03"]
+      "written_chapters": [
+        "chapter01",
+        "chapter02",
+        "chapter03"
+      ]
     }
   },
-  "metadata": {"origin": "authored", "status": "proposed", "addition": true, "kind": "new_setting", "note": "추가: 사용자 요청에 따른 공용 A/B 편집 문체. A는 현재 원고와 기준을 그대로 참조하며 B는 웹소설 장르의 일반적 호흡으로 재집필한다. 원작 사실이나 특정 작가의 고유 문체 복제가 아니다."}
+  "metadata": {
+    "origin": "authored",
+    "status": "proposed",
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 사용자 요청에 따른 공용 A/B 편집 문체. A는 현재 원고와 기준을 그대로 참조하며 B는 웹소설 장르의 일반적 호흡으로 재집필한다. 원작 사실이나 특정 작가의 고유 문체 복제가 아니다. 교정 2: 사용자 요청으로 B 1~3장에 중간 길이 문장·자연스러운 연결·문법과 실제 장면 순서 기준을 적용했다. A의 기준과 공통 사건·분기는 유지한다."
+  }
 }
