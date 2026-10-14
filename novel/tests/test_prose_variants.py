@@ -64,7 +64,9 @@ class ProseVariantTests(unittest.TestCase):
         profiles['characters']['protagonist']['disclosure']['public_display_name']='하나'
         data=indexes(profiles,self.refs)
         first=self.document['block_overrides']['prologue/arrival_first']['text']
-        self.assertIn('하나는 발을 거뒀다.',render(first,data,self.raw,profiles,()))
+        displayed=render(first,data,self.raw,profiles,())
+        self.assertRegex(displayed,r'하나는\s+[^.\n]*발을 거두고')
+        self.assertNotIn('서진',displayed)
         self.assertNotIn('서진',''.join(s.get('text','') for s in first))
 
     def test_public_editions_have_their_own_scope_fingerprint_and_no_master(self):
