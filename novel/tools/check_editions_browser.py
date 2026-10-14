@@ -1,5 +1,7 @@
 """Read both public prose editions offline, including isolated route saves."""
 import json
+import zipfile
+from xml.etree import ElementTree as ET
 from materials import ROOT
 from prose_variants import load_series
 
@@ -86,13 +88,35 @@ def check():
             assert frame.locator('#manuscript .quote, #manuscript blockquote, #manuscript small').count()==0
             assert frame.locator('#manuscript section[data-story-role="main"]').count()==43
             assert '일행을 보며 말했다. “' in frame.locator('[data-block-id="lastditch_pyramid/request_443"]').inner_text()
+            assert frame.locator('#book-cover-image').evaluate('(e)=>e.complete&&e.naturalWidth===1024')
+            assert frame.locator('#manuscript [data-chapter-cover]').count()==3
+            assert frame.locator('#manuscript [data-chapter-cover] img').evaluate_all('(es)=>es.every(e=>e.complete&&e.naturalWidth===1024)')
+            assert '새로운 여정' in frame.locator('[data-block-id="prologue/lord_intro_dialogue"]').inner_text()
+            assert '이 게임' not in frame.locator('#manuscript').inner_text()
+            assert page.locator('#download-b-epub').get_attribute('download')=='lore-B-chapters01-03.epub'
+            if width==1280:
+                report=json.loads((ROOT/'writing/ebooks/generated/report.json').read_text())
+                page.locator('#edition-select').select_option('B')
+                frame=page.frame_locator('#edition-frame')
+                frame.locator('#choices button').first.wait_for()
+                for decision in report['decisions']:
+                    frame.locator('[data-choice="'+decision['choice_id']+'"]').click()
+                assert frame.locator('#choices button').count()==0
+                actual=frame.locator('#manuscript p[data-block-id]').all_text_contents()
+                expected=[]
+                with zipfile.ZipFile(ROOT/'writing/ebooks/generated/lore-B-chapters01-03.epub')as book:
+                    for key in ['chapter01','chapter02','chapter03']:
+                        doc=ET.fromstring(book.read('OEBPS/'+key+'.xhtml'))
+                        expected.extend(''.join(p.itertext())for p in doc.findall('.//{http://www.w3.org/1999/xhtml}main/{http://www.w3.org/1999/xhtml}p'))
+                assert actual==expected,'EPUB paragraphs must match the real B web route exactly'
             assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
             assert frame.locator('html').evaluate('(e)=>e.scrollWidth<=innerWidth')
             assert not errors,errors
             assert not requests,requests
             reports.append({'width':width,'A_chapters':3,'B_chapters':count,'B_complete':True,
                             'shared_choices':True,'cross_edition_save_rejected':True,'offline':True,
-                            'chapter_titles_only':True,'natural_attribution_both_editions':True})
+                            'chapter_titles_only':True,'natural_attribution_both_editions':True,
+                            'shared_covers':True,'script_overrides':True,'epub_browser_text_match':width==1280})
             page.close()
         browser.close()
     return reports

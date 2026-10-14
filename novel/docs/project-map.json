@@ -14,18 +14,19 @@
   },
   "counts": {
     "agent_policy": 3,
+    "authored_cover_asset": 4,
     "compiled_reference": 5,
     "configuration": 2,
-    "editable_authoring_input": 39,
+    "editable_authoring_input": 42,
     "generated_inventory": 1,
-    "generated_reading": 39,
+    "generated_reading": 42,
     "immutable_source_snapshot": 25,
-    "schema": 20,
+    "schema": 21,
     "shared_template": 10,
-    "test": 28,
-    "tool": 30,
+    "test": 30,
+    "tool": 33,
     "ui_source": 5,
-    "usage_documentation": 15,
+    "usage_documentation": 18,
     "verification_example": 2
   },
   "cleanup": {
@@ -537,6 +538,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/script_overrides.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/side_stories.py"
         },
         {
@@ -550,6 +555,18 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/script-overrides/README.md"
         }
       ],
       "automatic_deletion": false
@@ -754,6 +771,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_project_structure.py"
         },
         {
@@ -775,6 +796,14 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/cover_art.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -807,6 +836,22 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/covers/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -1031,6 +1076,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_project_structure.py"
         },
         {
@@ -1052,6 +1101,14 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/cover_art.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -1084,6 +1141,22 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/covers/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -1510,6 +1583,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/script-overrides/README.md"
         }
       ],
       "automatic_deletion": false
@@ -2123,6 +2200,17 @@
       "automatic_deletion": false
     },
     {
+      "file": "tests/test_ebook.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tests/test_episodes.py",
       "role": "test",
       "consumers": [
@@ -2234,6 +2322,17 @@
     },
     {
       "file": "tests/test_reference_export.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tests/test_script_overrides.py",
       "role": "test",
       "consumers": [
         {
@@ -2599,6 +2698,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_script_overrides.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_story_continuity.py"
         },
         {
@@ -2739,6 +2842,37 @@
       "automatic_deletion": false
     },
     {
+      "file": "tools/cover_art.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/interactive.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tools/disclosure.py",
       "role": "tool",
       "consumers": [
@@ -2781,6 +2915,45 @@
         {
           "kind": "python_import",
           "file": "tools/writing.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/ebook.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_script_overrides.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
+        },
+        {
+          "kind": "cli_entrypoint",
+          "file": "tools/ebook.py"
         }
       ],
       "automatic_deletion": false
@@ -2960,6 +3133,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_episodes.py"
         },
         {
@@ -2997,6 +3174,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_script_overrides.py"
         },
         {
           "kind": "python_import",
@@ -3072,7 +3253,15 @@
         },
         {
           "kind": "python_import",
+          "file": "tools/cover_art.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tools/disclosure.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/ebook.py"
         },
         {
           "kind": "python_import",
@@ -3109,6 +3298,10 @@
         {
           "kind": "python_import",
           "file": "tools/reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/script_overrides.py"
         },
         {
           "kind": "python_import",
@@ -3173,8 +3366,24 @@
           "file": "writing/previews/manifest.json"
         },
         {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
           "kind": "python_import",
           "file": "tests/test_prose_presentation.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_script_overrides.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/ebook.py"
         },
         {
           "kind": "python_import",
@@ -3214,6 +3423,10 @@
         {
           "kind": "python_import",
           "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/ebook.py"
         },
         {
           "kind": "python_import",
@@ -3414,6 +3627,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_script_overrides.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_writing.py"
         },
         {
@@ -3522,6 +3739,33 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/export_reference.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "tools/script_overrides.py",
+      "role": "tool",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_script_overrides.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/prose_presentation.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/writing.py"
         }
       ],
       "automatic_deletion": false
@@ -3690,6 +3934,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tools/export_reference.py"
         },
         {
@@ -3832,6 +4080,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_script_overrides.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_second_chapter.py"
         },
         {
@@ -3889,6 +4141,10 @@
         {
           "kind": "python_import",
           "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tools/script_overrides.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -4033,6 +4289,10 @@
           "file": "tools/chapter_subsections.py"
         },
         {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
+        },
+        {
           "kind": "python_import",
           "file": "tools/interactive.py"
         },
@@ -4070,11 +4330,23 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "writing/covers/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "writing/interactive/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/publication/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/script-overrides/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -4536,6 +4808,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tools/script_overrides.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tools/side_stories.py"
         },
         {
@@ -4700,6 +4976,499 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/variants/series.schema.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/covers/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/covers/cover-chapter01.jpg",
+      "role": "authored_cover_asset",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/covers/cover-chapter02.jpg",
+      "role": "authored_cover_asset",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/covers/cover-chapter03.jpg",
+      "role": "authored_cover_asset",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/covers/cover-main.jpg",
+      "role": "authored_cover_asset",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/covers/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/covers/manifest.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/cover_art.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/materials.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/covers/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/ebooks/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/ebooks/ebook.plan.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/ebooks/generated/lore-B-chapters01-03.epub",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_editions_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/ebooks/generated/manifest.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "exports/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "materials/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "reference/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_reference_export.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/cover_art.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/materials.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/covers/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/side-stories/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/ebooks/generated/report.json",
+      "role": "generated_reading",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "output_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/check_editions_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/branches/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
         }
       ],
       "automatic_deletion": false
@@ -4994,6 +5763,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/interactive/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/script-overrides/README.md"
         }
       ],
       "automatic_deletion": false
@@ -5284,6 +6057,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_prose_presentation.py"
         },
         {
@@ -5338,6 +6115,14 @@
           "file": "writing/studio/generated/manifest.json"
         },
         {
+          "kind": "input_hash_guard",
+          "file": "writing/ebooks/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
+        },
+        {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_prose_presentation.py"
         },
@@ -5347,11 +6132,19 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_script_overrides.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_studio.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/check_studio_browser.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5417,6 +6210,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_project_structure.py"
         },
         {
@@ -5438,6 +6235,14 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/cover_art.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -5473,6 +6278,22 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/covers/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "writing/side-stories/README.md"
         }
       ],
@@ -5493,6 +6314,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6102,6 +6927,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_project_structure.py"
         },
         {
@@ -6123,6 +6952,14 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/cover_art.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6155,6 +6992,22 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/covers/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6438,6 +7291,163 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "writing/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/script-overrides/README.md",
+      "role": "usage_documentation",
+      "consumers": [
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/interactive/README.md"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/script-overrides/overrides.schema.json",
+      "role": "schema",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/script_overrides.py"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
+      "file": "writing/script-overrides/registry.json",
+      "role": "editable_authoring_input",
+      "consumers": [
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "input_hash_guard",
+          "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "authoring/story.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "characters/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "continuity/continuity.schema.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_project_structure.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/characters.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/companion_events.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/export_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/project_audit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/publication_flow.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/script_overrides.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/side_stories.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/source_story.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/studio.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/script-overrides/README.md"
         }
       ],
       "automatic_deletion": false
@@ -6820,6 +7830,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_project_structure.py"
         },
         {
@@ -6841,6 +7855,14 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/cover_art.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -6873,6 +7895,22 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/covers/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -7638,6 +8676,10 @@
         },
         {
           "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_ebook.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_project_structure.py"
         },
         {
@@ -7659,6 +8701,14 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/build_reference.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/cover_art.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tools/ebook.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -7691,6 +8741,22 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tools/writing.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/AGENTS.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/covers/README.md"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "writing/ebooks/README.md"
         },
         {
           "kind": "static_mention_not_runtime_proof",

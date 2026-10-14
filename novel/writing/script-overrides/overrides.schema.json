@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["version", "revision", "policy", "scope", "overrides", "metadata"],
+  "properties": {
+    "version": {"const": 1}, "revision": {"type": "integer", "minimum": 1},
+    "policy": {"const": "writing_override_then_existing_source_presentation"}, "scope": {"const": "shared_A_B_reader_and_ebook"},
+    "overrides": {"type": "object", "additionalProperties": {"$ref": "#/$defs/override"}},
+    "metadata": {"type": "object", "required": ["origin", "addition", "kind", "status", "note"],
+      "properties": {"origin": {"const": "authored"}, "addition": {"const": true}, "kind": {"const": "new_setting"}, "status": {"const": "proposed"}, "note": {"type": "string", "minLength": 1}}}
+  },
+  "$defs": {
+    "ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "spans": {"type": ["array", "null"], "minItems": 1, "items": {"oneOf": [
+      {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string"}}},
+      {"type": "object", "additionalProperties": false, "required": ["ref"], "properties": {
+        "ref": {"type": "object", "additionalProperties": false, "required": ["catalog", "id"], "properties": {
+          "catalog": {"enum": ["characters", "equipment", "abilities", "bestiary", "terms"]}, "id": {"type": "string", "minLength": 1},
+          "particle": {"enum": ["은/는", "이/가", "을/를", "과/와", "으로/로", "이오/요"]}}}}}
+    ]}},
+    "override": {"type": "object", "additionalProperties": false,
+      "required": ["revision", "source_block_ids", "source_literal_ids", "source_sha256", "writing_overrides", "origin", "status", "metadata"],
+      "properties": {
+        "revision": {"type": "integer", "minimum": 1}, "source_block_ids": {"$ref": "#/$defs/ids"}, "source_literal_ids": {"$ref": "#/$defs/ids"},
+        "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "writing_overrides": {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"$ref": "#/$defs/spans"}}},
+        "origin": {"const": "source_adaptation"}, "status": {"const": "proposed"},
+        "metadata": {"type": "object", "additionalProperties": false, "required": ["addition", "kind", "note"],
+          "properties": {"addition": {"const": true}, "kind": {"const": "interpretation"}, "note": {"type": "string", "minLength": 1}}}
+      }}
+  }
+}

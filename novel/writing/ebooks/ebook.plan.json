@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "revision": 1,
+  "edition": "B",
+  "status": "draft",
+  "format": "EPUB3_reflowable_linear_sample",
+  "chapter_ids": ["chapter01", "chapter02", "chapter03"],
+  "filename": "lore-B-chapters01-03.epub",
+  "public_path": "/novel/downloads/lore-B-chapters01-03.epub",
+  "language": "ko",
+  "creator": "obmaz",
+  "modified": "2026-10-14T00:00:00Z",
+  "manual_preferences": [
+    "prologue/visit_lord", "i/armory_first", "i/visit_armory", "i/depart_now",
+    "lore_menace/accept_skeleton", "lore_menace/enter_menace", "lore_menace/return_to_lore",
+    "lastditch_pyramid/decline_polaris", "lastditch_pyramid/equip_spear_party_hunter", "lastditch_pyramid/separate_pressure",
+    "gaia_evil_seal/aid_rigel"
+  ],
+  "default_choice": "first_available_after_explicit_preferences",
+  "route_note": "선형 전자책의 대표 편집 경로다. 무기고 방문, 성문 동료의 합류, 창의 담당자 결정, 부상자 치료 경로를 한 번씩 실제로 재생한다. 모든 분기를 한 경로에 합치거나 정사/출판 승인으로 확정하지 않는다. 다른 선택은 웹 판본에 남아 있다.",
+  "metadata": {"origin": "authored", "addition": true, "kind": "new_setting", "status": "proposed", "note": "추가: B안 1~3장을 호환성 높은 선택 없는 EPUB 초고로 내보내는 편집 구성. 본문·표지·스크립트 대체본은 공용 입력을 참조한다. 원작에 새 사건이나 동료/보상을 추가하는 설정이 아니다."}
+}

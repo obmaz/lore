@@ -1,5 +1,6 @@
 """Bind novel-facing speech and narrative to immutable source blocks, not a new graph."""
 import copy
+import re
 import jsonschema
 
 from materials import ROOT, read
@@ -73,5 +74,72 @@ def compile_presentation(story, data, all_literals, document=None):
         dialogues[key] = copy.deepcopy(entry)
     if set(dialogues)!={key for key,b in blocks.items() if b['speaker'] and b['provenance']['origin']=='authored'}:
         raise ValueError('presentation: unmapped dialogue speakers')
+    from script_overrides import compile_overrides
+    replacements=compile_overrides(story,groups,data,all_literals)
     return {'revision':document['revision'],'policy':copy.deepcopy(document['policy']),
-            'groups':groups,'dialogues':dialogues}
+            'groups':groups,'dialogues':dialogues,'script_overrides':replacements}
+
+
+def display_text(spans, state, payload, block_id=None):
+    """Python counterpart of reader text(); verified against the actual browser."""
+    from text_refs import particle
+    def reference(ref):
+        name=payload['labels'][ref['catalog']][ref['id']]
+        return name+(particle(name,ref['particle'])if ref.get('particle')else '')
+    if isinstance(spans,str):return spans
+    result=[]
+    for span in spans:
+        if 'text' in span:result.append(span['text'])
+        elif 'ref' in span:result.append(reference(span['ref']))
+        elif 'state' in span:
+            value=state[span['state']]
+            result.append(reference({'catalog':span['catalog'],'id':value,**({'particle':span['particle']}if span.get('particle')else {})})if span.get('catalog')else str(value))
+        else:
+            source=span['source']
+            raw=''.join(payload['literals'][i]for i in source['literal_ids'])
+            edits=[(b['start'],b['end'],reference(b['ref']))for b in source['bindings']]
+            for item in payload['insertions'].get(block_id,[]):
+                if 'ref' in item:value=reference(item['ref'])
+                elif 'state' in item:
+                    value=state[item['state']]
+                    value=reference({'catalog':item['state_ref_catalog'],'id':value,**({'particle':item['particle']}if item.get('particle')else {})})if item.get('state_ref_catalog')else str(value)
+                else:value='['+item['placeholder']+']'
+                edits.append((item['offset'],item['offset']+item.get('replace_length',0),value))
+            offset=0;pieces=[]
+            for start,end,value in sorted(edits,key=lambda e:(e[0],e[1])):
+                pieces.extend([raw[offset:start],value]);offset=end
+            result.append(''.join(pieces)+raw[offset:])
+    return ''.join(result)
+
+
+def section_paragraphs(node, visible_ids, state, payload):
+    """Render just one already-replayed section, without subtitles or UI labels."""
+    presentation=payload['presentation'];edition=payload['edition']
+    groups={key:g for g in presentation['groups']for key in g['block_ids']}
+    blocks={b['id']:b for b in node['blocks']}
+    visible=set(visible_ids);paragraphs=[]
+    quoted=lambda t:t.strip()if t.strip().startswith('“')and t.strip().endswith('”')else '“'+t.strip()+'”'
+    for block in node['blocks']:
+        if block['id'] not in visible or block['kind']=='author_note':continue
+        key=block['id'];ids=[]
+        if block['provenance']['origin']=='source_exact':
+            group=groups[key]
+            if key!=group['block_ids'][0]:continue
+            ids=group['block_ids']
+            if not set(ids)<=visible:raise ValueError('ebook: source group is partly hidden')
+            rule=group['editions'][edition]
+            replacement=presentation['script_overrides'].get(key,{}).get('writing_overrides',{}).get('text')
+            if replacement is not None:content=display_text(replacement,state,payload)
+            elif group['kind']=='narration':content=display_text(rule['body'],state,payload)
+            else:
+                sep=' 'if group['kind']=='inscription'else ''
+                content=re.sub(r'\s+',' ',sep.join(display_text(blocks[i]['text'],state,payload,i)for i in ids)).strip()
+            body=content if group['kind']=='narration'else quoted(content)
+            body=display_text(rule['before'],state,payload)+body+display_text(rule['after'],state,payload)
+        else:
+            body=display_text(block['text'],state,payload,key)
+            if block['speaker']:
+                rule=presentation['dialogues'][key]['editions'][edition]
+                body=display_text(rule['before'],state,payload)+quoted(body)+display_text(rule['after'],state,payload)
+        paragraphs.extend({'block_id':key,'source_block_ids':ids,'text':p}for p in re.split(r'\n{2,}',body))
+    return paragraphs

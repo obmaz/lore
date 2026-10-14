@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "revision": 1,
+  "status": "proposed",
+  "shared_editions": [
+    "A",
+    "B"
+  ],
+  "book_title": [
+    {
+      "ref": {
+        "catalog": "terms",
+        "id": "lore"
+      }
+    }
+  ],
+  "book_subtitle": [
+    {
+      "text": "모험의 시작"
+    }
+  ],
+  "images": {
+    "main": {
+      "file": "writing/covers/cover-main.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "ef2019ad149a93ea98041539ed924e3712d384b176cd4e531f1acb15621ecf44",
+      "alt": [
+        {
+          "text": "성으로 향하는 다섯 여행자"
+        }
+      ],
+      "chapter_id": null,
+      "generation": {
+        "tool": "image_gen",
+        "original_image_sha256": "27ca673d349c3d53c5ca7e4926bdb44db691b07354d7d54adccb3f8568b2591d",
+        "prompt": "돌길과 성, 다섯 익명 여행자, 먼 푸른 번개를 담은 세로 2:3 판타지 표지. 짙은 녹색과 황동빛의 회화적 질감. 텍스트와 확정 인물 외형 없음.",
+        "encoding": "JPEG quality 88; same dimensions and composition"
+      },
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 생성형 표지의 시각화 초안. 의상·얼굴·지형·봉인 형태를 원작 확정 설정이나 인물 카드 대체 외형으로 등록하지 않는다. A/B 및 EPUB이 같은 이미지 파일을 참조한다."
+      }
+    },
+    "chapter01": {
+      "file": "writing/covers/cover-chapter01.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "5a154d7506ac7bd1633f66e567b75f8d8591efb9c8f7631452cb2f469d496d26",
+      "alt": [
+        {
+          "text": "성문을 나서는 여행자들"
+        }
+      ],
+      "chapter_id": "chapter01",
+      "generation": {
+        "tool": "image_gen",
+        "original_image_sha256": "8dd086e9adc3be5679f5a4c403f198d0e96a931c643cf892175561f5f7d9ebc6",
+        "prompt": "낡은 성문 안에서 숲으로 이어지는 길을 바라보는 다섯 작은 여행자. 따뜻한 빛과 차가운 녹색 그림자. 텍스트·전투·미래 사건 없음.",
+        "encoding": "JPEG quality 88; same dimensions and composition"
+      },
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 생성형 표지의 시각화 초안. 의상·얼굴·지형·봉인 형태를 원작 확정 설정이나 인물 카드 대체 외형으로 등록하지 않는다. A/B 및 EPUB이 같은 이미지 파일을 참조한다."
+      }
+    },
+    "chapter02": {
+      "file": "writing/covers/cover-chapter02.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "848b1e39a6a59410a46290c47da25a8d2d8f01cd45c1cf016102e5fc160d31e7",
+      "alt": [
+        {
+          "text": "모래 아래의 오래된 동굴 입구"
+        }
+      ],
+      "chapter_id": "chapter02",
+      "generation": {
+        "tool": "image_gen",
+        "original_image_sha256": "804dd28b71258f398af04ecfa8112c99f95a7330c2e9143c75ca20c70a4985f7",
+        "prompt": "먼지와 모래에 묻힌 지하 석조 입구를 담은 2:3 회화. 낮은 황동빛과 녹색 그늘. 역사 문화 문양·새 괴물·보상·전투 결말 없음.",
+        "encoding": "JPEG quality 88; same dimensions and composition"
+      },
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 생성형 표지의 시각화 초안. 의상·얼굴·지형·봉인 형태를 원작 확정 설정이나 인물 카드 대체 외형으로 등록하지 않는다. A/B 및 EPUB이 같은 이미지 파일을 참조한다."
+      }
+    },
+    "chapter03": {
+      "file": "writing/covers/cover-chapter03.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "214ee80fbfeaa65b22cc15993bbbe7bd2f67c7911c8cfe82f33e7d150cc1d1b0",
+      "alt": [
+        {
+          "text": "위험한 지하 길 너머의 닫힌 황금 봉인"
+        }
+      ],
+      "chapter_id": "chapter03",
+      "generation": {
+        "tool": "image_gen",
+        "original_image_sha256": "cf9d60312fba716daf992e45b56ec91ef6fa2b85fac6fffc45c9dd285b4bc5e6",
+        "prompt": "부서진 지하 길과 깊은 틈, 닫힌 채 빛을 받는 황금색 봉인. 텍스트·봉인 개방·새 마법 효과·확정 인물 외형 없음.",
+        "encoding": "JPEG quality 88; same dimensions and composition"
+      },
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 생성형 표지의 시각화 초안. 의상·얼굴·지형·봉인 형태를 원작 확정 설정이나 인물 카드 대체 외형으로 등록하지 않는다. A/B 및 EPUB이 같은 이미지 파일을 참조한다."
+      }
+    }
+  },
+  "metadata": {
+    "origin": "authored",
+    "addition": true,
+    "kind": "new_setting",
+    "status": "proposed",
+    "note": "추가: 사용자 요청의 공용 메인/1~3장 생성형 표지. 제목과 이름은 이미지에 새기지 않고 참조 텍스트로 표시한다. 생성 원본은 작업 공간에 보존하고 패키지에는 동일 구도의 JPEG만 포함한다."
+  }
+}

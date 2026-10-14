@@ -58,6 +58,8 @@
 - [A/B 통합 독서 화면](previews/novel-reader.html): 공개 `/novel/`과 같은 판본 선택 화면.
   공용 기준은 [styles.json](styles.json), B 장별 연결은 [variants/B/series.json](variants/B/series.json)이다.
   문체와 원고의 적용 방법은 [판본 안내](variants/README.md)를 참조한다.
+- [B안 1~3장 EPUB 초고](ebooks/generated/lore-B-chapters01-03.epub): 대표 선택 경로의 선형 전자책.
+  [출력·경로 안내](ebooks/README.md). A/B 공용 메인·장별 생성형 표지는 [covers/](covers/README.md)에 있습니다.
 - [전편 곁가지 선택판](previews/side-adventures.html): 15장 주요 내용과 창작 곁가지 초고.
 - [전편 스토리보드](previews/storyboard.html): 작가 전용, 전편 스포일러 포함.
 
@@ -86,6 +88,9 @@ HTML은 편집 대상이 아니라 JSON에서 생성한 스냅샷이다.
 | 소편의 장면 목록·종료 지점 | `episodes/*.json` | 실제 본문은 복제하지 않고 `node_ids`로 참조 |
 | 첫 챕터 선택형 보충 원고 | `interactive/chapter01.json` | [독자 분기 안내](interactive/README.md) |
 | A/B 본문의 발화·표지·원작 결과 연결 | `interactive/prose-presentation.json` | 원문 보존·각색 출처·판본별 연결 서술, 소단락 제목은 독자 본문에서만 숨김 |
+| 소설용 스크립트 대체 텍스트 | `script-overrides/registry.json` | [대체본 안내](script-overrides/README.md), 원문은 보존 |
+| A/B 공용 생성형 표지 | `covers/manifest.json`, `covers/*.jpg` | [표지 안내](covers/README.md), 미승인 시각화 |
+| B안 선형 EPUB 경로·출력 | `ebooks/ebook.plan.json` | [전자책 안내](ebooks/README.md), 생성 EPUB/보고서는 읽기 전용 |
 | 표시명·설정·관계 | 상위 `reference/`·`characters/`의 편집 입력 | [참조 사전](../reference/README.md) |
 | 읽기 배열 | `reading.json` | `previews/`는 생성물이며 직접 집필하지 않음 |
 | 통합 제작 화면의 메뉴·안내 | `studio/studio.plan.json` | [제작실](studio/README.md), `studio/generated/` |

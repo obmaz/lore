@@ -4,6 +4,9 @@
   const data = JSON.parse(document.getElementById('chapter-data').textContent);
   const nodes = Object.fromEntries(data.nodes.map(n => [n.id, n]));
   const presentation = data.presentation;
+  const mainCover=document.getElementById('book-cover-image');
+  mainCover.src=data.covers.images.main.src;
+  mainCover.alt=data.covers.images.main.alt;
   const sourceGroups = new Map(presentation.groups.flatMap(g => g.block_ids.map(id => [id, g])));
   const clone = value => JSON.parse(JSON.stringify(value));
   let route = [];
@@ -154,7 +157,7 @@
     }
     const packet = replay(route), manuscript = document.getElementById('manuscript');
     manuscript.replaceChildren();
-    let priorChapter='chapter01';
+    let priorChapter=null;
     for (const section of packet.sections) {
       const root = document.createElement('section');
       root.dataset.nodeId=section.node.id;
@@ -162,7 +165,14 @@
       root.setAttribute('aria-label',text(section.node.title,section.state));
       const chapter=data.chapters?.find(c=>c.prefixes.some(prefix=>section.node.id.startsWith(prefix)));
       if(chapter&&chapter.id!==priorChapter){
-        root.append(element('h2','제'+Number(chapter.id.slice(7))+'장 · '+text(chapter.title,section.state)));
+        if(priorChapter)root.append(element('h2','제'+Number(chapter.id.slice(7))+'장 · '+text(chapter.title,section.state)));
+        const art=data.covers.images[chapter.id];
+        if(art){
+          const figure=document.createElement('figure'),img=document.createElement('img');
+          figure.className='chapter-cover';figure.dataset.chapterCover=chapter.id;
+          img.src=art.src;img.alt=art.alt;img.width=art.width;img.height=art.height;
+          figure.append(img);root.append(figure);
+        }
         priorChapter=chapter.id;
       }
       for (const b of section.blocks) {
@@ -176,7 +186,9 @@
           // Joining happens only in the reading view. Literal IDs, raw strings,
           // bindings and branch conditions remain in the immutable story data.
           const source=originals.map(block=>text(block.text,section.state,block.id)).join(group.kind==='inscription'?' ':'').replace(/\s+/g,' ').trim();
-          const body=group.kind==='narration'?text(edition.body,section.state):quoted(source);
+          const replacement=presentation.script_overrides[b.id]?.writing_overrides.text;
+          const content=replacement?text(replacement,section.state):group.kind==='narration'?text(edition.body,section.state):source;
+          const body=group.kind==='narration'?content:quoted(content);
           appendProse(root,text(edition.before,section.state)+body+text(edition.after,section.state),b.id,group.block_ids);
         }else{
           let body=text(b.text,section.state,b.id);

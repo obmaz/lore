@@ -6,21 +6,21 @@
     "writing/studio/studio.schema.json": "b670be722d1f9d11689edd448887187ff68f6a6f3ad5680f2b9f14f7e66bc93c",
     "writing/studio/shell.html": "ec33a1aba4e4070c68c9edca4b7180467c06a7f721060632e5a7232d7eaa4de8",
     "writing/studio/studio.js": "f0ee6840f7a2a6b733f1eef63178a14e8a1bc025b76486226880bb216e648885",
-    "tools/studio.py": "c373a9b10c8954064e1154cc8c369602cacacaaae3c2cd2b370a2dd4de7a30b4",
+    "tools/studio.py": "07faf1baa7a95e2ca79c4688b1278e16c99799ee975bd8e33b166e50977a5233",
     "tools/export_reference.py": "f6ebb6de999b28f93bbf69c8089e9582c0a67cd8ed78494ce9d2f7563e11543c",
     "tools/publication_flow.py": "fe603d38503d6b4d565a88fa376d2ddfe6af095a3fafb2ce0bd6c5622739629d",
     "AGENTS.md": "93925a7e95cd55fc8575352e56d3b0eea6c5077d582052afc5b8d30de1f6f9fc",
-    "writing/AGENTS.md": "5903dbe97bcb2bad7cbc37c4dcbb0ce7362ce8708b737d3b813d73cabf4ab3af",
+    "writing/AGENTS.md": "7a4eb5cb1a4ff776f36fb0ba43e500d867877dc9ce1110e912f51a264abf6677",
     "characters/AGENTS.md": "6d75d88010e211d9d24c6286b752b11452c8d994fad42506af03a1398a7b8bde",
-    "writing/previews/manifest.json": "5faa0aa2353374e8c3e89b517e4540d8be80468bb2d52d9d3a1e55eb578a7f3c",
+    "writing/previews/manifest.json": "dd345da6379c48b7397ce80d79dd75d3e178e940eafe51b790d48b8a148b5c06",
     "writing/previews/branch-system.html": "f1ea31a3839a07dee60e4e86c39125b6076affb06a5c24d302639b7004026217",
     "writing/previews/chapter-stories.html": "d807cd203d282f9936ae21c1671189d996e7a65f9313744116ac7b4e9305136c",
     "writing/previews/chapter-subsections.html": "94d7e177a4a6ee12cf09e3649e0f3670cb3c8543eb25a9f1bbec6b2e3cc3112d",
     "writing/previews/chapter01-branches.html": "61d34b5bd9074735231fa73972fb48befbb3cc653d31bf28b3e04d7f39e9b109",
-    "writing/previews/chapter01-interactive.html": "932beca26479989a1b3bbbdb9c123de24bf321bc573ffc4fc123e41848b2b85f",
-    "writing/previews/chapter01-web.html": "3a7fa89cbba36820d8e5bccf737a881d9758f29b081c068ce0556bbb37c70bf6",
+    "writing/previews/chapter01-interactive.html": "2e1277bf8ea8762252d2ff1a5c00f0d74a1e8d102279747c323a9063738348f1",
+    "writing/previews/chapter01-web.html": "14154db42c6c7633e201e892e7f5cd357be018878b5639267c17c33e7e5e3ace",
     "writing/previews/chapters.html": "6ce8c38708856b07417fe6e304335cd5651edcfe9fefbd8b87441488030e2785",
-    "writing/previews/novel-reader.html": "1b036db3a64dfeaed4944c9cfa17ee58a2f2a858bfbab1d3a342f2a602fd67ed",
+    "writing/previews/novel-reader.html": "722fa73c473a00b41c69ba9315d992ef45b13873a4f0eade058017158b1cb4b3",
     "writing/previews/publication-flow.html": "27e1bad0925d995e5c495eddc8573a99d63e5f78b0c0d27ad123e9a5964cc946",
     "writing/previews/side-adventures.html": "9da4a516c11518cc65fc572a39af03033d99dcbbecb8b9bc890c48adc19b4a79",
     "writing/previews/source-connected.html": "dd1ad8a71d77f4f435214e644f14f35d82b90305686d75bbe84be843d002ada9",
@@ -41,6 +41,10 @@
     "writing/interactive/episodes.json": "6932f746e89f6780b51f08c008c94c2bfd79769038860a0402aee4ef52a7cf45",
     "writing/interactive/series.json": "963965994e3244ddfc7952f106f48f4c73d655dce96d8fde726ca6da50828935",
     "writing/interactive/prose-presentation.json": "e39886fa761b37b506f3fdb8e935b2d352012339ad7366c61cfe466e5cb464c1",
+    "writing/script-overrides/registry.json": "6514281113adf765b801e061aa91a19531f68aaf0752c64ba07d28605925973b",
+    "writing/covers/manifest.json": "b16de5fb1b928995e54bea8386a83acd3dc1487306b66eb362bcdb109a64e21b",
+    "writing/ebooks/ebook.plan.json": "c89dd29e98b96d67ebbcee44e80ef0b888e9a9aebc09300d98c1ab0c296b6d97",
+    "writing/ebooks/generated/report.json": "eb6e40eb2d9e1d367c8c108a7209f1e9ca2f3b336c9d3a484e5e25e153d5b4d3",
     "characters/registry.json": "b4115f8048537721e0e5f3210ec88b87e68a2d596b51e860583e53ba5532d174",
     "reference/names.json": "2fb45df00f9a8361eb6cdf9eea9335cb710334363e7a149cf7a8d080cd179ab6",
     "reference/terms.json": "f0e22730eda2f7a2e13d8e4e750999827780fe91fd32a30f3b86ed281ae21d0b",
@@ -73,6 +77,6 @@
     "writing/variants/B/chapter03.json": "dff37acde793009340e581e7a9c95d201927e52af84cab031977af02b9406890"
   },
   "artifacts": {
-    "index.html": "e0c0b6a42df19390db805fbb0b65809ba47674b9d910412331172f3aabf60efb"
+    "index.html": "049cd3c8dac8f3f72d9bcd81aab7e9e381d35255c2505fbcd4debddf41d766b4"
   }
 }

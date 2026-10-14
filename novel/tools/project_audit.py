@@ -16,6 +16,7 @@ def classify(path):
     if path.endswith('.schema.json'):return 'schema'
     if path.startswith('authoring/examples/'):return 'verification_example'
     if path.startswith('writing/templates/'):return 'shared_template'
+    if path.startswith('writing/covers/') and path.endswith('.jpg'):return 'authored_cover_asset'
     if path.startswith('materials/'):return 'immutable_source_snapshot'
     if path in ('characters/registry.json','reference/equipment.json','reference/abilities.json','reference/bestiary.json','reference/generated_manifest.json'):return 'compiled_reference'
     if path.startswith(('exports/','writing/previews/','writing/source-connected/')) or '/generated/' in path:return 'generated_reading'
@@ -34,7 +35,8 @@ def audit():
     def add(path,kind,owner):
         row={'kind':kind,'file':owner}
         if path in consumers and row not in consumers[path]:consumers[path].append(row)
-    for name in ('materials/manifest.json','reference/generated_manifest.json','exports/manifest.json','writing/previews/manifest.json','writing/publication/generated/manifest.json','writing/side-stories/generated/manifest.json','writing/studio/generated/manifest.json'):
+    for name in ('materials/manifest.json','reference/generated_manifest.json','exports/manifest.json','writing/previews/manifest.json','writing/publication/generated/manifest.json','writing/side-stories/generated/manifest.json','writing/studio/generated/manifest.json','writing/ebooks/generated/manifest.json'):
+        if not (ROOT/name).is_file():continue
         document=read(ROOT/name)
         for path in document.get('source_sha256',{}):add(path,'input_hash_guard',name)
         base=ROOT if name=='reference/generated_manifest.json' else (ROOT/name).parent

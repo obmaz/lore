@@ -311,7 +311,7 @@ class Session:
         raise ValueError('automatic transition cycle')
 
 
-def documents(profile='A'):
+def documents(profile='A',with_context=False):
     from interactive_series import compile_series
     if profile=='B':
         from prose_variants import compile_variant
@@ -333,13 +333,16 @@ def documents(profile='A'):
                 refs = [span['ref']] if 'ref' in span else [b['ref'] for b in span.get('source',{}).get('bindings',[])]
                 for ref in refs:
                     labels.setdefault(ref['catalog'],{})[ref['id']] = render([{'ref':{'catalog':ref['catalog'],'id':ref['id']}}],data,ls,profiles,())
+    texts=[]
     for entry in [*presentation['groups'],*presentation['dialogues'].values()]:
         for edition in entry['editions'].values():
-            for spans in edition.values():
-                for span in spans:
-                    if 'ref' not in span:continue
-                    ref=span['ref']
-                    labels.setdefault(ref['catalog'],{})[ref['id']]=render([{'ref':{'catalog':ref['catalog'],'id':ref['id']}}],data,ls,profiles,())
+            texts.extend(edition.values())
+    texts.extend(e['writing_overrides']['text'] or [] for e in presentation['script_overrides'].values())
+    for spans in texts:
+        for span in spans:
+            if 'ref' not in span:continue
+            ref=span['ref']
+            labels.setdefault(ref['catalog'],{})[ref['id']]=render([{'ref':{'catalog':ref['catalog'],'id':ref['id']}}],data,ls,profiles,())
     used = {i for n in story['nodes'] for b in n['blocks'] for i in source_ids(b['text'])} | {i for n in story['nodes'] for c in n['choices'] for i in source_ids(c['label'])}
     payload = {'edition':profile,'version':overlay['revision'],'entry':story['entry_node'],'initial':{k:d['initial'] for k,d in story['state_definitions'].items()},
         'nodes':story['nodes'],'labels':labels,'literals':{i:ls[i]['text'] for i in used},'events':memory['event_templates'],
@@ -350,6 +353,8 @@ def documents(profile='A'):
         if n['id'].startswith('i/gold_') or n['id'] in ('lore_menace/center','i/treasure_hub','i/shield','i/shield_equipped','i/shield_cancel')}
     payload['display_groups'].update(overlay['display_groups'])
     payload['chapters']=overlay['chapters']
+    from cover_art import public_covers
+    payload['covers']=public_covers(lambda spans:render(spans,data,ls,profiles,()))
     encoded = json.dumps(payload,ensure_ascii=False,sort_keys=True)
     payload['fingerprint'] = hashlib.sha256(encoded.encode()).hexdigest()
     safe = json.dumps(payload,ensure_ascii=False,sort_keys=True).replace('<','\\u003c').replace('&','\\u0026')
@@ -358,7 +363,11 @@ def documents(profile='A'):
     body = f'<p class="notice">소설 본문 · {profile} · {written} 초고. 선택한 이야기만 앞으로 이어 읽습니다. 발견·확인만 하는 부분은 자동으로 이어집니다. 다른 갈래는 명시적으로 선택을 되돌리거나 처음부터 읽을 때만 볼 수 있습니다. 네 시작 동료와 연결 서사는 집필용 추가입니다.</p><p><button id="back" type="button">한 선택 뒤로</button> <button id="restart" type="button">처음부터</button> <button id="save" type="button">경로 저장</button> <button id="load" type="button">경로 불러오기</button><input id="file" type="file" accept="application/json" hidden></p><p id="message" role="status"></p><details><summary>현재 동료·장비·경험</summary><div id="state"></div></details><div id="manuscript"></div><div id="choices" aria-label="이야기 선택"></div>'
     body += '<script type="application/json" id="chapter-data">'+safe+'</script><script>'+READER.read_text()+'</script>'
     page = html_doc('제1장 · '+render(story['meta']['title'],data,ls,profiles,()),body).replace('</style>','button{max-width:100%;white-space:normal;overflow-wrap:anywhere;cursor:pointer;margin:4px;padding:10px}#choices{display:flex;flex-wrap:wrap}#state{overflow-wrap:anywhere}.selected{border-left:3px solid #977;padding-left:12px}@media print{#choices,button,#state{display:none}}</style>')
-    if profile=='B':return {'chapter01-web.html':page}
+    jacket='<figure class="book-jacket"><img id="book-cover-image" alt="공용 메인 표지" width="120" height="180"><figcaption><strong>'+html.escape(payload['covers']['title'])+'</strong><p>'+html.escape(payload['covers']['subtitle'])+'</p><span>A/B 공용 표지 · 시각화 초안</span></figcaption></figure>'
+    page=page.replace('<h1>',jacket+'<h1>',1).replace('</style>','.book-jacket{display:flex;align-items:center;gap:20px;margin:0 0 24px}.book-jacket img{width:120px;height:auto;display:block}.book-jacket strong{font-size:26px}.book-jacket p{margin:4px 0}.book-jacket span{font-size:12px;color:#627367}.chapter-cover{margin:20px auto;max-width:210px}.chapter-cover img{width:100%;height:auto;display:block}@media(max-width:560px){.book-jacket{gap:14px}.book-jacket img{width:96px}.book-jacket strong{font-size:22px}.chapter-cover{max-width:170px}}</style>')
+    if profile=='B':
+        result={'chapter01-web.html':page}
+        return (result,(story,memory,overlay,payload)) if with_context else result
     report = {'version':1,'scope':overlay['scope'],'status':'draft','dialogue_coverage':story['coverage'],
         'reader_presentation':{'policy':presentation['policy'],
             'source_groups':len(presentation['groups']),

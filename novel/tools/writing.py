@@ -1,5 +1,6 @@
 """Validate the storyboard, instantiate shared quest forms and render reference-based prose."""
 import argparse
+import base64
 import copy
 import hashlib
 import html
@@ -438,12 +439,16 @@ def export_documents(output,check=False):
     validate_handoff(chapter_story,chapter_overlay)
     docs.update(interactive_documents())
     from prose_variants import STYLES,variant_inputs
-    docs.update(interactive_documents(profile='B'))
+    b_docs,book_context=interactive_documents(profile='B',with_context=True)
+    docs.update(b_docs)
+    from ebook import export as ebook_export, OUTPUT as EBOOK_OUTPUT, PLAN as EBOOK_PLAN
+    ebook_result=ebook_export(check=check,page=b_docs['chapter01-web.html'],context=book_context)
+    ebook_bytes=(EBOOK_OUTPUT/ebook_result['filename']).read_bytes()
     editions={key:docs[name] for key,name in [('A','chapter01-interactive.html'),('B','chapter01-web.html')]}
     wrapper=ROOT/'writing/interactive/editions.html'
     styles=read(STYLES)['profiles']
     scope=lambda key:('1~'+str(len(styles[key]['written_chapters']))+'장') if len(styles[key]['written_chapters'])>1 else '1장'
-    docs['novel-reader.html']=wrapper.read_text().replace('__A_SCOPE__',scope('A')).replace('__B_SCOPE__',scope('B')).replace('__EDITIONS__',json.dumps(editions,ensure_ascii=False).replace('<','\\u003c').replace('&','\\u0026'))
+    docs['novel-reader.html']=wrapper.read_text().replace('__A_SCOPE__',scope('A')).replace('__B_SCOPE__',scope('B')).replace('__EPUB_B__',base64.b64encode(ebook_bytes).decode()).replace('__EDITIONS__',json.dumps(editions,ensure_ascii=False).replace('<','\\u003c').replace('&','\\u0026'))
     inputs = [OVERLAY,READER,SCHEMA,EPISODES,ROOT/'tools/interactive.py',BOARD,CHAPTERS,CHAPTER_SCHEMA,STORIES,STORY_SCHEMA,ROOT/'tools/chapter_stories.py',SUBSECTIONS,SUBSECTION_SCHEMA,SUBSECTION_TEMPLATE,ROOT/'tools/chapter_subsections.py',BRANCHES,BRANCH_SCHEMA,BRANCH_TEMPLATE,ROOT/'tools/branch_system.py',SOURCE_PLAN,SOURCE_SCHEMA,ROOT/'tools/source_story.py',SOURCE_OUTPUT/'manuscript.json',SOURCE_OUTPUT/'coverage.json',SOURCE_OUTPUT/'generated-manifest.json',PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
               ROOT/'reference/terms.json',ROOT/'continuity/canon.json',ROOT/'writing/project.json',Path(__file__),ROOT/'tools/text_refs.py',
               ROOT/'tools/story_continuity.py',ROOT/'tools/disclosure.py',ROOT/'tools/validate_story_authoring.py',
@@ -458,6 +463,11 @@ def export_documents(output,check=False):
     inputs += [ROOT/'writing/interactive/series.json',ROOT/'tools/interactive_series.py',*variant_inputs(),ROOT/'tools/prose_variants.py',wrapper]
     from prose_presentation import PLAN as PRESENTATION, SCHEMA as PRESENTATION_SCHEMA
     inputs += [PRESENTATION,PRESENTATION_SCHEMA,ROOT/'tools/prose_presentation.py']
+    from script_overrides import PLAN as SCRIPT_OVERRIDES, SCHEMA as SCRIPT_OVERRIDE_SCHEMA
+    inputs += [SCRIPT_OVERRIDES,SCRIPT_OVERRIDE_SCHEMA,ROOT/'tools/script_overrides.py']
+    from cover_art import cover_inputs
+    inputs += cover_inputs()
+    inputs += [EBOOK_PLAN,ROOT/'tools/ebook.py',EBOOK_OUTPUT/'manifest.json',EBOOK_OUTPUT/'report.json',EBOOK_OUTPUT/ebook_result['filename']]
     for chapter in read(ROOT/'writing/interactive/series.json')['chapters']:
         inputs += [ROOT/chapter['quest_file'],ROOT/chapter['continuity_file']]
     inputs += [FLOW_PLAN,FLOW_SCHEMA,FLOW_TEMPLATE,ROOT/'tools/publication_flow.py',FLOW_OUTPUT/'manifest.json',
@@ -481,7 +491,7 @@ def export_documents(output,check=False):
             (output/name).write_text(body,encoding='utf-8')
         (output/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     studio = studio_export(check=check,docs=docs,publication=publication,side_publication=side_publication)
-    return {'output':str(output),'artifacts':list(docs),'retired_reading_editions_removed':removed,'storyboard_units':len(board['units']),'studio':studio,'checked':check}
+    return {'output':str(output),'artifacts':list(docs),'retired_reading_editions_removed':removed,'storyboard_units':len(board['units']),'studio':studio,'ebook':ebook_result,'checked':check}
 
 
 def main():

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "revision": 1,
+  "policy": "writing_override_then_existing_source_presentation",
+  "scope": "shared_A_B_reader_and_ebook",
+  "overrides": {
+    "prologue/lord_intro_dialogue": {
+      "revision": 1,
+      "source_block_ids": ["prologue/lord_intro_dialogue"],
+      "source_literal_ids": ["LORETALK.PAS:literal:11156", "LORETALK.PAS:literal:11163", "LORETALK.PAS:literal:11174", "LORETALK.PAS:literal:11202", "LORETALK.PAS:literal:11251", "LORETALK.PAS:literal:11297"],
+      "source_sha256": "aabb30af5c9103d000835819afe128cc857a90c0c2e1e802100be6c1d71b7813",
+      "writing_overrides": {
+        "text": [{"text": "나는 "}, {"ref": {"catalog": "characters", "id": "lord_ahn", "particle": "이오/요"}}, {"text": ". 이제부터 당신의 새로운 여정이 이곳에서 시작될 것이오. 먼저 이 세계에 무슨 일이 있었는지 들려주겠소."}]
+      },
+      "origin": "source_adaptation",
+      "status": "proposed",
+      "metadata": {"addition": true, "kind": "interpretation", "note": "각색: 게임 속 새 인물/생의 시작을 소설 속 새 여정의 시작으로 옮긴다. 이름은 대체 인물 참조를 쓰고, 환생·이세계 이동 능력·새 사건을 확정하지 않는다. 원문과 발생 ID는 그대로 보존한다."}
+    },
+    "i/creator_credit": {
+      "revision": 1,
+      "source_block_ids": ["i/creator_credit"],
+      "source_literal_ids": ["LORETALK.PAS:literal:1939"],
+      "source_sha256": "d31d9bab4b7533b3d772507800fe3971ee3c4ce7346f53604064d1ab566b4a09",
+      "writing_overrides": {"text": [{"text": "원작 창작: 안 영기."}]},
+      "origin": "source_adaptation",
+      "status": "proposed",
+      "metadata": {"addition": true, "kind": "interpretation", "note": "각색: 프로그래머라는 메타 문구를 원작 창작자 크레딧으로 표시한다. 실명은 원작 크레딧이며 소설 등장인물이나 새 세계 설정이 아니다. 보존 원문에 원래의 창시자/프로그래머 문구를 남긴다."}
+    },
+    "i/threshold_question": {
+      "revision": 1,
+      "source_block_ids": ["i/threshold_question"],
+      "source_literal_ids": ["LORETALK.PAS:literal:9858", "LORETALK.PAS:literal:9906"],
+      "source_sha256": "4bb4c29ce8d0efe4f1748086494268505a37dd21dd9f608e1600e6978782ce0b",
+      "writing_overrides": {"text": [{"ref": {"catalog": "characters", "id": "protagonist", "particle": "은/는"}}, {"text": " 문 너머로 발을 내디딜 준비가 되었는지 스스로에게 물었다."}]},
+      "origin": "source_adaptation",
+      "status": "proposed",
+      "metadata": {"addition": true, "kind": "interpretation", "note": "각색: 게임 세계/Y/n 입력 질문을 문 앞에서의 결심으로 읽는다. 기존 정방향 진행·망설임·결심 순서를 바꾸거나 확인 버튼을 다시 만들지 않는다."}
+    }
+  },
+  "metadata": {"origin": "authored", "addition": true, "kind": "new_setting", "status": "proposed", "note": "추가: 이름 대체값처럼 원작 스크립트의 소설용 대체본을 먼저 조회하는 편집 사전. A/B 및 EPUB이 공유한다. 누락/null이면 기존 원작 연결 표시로 돌아가고, 원본을 덮어쓰지 않는다."}
+}
