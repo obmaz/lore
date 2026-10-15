@@ -107,16 +107,16 @@
   "route_note": "선형 전자책의 대표 편집 경로다. 무기고 방문, 성문 동료의 합류, 창의 담당자 결정, 부상자 치료 경로를 한 번씩 실제로 재생한다. 모든 분기를 한 경로에 합치거나 정사/출판 승인으로 확정하지 않는다. 다른 선택은 웹 판본에 남아 있다.",
   "chapters": {
     "chapter01": {
-      "paragraphs": 365,
-      "characters": 23078
+      "paragraphs": 348,
+      "characters": 20249
     },
     "chapter02": {
-      "paragraphs": 278,
-      "characters": 17924
+      "paragraphs": 203,
+      "characters": 11641
     },
     "chapter03": {
-      "paragraphs": 250,
-      "characters": 16679
+      "paragraphs": 199,
+      "characters": 12276
     }
   },
   "required_main_scenes": 43,
@@ -341,6 +341,6 @@
     "writing/covers/cover-chapter02.jpg",
     "writing/covers/cover-chapter03.jpg"
   ],
-  "reader_fingerprint": "e7b424e5582480306ff0e8717f38cf51fc9a40ba63420128d4cf01a9df9efc71",
+  "reader_fingerprint": "4b038761ab67d2675c5d8ead978ccd6b514e3f350d27dc4097d3494af306649b",
   "canonical_or_approved": false
 }

@@ -8,7 +8,7 @@ class BReadabilityTest(unittest.TestCase):
     def setUpClass(cls):
         cls.books={i:read(ROOT/f'writing/variants/B/chapter{i:02}.json')for i in (1,2,3)}
         cls.presentation=read(ROOT/'writing/interactive/prose-presentation.json')
-        cls.review=read(ROOT/'writing/variants/B/copyedit-review.json')['passes'][0]
+        cls.review=read(ROOT/'writing/variants/B/copyedit-review.json')['passes'][-1]
 
     def body(self,chapter,key):
         return ''.join(s.get('text','')for s in self.books[chapter]['block_overrides'][key]['text'])

@@ -55,8 +55,9 @@ class StartingFriendshipTests(unittest.TestCase):
         story = apply_variant(base)
         blocks = {b['id']: b for n in story['nodes'] for b in n['blocks']}
         review = read(ROOT/'writing/variants/B/copyedit-review.json')['passes'][-1]
-        self.assertEqual([p['phase'] for p in review['dramatic_arc']], ['기', '승', '전', '결'])
-        for phase in review['dramatic_arc']:
+        arc = review['chapter_arcs']['chapter01']
+        self.assertEqual([p['phase'] for p in arc], ['기', '승', '전', '결'])
+        for phase in arc:
             for key in phase['blocks']:
                 self.assertEqual(blocks[key]['provenance']['origin'], 'authored')
         # Center paragraphs intentionally suppress duplicates on a detour rejoin;
@@ -77,7 +78,7 @@ class StartingFriendshipTests(unittest.TestCase):
             self.assertFalse(packet['available_choices'])
             self.assertTrue(packet['main_story']['complete'])
             seen = {key for h in packet['history'] for key in h['visible_block_ids']}
-            for phase in review['dramatic_arc']:
+            for phase in arc:
                 self.assertLessEqual(set(phase['blocks']), seen)
         # All physical variants share the same bad decision / changed decision / honest report.
         for owner, gold in itertools.product(('', *self.actors), (0, 1000)):
@@ -87,7 +88,7 @@ class StartingFriendshipTests(unittest.TestCase):
                 self.assertTrue(matches(blocks[key]['when'], state))
         self.assertFalse(review['policy']['choices_or_effects_changed'])
         self.assertFalse(review['policy']['A_authored_prose_changed'])
-        self.assertFalse(review['policy']['B_chapter02_03_prose_changed'])
+        self.assertTrue(review['policy']['B_chapter02_03_prose_changed'])
 
 
 if __name__ == '__main__':

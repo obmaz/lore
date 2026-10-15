@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 4,
+  "revision": 5,
   "profile": "B",
   "scope": [
     "chapter01",
@@ -3119,6 +3119,1360 @@
       ],
       "presentation_changes": [
         "lore_menace/prep_words"
+      ]
+    },
+    {
+      "id": "action-developmental-edit-05",
+      "scope": [
+        "chapter01",
+        "chapter02",
+        "chapter03"
+      ],
+      "style_revision": 3,
+      "status": "proposed",
+      "origin": "authored",
+      "metadata": {
+        "origin": "authored",
+        "status": "proposed",
+        "addition": true,
+        "kind": "new_setting",
+        "note": "교정 5: 사용자 요청에 따른 B revision 3의 빠른 모험·전투 재집필. 주도적 판단→행동→위기 반전→성과를 강화한 미승인 창작이다. 동료·장비·마법·자원·원작 결과·선택 조건은 바꾸지 않는다."
+      },
+      "reviewed_existing_blocks": {
+        "chapter01": 294,
+        "chapter02": 77,
+        "chapter03": 70
+      },
+      "changed_blocks": {
+        "chapter01": 93,
+        "chapter02": 77,
+        "chapter03": 70
+      },
+      "policy": {
+        "choices_or_effects_changed": false,
+        "branch_graph_or_effects_changed": false,
+        "common_source_scripts_changed": false,
+        "archival_source_changed": false,
+        "A_authored_prose_changed": false,
+        "B_chapter02_03_prose_changed": true,
+        "literary_or_canon_approval": false
+      },
+      "chapter_arcs": {
+        "chapter01": [
+          {
+            "phase": "기",
+            "summary": "친구들과 함께 낯선 성에 들어가 직접 역할을 묻고 첫 탐사를 맡는다.",
+            "blocks": [
+              "prologue/arrival_first",
+              "lore_menace/request_after"
+            ]
+          },
+          {
+            "phase": "승",
+            "summary": "서로 호흡을 맞춰 중심부를 찾고 해냈다는 자신감을 얻는다.",
+            "blocks": [
+              "lore_menace/center_after"
+            ]
+          },
+          {
+            "phase": "전",
+            "summary": "귀환 중 돌진 앞에서 첫 판단이 틀리지만 장비/지형/동료의 틈을 이어 돌파한다.",
+            "blocks": [
+              "lore_menace/return_arrive",
+              "i/return_boar_regroup",
+              "i/return_boar_escape"
+            ]
+          },
+          {
+            "phase": "결",
+            "summary": "실수와 돌파를 함께 보고하고 실제 성과를 자신감으로 다음 성을 향한다.",
+            "blocks": [
+              "lore_menace/report_words",
+              "lore_menace/report_after"
+            ]
+          }
+        ],
+        "chapter02": [
+          {
+            "phase": "기",
+            "summary": "주민들의 공포와 실종자 가족을 만나 처단 임무에 사람의 의미를 붙인다.",
+            "blocks": [
+              "lastditch_pyramid/request_after",
+              "lastditch_pyramid/family_after"
+            ]
+          },
+          {
+            "phase": "승",
+            "summary": "셋의 협공을 조사하고 실제 영입/장비와 두 접근법으로 싸울 준비를 한다.",
+            "blocks": [
+              "lastditch_pyramid/road_body",
+              "lastditch_pyramid/room_body"
+            ]
+          },
+          {
+            "phase": "전",
+            "summary": "서진이 적의 회전과 시선을 이용해 협공을 한 줄로 겹치게 하고 동료들의 틈을 잇는다.",
+            "blocks": [
+              "lastditch_pyramid/battle_body"
+            ]
+          },
+          {
+            "phase": "결",
+            "summary": "원작 승리를 확인하고 성에 보고한다. 실종 소식은 얻지 못한 채 다음 대륙으로 간다.",
+            "blocks": [
+              "lastditch_pyramid/won_body",
+              "lastditch_pyramid/gate_body"
+            ]
+          }
+        ],
+        "chapter03": [
+          {
+            "phase": "기",
+            "summary": "쌍둥이 성 대신 폐허를 보고 봉인을 찾아야 할 이유를 직접 체감한다.",
+            "blocks": [
+              "gaia_evil_seal/ruins_body",
+              "gaia_evil_seal/request_after"
+            ]
+          },
+          {
+            "phase": "승",
+            "summary": "익힌 마법으로 끊어진 길을 열고 문을 풀어 부상자와 만난다.",
+            "blocks": [
+              "gaia_evil_seal/floating_body",
+              "gaia_evil_seal/rigel_common"
+            ]
+          },
+          {
+            "phase": "전",
+            "summary": "영입/원조/거절의 대가를 지킨 채 봉인 앞에서 손대지 않기로 결정한다.",
+            "blocks": [
+              "gaia_evil_seal/seal_body"
+            ]
+          },
+          {
+            "phase": "결",
+            "summary": "열지 않은 봉인과 건너온 길을 보고하고 다음 적의 의뢰를 받는다.",
+            "blocks": [
+              "gaia_evil_seal/report_body",
+              "gaia_evil_seal/next_body"
+            ]
+          }
+        ]
+      },
+      "changes": [
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/arrival_first",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/arrival_pause",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/party_intro",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/audience_enter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/audience_wait",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/briefing_memory",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/briefing_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_before",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_silence",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_floor",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_lord_look",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_distant_name",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_waiting_breath",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_lord_motion",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_after_recoil",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_question_gather",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_scope_wait",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_scope_face",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_proof_sting",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_proof_blush",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_return_weight",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_readiness",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_dry_mouth",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_promise",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_unfinished_fear",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_looking_back",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/preparation_pause",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/prep_promise",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/prep_words",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/prep_sound",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/prep_corridor",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/prep_name",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/reminder_before",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/reminder_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/road_checking_pace",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_follow_sound",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_stop_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_smaller_word",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_awkward_release",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_hands",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_group_pause",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_small_sentence",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_before_return",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_arrive",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_threshold",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_words",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_wait",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_declined",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/next_before",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/next_question_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/next_declined",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/armory_owned",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_entry_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_entry_1",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_entry_2",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_entry_3",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_entry_4",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_entry_5",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_entry_6",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_lord_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_shield_protagonist",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_shield_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_shield_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_shield_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_shield_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_no_shield",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_regroup",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_gold",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_axe_prepared",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_axe_unprepared",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_axe",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_wand_prepared",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_wand_unprepared",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_wand",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_escape",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_shield_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_gold_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_arrive",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/arrival_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/arrival_audience",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/request_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/town_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/family_before",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/family_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/offer_before",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/replacement_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/joined_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/declined_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/road_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/extra_3",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/polaris_present_3",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/entrance_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_left",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_protagonist",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_skeleton",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_mad_joe",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/spear_owner_polaris",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/room_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/hold_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/separate_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/polaris_present_4",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/skeleton_present_4",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_weapon_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_weapon_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_weapon_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_weapon_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_weapon_polaris",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_protagonist",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_skeleton",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_mad_joe",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/battle_spear_polaris",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/won_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/return_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/extra_5",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/polaris_present_5",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/report_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/guidance_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/gate_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/extra_6",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/polaris_present_6",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/skeleton_present_6",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_1_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_1_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_1_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_1_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_2_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_2_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_2_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_2_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_3_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_3_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_3_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_3_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_4_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_4_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_4_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_4_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_5_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_5_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_5_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_5_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_6_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_6_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_6_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter02.json",
+          "block_id": "lastditch_pyramid/party_6_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_wait",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/request_before",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/request_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/prepared_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/entrance_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/cliff_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/floating_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/doors_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/door_calculation",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/door_crossing",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/door_wait",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/rigel_approach",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/rigel_common",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/rigel_wait",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/replacement_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/joined_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/joined_more",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/departure_connection",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/aided_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/aided_more",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/left_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/left_more",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/seal_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/seal_return",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/exit_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/aided_exit",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/joined_exit",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/left_exit",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/report_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/report_confirmation",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/next_body",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/next_wait",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/rigel_next",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_party_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_party_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_party_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_party_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/town_party_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/town_party_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/town_party_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/town_party_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/numbered_doors_party_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/numbered_doors_party_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/numbered_doors_party_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/numbered_doors_party_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/rigel_offer_party_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/rigel_offer_party_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/rigel_offer_party_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/rigel_offer_party_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/passcode_party_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/passcode_party_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/passcode_party_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/passcode_party_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/next_request_party_party_woodcutter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/next_request_party_party_hunter",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/next_request_party_party_cook",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/next_request_party_party_magician",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_optional_polaris",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_optional_skeleton",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/ruins_optional_mad_joe",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/numbered_doors_optional_polaris",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/numbered_doors_optional_skeleton",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/numbered_doors_optional_mad_joe",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/passcode_optional_polaris",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/passcode_optional_skeleton",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/passcode_optional_mad_joe",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/next_request_optional_polaris",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/next_request_optional_skeleton",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter03.json",
+          "block_id": "gaia_evil_seal/next_request_optional_mad_joe",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_outside",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/farewell_after",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/farewell_step",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/farewell_window_light",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/farewell_hands",
+          "kind": "action_and_character_development"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/farewell_end",
+          "kind": "action_and_character_development"
+        }
+      ],
+      "continuity_limits": [
+        "B 도입은 호기심·친구의 응원·직접 질문으로 추진력을 만든다. 친분의 시기/출신/공동 전투 경력은 추가하지 않는다.",
+        "B 멧돼지는 돌진의 방향을 바꾸게 해 쫓아내며 죽음·보상·부상·장비 소모를 만들지 않는다. 방패 방어는 실제 보유자만 양손으로 하고 같은 사람의 무기 행동과 겹치지 않는다. 무기고 방문의 손잡이/짐끈 준비는 실제 방문 경로에만 회수한다. 서진의 첫 판단 실수는 짧게 인정하고 지형과 타이밍으로 상황을 주도한다.",
+        "B의 셋 상대 전투는 두 접근 경로 뒤 합류한다. 싸울 물건 외의 짐은 입구 벽에 놓고 귀환 때 모두 회수하므로 방패 동시 양손 사용을 묘사하지 않는다. 공통 서진 행동은 유인·회피·협공 분리이며 창 공격은 실제 창 소유자, 기존 무기 동작은 현재 동료/장비 조건에서만 나온다. 화살 발사·새 주문·창의 특별 효과·새 보상 없음. 승리는 기존 won 원문 뒤에만 확정한다.",
+        "B는 기존 수련으로 배운 공중 부상/한 명 치료만 사용한다. 부상자 영입은 부상 지속, 원조는 남은 SP와 식량 5 소비/기존 무기 축복, 거절은 미원조 상태를 지킨다. 공중 부상은 귀환까지 유지하고 밖에서 종료한다. 봉인은 발견만 하고 열거나 가져오지 않는다. 신규 전투/괴물/자동 회복 없음."
+      ],
+      "review_notes": [
+        "2~3장은 모든 기존 창작 블록을 재집필하고, 1장은 도입/의뢰/동굴의 주요 연결/전투/보고를 재집필했다. 변경 목록 밖 B1 블록은 기존 원고이며 장 전체를 백지 재집필했다고 표시하지 않는다.",
+        "청소년 독자 취향은 문체·호흡의 편집 방향이며 등장인물의 나이를 확정하지 않는다.",
+        "공통 A/B 원문 대체 사전과 대사 발생/스포일러 공개 경계는 불변이다. 장면 전투 안무와 작은 대화는 원작 전투의 확정 묘사나 특정 작품 모방이 아닌 창작 제안이다.",
+        "기계 검사는 분기/원문/출력의 회귀를 확인하며 문학적 완성·출판 승인을 대신하지 않는다.",
+        "실제 읽기 연결 재검토: ruins의 원문 표지판 뒤에는 이미 새 성에 도착한다. 이후 동료 문단은 지나온 폐허의 기억이며 폐허에서 다시 걷거나 잔해를 가리키는 현재 동작으로 쓰지 않는다. 조건부 동료 도입의 동일 문장 반복도 제거했다."
       ]
     }
   ]

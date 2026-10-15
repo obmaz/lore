@@ -41,14 +41,16 @@ class CopyeditTest(unittest.TestCase):
 
     def test_seal_confirmation_stops_before_crossing_and_exit_happens_once(self):
         turning=self.plain(3,'gaia_evil_seal/seal_return')
-        self.assertIn('건널 준비',turning)
+        self.assertIn('다시 건너야 할',turning)
         self.assertNotIn('일행이 다 건넜다',turning)
         self.assertNotIn('무너진 성은 같은 모습',turning)
-        self.assertIn('마지막 사람이 건넌',self.plain(3,'gaia_evil_seal/exit_body'))
-        self.assertIn('마법은 끝났고',self.plain(3,'gaia_evil_seal/aided_exit'))
+        exit_text=self.plain(3,'gaia_evil_seal/exit_body')
+        self.assertIn('마지막 사람이',exit_text)
+        self.assertLess(exit_text.index('마지막 사람이'),exit_text.index('마법을 끝냈다'))
+        self.assertIn('치료에 쓴 힘은 돌아오지 않았다',self.plain(3,'gaia_evil_seal/aided_exit'))
         self.assertNotIn('발이 닿을 때까지 기다렸다',self.plain(3,'gaia_evil_seal/aided_exit'))
         refs=[s.get('ref',{})for s in self.body(3,'gaia_evil_seal/seal_return')]
-        self.assertIn({'catalog':'abilities','id':'magic_34'},refs)
+        self.assertIn(('abilities','magic_34'),[(r.get('catalog'),r.get('id')) for r in refs])
 
     def test_all_written_speech_and_inscriptions_have_reviewed_overrides(self):
         expected={g['block_ids'][0]for g in self.payload['presentation']['groups']if g['kind']!='narration'}
