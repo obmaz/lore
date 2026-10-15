@@ -24,10 +24,12 @@ class DisclosureTest(unittest.TestCase):
         self.assertEqual(child["claimant"],"jr_antares")
         self.assertEqual(child["truth_type"],"testimony")
 
-    def test_master_contains_35_analyzed_relationships_and_48_directed_links(self):
+    def test_master_preserves_35_analyzed_relationships_and_adds_10_friendships(self):
         links = [r for p in self.master["characters"].values() for r in p["relationships"]]
-        self.assertEqual(len(links),48)
-        self.assertEqual(len([r for r in links if not r["id"].endswith(":reverse")]),35)
+        original = [r for r in links if not r['id'].startswith('starting_friends_')]
+        self.assertEqual(len(original),48)
+        self.assertEqual(len([r for r in original if not r["id"].endswith(":reverse")]),35)
+        self.assertEqual(len(links)-len(original),20)
 
     def test_named_marriage_has_an_unnamed_spouse_card(self):
         spouse = self.master["characters"]["hunter_spouse"]
@@ -54,7 +56,8 @@ class DisclosureTest(unittest.TestCase):
 
     def test_hints_do_not_include_secret_relation_id_target_or_type(self):
         view = self.project("protagonist","castle_arrival")
-        self.assertEqual(view["relationships"],[])
+        self.assertEqual({r['relation_type'] for r in view['relationships']}, {'close_friend'})
+        self.assertEqual(len(view['relationships']),4)
         self.assertTrue(view["foreshadowing"])
         hint = json.dumps(view["foreshadowing"],ensure_ascii=False)
         for word in ("ancient_evil","created_by","protagonist_creation","world_prophecy","창조"):

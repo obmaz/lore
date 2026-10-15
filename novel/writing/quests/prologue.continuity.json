@@ -3,7 +3,7 @@
   "story_id": "prologue_pilot_v1",
   "story_revision": 3,
   "canon_revision": 4,
-  "character_registry_revision": 13,
+  "character_registry_revision": 14,
   "contracts": {
     "arrival": {
       "before": true,
@@ -29,7 +29,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         }
       ]
     },
@@ -63,7 +63,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "castle_guide",
@@ -103,7 +103,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "veteran",
@@ -141,7 +141,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "lord_ahn",
@@ -179,7 +179,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "lord_ahn",
@@ -216,7 +216,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         }
       ]
     }
@@ -330,7 +330,8 @@
       "감옥·영입의 실제 접근 시점을 확인한 뒤 별도 장면으로 추가한다.",
       "출발 UI와 진행 후 반복 대사는 아직 처리하지 않았다.",
       "첫 탐사 의뢰 원고의 assignment로 연결했다. 이후 읽기 경로에서도 주점 증언을 유지한다.",
-      "추가: 주인공 집필 이름 변경에 따른 참조 의존 버전을 재검토했다. 본문·원문·경로·지식은 그대로이며 장면과 사건은 승인하지 않는다."
+      "추가: 주인공 집필 이름 변경에 따른 참조 의존 버전을 재검토했다. 본문·원문·경로·지식은 그대로이며 장면과 사건은 승인하지 않는다.",
+      "추가: 시작 일행의 사용자 지정 친분 설정을 재검토했다. 처음 도착한 장소의 낯섦·새 영입 인물과의 거리감·전투 중 신호를 익히는 과정은 기존 친분과 구분한다. 만난 시기·출신·혈연·공동 전투 경력은 새로 확정하지 않는다. 본문/사건 승인과 B 2~3장 재집필은 하지 않았다."
     ],
     "approved_story_revision": null,
     "approved_canon_revision": null,

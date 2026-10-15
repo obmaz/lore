@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 3,
+  "revision": 4,
   "profile": "B",
   "scope": [
     "chapter01",
@@ -2575,6 +2575,550 @@
         "i/shield_found",
         "i/shield_equipped_words",
         "i/shield_cancel_words"
+      ]
+    },
+    {
+      "id": "chapter01-dramatic-arc-04",
+      "scope": [
+        "chapter01"
+      ],
+      "style_revision": 2,
+      "status": "proposed",
+      "metadata": {
+        "origin": "authored",
+        "status": "proposed",
+        "addition": true,
+        "kind": "new_setting",
+        "note": "사용자 요청: B 1장의 기승전결 및 시작 동료 친분 반영. 구조/경로 검사는 문학적 완성이나 정사 승인을 뜻하지 않는다."
+      },
+      "reviewed_existing_blocks": 294,
+      "policy": {
+        "A_authored_prose_changed": false,
+        "B_chapter02_03_prose_changed": false,
+        "archival_source_changed": false,
+        "choices_or_effects_changed": false,
+        "shared_character_friendship_added": true,
+        "literary_approval": false,
+        "canon_approval": false
+      },
+      "dramatic_arc": [
+        {
+          "phase": "기",
+          "blocks": [
+            "prologue/arrival_first",
+            "i/party_intro",
+            "lore_menace/request_proof_sting",
+            "lore_menace/prep_words"
+          ],
+          "cause": "친구들에게도 성주에게도 능력을 인정받고 싶어 앞장서려 한다.",
+          "question": "친구들과 함께 가는가, 친구들에게 자신을 증명하려는가?"
+        },
+        {
+          "phase": "승",
+          "blocks": [
+            "lore_menace/walk_stop_body",
+            "lore_menace/center_group_pause",
+            "lore_menace/return_outside"
+          ],
+          "cause": "작은 실수는 친구들이 맞춰 주고 탐사도 성공한다. 이를 자신의 판단이 옳다는 증거로 받아들여 귀환길을 가볍게 본다.",
+          "optional_variations": {
+            "i/treasure_hub_prose": "발견물을 더 보여 주고 싶은 마음·운반 부담. 탐색한 경로만.",
+            "i/armory_owned": "서두르려는 마음과 친구들의 손질이 대비되고 해당 무기를 자유롭게 쓰는 귀환 경로에서 효용을 체감한다."
+          }
+        },
+        {
+          "phase": "전",
+          "blocks": [
+            "lore_menace/return_arrive",
+            "i/return_boar_regroup",
+            "i/return_boar_escape"
+          ],
+          "cause": "멈추라는 말보다 앞서 나가 친구들까지 위험하게 한다. 잘못을 인정하고 도움을 요청해 함께 옆으로 피한다.",
+          "constraints": [
+            "방패는 실제 담당자만",
+            "양손 방패 담당자는 다른 무기 동시 사용 없음",
+            "금화 부담은 실제 보유 경로만",
+            "새 주문·탄약·보상·영구 부상 없음",
+            "친구의 숨은 속마음은 서술하지 않음"
+          ]
+        },
+        {
+          "phase": "결",
+          "blocks": [
+            "lore_menace/report_threshold",
+            "lore_menace/report_words",
+            "lore_menace/next_question_after",
+            "lore_menace/farewell_end"
+          ],
+          "cause": "성주에게 성공만 말할 기회를 버리고 자신의 오판과 친구들의 도움을 보고한다. 다음 부탁에는 동료 의견을 구한다.",
+          "continuation": "인정 욕구 자체를 없애거나 완성된 지도자로 바꾸지 않는다. 다음 장에서도 공동 판단을 배우는 상태다."
+        }
+      ],
+      "changes": [
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/arrival_first",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/arrival_pause",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/party_intro",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_woodcutter",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_hunter",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_cook",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/intro_party_magician",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/tavern_after",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/audience_enter",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/audience_wait",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/briefing_memory",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "prologue/briefing_after",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_before",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_silence",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_floor",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_lord_look",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_distant_name",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_waiting_breath",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_lord_motion",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_after",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_veteran_memory",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_after_recoil",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_question_gather",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_scope_face",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_proof_sting",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_proof_blush",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_return_weight",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_readiness",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_dry_mouth",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_promise",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_unfinished_fear",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/request_looking_back",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/prep_promise",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/prep_words",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/prep_sound",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/road_checking_pace",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/road_destination_question",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/road_intro_pause",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/road_share",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/cave_companion_reply",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_follow_sound",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_stop_body",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_smaller_word",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/walk_awkward_release",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_after",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_listen",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_hands",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_group_pause",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_say_at_last",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_small_sentence",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_before_return",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_reply",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/center_turning",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_outside",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_reset",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_veteran",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_rehearsal",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_rehearsal_after",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/return_arrive",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_no_shield",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_regroup",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_gold",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_axe_prepared",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_wand_prepared",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_hunter",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_cook",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_escape",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_gold_after",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_arrive",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_threshold",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_words",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_wait",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_after",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/report_declined",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/next_before",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/next_question_after",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/farewell_share",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/farewell_hands",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "lore_menace/farewell_end",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/armory_owned",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_entry_2",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_settle",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_lord_after",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/tavern_story_departure_end",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/grave_after",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/mine_lore_prose",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/treasure_hub_prose",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/gold_prose_3",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/gold_prose_4",
+          "kind": "dramatic_arc_and_friendship"
+        },
+        {
+          "file": "writing/variants/B/chapter01.json",
+          "block_id": "i/return_boar_shield_after",
+          "kind": "final_route_proof"
+        }
+      ],
+      "continuity_limits": [
+        "친분은 사용자 지정 공용 창작 설정. 첫 만남·출신·나이·혈연·오랜 공동 경력은 만들지 않는다.",
+        "스켈레톤과 매드 조는 선택 영입 경로에서 새로 만나는 인물이며 시작 친구들로 바꾸지 않는다.",
+        "원작 필수 대사·사건 순서·조건·소지품·효과·합류는 보존한다.",
+        "A 및 B 2~3장 산문은 유지한다. 새 친구 관계와 B 1장 변화에 모순되는 과거 서술이 없는지 검토한다."
+      ],
+      "sequence_checks": [
+        "무기고 방문·주인공 방패·영입 거절 경로와 주점 방문·보물 생략·스켈레톤 합류 경로를 실제 출력 순서로 검토했다.",
+        "대화 블록의 공용 발화 연결과 맞추고 중복 장소 진입·조사·우회적인 질문을 정리했다.",
+        "방패는 충돌 종료 후 잠깐 내려놓고 짐 정리를 마친 뒤 다시 챙긴다. 전투 중 자유 손 조건은 유지한다."
+      ],
+      "presentation_changes": [
+        "lore_menace/prep_words"
       ]
     }
   ]

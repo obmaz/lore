@@ -8,7 +8,7 @@
   "shared_structure": "writing/interactive/series.json",
   "base_source_sha256": {
     "writing/quests/lastditch_pyramid.json": "e0050c52cc0a1e10ddd509f45c85529c832d2fea8fa801d049c71267aa95a4c6",
-    "writing/quests/lastditch_pyramid.continuity.json": "d42ab1ef1d3cff7800455b4512c919621ad86f4a412b97c4420557e25d01b28a",
+    "writing/quests/lastditch_pyramid.continuity.json": "0ccd4184772781e1e2d710a52c340fa5e87ee2b48a29a45ef295e033d897696d",
     "writing/interactive/series.json": "963965994e3244ddfc7952f106f48f4c73d655dce96d8fde726ca6da50828935"
   },
   "metadata": {

@@ -1,9 +1,9 @@
 {
   "version": 3,
-  "revision": 13,
+  "revision": 14,
   "characters": {
     "protagonist": {
-      "revision": 8,
+      "revision": 9,
       "kind": "protagonist",
       "canonical_name": {
         "value": null,
@@ -68,6 +68,19 @@
               "addition": true,
               "kind": "new_setting",
               "note": "기존 집필 제안/원작 요약의 출처 구분을 보존한다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          },
+          {
+            "field": "starting_friends_voice",
+            "value": "시작 친구들과는 익숙하고 편한 말투를 쓴다. 장난을 주고받을 수 있지만 위험하거나 상대가 진지할 때에는 말을 듣는다. 낯선 사람·성주·새 동료와 같은 말투라고 강제하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 사용자 지정 친분을 B 1장의 대화로 구현하기 위한 집필 제안. 전편 인물의 모든 성격을 단정하지 않는다.",
               "knowledge_policy": "author_reference_not_character_knowledge"
             }
           }
@@ -141,6 +154,130 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_protagonist_party_woodcutter",
+          "target": "party_woodcutter",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_protagonist_party_hunter",
+          "target": "party_hunter",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_protagonist_party_cook",
+          "target": "party_cook",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_protagonist_party_magician",
+          "target": "party_magician",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
           }
         }
       ],
@@ -252,6 +389,99 @@
             "addition": false,
             "kind": "unknown",
             "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "writing_overrides": {
+        "name": {
+          "field": "name",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "age": {
+          "field": "age",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "appearance": {
+          "field": "appearance",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "species": {
+          "field": "species",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "personality": {
+          "field": "personality",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "origin": {
+          "field": "origin",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "settings": {
+          "field": "settings",
+          "value": "시작 일행 다섯 명(protagonist, party_woodcutter, party_hunter, party_cook, party_magician)은 첫 성 도착 전부터 서로 친한 사이다. 처음 만나 이름을 익히는 사이로 쓰지 않는다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 정하지 않는다. 친분은 현재 동행·생존·소지품을 보장하지 않으며 선택 영입 인물에게 자동 적용하지 않는다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "사용자 지정: 처음 동료들은 친한 사이. 공용 관계 설정에 반영하되 원작 사실이나 상세 과거사를 새로 확정하지 않는다.",
             "knowledge_policy": "author_reference_not_character_knowledge"
           }
         }
@@ -17143,7 +17373,7 @@
       }
     },
     "party_woodcutter": {
-      "revision": 3,
+      "revision": 4,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": null,
@@ -17190,6 +17420,19 @@
               "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
               "knowledge_policy": "author_reference_not_character_knowledge"
             }
+          },
+          {
+            "field": "starting_friends_voice",
+            "value": "시작 친구들과는 익숙하고 편한 말투를 쓴다. 장난을 주고받을 수 있지만 위험하거나 상대가 진지할 때에는 말을 듣는다. 낯선 사람·성주·새 동료와 같은 말투라고 강제하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 사용자 지정 친분을 B 1장의 대화로 구현하기 위한 집필 제안. 전편 인물의 모든 성격을 단정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
           }
         ],
         "goals": [
@@ -17226,7 +17469,132 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_protagonist_party_woodcutter:reverse",
+          "target": "protagonist",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_woodcutter_party_hunter",
+          "target": "party_hunter",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_woodcutter_party_cook",
+          "target": "party_cook",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_woodcutter_party_magician",
+          "target": "party_magician",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": null,
@@ -17339,6 +17707,99 @@
           }
         }
       },
+      "writing_overrides": {
+        "name": {
+          "field": "name",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "age": {
+          "field": "age",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "appearance": {
+          "field": "appearance",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "species": {
+          "field": "species",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "personality": {
+          "field": "personality",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "origin": {
+          "field": "origin",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "settings": {
+          "field": "settings",
+          "value": "시작 일행 다섯 명(protagonist, party_woodcutter, party_hunter, party_cook, party_magician)은 첫 성 도착 전부터 서로 친한 사이다. 처음 만나 이름을 익히는 사이로 쓰지 않는다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 정하지 않는다. 친분은 현재 동행·생존·소지품을 보장하지 않으며 선택 영입 인물에게 자동 적용하지 않는다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "사용자 지정: 처음 동료들은 친한 사이. 공용 관계 설정에 반영하되 원작 사실이나 상세 과거사를 새로 확정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
       "resource_refs": {
         "equipment": [
           "story_axe"
@@ -17365,7 +17826,7 @@
       }
     },
     "party_hunter": {
-      "revision": 3,
+      "revision": 4,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": null,
@@ -17412,6 +17873,19 @@
               "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
               "knowledge_policy": "author_reference_not_character_knowledge"
             }
+          },
+          {
+            "field": "starting_friends_voice",
+            "value": "시작 친구들과는 익숙하고 편한 말투를 쓴다. 장난을 주고받을 수 있지만 위험하거나 상대가 진지할 때에는 말을 듣는다. 낯선 사람·성주·새 동료와 같은 말투라고 강제하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 사용자 지정 친분을 B 1장의 대화로 구현하기 위한 집필 제안. 전편 인물의 모든 성격을 단정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
           }
         ],
         "goals": [
@@ -17448,7 +17922,132 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_protagonist_party_hunter:reverse",
+          "target": "protagonist",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_woodcutter_party_hunter:reverse",
+          "target": "party_woodcutter",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_hunter_party_cook",
+          "target": "party_cook",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_hunter_party_magician",
+          "target": "party_magician",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": null,
@@ -17561,6 +18160,99 @@
           }
         }
       },
+      "writing_overrides": {
+        "name": {
+          "field": "name",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "age": {
+          "field": "age",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "appearance": {
+          "field": "appearance",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "species": {
+          "field": "species",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "personality": {
+          "field": "personality",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "origin": {
+          "field": "origin",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "settings": {
+          "field": "settings",
+          "value": "시작 일행 다섯 명(protagonist, party_woodcutter, party_hunter, party_cook, party_magician)은 첫 성 도착 전부터 서로 친한 사이다. 처음 만나 이름을 익히는 사이로 쓰지 않는다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 정하지 않는다. 친분은 현재 동행·생존·소지품을 보장하지 않으며 선택 영입 인물에게 자동 적용하지 않는다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "사용자 지정: 처음 동료들은 친한 사이. 공용 관계 설정에 반영하되 원작 사실이나 상세 과거사를 새로 확정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
       "resource_refs": {
         "equipment": [
           "story_bow"
@@ -17587,7 +18279,7 @@
       }
     },
     "party_cook": {
-      "revision": 3,
+      "revision": 4,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": null,
@@ -17634,6 +18326,19 @@
               "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
               "knowledge_policy": "author_reference_not_character_knowledge"
             }
+          },
+          {
+            "field": "starting_friends_voice",
+            "value": "시작 친구들과는 익숙하고 편한 말투를 쓴다. 장난을 주고받을 수 있지만 위험하거나 상대가 진지할 때에는 말을 듣는다. 낯선 사람·성주·새 동료와 같은 말투라고 강제하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 사용자 지정 친분을 B 1장의 대화로 구현하기 위한 집필 제안. 전편 인물의 모든 성격을 단정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
           }
         ],
         "goals": [
@@ -17670,7 +18375,132 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_protagonist_party_cook:reverse",
+          "target": "protagonist",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_woodcutter_party_cook:reverse",
+          "target": "party_woodcutter",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_hunter_party_cook:reverse",
+          "target": "party_hunter",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_cook_party_magician",
+          "target": "party_magician",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": null,
@@ -17783,6 +18613,99 @@
           }
         }
       },
+      "writing_overrides": {
+        "name": {
+          "field": "name",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "age": {
+          "field": "age",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "appearance": {
+          "field": "appearance",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "species": {
+          "field": "species",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "personality": {
+          "field": "personality",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "origin": {
+          "field": "origin",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "settings": {
+          "field": "settings",
+          "value": "시작 일행 다섯 명(protagonist, party_woodcutter, party_hunter, party_cook, party_magician)은 첫 성 도착 전부터 서로 친한 사이다. 처음 만나 이름을 익히는 사이로 쓰지 않는다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 정하지 않는다. 친분은 현재 동행·생존·소지품을 보장하지 않으며 선택 영입 인물에게 자동 적용하지 않는다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "사용자 지정: 처음 동료들은 친한 사이. 공용 관계 설정에 반영하되 원작 사실이나 상세 과거사를 새로 확정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
       "resource_refs": {
         "equipment": [
           "story_knife"
@@ -17809,7 +18732,7 @@
       }
     },
     "party_magician": {
-      "revision": 3,
+      "revision": 4,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": null,
@@ -17856,6 +18779,19 @@
               "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
               "knowledge_policy": "author_reference_not_character_knowledge"
             }
+          },
+          {
+            "field": "starting_friends_voice",
+            "value": "시작 친구들과는 익숙하고 편한 말투를 쓴다. 장난을 주고받을 수 있지만 위험하거나 상대가 진지할 때에는 말을 듣는다. 낯선 사람·성주·새 동료와 같은 말투라고 강제하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 사용자 지정 친분을 B 1장의 대화로 구현하기 위한 집필 제안. 전편 인물의 모든 성격을 단정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
           }
         ],
         "goals": [
@@ -17892,7 +18828,132 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_protagonist_party_magician:reverse",
+          "target": "protagonist",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_woodcutter_party_magician:reverse",
+          "target": "party_woodcutter",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_hunter_party_magician:reverse",
+          "target": "party_hunter",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "starting_friends_party_cook_party_magician:reverse",
+          "target": "party_cook",
+          "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+          "relation_type": "close_friend",
+          "truth_type": "authored",
+          "claimant": null,
+          "branch_condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "castle_arrival"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": null,
@@ -18001,6 +19062,99 @@
             "addition": false,
             "kind": "unknown",
             "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "writing_overrides": {
+        "name": {
+          "field": "name",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "age": {
+          "field": "age",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "appearance": {
+          "field": "appearance",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "species": {
+          "field": "species",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "personality": {
+          "field": "personality",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "origin": {
+          "field": "origin",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "settings": {
+          "field": "settings",
+          "value": "시작 일행 다섯 명(protagonist, party_woodcutter, party_hunter, party_cook, party_magician)은 첫 성 도착 전부터 서로 친한 사이다. 처음 만나 이름을 익히는 사이로 쓰지 않는다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 정하지 않는다. 친분은 현재 동행·생존·소지품을 보장하지 않으며 선택 영입 인물에게 자동 적용하지 않는다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "사용자 지정: 처음 동료들은 친한 사이. 공용 관계 설정에 반영하되 원작 사실이나 상세 과거사를 새로 확정하지 않는다.",
             "knowledge_policy": "author_reference_not_character_knowledge"
           }
         }

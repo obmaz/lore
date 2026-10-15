@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "note": "수동 검토한 분석 입력. source_role은 원작 행동/대사의 요약이고 trait은 집필 해석(미승인)이다. 미상은 창작으로 메우지 않는다. 출력 파일을 직접 고치지 말고 이 입력을 수정한다.",
   "phonetics": {
     "Lord Ahn": "로드 안",
@@ -121,7 +121,39 @@
             ]
           ]
         }
-      ]
+      ],
+      "writing_overrides": {
+        "settings": {
+          "field": "settings",
+          "value": "시작 일행 다섯 명(protagonist, party_woodcutter, party_hunter, party_cook, party_magician)은 첫 성 도착 전부터 서로 친한 사이다. 처음 만나 이름을 익히는 사이로 쓰지 않는다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 정하지 않는다. 친분은 현재 동행·생존·소지품을 보장하지 않으며 선택 영입 인물에게 자동 적용하지 않는다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "사용자 지정: 처음 동료들은 친한 사이. 공용 관계 설정에 반영하되 원작 사실이나 상세 과거사를 새로 확정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "writing_additions": {
+        "speech": [
+          {
+            "field": "starting_friends_voice",
+            "value": "시작 친구들과는 익숙하고 편한 말투를 쓴다. 장난을 주고받을 수 있지만 위험하거나 상대가 진지할 때에는 말을 듣는다. 낯선 사람·성주·새 동료와 같은 말투라고 강제하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 사용자 지정 친분을 B 1장의 대화로 구현하기 위한 집필 제안. 전편 인물의 모든 성격을 단정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ]
+      }
     },
     "castle_guide": {
       "trait": "용건을 간결하게 전달하는 안내자.",
@@ -816,7 +848,37 @@
               "knowledge_policy": "author_reference_not_character_knowledge"
             }
           }
+        ],
+        "speech": [
+          {
+            "field": "starting_friends_voice",
+            "value": "시작 친구들과는 익숙하고 편한 말투를 쓴다. 장난을 주고받을 수 있지만 위험하거나 상대가 진지할 때에는 말을 듣는다. 낯선 사람·성주·새 동료와 같은 말투라고 강제하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 사용자 지정 친분을 B 1장의 대화로 구현하기 위한 집필 제안. 전편 인물의 모든 성격을 단정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
         ]
+      },
+      "writing_overrides": {
+        "settings": {
+          "field": "settings",
+          "value": "시작 일행 다섯 명(protagonist, party_woodcutter, party_hunter, party_cook, party_magician)은 첫 성 도착 전부터 서로 친한 사이다. 처음 만나 이름을 익히는 사이로 쓰지 않는다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 정하지 않는다. 친분은 현재 동행·생존·소지품을 보장하지 않으며 선택 영입 인물에게 자동 적용하지 않는다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "사용자 지정: 처음 동료들은 친한 사이. 공용 관계 설정에 반영하되 원작 사실이나 상세 과거사를 새로 확정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
       }
     },
     {
@@ -859,7 +921,37 @@
               "knowledge_policy": "author_reference_not_character_knowledge"
             }
           }
+        ],
+        "speech": [
+          {
+            "field": "starting_friends_voice",
+            "value": "시작 친구들과는 익숙하고 편한 말투를 쓴다. 장난을 주고받을 수 있지만 위험하거나 상대가 진지할 때에는 말을 듣는다. 낯선 사람·성주·새 동료와 같은 말투라고 강제하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 사용자 지정 친분을 B 1장의 대화로 구현하기 위한 집필 제안. 전편 인물의 모든 성격을 단정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
         ]
+      },
+      "writing_overrides": {
+        "settings": {
+          "field": "settings",
+          "value": "시작 일행 다섯 명(protagonist, party_woodcutter, party_hunter, party_cook, party_magician)은 첫 성 도착 전부터 서로 친한 사이다. 처음 만나 이름을 익히는 사이로 쓰지 않는다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 정하지 않는다. 친분은 현재 동행·생존·소지품을 보장하지 않으며 선택 영입 인물에게 자동 적용하지 않는다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "사용자 지정: 처음 동료들은 친한 사이. 공용 관계 설정에 반영하되 원작 사실이나 상세 과거사를 새로 확정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
       }
     },
     {
@@ -902,7 +994,37 @@
               "knowledge_policy": "author_reference_not_character_knowledge"
             }
           }
+        ],
+        "speech": [
+          {
+            "field": "starting_friends_voice",
+            "value": "시작 친구들과는 익숙하고 편한 말투를 쓴다. 장난을 주고받을 수 있지만 위험하거나 상대가 진지할 때에는 말을 듣는다. 낯선 사람·성주·새 동료와 같은 말투라고 강제하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 사용자 지정 친분을 B 1장의 대화로 구현하기 위한 집필 제안. 전편 인물의 모든 성격을 단정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
         ]
+      },
+      "writing_overrides": {
+        "settings": {
+          "field": "settings",
+          "value": "시작 일행 다섯 명(protagonist, party_woodcutter, party_hunter, party_cook, party_magician)은 첫 성 도착 전부터 서로 친한 사이다. 처음 만나 이름을 익히는 사이로 쓰지 않는다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 정하지 않는다. 친분은 현재 동행·생존·소지품을 보장하지 않으며 선택 영입 인물에게 자동 적용하지 않는다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "사용자 지정: 처음 동료들은 친한 사이. 공용 관계 설정에 반영하되 원작 사실이나 상세 과거사를 새로 확정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
       }
     },
     {
@@ -945,7 +1067,37 @@
               "knowledge_policy": "author_reference_not_character_knowledge"
             }
           }
+        ],
+        "speech": [
+          {
+            "field": "starting_friends_voice",
+            "value": "시작 친구들과는 익숙하고 편한 말투를 쓴다. 장난을 주고받을 수 있지만 위험하거나 상대가 진지할 때에는 말을 듣는다. 낯선 사람·성주·새 동료와 같은 말투라고 강제하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "추가: 사용자 지정 친분을 B 1장의 대화로 구현하기 위한 집필 제안. 전편 인물의 모든 성격을 단정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
         ]
+      },
+      "writing_overrides": {
+        "settings": {
+          "field": "settings",
+          "value": "시작 일행 다섯 명(protagonist, party_woodcutter, party_hunter, party_cook, party_magician)은 첫 성 도착 전부터 서로 친한 사이다. 처음 만나 이름을 익히는 사이로 쓰지 않는다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 정하지 않는다. 친분은 현재 동행·생존·소지품을 보장하지 않으며 선택 영입 인물에게 자동 적용하지 않는다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "사용자 지정: 처음 동료들은 친한 사이. 공용 관계 설정에 반영하되 원작 사실이나 상세 과거사를 새로 확정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
       }
     }
   ],

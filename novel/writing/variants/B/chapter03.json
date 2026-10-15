@@ -8,7 +8,7 @@
   "shared_structure": "writing/interactive/series.json",
   "base_source_sha256": {
     "writing/quests/gaia_evil_seal.json": "d9073fa7505d814d63285520c825ef17503f6d85d23cd01f8b9ab94ca51ffa1b",
-    "writing/quests/gaia_evil_seal.continuity.json": "e4ed1b9ee0461541705bc0c15c4f63da3289c7bcd6bcd95541859cd57b675b0d",
+    "writing/quests/gaia_evil_seal.continuity.json": "28fde469aedb2671b40537035e8c1c90c66f1deff993fa94b6d5e5bb394599a9",
     "writing/interactive/series.json": "963965994e3244ddfc7952f106f48f4c73d655dce96d8fde726ca6da50828935"
   },
   "metadata": {

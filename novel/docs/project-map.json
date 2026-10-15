@@ -23,7 +23,7 @@
     "immutable_source_snapshot": 25,
     "schema": 21,
     "shared_template": 10,
-    "test": 34,
+    "test": 35,
     "tool": 35,
     "ui_source": 6,
     "usage_documentation": 18,
@@ -2451,6 +2451,17 @@
       "automatic_deletion": false
     },
     {
+      "file": "tests/test_starting_friendship.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tests/test_story_authoring.py",
       "role": "test",
       "consumers": [
@@ -2766,6 +2777,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_starting_friendship.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_story_continuity.py"
         },
         {
@@ -2958,6 +2973,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_disclosure.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_starting_friendship.py"
         },
         {
           "kind": "python_import",
@@ -3157,6 +3176,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_starting_friendship.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tools/check_interactive_browser.py"
         },
         {
@@ -3344,6 +3367,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_standalone.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_starting_friendship.py"
         },
         {
           "kind": "python_import",
@@ -3585,6 +3612,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_prose_variants.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_starting_friendship.py"
         },
         {
           "kind": "python_import",
@@ -4089,6 +4120,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_reference.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_starting_friendship.py"
         },
         {
           "kind": "python_import",
@@ -9659,6 +9694,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_copyedit.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_starting_friendship.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",

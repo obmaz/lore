@@ -1327,6 +1327,176 @@
         ]
       ],
       "spoiler": "minor"
+    },
+    {
+      "id": "starting_friends_protagonist_party_woodcutter",
+      "from": "protagonist",
+      "to": "party_woodcutter",
+      "type": "close_friend",
+      "reverse_type": "close_friend",
+      "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+      "truth": "authored",
+      "origin": "authored",
+      "after": [
+        "castle_arrival"
+      ],
+      "ranges": [],
+      "spoiler": "minor",
+      "condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+      "hints": []
+    },
+    {
+      "id": "starting_friends_protagonist_party_hunter",
+      "from": "protagonist",
+      "to": "party_hunter",
+      "type": "close_friend",
+      "reverse_type": "close_friend",
+      "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+      "truth": "authored",
+      "origin": "authored",
+      "after": [
+        "castle_arrival"
+      ],
+      "ranges": [],
+      "spoiler": "minor",
+      "condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+      "hints": []
+    },
+    {
+      "id": "starting_friends_protagonist_party_cook",
+      "from": "protagonist",
+      "to": "party_cook",
+      "type": "close_friend",
+      "reverse_type": "close_friend",
+      "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+      "truth": "authored",
+      "origin": "authored",
+      "after": [
+        "castle_arrival"
+      ],
+      "ranges": [],
+      "spoiler": "minor",
+      "condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+      "hints": []
+    },
+    {
+      "id": "starting_friends_protagonist_party_magician",
+      "from": "protagonist",
+      "to": "party_magician",
+      "type": "close_friend",
+      "reverse_type": "close_friend",
+      "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+      "truth": "authored",
+      "origin": "authored",
+      "after": [
+        "castle_arrival"
+      ],
+      "ranges": [],
+      "spoiler": "minor",
+      "condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+      "hints": []
+    },
+    {
+      "id": "starting_friends_party_woodcutter_party_hunter",
+      "from": "party_woodcutter",
+      "to": "party_hunter",
+      "type": "close_friend",
+      "reverse_type": "close_friend",
+      "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+      "truth": "authored",
+      "origin": "authored",
+      "after": [
+        "castle_arrival"
+      ],
+      "ranges": [],
+      "spoiler": "minor",
+      "condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+      "hints": []
+    },
+    {
+      "id": "starting_friends_party_woodcutter_party_cook",
+      "from": "party_woodcutter",
+      "to": "party_cook",
+      "type": "close_friend",
+      "reverse_type": "close_friend",
+      "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+      "truth": "authored",
+      "origin": "authored",
+      "after": [
+        "castle_arrival"
+      ],
+      "ranges": [],
+      "spoiler": "minor",
+      "condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+      "hints": []
+    },
+    {
+      "id": "starting_friends_party_woodcutter_party_magician",
+      "from": "party_woodcutter",
+      "to": "party_magician",
+      "type": "close_friend",
+      "reverse_type": "close_friend",
+      "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+      "truth": "authored",
+      "origin": "authored",
+      "after": [
+        "castle_arrival"
+      ],
+      "ranges": [],
+      "spoiler": "minor",
+      "condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+      "hints": []
+    },
+    {
+      "id": "starting_friends_party_hunter_party_cook",
+      "from": "party_hunter",
+      "to": "party_cook",
+      "type": "close_friend",
+      "reverse_type": "close_friend",
+      "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+      "truth": "authored",
+      "origin": "authored",
+      "after": [
+        "castle_arrival"
+      ],
+      "ranges": [],
+      "spoiler": "minor",
+      "condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+      "hints": []
+    },
+    {
+      "id": "starting_friends_party_hunter_party_magician",
+      "from": "party_hunter",
+      "to": "party_magician",
+      "type": "close_friend",
+      "reverse_type": "close_friend",
+      "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+      "truth": "authored",
+      "origin": "authored",
+      "after": [
+        "castle_arrival"
+      ],
+      "ranges": [],
+      "spoiler": "minor",
+      "condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+      "hints": []
+    },
+    {
+      "id": "starting_friends_party_cook_party_magician",
+      "from": "party_cook",
+      "to": "party_magician",
+      "type": "close_friend",
+      "reverse_type": "close_friend",
+      "description": "사용자 지정 소설 설정: 첫 성 도착 전부터 서로 친한 시작 일행이다. 친근한 대화와 익숙한 배려가 가능하다. 만난 시기·장소·공동 출신·혈연·나이·공동 전투 경력은 미정이다.",
+      "truth": "authored",
+      "origin": "authored",
+      "after": [
+        "castle_arrival"
+      ],
+      "ranges": [],
+      "spoiler": "minor",
+      "condition": "시작 일행의 고정 친분. 현재 동행·생존·소지품은 경로 상태를 별도로 검사한다. 선택 영입 인물에게는 자동 확장하지 않는다.",
+      "hints": []
     }
   ]
 }

@@ -3,7 +3,7 @@
   "story_id": "lastditch_pyramid_draft_v1",
   "story_revision": 2,
   "canon_revision": 4,
-  "character_registry_revision": 13,
+  "character_registry_revision": 14,
   "contracts": {
     "arrival": {
       "before": {
@@ -94,23 +94,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -224,23 +224,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -351,23 +351,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -473,23 +473,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -597,23 +597,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -720,23 +720,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -837,23 +837,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -954,23 +954,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -1071,23 +1071,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -1189,23 +1189,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -1322,23 +1322,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -1437,23 +1437,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -1557,23 +1557,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -1674,23 +1674,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -1791,23 +1791,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -1910,23 +1910,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -2029,23 +2029,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -2146,23 +2146,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -2269,23 +2269,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -2393,23 +2393,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -2511,23 +2511,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -2626,23 +2626,23 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 8
+          "revision": 9
         },
         {
           "character_id": "party_woodcutter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_hunter",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_cook",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "party_magician",
-          "revision": 3
+          "revision": 4
         },
         {
           "character_id": "skeleton",
@@ -2831,7 +2831,8 @@
     "status": "draft",
     "issues": [
       "미승인 본문 초고. 산문의 의미·전투 편집·원작 배타 조건·문체는 사람의 검토가 남아 있다.",
-      "추가: 서술의 주인공 호칭을 인물 참조로 정정했다. 이름 변경은 공용 사전에서 반영되며 원문 인용은 변경하지 않았다."
+      "추가: 서술의 주인공 호칭을 인물 참조로 정정했다. 이름 변경은 공용 사전에서 반영되며 원문 인용은 변경하지 않았다.",
+      "추가: 시작 일행의 사용자 지정 친분 설정을 재검토했다. 처음 도착한 장소의 낯섦·새 영입 인물과의 거리감·전투 중 신호를 익히는 과정은 기존 친분과 구분한다. 만난 시기·출신·혈연·공동 전투 경력은 새로 확정하지 않는다. 본문/사건 승인과 B 2~3장 재집필은 하지 않았다."
     ],
     "approved_story_revision": null,
     "approved_canon_revision": null,

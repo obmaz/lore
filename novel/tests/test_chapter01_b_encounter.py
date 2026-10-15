@@ -107,7 +107,7 @@ class ChapterOneBEncounterTests(unittest.TestCase):
 
     def test_sequence_and_narrative_revisions_are_marked_without_new_rewards(self):
         self.assertEqual(self.review['scope'], ['chapter01'])
-        self.assertEqual(self.review['reviewed_existing_blocks'], 274)
+        self.assertEqual(self.review['reviewed_existing_blocks'], 294)
         self.assertFalse(self.review['policy']['choices_or_effects_changed'])
         self.assertFalse(self.review['policy']['A_authored_prose_changed'])
         ids = [b['id'] for b in self.nodes['lore_menace/return_road']['blocks']]

@@ -12,7 +12,7 @@
     "tools/chapter_subsections.py": "8c3e92399cdf96928fb4bde81fd2c42e7d01c6d6ab0caab86848ab00b15a2ab3",
     "tools/text_refs.py": "9fcefc229ed9a369f4e681d4177d3f1e8c8907a57e5611c3a48a114590980507",
     "tools/story_continuity.py": "7cca2c56f1df8dc977612b51fd6fb0630cc8e0ae09489d6a736df5e8c6089599",
-    "characters/registry.json": "b4115f8048537721e0e5f3210ec88b87e68a2d596b51e860583e53ba5532d174",
+    "characters/registry.json": "51ac36ca84f6793cb579de2c004a401229be8d964abdfbeef20e14d11a3d5e4e",
     "reference/names.json": "8d770bef5f29bb2e85a97a0a69f023de29270d59e02ee1eda1e601d2092913b9",
     "reference/terms.json": "35334576ff729738799def0de33fa0da3ad8b94e12b73da2321fa0dd0c252d3b",
     "reference/equipment.json": "8bc36e5009643d9684f7d40aa4a83ac7038dd185369ab05d45fb6400d63c46b1",
@@ -21,7 +21,7 @@
   },
   "artifacts": {
     "flow.graph.json": "936f239a60679bbda33f918bd9e65b2c16a7b5d4a15128fb74d790ae2ecc192b",
-    "linear-editions.json": "b226fef3995eb694bdabfd41961d995836e3cbf305b42600f9e268747ac69ad9",
+    "linear-editions.json": "a70bb7955791422954c49e728fe6fd7d083ac74079617c87705c52e9da48ebf4",
     "flow.md": "618e724c1b946b9bfb9767a4d90e24c28ab762dcbc258a4f05b6a3187cb5d5c8",
     "flow.html": "27e1bad0925d995e5c495eddc8573a99d63e5f78b0c0d27ad123e9a5964cc946",
     "coverage.json": "933461814703b121bc0d06e4bf27ea06b0db5fc7d8c689e2e9b1e98401ad5746"

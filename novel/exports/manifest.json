@@ -1,21 +1,21 @@
 {
   "version": 1,
-  "character_registry_revision": 13,
+  "character_registry_revision": 14,
   "route": [
     "enter_courtyard",
     "visit_lord"
   ],
   "counts": {
     "characters": 53,
-    "relationships": 35,
-    "directed_links": 48,
+    "relationships": 45,
+    "directed_links": 68,
     "equipment": 24,
     "abilities": 45,
     "bestiary": 75,
     "quests": 19
   },
   "source_sha256": {
-    "characters/registry.json": "b4115f8048537721e0e5f3210ec88b87e68a2d596b51e860583e53ba5532d174",
+    "characters/registry.json": "51ac36ca84f6793cb579de2c004a401229be8d964abdfbeef20e14d11a3d5e4e",
     "reference/equipment.json": "8bc36e5009643d9684f7d40aa4a83ac7038dd185369ab05d45fb6400d63c46b1",
     "reference/abilities.json": "d2b9ee8737a13f1577fc8f716a75341affeccde08791efbf7d1b6ddb57e25c15",
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe",
@@ -31,5 +31,5 @@
     "source_files": 14,
     "literal_occurrences": 2483
   },
-  "pdf_sha256": "eeb141e6c1867826fb0bcf96a54f0b46650abbd9282b58eb9aec52e10f8ab091"
+  "pdf_sha256": "cf0e988b185b793ae6b19326dfbd504dc71e7f120a26cde108c2868dd5eaf95b"
 }
