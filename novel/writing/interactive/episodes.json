@@ -280,13 +280,13 @@
     "source_revisions": {
       "prologue": 3,
       "lore_menace": 9,
-      "overlay": 9,
+      "overlay": 10,
       "macro": 4,
       "subsections": 3
     },
     "required_scene_policy": "all_17_ordered_checkpoints_unchanged",
     "outline_numbering": "chapter_units는 장별 8소단락 ID다. 기존 menace-01~06은 첫 의뢰 이후의 집필 묶음이며 서로 다른 번호 체계다.",
-    "optional_scene_status": "주점은 긴 초고, 그 밖의 일부 탐방·보물·영입 보충은 구조 초고를 유지한다. 모든 선택 장면이 장편화됐다고 표시하지 않는다.",
+    "optional_scene_status": "주점은 긴 초고, 그 밖의 일부 탐방·보물·영입 보충은 구조 초고를 유지한다. 모든 선택 장면이 장편화됐다고 표시하지 않는다. B 1장은 별도 본문 레이어에서 주점·무기고·금화와 방패 발견·귀환 전투를 보강했다. A의 빈 조건부 산문 자리는 B 전투를 자동 삽입하지 않는다.",
     "continuity": "방문·영입·장비·증언은 해당 경로만 유지한다. 보고 전 보상, 새 고정 보스·습득 능력·부상·두 번째 장의 현장 경험을 만들지 않는다.",
     "next_work": "먼저 도입부터 귀환까지 실제 독서 호흡을 검토한다. 이후 짧은 선택 장면을 별도 소편으로 보강하며 2장 본문은 새 인계에서 시작한다.",
     "origin": "authored",

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 2,
+  "revision": 3,
   "profile": "B",
   "scope": [
     "chapter01",
@@ -1874,6 +1874,707 @@
       "review_notes": [
         "대화 한마디와 발견 직후의 짧은 문장은 남긴다. 문장 수치만 맞추기 위해 늘리지 않는다.",
         "중복된 자리 확인·추상적인 의미 풀이를 줄이고 기존 만남·전투·치료·발견 안의 감각과 행동을 보강했다. 새로운 퀘스트나 능력·보상은 추가하지 않는다."
+      ]
+    },
+    {
+      "id": "chapter01-narrative-review-03",
+      "scope": [
+        "chapter01"
+      ],
+      "style_revision": 2,
+      "status": "draft",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "status": "proposed",
+        "note": "사용자 요청: B 1장 인과·문법·주점·습득/정비의 소설화와 장비 조건에 맞는 야생동물 전투. 구조 검증은 문학적 승인이나 원작 정사 승인이 아니다."
+      },
+      "policy": {
+        "A_authored_prose_changed": false,
+        "B_chapters02_03_changed": false,
+        "archival_source_changed": false,
+        "choices_or_effects_changed": false,
+        "shared_conditional_prose_slots_added": 20,
+        "literary_or_canon_approval": false
+      },
+      "reviewed_existing_blocks": 274,
+      "changes": [
+        {
+          "block_id": "i/tavern_story_entry_1",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_entry_2",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_entry_3",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_entry_4",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_entry_5",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_entry_6",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_entry_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_personal_before",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_personal_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_menu_before",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_menu_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_menu_reply",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_settle",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_hands",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_silence_before",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_silence_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_ghost_before",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_ghost_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_offer_before",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_offer_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_lord_before",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_lord_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_pause",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_prejudice_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_prejudice_reply",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_burp_before",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_burp_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_veteran_glimpse",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_decision",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_departure",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/tavern_story_departure_end",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/armory_prose",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/armory_owned",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/treasure_hub_prose",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/gold_prose_1",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/gold_prose_2",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/gold_prose_3",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/gold_prose_4",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/gold_prose_5",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/gold_prose_6",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/grave_chest_prose",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/return_arrive",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/shield_echo",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/report_words",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/report_wait",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/report_declined",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/farewell_hands",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/farewell_end",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/return_boar_shield_protagonist",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_shield_party_woodcutter",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_shield_party_hunter",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_shield_party_cook",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_shield_party_magician",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_no_shield",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_regroup",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_gold",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_axe_prepared",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_axe_unprepared",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_axe",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_wand_prepared",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_wand_unprepared",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_wand",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_hunter",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_cook",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_escape",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_shield_after",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_gold_after",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "i/return_boar_arrive",
+          "kind": "new_conditional_prose"
+        },
+        {
+          "block_id": "prologue/courtyard_pause",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "prologue/tavern_enter",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "prologue/tavern_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "prologue/tavern_exit",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/request_before",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/request_silence",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/request_floor",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/request_lord_look",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/request_distant_name",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/request_waiting_breath",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/request_proof_sting",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/request_return_weight",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/request_looking_back",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/request_last_word",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/prep_corridor",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/prep_name",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/exit_wait",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/exit_last_sentence",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/skeleton_reaction",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/exit_answer_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/exit_outside_sound",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/exit_pause_again",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/join_result",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/join_warning_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/join_space",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/join_second_step",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/decline_result",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/decline_wait",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/decline_distance",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/departure_result",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/departure_direction",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/departure_end",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/road_shoulders",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/road_castle_behind",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/road_checking_pace",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/road_mission_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/road_join_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/road_stone",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/road_distance",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/cave_outside_noise",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/cave_first_step",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/cave_eyes",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/cave_breath",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/cave_skeleton_presence",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/cave_wall",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/cave_not_far",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/cave_dust_light",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/cave_hold_together",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/cave_decision",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/cave_last_light",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/walk_sense",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/walk_noise_stopped",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/walk_sound_wait",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/walk_follow_sound",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/walk_wall_hand",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/walk_focus",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/walk_name_low",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/walk_breath_changes",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/center_hands",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/center_group_pause",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/center_small_sentence",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/center_before_return",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/center_join_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/center_last_look",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/return_first",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/return_order",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/return_small_mark",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/return_echo_reply",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/return_skeleton",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/return_absent",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/return_light",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/return_pause",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/return_rehearsal",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/return_rehearsal_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/report_after",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/report_double_word",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/report_settle",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/next_before",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/next_silence",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/next_scale",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/next_answer_measure",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/next_breath_room",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/farewell_step",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/farewell_loosen",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "lore_menace/farewell_window_light",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/role_echo_party_woodcutter",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/role_report_party_woodcutter",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/role_echo_party_hunter",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/role_report_party_hunter",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/role_echo_party_cook",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/role_report_party_cook",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/role_echo_party_magician",
+          "kind": "narrative_revision"
+        },
+        {
+          "block_id": "i/role_report_party_magician",
+          "kind": "narrative_revision"
+        }
+      ],
+      "sequence_checks": [
+        "주점: 소음→인사 발화→자리 안내→대화→출발. 발화 없는 대답/중복 착석 제거.",
+        "동굴: 한 번의 탐색에서 금화의 발견 동기·위치 불확실성·운반 부담을 잇고 방패 담당자를 선택한다. 발견한 원문/금액/한 번의 취득은 보존한다.",
+        "귀환: 동굴 밖 휴식→길에서 멧돼지 돌진→방패 담당자 방어 또는 바위 옆 회피→실제 무기와 정비 후속→짐승 퇴각→짐 확인→성문→보고.",
+        "금화 없는 경로는 금화 짐을 언급하지 않고, 방패가 없거나 두고 온 경로는 방어 문단을 표시하지 않는다.",
+        "기본 4인 도구는 실제 현재 무기 ID와 동행을 함께 검사한다. 방패 담당자의 양손 무기 행동은 제외한다. 활의 탄약과 마법 효과를 가정하지 않는다.",
+        "방패를 든 경로에서도 금화 짐 때문에 양손을 놓거나 다른 무기를 드는 동작을 쓰지 않는다. 동료가 받은 충격은 서진의 관찰로, 서진이 받은 충격만 직접 감각으로 쓴다."
+      ],
+      "open_editorial_notes": [
+        "금화의 원래 주인·유래는 미확정이다. 조사하거나 반환하고 싶다는 일시적 의도는 창작이며, 원작의 획득 금액과 현재 보유 상태를 임의로 변경하지 않는다.",
+        "새 야생동물 장면은 B 1장의 세부 사건이다. 후속 장에 전투 경험을 인용하려면 이 판본의 사건과 장비 조건을 다시 검토한다."
+      ],
+      "presentation_changes": [
+        "i/armory_permission",
+        "i/armory_processed",
+        "i/tavern_welcome",
+        "i/welcome_personal",
+        "i/welcome_menu",
+        "i/ghost_rumor",
+        "i/drunk_lord",
+        "i/grave_gold",
+        "i/found_gold_1",
+        "i/found_gold_2",
+        "i/found_gold_3",
+        "i/found_gold_4",
+        "i/found_gold_5",
+        "i/found_gold_6",
+        "i/shield_found",
+        "i/shield_equipped_words",
+        "i/shield_cancel_words"
       ]
     }
   ]

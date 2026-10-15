@@ -141,5 +141,5 @@ def section_paragraphs(node, visible_ids, state, payload):
             if block['speaker']:
                 rule=presentation['dialogues'][key]['editions'][edition]
                 body=display_text(rule['before'],state,payload)+quoted(body)+display_text(rule['after'],state,payload)
-        paragraphs.extend({'block_id':key,'source_block_ids':ids,'text':p}for p in re.split(r'\n{2,}',body))
+        paragraphs.extend({'block_id':key,'source_block_ids':ids,'text':p}for p in re.split(r'\n{2,}',body)if p.strip())
     return paragraphs

@@ -23,7 +23,7 @@
     "immutable_source_snapshot": 25,
     "schema": 21,
     "shared_template": 10,
-    "test": 33,
+    "test": 34,
     "tool": 35,
     "ui_source": 6,
     "usage_documentation": 18,
@@ -2176,6 +2176,17 @@
       "automatic_deletion": false
     },
     {
+      "file": "tests/test_chapter01_b_encounter.py",
+      "role": "test",
+      "consumers": [
+        {
+          "kind": "test_discovery",
+          "file": "python -m unittest discover -s tests"
+        }
+      ],
+      "automatic_deletion": false
+    },
+    {
       "file": "tests/test_chapter_plan.py",
       "role": "test",
       "consumers": [
@@ -3130,6 +3141,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_chapter01_b_encounter.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_chapter_plan.py"
         },
         {
@@ -3237,6 +3252,10 @@
         {
           "kind": "python_import",
           "file": "tests/test_causal_review.py"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter01_b_encounter.py"
         },
         {
           "kind": "python_import",
@@ -3510,6 +3529,10 @@
         },
         {
           "kind": "python_import",
+          "file": "tests/test_chapter01_b_encounter.py"
+        },
+        {
+          "kind": "python_import",
           "file": "tests/test_copyedit.py"
         },
         {
@@ -3550,6 +3573,10 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/previews/manifest.json"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter01_b_encounter.py"
         },
         {
           "kind": "python_import",
@@ -4022,6 +4049,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "continuity/README.md"
+        },
+        {
+          "kind": "python_import",
+          "file": "tests/test_chapter01_b_encounter.py"
         },
         {
           "kind": "python_import",
@@ -6397,6 +6428,10 @@
         {
           "kind": "input_hash_guard",
           "file": "writing/studio/generated/manifest.json"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_chapter01_b_encounter.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",
@@ -9616,6 +9651,10 @@
         {
           "kind": "static_mention_not_runtime_proof",
           "file": "tests/test_b_readability.py"
+        },
+        {
+          "kind": "static_mention_not_runtime_proof",
+          "file": "tests/test_chapter01_b_encounter.py"
         },
         {
           "kind": "static_mention_not_runtime_proof",

@@ -24,7 +24,7 @@ class CopyeditTest(unittest.TestCase):
         self.assertFalse(self.edits['policy']['archival_source_changed'])
         self.assertFalse(self.edits['policy']['canon_approval'])
         self.assertFalse(self.edits['policy']['A_authored_prose_changed'])
-        self.assertEqual([len(c['block_overrides'])for c in self.chapters.values()],[274,77,70])
+        self.assertEqual([len(c['block_overrides'])for c in self.chapters.values()],[294,77,70])
 
     def test_ambiguous_actions_use_references_not_copied_names(self):
         for chapter,key,actor in [(1,'i/intro_party_cook','protagonist'),(1,'i/role_action_party_hunter','party_hunter'),

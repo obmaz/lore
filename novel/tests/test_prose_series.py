@@ -47,7 +47,7 @@ class ProseSeriesTests(unittest.TestCase):
                 if ba['provenance']['origin']!='authored':self.assertEqual(ba,bb)
 
     def test_each_chapter_has_a_full_explicit_prose_layer_not_a_fallback(self):
-        expected={'chapter01':274,'chapter02':77,'chapter03':70}
+        expected={'chapter01':294,'chapter02':77,'chapter03':70}
         for row in self.plan['chapters']:
             doc=read(ROOT/row['file'])
             self.assertEqual(len(doc['block_overrides']),expected[row['chapter_id']])

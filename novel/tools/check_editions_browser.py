@@ -44,6 +44,9 @@ def check():
                 frame.locator(f'[data-choice="{key}"]').click()
             assert frame.locator('#choices button').count()==0
             assert f'제{count}장 끝' in frame.locator('#choices').inner_text()
+            assert frame.locator('[data-block-id="i/return_boar_no_shield"]').count()>0
+            assert frame.locator('[data-block-id="i/return_boar_gold"]').count()==0
+            assert frame.locator('[data-block-id="i/return_boar_axe_prepared"]').count()==0
             assert f'제{count+1}장 ·' not in frame.locator('#manuscript').inner_text()
             if count>=2:assert '성벽이 보이지 않았다.' in frame.locator('[data-block-id="lastditch_pyramid/arrival_body"]').first.inner_text()
             if count>=3:
@@ -87,6 +90,8 @@ def check():
             assert frame.locator('#manuscript h2').evaluate_all('(es)=>es.every(e=>/^제[23]장 · /.test(e.textContent))')
             assert frame.locator('#manuscript .quote, #manuscript blockquote, #manuscript small').count()==0
             assert frame.locator('#manuscript section[data-story-role="main"]').count()==43
+            assert frame.locator('[data-block-id^="i/return_boar_"]').count()==0
+            assert frame.locator('#manuscript p[data-block-id]').evaluate_all('(es)=>es.every(e=>e.textContent.trim())')
             assert '일행을 보며 말했다. “' in frame.locator('[data-block-id="lastditch_pyramid/request_443"]').inner_text()
             assert frame.locator('#book-cover-image').evaluate('(e)=>e.complete&&e.naturalWidth===1024')
             assert frame.locator('#manuscript [data-chapter-cover]').count()==3
@@ -109,6 +114,30 @@ def check():
                         doc=ET.fromstring(book.read('OEBPS/'+key+'.xhtml'))
                         expected.extend(''.join(p.itertext())for p in doc.findall('.//{http://www.w3.org/1999/xhtml}main/{http://www.w3.org/1999/xhtml}p'))
                 assert actual==expected,'EPUB paragraphs must match the real B web route exactly'
+                # Read real choices again: shield ownership and armory preparation
+                # must control the browser's prose as well as Python replay.
+                for town,owner in [('armory','protagonist'),('armory','party_woodcutter'),('tavern','cancel'),('tavern',None)]:
+                    frame.locator('#restart').click()
+                    choices=['prologue/visit_lord','i/explore','i/visit_'+town,
+                             'lore_menace/decline_skeleton','lore_menace/enter_menace',
+                             'i/cave_treasure' if owner else 'lore_menace/return_to_lore',
+                             'i/shield_'+(owner or 'cancel')]
+                    for _ in range(30):
+                        if frame.locator('[data-block-id="i/return_boar_arrive"]').count():break
+                        ids=frame.locator('#choices button').evaluate_all('(es)=>es.map(e=>e.dataset.choice)')
+                        assert ids,'chapter-one encounter must be reachable'
+                        key=next((c for c in choices if c in ids),ids[0])
+                        frame.locator('[data-choice="'+key+'"]').click()
+                    assert frame.locator('[data-block-id="i/return_boar_arrive"]').count()>0
+                    visible=lambda key:frame.locator('[data-block-id="i/return_boar_'+key+'"]').count()>0
+                    shield=owner not in (None,'cancel')
+                    assert visible('no_shield')== (not shield)
+                    assert visible('shield_after')==shield
+                    if shield:assert visible('shield_'+owner)
+                    assert visible('gold')== (owner is not None)
+                    assert visible('axe')== (owner!='party_woodcutter')
+                    assert visible('axe_prepared')== (town=='armory' and owner!='party_woodcutter')
+                    assert not frame.locator('#manuscript').get_by_text('대답이 조금 작았다.',exact=True).count()
             assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
             assert frame.locator('html').evaluate('(e)=>e.scrollWidth<=innerWidth')
             assert not errors,errors
@@ -116,7 +145,8 @@ def check():
             reports.append({'width':width,'A_chapters':3,'B_chapters':count,'B_complete':True,
                             'shared_choices':True,'cross_edition_save_rejected':True,'offline':True,
                             'chapter_titles_only':True,'natural_attribution_both_editions':True,
-                            'shared_covers':True,'script_overrides':True,'epub_browser_text_match':width==1280})
+                            'shared_covers':True,'script_overrides':True,'epub_browser_text_match':width==1280,
+                            'chapter01_equipment_prose_routes':4 if width==1280 else 1,'A_no_encounter_or_empty_paragraphs':True})
             page.close()
         browser.close()
     return reports

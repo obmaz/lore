@@ -163,6 +163,7 @@
   }
   function appendProse(root, body, blockId, sourceBlocks) {
     for (const paragraph of body.split(/\n{2,}/)) {
+      if (!paragraph.trim()) continue;
       const p=element('p',paragraph);
       p.dataset.blockId=blockId;
       if(sourceBlocks)p.dataset.sourceBlocks=JSON.stringify(sourceBlocks);

@@ -25,7 +25,7 @@ class ProseVariantTests(unittest.TestCase):
 
     def test_same_nodes_choices_guards_effects_sources_and_main_story(self):
         self.assertEqual(structure(self.base),structure(self.web))
-        self.assertEqual(len(self.document['block_overrides']),274)
+        self.assertEqual(len(self.document['block_overrides']),294)
         changed=sum(a['text']!=b['text'] for na,nb in zip(self.base['nodes'],self.web['nodes']) for a,b in zip(na['blocks'],nb['blocks']))
         self.assertGreater(changed,260)
         for na,nb in zip(self.base['nodes'],self.web['nodes']):
