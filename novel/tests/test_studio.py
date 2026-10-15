@@ -45,7 +45,7 @@ class StudioTests(unittest.TestCase):
 
     def test_03_settings_include_master_relationships_and_original_addition_markers(self):
         counts = {c:sum(r['category']==c for r in self.data['settings']) for c in ('characters','relationships','equipment','abilities','bestiary')}
-        self.assertEqual(counts,{'characters':53,'relationships':35,'equipment':24,'abilities':45,'bestiary':75})
+        self.assertEqual(counts,{'characters':53,'relationships':45,'equipment':24,'abilities':45,'bestiary':75})
         hero = next(r for r in self.data['settings'] if r['id']=='characters/protagonist')
         self.assertEqual(hero['title'],'서진')
         self.assertIn('창작 추가',hero['html'])

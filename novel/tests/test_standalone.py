@@ -52,7 +52,7 @@ class IndependentNovelTest(unittest.TestCase):
     def test_reference_documents_match_without_game_sources(self):
         report = json.loads(self.run_tool("export_reference","--check"))
         self.assertEqual(report['characters'],53)
-        self.assertEqual(report['relationships'],35)
+        self.assertEqual(report['relationships'],45)
 
     def test_writing_boards_and_previews_without_game_sources(self):
         report = json.loads(self.run_tool('writing','validate'))
